@@ -1,0 +1,18 @@
+# ===== 第三方版权素材：不入库 =====
+design/ref/
+
+# ===== 本地/临时产物 =====
+*.tmp.*
+__pycache__/
+Thumbs.db
+.DS_Store
+
+# ===== Xcode（Mac 上生成后无需入库） =====
+*.xcodeproj
+xcuserdata/
+DerivedData/
+build/
+
+# ===== 系统与工具 =====
+.zcode/
+.zcodeignore

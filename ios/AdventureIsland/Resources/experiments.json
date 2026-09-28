@@ -1,0 +1,26 @@
+{
+  "experiments": [
+    {
+      "id": "float-sink",
+      "title": "浮与沉",
+      "guide": "robot",
+      "guessItem": "apple",
+      "guessIcon": "apple",
+      "guessQuestion": "苹果放进水里，会怎么样？",
+      "items": [
+        { "id": "apple", "name": "苹果", "icon": "apple", "isFloat": true,
+          "fact": "苹果皮里有小气孔，像穿了救生衣" },
+        { "id": "rock", "name": "石头", "icon": "rock", "isFloat": false,
+          "fact": "石头比同体积的水重很多，所以沉底" },
+        { "id": "wood", "name": "木头", "icon": "wood", "isFloat": true,
+          "fact": "木头里有很多小空隙，轻轻的，所以能浮" },
+        { "id": "key", "name": "钥匙", "icon": "key", "isFloat": false,
+          "fact": "金属钥匙小小的却很重，一下就沉啦" },
+        { "id": "sponge", "name": "海绵", "icon": "sponge", "isFloat": true,
+          "fact": "干海绵会浮，吸满水会慢慢沉下去" },
+        { "id": "balloon", "name": "气球", "icon": "balloon", "isFloat": true,
+          "fact": "气球里是空气，最轻，漂在最上面" }
+      ]
+    }
+  ]
+}

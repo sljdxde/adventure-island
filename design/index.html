@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>幼小衔接 iPad App · HTML 设计稿总览 v4</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  body.index { display: block; overflow: auto; background: linear-gradient(180deg, #2E251C 0%, #241D15 100%); }
+  .wrap { max-width: 1320px; margin: 0 auto; padding: 46px 36px 70px; }
+
+  .hero { text-align: center; margin-bottom: 42px; }
+  .hero .logo { font-size: 60px; filter: drop-shadow(0 8px 12px rgba(0,0,0,.4)); }
+  .hero h1 {
+    font-weight: 900;
+    font-size: 46px; margin: 8px 0 12px;
+    letter-spacing: 6px;
+    color: #FFF3D8;
+    text-shadow: 0 3px 0 var(--orange-dk), 0 8px 20px rgba(240,140,31,.3);
+  }
+  .hero h1 span { color: var(--gold); }
+  .hero p.sub { font-size: 18px; color: #B9A88F; font-weight: 700; }
+  .hero .chips { display: flex; gap: 12px; justify-content: center; margin-top: 20px; flex-wrap: wrap; }
+  .hero .chip {
+    background: #332920; border: 1px solid rgba(255,243,216,.15);
+    border-radius: 999px; padding: 9px 22px;
+    font-size: 15px; font-weight: 800; color: #C9BBA0;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .hero .chip .ic { font-size: 20px; }
+
+  .sec-title {
+    font-size: 24px; font-weight: 900; color: #FFF3D8;
+    margin: 44px 0 18px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .sec-title .ic { font-size: 26px; }
+  .sec-title::before { content: ''; width: 8px; height: 24px; border-radius: 4px; background: linear-gradient(180deg, var(--orange), var(--orange-dk)); }
+  .sec-title::after { content: ''; flex: 1; height: 2px; background: linear-gradient(90deg, rgba(255,243,216,.25), transparent); }
+
+  .lang-grid { display: grid; grid-template-columns: 1.15fr 1fr 1fr; gap: 20px; }
+  .lang-card {
+    background: #332920; border-radius: 24px; padding: 22px 24px;
+    border: 1px solid rgba(255,243,216,.14);
+  }
+  .lang-card h4 { font-size: 17px; margin-bottom: 14px; color: #B9A88F; }
+  .swatches { display: flex; gap: 10px; flex-wrap: wrap; }
+  .swatch { text-align: center; font-size: 11.5px; font-weight: 800; color: #B9A88F; }
+  .swatch i { display: block; width: 50px; height: 50px; border-radius: 15px; box-shadow: inset 0 -5px 0 rgba(0,0,0,.15), inset 0 3px 0 rgba(255,255,255,.28); margin-bottom: 4px; }
+  .rules { list-style: none; }
+  .rules li { font-size: 14px; color: #C9BBA0; font-weight: 700; padding: 5px 0 5px 22px; position: relative; line-height: 1.6; }
+  .rules li::before { content: '◆'; position: absolute; left: 2px; color: var(--gold); font-size: 10px; top: 10px; }
+  .rules b { color: #FFF3D8; }
+  .btn-demo { display: flex; flex-direction: column; gap: 12px; align-items: flex-start; }
+  .btn-demo .row { display: flex; gap: 10px; align-items: center; }
+  .btn-demo .ic { font-size: 34px; }
+
+  .screens { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  .screen-card {
+    background: #332920; border-radius: 24px;
+    border: 1px solid rgba(255,243,216,.14);
+    overflow: hidden; cursor: pointer;
+    transition: transform .15s, box-shadow .15s;
+    display: block; text-decoration: none;
+  }
+  .screen-card:hover { transform: translateY(-6px); box-shadow: 0 18px 40px rgba(0,0,0,.5); }
+  .preview-box { width: 100%; aspect-ratio: 4 / 3; overflow: hidden; position: relative; background: #191410; border-bottom: 2px solid rgba(255,243,216,.12); }
+  .preview-box iframe { width: 1024px; height: 768px; border: 0; transform-origin: 0 0; pointer-events: none; position: absolute; top: 0; left: 0; }
+  .screen-info { padding: 16px 20px 18px; }
+  .screen-info h3 { font-size: 19px; font-weight: 900; color: #FFF3D8; display: flex; align-items: center; gap: 8px; }
+  .screen-info h3 .ic { font-size: 24px; }
+  .screen-info h3 .no {
+    background: linear-gradient(180deg, #FFDD7A, var(--yellow-dk));
+    color: #7A4A00; font-size: 12.5px; border-radius: 999px; padding: 3px 11px;
+    box-shadow: 0 2px 0 var(--yellow-ddk);
+  }
+  .screen-info p { font-size: 14px; color: #B9A88F; font-weight: 700; margin: 6px 0 0; line-height: 1.65; }
+  .screen-info .try { margin-top: 10px; font-size: 13px; font-weight: 800; color: #D0BCFF; background: rgba(155,123,245,.14); border-radius: 10px; padding: 7px 12px; }
+
+  .flow-note {
+    background: #332920; border-radius: 24px; padding: 24px 30px;
+    border: 1px solid rgba(255,243,216,.14);
+    font-size: 16px; font-weight: 700; color: #B9A88F; line-height: 2;
+  }
+  .flow-note b { color: #FFF3D8; }
+  .flow-note .big { font-size: 20px; display: block; margin-bottom: 6px; color: var(--gold); font-weight: 900; }
+
+  footer { text-align: center; margin-top: 46px; font-size: 14px; color: #8A7A63; font-weight: 700; line-height: 2; }
+  footer a { color: var(--gold); font-weight: 900; }
+</style>
+</head>
+<body class="index">
+<div class="wrap">
+
+  <div class="hero">
+    <div class="logo"><img class="ic" src="assets/icons/starface.svg" alt=""></div>
+    <h1>探险岛 · <span>幼小衔接</span>学习闯关 App</h1>
+    <p class="sub">面向 3-6 岁 · iPad 4:3 · 语文 / 数学 / 科学实验 · 设计稿 v4（马里奥派对风 + 全自产 SVG 资产）</p>
+    <div class="chips">
+      <span class="chip"><img class="ic" src="assets/icons/dice.svg" alt="">派对棋盘地图 + 水管站台</span>
+      <span class="chip"><img class="ic" src="assets/icons/block.svg" alt="">? 方块 / 金币 / 格子旗 关卡语言</span>
+      <span class="chip"><img class="ic" src="assets/icons/sparkle.svg" alt="">66 个自产 SVG 图标 · 零 emoji</span>
+      <span class="chip"><img class="ic" src="assets/icons/speaker.svg" alt="">可点击交互 + 系统语音</span>
+      <span class="chip"><img class="ic" src="assets/icons/clip.svg" alt="">纯离线 · 双击即看</span>
+    </div>
+  </div>
+
+  <div class="sec-title">v4 设计语言（马里奥派对风 × 国内头部产品审美）</div>
+  <div class="lang-grid">
+    <div class="lang-card">
+      <h4>场景化配色（高饱和糖果色 + 学科换色）</h4>
+      <div class="swatches">
+        <div class="swatch"><i style="background:#4FB4F5"></i>天空</div>
+        <div class="swatch"><i style="background:#6FCC44"></i>圆丘草地</div>
+        <div class="swatch"><i style="background:#FFCC00"></i>金币黄</div>
+        <div class="swatch"><i style="background:#E8382E"></i>派对红</div>
+        <div class="swatch"><i style="background:#3DBE29"></i>水管绿</div>
+        <div class="swatch"><i style="background:#9B7BF5"></i>科学紫</div>
+        <div class="swatch"><i style="background:#FFF9EE; outline:1px solid #4a3b30;"></i>奶油面板</div>
+        <div class="swatch"><i style="background:#57433A"></i>暖棕字</div>
+      </div>
+    </div>
+    <div class="lang-card">
+      <h4>五条硬规则</h4>
+      <ul class="rules">
+        <li><b>棋盘即地图</b>：彩色圆格路径 + 星星格 + 终点格子旗（马里奥派对范式）</li>
+        <li><b>水管即入口</b>：三大学科 = 三色水管站台 + 木牌 + 向导角色</li>
+        <li><b>方块即关卡</b>：? 方块 / 绿勾方块 / 灰锁方块 三态</li>
+        <li><b>粗描边厚字体</b>：面板 5px 学科色描边，标题白字 + 学科色描边</li>
+        <li><b>全自产资产</b>：图标 / 背景均为 tools/gen-assets.mjs 生成的 SVG 文件</li>
+      </ul>
+    </div>
+    <div class="lang-card">
+      <h4>控件演示</h4>
+      <div class="btn-demo">
+        <button class="jbtn jbtn-orange" style="font-size:18px;">果冻主按钮</button>
+        <div class="row">
+          <img class="ic" src="assets/icons/block.svg" alt="">
+          <img class="ic" src="assets/icons/blockok.svg" alt="">
+          <img class="ic" src="assets/icons/blocklock.svg" alt="">
+          <img class="ic" src="assets/icons/coin.svg" alt="">
+          <img class="ic" src="assets/icons/dice.svg" alt="">
+          <img class="ic" src="assets/icons/flag.svg" alt="">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec-title">页面设计稿 v4（点击打开可交互版）</div>
+  <div class="screens">
+
+    <a class="screen-card" href="01-home.html" target="_blank">
+      <div class="preview-box"><iframe src="01-home.html" data-scale></iframe></div>
+      <div class="screen-info">
+        <h3><span class="no">01</span><img class="ic" src="assets/icons/flag.svg" alt="">主页 · 派对棋盘</h3>
+        <p>棋盘格路径（彩色圆格 + 星星格 + 终点旗）+ 三色水管学科站台 + ? 方块悬浮。</p>
+        <div class="try">试：点水管进关卡 · 点收集册 / 任务 / 家长</div>
+      </div>
+    </a>
+
+    <a class="screen-card" href="02-chinese.html" target="_blank">
+      <div class="preview-box"><iframe src="02-chinese.html" data-scale></iframe></div>
+      <div class="screen-info">
+        <h3><span class="no">02</span><img class="ic" src="assets/icons/hanzi.svg" alt="">语文 · 象形字「日」</h3>
+        <p>暖阳课堂：太阳（自产插画带表情）→ 汉字演变、拼音按钮、词卡；三选一答题。</p>
+        <div class="try">试：点喇叭听读音 · 答对撒彩带得星星</div>
+      </div>
+    </a>
+
+    <a class="screen-card" href="03-math.html" target="_blank">
+      <div class="preview-box"><iframe src="03-math.html" data-scale></iframe></div>
+      <div class="screen-info">
+        <h3><span class="no">03</span><img class="ic" src="assets/icons/equal.svg" alt="">数学 · 数感点数</h3>
+        <p>池塘点鸭子逐个计数 → 果盘比多少；数字键做成金币方块。</p>
+        <div class="try">试：逐个点小鸭出现计数泡泡</div>
+      </div>
+    </a>
+
+    <a class="screen-card" href="04-lab.html" target="_blank">
+      <div class="preview-box"><iframe src="04-lab.html" data-scale></iframe></div>
+      <div class="screen-info">
+        <h3><span class="no">04</span><img class="ic" src="assets/icons/flask.svg" alt="">科学实验室 · 浮与沉 <b style="color:var(--coral); font-size:13px;">★核心</b></h3>
+        <p>猜一猜 → 动手做 → 看现象 → 收进图鉴四步法；玻璃水箱 + 气泡物理演示。</p>
+        <div class="try">试：先猜苹果 → 选物品点水箱 → 图鉴点亮</div>
+      </div>
+    </a>
+
+    <a class="screen-card" href="05-collection.html" target="_blank">
+      <div class="preview-box"><iframe src="05-collection.html" data-scale></iframe></div>
+      <div class="screen-info">
+        <h3><span class="no">05</span><img class="ic" src="assets/icons/medal.svg" alt="">收集册</h3>
+        <p>奶油弧形面板 + 方块页签；科学图鉴 / 贴纸 / 汉字卡 / 徽章四类收集。</p>
+        <div class="try">试：切页签 · 点点亮的图鉴看冷知识</div>
+      </div>
+    </a>
+
+    <a class="screen-card" href="06-parent.html" target="_blank">
+      <div class="preview-box"><iframe src="06-parent.html" data-scale></iframe></div>
+      <div class="screen-info">
+        <h3><span class="no">06</span><img class="ic" src="assets/icons/lock.svg" alt="">家长中心</h3>
+        <p>安静书房风：算术题家长门 → 护眼时长环、进度报告、难度管理、产品承诺。</p>
+        <div class="try">试：输入 15 过家长门 · 切时长设置</div>
+      </div>
+    </a>
+
+  </div>
+
+  <div class="sec-title">核心体验闭环</div>
+  <div class="flow-note">
+    <span class="big">每日 15 分钟：地图领任务 → 学科闯关 → 科学实验 → 收集册沉淀</span>
+    主页领取「今日任务」（<b>语文 1 关 + 数学 1 关 + 实验 1 个</b>）→ 三大学科村庄各玩 2-3 分钟的小关卡 →
+    到科学岛做当天的虚拟实验 → 现象收进图鉴、贴纸进收集册 → 棋盘格子一路点亮到终点旗。<br>
+    <b>无失败、无排名、无广告内购</b>：答错只有鼓励提示；激励全部来自「收集与点亮」。
+  </div>
+
+  <footer>
+    设计稿 v4 · 2026-09 · 马里奥派对风棋盘语言 × 洪恩 / 宝宝巴士 / 小伴龙 / 斑马 审美提炼<br>
+    美术资产：design/assets/（66 图标 + 2 背景，全部由 tools/gen-assets.mjs 自产 SVG，零 emoji、零外部素材）<br>
+    <a href="ref.html">查看审美参考板（竞品原图 + 借鉴点标注）</a><br>
+    正式版技术方案：SwiftUI + SpriteKit · 数据全部本地化 · 不上架 App Store、仅自用安装
+  </footer>
+
+</div>
+
+<script>
+  function scalePreviews() {
+    document.querySelectorAll('.preview-box').forEach(box => {
+      const f = box.querySelector('iframe');
+      const s = box.clientWidth / 1024;
+      f.style.transform = 'scale(' + s + ')';
+    });
+  }
+  window.addEventListener('resize', scalePreviews);
+  window.addEventListener('load', scalePreviews);
+  scalePreviews();
+  setTimeout(scalePreviews, 600);
+  setTimeout(scalePreviews, 1800);
+</script>
+</body>
+</html>

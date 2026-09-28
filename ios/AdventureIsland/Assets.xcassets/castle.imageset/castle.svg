@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs><linearGradient id="g-rose" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFD9E4"/><stop offset="1" stop-color="#FF9EBE"/></linearGradient><linearGradient id="g-pink" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFC1D4"/><stop offset="1" stop-color="#F76EA0"/></linearGradient><linearGradient id="g-purple" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#C7B4FF"/><stop offset="1" stop-color="#8F6BE8"/></linearGradient><linearGradient id="g-coral" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFA793"/><stop offset="1" stop-color="#F0705F"/></linearGradient></defs>
+  <rect x="10" y="24" width="12" height="32" rx="3" fill="url(#g-rose)"/>
+  <rect x="42" y="24" width="12" height="32" rx="3" fill="url(#g-rose)"/>
+  <rect x="20" y="32" width="24" height="24" rx="4" fill="url(#g-pink)"/>
+  <rect x="10" y="18" width="4" height="8" rx="1.5" fill="url(#g-rose)"/><rect x="18" y="18" width="4" height="8" rx="1.5" fill="url(#g-rose)"/>
+  <rect x="42" y="18" width="4" height="8" rx="1.5" fill="url(#g-rose)"/><rect x="50" y="18" width="4" height="8" rx="1.5" fill="url(#g-rose)"/>
+  <path d="M28 56 L28 44 Q32 38 36 44 L36 56 Z" fill="url(#g-purple)"/>
+  <circle cx="16" cy="32" r="2.6" fill="#fff" opacity=".9"/><circle cx="48" cy="32" r="2.6" fill="#fff" opacity=".9"/>
+  <path d="M16 18 L16 8 L24 11 L16 14" fill="url(#g-coral)"/><path d="M48 18 L48 8 L56 11 L48 14" fill="url(#g-coral)"/>
+  <rect x="23" y="36" width="5" height="6" rx="2" fill="#fff" opacity=".85"/><rect x="36" y="36" width="5" height="6" rx="2" fill="#fff" opacity=".85"/></svg>

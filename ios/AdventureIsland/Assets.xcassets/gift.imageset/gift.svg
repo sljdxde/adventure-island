@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs><linearGradient id="g-coral" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFA793"/><stop offset="1" stop-color="#F0705F"/></linearGradient><linearGradient id="g-red" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FF8A7A"/><stop offset="1" stop-color="#E8564A"/></linearGradient><linearGradient id="g-gold" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFE58A"/><stop offset="1" stop-color="#F7B32B"/></linearGradient><linearGradient id="g-golddk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F5C243"/><stop offset="1" stop-color="#E5A916"/></linearGradient></defs>
+  <rect x="10" y="26" width="44" height="30" rx="6" fill="url(#g-coral)"/>
+  <rect x="7" y="18" width="50" height="12" rx="5" fill="url(#g-red)"/>
+  <rect x="28" y="18" width="8" height="38" fill="url(#g-gold)"/>
+  <path d="M32 18 Q22 5 15 11 Q11 18 24 18 Z" fill="url(#g-gold)"/>
+  <path d="M32 18 Q42 5 49 11 Q53 18 40 18 Z" fill="url(#g-golddk)"/>
+  <circle cx="32" cy="17" r="4" fill="url(#g-golddk)"/>
+  <rect x="14" y="32" width="6" height="18" rx="3" fill="#fff" opacity=".3"/></svg>

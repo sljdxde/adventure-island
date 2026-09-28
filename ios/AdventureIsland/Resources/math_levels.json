@@ -1,0 +1,113 @@
+{
+  "subject": "math",
+  "title": "思维镇",
+  "guide": "fox",
+  "levels": [
+    {
+      "id": "math-0", "title": "第 1 关 数一数",
+      "subtitle": "3 以内点数",
+      "steps": [
+        { "id": "math-0-c", "kind": "count", "question": "池塘里有几只小鸭？（点一点，数数看）",
+          "duckIcon": "duck", "count": 3, "countOptions": [2, 3, 4] },
+        { "id": "math-0-cmp", "kind": "compare", "question": "哪边的水果更多？",
+          "leftIcon": "apple", "leftCount": 3, "rightIcon": "banana", "rightCount": 1,
+          "compareOptions": [ { "key": "left", "label": "苹果多" }, { "key": "right", "label": "香蕉多" }, { "key": "same", "label": "一样多" } ],
+          "answerKey": "left", "hint": "一一对应比一比：🍎→🍌", "praise": "答对啦，苹果更多！" }
+      ]
+    },
+    {
+      "id": "math-1", "title": "第 2 关 数一数",
+      "subtitle": "4 以内点数",
+      "steps": [
+        { "id": "math-1-c", "kind": "count", "question": "池塘里有几只小鸭？",
+          "duckIcon": "duck", "count": 4, "countOptions": [3, 4, 5] },
+        { "id": "math-1-cmp", "kind": "compare", "question": "哪边更多？",
+          "leftIcon": "apple", "leftCount": 4, "rightIcon": "banana", "rightCount": 2,
+          "compareOptions": [ { "key": "left", "label": "苹果多" }, { "key": "right", "label": "香蕉多" }, { "key": "same", "label": "一样多" } ],
+          "answerKey": "left", "hint": "把苹果和香蕉一只一只配对", "praise": "苹果 4 个，香蕉 2 个，苹果多！" }
+      ]
+    },
+    {
+      "id": "math-2", "title": "第 3 关 数一数",
+      "subtitle": "5 以内点数",
+      "steps": [
+        { "id": "math-2-c", "kind": "count", "question": "池塘里有几只小鸭？",
+          "duckIcon": "duck", "count": 5, "countOptions": [4, 5, 6] },
+        { "id": "math-2-cmp", "kind": "compare", "question": "哪边更多？",
+          "leftIcon": "apple", "leftCount": 3, "rightIcon": "banana", "rightCount": 5,
+          "compareOptions": [ { "key": "left", "label": "苹果多" }, { "key": "right", "label": "香蕉多" }, { "key": "same", "label": "一样多" } ],
+          "answerKey": "right", "hint": "数一数两边各有几个", "praise": "香蕉有 5 个，香蕉多！" }
+      ]
+    },
+    {
+      "id": "math-3", "title": "第 4 关 比一比",
+      "subtitle": "一样多",
+      "steps": [
+        { "id": "math-3-cmp", "kind": "compare", "question": "这次两边一样多吗？",
+          "leftIcon": "apple", "leftCount": 4, "rightIcon": "banana", "rightCount": 4,
+          "compareOptions": [ { "key": "left", "label": "苹果多" }, { "key": "right", "label": "香蕉多" }, { "key": "same", "label": "一样多" } ],
+          "answerKey": "same", "hint": "4 个对 4 个，正好配对", "praise": "火眼金睛！一样多！" }
+      ]
+    },
+    {
+      "id": "math-4", "title": "第 5 关 数一数",
+      "subtitle": "6 以内点数",
+      "steps": [
+        { "id": "math-4-c", "kind": "count", "question": "池塘里有几只小鸭？",
+          "duckIcon": "duck", "count": 6, "countOptions": [5, 6, 7] },
+        { "id": "math-4-cmp", "kind": "compare", "question": "哪边更多？",
+          "leftIcon": "apple", "leftCount": 6, "rightIcon": "banana", "rightCount": 4,
+          "compareOptions": [ { "key": "left", "label": "苹果多" }, { "key": "right", "label": "香蕉多" }, { "key": "same", "label": "一样多" } ],
+          "answerKey": "left", "hint": "6 比 4 多还是少？", "praise": "6 个比 4 个多，答对啦！" }
+      ]
+    },
+    {
+      "id": "math-5", "title": "第 6 关 数一数",
+      "subtitle": "7 以内点数",
+      "steps": [
+        { "id": "math-5-c", "kind": "count", "question": "池塘里有几只小鸭？",
+          "duckIcon": "duck", "count": 7, "countOptions": [6, 7, 8] }
+      ]
+    },
+    {
+      "id": "math-6", "title": "第 7 关 数一数",
+      "subtitle": "8 以内点数",
+      "steps": [
+        { "id": "math-6-c", "kind": "count", "question": "池塘里有几只小鸭？",
+          "duckIcon": "duck", "count": 8, "countOptions": [7, 8, 9] },
+        { "id": "math-6-cmp", "kind": "compare", "question": "哪边更多？",
+          "leftIcon": "apple", "leftCount": 5, "rightIcon": "banana", "rightCount": 8,
+          "compareOptions": [ { "key": "left", "label": "苹果多" }, { "key": "right", "label": "香蕉多" }, { "key": "same", "label": "一样多" } ],
+          "answerKey": "right", "hint": "逐个数一数", "praise": "8 个比 5 个多，真棒！" }
+      ]
+    },
+    {
+      "id": "math-7", "title": "第 8 关 数一数",
+      "subtitle": "9 以内点数",
+      "steps": [
+        { "id": "math-7-c", "kind": "count", "question": "池塘里有几只小鸭？",
+          "duckIcon": "duck", "count": 9, "countOptions": [8, 9, 10] }
+      ]
+    },
+    {
+      "id": "math-8", "title": "第 9 关 数一数",
+      "subtitle": "10 以内点数",
+      "steps": [
+        { "id": "math-8-c", "kind": "count", "question": "好多小鸭！一共几只？",
+          "duckIcon": "duck", "count": 10, "countOptions": [8, 9, 10] }
+      ]
+    },
+    {
+      "id": "math-9", "title": "第 10 关 挑战",
+      "subtitle": "比大小",
+      "steps": [
+        { "id": "math-9-q1", "kind": "quiz", "question": "哪个数字最大？",
+          "options": [ { "text": "5" }, { "text": "9" }, { "text": "3" } ],
+          "answer": 1, "hint": "从 1 数到 10，谁排在最后？", "praise": "9 最大，答对啦！" },
+        { "id": "math-9-q2", "kind": "quiz", "question": "哪个数字最小？",
+          "options": [ { "text": "2" }, { "text": "7" }, { "text": "10" } ],
+          "answer": 0, "hint": "越早数到的越小哦", "praise": "思维小达人，通关！" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,141 @@
+{
+  "subject": "cn",
+  "title": "识字村",
+  "guide": "panda",
+  "levels": [
+    {
+      "id": "cn-0", "title": "第 1 关 象形字",
+      "subtitle": "认识「日」",
+      "steps": [
+        { "id": "cn-0-t", "kind": "teach", "morphFrom": "sunface", "char": "日", "pinyin": "rì",
+          "words": [ { "icon": "sunrise", "text": "日出", "say": "日出" },
+                     { "icon": "cake", "text": "生日", "say": "生日" },
+                     { "icon": "calendar", "text": "日子", "say": "日子" } ] },
+        { "id": "cn-0-q1", "kind": "quiz", "question": "找一找：哪个图片是「日」？",
+          "options": [ { "icon": "sun", "emoji": "☀️" }, { "icon": "moon", "emoji": "🌙" }, { "icon": "wave", "emoji": "🌊" } ],
+          "answer": 0, "hint": "太阳每天从东边升起来哦 ☀️", "praise": "真棒！日，就是太阳的日！" },
+        { "id": "cn-0-q2", "kind": "quiz", "question": "练一练：下面哪个字念 rì？",
+          "options": [ { "text": "山" }, { "text": "日" }, { "text": "月" } ],
+          "answer": 1, "hint": "圆滚滚、放光芒的那个字", "praise": "记住啦，太阳就是日！" }
+      ]
+    },
+    {
+      "id": "cn-1", "title": "第 2 关 象形字",
+      "subtitle": "认识「月」",
+      "steps": [
+        { "id": "cn-1-t", "kind": "teach", "morphFrom": "moon", "char": "月", "pinyin": "yuè",
+          "words": [ { "icon": "moon", "text": "月亮", "say": "月亮" },
+                     { "icon": "starface", "text": "星星", "say": "星星" },
+                     { "icon": "cake", "text": "月饼", "say": "月饼" } ] },
+        { "id": "cn-1-q1", "kind": "quiz", "question": "找一找：哪个图片是「月」？",
+          "options": [ { "icon": "sun", "emoji": "☀️" }, { "icon": "wave", "emoji": "🌊" }, { "icon": "moon", "emoji": "🌙" } ],
+          "answer": 2, "hint": "弯弯的，晚上才出来哦 🌙", "praise": "对啦！月亮的月！" },
+        { "id": "cn-1-q2", "kind": "quiz", "question": "练一练：下面哪个字念 yuè？",
+          "options": [ { "text": "月" }, { "text": "水" }, { "text": "山" } ],
+          "answer": 0, "hint": "像一轮弯弯的月牙", "praise": "记住啦，月亮就是月！" }
+      ]
+    },
+    {
+      "id": "cn-2", "title": "第 3 关 象形字",
+      "subtitle": "认识「水」",
+      "steps": [
+        { "id": "cn-2-t", "kind": "teach", "morphFrom": "wave", "char": "水", "pinyin": "shuǐ",
+          "words": [ { "icon": "wave", "text": "海浪", "say": "海浪" },
+                     { "icon": "crystal", "text": "泉水", "say": "泉水" },
+                     { "icon": "leaf", "text": "露珠", "say": "露珠" } ] },
+        { "id": "cn-2-q1", "kind": "quiz", "question": "找一找：哪个图片是「水」？",
+          "options": [ { "icon": "wave", "emoji": "🌊" }, { "icon": "sun", "emoji": "☀️" }, { "icon": "moon", "emoji": "🌙" } ],
+          "answer": 0, "hint": "哗啦哗啦流动的就是它", "praise": "真棒！水就是这样写的！" },
+        { "id": "cn-2-q2", "kind": "quiz", "question": "练一练：下面哪个字念 shuǐ？",
+          "options": [ { "text": "火" }, { "text": "水" }, { "text": "木" } ],
+          "answer": 1, "hint": "中间一条弯弯的河", "praise": "记住啦，喝水的水！" }
+      ]
+    },
+    {
+      "id": "cn-3", "title": "第 4 关 象形字",
+      "subtitle": "认识「山」",
+      "steps": [
+        { "id": "cn-3-t", "kind": "teach", "morphFrom": "volcano", "char": "山", "pinyin": "shān",
+          "words": [ { "icon": "school", "text": "上山", "say": "上山" },
+                     { "icon": "leaf", "text": "山林", "say": "山林" } ] },
+        { "id": "cn-3-q1", "kind": "quiz", "question": "练一练：哪个字是「山」？",
+          "options": [ { "text": "日" }, { "text": "山" }, { "text": "月" } ],
+          "answer": 1, "hint": "三座尖尖的峰并排站", "praise": "对啦，大山就是山！" }
+      ]
+    },
+    {
+      "id": "cn-4", "title": "第 5 关 象形字",
+      "subtitle": "认识「木」",
+      "steps": [
+        { "id": "cn-4-t", "kind": "teach", "morphFrom": "sprout", "char": "木", "pinyin": "mù",
+          "words": [ { "icon": "leaf", "text": "树叶", "say": "树叶" },
+                     { "icon": "flower", "text": "花木", "say": "花木" } ] },
+        { "id": "cn-4-q1", "kind": "quiz", "question": "练一练：哪个字是「木」？",
+          "options": [ { "text": "木" }, { "text": "水" }, { "text": "人" } ],
+          "answer": 0, "hint": "下面有树根、上面有树枝", "praise": "真棒！树木就是木！" }
+      ]
+    },
+    {
+      "id": "cn-5", "title": "第 6 关 象形字",
+      "subtitle": "认识「人」",
+      "steps": [
+        { "id": "cn-5-t", "kind": "teach", "morphFrom": "girl", "char": "人", "pinyin": "rén",
+          "words": [ { "icon": "heart", "text": "大人", "say": "大人" },
+                     { "icon": "party", "text": "人们", "say": "人们" } ] },
+        { "id": "cn-5-q1", "kind": "quiz", "question": "练一练：哪个字是「人」？",
+          "options": [ { "text": "月" }, { "text": "山" }, { "text": "人" } ],
+          "answer": 2, "hint": "两条腿站着走路的", "praise": "对啦！你也是人哦！" }
+      ]
+    },
+    {
+      "id": "cn-6", "title": "第 7 关 象形字",
+      "subtitle": "认识「口」",
+      "steps": [
+        { "id": "cn-6-t", "kind": "teach", "morphFrom": "speaker", "char": "口", "pinyin": "kǒu",
+          "words": [ { "icon": "speaker", "text": "开口", "say": "开口" },
+                     { "icon": "heart", "text": "口水", "say": "口水" } ] },
+        { "id": "cn-6-q1", "kind": "quiz", "question": "练一练：哪个字是「口」？",
+          "options": [ { "text": "口" }, { "text": "日" }, { "text": "田" } ],
+          "answer": 0, "hint": "方方正正，里面空空的", "praise": "真棒！嘴巴就是口！" }
+      ]
+    },
+    {
+      "id": "cn-7", "title": "第 8 关 象形字",
+      "subtitle": "认识「天」",
+      "steps": [
+        { "id": "cn-7-t", "kind": "teach", "morphFrom": "sunrays", "char": "天", "pinyin": "tiān",
+          "words": [ { "icon": "sun", "text": "天空", "say": "天空" },
+                     { "icon": "sunrise", "text": "今天", "say": "今天" } ] },
+        { "id": "cn-7-q1", "kind": "quiz", "question": "练一练：哪个字是「天」？",
+          "options": [ { "text": "大" }, { "text": "天" }, { "text": "人" } ],
+          "answer": 1, "hint": "「大」头上再加一横", "praise": "对啦！抬头就是天！" }
+      ]
+    },
+    {
+      "id": "cn-8", "title": "第 9 关 象形字",
+      "subtitle": "认识「田」",
+      "steps": [
+        { "id": "cn-8-t", "kind": "teach", "morphFrom": "calendar", "char": "田", "pinyin": "tián",
+          "words": [ { "icon": "sprout", "text": "田里", "say": "田里" },
+                     { "icon": "flower", "text": "水田", "say": "水田" } ] },
+        { "id": "cn-8-q1", "kind": "quiz", "question": "练一练：哪个字是「田」？",
+          "options": [ { "text": "口" }, { "text": "日" }, { "text": "田" } ],
+          "answer": 2, "hint": "方框里面种着小十字", "praise": "真棒！种菜的方格就是田！" }
+      ]
+    },
+    {
+      "id": "cn-9", "title": "第 10 关 复习",
+      "subtitle": "小小复习家",
+      "steps": [
+        { "id": "cn-9-t", "kind": "teach", "morphFrom": "medal", "char": "石", "pinyin": "shí",
+          "words": [ { "icon": "rock", "text": "石头", "say": "石头" } ] },
+        { "id": "cn-9-q1", "kind": "quiz", "question": "练一练：哪个字是「石」？",
+          "options": [ { "text": "石" }, { "text": "山" }, { "text": "田" } ],
+          "answer": 0, "hint": "「山」下面加一块方方的石头", "praise": "太棒了，你认识 10 个字啦！" },
+        { "id": "cn-9-q2", "kind": "quiz", "question": "大挑战：哪个是「日」？",
+          "options": [ { "text": "口" }, { "text": "日" }, { "text": "目" } ],
+          "answer": 1, "hint": "里面只有一横", "praise": "复习家！全对啦！" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs><linearGradient id="g-coral" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFA793"/><stop offset="1" stop-color="#F0705F"/></linearGradient><linearGradient id="g-red" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FF8A7A"/><stop offset="1" stop-color="#E8564A"/></linearGradient><linearGradient id="g-gold" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFE58A"/><stop offset="1" stop-color="#F7B32B"/></linearGradient><linearGradient id="g-orangedk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F5A623"/><stop offset="1" stop-color="#D97706"/></linearGradient></defs>
+  <path d="M20 4 L32 22 L26 26 L14 9 Z" fill="url(#g-coral)"/>
+  <path d="M44 4 L32 22 L38 26 L50 9 Z" fill="url(#g-red)"/>
+  <circle cx="32" cy="38" r="16" fill="url(#g-gold)"/>
+  <circle cx="32" cy="38" r="11" fill="#FFE9A8"/>
+  <path d="M32 30 L34.6 35.6 L40.6 36.3 L36.2 40.4 L37.4 46.2 L32 43.3 L26.6 46.2 L27.8 40.4 L23.4 36.3 L29.4 35.6 Z" fill="url(#g-orangedk)"/>
+  <path d="M20 30 A16 16 0 0 1 28 23" stroke="#fff" stroke-width="3" fill="none" opacity=".6" stroke-linecap="round"/></svg>

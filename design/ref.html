@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>审美参考板 · 国内头部儿童App界面</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  body { display: block; overflow: auto; background: #221A12; }
+  .wrap { max-width: 1420px; margin: 0 auto; padding: 40px 36px 70px; }
+  .hero { text-align: center; margin-bottom: 34px; }
+  .hero h1 { font-size: 38px; font-weight: 900; color: #FFF3D8; letter-spacing: 3px; }
+  .hero h1 span { color: var(--gold); }
+  .hero p { margin-top: 8px; font-size: 16px; color: #B9A88F; font-weight: 700; line-height: 1.8; }
+
+  .nav-back { position: fixed; right: 26px; bottom: 22px; z-index: 99; }
+
+  .sec-title {
+    font-size: 24px; font-weight: 900; color: #FFF3D8;
+    margin: 40px 0 16px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .sec-title::before { content: ''; width: 8px; height: 24px; border-radius: 4px; background: linear-gradient(180deg, var(--orange), var(--orange-dk)); }
+  .sec-title::after { content: ''; flex: 1; height: 2px; background: linear-gradient(90deg, rgba(255,243,216,.25), transparent); }
+
+  .ref-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+  .ref-card {
+    background: #2E251C;
+    border-radius: 22px;
+    overflow: hidden;
+    box-shadow: 0 10px 26px rgba(0,0,0,.4);
+    border: 1px solid rgba(255,243,216,.12);
+  }
+  .ref-card .img-box { position: relative; background: #191410; min-height: 150px; display: grid; place-items: center; max-height: 420px; overflow: hidden; }
+  .ref-card .img-box img { width: 100%; height: auto; max-height: 420px; object-fit: contain; display: block; }
+  .ref-card .info { padding: 14px 18px 16px; }
+  .ref-card h3 { font-size: 17px; font-weight: 900; color: #FFF3D8; display: flex; align-items: center; gap: 8px; }
+  .ref-card h3 .src { margin-left: auto; font-size: 11px; color: #8A7A63; font-weight: 700; background: #241D15; padding: 2px 8px; border-radius: 999px; }
+  .ref-card ul { list-style: none; margin-top: 8px; }
+  .ref-card li { font-size: 13.5px; color: #C9BBA0; font-weight: 700; padding: 3px 0 3px 20px; position: relative; line-height: 1.55; }
+  .ref-card li::before { content: '◆'; position: absolute; left: 2px; color: var(--gold); font-size: 10px; top: 8px; }
+
+  /* 提炼区 */
+  .sum-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  .sum-card {
+    background: linear-gradient(180deg, #332920, #291F16);
+    border-radius: 22px; padding: 22px 26px;
+    border: 1px solid rgba(255,243,216,.14);
+  }
+  .sum-card h3 { font-size: 19px; font-weight: 900; color: var(--gold); margin-bottom: 12px; }
+  .sum-card p { font-size: 14.5px; color: #C9BBA0; font-weight: 700; line-height: 1.9; }
+  .sum-card b { color: #FFF3D8; }
+  .palette { display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
+  .palette i { width: 42px; height: 42px; border-radius: 12px; box-shadow: inset 0 -4px 0 rgba(0,0,0,.18); }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <h1>审美参考板 · <span>国内头部儿童App</span> 真实界面</h1>
+    <p>以下为洪恩识字 / 宝宝巴士 / 斑马 / 叽里呱啦 / 小伴龙等产品的真实界面截图（仅家庭内部学习参考用）<br>
+    每张图下方标注了我们的设计稿从中借鉴的设计语言 → 已应用到 v2 设计稿</p>
+  </div>
+
+  <div class="sec-title">01 洪恩识字 · 关卡地图与主页（借鉴最多）</div>
+  <div class="ref-grid">
+    <div class="ref-card">
+      <div class="img-box"><img src="ref/hongen-ui.jpg" alt="洪恩识字关卡地图"></div>
+      <div class="info">
+        <h3>识字闯关地图 <span class="src">豌豆荚</span></h3>
+        <ul>
+          <li>全屏 3D 卡通场景：丘陵/树木/天空一体，UI 浮在场景上</li>
+          <li>关卡 = <b>金色 3D 方块</b>沿小径排列，里程碑关带数字旗</li>
+          <li>左下头像+橙色名牌，右下图标+胶囊标签功能入口</li>
+          <li>奶油圆角方按钮 + 彩色图标 + 底部硬阴影</li>
+        </ul>
+      </div>
+    </div>
+    <div class="ref-card">
+      <div class="img-box"><img src="ref/hongen-map.png" alt="洪恩平板学科主页"></div>
+      <div class="info">
+        <h3>学科入口主页 <span class="src">中国日报网</span></h3>
+        <ul>
+          <li>每个学科 = 一个<b>漂浮圆形小岛</b>（内嵌 mini 场景）</li>
+          <li>岛下方白色胶囊标签，彩色文字标注学科名</li>
+          <li>深蓝太空背景+星光，营造"世界感"</li>
+        </ul>
+      </div>
+    </div>
+    <div class="ref-card">
+      <div class="img-box"><img src="ref/hongen-bihua.jpg" alt="洪恩识字课堂"></div>
+      <div class="info">
+        <h3>识字课堂页 <span class="src">应用市场</span></h3>
+        <ul>
+          <li>木纹暖底 + 米白田字格展示汉字</li>
+          <li>底部白色圆角操作条：三个蓝色圆形播放钮</li>
+          <li>信息行用红色标签字（部首/笔画/组词）</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec-title">02 宝宝巴士 · 卡片网格与横幅</div>
+  <div class="ref-grid">
+    <div class="ref-card">
+      <div class="img-box"><img src="ref/babybus-3.jpg" alt="宝宝巴士内容页"></div>
+      <div class="info">
+        <h3>内容板块页 <span class="src">当下软件园</span></h3>
+        <ul>
+          <li><b>厚白边大圆角卡</b>网格，卡内全是插画（无文字UI感）</li>
+          <li>黄色圆角横幅 + 橙色大字做栏目标题</li>
+          <li>橙色小竖条 + "更多>" 的分节标题</li>
+        </ul>
+      </div>
+    </div>
+    <div class="ref-card">
+      <div class="img-box"><img src="ref/babybus-room.jpg" alt="宝宝巴士房间"></div>
+      <div class="info">
+        <h3>场景宣传图 <span class="src">当下软件园</span></h3>
+        <ul>
+          <li>3D 房间场景：暖色木质+软包家具，高饱和但不刺眼</li>
+          <li>吉祥物放在画面中心偏下，占视觉焦点</li>
+        </ul>
+      </div>
+    </div>
+    <div class="ref-card">
+      <div class="img-box"><img src="ref/babybus-1.jpg" alt="宝宝巴士神奇巴士"></div>
+      <div class="info">
+        <h3>内容网格+底部横幅 <span class="src">3DM</span></h3>
+        <ul>
+          <li>深紫背景衬托白色卡片，对比强烈</li>
+          <li>底部橙色渐变大横幅 + 白色描边大字标语</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec-title">03 小伴龙 · 弧形面板分类页</div>
+  <div class="ref-grid">
+    <div class="ref-card">
+      <div class="img-box"><img src="ref/xiaobanlong.jpg" alt="小伴龙学堂"></div>
+      <div class="info">
+        <h3>学堂分类页 <span class="src">东坡下载</span></h3>
+        <ul>
+          <li>上半部插画场景 + 卷轴横幅标题 + 吉祥物</li>
+          <li>下半部<b>奶油色大圆弧面板</b>，圆按钮骑在弧口上</li>
+          <li>分类 tab = 彩色圆角方图标 + 下方文字，选中放大</li>
+          <li>3列贴纸卡网格，右上角小徽章（免费/上）</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec-title">04 斑马 · 环节流程与列表</div>
+  <div class="ref-grid">
+    <div class="ref-card">
+      <div class="img-box"><img src="ref/zebra-2.jpg" alt="斑马环节列表"></div>
+      <div class="info">
+        <h3>课程环节列表 <span class="src">界面新闻</span></h3>
+        <ul>
+          <li>环节 = 大圆角行卡：<b>当前环节高亮饱和色</b>（蓝/绿）+对勾</li>
+          <li>左侧虚线时间线 + 节点圆点串联流程</li>
+          <li>未解锁环节灰色弱化</li>
+        </ul>
+      </div>
+    </div>
+    <div class="ref-card">
+      <div class="img-box"><img src="ref/zebra-1.jpg" alt="斑马课程分类"></div>
+      <div class="info">
+        <h3>课程分类页 <span class="src">西西软件园</span></h3>
+        <ul>
+          <li>柔和蓝紫渐变背景，白卡列表分区</li>
+          <li>科目入口 = 插画卡 + 标题 + 进度星星</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec-title">05 叽里呱啦 · 扁平角色风</div>
+  <div class="ref-grid">
+    <div class="ref-card">
+      <div class="img-box"><img src="ref/jiliguala-1.jpg" alt="叽里呱啦宣传"></div>
+      <div class="info">
+        <h3>品牌与角色 <span class="src">豌豆荚</span></h3>
+        <ul>
+          <li>奶油底 + 大面积品牌色块圆弧过渡</li>
+          <li>扁平超圆角色角色，大眼睛+张嘴笑，情绪外露</li>
+          <li>绿色主色 + 黄色圆形底衬角色</li>
+        </ul>
+      </div>
+    </div>
+    <div class="ref-card">
+      <div class="img-box"><img src="ref/jiliguala-3.png" alt="叽里呱啦游戏"></div>
+      <div class="info">
+        <h3>互动游戏页 <span class="src">PP助手</span></h3>
+        <ul>
+          <li>粉紫渐变背景 + 圆角内容区</li>
+          <li>题目大图标化，答案就是可点的卡通元素</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec-title">提炼：v2 设计稿应用的规则</div>
+  <div class="sum-grid">
+    <div class="sum-card">
+      <h3>① 场景即界面</h3>
+      <p>告别"网页卡片浮在纯色上"。每页有<b>天空渐变 + 太阳光晕 + 云朵 + 远山 + 草地弧</b>的多层场景；UI 元素是场景里的"实体"（方块、木牌、贴纸），不是 HTML 控件。</p>
+      <div class="palette">
+        <i style="background:#6FC7F2"></i><i style="background:#A8E1FA"></i><i style="background:#8ED958"></i><i style="background:#5CBF44"></i><i style="background:#FFC53D"></i><i style="background:#FF9F43"></i>
+      </div>
+    </div>
+    <div class="sum-card">
+      <h3>② 果冻质感控件</h3>
+      <p>所有按钮/数字块：<b>上浅下深渐变 + 顶部内高光 + 底部 6px 硬色边</b>，按下会"陷下去"。图标按钮 = 奶油底圆角方 + 彩色图标（洪恩式）。</p>
+      <div class="palette">
+        <i style="background:linear-gradient(180deg,#FFB25C,#F08C1F)"></i><i style="background:linear-gradient(180deg,#7CC4F5,#2F86C9)"></i><i style="background:linear-gradient(180deg,#FFE58A,#E5A916)"></i><i style="background:linear-gradient(180deg,#C6F0A0,#5CB444)"></i><i style="background:linear-gradient(180deg,#B79BFF,#7C5CE0)"></i>
+      </div>
+    </div>
+    <div class="sum-card">
+      <h3>③ 关卡路径学洪恩</h3>
+      <p>主页草地小径上摆<b>金色 3D 方块节点</b>（已完成=绿色、当前=发光、未解锁=灰），比抽象进度条直观十倍；学科村庄 = 场景贴纸卡 + 白色胶囊标签。</p>
+    </div>
+    <div class="sum-card">
+      <h3>④ 面板学小伴龙，流程学斑马</h3>
+      <p>收集册用<b>奶油大圆弧面板</b>+圆角方页签；关卡内环节步骤用<b>高亮胶囊+虚线</b>时间线（当前环节橙色发光，完成绿色打勾）。</p>
+    </div>
+  </div>
+
+  <button class="jbtn jbtn-orange nav-back" onclick="location.href='index.html'">↩ 返回总览</button>
+</div>
+</body>
+</html>

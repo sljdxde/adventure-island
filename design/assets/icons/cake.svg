@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs><linearGradient id="g-white" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#E9EDF2"/></linearGradient><linearGradient id="g-pink" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFC1D4"/><stop offset="1" stop-color="#F76EA0"/></linearGradient><linearGradient id="g-blue" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7CC4F5"/><stop offset="1" stop-color="#3D8FD1"/></linearGradient><linearGradient id="g-gold" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFE58A"/><stop offset="1" stop-color="#F7B32B"/></linearGradient></defs>
+  <ellipse cx="32" cy="54" rx="24" ry="6" fill="url(#g-white)"/>
+  <rect x="12" y="34" width="40" height="20" rx="6" fill="url(#g-pink)"/>
+  <path d="M12 38 Q16 29 20 38 Q24 29 28 38 Q32 29 36 38 Q40 29 44 38 Q48 29 52 38 L52 42 L12 42 Z" fill="url(#g-white)"/>
+  <rect x="30" y="18" width="4" height="12" rx="2" fill="url(#g-blue)"/>
+  <ellipse cx="32" cy="13" rx="3" ry="4.5" fill="url(#g-gold)"/><ellipse cx="32" cy="14" rx="1.4" ry="2.4" fill="#FFF3C4"/>
+  <circle cx="20" cy="47" r="1.8" fill="#fff" opacity=".8"/><circle cx="32" cy="49" r="1.8" fill="#fff" opacity=".8"/><circle cx="44" cy="47" r="1.8" fill="#fff" opacity=".8"/></svg>

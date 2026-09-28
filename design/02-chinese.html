@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>02 · 识字村 · 象形字「日」</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  .body-wrap {
+    position: absolute;
+    top: 96px; left: 0; right: 0; bottom: 0;
+    display: flex;
+    gap: 22px;
+    padding: 8px 26px 62px;
+    z-index: 15;
+  }
+
+  /* ---------- 左：象形演变卷轴卡 ---------- */
+  .morph-card {
+    width: 400px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 13px;
+    background: linear-gradient(180deg, #FFFDF4, #FFF3D8);
+    border-radius: 32px;
+    border: 5px solid var(--pb);
+    box-shadow: var(--sh-2);
+    padding: 18px;
+    position: relative;
+  }
+  .morph-card .corner { position: absolute; font-size: 30px; opacity: .95; }
+  .morph-card .caption {
+    font-size: 18px; font-weight: 900; color: #8A5B00;
+    background: linear-gradient(180deg, #FFE7A8, var(--gold));
+    border-radius: 999px; padding: 7px 24px;
+    box-shadow: 0 3px 0 var(--gold-ddk);
+    letter-spacing: 1px;
+    white-space: nowrap;
+  }
+  .morph {
+    position: relative;
+    width: 280px; height: 250px;
+    display: grid; place-items: center;
+  }
+  .morph .layer { position: absolute; inset: 0; display: grid; place-items: center; transition: opacity .6s, transform .6s cubic-bezier(.22,1.2,.36,1); }
+  .morph .sun-svg { opacity: 1; transform: scale(1); display: grid; place-items: center; }
+  .morph .sun-svg > img { grid-area: 1 / 1; }
+  .morph .sun-svg .rays { transform-origin: center; animation: rays-spin 16s linear infinite; }
+  .morph.play .sun-svg { opacity: 0; transform: scale(.4) rotate(30deg); }
+  .morph .char {
+    font-family: var(--font-kai);
+    font-size: 176px; font-weight: 900;
+    color: #E2582A;
+    text-shadow: 0 5px 0 #FFD9A0, 0 9px 0 rgba(217,119,6,.16);
+    opacity: 0; transform: scale(.4);
+  }
+  .morph.play .char { opacity: 1; transform: scale(1); }
+  @keyframes rays-spin { to { transform: rotate(360deg); } }
+
+  .pinyin-row { display: flex; align-items: center; gap: 14px; }
+  .pinyin {
+    font-size: 36px; font-weight: 900; color: #fff;
+    background: linear-gradient(180deg, var(--coral), var(--coral-dk));
+    border-radius: 18px; padding: 4px 26px;
+    box-shadow: inset 0 3px 0 rgba(255,255,255,.35), 0 5px 0 var(--coral-ddk);
+    text-shadow: 0 2px 0 rgba(0,0,0,.14);
+    letter-spacing: 2px;
+  }
+  .speak-btn {
+    border: none; cursor: pointer;
+    width: 60px; height: 60px; border-radius: 50%;
+    background: linear-gradient(180deg, #FFDD7A, var(--yellow-dk));
+    font-size: 28px; color: #7A4A00;
+    box-shadow: inset 0 3px 0 rgba(255,255,255,.5), 0 5px 0 var(--yellow-ddk), var(--sh-1);
+    display: grid; place-items: center;
+  }
+  .speak-btn:active { transform: translateY(4px); box-shadow: inset 0 3px 0 rgba(255,255,255,.5), 0 1px 0 var(--yellow-ddk), var(--sh-1); }
+
+  .word-chips { display: flex; gap: 10px; }
+  .word-chip {
+    background: #fff; border: 3px solid #FFE3B3;
+    border-radius: 16px; padding: 6px 13px;
+    font-size: 18px; font-weight: 900; color: #B06A00;
+    cursor: pointer; box-shadow: 0 3px 0 #F2E2C4;
+    white-space: nowrap;
+    display: inline-flex; align-items: center; gap: 6px;
+  }
+  .word-chip .ic { font-size: 22px; }
+  .word-chip:active { transform: translateY(3px); box-shadow: 0 0 0 #F2E2C4; }
+
+  /* ---------- 右：答题贴纸卡 ---------- */
+  .qa-card {
+    flex: 1;
+    min-width: 0;
+    background: linear-gradient(180deg, #FFFFFF, #FFF9EC);
+    border-radius: 32px;
+    border: 5px solid var(--pb);
+    box-shadow: var(--sh-2);
+    padding: 22px 26px 18px;
+    display: flex; flex-direction: column; align-items: center;
+    gap: 16px;
+  }
+  .question {
+    font-size: 26px; font-weight: 900;
+    background: linear-gradient(180deg, #FFF3D8, #FFE9BC);
+    border-radius: 999px;
+    padding: 10px 32px;
+    box-shadow: 0 4px 0 #F0DCAC;
+    letter-spacing: 1px;
+    white-space: nowrap;
+  }
+  .question .hl { color: var(--coral-dk); font-size: 32px; font-family: var(--font-kai); }
+  .options { display: flex; gap: 16px; justify-content: center; }
+  .feedback {
+    height: 36px; font-size: 22px; font-weight: 900;
+    color: var(--green-dk);
+    opacity: 0; transition: opacity .25s;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .feedback.show { opacity: 1; }
+  .next-btn { display: none; }
+  .next-btn.show { display: inline-flex; animation: pop .4s; }
+
+  /* 底部吉祥物引导条（填充留白） */
+  .mascot-row {
+    margin-top: auto;
+    width: 100%;
+    display: flex; align-items: center; gap: 14px;
+    background: linear-gradient(180deg, #FFF7E4, #FFEDC9);
+    border-radius: 22px;
+    padding: 10px 18px;
+    box-shadow: inset 0 0 0 3px #FFE3B3;
+  }
+  .mascot-row .m { font-size: 58px; filter: drop-shadow(0 4px 6px rgba(84,66,58,.18)); animation: float-bob 2.8s ease-in-out infinite; }
+  .mascot-row .say {
+    background: #fff; border-radius: 16px;
+    padding: 9px 16px;
+    font-size: 16px; font-weight: 800; color: var(--ink-soft);
+    box-shadow: var(--sh-1);
+    position: relative;
+    line-height: 1.5;
+  }
+  .mascot-row .say::before {
+    content: ''; position: absolute; left: -7px; top: 22px;
+    width: 14px; height: 14px; background: #fff;
+    transform: rotate(45deg); border-radius: 3px;
+  }
+  .mascot-row .say b { color: var(--orange-dk); }
+
+  .star-fly { position: absolute; font-size: 44px; z-index: 60; animation: starUp 1s ease-out forwards; pointer-events: none; color: var(--gold); }
+  .star-fly .ic { font-size: 44px; }
+  @keyframes starUp {
+    0% { transform: translateY(0) scale(.6); opacity: 0; }
+    25% { opacity: 1; }
+    100% { transform: translateY(-150px) scale(1.2); opacity: 0; }
+  }
+</style>
+</head>
+<body data-theme="cn">
+<div class="stage">
+
+  <div class="scene">
+    <div class="sun"></div>
+    <div class="cloud c1"></div>
+    <div class="cloud c2"></div>
+    <div class="hills-back"></div>
+    <div class="hills-front"></div>
+  </div>
+
+  <!-- HUD -->
+  <div class="hud">
+    <div class="hud-left">
+      <button class="sqbtn" onclick="goHome()" title="返回"><img class="ic" src="assets/icons/back.svg" alt=""></button>
+      <div>
+        <div class="page-title">识字村 · 第 3 关 象形字</div>
+        <div class="page-sub">关卡进度 3 / 10</div>
+      </div>
+    </div>
+    <div class="hud-right">
+      <div class="step-chips">
+        <span class="step-chip done"><span class="dot">✓</span>玩一玩</span>
+        <span class="gap"></span>
+        <span class="step-chip now"><span class="dot">2</span>认一认</span>
+        <span class="gap"></span>
+        <span class="step-chip"><span class="dot">3</span>练一练</span>
+        <span class="gap"></span>
+        <span class="step-chip"><span class="dot">4</span>写一写</span>
+      </div>
+      <div class="gold-chip"><span class="ico"><img class="ic" src="assets/icons/star.svg" alt=""></span>3</div>
+    </div>
+  </div>
+
+  <div class="body-wrap">
+
+    <!-- 左：象形演变 -->
+    <div class="morph-card">
+      <span class="corner" style="left:14px; top:12px;"><img class="ic" src="assets/icons/flower.svg" alt=""></span>
+      <span class="corner" style="right:14px; top:12px;"><img class="ic" src="assets/icons/flower.svg" alt=""></span>
+      <div class="caption">看一看：太阳变成了什么字？</div>
+      <div class="morph" id="morph">
+        <div class="layer sun-svg">
+          <img class="rays" src="assets/icons/sunrays.svg" alt="" width="218" height="218">
+          <img class="face" src="assets/icons/sunface.svg" alt="" width="176" height="176">
+        </div>
+        <div class="layer"><div class="char">日</div></div>
+      </div>
+      <div class="pinyin-row">
+        <span class="pinyin">rì</span>
+        <button class="speak-btn" onclick="speakWord()" title="听读音"><img class="ic" src="assets/icons/speaker.svg" alt=""></button>
+      </div>
+      <div class="word-chips">
+        <span class="word-chip" onclick="speak('日出');toast('词卡：日出')"><img class="ic" src="assets/icons/sunrise.svg" alt="">日出</span>
+        <span class="word-chip" onclick="speak('生日');toast('词卡：生日')"><img class="ic" src="assets/icons/cake.svg" alt="">生日</span>
+        <span class="word-chip" onclick="speak('日子');toast('词卡：日子')"><img class="ic" src="assets/icons/calendar.svg" alt="">日子</span>
+      </div>
+    </div>
+
+    <!-- 右：答题 -->
+    <div class="qa-card">
+      <div class="question">找一找：哪个图片是 <span class="hl">日</span> ？</div>
+      <div class="options">
+        <div class="answer-card" data-ok="1" onclick="pick(this)"><img class="ic" src="assets/icons/sun.svg" alt=""></div>
+        <div class="answer-card" onclick="pick(this)"><img class="ic" src="assets/icons/moon.svg" alt=""></div>
+        <div class="answer-card" onclick="pick(this)"><img class="ic" src="assets/icons/wave.svg" alt=""></div>
+      </div>
+      <div class="feedback" id="fb">真棒！「日」就是太阳的日！</div>
+      <button class="jbtn jbtn-green next-btn" id="nextBtn" onclick="toast('下一环节：练一练（设计稿演示结束）')">
+        下一环节：练一练 ▶
+      </button>
+      <div class="mascot-row">
+        <span class="m"><img class="ic" src="assets/icons/panda.svg" alt=""></span>
+        <div class="say">点一点右边的图片答题，答对有 <b>星星</b> 哦！<br>答错了也没关系，再想想就好～</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="safe-tip"><img class="ic" src="assets/icons/speaker.svg" alt=""> 点击图片答题 · 点喇叭听读音 · 点词卡学词语</div>
+  <div class="design-note">设计稿 02 · 语文关卡（暖阳课堂 + 贴纸卡 + 统一 SVG 插画）</div>
+</div>
+
+<script src="art.js"></script>
+<script src="app.js"></script>
+<script>
+  const morph = document.getElementById('morph');
+  setInterval(() => morph.classList.toggle('play'), 2600);
+
+  function speakWord() {
+    speak('rì。日，太阳的日。');
+    toast('播放读音（系统TTS演示，正式版为童声录音）');
+  }
+
+  let solved = false;
+  function pick(el) {
+    if (solved) return;
+    if (el.dataset.ok === '1') {
+      solved = true;
+      el.classList.add('correct');
+      document.querySelectorAll('.answer-card').forEach(c => { if (c !== el) c.classList.add('dim'); });
+      document.getElementById('fb').classList.add('show');
+      dingOK(); speak('真棒！日，就是太阳的日。');
+      confetti();
+      flyStar(el);
+      document.getElementById('nextBtn').classList.add('show');
+    } else {
+      el.classList.remove('wrong'); void el.offsetWidth; el.classList.add('wrong');
+      dingNO();
+      toast('再想一想：太阳每天从东边升起来哦');
+    }
+  }
+
+  function flyStar(el) {
+    const stage = document.querySelector('.stage');
+    const s = document.createElement('span');
+    s.className = 'star-fly';
+    s.innerHTML = '<img class="ic" src="assets/icons/star.svg" alt="">';
+    const r = el.getBoundingClientRect(), sr = stage.getBoundingClientRect();
+    const scale = sr.width / stage.offsetWidth;
+    s.style.left = ((r.left - sr.left) / scale + r.width / scale / 2 - 20) + 'px';
+    s.style.top  = ((r.top - sr.top) / scale) + 'px';
+    stage.appendChild(s);
+    setTimeout(() => s.remove(), 1100);
+  }
+</script>
+</body>
+</html>

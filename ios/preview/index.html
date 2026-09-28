@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>探险岛 App 模拟器 · iOS v0.1 预览</title>
+<style>
+/* ============ 探险岛 App 模拟器（1:1 还原 ios/ SwiftUI 工程） ============ */
+:root{
+  --orange:#FF9F43;--orange-dk:#F08C1F;--orange-ddk:#D97706;
+  --yellow:#FFC53D;--yellow-dk:#F5A623;--yellow-ddk:#D98A0F;
+  --coral:#FF7B6B;--coral-dk:#E85D4E;--coral-ddk:#C24836;
+  --blue:#4FA9E8;--blue-dk:#2F86C9;--blue-ddk:#20629E;
+  --purple:#9B7BF5;--purple-dk:#7C5CE0;--purple-ddk:#5E3FBE;
+  --green:#58C96B;--green-dk:#3BA851;--green-ddk:#2E8A40;
+  --cream:#FFF9EE;--cream-dk:#FFF1D8;--ink:#57433A;--ink-soft:#A08A76;
+  --gold:#FFD34D;--gold-dk:#E5A916;--gold-ddk:#C08A0C;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;user-select:none}
+body{background:#17120D;display:grid;place-items:center;min-height:100vh;font-family:"YouYuan","幼圆","Yuanti SC","PingFang SC","Microsoft YaHei",sans-serif;color:var(--ink);overflow:hidden}
+.frame{position:relative;width:1052px;height:796px;border-radius:38px;border:14px solid #0d0a07;box-shadow:0 24px 60px rgba(0,0,0,.6),inset 0 0 0 3px #3A2E22;overflow:hidden;background:var(--cream)}
+.stage{position:absolute;inset:0;overflow:hidden}
+.note{position:fixed;left:18px;top:14px;color:#8a7a63;font-size:13px;font-weight:700;line-height:1.7;z-index:99}
+.note b{color:#FFD34D}
+img.ic{display:inline-block;vertical-align:middle}
+
+/* ---------- 场景背景 ---------- */
+.scene{position:absolute;inset:0;z-index:0}
+.scene .sky{position:absolute;inset:0}
+.scene .glow{position:absolute;width:320px;height:320px;border-radius:50%;left:-180px;top:-180px;background:radial-gradient(circle,#FFF6C9f2,#FFE28A59 55%,transparent 72%)}
+.scene .hill{position:absolute;left:-2%;right:-2%;bottom:-4px;height:250px;background-repeat:repeat-x;background-size:auto 100%;background-position:bottom center}
+.scene .hill.back{height:300px;opacity:.9}
+.hill.back{background-image:url("../../design/assets/bg/hills-back.svg")}
+.hill.front{background-image:url("../../design/assets/bg/hills-front.svg")}
+.cloud{position:absolute;background:#fff;border-radius:999px;opacity:.92;box-shadow:0 10px 24px rgba(111,199,242,.25)}
+.cloud::before,.cloud::after{content:'';position:absolute;background:#fff;border-radius:50%}
+.cloud::before{width:55%;height:160%;left:14%;bottom:26%}
+.cloud::after{width:38%;height:115%;right:12%;bottom:22%}
+.c1{width:150px;height:44px;top:60px;animation:drift 38s linear infinite}
+.c2{width:100px;height:30px;top:140px;opacity:.8;animation:drift 28s linear infinite reverse}
+.c3{width:180px;height:50px;top:26px;animation:drift 46s linear infinite;animation-delay:-18s}
+@keyframes drift{0%{left:-200px}100%{left:1060px}}
+.theme-cn .sky{background:linear-gradient(180deg,#FFDE9E,#FFCF87 46%,#FFE9BE)}
+.theme-cn .hill.back{opacity:.5}
+.theme-math .sky{background:linear-gradient(180deg,#58C4F7,#9FE0FB 46%,#DCF6FE)}
+.theme-lab .sky{background:linear-gradient(180deg,#8F74EC,#B39CF7 40%,#E2DAFE)}
+.theme-lab .hill{opacity:.5}
+.theme-coll .sky{background:linear-gradient(180deg,#FFC964,#FFDE94 40%,#FFF2C4)}
+.theme-coll .hill{opacity:.6}
+.theme-parent .sky{background:linear-gradient(180deg,#A9C0DC,#C6D6E9 44%,#E6EEF5)}
+.theme-parent .hill{opacity:.35}
+
+/* ---------- 通用组件 ---------- */
+.screen{position:absolute;inset:0;z-index:2;animation:screenIn .28s ease}
+@keyframes screenIn{from{opacity:0;transform:translateX(30px)}to{opacity:1;transform:none}}
+.hud{position:absolute;top:0;left:0;right:0;height:92px;display:flex;align-items:center;justify-content:space-between;padding:16px 22px 0;z-index:40}
+.hud-l,.hud-r{display:flex;align-items:center;gap:12px}
+.sqbtn{width:62px;height:62px;border:none;cursor:pointer;border-radius:21px;background:linear-gradient(180deg,#FFFDF6,#FFF3DC);box-shadow:0 4px 0 #E8D5AE,0 8px 14px rgba(84,66,58,.12);display:grid;place-items:center;transition:transform .08s}
+.sqbtn:active{transform:translateY(3px);box-shadow:0 1px 0 #E8D5AE}
+.goldchip{display:flex;align-items:center;gap:8px;background:linear-gradient(180deg,#FFFDF4,#FFF2CE);border-radius:999px;padding:8px 18px 8px 10px;box-shadow:0 4px 0 #EBD9A8,0 6px 12px rgba(84,66,58,.1);font-size:21px;font-weight:900;color:#8A5B00}
+.goldchip .ico{width:33px;height:33px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#FFE68A,var(--gold) 60%,var(--gold-dk));display:grid;place-items:center}
+.jbtn{font-family:inherit;border:none;cursor:pointer;border-radius:999px;font-weight:800;color:#fff;padding:13px 28px;font-size:20px;letter-spacing:1px;position:relative;transition:transform .08s,box-shadow .08s;text-shadow:0 2px 0 rgba(0,0,0,.14)}
+.jbtn:active{transform:translateY(4px)}
+.j-orange{background:linear-gradient(180deg,#FFB25C,var(--orange) 45%,var(--orange-dk));box-shadow:inset 0 3px 0 rgba(255,255,255,.35),0 5px 0 var(--orange-ddk),0 8px 14px rgba(84,66,58,.18)}
+.j-yellow{background:linear-gradient(180deg,#FFDD7A,var(--yellow) 45%,var(--yellow-dk));color:#7A4A00;text-shadow:0 1px 0 rgba(255,255,255,.4);box-shadow:inset 0 3px 0 rgba(255,255,255,.5),0 5px 0 var(--yellow-ddk),0 8px 14px rgba(84,66,58,.18)}
+.j-green{background:linear-gradient(180deg,#7FD98A,var(--green) 45%,var(--green-dk));box-shadow:inset 0 3px 0 rgba(255,255,255,.35),0 5px 0 #2E8A40,0 8px 14px rgba(84,66,58,.18)}
+.j-blue{background:linear-gradient(180deg,#7CC4F5,var(--blue) 45%,var(--blue-dk));box-shadow:inset 0 3px 0 rgba(255,255,255,.35),0 5px 0 var(--blue-ddk),0 8px 14px rgba(84,66,58,.18)}
+.j-purple{background:linear-gradient(180deg,#B79BFF,var(--purple) 45%,var(--purple-dk));box-shadow:inset 0 3px 0 rgba(255,255,255,.35),0 5px 0 var(--purple-ddk),0 8px 14px rgba(84,66,58,.18)}
+.j-cream{background:linear-gradient(180deg,#FFFDF6,#FFF1D6);color:var(--ink);text-shadow:none;box-shadow:inset 0 3px 0 #fff,0 4px 0 #E4D2AC,0 6px 12px rgba(84,66,58,.12)}
+.jbtn:disabled{filter:grayscale(.7) opacity(.55);cursor:default}
+.nameplate{display:flex;align-items:center;filter:drop-shadow(0 6px 8px rgba(84,66,58,.22))}
+.nameplate .ava{width:54px;height:54px;border-radius:50%;border:4px solid #fff;background:linear-gradient(160deg,#FFE29A,var(--yellow));display:grid;place-items:center;z-index:2}
+.nameplate .name{background:linear-gradient(180deg,var(--orange),var(--orange-dk));color:#fff;font-weight:900;font-size:18px;padding:10px 18px 10px 22px;margin-left:-14px;border-radius:999px;text-shadow:0 2px 0 rgba(0,0,0,.12)}
+.sticker{background:linear-gradient(180deg,#fff,var(--cream));border-radius:30px;border:5px solid #fff;outline:3px solid rgba(84,66,58,.08);box-shadow:0 12px 24px rgba(84,66,58,.16)}
+.track{height:11px;background:rgba(255,255,255,.75);border-radius:999px;overflow:hidden;box-shadow:inset 0 2px 0 rgba(84,66,58,.12)}
+.track i{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,#FFE58A,var(--gold));transition:width .5s}
+.toast{position:absolute;left:50%;bottom:74px;transform:translateX(-50%) translateY(16px);background:rgba(58,45,36,.94);color:#FFF7E8;font-size:20px;font-weight:700;padding:14px 30px;border-radius:999px;opacity:0;transition:all .3s;z-index:90;white-space:nowrap;pointer-events:none}
+.toast.show{opacity:1;transform:translateX(-50%)}
+.confetti{position:absolute;font-size:28px;z-index:80;pointer-events:none;animation:cfall 1.6s ease-in forwards}
+@keyframes cfall{0%{transform:translateY(-40px) rotate(0) scale(.6);opacity:0}12%{opacity:1}100%{transform:translateY(700px) rotate(330deg) scale(1.15);opacity:0}}
+@keyframes pop{0%{transform:scale(.7)}55%{transform:scale(1.12)}100%{transform:scale(1)}}
+@keyframes shake{0%,100%{transform:none}20%{transform:translateX(-10px)}40%{transform:translateX(10px)}60%{transform:translateX(-7px)}80%{transform:translateX(7px)}}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.09)}}
+.bob{animation:bob 2.6s ease-in-out infinite}
+.pulse{animation:pulse 1.5s ease-in-out infinite}
+.shakeit{animation:shake .4s}
+.popt{animation:pop .45s}
+
+/* ---------- 主页 ---------- */
+.pipes{display:flex;align-items:flex-end;justify-content:space-around;padding:0 30px;margin-top:4px}
+.pipe-zone{cursor:pointer;text-align:center;width:300px;transition:transform .15s}
+.pipe-zone:hover{transform:translateY(-6px)}
+.pipe-wrap{position:relative;height:158px;display:flex;align-items:flex-end;justify-content:center}
+.pipe-wrap .blk{position:absolute;top:-6px;left:50%;transform:translateX(-50%);width:54px;height:54px;border-radius:11px;background:linear-gradient(180deg,#FFE58A,#F7B32B);border:3.5px solid #B8770A;display:grid;place-items:center;font-size:28px;font-weight:900;color:#fff;text-shadow:1px 2px 0 #B8770A;animation:pulse 1.6s infinite}
+.pipe-wrap .guide{position:absolute;right:6px;bottom:4px}
+.zone-label{display:inline-block;margin-top:-18px;position:relative;z-index:3;background:linear-gradient(180deg,#FFE58A,var(--yellow-dk));border:2.5px solid #B8770A;border-radius:999px;padding:8px 26px;font-size:21px;font-weight:900;color:#8A5B00;box-shadow:0 4px 0 rgba(0,0,0,.14)}
+.zone-meta{margin-top:6px;font-size:14px;font-weight:900;color:var(--green-ddk);text-shadow:0 1px 0 rgba(255,255,255,.55)}
+.zone-meta .track{width:170px;margin:6px auto 0}
+.badge-new{position:absolute;top:6px;right:-6px;background:linear-gradient(180deg,#FF9068,var(--coral-dk));color:#fff;font-size:13px;font-weight:900;border-radius:999px;padding:4px 12px;transform:rotate(8deg);box-shadow:0 3px 0 rgba(0,0,0,.15);z-index:4}
+.banner{position:absolute;top:104px;left:50%;transform:translateX(-50%);z-index:20;text-align:center;background:linear-gradient(180deg,#FF8A70,var(--coral-dk));border:4px solid #B8493A;border-radius:22px;padding:12px 58px 14px;box-shadow:0 12px 20px rgba(0,0,0,.22)}
+.banner h1{font-size:38px;font-weight:900;color:#fff;letter-spacing:10px;text-shadow:0 3px 0 rgba(0,0,0,.25)}
+.banner p{font-size:14px;color:#fff;opacity:.95;font-weight:800;letter-spacing:2px}
+.banner .stud{position:absolute;width:17px;height:17px;border-radius:50%;background:var(--gold);border:2.5px solid var(--gold-ddk)}
+.deco{position:absolute;z-index:5;pointer-events:none}
+.sky-coins{position:absolute;right:26px;top:96px;display:flex;gap:8px;align-items:flex-start;z-index:5;pointer-events:none}
+.trail{position:absolute;left:0;right:0;bottom:104px;height:118px;z-index:12}
+.trail svg{position:absolute;inset:0;width:100%;height:100%}
+.lnode{position:absolute;width:46px;height:46px;border-radius:50%;display:grid;place-items:center;cursor:pointer;transition:transform .12s;z-index:13}
+.lnode:hover{transform:scale(1.12)}
+.lnode .lab{position:absolute;top:50px;left:50%;transform:translateX(-50%);font-size:12px;font-weight:900;color:#fff;text-shadow:0 2px 0 rgba(63,158,56,.6);white-space:nowrap}
+.lnode.done{background:linear-gradient(180deg,#7FD98A,var(--green));border:3.5px solid #fff;box-shadow:0 4px 0 var(--green-ddk)}
+.lnode.done2{background:linear-gradient(180deg,#7CC4F5,var(--blue));border:3.5px solid #fff;box-shadow:0 4px 0 var(--blue-ddk)}
+.lnode.cur{background:linear-gradient(180deg,#FFE58A,var(--gold));border:3.5px solid #fff;box-shadow:0 0 0 6px rgba(255,211,77,.35),0 4px 0 var(--gold-ddk)}
+.lnode.lock{background:#c9cfd6;border:3.5px solid #fff;box-shadow:0 4px 0 #9aa1a9;cursor:default}
+.arcpanel{position:absolute;left:-20px;right:-20px;bottom:-24px;height:112px;background:linear-gradient(180deg,#FFFBF0,var(--cream-dk));border-radius:50% 50% 0 0/70px 70px 0 0;box-shadow:0 -6px 20px rgba(84,66,58,.12);z-index:14}
+.arc-notch{position:absolute;top:-30px;left:30px;width:62px;height:62px;border-radius:50%;background:linear-gradient(180deg,#FFDD7A,var(--yellow-dk));box-shadow:0 4px 0 var(--yellow-ddk);display:grid;place-items:center;z-index:16}
+.dock{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);display:flex;gap:56px;z-index:20}
+.dock-item{display:flex;flex-direction:column;align-items:center;gap:3px;cursor:pointer;width:120px}
+.dock-item .icw{position:relative;width:56px;height:56px;border-radius:19px;background:linear-gradient(180deg,#FFFDF6,#FFF0D2);box-shadow:0 4px 0 #E8D5AE;display:grid;place-items:center}
+.dock-item .cnt{position:absolute;top:-9px;right:-16px;background:linear-gradient(180deg,#FF9068,var(--coral-dk));color:#fff;font-size:12px;font-weight:900;border-radius:999px;padding:2px 8px}
+.dock-item .t{font-size:14px;font-weight:900}
+.dock-item.locked{opacity:.65}
+.dice{position:absolute;left:118px;bottom:24px;width:62px;height:62px;border-radius:50%;background:linear-gradient(180deg,#FFDD7A,var(--yellow-dk));border:4px solid #fff;box-shadow:0 6px 12px rgba(217,138,15,.5);display:grid;place-items:center;cursor:pointer;z-index:20}
+.dice:active{transform:translateY(3px)}
+
+/* ---------- 关卡页 ---------- */
+.lv-body{position:absolute;top:98px;left:22px;right:22px;bottom:14px;z-index:10}
+.q-pill{display:inline-block;font-size:25px;font-weight:900;background:linear-gradient(180deg,#FFF3D8,#FFE9BC);border-radius:999px;padding:11px 32px;box-shadow:0 4px 0 #F0DCAC}
+.opt{width:168px;height:168px;border-radius:28px;border:5px solid #fff;outline:4px solid #F2E2C4;background:#fff;box-shadow:0 10px 20px rgba(84,66,58,.16);display:grid;place-items:center;cursor:pointer;font-size:84px;transition:transform .12s;position:relative}
+.opt:hover{transform:translateY(-6px) rotate(-1deg)}
+.opt.ok{outline-color:var(--green);background:#EDFBF0;animation:pop .45s}
+.opt.no{outline-color:var(--coral);animation:shake .4s}
+.opt.dim{opacity:.4;pointer-events:none}
+.opt .bigchar{font-size:80px;font-weight:900}
+.morph{position:relative;width:300px;height:265px;display:grid;place-items:center}
+.morph .char{position:absolute;font-size:165px;font-weight:900;color:#E2582A;text-shadow:0 5px 0 #FFD9A0;opacity:0;transform:scale(.4);transition:all .5s cubic-bezier(.22,1.2,.36,1)}
+.morph.play .char{opacity:1;transform:scale(1)}
+.morph .pic{position:absolute;transition:all .5s cubic-bezier(.22,1.2,.36,1)}
+.morph.play .pic{opacity:0;transform:scale(.4) rotate(30deg)}
+.pinyin{font-size:34px;font-weight:900;color:#fff;background:linear-gradient(180deg,var(--coral),var(--coral-dk));border-radius:16px;padding:5px 26px;box-shadow:inset 0 3px 0 rgba(255,255,255,.35),0 4px 0 #C24836;text-shadow:0 2px 0 rgba(0,0,0,.14)}
+.speakbtn{width:56px;height:56px;border:none;border-radius:50%;background:linear-gradient(180deg,#FFDD7A,var(--yellow-dk));box-shadow:0 4px 0 var(--yellow-ddk);cursor:pointer;display:grid;place-items:center}
+.wordchip{display:inline-flex;align-items:center;gap:6px;background:#fff;border:3px solid #FFE3B3;border-radius:15px;padding:8px 15px;font-size:18px;font-weight:900;color:#B06A00;box-shadow:0 3px 0 #F2E2C4;cursor:pointer}
+.pond{position:relative;height:200px;border-radius:24px;border:5px solid #fff;outline:3px solid rgba(47,134,201,.25);background:linear-gradient(180deg,#C9EFFB,#6FC9EE);overflow:hidden;box-shadow:inset 0 6px 14px rgba(47,134,201,.25)}
+.pond .wave{position:absolute;left:-5%;right:-5%;bottom:-24px;height:52px;background:radial-gradient(circle at 10px -8px,transparent 18px,rgba(255,255,255,.45) 19px);background-size:42px 28px}
+.duck{position:absolute;font-size:54px;cursor:pointer;filter:drop-shadow(0 5px 5px rgba(20,60,90,.25));transition:transform .15s;animation:bob 2.2s ease-in-out infinite}
+.duck:hover{transform:scale(1.12)}
+.duck.counted{filter:drop-shadow(0 0 10px #FFD54F)}
+.cbub{position:absolute;width:40px;height:40px;border-radius:50%;background:linear-gradient(180deg,#FFE58A,var(--gold));border:2.5px solid #B8770A;display:grid;place-items:center;font-size:20px;font-weight:900;color:#8A5B00;animation:bub .8s ease-out forwards;pointer-events:none;z-index:5}
+@keyframes bub{0%{transform:translateY(0) scale(.5);opacity:0}30%{transform:translateY(-24px) scale(1.15);opacity:1}100%{transform:translateY(-52px) scale(1);opacity:0}}
+.cnt-chip{position:absolute;top:10px;right:12px;background:#fff;border-radius:999px;padding:7px 16px;font-size:19px;font-weight:900;z-index:6;box-shadow:0 3px 0 rgba(47,134,201,.18)}
+.numblock{width:96px;height:90px;border-radius:18px;border:none;font-family:inherit;font-size:42px;font-weight:900;color:#8A5B00;background:linear-gradient(180deg,#FFE58A,#F7B32B);border:3.5px solid #B8770A;box-shadow:0 6px 0 #B8770A88,inset 0 3px 0 rgba(255,255,255,.55);cursor:pointer;text-shadow:0 1px 0 rgba(255,255,255,.5);transition:transform .1s}
+.numblock:hover{transform:translateY(-4px)}
+.numblock:active{transform:translateY(4px)}
+.numblock.ok{background:linear-gradient(180deg,#C6F0A0,#5CB444);border-color:#3F8F30;color:#2F6B22}
+.plate{width:262px;height:170px;border-radius:50%;background:radial-gradient(circle at 40% 34%,#fff,#F2EDDF 78%);border:5px solid #fff;box-shadow:0 7px 0 #E4D9C2,0 10px 16px rgba(84,66,58,.12);display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:2px 6px;padding:16px}
+.plate img{width:36px;height:36px}
+.textopt{padding:13px 28px;font-size:22px;border-radius:999px;border:4px solid #F2E2C4;background:#fff;font-weight:900;font-family:inherit;cursor:pointer;box-shadow:0 4px 0 #E4D2AC;transition:transform .12s}
+.textopt:hover{transform:translateY(-4px)}
+.textopt.ok{background:linear-gradient(180deg,#C6F0A0,#5CB444);border-color:#3F8F30;color:#2F6B22}
+.finish{position:absolute;inset:0;background:rgba(30,22,16,.45);display:grid;place-items:center;z-index:60}
+.finish .card{text-align:center;padding:38px 54px;border-radius:32px;border:5px solid var(--yellow);background:linear-gradient(180deg,#fff,var(--cream-dk));box-shadow:0 20px 40px rgba(0,0,0,.3);animation:pop .45s}
+.stepchips{display:flex;align-items:center;gap:5px}
+.schip{display:flex;align-items:center;gap:6px;padding:7px 14px;background:rgba(255,255,255,.94);color:var(--ink-soft);font-size:15px;font-weight:800;border-radius:999px;box-shadow:0 3px 0 rgba(84,66,58,.1);white-space:nowrap}
+.schip .dot{width:19px;height:19px;border-radius:50%;display:grid;place-items:center;font-size:11px;font-weight:900;background:#EFE6D2;color:#B7A88F}
+.schip.done{background:#EFFBEF;color:var(--green-dk)}.schip.done .dot{background:var(--green);color:#fff}
+.schip.now{background:linear-gradient(180deg,var(--orange),var(--orange-dk));color:#fff;box-shadow:0 3px 0 var(--orange-ddk)}.schip.now .dot{background:rgba(255,255,255,.3);color:#fff}
+.sgap{width:14px;height:3px;background:repeating-linear-gradient(90deg,#D8C9A8 0 5px,transparent 5px 9px)}
+
+/* ---------- 实验室 ---------- */
+.flow{display:flex;align-items:center;justify-content:center;gap:9px;position:absolute;top:96px;left:0;right:0;z-index:30}
+.fstep{display:flex;align-items:center;gap:7px;background:rgba(255,255,255,.94);border-radius:999px;padding:7px 16px;font-size:17px;font-weight:900;color:#B7A6D9;box-shadow:0 3px 0 rgba(124,92,224,.18);white-space:nowrap}
+.fstep .n{width:24px;height:24px;border-radius:50%;background:#EDE5FB;color:#9C6BFF;display:grid;place-items:center;font-size:14px;font-weight:900}
+.fstep.now{color:#fff;background:linear-gradient(180deg,var(--purple),var(--purple-dk));box-shadow:0 3px 0 var(--purple-ddk)}
+.fstep.now .n{background:rgba(255,255,255,.28);color:#fff}
+.fstep.done{color:var(--green-dk);background:#EFFBEF}.fstep.done .n{background:var(--green);color:#fff}
+.farr{color:rgba(255,255,255,.95);font-weight:900}
+.lab-cols{position:absolute;top:150px;left:24px;right:24px;bottom:66px;display:flex;gap:16px;z-index:15}
+.shelf{width:212px;padding:13px;display:flex;flex-direction:column;gap:9px}
+.shelf .hd,.codex .hd{text-align:center;font-size:16px;font-weight:900;padding:6px 0;border-radius:999px;letter-spacing:2px}
+.shelf .hd{color:var(--orange-ddk);background:linear-gradient(180deg,#FFE7A8,var(--yellow));box-shadow:0 3px 0 var(--gold-ddk)}
+.codex .hd{color:var(--purple-dk);background:linear-gradient(180deg,#E4D6FF,#D0BCFF);box-shadow:0 3px 0 var(--purple)}
+.shelf-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;flex:1}
+.item{position:relative;border-radius:19px;background:#fff;border:3.5px solid #F2E2C4;box-shadow:0 3px 0 #EFE3C8;display:grid;place-items:center;min-height:82px;cursor:pointer;transition:transform .12s}
+.item:hover{transform:translateY(-3px) scale(1.04)}
+.item.sel{border-color:var(--purple);background:#F5F0FF;transform:scale(1.06)}
+.item.used{opacity:.32;pointer-events:none}
+.item .tick{position:absolute;top:-9px;right:-7px;font-size:19px}
+.tank{position:relative;flex:1;max-width:470px;height:436px;margin:auto 0}
+.tank .glass{position:absolute;inset:0;border-radius:24px;border:9px solid #fff;background:linear-gradient(180deg,rgba(234,249,255,.9) 0 52px,#7FD4F8 52px 100%);box-shadow:inset 0 8px 18px rgba(47,134,201,.18);overflow:hidden;cursor:pointer}
+.tank .glass.armed{box-shadow:0 0 0 6px rgba(155,123,245,.5),inset 0 8px 18px rgba(47,134,201,.18)}
+.tank .wl{position:absolute;top:44px;left:0;right:0;height:11px;background:rgba(255,255,255,.6);border-radius:40%;animation:water 3.2s ease-in-out infinite}
+@keyframes water{0%,100%{transform:translateX(-12px)}50%{transform:translateX(12px)}}
+.titem{position:absolute;font-size:0;transition:none;filter:drop-shadow(0 5px 5px rgba(20,60,90,.25));z-index:5}
+.titem img{width:66px;height:66px}
+.titem.bobbing{animation:bob 2.6s ease-in-out infinite}
+.bub{position:absolute;border-radius:50%;background:rgba(255,255,255,.8);border:2px solid #A1DBF6;animation:bubup 1s ease-out forwards;z-index:4;pointer-events:none}
+@keyframes bubup{0%{transform:translateY(0);opacity:.9}100%{transform:translateY(-320px);opacity:0}}
+.result-chip{position:absolute;top:12px;left:50%;transform:translateX(-50%);background:rgba(255,255,255,.97);border-radius:999px;padding:9px 24px;font-size:19px;font-weight:900;box-shadow:0 4px 0 rgba(84,66,58,.12);z-index:8;white-space:nowrap}
+.guess-card{position:absolute;inset:0;display:grid;place-items:center;z-index:20;background:rgba(58,45,80,.4);border-radius:22px}
+.guess-card .card{text-align:center;padding:26px 40px;border-radius:26px;border:5px solid #fff;background:linear-gradient(180deg,#FFFDF4,#FFF3D8);box-shadow:0 18px 36px rgba(0,0,0,.3);animation:pop .4s}
+.codex{width:224px;padding:13px;display:flex;flex-direction:column;gap:8px}
+.clist{background:#fff;border-radius:13px;outline:3px solid #F2E2C4;min-height:86px;padding:7px;display:flex;flex-wrap:wrap;gap:5px;align-content:flex-start}
+.cchip{display:inline-flex;align-items:center;gap:3px;background:linear-gradient(180deg,#FFFDF4,#FFF3D8);border-radius:10px;padding:3px 9px;font-size:14px;font-weight:900;box-shadow:0 2px 0 #F0DCAC;cursor:pointer}
+.empty{color:#C6BADF;font-size:13.5px;font-weight:700;padding:4px}
+
+/* ---------- 收集册 ---------- */
+.tabs{position:absolute;top:92px;left:38px;display:flex;gap:15px;z-index:20}
+.tab{border:none;background:none;cursor:pointer;font-family:inherit;display:flex;flex-direction:column;align-items:center;gap:3px}
+.tab .icw{width:56px;height:56px;border-radius:18px;background:rgba(255,255,255,.88);box-shadow:0 4px 0 rgba(84,66,58,.15);display:grid;place-items:center;transition:all .12s}
+.tab .t{font-size:14px;font-weight:900;color:#8A6520;text-shadow:0 1px 0 rgba(255,255,255,.6)}
+.tab.active .icw{background:linear-gradient(180deg,#FFDD7A,var(--yellow-dk));box-shadow:inset 0 3px 0 rgba(255,255,255,.5),0 4px 0 var(--yellow-ddk);transform:translateY(-4px) scale(1.08)}
+.board{position:absolute;left:18px;right:18px;top:186px;bottom:14px;background:linear-gradient(180deg,#FFFBF0,var(--cream-dk));border-radius:40px;border:5px solid #fff;box-shadow:0 14px 28px rgba(84,66,58,.15);z-index:15;overflow:hidden;display:flex;flex-direction:column}
+.board .inner{padding:18px 24px;overflow:auto;flex:1}
+.grid6{display:grid;grid-template-columns:repeat(6,1fr);gap:13px}
+.slot{aspect-ratio:1/1.02;border-radius:21px;display:grid;place-items:center;align-content:center;cursor:pointer;position:relative;transition:transform .12s;text-align:center}
+.slot:hover{transform:translateY(-4px) scale(1.04)}
+.slot .em{height:52px;display:grid;place-items:center}
+.slot .em img{width:46px;height:46px;filter:drop-shadow(0 4px 4px rgba(0,0,0,.12))}
+.slot .nm{font-size:14px;font-weight:900;margin-top:3px;letter-spacing:1px}
+.slot .tag{position:absolute;top:7px;right:9px;font-size:12px;font-weight:900;border-radius:999px;padding:2px 8px;color:#fff}
+.slot.got{background:linear-gradient(180deg,#fff,#FFF6E0);border:4px solid #fff;outline:3px solid #F5DFAC;box-shadow:0 4px 0 #EFDBA8}
+.slot.lock{background:#F3EADA;border:4px dashed #E0D2B6;color:#C9BBA0;cursor:default}
+.slot.lock .em{opacity:.65;filter:grayscale(1)}
+.hint{margin-top:14px;text-align:center;font-size:15px;color:var(--ink-soft);font-weight:800}
+
+/* ---------- 家长中心 ---------- */
+.pwrap{position:absolute;inset:88px 22px 16px;overflow:auto;display:grid;grid-template-columns:1fr 1fr;gap:15px;align-content:start;z-index:10}
+.panel{background:linear-gradient(180deg,#fff,#FBF7EE);border-radius:26px;border:4px solid #fff;outline:3px solid rgba(84,66,58,.07);box-shadow:0 8px 18px rgba(84,66,58,.1);padding:18px 20px}
+.panel h3{font-size:18px;font-weight:900;display:flex;align-items:center;gap:9px;margin-bottom:12px}
+.panel h3 .icw{width:34px;height:34px;border-radius:11px;background:linear-gradient(180deg,#FFF3D8,#FFE7BC);box-shadow:0 3px 0 #F0DCAC;display:grid;place-items:center}
+.ring{position:relative;width:112px;height:112px;flex:none}
+.ring .num{position:absolute;inset:0;display:grid;place-items:center;text-align:center;font-size:24px;font-weight:900;line-height:1.1}
+.ring .num small{font-size:11px;color:var(--ink-soft)}
+.seg-label{font-size:14.5px;font-weight:900;margin:4px 0 5px}
+.seg{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:10px}
+.seg button{border:none;background:#F3EADA;border-radius:12px;padding:8px 14px;font-size:14px;font-weight:900;color:var(--ink-soft);cursor:pointer;font-family:inherit;box-shadow:0 3px 0 #E2D4B8}
+.seg button.on{background:linear-gradient(180deg,var(--blue),var(--blue-dk));color:#fff;box-shadow:inset 0 2px 0 rgba(255,255,255,.35),0 3px 0 var(--blue-ddk)}
+.subj-row{display:flex;align-items:center;gap:10px;margin-bottom:11px}
+.subj-row .nm{width:70px;font-size:15px;font-weight:900}
+.subj-row .track{flex:1}
+.subj-row .val{width:66px;text-align:right;font-size:13px;font-weight:900;color:var(--ink-soft)}
+.stat-chip{background:linear-gradient(180deg,#FFF3D8,#FFE9BC);border-radius:999px;font-size:13px;font-weight:900;color:#9A6B00;padding:5px 12px;box-shadow:0 3px 0 #F0DCAC;display:inline-block;margin:0 6px 6px 0}
+.promise{font-size:14px;font-weight:800;color:var(--ink-soft);padding:4px 0 4px 22px;position:relative}
+.promise::before{content:'✓';position:absolute;left:2px;color:var(--green-dk);font-weight:900}
+.gate{position:absolute;inset:0;background:rgba(30,40,52,.5);backdrop-filter:blur(3px);display:grid;place-items:center;z-index:60}
+.gate .card{text-align:center;padding:32px 46px;border-radius:30px;border:5px solid #fff;background:linear-gradient(180deg,#FFFDF4,#FFF3D8);box-shadow:0 20px 40px rgba(0,0,0,.3);animation:pop .4s;max-width:520px}
+.gate .q{font-size:36px;font-weight:900;letter-spacing:4px;background:#fff;border-radius:16px;padding:12px 30px;margin:12px 0 16px;box-shadow:0 4px 0 #F0DCAC}
+.gate input{width:126px;font-size:28px;font-weight:900;text-align:center;padding:11px;border:none;border-radius:15px;background:#fff;box-shadow:inset 0 0 0 3px #E8DFC8,0 4px 0 #E8DFC8;outline:none;font-family:inherit;color:var(--ink)}
+
+/* ---------- 休息遮罩 ---------- */
+.rest{position:absolute;inset:0;background:rgba(10,8,6,.6);display:grid;place-items:center;z-index:100}
+.rest .card{text-align:center;padding:36px 48px;border-radius:32px;border:5px solid #fff;background:var(--blue-dk);box-shadow:0 20px 40px rgba(0,0,0,.4);color:#fff}
+.rest.day .card{background:var(--purple-dk)}
+.rest h2{font-size:30px;font-weight:900;margin:10px 0 6px}
+.rest p{font-size:17px;opacity:.92;font-weight:800}
+.rest .cnt{position:relative;width:104px;height:104px;margin:0 auto 6px}
+</style>
+</head>
+<body>
+<div class="note"><b>探险岛 App 模拟器</b> · ios/ SwiftUI 工程的 1:1 浏览器预览<br>数据为模拟进度（与真机无关）· 图标取自 design/assets</div>
+<div class="frame"><div class="stage" id="stage"></div></div>
+<div class="toast" id="toast"></div>
+
+<script>
+/* ================= 数据（与 ios/AdventureIsland/Resources 一致） ================= */
+const ICON_DIR = "../../design/assets/icons/";
+const EMOJI = {girl:"🧒",panda:"🐼",fox:"🦊",robot:"🤖",duck:"🦆",school:"🏫",ferris:"🎡",volcano:"🌋",castle:"🏰",apple:"🍎",banana:"🍌",rock:"🪨",wood:"🪵",key:"🔑",sponge:"🧽",balloon:"🎈",ice:"🧊",magnet:"🧲",rainbow:"🌈",sprout:"🌱",sun:"☀️",sunrays:"🌞",sunface:"😊",moon:"🌙",wave:"🌊",sunrise:"🌅",cake:"🎂",calendar:"📅",star:"⭐",medal:"🏅",gift:"🎁",clip:"📋",lock:"🔒",speaker:"🔊",home:"🏠",back:"🔙",fire:"🔥",goggles:"🥽",flask:"🧪",book:"📖",sparkle:"✨",crystal:"💎",flower:"🌸",leaf:"🍃",rocket:"🚀",party:"🎉",question:"❓",clock:"⏰",shield:"🛡",chart:"📈",slider:"🎚",bulb:"💡",heart:"❤️",equal:"🟰",hanzi:"🈶",block:"🟨",coin:"🪙",dice:"🎲","pipe-red":"🟥","pipe-blue":"🟦","pipe-purple":"🟪",flag:"🏁",starface:"🌟",brick:"🧱","hills-back":"⛰","hills-front":"🏞"};
+
+const CN_LEVELS = [
+ {ch:"日",py:"rì",from:"sunface",words:[["sunrise","日出"],["cake","生日"],["calendar","日子"]],
+  q1:[["sun",""],["moon",""],["wave",""]],a1:0,h1:"太阳每天从东边升起来哦 ☀️",p1:"真棒！日，就是太阳的日！"},
+ {ch:"月",py:"yuè",from:"moon",words:[["moon","月亮"],["starface","星星"],["cake","月饼"]],
+  q1:[["sun",""],["wave",""],["moon",""]],a1:2,h1:"弯弯的，晚上才出来哦 🌙",p1:"对啦！月亮的月！"},
+ {ch:"水",py:"shuǐ",from:"wave",words:[["wave","海浪"],["crystal","泉水"],["leaf","露珠"]],
+  q1:[["wave",""],["sun",""],["moon",""]],a1:0,h1:"哗啦哗啦流动的就是它",p1:"真棒！水就是这样写的！"},
+ {ch:"山",py:"shān",from:"volcano",words:[["school","上山"],["leaf","山林"]],find:true},
+ {ch:"木",py:"mù",from:"sprout",words:[["leaf","树叶"],["flower","花木"]],find:true,d:["木","水","人"],a:0},
+ {ch:"人",py:"rén",from:"girl",words:[["heart","大人"],["party","人们"]],find:true,d:["月","山","人"],a:2},
+ {ch:"口",py:"kǒu",from:"speaker",words:[["speaker","开口"],["heart","口水"]],find:true,d:["口","日","田"],a:0},
+ {ch:"天",py:"tiān",from:"sunrays",words:[["sun","天空"],["sunrise","今天"]],find:true,d:["大","天","人"],a:1},
+ {ch:"田",py:"tián",from:"calendar",words:[["sprout","田里"],["flower","水田"]],find:true,d:["口","日","田"],a:2},
+ {ch:"石",py:"shí",from:"medal",words:[["rock","石头"]],find:true,d:["石","山","田"],a:0}
+];
+const MATH_LEVELS = [
+ {count:3,opts:[2,3,4],cmp:[3,1]}, {count:4,opts:[3,4,5],cmp:[4,2]}, {count:5,opts:[4,5,6],cmp:[3,5]},
+ {cmpOnly:[4,4]}, {count:6,opts:[5,6,7],cmp:[6,4]}, {count:7,opts:[6,7,8]}, {count:8,opts:[7,8,9],cmp:[5,8]},
+ {count:9,opts:[8,9,10]}, {count:10,opts:[8,9,10]}, {challenge:true}
+];
+const EXP_ITEMS = [
+ {id:"apple",name:"苹果",icon:"apple",isFloat:true,fact:"苹果皮里有小气孔，像穿了救生衣"},
+ {id:"rock",name:"石头",icon:"rock",isFloat:false,fact:"石头比同体积的水重很多，所以沉底"},
+ {id:"wood",name:"木头",icon:"wood",isFloat:true,fact:"木头里有很多小空隙，轻轻的，所以能浮"},
+ {id:"key",name:"钥匙",icon:"key",isFloat:false,fact:"金属钥匙小小的却很重，一下就沉啦"},
+ {id:"sponge",name:"海绵",icon:"sponge",isFloat:true,fact:"干海绵会浮，吸满水会慢慢沉下去"},
+ {id:"balloon",name:"气球",icon:"balloon",isFloat:true,fact:"气球里是空气，最轻，漂在最上面"}
+];
+const COLLECTION = [
+ {id:"science",title:"科学图鉴",icon:"flask",items:[
+  ["sci-apple","苹果","apple","浮","blue","苹果能浮起来，是因为果肉里藏着小气孔，像穿了救生衣！"],
+  ["sci-rock","石头","rock","沉","coral","石头比同体积的水重很多，所以一放就沉底啦。"],
+  ["sci-wood","木头","wood","浮","blue","木头里有很多小空隙，轻轻的，所以能浮在水面上。"],
+  ["sci-key","钥匙","key","沉","coral","金属钥匙个头小却很重，扑通一下就沉下去了。"],
+  ["sci-sponge","海绵","sponge","浮","blue","干海绵会浮，吸满水之后会慢慢往下沉，试试看！"],
+  ["sci-balloon","气球","balloon","浮","blue","气球里装的是空气，最轻最轻，漂在最上面。"],
+  ["sci-ice","冰块","ice","浮","blue","冰比水轻一点点，所以冰块会浮在饮料上。"],
+  ["sci-magnet","磁铁","magnet","","","磁铁能吸住铁做的东西，比如回形针和钥匙。"],
+  ["sci-rainbow","彩虹","rainbow","","","阳光穿过小水滴，会折出七种颜色。"],
+  ["sci-volcano","火山","volcano","","","岩浆压力太大时，就会从火山口喷出来。"],
+  ["sci-sprout","种子","sprout","","","种子喝饱水、晒到太阳，就会发芽长大。"],
+  ["sci-heart","心跳","heart","","","你的心脏一直在跳，跑完步会跳得更快哦。"]]},
+ {id:"sticker",title:"贴纸",icon:"sparkle",items:[
+  ["st-fuchen","浮沉小侦探","medal"],["st-shizi","识字新星","book"],["st-shuyazi","数数小鸭","duck"],
+  ["st-party","闯关欢呼","party"],["st-flower","春日限定","flower"],["st-rocket","未来科学家","rocket"],
+  ["st-bulb","金点子","bulb"],["st-crystal","闪亮宝石","crystal"],["st-star","大星星","starface"],
+  ["st-sun","小太阳","sunface"],["st-heart","爱心","heart"],["st-gift","神秘礼物","gift"]]},
+ {id:"hanzi",title:"汉字卡",icon:"hanzi",items:[
+  ["hz-ri","日","rì"],["hz-yue","月","yuè"],["hz-shui","水","shuǐ"],["hz-shan","山","shān"],["hz-mu","木","mù"],
+  ["hz-ren","人","rén"],["hz-kou","口","kǒu"],["hz-tian","天","tiān"],["hz-tian2","田","tián"],["hz-shi","石","shí"]]},
+ {id:"badge",title:"徽章",icon:"medal",items:[
+  ["bg-start","初来乍到","home"],["bg-hanzi10","识字新星","book"],["bg-math5","思维小达人","equal"],
+  ["bg-lab1","实验狂人","flask"],["bg-listen7","磨耳朵七天","speaker"],["bg-all","全勤之星","star"],
+  ["bg-shield","护眼小卫士","shield"],["bg-chart","进步王","chart"],["bg-rocket","冲鸭！","rocket"],["bg-king","全科通","medal"]]}
+];
+
+/* ================= 状态（模拟 ProgressStore / SettingsStore） ================= */
+const S = {
+  route:"map", coins:12,
+  stars:{}, tested:[], science:[], stickers:[], hanzi:[],
+  daily:{cn:0, math:0, lab:0},
+  settings:{once:15, daily:45, rest:15, diff:"auto", name:"糖糖"},
+  lv:{subject:null, index:0, step:0, wrong:0, solved:{}, counted:[], finished:false},
+  lab:{phase:"guess", guess:null, sel:null, chip:null, settled:[], floats:[], raf:null},
+  collTab:"science",
+  timers:[]
+};
+function save(){ try{ localStorage.setItem("adventure-sim", JSON.stringify({coins:S.coins,stars:S.stars,tested:S.tested,science:S.science,stickers:S.stickers,hanzi:S.hanzi,daily:S.daily,settings:S.settings})); }catch(e){} }
+function load(){ try{ const d=JSON.parse(localStorage.getItem("adventure-sim")); if(d) Object.assign(S,d); }catch(e){} }
+load();
+
+/* ================= 工具 ================= */
+const stage = document.getElementById('stage');
+const $ = s => document.querySelector(s);
+function ic(name,size,cls){ return `<img class="ic ${cls||''}" src="${ICON_DIR}${name}.svg" style="width:${size}px;height:${size}px" onerror="this.outerHTML='<span style=&quot;font-size:${size}px&quot;>${EMOJI[name]||'❓'}</span>'">`; }
+let toastT=null;
+function toast(msg,sec){ const t=$('#toast'); t.textContent=msg; t.classList.add('show'); clearTimeout(toastT); toastT=setTimeout(()=>t.classList.remove('show'), (sec||1.8)*1000); }
+function confetti(){ const icons=["⭐","🎉","✨","🌟","🎊","💛"]; for(let i=0;i<22;i++){ const c=document.createElement('span'); c.className='confetti'; c.textContent=icons[i%6]; c.style.left=(60+Math.random()*900)+'px'; c.style.top=(60+Math.random()*120)+'px'; c.style.animationDelay=(Math.random()*.35)+'s'; stage.appendChild(c); setTimeout(()=>c.remove(),2100);} }
+function speak(t){ try{ const u=new SpeechSynthesisUtterance(t); u.lang='zh-CN'; u.rate=.8; u.pitch=1.15; speechSynthesis.cancel(); speechSynthesis.speak(u);}catch(e){} }
+function doneCount(sub){ let n=0; for(let i=0;i<10;i++) if((S.stars[sub+"-"+i]||0)>0) n++; return n; }
+function nodeState(sub,i){ if((S.stars[sub+"-"+i]||0)>0) return "done"; if(i===0) return "cur"; return (S.stars[sub+"-"+(i-1)]||0)>0 ? "cur" : "lock"; }
+function timersClear(){ S.timers.forEach(t=>clearInterval(t)); S.timers=[]; if(S.lab.raf) cancelAnimationFrame(S.lab.raf); }
+
+/* ================= 主页 ================= */
+function renderMap(){
+  timersClear();
+  stage.innerHTML = `<div class="screen theme-home">
+    <div class="scene"><div class="sky" style="background:linear-gradient(180deg,#4FB4F5,#8FD6FA 46%,#D8F3FF)"></div>
+      <div class="glow"></div><div class="cloud c1"></div><div class="cloud c2"></div><div class="cloud c3"></div>
+      <div class="hill back"></div><div class="hill front"></div></div>
+    <div class="deco" style="left:26px;top:100px">${ic("brick",44)}</div>
+    <div class="deco" style="left:78px;top:100px">${ic("brick",44)}</div>
+    <div class="deco" style="left:40px;top:170px">${ic("starface",30)}</div>
+    <div class="deco" style="left:730px;top:66px">${ic("starface",30)}</div>
+    <div class="sky-coins">${ic("coin",28)}${ic("coin",36)}${ic("coin",28)}</div>
+
+    <div class="hud">
+      <div class="hud-l">
+        <button class="sqbtn" onclick="toast('我在探险岛，点水管开始闯关吧！')">${ic("home",30)}</button>
+        <div class="nameplate"><div class="ava">${ic("girl",30)}</div><div class="name">${S.settings.name} · Lv.${Math.max(1,Math.floor((doneCount("cn")+doneCount("math"))/4)+1)}</div></div>
+      </div>
+      <div class="hud-r">
+        <div class="goldchip"><span class="ico">${ic("coin",18)}</span>${S.coins}</div>
+        <button class="sqbtn" onclick="route('collection')">${ic("medal",28)}</button>
+        <button class="sqbtn" onclick="route('parent')">${ic("lock",26)}</button>
+      </div>
+    </div>
+
+    <div class="banner"><span class="stud" style="left:-7px;top:-7px"></span><span class="stud" style="right:-7px;top:-7px"></span><span class="stud" style="left:-7px;bottom:-7px"></span><span class="stud" style="right:-7px;bottom:-7px"></span>
+      <h1>探 险 岛</h1><p>每天玩一小会儿 · 养成好习惯</p></div>
+
+    <div class="pipes" style="position:absolute;left:0;right:0;bottom:196px;z-index:15">
+      ${pipeZone("panda","识字村","象形字 · 认读","pipe-red","cn","关",doneCount("cn"),10,false)}
+      ${pipeZone("fox","思维镇","数感 · 图形 · 逻辑","pipe-blue","math","关",doneCount("math"),10,false)}
+      ${pipeZone("robot","科学岛","动手做实验 · 现象图鉴","pipe-purple","lab","项已点亮",S.science.length,12,true)}
+    </div>
+
+    <div class="trail">
+      <svg viewBox="0 0 1024 118" fill="none">
+        <path d="M 40 80 C 200 22, 340 100, 512 56 C 690 12, 850 92, 990 52" stroke="#fff" stroke-width="9" stroke-linecap="round" stroke-dasharray="1 26" opacity=".95"/>
+      </svg>
+      ${pathNodes()}
+      <div class="lnode" style="left:962px;bottom:56px;width:auto;height:auto;background:none;border:none;box-shadow:none">
+        <div style="text-align:center">${ic("flag",40)}<div style="font-size:14px;font-weight:900;color:#fff;text-shadow:0 2px 0 rgba(63,158,56,.6)">终</div></div>
+      </div>
+    </div>
+
+    <div class="arcpanel"><div class="arc-notch">${ic("gift",28)}</div>
+      <div class="dock">
+        <div class="dock-item" onclick="route('collection')"><div class="icw">${ic("medal",30)}<span class="cnt">${S.science.length+S.stickers.length}/34</span></div><div class="t">收集册</div></div>
+        <div class="dock-item" onclick="dailyToast()"><div class="icw">${ic("clip",28)}<span class="cnt">${dailyTotal()}/3</span></div><div class="t">今日任务</div></div>
+        <div class="dock-item locked" onclick="toast('英语王国 · 二期开放，敬请期待 🚧')"><div class="icw">${ic("castle",28)}</div><div class="t">英语王国·二期</div></div>
+      </div>
+      <div class="dice" onclick="rollDice()" title="命运骰子">${ic("dice",32)}</div>
+    </div>
+  </div>`;
+  speak("欢迎回到探险岛！");
+}
+function pipeZone(guide,label,meta,pipe,subject,unit,done,total,isNew){
+  return `<div class="pipe-zone" onclick="enterZone('${subject}')">
+    <div class="pipe-wrap">${ic(pipe,120)}<span class="blk">?</span><span class="guide">${ic(guide,44)}</span>
+      ${isNew?'<span class="badge-new">NEW ✦</span>':''}</div>
+    <div class="zone-label">${label}</div>
+    <div class="zone-meta">${meta} ｜ ${done}/${total} ${unit}<div class="track"><i style="width:${Math.round(done/total*100)}%"></i></div></div>
+  </div>`;
+}
+function pathNodes(){
+  let html="";
+  for(let i=0;i<10;i++){
+    const st=nodeState("cn",i);
+    const x=96+i*86, y=60+Math.sin(i*0.85)*13;
+    const cls = st==="done" ? (i%2? "done2":"done") : st;
+    const label = st==="done" ? `识字 ${i+1}` : (st==="cur" ? "下一关▶" : "");
+    html+=`<div class="lnode ${cls}" style="left:${x}px;top:${y}px" onclick="enterLevel('cn',${i})">
+      ${st==="done"?'<span style="color:#fff;font-size:20px;font-weight:900">✓</span>':(st==="cur"?ic("starface",26):"")}
+      <span class="lab">${label}</span></div>`;
+  }
+  return html;
+}
+function dailyTotal(){ return ["cn","math","lab"].filter(k=>S.daily[k]>0).length; }
+function dailyToast(){ toast(dailyTotal()>=3?"今日任务全部完成，明天见 🎉":"完成 语文/数学/实验 各一次就达标啦"); }
+function enterZone(sub){ if(sub==="lab") return route("lab"); let i=0; while(i<10&&nodeState(sub,i)==="done") i++; enterLevel(sub,Math.min(i,9)); }
+function rollDice(){ const sub=Math.random()<.5?"cn":"math"; let i=0; while(i<10&&nodeState(sub,i)==="done") i++; toast("🎲 命运骰子：出发！"); enterLevel(sub,Math.min(i,9)); }
+
+/* ================= 关卡页 ================= */
+function enterLevel(sub,i){
+  timersClear();
+  Object.assign(S.lv,{subject:sub,index:i,step:0,wrong:0,solved:{},counted:[],finished:false});
+  route("level");
+}
+function renderLevel(){
+  const L=S.lv, sub=L.subject, isCN=sub==="cn";
+  const theme=isCN?"theme-cn":"theme-math";
+  const steps=isCN?["teach","quiz","quiz"]:mathSteps(L.index);
+  const titles=steps.map(k=>({teach:"认一认",quiz:"练一练",count:"数一数",compare:"比一比"}[k]));
+  const idx=L.index;
+  const title=isCN?`识字村 · 第 ${idx+1} 关 象形字`:`思维镇 · 第 ${idx+1} 关`;
+  const subT=isCN?`认识「${CN_LEVELS[idx].ch}」`:mathSub(idx);
+  let body="";
+  const kind=steps[L.step];
+  if(kind==="teach") body=teachHTML(isCN?CN_LEVELS[idx]:null);
+  else if(kind==="quiz") body=quizHTML(L,idx,steps,L.step);
+  else if(kind==="count") body=countHTML(MATH_LEVELS[idx].count, MATH_LEVELS[idx].opts, idx);
+  else if(kind==="compare") body=compareHTML(MATH_LEVELS[idx].cmp, idx);
+  stage.innerHTML=`<div class="screen ${theme}">
+    <div class="scene"><div class="sky"></div><div class="glow"></div><div class="cloud c1"></div><div class="cloud c2"></div><div class="hill back"></div><div class="hill front"></div></div>
+    <div class="hud">
+      <div class="hud-l">
+        <button class="sqbtn" onclick="route('map')">${ic("back",26)}</button>
+        <div><div style="font-size:21px;font-weight:900;color:${isCN?'#C96A06':'var(--blue-dk)'}">${title}</div>
+        <div style="font-size:13px;color:var(--ink-soft);font-weight:800">关卡进度 ${idx+1} / 10 · ${subT}</div></div>
+      </div>
+      <div class="hud-r">
+        <div class="stepchips">${steps.map((k,i)=>`<span class="schip ${i<L.step?'done':(i===L.step?'now':'')}"><span class="dot">${i<L.step?'✓':i+1}</span>${titles[i]}</span>`).join('<span class="sgap"></span>')}</div>
+        <div class="goldchip"><span class="ico">${ic("coin",18)}</span>${S.coins}</div>
+      </div>
+    </div>
+    <div class="lv-body" id="lvbody">${body}</div>
+    ${L.finished?finishHTML():''}
+  </div>`;
+  if(kind==="teach") startMorph();
+  const q = kind==="teach" ? `欢迎来到${isCN?'识字村':'思维镇'}！${subT}` :
+            kind==="quiz" ? quizText(L,idx,steps,L.step) :
+            kind==="count" ? "池塘里有几只小鸭？点一点，数数看" : "哪边的水果更多？";
+  speak(q);
+}
+function mathSteps(i){ const m=MATH_LEVELS[i]; if(m.challenge) return ["quiz","quiz"]; if(m.cmpOnly) return ["compare"]; if(m.cmp) return ["count","compare"]; return ["count"]; }
+function mathSub(i){ const m=MATH_LEVELS[i]; if(m.challenge) return "比大小"; if(m.cmpOnly) return "一样多"; return `${m.count} 以内点数`; }
+function quizText(L,idx,steps,si){
+  if(L.subject==="cn"){ const lv=CN_LEVELS[idx];
+    if(steps[si]==="quiz"&&si===1&&lv.q1) return "找一找：哪个图片是「"+lv.ch+"」？";
+    if(lv.find) return "练一练：哪个字是「"+lv.ch+"」？";
+    if(si===2) return "大挑战：哪个是「日」？";
+    return "练一练：下面哪个字念 "+lv.py+"？"; }
+  const m=MATH_LEVELS[idx]; return m.challenge ? (si===1?"哪个数字最小？":"哪个数字最大？") : "再练一练";
+}
+/* --- 认一认 --- */
+let morphT=null;
+function teachHTML(lv){
+  const words=(lv.words||[]).map(w=>`<span class="wordchip" onclick="speak('${w[1]}');toast('词卡：${w[1]}')">${ic(w[0],22)} ${w[1]}</span>`).join("");
+  return `<div style="display:flex;gap:20px;height:100%">
+    <div class="sticker" style="width:452px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:16px">
+      <div style="font-size:16px;font-weight:900;color:var(--orange-ddk);background:linear-gradient(180deg,#FFE7A8,var(--yellow));border-radius:999px;padding:7px 22px;box-shadow:0 3px 0 var(--gold-ddk)">看一看：${lv.ch} 是怎么变来的？</div>
+      <div class="morph" id="morph">
+        <span class="pic">${ic(lv.from,205)}</span>
+        <span class="char">${lv.ch}</span>
+      </div>
+      <div style="display:flex;gap:12px;align-items:center">
+        <span class="pinyin">${lv.py}</span>
+        <button class="speakbtn" onclick="speak('${lv.py}。${lv.ch}')">${ic("speaker",24)}</button>
+      </div>
+      <div style="display:flex;gap:9px">${words}</div>
+    </div>
+    <div class="sticker" style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px">
+      <div style="font-size:23px;font-weight:900">点一点下面的语音喇叭，跟读两遍～</div>
+      <div style="font-size:16px;color:var(--ink-soft);font-weight:800">看它变成了什么字？盯住它 3 秒！</div>
+      ${ic("panda",105)}
+      <button class="jbtn j-green" style="margin-top:4px" onclick="teachNext()">练一练 ▶</button>
+    </div>
+  </div>`;
+}
+function teachNext(){ S.lv.step++; renderLevel(); }
+function startMorph(){ clearInterval(morphT); const m=$("#morph"); if(!m) return; morphT=setInterval(()=>m.classList.toggle("play"),2600); }
+/* --- 答题 --- */
+let quizState={solved:false};
+function quizHTML(L,idx,steps,si){
+  quizState={solved:false};
+  let q=quizText(L,idx,steps,si), opts=[], ans=0, hint="再想一想哦", praise="答对啦！";
+  if(L.subject==="cn"){ const lv=CN_LEVELS[idx];
+    if(si===1&&lv.q1){ opts=lv.q1.map(o=>({icon:o[0],emoji:o[1]})); ans=lv.a1; hint=lv.h1; praise=lv.p1; }
+    else { const d=si===2&&idx===0?["口","日","目"]:lv.d; opts=d.map(t=>({text:t})); ans=si===2&&idx===0?1:lv.a; hint="再想一想哦"; praise="记住啦！"; }
+  } else { const m=MATH_LEVELS[idx];
+    opts=(si===1?["2","7","10"]:["5","9","3"]).map(t=>({text:t})); ans=si===1?0:1; hint=si===1?"越早数到的越小哦":"从 1 数到 10，谁排在最后？"; praise=si===1?"思维小达人，通关！":"9 最大，答对啦！";
+  }
+  window._quiz={opts,ans,hint,praise};
+  return `<div style="height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px" class="sticker">
+    <div class="q-pill">${q}</div>
+    <div style="display:flex;gap:26px">
+      ${opts.map((o,i)=>`<div class="opt" id="opt${i}" onclick="pickOpt(${i})">${o.text?`<span class="bigchar">${o.text}</span>`:ic(o.icon,112)}</div>`).join("")}
+    </div>
+    <div id="fb" style="height:34px;font-size:22px;font-weight:900;color:var(--green-dk)"></div>
+  </div>`;
+}
+function pickOpt(i){
+  const {opts,ans,hint,praise}=window._quiz;
+  if(quizState.solved) return;
+  const el=$("#opt"+i);
+  if(i===ans){ quizState.solved=true; el.classList.add("ok");
+    for(let k=0;k<3;k++){ if(k!==i) $("#opt"+k).classList.add("dim"); }
+    $("#fb").textContent="🎉 "+praise;
+    confetti(); speak(praise);
+    setTimeout(()=>nextStep(),1400);
+  } else { el.classList.remove("noit"); el.classList.add("no","shakeit");
+    toast(hint,2.2); speak(hint); S.lv.wrong++;
+    setTimeout(()=>el.classList.remove("no","shakeit"),600);
+  }
+}
+function nextStep(){
+  const L=S.lv, steps=L.subject==="cn"?["teach","quiz","quiz"]:mathSteps(L.index);
+  if(L.step<steps.length-1){ L.step++; renderLevel(); }
+  else { L.finished=true; renderLevel(); const stars=L.wrong===0?3:(L.wrong===1?2:1);
+    const key=L.subject+"-"+L.index;
+    const old=S.stars[key]||0;
+    if(stars>old||old===0){ S.stars[key]=stars; S.coins+=stars; }
+    S.daily[L.subject]=(S.daily[L.subject]||0)+1;
+    if(L.subject==="cn"){ const ch=CN_LEVELS[L.index].ch; if(!S.hanzi.includes(ch)) S.hanzi.push(ch); }
+    save(); }
+}
+function finishHTML(){
+  const stars=S.lv.wrong===0?3:(S.lv.wrong===1?2:1);
+  return `<div class="finish"><div class="card">
+    <div style="font-size:60px">🎉</div>
+    <div style="font-size:28px;font-weight:900;margin:4px 0">本关完成！</div>
+    <div style="font-size:42px;letter-spacing:10px;margin:6px 0">${[0,1,2].map(i=>`<span style="opacity:${i<stars?1:.25}">${ic("starface",40)}</span>`).join("")}</div>
+    <div style="font-size:15px;color:var(--ink-soft);font-weight:800;margin-bottom:16px">${S.lv.wrong===0?"一次没错，完美通关！":`答错了 ${S.lv.wrong} 次也没关系，你已经学会啦`}</div>
+    <button class="jbtn j-orange" onclick="route('map')">返回地图</button>
+    <button class="jbtn j-cream" style="margin-left:10px" onclick="enterLevel(S.lv.subject,S.lv.index)">再玩一次</button>
+  </div></div>`;
+}
+/* --- 点数 --- */
+function countHTML(n,opts,idx){
+  window._count={n,opts};
+  let ducks="";
+  const cols=Math.min(n,5), rows=Math.ceil(n/cols);
+  for(let i=0;i<n;i++){
+    const row=Math.floor(i/cols), col=i%cols, inRow=Math.min(cols,n-row*cols);
+    const x=(92/(inRow+1))*(col+1), y=52+row*52;
+    ducks+=`<span class="duck" id="dk${i}" style="left:calc(${x}% - 26px);top:${y}px;animation-delay:${(Math.random()*2).toFixed(2)}s" onclick="tapDuck(${i})">${ic("duck",52)}</span>`;
+  }
+  return `<div style="height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px" class="sticker">
+    <div class="q-pill" style="background:#E7F6FF;box-shadow:0 4px 0 #BFE4F7">池塘里有几只小鸭？（点一点，数数看 👆）</div>
+    <div class="pond" style="width:92%">${ducks}<div class="wave"></div>
+      <div class="cnt-chip">已数 <b id="cnt" style="font-size:24px;color:var(--blue-dk)">0</b> 只</div></div>
+    <div style="display:flex;gap:24px">${opts.map(o=>`<button class="numblock" id="nb${o}" onclick="pickCount(${o})">${o}</button>`).join("")}</div>
+  </div>`;
+}
+function tapDuck(i){
+  const {n}=window._count;
+  const dk=$("#dk"+i);
+  if(dk.classList.contains("counted")) return;
+  dk.classList.add("counted");
+  const c=S.lv.counted.length+1; S.lv.counted.push(1);
+  $("#cnt").textContent=c; speak(String(c));
+  const b=document.createElement('span'); b.className='cbub'; b.textContent=c;
+  b.style.left=dk.style.left; b.style.top=(parseFloat(dk.style.top)-10)+'px';
+  dk.parentElement.appendChild(b); setTimeout(()=>b.remove(),850);
+}
+function pickCount(v){
+  const {n,opts}=window._count;
+  if(v===n){ $("#nb"+v).classList.add("ok"); confetti(); speak(`答对啦，一共${n}只！`);
+    for(const o of opts) if(o!==v) $("#nb"+o).style.opacity=.4;
+    setTimeout(()=>nextStep(),1300);
+  } else { const b=$("#nb"+v); b.classList.remove("shakeit"); void b.offsetWidth; b.classList.add("shakeit");
+    toast("再数一数：点一只小鸭数一个数",2); speak("再数一数：点一只小鸭数一个数"); }
+}
+/* --- 比多少 --- */
+function compareHTML(cmp,idx){
+  const [l,r]=cmp; const ansKey=l===r?"same":(l>r?"left":"right");
+  window._cmp={ansKey};
+  const grid=(icon,n)=>{ let h=""; for(let i=0;i<n;i++) h+=ic(icon,36); return h; };
+  return `<div style="height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px" class="sticker">
+    <div class="q-pill" style="background:#EAFBEF;box-shadow:0 4px 0 #BFE8C9">哪边的水果更多？</div>
+    <div style="display:flex;gap:44px">
+      <div style="text-align:center"><div class="plate">${grid("apple",l)}</div><div style="font-size:15px;color:var(--ink-soft);font-weight:900;margin-top:8px">苹果盘</div></div>
+      <div style="text-align:center"><div class="plate">${grid("banana",r)}</div><div style="font-size:15px;color:var(--ink-soft);font-weight:900;margin-top:8px">香蕉盘</div></div>
+    </div>
+    <div style="display:flex;gap:20px">
+      <button class="textopt" onclick="pickCmp('left')">🍎 苹果多</button>
+      <button class="textopt" onclick="pickCmp('right')">🍌 香蕉多</button>
+      <button class="textopt" onclick="pickCmp('same')">🟰 一样多</button>
+    </div>
+  </div>`;
+}
+function pickCmp(k){
+  const {ansKey}=window._cmp;
+  const btns=document.querySelectorAll(".textopt");
+  const map={left:0,right:1,same:2};
+  if(k===ansKey){ btns[map[k]].classList.add("ok"); confetti();
+    const msgs={left:"答对啦，左边更多！",right:"答对啦，右边更多！",same:"火眼金睛！一样多！"};
+    speak(msgs[k]); setTimeout(()=>nextStep(),1300);
+  } else { btns[map[k]].classList.add("shakeit"); setTimeout(()=>btns[map[k]].classList.remove("shakeit"),450);
+    toast("一一对应比一比 🍎→🍌",2); speak("一一对应比一比"); }
+}
+
+/* ================= 实验室 ================= */
+const BUOY={g:-980,b:1400,d:6.0,dt:1/60};
+function buoyStep(s,isFloat){ let v=s.v; if(s.y<=0){ const a=isFloat?BUOY.b:BUOY.g; v+=a*BUOY.dt; v-=v*BUOY.d*BUOY.dt; } else { v+=BUOY.g*BUOY.dt; } return {y:s.y+v*BUOY.dt,v}; }
+function route(r){ S.route=r; if(r==="map")renderMap(); else if(r==="level")renderLevel(); else if(r==="lab")renderLab(); else if(r==="collection")renderCollection(); else if(r==="parent")renderParent(); }
+
+function renderLab(){
+  timersClear();
+  Object.assign(S.lab,{phase:"guess",guess:null,sel:null,chip:null,settled:[],floats:[]});
+  stage.innerHTML=`<div class="screen theme-lab">
+    <div class="scene"><div class="sky"></div><div class="glow" style="background:radial-gradient(circle,#FFF3D8cc,#E8D5FF66 45%,transparent 72%)"></div><div class="cloud c1" style="opacity:.55"></div><div class="hill back"></div><div class="hill front"></div></div>
+    <div class="hud">
+      <div class="hud-l">
+        <button class="sqbtn" onclick="route('map')">${ic("back",26)}</button>
+        <div><div style="font-size:21px;font-weight:900;color:var(--purple-dk)">🔬 科学实验室 · 浮与沉</div>
+        <div style="font-size:13px;color:var(--ink-soft);font-weight:800">实验 1 / 1 · 向导闪闪</div></div>
+      </div>
+      <div class="hud-r">
+        <div class="goldchip"><span class="ico">${ic("goggles",18)}</span>已戴好</div>
+        <div class="goldchip"><span class="ico">${ic("coin",18)}</span>${S.coins}</div>
+      </div>
+    </div>
+    <div class="flow" id="flow"></div>
+    <div class="lab-cols">
+      <div class="shelf sticker"><div class="hd">🧰 工具箱</div>
+        <div class="shelf-grid">${EXP_ITEMS.map(it=>shelfItem(it)).join("")}</div>
+        <div style="font-size:12.5px;color:var(--ink-soft);text-align:center;font-weight:800;line-height:1.5">点选物品<br>再点水箱放进去</div>
+      </div>
+      <div class="tank" id="tank">
+        <div class="glass" id="glass" onclick="tankTap(event)"><div class="wl"></div></div>
+        <div class="result-chip" id="rchip" style="display:none"></div>
+        <div class="guess-card" id="guessCard"><div class="card">
+          <div style="font-size:25px;font-weight:900;color:var(--purple-dk);margin-bottom:4px">猜一猜 🔮</div>
+          ${ic("apple",86)}<div style="font-size:18px;font-weight:900;color:var(--ink-soft);margin:6px 0 14px">苹果放进水里，会怎么样？</div>
+          <div style="display:flex;gap:16px;justify-content:center">
+            <button class="jbtn j-yellow" onclick="makeGuess('float')">⬆ 浮起来</button>
+            <button class="jbtn j-blue" onclick="makeGuess('sink')">⬇ 沉下去</button>
+          </div></div></div>
+      </div>
+      <div class="codex sticker"><div class="hd">📓 现象图鉴</div>
+        <div style="font-size:15px;font-weight:900;color:var(--blue-dk)">↑ 浮起来</div>
+        <div class="clist" id="listFloat"><span class="empty">还没有发现…</span></div>
+        <div style="font-size:15px;font-weight:900;color:var(--coral-dk)">↓ 沉下去</div>
+        <div class="clist" id="listSink"><span class="empty">还没有发现…</span></div>
+        <div style="text-align:center;font-size:15px;font-weight:900;color:var(--purple-dk)" id="tested">已测试 ${S.tested.length} / 6</div>
+        <button class="jbtn j-purple" id="collectBtn" style="width:100%;padding:11px 0" disabled onclick="collect()">⭐ 收进图鉴</button>
+      </div>
+    </div>
+    <div style="position:absolute;left:26px;bottom:14px;z-index:20"><button class="jbtn j-cream" style="font-size:17px;padding:10px 20px" onclick="renderLab()">🔄 重新实验</button></div>
+    <div class="deco" style="right:30px;bottom:16px;font-size:14px;color:rgba(255,255,255,.85);font-weight:700">🥽 虚拟实验室随便玩 · 真的做实验时，一定要请爸爸妈妈陪哦！</div>
+  </div>`;
+  updateFlow(); speak("欢迎来到科学实验室！猜一猜，苹果放进水里会怎么样？");
+}
+function shelfItem(it){
+  const used=S.tested.includes(it.id);
+  return `<div class="item ${used?'used':''}" id="item-${it.id}" onclick="pickItem('${it.id}')">${ic(it.icon,44)}${used?'<span class="tick">✅</span>':''}</div>`;
+}
+function updateFlow(){
+  const p=S.lab.phase;
+  const st=(n,t,s)=>`<span class="fstep ${s}"><span class="n">${s==='done'?'✓':n}</span>${t}</span>`;
+  $("#flow").innerHTML=
+    st(1,"猜一猜",p==="guess"?"now":"done")+"<span class='farr'>➜</span>"+
+    st(2,"动手做",p==="play"?"now":(p==="guess"?"":"done"))+"<span class='farr'>➜</span>"+
+    st(3,"看现象",S.lab.chip?"now":"")+"<span class='farr'>➜</span>"+
+    st(4,"收进图鉴",S.tested.length>=3?"now":"");
+}
+function pickItem(id){
+  if(S.lab.phase!=="play"||S.tested.includes(id)) return;
+  S.lab.sel=id;
+  document.querySelectorAll(".item").forEach(e=>e.classList.remove("sel"));
+  $("#item-"+id).classList.add("sel");
+  $("#glass").classList.add("armed");
+  const it=EXP_ITEMS.find(x=>x.id===id);
+  speak(it.name); toast(`已选中 ${it.name}，现在点水箱放进去！`);
+}
+function makeGuess(g){
+  S.lab.guess=g; S.lab.phase="play";
+  $("#guessCard").style.display="none"; updateFlow();
+  speak("好，记下你的猜想啦，动手试试看！"); toast("🔮 猜想已记录！把物品放进水箱验证吧");
+}
+function tankTap(ev){
+  const glass=$("#glass");
+  if(S.lab.phase!=="play"){ if(S.lab.phase==="guess") toast("先完成猜一猜哦 🔮"); return; }
+  if(!S.lab.sel||S.tested.includes(S.lab.sel)){ toast("先在左边工具箱里选一个物品哦 🧰"); return; }
+  const rect=glass.getBoundingClientRect();
+  const x=ev.clientX-rect.left;
+  const item=EXP_ITEMS.find(i=>i.id===S.lab.sel);
+  dropIntoTank(item,x);
+  $("#item-"+item.id).classList.add("used");
+  S.lab.sel=null; $("#glass").classList.remove("armed");
+}
+function dropIntoTank(item,x){
+  const glass=$("#glass"); const H=glass.clientHeight, waterTop=52;
+  const el=document.createElement('div'); el.className='titem'; el.innerHTML=ic(item.icon,66);
+  const px=Math.min(Math.max(x-33,30),glass.clientWidth-96);
+  el.style.left=px+"px"; el.style.top="-70px"; glass.appendChild(el);
+  // 与 Swift BuoyancyModel 相同参数
+  let st={y:(H+40-waterTop), v:0}, last=performance.now(), settleT=0, elapsed=0;
+  const floorY=H-84;
+  function frame(now){
+    const dt=Math.min((now-last)/1000,1/30); last=now;
+    const steps=Math.max(1,Math.round(dt/BUOY.dt));
+    for(let i=0;i<steps;i++) st=buoyStep(st,item.isFloat);
+    let worldY=waterTop+st.y;
+    if(worldY>floorY){ worldY=floorY; st={y:floorY-waterTop,v:0}; }
+    el.style.top=(worldY-33)+"px";
+    if(st.y<0&&Math.random()<0.06){ const b=document.createElement('span'); b.className='bub'; const s=5+Math.random()*9; b.style.width=b.style.height=s+"px"; b.style.left=(px+33+Math.random()*30-15)+"px"; b.style.top=Math.max(worldY,10)+"px"; glass.appendChild(b); setTimeout(()=>b.remove(),1050); }
+    elapsed+=dt;
+    const nearRest=Math.abs(st.v)<45&&(item.isFloat?Math.abs(st.y)<90:worldY>=floorY-1);
+    if(nearRest) settleT+=dt; else settleT=0;
+    if(settleT>0.3||elapsed>2.6){
+      if(item.isFloat){ el.classList.add("bobbing"); el.style.top=(waterTop-30)+"px"; }
+      onSettled(item,item.isFloat);
+      return;
+    }
+    S.lab.raf=requestAnimationFrame(frame);
+  }
+  S.lab.raf=requestAnimationFrame(frame);
+}
+function onSettled(item,isFloat){
+  if(S.tested.includes(item.id)) return;
+  S.tested.push(item.id);
+  const chip=$("#rchip");
+  chip.textContent=`${item.name} ${isFloat?"浮起来了 ⬆":"沉下去了 ⬇"}`;
+  chip.style.display="block";
+  speak(`${item.name}${isFloat?"浮起来了":"沉下去了"}`);
+  const list=$(isFloat?"#listFloat":"#listSink");
+  const emp=list.querySelector(".empty"); if(emp) emp.remove();
+  const c=document.createElement('span'); c.className='cchip'; c.innerHTML=`${ic(item.icon,16)}${item.name}`;
+  c.title="点我看小知识"; c.onclick=()=>{toast(item.fact,3.2);speak(item.fact);};
+  list.appendChild(c);
+  $("#tested").textContent=`已测试 ${S.tested.length} / 6`;
+  if(item.id==="apple"){
+    if((S.lab.guess==="float")===isFloat){ confetti(); toast("🔮 猜对啦！加一颗智慧星 ⭐"); S.coins++; }
+    else toast("没关系～科学家就是靠不断试错发现规律的 🔬",2.6);
+  }
+  updateFlow(); save();
+  if(S.tested.length>=3){ const b=$("#collectBtn"); b.disabled=false; b.classList.add("pulse"); }
+}
+function collect(){
+  confetti(); speak("太棒了，实验记录收进图鉴！");
+  if(!S.stickers.includes("st-fuchen")){ S.stickers.push("st-fuchen"); toast("📓 图鉴 +1 · 获得「浮沉小侦探」贴纸 🏅",2.2); }
+  if(!S.science.includes("sci-apple")){ S.science.push("sci-apple"); S.coins++; }
+  S.daily.lab=(S.daily.lab||0)+1;
+  save();
+  setTimeout(()=>route("collection"),1400);
+}
+
+/* ================= 收集册 ================= */
+function renderCollection(){
+  timersClear();
+  stage.innerHTML=`<div class="screen theme-coll">
+    <div class="scene"><div class="sky"></div><div class="glow"></div><div class="cloud c1" style="opacity:.8"></div><div class="hill back"></div><div class="hill front"></div></div>
+    <div class="hud">
+      <div class="hud-l">
+        <button class="sqbtn" onclick="route('map')">${ic("back",26)}</button>
+        <div class="nameplate"><div class="ava">${ic("girl",30)}</div><div class="name">收集册</div></div>
+      </div>
+      <div class="hud-r">
+        <div class="goldchip"><span class="ico">${ic("coin",18)}</span>${S.coins}</div>
+        <div class="goldchip"><span class="ico">${ic("fire",18)}</span>连续 1 天</div>
+      </div>
+    </div>
+    <div class="tabs">${COLLECTION.map(g=>`<button class="tab ${S.collTab===g.id?'active':''}" onclick="S.collTab='${g.id}';renderCollection()">
+      <span class="icw">${ic(g.icon,26)}</span><span class="t">${g.title}</span></button>`).join("")}</div>
+    <div class="board"><div class="inner" id="board"></div></div>
+  </div>`;
+  renderBoard();
+}
+function groupGot(g){
+  if(g.id==="science") return g.items.filter(it=>needExperiment(it[0])?S.science.includes(it[0]):true).length;
+  if(g.id==="sticker") return g.items.filter(it=>S.stickers.includes(it[0])).length;
+  if(g.id==="hanzi") return g.items.filter(it=>S.hanzi.includes(it[1])).length;
+  return 0;
+}
+function needExperiment(id){ return ["sci-apple","sci-rock","sci-wood","sci-key","sci-sponge","sci-balloon"].includes(id); }
+function renderBoard(){
+  const g=COLLECTION.find(x=>x.id===S.collTab);
+  const got=groupGot(g);
+  let slots="";
+  for(const it of g.items){
+    const [id,name,icon,tag,tagColor,fact]=it;
+    let collected=true;
+    if(g.id==="science"&&needExperiment(id)) collected=S.science.includes(id);
+    if(g.id==="sticker") collected=S.stickers.includes(id);
+    if(g.id==="hanzi") collected=S.hanzi.includes(name);
+    const tagHtml=collected&&tag?`<span class="tag" style="background:${tagColor==='blue'?'var(--blue)':'var(--coral-dk)'}">${tag}</span>`:"";
+    slots+=`<div class="slot ${collected?'got':'lock'}" onclick="slotTap('${g.id}','${id}','${name}','${fact?fact.replace(/'/g,''):""}','${collected}')">
+      <span class="em">${collected?(g.id==='hanzi'?`<span style="font-size:42px;font-weight:900;color:#E2582A">${name}</span>`:ic(icon,46)):`<span style="font-size:38px;font-weight:900">？</span>`}</span>${tagHtml}
+      <span class="nm">${collected?name:"？？？"}</span></div>`;
+  }
+  $("#board").innerHTML=`
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
+      <span style="font-size:19px;font-weight:900;color:var(--ink-soft)">${groupTitle(g,got)}</span>
+      <div class="track" style="width:250px"><i style="width:${Math.round(got/g.items.length*100)}%"></i></div></div>
+    <div class="grid6">${slots}</div>
+    <div class="hint">${{science:"💡 去科学岛做实验，就能点亮更多现象图鉴",sticker:"💡 完成每日任务、闯关成功都能掉落贴纸",hanzi:"💡 在识字村闯关，就能点亮更多汉字卡",badge:"💡 徽章记录每一次了不起的坚持"}[g.id]}</div>`;
+}
+function groupTitle(g,got){
+  if(g.id==="science") return `已完成 ${got} / ${g.items.length} 个现象`;
+  if(g.id==="sticker") return `已获得 ${got} / ${g.items.length} 张`;
+  if(g.id==="hanzi") return `已认读 ${got} / ${g.items.length} 字`;
+  return "每一枚徽章都是了不起的坚持";
+}
+function slotTap(gid,id,name,fact,collected){
+  if(!collected) return;
+  if(fact){ toast(fact,3.2); speak(fact); }
+  else if(gid==="hanzi"){ toast(name); speak(name); }
+}
+
+/* ================= 家长中心 ================= */
+function renderParent(){
+  timersClear();
+  stage.innerHTML=`<div class="screen theme-parent">
+    <div class="scene"><div class="sky"></div><div class="glow" style="opacity:.5"></div><div class="cloud c1" style="opacity:.7"></div><div class="hill back"></div><div class="hill front"></div></div>
+    <div class="hud">
+      <div class="hud-l">
+        <button class="sqbtn" onclick="route('map')">${ic("back",26)}</button>
+        <div><div style="font-size:21px;font-weight:900;color:#5C7089">🔒 家长中心</div>
+        <div style="font-size:13px;color:var(--ink-soft);font-weight:800">孩子数据仅保存在本机 · 不上传云端</div></div>
+      </div>
+      <div class="hud-r"><div class="goldchip"><span class="ico">${ic("girl",18)}</span>${S.settings.name}</div></div>
+    </div>
+    <div class="pwrap">
+      <div class="panel"><h3><span class="icw">${ic("clock",18)}</span>今日使用时长</h3>
+        <div style="display:flex;gap:18px;align-items:center">
+          <div class="ring"><svg width="112" height="112"><circle cx="56" cy="56" r="47" stroke="#F0E2C2" stroke-width="13" fill="none"/>
+            <circle cx="56" cy="56" r="47" stroke="#4FA9E8" stroke-width="13" fill="none" stroke-linecap="round" stroke-dasharray="295.3" stroke-dashoffset="${295.3*(1-12/(S.settings.daily))}" transform="rotate(-90 56 56)"/></svg>
+            <div class="num">12<small>/${S.settings.daily} 分钟</small></div></div>
+          <div style="font-size:14.5px;font-weight:800;color:var(--ink-soft);line-height:1.8">今日学习 <b>语文 5 分钟</b> · <b>数学 4 分钟</b><br><b>科学实验 3 分钟</b><br>剩余 <b>${Math.max(0,S.settings.daily-12)}</b> 分钟后提醒休息</div>
+        </div>
+        <div style="margin-top:10px;background:linear-gradient(180deg,#FFF3D8,#FFE9BC);border-radius:12px;padding:9px 13px;font-size:13.5px;font-weight:900;color:#9A6B00">👀 超时会自动进入「小眼睛休息」画面，休息结束再继续</div>
+        <div style="display:flex;gap:8px;margin-top:10px">
+          <button class="jbtn j-blue" style="font-size:14px;padding:9px 16px" onclick="showRest(false)">⏱ 演示：休息遮罩</button>
+          <button class="jbtn j-purple" style="font-size:14px;padding:9px 16px" onclick="showRest(true)">🌙 演示：当日结束</button>
+        </div>
+      </div>
+      <div class="panel"><h3><span class="icw">${ic("shield",18)}</span>护眼与时长管理</h3>
+        ${seg("单次使用时长",[10,15,20,25],S.settings.once,v=>v+" 分钟",v=>{S.settings.once=v;save()})}
+        ${seg("每日使用上限",[30,45,60],S.settings.daily,v=>v+" 分钟",v=>{S.settings.daily=v;save()})}
+        ${seg("休息间隔提醒",[15,30,0],S.settings.rest,v=>v===0?"关闭":`每 ${v} 分钟`,v=>{S.settings.rest=v;save()})}
+      </div>
+      <div class="panel"><h3><span class="icw">${ic("chart",18)}</span>学习进度</h3>
+        ${pRow("book","识字村",doneCount("cn")/10,`${doneCount("cn")}/10 关`)}
+        ${pRow("equal","思维镇",doneCount("math")/10,`${doneCount("math")}/10 关`)}
+        ${pRow("flask","科学岛",S.science.length/6,`实验 ${S.tested.length} 项`)}
+        <div style="margin-top:4px"><span class="stat-chip">累计金币 ${S.coins}</span><span class="stat-chip">汉字 ${S.hanzi.length} 个</span><span class="stat-chip">贴纸 ${S.stickers.length} 张</span></div>
+      </div>
+      <div class="panel"><h3><span class="icw">${ic("slider",18)}</span>难度与内容管理</h3>
+        ${seg2("难度模式",["简单","自动适配","标准"],["easy","auto","normal"],S.settings.diff,v=>{S.settings.diff=v;save()})}
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:6px">
+          <button class="jbtn j-cream" style="font-size:14px;padding:10px 16px" onclick="toast('已解锁全部章节试玩')">🔓 解锁全部章节</button>
+          <button class="jbtn j-cream" style="font-size:14px;padding:10px 16px" onclick="toast('跳过知识点功能将在二期提供')">⏭ 跳过某个知识点</button>
+          <button class="jbtn" style="font-size:14px;padding:10px 16px;background:linear-gradient(180deg,#FFE3E0,#FFCFC9);color:#C0392B;box-shadow:0 4px 0 #E8B7B0" onclick="resetAll()">重置全部进度</button>
+        </div>
+      </div>
+      <div class="panel" style="grid-column:1/-1"><h3><span class="icw">${ic("heart",18)}</span>本产品承诺（家长可放心）</h3>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0 20px">
+          ${["无广告 · 无推送 · 无外链","无内购 · 无付费陷阱","无社交 · 无陌生人接触","数据只存在这台 iPad 上","进入家长区需通过家长门","超时自动提醒休息眼睛"].map(p=>`<div class="promise">${p}</div>`).join("")}
+        </div>
+      </div>
+    </div>
+    <div class="gate" id="gate"><div class="card" id="gateCard">
+      <div style="font-size:52px">🔐</div>
+      <div style="font-size:26px;font-weight:900;margin:4px 0">家长中心</div>
+      <div style="font-size:15px;color:var(--ink-soft);font-weight:800;margin-bottom:4px">这里是大人的设置区，请完成验证：<br>（孩子答不出来的小算术 😊）</div>
+      <div class="q" id="gateQ"></div>
+      <div style="display:flex;gap:12px;justify-content:center">
+        <input id="gateInput" type="number" placeholder="答案" inputmode="numeric">
+        <button class="jbtn j-green" onclick="checkGate()">进入</button>
+      </div>
+      <div style="margin-top:12px;font-size:12px;color:var(--ink-soft)">提示：答案会随题目刷新</div>
+    </div></div>
+  </div>`;
+  newGate();
+}
+function pRow(icon,nm,ratio,val){ return `<div class="subj-row">${ic(icon,19)}<span class="nm">${nm}</span><div class="track"><i style="width:${Math.round(ratio*100)}%"></i></div><span class="val">${val}</span></div>`; }
+/* 分段选择器：行为注册表 + data 属性事件 */
+const SEG_ACTIONS={};
+let segSeq=0;
+function seg(title,vals,cur,fmt,on){
+  const id="sg"+(segSeq++); SEG_ACTIONS[id]=on;
+  return `<div class="seg-label">${title}</div><div class="seg">${vals.map(v=>`<button class="${v===cur?'on':''}" data-seg="${id}" data-v="${v}" onclick="segPick(this)">${fmt(v)}</button>`).join("")}</div>`;
+}
+function segPick(btn){
+  const id=btn.dataset.seg, v=parseInt(btn.dataset.v);
+  [...btn.parentElement.children].forEach(b=>b.classList.remove("on"));
+  btn.classList.add("on");
+  if(SEG_ACTIONS[id]) SEG_ACTIONS[id](v);
+  toast("设置已保存",1);
+}
+function seg2(title,labels,vals,cur,on){
+  const id="sg"+(segSeq++); SEG_ACTIONS[id]=on;
+  return `<div class="seg-label">${title}</div><div class="seg">${labels.map((l,i)=>`<button class="${vals[i]===cur?'on':''}" data-seg="${id}" data-v="${vals[i]}" onclick="segPick(this)">${l}</button>`).join("")}</div>`;
+}
+function newGate(){
+  const a=6+Math.floor(Math.random()*4), b=6+Math.floor(Math.random()*4);
+  window._gateAns=a+b;
+  const q=$("#gateQ"); if(q) q.textContent=`${a} + ${b} = ?`;
+  const inp=$("#gateInput"); if(inp){ inp.value=""; inp.onkeydown=e=>{if(e.key==="Enter")checkGate();}; }
+}
+function checkGate(){
+  const v=parseInt($("#gateInput").value);
+  if(v===window._gateAns){ $("#gate").style.display="none"; toast("✅ 家长验证通过"); }
+  else { const c=$("#gateCard"); c.classList.remove("shakeit"); void c.offsetWidth; c.classList.add("shakeit"); toast("答案不对哦，再试试"); newGate(); }
+}
+function resetAll(){
+  S.coins=12; S.stars={}; S.tested=[]; S.science=[]; S.stickers=[]; S.hanzi=[]; S.daily={};
+  save(); toast("已重置全部学习进度"); renderParent();
+}
+function showRest(dayOver){
+  const div=document.createElement('div'); div.className='rest'+(dayOver?' day':'');
+  let left=20;
+  div.innerHTML=`<div class="card">
+    ${dayOver?'<div style="font-size:64px">🌟</div>':
+      `<div class="cnt"><svg width="104" height="104"><circle cx="52" cy="52" r="44" stroke="rgba(255,255,255,.25)" stroke-width="10" fill="none"/>
+       <circle id="restRing" cx="52" cy="52" r="44" stroke="#FFC53D" stroke-width="10" fill="none" stroke-linecap="round" stroke-dasharray="276.5" stroke-dashoffset="0" transform="rotate(-90 52 52)"/></svg>
+       <div class="num" style="position:absolute;inset:0;display:grid;place-items:center;font-size:38px;font-weight:900" id="restN">20</div></div>`}
+    <h2>${dayOver?"🌙 今天的探险结束啦":"👀 小眼睛休息一下"}</h2>
+    <p>${dayOver?"明天再来玩，明天有新关卡等你哦（想继续？家长中心可调）":"看看窗外最远的地方，数 20 秒就回来"}</p>
+  </div>`;
+  stage.appendChild(div);
+  if(!dayOver){
+    const t=setInterval(()=>{
+      left--;
+      const n=$("#restN"), r=$("#restRing");
+      if(n) n.textContent=left;
+      if(r) r.setAttribute("stroke-dashoffset", 276.5*(1-left/20));
+      if(left<=0){ clearInterval(t); div.remove(); toast("休息完毕，继续探险！"); }
+    },1000);
+    S.timers.push(t);
+  }
+}
+
+/* ================= 启动 ================= */
+route("map");
+</script>
+</body>
+</html>

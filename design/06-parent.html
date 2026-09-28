@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>06 · 家长中心</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  .content {
+    position: absolute; inset: 96px 24px 18px;
+    overflow: hidden auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: min-content;
+    gap: 16px;
+    padding-bottom: 8px;
+    z-index: 15;
+  }
+
+  .panel {
+    background: linear-gradient(180deg, #FFFFFF, #FBF7EE);
+    border-radius: 28px;
+    border: 5px solid var(--pb);
+    box-shadow: var(--sh-1);
+    padding: 18px 22px;
+  }
+  .panel h3 {
+    font-size: 20px; font-weight: 900;
+    display: flex; align-items: center; gap: 10px;
+    margin-bottom: 13px;
+    color: var(--ink);
+  }
+  .panel h3 .ico {
+    width: 38px; height: 38px; border-radius: 13px;
+    display: grid; place-items: center;
+    font-size: 22px;
+    background: linear-gradient(180deg, #FFF3D8, #FFE7BC);
+    border: 2.5px solid #F0DCAC;
+    box-shadow: 0 3px 0 #F0DCAC;
+  }
+
+  /* 今日时长环 */
+  .time-row { display: flex; align-items: center; gap: 22px; }
+  .ring { position: relative; width: 126px; height: 126px; flex: none; }
+  .ring svg { transform: rotate(-90deg); }
+  .ring .num {
+    position: absolute; inset: 0;
+    display: grid; place-items: center;
+    font-weight: 900; text-align: center;
+    font-size: 26px; line-height: 1.15;
+  }
+  .ring .num small { font-size: 13px; color: var(--ink-soft); font-weight: 800; }
+  .time-info { font-size: 16px; font-weight: 700; color: var(--ink-soft); line-height: 1.75; }
+  .time-info b { color: var(--ink); }
+  .rest-note {
+    margin-top: 10px;
+    background: linear-gradient(180deg, #FFF3D8, #FFE9BC);
+    border: 2.5px solid #F0DCAC;
+    border-radius: 14px;
+    padding: 9px 14px;
+    font-size: 15px; font-weight: 900; color: #9A6B00;
+    box-shadow: 0 3px 0 #F0DCAC;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .rest-note .ic { font-size: 20px; }
+
+  /* 分段选择器 */
+  .seg { display: flex; gap: 8px; flex-wrap: wrap; margin: 6px 0 13px; }
+  .seg button {
+    border: 2.5px solid #E2D4B8; background: #F9F2E4;
+    border-radius: 14px; padding: 9px 16px;
+    font-size: 16.5px; font-weight: 900; color: var(--ink-soft);
+    cursor: pointer; font-family: var(--font-round);
+    box-shadow: 0 3px 0 #E2D4B8;
+    transition: all .15s;
+  }
+  .seg button.on {
+    background: linear-gradient(180deg, var(--blue), var(--blue-dk));
+    border-color: var(--blue-ddk);
+    color: #fff;
+    box-shadow: inset 0 2px 0 rgba(255,255,255,.35), 0 4px 0 var(--blue-ddk);
+  }
+  .seg-label { font-size: 16px; font-weight: 900; color: var(--ink); margin-top: 4px; }
+
+  /* 进度条目 */
+  .subj-row { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+  .subj-row .name { width: 128px; font-size: 17px; font-weight: 900; display: flex; align-items: center; gap: 7px; }
+  .subj-row .name .ic { font-size: 22px; }
+  .subj-row .track { flex: 1; height: 14px; background: #F0E2C2; border-radius: 999px; overflow: hidden; box-shadow: inset 0 2px 0 rgba(84,66,58,.12), 0 0 0 2px rgba(184,119,10,.2); }
+  .subj-row .track-fill { height: 100%; border-radius: 999px; background: linear-gradient(90deg, #FFE58A, var(--gold)); box-shadow: inset 0 -2px 0 rgba(192,138,12,.35); }
+  .subj-row .val { width: 76px; text-align: right; font-size: 15px; font-weight: 900; color: var(--ink-soft); }
+  .stat-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+  .stat-chip {
+    background: linear-gradient(180deg, #FFF3D8, #FFE9BC);
+    border: 2.5px solid #F0DCAC;
+    border-radius: 999px;
+    font-size: 14px; font-weight: 900; color: #9A6B00;
+    padding: 5px 13px;
+    box-shadow: 0 3px 0 #F0DCAC;
+  }
+
+  .act-row { display: flex; flex-wrap: wrap; gap: 12px; }
+  .danger { background: linear-gradient(180deg, #FFE3E0, #FFCFC9) !important; color: #C0392B !important; border-color: #E8B7B0 !important; box-shadow: 0 4px 0 #E8B7B0 !important; }
+
+  .spec-list { list-style: none; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0 24px; }
+  .spec-list li {
+    font-size: 15px; font-weight: 800; color: var(--ink-soft);
+    padding: 7px 0 7px 30px;
+    position: relative;
+    line-height: 1.5;
+  }
+  .spec-list li::before {
+    content: '✓'; position: absolute; left: 4px;
+    color: var(--green-dk); font-weight: 900;
+  }
+
+  /* ---------- 家长门 ---------- */
+  .gate {
+    position: absolute; inset: 0;
+    background: rgba(38,50,64,.5);
+    backdrop-filter: blur(3px);
+    display: grid; place-items: center;
+    z-index: 60;
+  }
+  .gate-card {
+    background: linear-gradient(180deg, #FFFDF4, #FFF3D8);
+    border-radius: 32px;
+    border: 5px solid var(--pb);
+    box-shadow: var(--sh-3);
+    padding: 30px 48px;
+    text-align: center;
+    animation: pop .4s;
+    max-width: 520px;
+  }
+  .gate-card .lock-art { font-size: 62px; filter: drop-shadow(0 6px 8px rgba(0,0,0,.2)); }
+  .gate-card h2 { font-size: 28px; margin: 6px 0 4px; letter-spacing: 3px; }
+  .gate-card p { font-size: 16px; color: var(--ink-soft); font-weight: 800; margin-bottom: 18px; }
+  .gate-q {
+    font-size: 36px; font-weight: 900; letter-spacing: 4px;
+    background: #fff;
+    border: 3px solid #F0DCAC;
+    border-radius: 18px;
+    padding: 12px 30px; margin-bottom: 18px;
+    box-shadow: 0 4px 0 #F0DCAC;
+  }
+  .gate-input-row { display: flex; gap: 12px; justify-content: center; }
+  .gate-input {
+    width: 128px; font-size: 29px; font-weight: 900;
+    text-align: center; padding: 11px;
+    border: 3px solid #E8DFC8; border-radius: 16px;
+    background: #fff;
+    box-shadow: 0 4px 0 #E8DFC8;
+    outline: none; font-family: var(--font-round);
+    color: var(--ink);
+  }
+  .gate-input:focus { border-color: var(--blue); }
+  .gate-card .tip { margin-top: 13px; font-size: 13px; }
+  .gate-card.shake { animation: shake .4s; }
+</style>
+</head>
+<body data-theme="parent">
+<div class="stage">
+
+  <div class="scene">
+    <div class="sun"></div>
+    <div class="cloud c1" style="opacity:.7"></div>
+    <div class="cloud c2" style="opacity:.6"></div>
+    <div class="hills-back"></div>
+    <div class="hills-front"></div>
+  </div>
+
+  <!-- HUD -->
+  <div class="hud">
+    <div class="hud-left">
+      <button class="sqbtn" onclick="goHome()" title="返回"><img class="ic" src="assets/icons/back.svg" alt=""></button>
+      <div>
+        <div class="page-title"><img class="ic" src="assets/icons/lock.svg" alt="">家长中心</div>
+        <div class="page-sub">孩子数据仅保存在本机 · 不上传云端</div>
+      </div>
+    </div>
+    <div class="hud-right">
+      <div class="gold-chip"><span class="ico" style="background:linear-gradient(160deg, #FFE9C2, #FFD79A);"><img class="ic" src="assets/icons/girl.svg" alt=""></span>糖糖 · 4岁半</div>
+    </div>
+  </div>
+
+  <div class="content">
+
+    <!-- 今日时长 -->
+    <div class="panel">
+      <h3><span class="ico"><img class="ic" src="assets/icons/clock.svg" alt=""></span>今日使用时长</h3>
+      <div class="time-row">
+        <div class="ring">
+          <svg width="126" height="126">
+            <circle cx="63" cy="63" r="53" fill="none" stroke="#F0E2C2" stroke-width="14"/>
+            <circle cx="63" cy="63" r="53" fill="none" stroke="#4FA9E8" stroke-width="14"
+                    stroke-linecap="round" stroke-dasharray="333" stroke-dashoffset="66.6"/>
+          </svg>
+          <div class="num">12<small>/15 分钟</small></div>
+        </div>
+        <div class="time-info">
+          今日学习 <b>语文 5 分钟</b> · <b>数学 4 分钟</b><br>
+          <b>科学实验 3 分钟</b> · 休息了 <b>2 次</b><br>
+          剩余 <b>3 分钟</b> 后提醒休息眼睛
+        </div>
+      </div>
+      <div class="rest-note"><img class="ic" src="assets/icons/heart.svg" alt="">到时间会自动进入「小眼睛休息」画面，休息结束再继续</div>
+    </div>
+
+    <!-- 时长设置 -->
+    <div class="panel">
+      <h3><span class="ico"><img class="ic" src="assets/icons/shield.svg" alt=""></span>护眼与时长管理</h3>
+      <div class="seg-label">单次使用时长</div>
+      <div class="seg" id="segOnce">
+        <button onclick="seg(this)">10 分钟</button>
+        <button class="on" onclick="seg(this)">15 分钟</button>
+        <button onclick="seg(this)">20 分钟</button>
+        <button onclick="seg(this)">25 分钟</button>
+      </div>
+      <div class="seg-label">每日使用上限</div>
+      <div class="seg" id="segDay">
+        <button onclick="seg(this)">30 分钟</button>
+        <button class="on" onclick="seg(this)">45 分钟</button>
+        <button onclick="seg(this)">60 分钟</button>
+      </div>
+      <div class="seg-label">休息间隔提醒</div>
+      <div class="seg" id="segRest">
+        <button class="on" onclick="seg(this)">每 15 分钟</button>
+        <button onclick="seg(this)">每 30 分钟</button>
+        <button onclick="seg(this)">关闭</button>
+      </div>
+    </div>
+
+    <!-- 学习进度 -->
+    <div class="panel">
+      <h3><span class="ico"><img class="ic" src="assets/icons/chart.svg" alt=""></span>本周学习进度</h3>
+      <div class="subj-row">
+        <span class="name"><img class="ic" src="assets/icons/book.svg" alt="">识字村</span>
+        <div class="track"><div class="track-fill" style="width:30%;"></div></div>
+        <span class="val">12/40 关</span>
+      </div>
+      <div class="subj-row">
+        <span class="name"><img class="ic" src="assets/icons/equal.svg" alt="">思维镇</span>
+        <div class="track"><div class="track-fill" style="width:45%;"></div></div>
+        <span class="val">18/40 关</span>
+      </div>
+      <div class="subj-row">
+        <span class="name"><img class="ic" src="assets/icons/flask.svg" alt="">科学岛</span>
+        <div class="track"><div class="track-fill" style="width:60%;"></div></div>
+        <span class="val">6/10 实验</span>
+      </div>
+      <div class="stat-chips">
+        <span class="stat-chip">累计认读 36 字</span>
+        <span class="stat-chip">掌握 10 以内点数</span>
+        <span class="stat-chip">连续打卡 6 天</span>
+        <span class="stat-chip">最爱：浮沉实验</span>
+      </div>
+    </div>
+
+    <!-- 难度与内容 -->
+    <div class="panel">
+      <h3><span class="ico"><img class="ic" src="assets/icons/slider.svg" alt=""></span>难度与内容管理</h3>
+      <div class="seg-label">难度模式</div>
+      <div class="seg" id="segDiff">
+        <button onclick="seg(this)">简单</button>
+        <button class="on" onclick="seg(this)">自动适配</button>
+        <button onclick="seg(this)">标准</button>
+      </div>
+      <div class="act-row">
+        <button class="jbtn jbtn-cream" style="font-size:16.5px; padding:10px 18px;" onclick="toast('已解锁全部章节试玩（演示）')">解锁全部章节</button>
+        <button class="jbtn jbtn-cream" style="font-size:16.5px; padding:10px 18px;" onclick="toast('已跳过「凑十法」关卡（演示）')">跳过某个知识点</button>
+        <button class="jbtn jbtn-cream danger" style="font-size:16.5px; padding:10px 18px;" onclick="toast('演示界面，不会真的重置')">重置全部进度</button>
+      </div>
+    </div>
+
+    <!-- 产品说明 -->
+    <div class="panel" style="grid-column: 1 / -1;">
+      <h3><span class="ico"><img class="ic" src="assets/icons/bulb.svg" alt=""></span>本产品承诺（家长可放心）</h3>
+      <ul class="spec-list">
+        <li>无广告 · 无推送 · 无外链</li>
+        <li>无内购 · 无付费陷阱</li>
+        <li>无社交 · 无陌生人接触</li>
+        <li>数据只存在这台 iPad 上</li>
+        <li>进入家长区需通过家长门</li>
+        <li>超时自动提醒休息眼睛</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- 家长门验证 -->
+  <div class="gate" id="gate">
+    <div class="gate-card" id="gateCard">
+      <div class="lock-art"><img class="ic" src="assets/icons/lock.svg" alt=""></div>
+      <h2>家长中心</h2>
+      <p>这里是大人的设置区，请完成验证：<br>（孩子答不出来的小算术）</p>
+      <div class="gate-q">7 + 8 = ?</div>
+      <div class="gate-input-row">
+        <input class="gate-input" id="gateInput" type="number" inputmode="numeric" placeholder="答案">
+        <button class="jbtn jbtn-green" style="font-size:22px;" onclick="checkGate()">进入</button>
+      </div>
+      <p class="tip">设计稿演示：输入 15 即可通过 · 其他答案会摇头</p>
+    </div>
+  </div>
+
+  <div class="design-note">设计稿 06 · 家长中心（派对风面板 + 家长门）</div>
+</div>
+
+<script src="art.js"></script>
+<script src="app.js"></script>
+<script>
+  function seg(btn) {
+    [...btn.parentElement.children].forEach(b => b.classList.remove('on'));
+    btn.classList.add('on');
+    toast('设置已保存（演示）', 1200);
+  }
+
+  function checkGate() {
+    const v = document.getElementById('gateInput').value;
+    if (String(v).trim() === '15') {
+      document.getElementById('gate').style.display = 'none';
+      toast('家长验证通过');
+    } else {
+      const card = document.getElementById('gateCard');
+      card.classList.remove('shake'); void card.offsetWidth; card.classList.add('shake');
+      toast('答案不对哦，再试试（提示：15）');
+    }
+  }
+  document.getElementById('gateInput').addEventListener('keydown', e => {
+    if (e.key === 'Enter') checkGate();
+  });
+</script>
+</body>
+</html>

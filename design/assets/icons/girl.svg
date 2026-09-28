@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs><linearGradient id="g-hair" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9C6B44"/><stop offset="1" stop-color="#7A4E2C"/></linearGradient><linearGradient id="g-skin" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFEFD9"/><stop offset="1" stop-color="#FFD3AE"/></linearGradient></defs>
+  <circle cx="9" cy="36" r="8.5" fill="url(#g-hair)"/><circle cx="55" cy="36" r="8.5" fill="url(#g-hair)"/>
+  <circle cx="32" cy="33" r="23" fill="url(#g-hair)"/>
+  <circle cx="32" cy="38" r="18.5" fill="url(#g-skin)"/>
+  <path d="M13 31 Q16 13 32 13 Q48 13 51 31 Q45 24 39 26 Q36 20 32 21 Q28 20 25 26 Q19 24 13 31 Z" fill="url(#g-hair)"/>
+  <circle cx="25.5" cy="38" r="2.7" fill="#5B4636"/><circle cx="38.5" cy="38" r="2.7" fill="#5B4636"/>
+  <circle cx="26.4" cy="37.1" r=".9" fill="#fff"/><circle cx="39.4" cy="37.1" r=".9" fill="#fff"/>
+  <circle cx="20.5" cy="44" r="3.2" fill="#FF9E8E" opacity=".55"/><circle cx="43.5" cy="44" r="3.2" fill="#FF9E8E" opacity=".55"/>
+  <path d="M28.5 45 Q32 48.5 35.5 45" stroke="#5B4636" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+  <ellipse cx="23" cy="17" rx="6.5" ry="3.2" fill="#fff" opacity=".4" transform="rotate(-18 23 17)"/></svg>

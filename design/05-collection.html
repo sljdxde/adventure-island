@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>05 · 收集册</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  /* ---------- 大奶油面板 ---------- */
+  .board-panel {
+    position: absolute;
+    left: 18px; right: 18px; bottom: 14px; top: 188px;
+    background: var(--cream);
+    border-radius: 40px;
+    border: 5px solid var(--pb);
+    box-shadow: var(--sh-3);
+    z-index: 15;
+    overflow: hidden;
+    display: flex; flex-direction: column;
+  }
+  .board-inner { padding: 18px 24px 14px; overflow: hidden auto; flex: 1; }
+
+  /* ---------- 页签（方块式） ---------- */
+  .tabs {
+    position: absolute;
+    top: 92px; left: 40px;
+    display: flex; gap: 14px;
+    z-index: 20;
+  }
+  .tab {
+    border: none; cursor: pointer;
+    font-family: var(--font-round);
+    display: flex; flex-direction: column; align-items: center; gap: 3px;
+    background: none;
+  }
+  .tab .ic-box {
+    width: 60px; height: 60px;
+    border-radius: 18px;
+    background: rgba(255,255,255,.9);
+    border: 3px solid rgba(184,119,10,.35);
+    box-shadow: 0 4px 0 rgba(140,90,43,.25);
+    display: grid; place-items: center;
+    font-size: 30px;
+    transition: all .12s;
+  }
+  .tab .t { font-size: 14px; font-weight: 900; color: #8A6520; letter-spacing: 1px; text-shadow: 0 1px 0 rgba(255,255,255,.6); }
+  .tab.active .ic-box {
+    background: linear-gradient(180deg, #FFDD7A, var(--yellow-dk));
+    border-color: var(--yellow-ddk);
+    box-shadow: inset 0 3px 0 rgba(255,255,255,.5), 0 5px 0 var(--yellow-ddk);
+    transform: translateY(-4px) scale(1.08);
+  }
+  .tab.active .t { color: var(--yellow-ddk); }
+
+  .board-head {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 14px;
+  }
+  .board-head .total { font-size: 20px; font-weight: 900; color: var(--ink-soft); }
+  .board-head .total b { color: var(--orange-dk); font-size: 25px; }
+  .board-head .track { width: 280px; height: 14px; background: #F0E2C2; border-radius: 999px; overflow: hidden; box-shadow: inset 0 2px 0 rgba(84,66,58,.12), 0 0 0 2px rgba(184,119,10,.25); }
+  .board-head .track-fill { height: 100%; border-radius: 999px; background: linear-gradient(90deg, #FFE58A, var(--gold)); box-shadow: inset 0 -2px 0 rgba(192,138,12,.35); }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 14px;
+  }
+  .slot {
+    aspect-ratio: 1 / 1.05;
+    border-radius: 22px;
+    display: grid; place-items: center; align-content: center;
+    cursor: pointer;
+    position: relative;
+    transition: transform .12s;
+    text-align: center;
+  }
+  .slot:hover { transform: translateY(-4px) scale(1.04); }
+  .slot .art { font-size: 50px; filter: drop-shadow(0 5px 5px rgba(0,0,0,.14)); }
+  .slot .name { font-size: 15px; font-weight: 900; margin-top: 3px; letter-spacing: 1px; }
+  .slot .tag {
+    position: absolute; top: 7px; right: 9px;
+    font-size: 12px; font-weight: 900;
+    border-radius: 999px; padding: 2px 9px;
+    color: #fff;
+    border: 2px solid #fff;
+    box-shadow: 0 2px 0 rgba(0,0,0,.12);
+  }
+  .slot.got {
+    background: linear-gradient(180deg, #FFFFFF, #FFF6E0);
+    border: 4px solid #fff;
+    box-shadow: 0 5px 0 #EFDBA8, 0 0 0 3px var(--pb), var(--sh-1);
+  }
+  .slot.got .tag.float { background: linear-gradient(180deg, var(--blue), var(--blue-dk)); }
+  .slot.got .tag.sink  { background: linear-gradient(180deg, var(--coral), var(--coral-dk)); }
+  .slot.locked {
+    background: #F3EADA;
+    border: 4px dashed #E0D2B6;
+    color: #C9BBA0;
+    cursor: default;
+  }
+  .slot.locked:hover { transform: none; }
+  .slot.locked .art { font-size: 40px; opacity: .8; }
+
+  .page-panel { display: none; }
+  .page-panel.active { display: block; animation: pop .35s; }
+
+  .hint-row {
+    margin-top: 16px;
+    font-size: 16px;
+    color: var(--ink-soft);
+    font-weight: 800;
+    text-align: center;
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+  }
+  .hint-row .ic { font-size: 20px; }
+
+  /* 本周目标条（填充面板底部） */
+  .week-strip {
+    margin-top: 18px;
+    display: flex; align-items: center; gap: 12px;
+    background: linear-gradient(180deg, #FFF7E4, #FFEDC9);
+    border: 3px solid #F0DCAC;
+    border-radius: 20px;
+    padding: 10px 18px;
+    box-shadow: 0 4px 0 #F0DCAC;
+  }
+  .week-strip .w-ic { font-size: 40px; filter: drop-shadow(0 4px 5px rgba(0,0,0,.15)); }
+  .week-strip .w-t { font-size: 18px; font-weight: 900; color: #9A6B00; letter-spacing: 1px; white-space: nowrap; }
+  .week-strip .w-chip {
+    background: #fff;
+    border: 2.5px solid #E4D2AC;
+    border-radius: 999px;
+    padding: 6px 16px;
+    font-size: 15px; font-weight: 900; color: var(--ink);
+    box-shadow: 0 3px 0 #E4D2AC;
+    white-space: nowrap;
+  }
+  .week-strip .w-chip b { color: var(--orange-dk); }
+  .week-strip .w-reward {
+    margin-left: auto;
+    display: flex; align-items: center; gap: 8px;
+    font-size: 15px; font-weight: 900; color: #9A6B00;
+    white-space: nowrap;
+  }
+  .week-strip .w-reward .ic { font-size: 30px; }
+</style>
+</head>
+<body data-theme="coll">
+<div class="stage">
+
+  <div class="scene">
+    <div class="sun"></div>
+    <div class="cloud c1" style="opacity:.8"></div>
+    <div class="cloud c2" style="opacity:.7"></div>
+    <div class="hills-back"></div>
+    <div class="hills-front"></div>
+    <span class="deco" style="right:44px; top:120px; font-size:40px; animation:float-bob 3s ease-in-out infinite; filter:drop-shadow(0 5px 7px rgba(0,0,0,.15));"><img class="ic" src="assets/icons/coin.svg" alt=""></span>
+    <span class="deco" style="right:92px; top:100px; font-size:40px; animation:float-bob 3s .6s ease-in-out infinite; filter:drop-shadow(0 5px 7px rgba(0,0,0,.15));"><img class="ic" src="assets/icons/coin.svg" alt=""></span>
+  </div>
+
+  <!-- HUD -->
+  <div class="hud">
+    <div class="hud-left">
+      <button class="sqbtn" onclick="goHome()" title="返回"><img class="ic" src="assets/icons/back.svg" alt=""></button>
+      <div class="nameplate">
+        <div class="ava"><img class="ic" src="assets/icons/girl.svg" alt=""></div>
+        <div class="name">糖糖的收集册</div>
+      </div>
+    </div>
+    <div class="hud-right">
+      <div class="gold-chip"><span class="ico"><img class="ic" src="assets/icons/coin.svg" alt=""></span>128</div>
+      <div class="gold-chip"><span class="ico" style="background:radial-gradient(circle at 35% 30%, #FFB25C, var(--orange) 60%, var(--orange-dk));"><img class="ic" src="assets/icons/fire.svg" alt=""></span>连续 6 天</div>
+    </div>
+  </div>
+
+  <!-- 页签 -->
+  <div class="tabs">
+    <button class="tab active" data-tab="sci" onclick="switchTab('sci')"><span class="ic-box"><img class="ic" src="assets/icons/flask.svg" alt=""></span><span class="t">科学图鉴</span></button>
+    <button class="tab" data-tab="sticker" onclick="switchTab('sticker')"><span class="ic-box"><img class="ic" src="assets/icons/sparkle.svg" alt=""></span><span class="t">贴纸</span></button>
+    <button class="tab" data-tab="hanzi" onclick="switchTab('hanzi')"><span class="ic-box"><img class="ic" src="assets/icons/hanzi.svg" alt=""></span><span class="t">汉字卡</span></button>
+    <button class="tab" data-tab="badge" onclick="switchTab('badge')"><span class="ic-box"><img class="ic" src="assets/icons/medal.svg" alt=""></span><span class="t">徽章</span></button>
+  </div>
+
+  <!-- 面板 -->
+  <div class="board-panel">
+    <div class="board-inner">
+
+      <!-- 科学图鉴 -->
+      <div class="page-panel active" id="panel-sci">
+        <div class="board-head">
+          <span class="total">已完成 <b>6</b> / 24 个现象</span>
+          <div class="track"><div class="track-fill" style="width:25%;"></div></div>
+        </div>
+        <div class="grid">
+          <div class="slot got" onclick="fact('苹果能浮起来，是因为果肉里藏着小气孔，像穿了救生衣！')"><span class="art"><img class="ic" src="assets/icons/apple.svg" alt=""></span><span class="name">苹果</span><span class="tag float">浮</span></div>
+          <div class="slot got" onclick="fact('石头比同体积的水重很多，所以一放就沉底啦。')"><span class="art"><img class="ic" src="assets/icons/rock.svg" alt=""></span><span class="name">石头</span><span class="tag sink">沉</span></div>
+          <div class="slot got" onclick="fact('木头里有很多小空隙，轻轻的，所以能浮在水面上。')"><span class="art"><img class="ic" src="assets/icons/wood.svg" alt=""></span><span class="name">木头</span><span class="tag float">浮</span></div>
+          <div class="slot got" onclick="fact('金属钥匙个头小却很重，扑通一下就沉下去了。')"><span class="art"><img class="ic" src="assets/icons/key.svg" alt=""></span><span class="name">钥匙</span><span class="tag sink">沉</span></div>
+          <div class="slot got" onclick="fact('干海绵会浮，吸满水之后会慢慢往下沉，试试看！')"><span class="art"><img class="ic" src="assets/icons/sponge.svg" alt=""></span><span class="name">海绵</span><span class="tag float">浮</span></div>
+          <div class="slot got" onclick="fact('气球里装的是空气，最轻最轻，漂在最上面。')"><span class="art"><img class="ic" src="assets/icons/balloon.svg" alt=""></span><span class="name">气球</span><span class="tag float">浮</span></div>
+          <div class="slot locked"><span class="art"><img class="ic" src="assets/icons/question.svg" alt=""></span><span class="name">？？？</span></div>
+          <div class="slot locked"><span class="art"><img class="ic" src="assets/icons/question.svg" alt=""></span><span class="name">？？？</span></div>
+          <div class="slot locked"><span class="art"><img class="ic" src="assets/icons/question.svg" alt=""></span><span class="name">？？？</span></div>
+          <div class="slot locked"><span class="art"><img class="ic" src="assets/icons/question.svg" alt=""></span><span class="name">？？？</span></div>
+          <div class="slot locked"><span class="art"><img class="ic" src="assets/icons/question.svg" alt=""></span><span class="name">？？？</span></div>
+          <div class="slot locked"><span class="art"><img class="ic" src="assets/icons/question.svg" alt=""></span><span class="name">？？？</span></div>
+        </div>
+        <div class="hint-row"><img class="ic" src="assets/icons/bulb.svg" alt="">去科学岛做实验，就能点亮更多现象图鉴</div>
+      </div>
+
+      <!-- 贴纸 -->
+      <div class="page-panel" id="panel-sticker">
+        <div class="board-head">
+          <span class="total">已获得 <b>12</b> / 60 张</span>
+          <div class="track"><div class="track-fill" style="width:20%;"></div></div>
+        </div>
+        <div class="grid">
+          <div class="slot got" onclick="toast('贴纸故事：第一次完成科学实验！')"><span class="art"><img class="ic" src="assets/icons/medal.svg" alt=""></span><span class="name">浮沉小侦探</span></div>
+          <div class="slot got"><span class="art"><img class="ic" src="assets/icons/starface.svg" alt=""></span><span class="name">识字新星</span></div>
+          <div class="slot got"><span class="art"><img class="ic" src="assets/icons/duck.svg" alt=""></span><span class="name">数数小鸭</span></div>
+          <div class="slot got"><span class="art"><img class="ic" src="assets/icons/party.svg" alt=""></span><span class="name">闯关欢呼</span></div>
+          <div class="slot got"><span class="art"><img class="ic" src="assets/icons/flower.svg" alt=""></span><span class="name">春日限定</span></div>
+          <div class="slot got"><span class="art"><img class="ic" src="assets/icons/rocket.svg" alt=""></span><span class="name">未来科学家</span></div>
+          <div class="slot locked"><span class="art"><img class="ic" src="assets/icons/question.svg" alt=""></span><span class="name">？？？</span></div>
+          <div class="slot locked"><span class="art"><img class="ic" src="assets/icons/question.svg" alt=""></span><span class="name">？？？</span></div>
+          <div class="slot locked"><span class="art"><img class="ic" src="assets/icons/question.svg" alt=""></span><span class="name">？？？</span></div>
+          <div class="slot locked"><span class="art"><img class="ic" src="assets/icons/question.svg" alt=""></span><span class="name">？？？</span></div>
+          <div class="slot locked"><span class="art"><img class="ic" src="assets/icons/question.svg" alt=""></span><span class="name">？？？</span></div>
+          <div class="slot locked"><span class="art"><img class="ic" src="assets/icons/question.svg" alt=""></span><span class="name">？？？</span></div>
+        </div>
+        <div class="hint-row"><img class="ic" src="assets/icons/bulb.svg" alt="">完成每日任务、闯关成功都能掉落贴纸</div>
+      </div>
+
+      <!-- 汉字卡 -->
+      <div class="page-panel" id="panel-hanzi">
+        <div class="board-head">
+          <span class="total">已认读 <b>36</b> / 300 字</span>
+          <div class="track"><div class="track-fill" style="width:12%;"></div></div>
+        </div>
+        <div class="grid" id="hanziGrid">
+          <div class="slot got" onclick="speak('日，太阳的日')"><span class="art" style="font-family:var(--font-kai); font-size:54px; color:#E2582A;">日</span><span class="name">rì</span></div>
+          <div class="slot got" onclick="speak('月，月亮的月')"><span class="art" style="font-family:var(--font-kai); font-size:54px; color:#7C5CE0;">月</span><span class="name">yuè</span></div>
+          <div class="slot got" onclick="speak('水，喝水的水')"><span class="art" style="font-family:var(--font-kai); font-size:54px; color:#2F86C9;">水</span><span class="name">shuǐ</span></div>
+          <div class="slot got" onclick="speak('火，火苗的火')"><span class="art" style="font-family:var(--font-kai); font-size:54px; color:#E85D4E;">火</span><span class="name">huǒ</span></div>
+          <div class="slot got" onclick="speak('山，大山的山')"><span class="art" style="font-family:var(--font-kai); font-size:54px; color:#3BA851;">山</span><span class="name">shān</span></div>
+          <div class="slot got" onclick="speak('木，树木的木')"><span class="art" style="font-family:var(--font-kai); font-size:54px; color:#B06A00;">木</span><span class="name">mù</span></div>
+          <div class="slot locked"><span class="art" style="font-family:var(--font-kai);">人</span><span class="name">？？？</span></div>
+          <div class="slot locked"><span class="art" style="font-family:var(--font-kai);">口</span><span class="name">？？？</span></div>
+          <div class="slot locked"><span class="art" style="font-family:var(--font-kai);">手</span><span class="name">？？？</span></div>
+          <div class="slot locked"><span class="art" style="font-family:var(--font-kai);">天</span><span class="name">？？？</span></div>
+          <div class="slot locked"><span class="art" style="font-family:var(--font-kai);">田</span><span class="name">？？？</span></div>
+          <div class="slot locked"><span class="art" style="font-family:var(--font-kai);">石</span><span class="name">？？？</span></div>
+        </div>
+        <div class="hint-row"><img class="ic" src="assets/icons/bulb.svg" alt="">点汉字卡可以听发音（TTS 演示）</div>
+      </div>
+
+      <!-- 徽章 -->
+      <div class="page-panel" id="panel-badge">
+        <div class="board-head">
+          <span class="total">已解锁 <b>3</b> / 16 枚</span>
+          <div class="track"><div class="track-fill" style="width:19%;"></div></div>
+        </div>
+        <div class="grid">
+          <div class="slot got"><span class="art"><img class="ic" src="assets/icons/medal.svg" alt=""></span><span class="name">初来乍到</span></div>
+          <div class="slot got"><span class="art"><img class="ic" src="assets/icons/book.svg" alt=""></span><span class="name">识字新星<br>36字</span></div>
+          <div class="slot got"><span class="art"><img class="ic" src="assets/icons/chart.svg" alt=""></span><span class="name">思维小达人<br>18关</span></div>
+          <div class="slot got" style="box-shadow:0 5px 0 #D8CCF5, 0 0 0 3px var(--purple), var(--sh-1); background:linear-gradient(180deg,#FBF9FF,#F1E9FF);"><span class="art"><img class="ic" src="assets/icons/flask.svg" alt=""></span><span class="name">实验狂人<br>6/10</span></div>
+          <div class="slot locked"><span class="art"><img class="ic" src="assets/icons/question.svg" alt=""></span><span class="name">磨耳朵7天</span></div>
+          <div class="slot locked"><span class="art"><img class="ic" src="assets/icons/question.svg" alt=""></span><span class="name">全勤之星</span></div>
+          <div class="slot locked"><span class="art"><img class="ic" src="assets/icons/question.svg" alt=""></span><span class="name">小小书法家</span></div>
+          <div class="slot locked"><span class="art"><img class="ic" src="assets/icons/question.svg" alt=""></span><span class="name">全科通</span></div>
+          <div class="slot locked"><span class="art"><img class="ic" src="assets/icons/question.svg" alt=""></span><span class="name">？？？</span></div>
+          <div class="slot locked"><span class="art"><img class="ic" src="assets/icons/question.svg" alt=""></span><span class="name">？？？</span></div>
+          <div class="slot locked"><span class="art"><img class="ic" src="assets/icons/question.svg" alt=""></span><span class="name">？？？</span></div>
+          <div class="slot locked"><span class="art"><img class="ic" src="assets/icons/question.svg" alt=""></span><span class="name">？？？</span></div>
+        </div>
+        <div class="hint-row"><img class="ic" src="assets/icons/bulb.svg" alt="">徽章记录每一次了不起的坚持</div>
+      </div>
+
+      <!-- 本周目标 -->
+      <div class="week-strip">
+        <span class="w-ic"><img class="ic" src="assets/icons/dice.svg" alt=""></span>
+        <span class="w-t">本周目标</span>
+        <span class="w-chip">语文 2 关 <b>1/2</b></span>
+        <span class="w-chip">数学 2 关 <b>0/2</b></span>
+        <span class="w-chip">实验 1 个 <b>0/1</b></span>
+        <span class="w-reward">全部完成得 <img class="ic" src="assets/icons/starface.svg" alt=""> ×3</span>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="design-note">设计稿 05 · 收集册（派对风面板 + 贴纸卡网格）</div>
+</div>
+
+<script src="art.js"></script>
+<script src="app.js"></script>
+<script>
+  function switchTab(t) {
+    document.querySelectorAll('.tab').forEach(b => b.classList.toggle('active', b.dataset.tab === t));
+    document.querySelectorAll('.page-panel').forEach(p => p.classList.toggle('active', p.id === 'panel-' + t));
+  }
+  function fact(msg) { toast(msg, 3200); speak(msg); }
+</script>
+</body>
+</html>

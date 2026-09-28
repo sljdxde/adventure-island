@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>03 · 思维镇 · 数一数</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  .body-wrap {
+    position: absolute; inset: 96px 0 0;
+    display: grid; place-items: center;
+    padding-bottom: 52px;
+    z-index: 15;
+  }
+
+  .qa-card {
+    width: 800px;
+    background: linear-gradient(180deg, #FFFFFF, #F4FBFF);
+    border-radius: 34px;
+    border: 5px solid var(--pb);
+    box-shadow: var(--sh-3);
+    padding: 30px 36px 26px;
+    text-align: center;
+    position: relative;
+  }
+  .round-tag {
+    position: absolute; top: -21px; left: 34px;
+    background: linear-gradient(180deg, var(--blue), var(--blue-dk));
+    border: 3px solid var(--blue-ddk);
+    color: #fff; font-size: 17px; font-weight: 900;
+    border-radius: 999px; padding: 7px 22px;
+    box-shadow: inset 0 2px 0 rgba(255,255,255,.35), 0 4px 0 var(--blue-ddk);
+    letter-spacing: 1px;
+  }
+  .question { font-size: 29px; font-weight: 900; margin: 8px 0 16px; letter-spacing: 1px; }
+  .question .hl { color: var(--blue-dk); }
+  .question .tip { font-size: 18px; color: var(--ink-soft); font-weight: 800; }
+
+  /* ---------- 池塘 ---------- */
+  .pond {
+    position: relative;
+    height: 190px;
+    border-radius: 26px;
+    border: 5px solid #fff;
+    box-shadow: 0 0 0 4px var(--pb), inset 0 6px 14px rgba(47,134,201,.25);
+    background: linear-gradient(180deg, #C9EFFB 0%, #8ED8F6 68%, #6FC9EE 100%);
+    overflow: hidden;
+    margin-bottom: 22px;
+  }
+  .pond .wave {
+    position: absolute; left: -5%; right: -5%; bottom: -26px; height: 60px;
+    background: radial-gradient(circle at 10px -8px, transparent 20px, rgba(255,255,255,.45) 21px);
+    background-size: 44px 30px;
+  }
+  .pond .lily { position: absolute; font-size: 32px; opacity: .95; }
+  .duck {
+    position: absolute; bottom: 44px;
+    font-size: 60px;
+    cursor: pointer;
+    transition: transform .15s;
+    animation: duck-bob 2.2s ease-in-out infinite;
+    user-select: none;
+    filter: drop-shadow(0 6px 6px rgba(20,60,90,.25));
+  }
+  .duck:hover { transform: scale(1.15); }
+  .duck.counted { filter: drop-shadow(0 0 12px #FFD54F); }
+  @keyframes duck-bob {
+    0%,100% { translate: 0 0; rotate: -2deg; }
+    50%     { translate: 0 -9px; rotate: 3deg; }
+  }
+  .count-bubble {
+    position: absolute;
+    font-size: 25px; font-weight: 900; color: #8A5B00;
+    background: linear-gradient(180deg, #FFE58A, var(--gold));
+    border: 3px solid var(--gold-ddk);
+    border-radius: 50%;
+    width: 46px; height: 46px;
+    display: grid; place-items: center;
+    animation: bubbleUp .8s ease-out forwards;
+    pointer-events: none;
+    z-index: 5;
+  }
+  @keyframes bubbleUp {
+    0% { transform: translateY(0) scale(.5); opacity: 0; }
+    30% { transform: translateY(-26px) scale(1.15); opacity: 1; }
+    100% { transform: translateY(-60px) scale(1); opacity: 0; }
+  }
+  .counter-chip {
+    position: absolute; top: 12px; right: 14px;
+    background: #fff;
+    border: 3px solid var(--pb);
+    border-radius: 999px; padding: 7px 20px;
+    font-size: 20px; font-weight: 900;
+    box-shadow: 0 4px 0 rgba(47,134,201,.18);
+  }
+  .counter-chip b { color: var(--blue-dk); font-size: 26px; }
+
+  /* ---------- 比多少 ---------- */
+  .plates { display: flex; gap: 34px; justify-content: center; margin-bottom: 22px; }
+  .plate {
+    width: 280px; height: 180px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 40% 34%, #FFFFFF, #F2EDDF 78%);
+    box-shadow: 0 7px 0 #E4D9C2, 0 0 0 4px var(--pb), inset 0 -6px 0 rgba(0,0,0,.04);
+    display: flex; flex-wrap: wrap; align-items: center; justify-content: center;
+    gap: 2px 10px;
+    font-size: 46px;
+    padding: 20px;
+  }
+  .plate-label { font-size: 18px; font-weight: 900; color: var(--ink-soft); margin-top: 10px; }
+  .plate-wrap { text-align: center; }
+
+  /* ---------- 选项（金币方块数字键） ---------- */
+  .num-options { display: flex; gap: 30px; justify-content: center; }
+  .num-btn {
+    width: 104px; height: 96px;
+    border-radius: 20px;
+    border: 3px solid var(--gold-ddk);
+    font-family: var(--font-round);
+    font-size: 44px; font-weight: 900;
+    color: #8A5B00;
+    background: linear-gradient(180deg, #FFE58A 0%, var(--gold) 40%, var(--gold-dk) 100%);
+    box-shadow: 0 6px 0 var(--gold-ddk), 0 10px 14px rgba(192,138,12,.3), inset 0 3px 0 rgba(255,255,255,.55);
+    text-shadow: 0 1px 0 rgba(255,255,255,.5);
+    cursor: pointer;
+    transition: transform .12s;
+  }
+  .num-btn:hover { transform: translateY(-5px); }
+  .num-btn:active { transform: translateY(4px); box-shadow: 0 1px 0 var(--gold-ddk); }
+  .num-btn.correct { background: linear-gradient(180deg, #C6F0A0 0%, #92DC6A 40%, #5CB444 100%); border-color: var(--green-ddk); color: #2F6B22; box-shadow: 0 6px 0 #3F8F30, inset 0 3px 0 rgba(255,255,255,.5); animation: pop .4s; }
+  .num-btn.wrong { animation: shake .4s; }
+  .num-btn.dim { opacity: .4; pointer-events: none; }
+
+  .text-options { display: flex; gap: 20px; justify-content: center; }
+  .text-btn {
+    padding: 13px 28px; font-size: 23px;
+    border-radius: 999px; border: 3px solid #E4D2AC;
+    font-family: var(--font-round);
+    background: #fff; color: var(--ink); font-weight: 900; cursor: pointer;
+    box-shadow: 0 5px 0 #E4D2AC, var(--sh-1);
+    letter-spacing: 1px;
+    transition: transform .12s;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .text-btn .ic { font-size: 26px; }
+  .text-btn:hover { transform: translateY(-5px); }
+  .text-btn.correct { background: linear-gradient(180deg, #C6F0A0, #5CB444); border-color: var(--green-ddk); color: #2F6B22; box-shadow: 0 5px 0 #3F8F30; animation: pop .4s; }
+  .text-btn.wrong { animation: shake .4s; }
+
+  /* ---------- 完成卡 ---------- */
+  .finish-card { display: none; text-align: center; }
+  .finish-card.show { display: block; animation: pop .5s; }
+  .finish-party { font-size: 62px; filter: drop-shadow(0 6px 8px rgba(0,0,0,.18)); }
+  .finish-stars { font-size: 58px; letter-spacing: 14px; margin: 12px 0 6px; filter: drop-shadow(0 6px 6px rgba(192,138,12,.35)); }
+  .finish-sub { font-size: 18px; color: var(--ink-soft); font-weight: 800; margin-bottom: 20px; }
+</style>
+</head>
+<body data-theme="math">
+<div class="stage">
+
+  <div class="scene">
+    <div class="sun"></div>
+    <div class="cloud c1"></div>
+    <div class="cloud c2"></div>
+    <div class="cloud c3"></div>
+    <div class="hills-back"></div>
+    <div class="hills-front"></div>
+    <span class="deco" style="left:36px; top:150px; font-size:42px; animation:float-bob 3s ease-in-out infinite; filter:drop-shadow(0 5px 7px rgba(0,0,0,.16));"><img class="ic" src="assets/icons/block.svg" alt=""></span>
+    <span class="deco" style="right:40px; top:170px; font-size:40px; animation:float-bob 3.4s .6s ease-in-out infinite; filter:drop-shadow(0 5px 7px rgba(0,0,0,.16));"><img class="ic" src="assets/icons/coin.svg" alt=""></span>
+  </div>
+
+  <!-- HUD -->
+  <div class="hud">
+    <div class="hud-left">
+      <button class="sqbtn" onclick="goHome()" title="返回"><img class="ic" src="assets/icons/back.svg" alt=""></button>
+      <div>
+        <div class="page-title">思维镇 · 第 5 关 数与量</div>
+        <div class="page-sub">关卡进度 5 / 40 · 4-5岁 L2</div>
+      </div>
+    </div>
+    <div class="hud-right">
+      <div class="step-chips">
+        <span class="step-chip done"><span class="dot">✓</span>点数</span>
+        <span class="gap"></span>
+        <span class="step-chip now"><span class="dot">2</span>比多少</span>
+        <span class="gap"></span>
+        <span class="step-chip"><span class="dot">3</span>排序</span>
+      </div>
+      <div class="gold-chip"><span class="ico"><img class="ic" src="assets/icons/star.svg" alt=""></span>2</div>
+    </div>
+  </div>
+
+  <div class="body-wrap">
+    <div class="qa-card" id="qaCard">
+
+      <!-- 第 1 题：数鸭子 -->
+      <div id="round1">
+        <div class="round-tag">第 1 题 · 数一数</div>
+        <div class="question">池塘里有几只小鸭？<span class="tip">（点一点，数数看）</span></div>
+        <div class="pond" id="pond">
+          <div class="counter-chip">已数 <b id="cnt">0</b> 只</div>
+          <span class="lily" style="left:26px; top:16px;"><img class="ic" src="assets/icons/flower.svg" alt=""></span>
+          <span class="lily" style="right:190px; top:30px; font-size:28px;"><img class="ic" src="assets/icons/leaf.svg" alt=""></span>
+          <div class="wave"></div>
+        </div>
+        <div class="num-options" id="r1opts">
+          <button class="num-btn" onclick="r1(this,3)">3</button>
+          <button class="num-btn" onclick="r1(this,4)">4</button>
+          <button class="num-btn" onclick="r1(this,5)">5</button>
+        </div>
+      </div>
+
+      <!-- 第 2 题：比多少 -->
+      <div id="round2" style="display:none">
+        <div class="round-tag" style="background:linear-gradient(180deg, var(--green), var(--green-dk)); border-color:var(--green-ddk); box-shadow:inset 0 2px 0 rgba(255,255,255,.35), 0 4px 0 var(--green-ddk);">第 2 题 · 比一比</div>
+        <div class="question">果盘里的水果，<span class="hl">哪边更多</span>？</div>
+        <div class="plates">
+          <div class="plate-wrap">
+            <div class="plate" id="plateA"></div>
+            <div class="plate-label">苹果盘</div>
+          </div>
+          <div class="plate-wrap">
+            <div class="plate" id="plateB"></div>
+            <div class="plate-label">香蕉盘</div>
+          </div>
+        </div>
+        <div class="text-options" id="r2opts">
+          <button class="text-btn" onclick="r2(this,'apple')"><img class="ic" src="assets/icons/apple.svg" alt="">苹果多</button>
+          <button class="text-btn" onclick="r2(this,'banana')"><img class="ic" src="assets/icons/banana.svg" alt="">香蕉多</button>
+          <button class="text-btn" onclick="r2(this,'same')"><img class="ic" src="assets/icons/equal.svg" alt="">一样多</button>
+        </div>
+      </div>
+
+      <!-- 完成卡 -->
+      <div class="finish-card" id="finish">
+        <div class="finish-party"><img class="ic" src="assets/icons/party.svg" alt=""></div>
+        <div class="question">本关完成！</div>
+        <div class="finish-stars"><img class="ic" src="assets/icons/starface.svg" alt=""><img class="ic" src="assets/icons/starface.svg" alt=""><img class="ic" src="assets/icons/starface.svg" alt=""></div>
+        <div class="finish-sub">学会了：5 以内点数 · 比多少 · 集合对应</div>
+        <button class="jbtn jbtn-orange" onclick="goHome()"><img class="ic" src="assets/icons/home.svg" alt="">返回地图</button>
+        <button class="jbtn jbtn-cream" style="margin-left:12px;" onclick="toast('下一关：给小动物排队（设计稿演示）')">下一关 ▶</button>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="safe-tip">先点小鸭帮助点数，再选答案 · 答错不扣分，大胆试！</div>
+  <div class="design-note">设计稿 03 · 数学关卡（派对风：金币方块数字键 + 池塘点数）</div>
+</div>
+
+<script src="art.js"></script>
+<script src="app.js"></script>
+<script>
+  const pond = document.getElementById('pond');
+  const DUCK_N = 5;
+  let counted = new Set();
+  for (let i = 0; i < DUCK_N; i++) {
+    const d = document.createElement('div');
+    d.className = 'duck';
+    d.innerHTML = icon('duck');
+    d.style.left = (16 + i * 142 + Math.random() * 26) + 'px';
+    d.style.animationDelay = (Math.random() * 2) + 's';
+    d.onclick = (e) => countDuck(i, d, e);
+    pond.appendChild(d);
+  }
+
+  document.getElementById('plateA').innerHTML = icon('apple').repeat(4);
+  document.getElementById('plateB').innerHTML = icon('banana').repeat(2);
+
+  function countDuck(i, el, e) {
+    if (!counted.has(i)) {
+      counted.add(i);
+      el.classList.add('counted');
+      const n = counted.size;
+      document.getElementById('cnt').textContent = n;
+      speak(String(n));
+      const b = document.createElement('div');
+      b.className = 'count-bubble';
+      b.textContent = n;
+      b.style.left = el.style.left;
+      b.style.bottom = '118px';
+      pond.appendChild(b);
+      setTimeout(() => b.remove(), 850);
+    }
+    el.style.scale = '1.2';
+    setTimeout(() => el.style.scale = '1', 160);
+  }
+
+  let r1done = false;
+  function r1(btn, n) {
+    if (r1done) return;
+    if (n === DUCK_N) {
+      r1done = true;
+      btn.classList.add('correct');
+      document.querySelectorAll('#r1opts .num-btn').forEach(b => { if (b !== btn) b.classList.add('dim'); });
+      dingOK(); speak('答对啦，一共五只小鸭。'); confetti();
+      setTimeout(() => {
+        document.getElementById('round1').style.display = 'none';
+        document.getElementById('round2').style.display = 'block';
+        toast('第 2 题：比一比');
+      }, 1300);
+    } else {
+      btn.classList.remove('wrong'); void btn.offsetWidth; btn.classList.add('wrong');
+      dingNO();
+      toast('再数一数：用手指点住小鸭，一只一只数');
+    }
+  }
+
+  let r2done = false;
+  function r2(btn, ans) {
+    if (r2done) return;
+    if (ans === 'apple') {
+      r2done = true;
+      btn.classList.add('correct');
+      dingOK(); speak('答对啦，苹果有四个，香蕉只有两个，苹果更多。'); confetti();
+      setTimeout(() => {
+        document.getElementById('round2').style.display = 'none';
+        document.getElementById('finish').classList.add('show');
+      }, 1400);
+    } else {
+      btn.classList.remove('wrong'); void btn.offsetWidth; btn.classList.add('wrong');
+      dingNO();
+      toast('小提示：可以一一对应着比，苹果配香蕉');
+    }
+  }
+</script>
+</body>
+</html>

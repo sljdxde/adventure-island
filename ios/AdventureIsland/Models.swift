@@ -1,0 +1,130 @@
+import Foundation
+
+// MARK: - 关卡数据模型（JSON 驱动，加内容不改代码）
+
+struct WordChip: Codable, Equatable {
+    var icon: String?
+    var text: String
+    var say: String?
+}
+
+struct QuizOption: Codable, Equatable {
+    var icon: String?   // 资源图标名
+    var emoji: String?  // 无资源时的兜底
+    var text: String?   // 文字选项（找字/数字题）
+}
+
+struct CompareOption: Codable, Equatable {
+    var key: String     // "left" / "right" / "same"
+    var label: String
+}
+
+struct Step: Codable, Equatable, Identifiable {
+    var id: String
+    /// teach | quiz | count | compare
+    var kind: String
+
+    // teach（认一认：象形演变）
+    var morphFrom: String?
+    var char: String?
+    var pinyin: String?
+    var words: [WordChip]?
+
+    // quiz
+    var question: String?
+    var options: [QuizOption]?
+    var answer: Int?
+    var hint: String?
+    var praise: String?
+
+    // count（点数）
+    var duckIcon: String?
+    var count: Int?
+    var countOptions: [Int]?
+
+    // compare（比多少）
+    var leftIcon: String?
+    var rightIcon: String?
+    var leftCount: Int?
+    var rightCount: Int?
+    var compareOptions: [CompareOption]?
+    var answerKey: String?
+}
+
+struct Level: Codable, Equatable, Identifiable {
+    var id: String
+    var title: String
+    var subtitle: String?
+    var steps: [Step]
+}
+
+struct SubjectFile: Codable {
+    var subject: String   // cn | math
+    var title: String
+    var guide: String
+    var levels: [Level]
+}
+
+// MARK: - 实验模型
+
+struct ExperimentItem: Codable, Equatable, Identifiable {
+    var id: String
+    var name: String
+    var icon: String
+    var isFloat: Bool
+    var fact: String
+}
+
+struct Experiment: Codable, Equatable, Identifiable {
+    var id: String
+    var title: String
+    var guide: String
+    var guessItem: String     // 猜一猜的物品 id
+    var guessIcon: String
+    var guessQuestion: String
+    var items: [ExperimentItem]
+}
+
+struct ExperimentFile: Codable {
+    var experiments: [Experiment]
+}
+
+// MARK: - 收集册模型
+
+struct CollectionItem: Codable, Equatable, Identifiable {
+    var id: String
+    var name: String
+    var icon: String?
+    var text: String?      // 汉字卡等文字内容
+    var pinyin: String?
+    var fact: String?
+    var tag: String?       // 浮/沉 等角标
+    var tagColor: String?  // blue | coral | gold
+}
+
+struct CollectionGroup: Codable, Equatable, Identifiable {
+    var id: String         // science | sticker | hanzi | badge
+    var title: String
+    var icon: String
+    var lockedLabel: String
+    var items: [CollectionItem]
+}
+
+struct CollectionFile: Codable {
+    var groups: [CollectionGroup]
+}
+
+// MARK: - 解码
+
+enum ContentLoader {
+    static func load<T: Decodable>(_ type: T.Type, _ name: String) -> T {
+        guard let url = Bundle.main.url(forResource: name, withExtension: "json") else {
+            fatalError("缺少内容文件 \(name).json —— 请确认 Resources 已加入 target")
+        }
+        do {
+            return try JSONDecoder().decode(T.self, from: Data(contentsOf: url))
+        } catch {
+            fatalError("内容文件 \(name).json 解码失败: \(error)")
+        }
+    }
+}

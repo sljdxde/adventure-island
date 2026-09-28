@@ -1,0 +1,52 @@
+name: AdventureIsland
+options:
+  bundleIdPrefix: com.family.adventure
+  deploymentTarget:
+    iOS: "16.0"
+  createIntermediateGroups: true
+settings:
+  base:
+    IPHONEOS_DEPLOYMENT_TARGET: "16.0"
+    TARGETED_DEVICE_FAMILY: "2"
+    SWIFT_VERSION: "5.9"
+    CODE_SIGN_STYLE: Automatic
+    ENABLE_PREVIEWS: "NO"
+targets:
+  AdventureIsland:
+    type: application
+    platform: iOS
+    sources:
+      - path: AdventureIsland
+    info:
+      path: AdventureIsland/Info.plist
+      properties:
+        CFBundleDisplayName: 探险岛
+        UILaunchScreen: {}
+        UIRequiresFullScreen: true
+        UIStatusBarHidden: true
+        UISupportedInterfaceOrientations:
+          - UIInterfaceOrientationLandscapeLeft
+          - UIInterfaceOrientationLandscapeRight
+        UISupportedInterfaceOrientations~ipad:
+          - UIInterfaceOrientationLandscapeLeft
+          - UIInterfaceOrientationLandscapeRight
+        ITSAppUsesNonExemptEncryption: false
+  AdventureIslandTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - path: Tests/AdventureIslandTests
+    dependencies:
+      - target: AdventureIsland
+schemes:
+  AdventureIsland:
+    build:
+      targets:
+        AdventureIsland: all
+        AdventureIslandTests: [test]
+    run:
+      config: Debug
+    test:
+      config: Debug
+      targets:
+        - AdventureIslandTests

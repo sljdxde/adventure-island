@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>01 · 主页 · 探险岛派对棋盘</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  /* ---------- 派对 LOGO 牌 ---------- */
+  .logo-plate {
+    position: absolute;
+    top: 98px; left: 50%;
+    transform: translateX(-50%);
+    z-index: 20;
+    display: flex; align-items: center; gap: 16px;
+  }
+  .lp-board {
+    background: linear-gradient(180deg, #FF6A5B 0%, #E8382E 55%, #C4271E 100%);
+    border: 4px solid #8E150E;
+    border-radius: 24px;
+    padding: 10px 44px 12px;
+    box-shadow: inset 0 4px 0 rgba(255,255,255,.35), 0 7px 0 #8E150E, var(--sh-2);
+    text-align: center;
+  }
+  .lp-board h1 {
+    font-size: 40px; font-weight: 900;
+    color: #FFCC00;
+    letter-spacing: 10px; text-indent: 10px;
+    text-shadow: 0 3px 0 #8E150E, 0 -2px 0 #8E150E, 2px 0 0 #8E150E, -2px 0 0 #8E150E, 0 7px 16px rgba(0,0,0,.35);
+  }
+  .lp-board p {
+    color: #FFE3B3; font-size: 13.5px; font-weight: 800;
+    letter-spacing: 3px; margin-top: 3px;
+    text-shadow: 0 1.5px 0 #8E150E;
+  }
+  .lp-star { font-size: 54px; filter: drop-shadow(0 5px 7px rgba(0,0,0,.25)); animation: float-bob 2.4s ease-in-out infinite; }
+  .lp-star.r { animation-delay: 1.2s; }
+
+  /* ---------- 学科村庄 = 水管站台 ---------- */
+  .zone {
+    position: absolute;
+    width: 252px;
+    cursor: pointer;
+    transition: transform .16s;
+    z-index: 15;
+    text-align: center;
+  }
+  .zone:hover { transform: translateY(-7px); }
+  .z-stage { position: relative; height: 176px; }
+  .z-mound {
+    position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+    width: 232px; height: 62px;
+    border-radius: 50%;
+    background: radial-gradient(ellipse at 50% 26%, #9BE76A 0%, #6FCC44 58%, #55B23A 100%);
+    box-shadow: inset 0 -12px 0 rgba(0,0,0,.13), 0 6px 0 rgba(46,133,68,.35);
+  }
+  .z-pipe {
+    position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%);
+    font-size: 112px;
+    filter: drop-shadow(0 8px 10px rgba(0,0,0,.22));
+  }
+  .z-block {
+    position: absolute; top: -4px; left: 50%; margin-left: -27px;
+    font-size: 54px;
+    animation: float-bob 2.8s ease-in-out infinite;
+    filter: drop-shadow(0 6px 8px rgba(0,0,0,.22));
+  }
+  .z-guide {
+    position: absolute; right: 2px; bottom: 14px;
+    font-size: 66px;
+    filter: drop-shadow(0 5px 7px rgba(0,0,0,.26));
+    transition: transform .16s;
+  }
+  .zone:hover .z-guide { transform: scale(1.1) rotate(5deg); }
+  .z-sign {
+    position: relative;
+    margin: -16px auto 0;
+    width: fit-content;
+    background: linear-gradient(180deg, #FFE7A8, #F5B942);
+    border: 3px solid #B8770A;
+    border-radius: 14px;
+    padding: 6px 26px;
+    font-size: 21px; font-weight: 900; letter-spacing: 3px;
+    color: #7A4A00;
+    box-shadow: 0 4px 0 #B8770A, var(--sh-1);
+    z-index: 4;
+  }
+  .z-sign::before, .z-sign::after {
+    content: ''; position: absolute; top: 50%; margin-top: -3px;
+    width: 6px; height: 6px; border-radius: 50%;
+    background: #B8770A; opacity: .55;
+  }
+  .z-sign::before { left: 8px; }
+  .z-sign::after  { right: 8px; }
+  .zone .meta { margin-top: 7px; font-size: 13.5px; color: #2F5A18; font-weight: 900; text-shadow: 0 1px 0 rgba(255,255,255,.65); letter-spacing: .5px; }
+  .zone .track {
+    margin: 6px auto 0;
+    width: 172px; height: 11px;
+    background: rgba(255,255,255,.65);
+    border-radius: 999px;
+    box-shadow: inset 0 2px 0 rgba(46,133,68,.25), 0 0 0 2px rgba(46,133,68,.18);
+    overflow: hidden;
+  }
+  .zone .track i {
+    display: block; height: 100%; border-radius: 999px;
+    background: linear-gradient(90deg, #FFE58A, var(--gold));
+    box-shadow: inset 0 -2px 0 rgba(192,138,12,.4);
+  }
+
+  .zone-cn   { left: 46px;  bottom: 262px; }
+  .zone-cn .z-pipe { color: #F0705F; }
+  .zone-math { left: 50%; margin-left: -126px; bottom: 292px; }
+  .zone-math .z-pipe { color: #4FA9E8; }
+  .zone-lab  { right: 46px; bottom: 252px; }
+  .zone-lab .z-pipe { color: #9B7BF5; }
+  .zone-lab .badge-new {
+    position: absolute; top: -6px; right: 14px;
+    background: linear-gradient(180deg, #FF9068, var(--coral-dk));
+    border: 2.5px solid #B0402F;
+    color: #fff; font-size: 12.5px; font-weight: 900;
+    border-radius: 999px; padding: 4px 13px;
+    transform: rotate(8deg);
+    z-index: 5; letter-spacing: 1px;
+  }
+
+  /* ---------- 派对棋盘路径 ---------- */
+  .trail {
+    position: absolute;
+    left: 0; right: 0; bottom: 100px;
+    height: 138px;
+    z-index: 12;
+  }
+  .trail .path-svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .trail .sp { position: absolute; }
+  .space {
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    border: 4px solid #fff;
+    box-shadow: 0 4px 0 rgba(0,0,0,.20), inset 0 -7px 0 rgba(0,0,0,.16), inset 0 6px 0 rgba(255,255,255,.38);
+    display: grid; place-items: center;
+    color: #fff; font-size: 24px; font-weight: 900;
+    cursor: pointer;
+    transition: transform .12s;
+    position: relative;
+  }
+  .space:hover { transform: scale(1.12); }
+  .s-blue   { background: #4FA9E8; }
+  .s-red    { background: #E8382E; }
+  .s-yellow { background: #FFCC00; color: #8A5B00; }
+  .s-green  { background: #3DBE29; }
+  .s-gray   { background: #B7C0C9; box-shadow: 0 4px 0 rgba(0,0,0,.15), inset 0 -7px 0 rgba(0,0,0,.12), inset 0 6px 0 rgba(255,255,255,.35); }
+  .space.done::after {
+    content: '✓'; position: absolute; inset: 0;
+    display: grid; place-items: center;
+    font-size: 26px; color: #fff; text-shadow: 0 2px 0 rgba(0,0,0,.25);
+  }
+  .space.star-space {
+    background: radial-gradient(circle at 35% 30%, #FFE68A, var(--gold) 62%, var(--gold-dk));
+    border-color: #fff;
+    animation: spacePulse 1.5s ease-in-out infinite;
+  }
+  .space.star-space .ic { font-size: 34px; }
+  @keyframes spacePulse {
+    0%,100% { transform: scale(1);    box-shadow: 0 4px 0 rgba(0,0,0,.2), 0 0 0 0 rgba(255,204,0,.6), inset 0 -7px 0 rgba(0,0,0,.16); }
+    50%     { transform: scale(1.1);  box-shadow: 0 4px 0 rgba(0,0,0,.2), 0 0 0 14px rgba(255,204,0,0), inset 0 -7px 0 rgba(0,0,0,.16); }
+  }
+  .trail .sp small {
+    position: absolute; bottom: -20px; left: 50%; transform: translateX(-50%);
+    font-size: 12.5px; color: #fff; font-weight: 900; text-shadow: 0 2px 0 rgba(46,133,68,.6); white-space: nowrap;
+  }
+  .trail .goal-flag {
+    position: absolute;
+    font-size: 62px;
+    filter: drop-shadow(0 5px 7px rgba(0,0,0,.25));
+  }
+
+  /* ---------- 底部弧形面板 + dock ---------- */
+  .arc-panel { height: 108px; }
+  .dock {
+    position: absolute;
+    left: 50%; bottom: 22px;
+    transform: translateX(-50%);
+    display: flex; gap: 26px;
+    z-index: 20;
+  }
+  .dock-item {
+    display: flex; flex-direction: column; align-items: center; gap: 3px;
+    cursor: pointer;
+    width: 116px;
+  }
+  .dock-item .ic-box {
+    width: 60px; height: 60px;
+    border-radius: 18px;
+    background: linear-gradient(180deg, #FFFDF6, #FFF0D2);
+    border: 3px solid #E8D5AE;
+    box-shadow: 0 4px 0 #DCC493, var(--sh-1);
+    display: grid; place-items: center;
+    font-size: 32px;
+    transition: transform .1s;
+    position: relative;
+  }
+  .dock-item:active .ic-box { transform: translateY(4px); box-shadow: 0 0 0 #DCC493, var(--sh-1); }
+  .dock-item .ic-box .cnt {
+    position: absolute; top: -10px; right: -16px;
+    background: linear-gradient(180deg, #FF9068, var(--coral-dk));
+    border: 2px solid #B0402F;
+    color: #fff; font-size: 11.5px; font-weight: 900;
+    border-radius: 999px; padding: 2px 8px;
+  }
+  .dock-item .t { font-size: 14.5px; font-weight: 900; color: var(--ink); letter-spacing: 1px; }
+  .dock-item .t small { color: var(--gold-dk); font-size: 12.5px; }
+  .dock-item.locked { opacity: .6; }
+</style>
+</head>
+<body>
+<div class="stage">
+
+  <!-- 场景背景 -->
+  <div class="scene">
+    <div class="sun"></div>
+    <div class="cloud c1"></div>
+    <div class="cloud c2"></div>
+    <div class="cloud c3"></div>
+    <div class="hills-back"></div>
+    <div class="hills-front"></div>
+    <span class="deco bob" style="left:30px; top:132px; font-size:44px; filter:drop-shadow(0 5px 7px rgba(0,0,0,.18));"><img class="ic" src="assets/icons/brick.svg" alt=""></span>
+    <span class="deco" style="left:82px; top:132px; font-size:44px; filter:drop-shadow(0 5px 7px rgba(0,0,0,.18));"><img class="ic" src="assets/icons/brick.svg" alt=""></span>
+    <span class="deco" style="right:26px; top:116px; font-size:38px; animation:float-bob 3s ease-in-out infinite;"><img class="ic" src="assets/icons/coin.svg" alt=""></span>
+    <span class="deco" style="right:72px; top:96px; font-size:38px; animation:float-bob 3s .5s ease-in-out infinite;"><img class="ic" src="assets/icons/coin.svg" alt=""></span>
+    <span class="deco" style="right:118px; top:116px; font-size:38px; animation:float-bob 3s 1s ease-in-out infinite;"><img class="ic" src="assets/icons/coin.svg" alt=""></span>
+  </div>
+
+  <!-- HUD -->
+  <div class="hud">
+    <div class="hud-left">
+      <button class="sqbtn" onclick="toast('已是最上层主页')" title="主页"><img class="ic" src="assets/icons/home.svg" alt=""></button>
+      <div class="nameplate">
+        <div class="ava"><img class="ic" src="assets/icons/girl.svg" alt=""></div>
+        <div class="name">糖糖 · Lv.3</div>
+      </div>
+    </div>
+    <div class="hud-right">
+      <div class="gold-chip"><span class="ico"><img class="ic" src="assets/icons/coin.svg" alt=""></span>128</div>
+      <button class="sqbtn" title="收集册" onclick="location.href='05-collection.html'"><img class="ic" src="assets/icons/medal.svg" alt=""></button>
+      <button class="sqbtn" title="家长" onclick="location.href='06-parent.html'"><img class="ic" src="assets/icons/lock.svg" alt=""></button>
+    </div>
+  </div>
+
+  <!-- 派对 LOGO 牌 -->
+  <div class="logo-plate">
+    <span class="lp-star"><img class="ic" src="assets/icons/starface.svg" alt=""></span>
+    <div class="lp-board">
+      <h1>探险岛</h1>
+      <p>每天玩一小会儿 · 养成好习惯</p>
+    </div>
+    <span class="lp-star r"><img class="ic" src="assets/icons/starface.svg" alt=""></span>
+  </div>
+
+  <!-- 识字村 -->
+  <div class="zone zone-cn" onclick="location.href='02-chinese.html'">
+    <div class="z-stage">
+      <div class="z-block"><img class="ic" src="assets/icons/block.svg" alt=""></div>
+      <div class="z-mound"></div>
+      <div class="z-pipe"><img class="ic" src="assets/icons/pipe-red.svg" alt=""></div>
+      <div class="z-guide"><img class="ic" src="assets/icons/panda.svg" alt=""></div>
+    </div>
+    <div class="z-sign">识字村</div>
+    <div class="meta">象形字 · 认读 · 描红 ｜ 12/40 关</div>
+    <div class="track"><i style="width:30%"></i></div>
+  </div>
+
+  <!-- 思维镇 -->
+  <div class="zone zone-math" onclick="location.href='03-math.html'">
+    <div class="z-stage">
+      <div class="z-block"><img class="ic" src="assets/icons/block.svg" alt=""></div>
+      <div class="z-mound"></div>
+      <div class="z-pipe"><img class="ic" src="assets/icons/pipe-blue.svg" alt=""></div>
+      <div class="z-guide"><img class="ic" src="assets/icons/fox.svg" alt=""></div>
+    </div>
+    <div class="z-sign">思维镇</div>
+    <div class="meta">数感 · 图形 · 逻辑 ｜ 18/40 关</div>
+    <div class="track"><i style="width:45%"></i></div>
+  </div>
+
+  <!-- 科学岛 -->
+  <div class="zone zone-lab" onclick="location.href='04-lab.html'">
+    <div class="badge-new">NEW ✦</div>
+    <div class="z-stage">
+      <div class="z-block"><img class="ic" src="assets/icons/block.svg" alt=""></div>
+      <div class="z-mound"></div>
+      <div class="z-pipe"><img class="ic" src="assets/icons/pipe-purple.svg" alt=""></div>
+      <div class="z-guide"><img class="ic" src="assets/icons/robot.svg" alt=""></div>
+    </div>
+    <div class="z-sign">科学岛</div>
+    <div class="meta">动手做实验 · 现象图鉴 ｜ 6/10 个</div>
+    <div class="track"><i style="width:60%"></i></div>
+  </div>
+
+  <!-- 派对棋盘路径 -->
+  <div class="trail">
+    <svg class="path-svg" viewBox="0 0 1024 138" fill="none">
+      <path d="M 66 100 C 190 44, 330 122, 512 74 C 690 28, 840 110, 958 66"
+            stroke="#FFFDF4" stroke-width="13" stroke-linecap="round"
+            stroke-dasharray="1 26" opacity=".95"/>
+      <path d="M 66 100 C 190 44, 330 122, 512 74 C 690 28, 840 110, 958 66"
+            stroke="#DCC493" stroke-width="13" stroke-linecap="round"
+            stroke-dasharray="1 26" opacity=".45" transform="translate(0 3)"/>
+    </svg>
+    <div class="sp" style="left:38px;  bottom:38px;"><div class="space s-green done"></div><small>识字 12</small></div>
+    <div class="sp" style="left:140px; bottom:70px;"><div class="space s-blue done"></div><small>识字 13</small></div>
+    <div class="sp" style="left:242px; bottom:50px;"><div class="space star-space"><img class="ic" src="assets/icons/starface.svg" alt=""></div><small>下一关 ▶</small></div>
+    <div class="sp" style="left:344px; bottom:74px;"><div class="space s-yellow"></div></div>
+    <div class="sp" style="left:446px; bottom:44px;"><div class="space s-red"></div></div>
+    <div class="sp" style="left:548px; bottom:34px;"><div class="space s-blue"></div></div>
+    <div class="sp" style="left:650px; bottom:56px;"><div class="space s-gray"></div></div>
+    <div class="sp" style="left:752px; bottom:76px;"><div class="space s-gray"></div></div>
+    <div class="sp" style="left:854px; bottom:52px;"><div class="space s-gray"></div></div>
+    <div class="sp" style="left:940px; bottom:64px;">
+      <div class="goal-flag" style="top:-52px; left:2px;"><img class="ic" src="assets/icons/flag.svg" alt=""></div>
+      <div class="space s-yellow">终</div>
+    </div>
+  </div>
+
+  <!-- 底部弧形面板 + dock -->
+  <div class="arc-panel">
+    <div class="arc-notch"><img class="ic" src="assets/icons/dice.svg" alt=""></div>
+    <div class="dock">
+      <div class="dock-item" onclick="location.href='05-collection.html'">
+        <div class="ic-box"><img class="ic" src="assets/icons/medal.svg" alt=""><span class="cnt">38/120</span></div>
+        <div class="t">收集册</div>
+      </div>
+      <div class="dock-item" onclick="toast('今日任务已完成 1/3，继续加油！')">
+        <div class="ic-box"><img class="ic" src="assets/icons/clip.svg" alt=""><span class="cnt">1/3</span></div>
+        <div class="t">今日任务</div>
+      </div>
+      <div class="dock-item locked" onclick="toast('英语王国 · 二期开放，敬请期待')">
+        <div class="ic-box"><img class="ic" src="assets/icons/castle.svg" alt=""></div>
+        <div class="t">英语王国 <small>二期</small></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="design-note" style="left:18px; right:auto;">设计稿 01 · 主页（马里奥派对风：棋盘格路径 + 水管站台 + ? 方块）</div>
+</div>
+
+<script src="art.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

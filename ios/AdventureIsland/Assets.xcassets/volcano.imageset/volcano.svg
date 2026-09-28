@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs><linearGradient id="g-mtn" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#C08552"/><stop offset="1" stop-color="#8F5A33"/></linearGradient><linearGradient id="g-coral" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFA793"/><stop offset="1" stop-color="#F0705F"/></linearGradient><linearGradient id="g-white" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#E9EDF2"/></linearGradient></defs>
+  <path d="M8 56 L24 20 Q32 12 40 20 L56 56 Z" fill="url(#g-mtn)"/>
+  <ellipse cx="32" cy="19" rx="9" ry="4" fill="url(#g-coral)"/>
+  <path d="M26 21 Q26 30 24 35 Q22 29 23 21 Z" fill="#F0705F"/><path d="M37 21 Q38 32 40 37 Q42 30 40 21 Z" fill="#F0705F"/>
+  <path d="M31 22 Q31 34 30 40 Q28 33 29 22 Z" fill="#FF8A7A"/>
+  <circle cx="29" cy="8" r="5" fill="url(#g-white)" opacity=".95"/><circle cx="38" cy="6" r="4" fill="url(#g-white)" opacity=".85"/><circle cx="35" cy="12" r="3.2" fill="url(#g-white)" opacity=".8"/>
+  <path d="M24 22 L12 52 L20 52 L29 26 Z" fill="#fff" opacity=".16"/></svg>

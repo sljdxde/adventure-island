@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs><linearGradient id="g-leaf" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#B4E465"/><stop offset="1" stop-color="#56AB2F"/></linearGradient></defs>
+  <path d="M32 6 Q54 20 50 40 Q46 56 32 58 Q18 56 14 40 Q10 20 32 6 Z" fill="url(#g-leaf)"/>
+  <path d="M32 14 L32 52" stroke="#3E8E2E" stroke-width="2.5" opacity=".55" stroke-linecap="round"/>
+  <path d="M32 26 L22 22 M32 36 L42 32 M32 44 L24 41" stroke="#3E8E2E" stroke-width="2" opacity=".45" stroke-linecap="round"/>
+  <ellipse cx="24" cy="18" rx="5" ry="3" fill="#fff" opacity=".4" transform="rotate(-30 24 18)"/></svg>
