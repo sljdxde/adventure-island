@@ -53,6 +53,25 @@ final class ContentIntegrityTests: XCTestCase {
                             let icon = try XCTUnwrap(opt.icon, "\(step.id) pattern 选项缺 icon")
                             XCTAssertTrue(iconNames.contains(icon), "\(step.id) 图标 \(icon) 不在资产清单")
                         }
+                    case "split":
+                        let t = try XCTUnwrap(step.total, "\(step.id) split 缺 total")
+                        let p = try XCTUnwrap(step.part, "\(step.id) split 缺 part")
+                        XCTAssertTrue(p >= 1 && p < t && t <= 10, "\(step.id) split total/part 非法")
+                        let rest = t - p
+                        XCTAssertTrue((step.arithOptions ?? []).contains(rest), "\(step.id) split 选项应含 \(rest)")
+                    case "order":
+                        let nums = try XCTUnwrap(step.nums, "\(step.id) order 缺 nums")
+                        XCTAssertEqual(nums.count, 3, "\(step.id) order 应 3 个数字")
+                        XCTAssertEqual(Set(nums).count, 3, "\(step.id) order 数字应互不相同")
+                        XCTAssertTrue(["up", "down"].contains(step.dir ?? ""), "\(step.id) order dir 非法")
+                    case "neighbor":
+                        let nums = try XCTUnwrap(step.nums, "\(step.id) neighbor 缺 nums")
+                        XCTAssertEqual(nums, [nums[0], 0, nums[0] + 2], "\(step.id) neighbor 应为 [a,0,a+2]")
+                        let correct = nums[0] + 1
+                        let opts = try XCTUnwrap(step.arithOptions, "\(step.id) neighbor 缺选项")
+                        XCTAssertTrue(opts.contains(correct), "\(step.id) neighbor 选项应含 \(correct)")
+                        let nans = try XCTUnwrap(step.answer, "\(step.id) neighbor 缺 answer")
+                        XCTAssertEqual(opts[nans], correct, "\(step.id) neighbor answer 指向错误")
                     case "blend":
                         XCTAssertEqual(step.parts?.count, 2, "\(step.id) blend 应为 声母+韵母")
                         XCTAssertEqual(step.options?.count, 3, "\(step.id) blend 选项应为 3")

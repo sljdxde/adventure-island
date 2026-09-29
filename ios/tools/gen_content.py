@@ -104,6 +104,40 @@ def pattern_step(pid, seq, options, ans, q="找规律：下一个是哪个？"):
             "hint": "先读一读前面几个，找一找谁在轮流出现",
             "praise": "规律找对啦，小侦探！"}
 
+def split_step(sid, total, part, icon, unit, q):
+    """分一分（数的组成）：total 分两堆，已知 part，求另一堆 = total - part"""
+    rest = total - part
+    cand = sorted({max(rest - 1, 0), rest, rest + 1, rest + 2})
+    options = cand[:3] if rest in cand[:3] else cand[-3:]
+    return {"id": sid, "kind": "split", "total": total, "part": part,
+            "leftIcon": icon, "unit": unit, "question": q,
+            "arithOptions": options,
+            "hint": f"一共 {total} {unit}，左边有 {part} {unit}",
+            "praise": f"分对啦，{total} 可以分成 {part} 和 {rest}！"}
+
+def order_step(oid, nums, direction, q=None):
+    d = "从小到大" if direction == "up" else "从大到小"
+    return {"id": oid, "kind": "order", "nums": nums, "dir": direction,
+            "question": q or f"{d}，依次点一点",
+            "hint": f"{d}：{'小' if direction=='up' else '大'}的排前面",
+            "praise": "排队排好啦！"}
+
+def neighbor_step(nid, a, b, opts=None):
+    """填一填（相邻数）：a, ?, a+2，问 a+1"""
+    correct = a + 1
+    options = opts or sorted({correct, correct - 1, correct + 1})
+    return {"id": nid, "kind": "neighbor", "nums": [a, 0, a + 2],
+            "question": "想一想：藏起来的数字是几？",
+            "arithOptions": options, "answer": options.index(correct),
+            "hint": f"{a} 的后面是几？{a + 2} 的前面是几？",
+            "praise": f"是 {correct}！{a} 和 {a + 2} 的中间是 {correct}！"}
+
+def classify_step(cid, q, items, ans):
+    return {"id": cid, "kind": "quiz", "question": q,
+            "options": [{"icon": ic} for ic in items], "answer": ans,
+            "hint": "想一想它们分别是做什么的",
+            "praise": "分类小能手！"}
+
 # 情境表：icon/unit/backdrop/题目
 SC_duck   = {"icon":"duck",   "unit":"只", "backdrop":"pond",  "q":"池塘里有几只小鸭"}
 SC_candy  = {"icon":"candy",  "unit":"颗", "backdrop":"grass", "q":"盘子里有几颗糖"}
@@ -114,43 +148,46 @@ SC_train  = {"icon":"train",  "unit":"辆", "backdrop":"grass", "q":"轨道上�
 SC_flower = {"icon":"flower", "unit":"朵", "backdrop":"grass", "q":"花园里开了几朵花"}
 SC_heart  = {"icon":"heart",  "unit":"颗", "backdrop":"grass", "q":"礼盒里有几颗爱心糖"}
 SC_coin   = {"icon":"coin",   "unit":"枚", "backdrop":"night", "q":"宝箱里有几枚金币"}
-SC_moon   = {"icon":"moon",   "unit":"个", "backdrop":"night", "q":"夜空挂了几个月亮"}
 
 specs = [
     ("math-0","第 1 关 池塘数鸭","3 以内点数", lambda i: [count_step(i,3,[2,3,4],SC_duck),
         compare_step(i,"apple",3,"banana",1,["苹果多","香蕉多","一样多"],"哪边的水果更多？")]),
-    ("math-1","第 2 关 糖果店","4 以内点数", lambda i: [count_step(i,4,[3,4,5],SC_candy),
-        compare_step(i,"candy",4,"cake",2,["糖多","蛋糕多","一样多"],"哪边更多？")]),
-    ("math-2","第 3 关 果园丰收","5 以内点数", lambda i: [count_step(i,5,[4,5,6],SC_apple),
-        compare_step(i,"apple",3,"banana",5,["苹果多","香蕉多","一样多"],"哪边的水果更多？")]),
-    ("math-3","第 4 关 气球派对","一样多", lambda i: [
-        compare_step(i,"balloon",4,"balloon",4,["左边多","右边多","一样多"],"两边气球哪边多？")]),
+    ("math-1","第 2 关 糖果店","4 以内 · 排一排", lambda i: [count_step(i,4,[3,4,5],SC_candy),
+        order_step(f"math-{i}-o1",[2,4,1],"up")]),
+    ("math-2","第 3 关 果园丰收","5 以内 · 分一分", lambda i: [count_step(i,5,[4,5,6],SC_apple),
+        split_step(f"math-{i}-s1",5,2,"apple","个","5 个苹果分两篮，左边 2 个，右边几个？")]),
+    ("math-3","第 4 关 气球派对","一样多 · 填一填", lambda i: [
+        compare_step(i,"balloon",4,"balloon",4,["左边多","右边多","一样多"],"两边气球哪边多？"),
+        neighbor_step(f"math-{i}-n1",3,5)]),
     ("math-4","第 5 关 夜空数星","6 以内点数", lambda i: [count_step(i,6,[5,6,7],SC_star),
         compare_step(i,"star",6,"moon",4,["星星多","月亮多","一样多"],"星星和月亮哪边多？")]),
-    ("math-5","第 6 关 小火车","7 以内点数", lambda i: [count_step(i,7,[6,7,8],SC_train)]),
-    ("math-6","第 7 关 花园蜜蜂","8 以内点数", lambda i: [count_step(i,8,[7,8,9],SC_flower),
-        compare_step(i,"leaf",5,"flower",8,["叶子多","花多","一样多"],"叶子和花哪边多？")]),
-    ("math-7","第 8 关 爱心礼盒","9 以内点数", lambda i: [count_step(i,9,[8,9,10],SC_heart)]),
+    ("math-5","第 6 关 小火车","7 以内 · 排一排", lambda i: [count_step(i,7,[6,7,8],SC_train),
+        order_step(f"math-{i}-o2",[3,6,4],"up")]),
+    ("math-6","第 7 关 花园蜜蜂","8 以内 · 分一分", lambda i: [count_step(i,8,[7,8,9],SC_flower),
+        split_step(f"math-{i}-s2",8,3,"flower","朵","8 朵花分两个花瓶，左边 3 朵，右边几朵？")]),
+    ("math-7","第 8 关 爱心礼盒","9 以内 · 排一排", lambda i: [count_step(i,9,[8,9,10],SC_heart),
+        order_step(f"math-{i}-o3",[9,4,7],"down")]),
     ("math-8","第 9 关 宝藏金币","10 以内点数", lambda i: [count_step(i,10,[8,9,10],SC_coin),
         pattern_step(f"math-{i}-p1",["star","moon","star"],["moon","star","candy"],0)]),
-    ("math-9","第 10 关 比大小","谁是冠军", lambda i: [
+    ("math-9","第 10 关 数字擂台","比大小 · 归类", lambda i: [
         {"id": f"math-{i}-q1", "kind": "quiz", "question": "哪个数字最大？",
          "options": [{"text": t} for t in ["5","9","3"]], "answer": 1,
          "hint": "从 1 数到 10，谁排在最后？", "praise": "9 最大，答对啦！"},
         {"id": f"math-{i}-q2", "kind": "quiz", "question": "哪个数字最小？",
          "options": [{"text": t} for t in ["2","7","10"]], "answer": 0,
-         "hint": "越早数到的越小哦", "praise": "思维小达人，通关！"}]),
+         "hint": "越早数到的越小哦", "praise": "思维小达人！"},
+        classify_step(f"math-{i}-q3","火眼金睛：哪个是交通工具？",["duck","train","cake"],1)]),
     ("math-10","第 11 关 糖果加法","合起来", lambda i: [arith_step(i,"+",1,1,[1,2,3],"candy","颗","1 颗糖加 1 颗糖，一共有几颗？"),
         arith_step(i,"+",2,1,[2,3,4],"candy","颗","2 颗糖加 1 颗糖，一共有几颗？")]),
-    ("math-11","第 12 关 苹果加法","5 以内", lambda i: [arith_step(i,"+",2,2,[3,4,5],"apple","个","2 个苹果加 2 个苹果，一共有几个？"),
-        arith_step(i,"+",3,2,[4,5,6],"apple","个","3 个苹果加 2 个苹果，一共有几个？")]),
+    ("math-11","第 12 关 苹果加法","加法 · 分一分", lambda i: [arith_step(i,"+",2,2,[3,4,5],"apple","个","2 个苹果加 2 个苹果，一共有几个？"),
+        split_step(f"math-{i}-s3",6,2,"apple","个","6 个苹果分两篮，左边 2 个，右边几个？")]),
     ("math-12","第 13 关 气球飞走了","减法初识", lambda i: [arith_step(i,"-",3,1,[1,2,3],"balloon","个","3 个气球飞走 1 个，还剩几个？"),
         arith_step(i,"-",4,2,[1,2,3],"balloon","个","4 个气球飞走 2 个，还剩几个？")]),
-    ("math-13","第 14 关 星星回家","5 以内减法", lambda i: [arith_step(i,"-",5,2,[2,3,4],"star","颗","5 颗星星回家 2 颗，还剩几颗？"),
-        arith_step(i,"-",5,3,[1,2,3],"star","颗","5 颗星星回家 3 颗，还剩几颗？")]),
-    ("math-14","第 15 关 思维大挑战","加减 + 找规律", lambda i: [arith_step(i,"+",4,4,[7,8,9],"star","颗","4 颗星星加 4 颗星星，一共几颗？"),
+    ("math-13","第 14 关 星星回家","减法 · 填一填", lambda i: [arith_step(i,"-",5,2,[2,3,4],"star","颗","5 颗星星回家 2 颗，还剩几颗？"),
+        neighbor_step(f"math-{i}-n2",6,8)]),
+    ("math-14","第 15 关 思维大挑战","加减 · 排队 · 找规律", lambda i: [arith_step(i,"+",4,4,[7,8,9],"star","颗","4 颗星星加 4 颗星星，一共几颗？"),
         arith_step(i,"-",9,3,[5,6,7],"duck","只","9 只小鸭游走 3 只，还剩几只？"),
-        arith_step(i,"+",6,3,[8,9,10],"candy","颗","6 颗糖加 3 颗糖，一共几颗？"),
+        order_step(f"math-{i}-o4",[10,2,7],"down"),
         pattern_step(f"math-{i}-p2",["sun","moon","star","sun","moon"],["moon","sun","star"],2)]),
 ]
 for idx, (lid, title, sub, build) in enumerate(specs):

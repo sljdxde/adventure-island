@@ -107,6 +107,31 @@ def check_subject(doc, name, expect_levels):
                     err(f"{sid} pattern 选项/答案非法")
                 for o in opts:
                     if not o.get("icon"): err(f"{sid} pattern 选项缺 icon")
+            elif kind == "split":
+                t, p = st.get("total"), st.get("part")
+                if not isinstance(t, int) or not isinstance(p, int) or not (1 <= p < t <= 10):
+                    err(f"{sid} split total/part 非法 {t}/{p}")
+                else:
+                    rest = t - p
+                    if rest not in (st.get("arithOptions") or []):
+                        err(f"{sid} split 选项不含正确答案 {rest}")
+            elif kind == "order":
+                nums = st.get("nums") or []
+                if len(nums) != 3 or len(set(nums)) != 3:
+                    err(f"{sid} order nums 应为 3 个不同数字 {nums}")
+                if st.get("dir") not in ("up", "down"):
+                    err(f"{sid} order dir 非法 {st.get('dir')}")
+            elif kind == "neighbor":
+                nums = st.get("nums") or []
+                if len(nums) != 3 or nums[1] != 0 or nums[2] != nums[0] + 2:
+                    err(f"{sid} neighbor 应为 [a,0,a+2] {nums}")
+                else:
+                    correct = nums[0] + 1
+                    opts = st.get("arithOptions") or []
+                    ans = st.get("answer")
+                    if correct not in opts: err(f"{sid} neighbor 选项不含 {correct}")
+                    elif not isinstance(ans, int) or not (0 <= ans < len(opts)) or opts[ans] != correct:
+                        err(f"{sid} neighbor answer 指向错误")
             elif kind == "blend":
                 parts = st.get("parts") or []
                 opts = st.get("options") or []

@@ -21,7 +21,7 @@ struct CompareOption: Codable, Equatable {
 
 struct Step: Codable, Equatable, Identifiable {
     var id: String
-    /// teach | quiz | count | compare | letter | listen | blend | arith | pattern
+    /// teach | quiz | count | compare | letter | listen | blend | arith | pattern | split | order | neighbor
     var kind: String
 
     // teach（认一认：象形演变）
@@ -41,6 +41,14 @@ struct Step: Codable, Equatable, Identifiable {
 
     // pattern（找规律：序列 + 选项）
     var seq: [String]?
+
+    // split（分一分：数的组成）total = part + 剩余
+    var total: Int?
+    var part: Int?
+
+    // order（排一排）/ neighbor（填一填：nums[1]==0 为空位）
+    var nums: [Int]?
+    var dir: String?   // up | down
 
     // blend（拼一拼：声母+韵母）
     var parts: [String]?

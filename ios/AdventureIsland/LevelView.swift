@@ -38,13 +38,16 @@ struct LevelView: View {
                         switch step.kind {
                         case "teach": TeachStepView(step: step, onNext: advanceStep)
                         case "letter": LetterStepView(step: step, subject: subject, onNext: advanceStep)
-                        case "listen": ListenStepView(step: step, onWrong: { wrongCount += 1 }) { confetti += 1 }
-                        case "blend": BlendStepView(step: step, onWrong: { wrongCount += 1 }) { confetti += 1 }
-                        case "arith": ArithStepView(step: step, onWrong: { wrongCount += 1 }) { confetti += 1 }
-                        case "pattern": PatternStepView(step: step, onWrong: { wrongCount += 1 }) { confetti += 1 }
-                        case "quiz": QuizStepView(step: step, onWrong: { wrongCount += 1 }) { confetti += 1 }
-                        case "count": CountStepView(step: step) { confetti += 1 }
-                        case "compare": CompareStepView(step: step) { confetti += 1 }
+                        case "listen": ListenStepView(step: step, onWrong: { wrongCount += 1 }, onNext: advanceStep) { confetti += 1 }
+                        case "blend": BlendStepView(step: step, onWrong: { wrongCount += 1 }, onNext: advanceStep) { confetti += 1 }
+                        case "arith": ArithStepView(step: step, onWrong: { wrongCount += 1 }, onNext: advanceStep) { confetti += 1 }
+                        case "pattern": PatternStepView(step: step, onWrong: { wrongCount += 1 }, onNext: advanceStep) { confetti += 1 }
+                        case "split": SplitStepView(step: step, onWrong: { wrongCount += 1 }, onNext: advanceStep) { confetti += 1 }
+                        case "neighbor": NeighborStepView(step: step, onWrong: { wrongCount += 1 }, onNext: advanceStep) { confetti += 1 }
+                        case "order": OrderStepView(step: step, onWrong: { wrongCount += 1 }, onNext: advanceStep) { confetti += 1 }
+                        case "quiz": QuizStepView(step: step, onWrong: { wrongCount += 1 }, onNext: advanceStep) { confetti += 1 }
+                        case "count": CountStepView(step: step, onNext: advanceStep) { confetti += 1 }
+                        case "compare": CompareStepView(step: step, onNext: advanceStep) { confetti += 1 }
                         default: EmptyView()
                         }
                     }
@@ -110,6 +113,9 @@ struct LevelView: View {
             case "blend": name = "拼一拼"
             case "arith": name = "算一算"
             case "pattern": name = "找规律"
+            case "split": name = "分一分"
+            case "order": name = "排一排"
+            case "neighbor": name = "填一填"
             default: name = "比一比"
             }
             return StepChipState(title: name, state: i < stepIndex ? .done : (i == stepIndex ? .now : .todo))
@@ -326,6 +332,7 @@ struct TeachStepView: View {
 struct QuizStepView: View {
     let step: Step
     let onWrong: () -> Void
+    let onNext: () -> Void
     let onCorrectCelebrate: () -> Void
     @EnvironmentObject var speech: SpeechService
     @EnvironmentObject var toast: ToastCenter
@@ -375,14 +382,13 @@ struct QuizStepView: View {
             if i == step.answer {
                 solved = true
                 sound.correct()
-                speech.speak(step.praise ?? "答对啦！")
                 onCorrectCelebrate()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.15) { onNext() }
             } else {
                 wrongIndex = i
                 sound.wrong()
                 onWrong()
                 toast.show(step.hint ?? "再想一想哦", seconds: 2.2)
-                speech.speak(step.hint ?? "再想一想哦")
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.45) { wrongIndex = nil }
             }
         } label: {
@@ -431,6 +437,7 @@ struct QuizStepView: View {
 
 struct CountStepView: View {
     let step: Step
+    let onNext: () -> Void
     let onCorrectCelebrate: () -> Void
     @EnvironmentObject var speech: SpeechService
     @EnvironmentObject var toast: ToastCenter
@@ -579,6 +586,7 @@ struct CountStepView: View {
                 solved = true
                 sound.correct()
                 onCorrectCelebrate()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.15) { onNext() }
             } else {
                 wrongValue = n
                 sound.wrong()
@@ -630,6 +638,7 @@ private struct CountBubble: View {
 
 struct CompareStepView: View {
     let step: Step
+    let onNext: () -> Void
     let onCorrectCelebrate: () -> Void
     @EnvironmentObject var speech: SpeechService
     @EnvironmentObject var toast: ToastCenter
@@ -659,8 +668,8 @@ struct CompareStepView: View {
                         if opt.key == step.answerKey {
                             solved = true
                             sound.correct()
-                            speech.speak(step.praise ?? "答对啦！")
                             onCorrectCelebrate()
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.15) { onNext() }
                         } else {
                             wrongKey = opt.key
                             sound.wrong()
@@ -842,6 +851,7 @@ struct LetterStepView: View {
 struct ListenStepView: View {
     let step: Step
     let onWrong: () -> Void
+    let onNext: () -> Void
     let onCorrectCelebrate: () -> Void
     @EnvironmentObject var speech: SpeechService
     @EnvironmentObject var toast: ToastCenter
@@ -876,6 +886,7 @@ struct ListenStepView: View {
                             solved = true
                             sound.correct()
                             onCorrectCelebrate()
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.15) { onNext() }
                         } else {
                             wrongIndex = i
                             sound.wrong()
@@ -963,6 +974,7 @@ struct ListenStepView: View {
 struct BlendStepView: View {
     let step: Step
     let onWrong: () -> Void
+    let onNext: () -> Void
     let onCorrectCelebrate: () -> Void
     @EnvironmentObject var speech: SpeechService
     @EnvironmentObject var toast: ToastCenter
@@ -1004,6 +1016,7 @@ struct BlendStepView: View {
                             sound.correct()
                             if let t = opt.text { speech.speak(step.praise ?? "拼对了！\(t)") }
                             onCorrectCelebrate()
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.15) { onNext() }
                         } else {
                             wrongIndex = i
                             sound.wrong()
@@ -1056,6 +1069,7 @@ private let resultCardFill = LinearGradient(colors: [Color(hex: 0xFFFDF4), Color
 struct ArithStepView: View {
     let step: Step
     let onWrong: () -> Void
+    let onNext: () -> Void
     let onCorrectCelebrate: () -> Void
     @EnvironmentObject var speech: SpeechService
     @EnvironmentObject var toast: ToastCenter
@@ -1153,8 +1167,8 @@ struct ArithStepView: View {
             if n == correct {
                 solved = true
                 sound.correct()
-                speech.speak(step.praise ?? "算对啦！")
                 onCorrectCelebrate()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.15) { onNext() }
             } else {
                 wrongValue = n
                 sound.wrong()
@@ -1187,6 +1201,7 @@ struct ArithStepView: View {
 struct PatternStepView: View {
     let step: Step
     let onWrong: () -> Void
+    let onNext: () -> Void
     let onCorrectCelebrate: () -> Void
     @EnvironmentObject var toast: ToastCenter
     @Environment(\.soundService) private var sound
@@ -1237,6 +1252,7 @@ struct PatternStepView: View {
                             solved = true
                             sound.correct()
                             onCorrectCelebrate()
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.15) { onNext() }
                         } else {
                             wrongIndex = i
                             sound.wrong()
@@ -1279,6 +1295,364 @@ struct PatternStepView: View {
             IconView(name: icon, size: 58)
         }
         .frame(width: 86, height: 86)
+        .overlay(RoundedRectangle(cornerRadius: 20, style: .continuous).stroke(Color(hex: 0xF2E2C4), lineWidth: 4))
+        .shadow(color: Color(hex: 0xF2E2C4), radius: 0, x: 0, y: 4)
+    }
+}
+
+// MARK: - 分一分（split：数的组成，total = part + ?）
+
+struct SplitStepView: View {
+    let step: Step
+    let onWrong: () -> Void
+    let onNext: () -> Void
+    let onCorrectCelebrate: () -> Void
+    @EnvironmentObject var toast: ToastCenter
+    @Environment(\.soundService) private var sound
+    @State private var solved = false
+    @State private var wrongValue: Int?
+
+    private var total: Int { step.total ?? 0 }
+    private var part: Int { step.part ?? 0 }
+    private var rest: Int { total - part }
+    private var unit: String { step.unit ?? "个" }
+
+    var body: some View {
+        VStack(spacing: 20) {
+            Text(step.question ?? "分一分，另一边有几个？")
+                .font(.kidHead(23))
+                .foregroundColor(.ink)
+                .multilineTextAlignment(.center)
+                .padding(.horizontal, 28)
+                .padding(.vertical, 11)
+                .background(Capsule().fill(Color(hex: 0xFFF3D8)))
+                .overlay(Capsule().stroke(Color(hex: 0xF0DCAC), lineWidth: 2))
+
+            // 总数徽章
+            HStack(spacing: 8) {
+                Text("一共").font(.kidBody(16)).foregroundColor(.inkSoft)
+                Text("\(total)")
+                    .font(.kidTitle(30))
+                    .foregroundColor(Color(hex: 0x8A5B00))
+                    .padding(.horizontal, 16)
+                    .padding(.vertical, 3)
+                    .background(Capsule().fill(LinearGradient(colors: [Color(hex: 0xFFE58A), Color(hex: 0xF7B32B)], startPoint: .top, endPoint: .bottom)))
+                    .overlay(Capsule().stroke(Color(hex: 0xB8770A), lineWidth: 2.5))
+                Text(unit).font(.kidBody(16)).foregroundColor(.inkSoft)
+            }
+
+            // 两个盘：左边 part 个 + 右边 ?
+            HStack(spacing: 22) {
+                VStack(spacing: 6) {
+                    ZStack {
+                        Ellipse()
+                            .fill(LinearGradient(colors: [.white, Color(hex: 0xF2EDDF)], startPoint: .top, endPoint: .bottom))
+                            .frame(width: 220, height: 130)
+                            .overlay(Ellipse().stroke(.white, lineWidth: 5))
+                            .shadow(color: Color(hex: 0xE4D9C2), radius: 0, x: 0, y: 6)
+                        PlateGrid(icon: step.leftIcon ?? "apple", count: part)
+                            .frame(width: 170, height: 86)
+                    }
+                    Text("\(part)")
+                        .font(.kidTitle(28))
+                        .foregroundColor(.ink)
+                }
+                Text("+").font(.kidTitle(40)).foregroundColor(.inkSoft)
+                VStack(spacing: 6) {
+                    ZStack {
+                        Ellipse()
+                            .fill(LinearGradient(colors: [Color(hex: 0xFFFBF0), Color(hex: 0xFFF3D8)], startPoint: .top, endPoint: .bottom))
+                            .frame(width: 220, height: 130)
+                        if solved {
+                            PlateGrid(icon: step.leftIcon ?? "apple", count: rest)
+                                .frame(width: 170, height: 86)
+                        } else {
+                            Text("?")
+                                .font(.kidTitle(52))
+                                .foregroundColor(Color(hex: 0xC9BBA0))
+                        }
+                    }
+                    .overlay(
+                        Ellipse().stroke(
+                            solved ? Color(hex: 0xBFE8C9) : Color(hex: 0xE0D2B6),
+                            style: StrokeStyle(lineWidth: 4, dash: solved ? [] : [8, 6])
+                        )
+                    )
+                    Text(solved ? "\(rest)" : "?")
+                        .font(.kidTitle(28))
+                        .foregroundColor(solved ? .brandGreenDk : Color(hex: 0xC9BBA0))
+                }
+            }
+
+            HStack(spacing: 26) {
+                ForEach(step.arithOptions ?? [], id: \.self) { n in
+                    numberBlock(n)
+                }
+            }
+
+            if solved {
+                Text(step.praise ?? "分对啦！").font(.kidHead(20)).foregroundColor(.brandGreenDk)
+            }
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .modifier(StickerCardModifier())
+    }
+
+    private func numberBlock(_ n: Int) -> some View {
+        Button {
+            guard !solved else { return }
+            if n == rest {
+                solved = true
+                sound.correct()
+                onCorrectCelebrate()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.3) { onNext() }
+            } else {
+                wrongValue = n
+                sound.wrong()
+                onWrong()
+                toast.show(step.hint ?? "数一数两边合起来", seconds: 2.2)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.45) { wrongValue = nil }
+            }
+        } label: {
+            Text("\(n)")
+                .font(.kidTitle(44))
+                .foregroundColor(Color(hex: 0x8A5B00))
+                .frame(width: 100, height: 92)
+                .background(
+                    RoundedRectangle(cornerRadius: 18, style: .continuous)
+                        .fill(LinearGradient(colors: [Color(hex: 0xFFE58A), Color(hex: 0xF7B32B)], startPoint: .top, endPoint: .bottom))
+                )
+                .overlay(RoundedRectangle(cornerRadius: 18, style: .continuous).stroke(Color(hex: 0xB8770A), lineWidth: 3.5))
+                .shadow(color: Color(hex: 0xB8770A).opacity(0.6), radius: 0, x: 0, y: 6)
+        }
+        .buttonStyle(.plain)
+        .scaleEffect(solved && n == rest ? 1.1 : 1)
+        .modifier(ShakeModifier(shake: wrongValue == n))
+        .animation(.spring(response: 0.3, dampingFraction: 0.6), value: solved)
+    }
+}
+
+// MARK: - 排一排（order：按大小顺序依次点数字）
+
+struct OrderStepView: View {
+    let step: Step
+    let onWrong: () -> Void
+    let onNext: () -> Void
+    let onCorrectCelebrate: () -> Void
+    @EnvironmentObject var toast: ToastCenter
+    @Environment(\.soundService) private var sound
+    @State private var progress = 0
+    @State private var doneIdx: Set<Int> = []
+    @State private var wrongIndex: Int?
+    @State private var solved = false
+
+    private var nums: [Int] { step.nums ?? [] }
+    private var ascending: Bool { (step.dir ?? "up") == "up" }
+    private var target: [Int] { ascending ? nums.sorted() : nums.sorted().reversed() }
+    private var dirLabel: String { ascending ? "从小到大" : "从大到小" }
+
+    var body: some View {
+        VStack(spacing: 24) {
+            Text(step.question ?? "\(dirLabel)，依次点一点")
+                .font(.kidHead(25))
+                .foregroundColor(.ink)
+                .padding(.horizontal, 30)
+                .padding(.vertical, 11)
+                .background(Capsule().fill(Color(hex: 0xE7F6FF)))
+                .overlay(Capsule().stroke(Color(hex: 0xBFE4F7), lineWidth: 2))
+
+            // 顺序提示槽
+            HStack(spacing: 14) {
+                ForEach(target.indices, id: \.self) { i in
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 16, style: .continuous)
+                            .fill(i < progress ? Color(hex: 0xEDFBF0) : Color(hex: 0xF5F0E4))
+                        if i < progress {
+                            Text("\(target[i])")
+                                .font(.kidTitle(30))
+                                .foregroundColor(.brandGreenDk)
+                        } else {
+                            Image(systemName: "\(i + 1).circle")
+                                .font(.system(size: 24, weight: .bold))
+                                .foregroundColor(Color(hex: 0xC9BBA0))
+                        }
+                    }
+                    .frame(width: 76, height: 66)
+                    .overlay(RoundedRectangle(cornerRadius: 16, style: .continuous).stroke(i < progress ? .brandGreen : Color(hex: 0xE0D2B6), lineWidth: 3))
+                }
+            }
+
+            // 打乱的数字块
+            HStack(spacing: 24) {
+                ForEach(nums.indices, id: \.self) { i in
+                    numberBlock(i)
+                }
+            }
+
+            if solved {
+                Text(step.praise ?? "排队排好啦！").font(.kidHead(20)).foregroundColor(.brandGreenDk)
+            } else {
+                Text(step.hint ?? "先想清楚谁排第一").font(.kidBody(15)).foregroundColor(.inkSoft)
+            }
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .modifier(StickerCardModifier())
+    }
+
+    private func numberBlock(_ i: Int) -> some View {
+        Button {
+            guard !solved, !doneIdx.contains(i) else { return }
+            if nums[i] == target[progress] {
+                withAnimation(.spring(response: 0.3, dampingFraction: 0.6)) {
+                    doneIdx.insert(i)
+                    progress += 1
+                }
+                sound.correct()
+                if progress == nums.count {
+                    solved = true
+                    onCorrectCelebrate()
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.3) { onNext() }
+                }
+            } else {
+                wrongIndex = i
+                sound.wrong()
+                onWrong()
+                toast.show(step.hint ?? "想一想顺序哦", seconds: 2.0)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.45) { wrongIndex = nil }
+            }
+        } label: {
+            Text("\(nums[i])")
+                .font(.kidTitle(44))
+                .foregroundColor(doneIdx.contains(i) ? .white : Color(hex: 0x8A5B00))
+                .frame(width: 104, height: 96)
+                .background(
+                    RoundedRectangle(cornerRadius: 18, style: .continuous)
+                        .fill(doneIdx.contains(i)
+                              ? AnyShapeStyle(LinearGradient(colors: [Color(hex: 0xC6F0A0), .brandGreen], startPoint: .top, endPoint: .bottom))
+                              : AnyShapeStyle(LinearGradient(colors: [Color(hex: 0xFFE58A), Color(hex: 0xF7B32B)], startPoint: .top, endPoint: .bottom)))
+                )
+                .overlay(RoundedRectangle(cornerRadius: 18, style: .continuous).stroke(doneIdx.contains(i) ? .brandGreenDk : Color(hex: 0xB8770A), lineWidth: 3.5))
+                .shadow(color: Color(hex: 0xB8770A).opacity(0.6), radius: 0, x: 0, y: 6)
+                .overlay(alignment: .topTrailing) {
+                    if doneIdx.contains(i) {
+                        Text("\(target.firstIndex(of: nums[i])! + 1)")
+                            .font(.system(size: 15, weight: .heavy, design: .rounded))
+                            .foregroundColor(.white)
+                            .padding(6)
+                            .background(Circle().fill(.brandGreenDk))
+                            .offset(x: 8, y: -8)
+                    }
+                }
+        }
+        .buttonStyle(.plain)
+        .modifier(ShakeModifier(shake: wrongIndex == i))
+    }
+}
+
+// MARK: - 填一填（neighbor：相邻数，a ? a+2）
+
+struct NeighborStepView: View {
+    let step: Step
+    let onWrong: () -> Void
+    let onNext: () -> Void
+    let onCorrectCelebrate: () -> Void
+    @EnvironmentObject var toast: ToastCenter
+    @Environment(\.soundService) private var sound
+    @State private var solved = false
+    @State private var wrongIndex: Int?
+
+    private var nums: [Int] { step.nums ?? [] }
+    private var correct: Int { (nums.first ?? 0) + 1 }
+
+    var body: some View {
+        VStack(spacing: 24) {
+            Text(step.question ?? "想一想：藏起来的数字是几？")
+                .font(.kidHead(25))
+                .foregroundColor(.ink)
+                .padding(.horizontal, 30)
+                .padding(.vertical, 11)
+                .background(Capsule().fill(Color(hex: 0xF3EDFF)))
+                .overlay(Capsule().stroke(Color(hex: 0xD9CCF5), lineWidth: 2))
+
+            // 数字列车：a ? a+2
+            HStack(spacing: 10) {
+                numCard("\(nums.first ?? 0)")
+                ZStack {
+                    RoundedRectangle(cornerRadius: 20, style: .continuous)
+                        .fill(LinearGradient(colors: [Color(hex: 0xFFFDF4), Color(hex: 0xFFF3D8)], startPoint: .top, endPoint: .bottom))
+                    if solved {
+                        Text("\(correct)")
+                            .font(.kidTitle(46))
+                            .foregroundColor(.brandGreenDk)
+                    } else {
+                        Text("?")
+                            .font(.kidTitle(46))
+                            .foregroundColor(Color(hex: 0xC9BBA0))
+                    }
+                }
+                .frame(width: 92, height: 92)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 20, style: .continuous)
+                        .stroke(solved ? .brandGreen : Color(hex: 0xE8B54A),
+                                style: StrokeStyle(lineWidth: 4, dash: solved ? [] : [8, 6]))
+                )
+                .shadow(color: Color(hex: 0xE8B54A).opacity(0.4), radius: 0, x: 0, y: 4)
+                numCard("\(nums.last ?? 0)")
+            }
+
+            HStack(spacing: 26) {
+                ForEach((step.arithOptions ?? []).indices, id: \.self) { i in
+                    let n = step.arithOptions![i]
+                    Button {
+                        guard !solved else { return }
+                        if n == correct {
+                            solved = true
+                            sound.correct()
+                            onCorrectCelebrate()
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.3) { onNext() }
+                        } else {
+                            wrongIndex = i
+                            sound.wrong()
+                            onWrong()
+                            toast.show(step.hint ?? "看看两边的数字", seconds: 2.2)
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.45) { wrongIndex = nil }
+                        }
+                    } label: {
+                        Text("\(n)")
+                            .font(.kidTitle(40))
+                            .foregroundColor(Color(hex: 0x8A5B00))
+                            .frame(width: 92, height: 84)
+                            .background(
+                                RoundedRectangle(cornerRadius: 18, style: .continuous)
+                                    .fill(LinearGradient(colors: [Color(hex: 0xFFE58A), Color(hex: 0xF7B32B)], startPoint: .top, endPoint: .bottom))
+                            )
+                            .overlay(RoundedRectangle(cornerRadius: 18, style: .continuous).stroke(Color(hex: 0xB8770A), lineWidth: 3.5))
+                            .shadow(color: Color(hex: 0xB8770A).opacity(0.6), radius: 0, x: 0, y: 6)
+                    }
+                    .buttonStyle(.plain)
+                    .scaleEffect(solved && n == correct ? 1.1 : 1)
+                    .modifier(ShakeModifier(shake: wrongIndex == i))
+                    .animation(.spring(response: 0.3, dampingFraction: 0.6), value: solved)
+                }
+            }
+
+            if solved {
+                Text(step.praise ?? "填对啦！").font(.kidHead(20)).foregroundColor(.brandGreenDk)
+            }
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .modifier(StickerCardModifier())
+    }
+
+    private func numCard(_ t: String) -> some View {
+        ZStack {
+            RoundedRectangle(cornerRadius: 20, style: .continuous)
+                .fill(.white)
+            Text(t)
+                .font(.kidTitle(46))
+                .foregroundColor(.ink)
+        }
+        .frame(width: 92, height: 92)
         .overlay(RoundedRectangle(cornerRadius: 20, style: .continuous).stroke(Color(hex: 0xF2E2C4), lineWidth: 4))
         .shadow(color: Color(hex: 0xF2E2C4), radius: 0, x: 0, y: 4)
     }

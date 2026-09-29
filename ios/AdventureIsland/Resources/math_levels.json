@@ -53,7 +53,7 @@
     {
       "id": "math-1",
       "title": "第 2 关 糖果店",
-      "subtitle": "4 以内点数",
+      "subtitle": "4 以内 · 排一排",
       "steps": [
         {
           "id": "math-1-c",
@@ -70,37 +70,24 @@
           "unit": "颗"
         },
         {
-          "id": "math-1-cmp",
-          "kind": "compare",
-          "question": "哪边更多？",
-          "leftIcon": "candy",
-          "leftCount": 4,
-          "rightIcon": "cake",
-          "rightCount": 2,
-          "compareOptions": [
-            {
-              "key": "left",
-              "label": "糖多"
-            },
-            {
-              "key": "right",
-              "label": "蛋糕多"
-            },
-            {
-              "key": "same",
-              "label": "一样多"
-            }
+          "id": "math-1-o1",
+          "kind": "order",
+          "nums": [
+            2,
+            4,
+            1
           ],
-          "answerKey": "left",
-          "hint": "一个对着一个，比一比",
-          "praise": "糖多，答对啦！"
+          "dir": "up",
+          "question": "从小到大，依次点一点",
+          "hint": "从小到大：小的排前面",
+          "praise": "排队排好啦！"
         }
       ]
     },
     {
       "id": "math-2",
       "title": "第 3 关 果园丰收",
-      "subtitle": "5 以内点数",
+      "subtitle": "5 以内 · 分一分",
       "steps": [
         {
           "id": "math-2-c",
@@ -117,37 +104,27 @@
           "unit": "个"
         },
         {
-          "id": "math-2-cmp",
-          "kind": "compare",
-          "question": "哪边的水果更多？",
+          "id": "math-2-s1",
+          "kind": "split",
+          "total": 5,
+          "part": 2,
           "leftIcon": "apple",
-          "leftCount": 3,
-          "rightIcon": "banana",
-          "rightCount": 5,
-          "compareOptions": [
-            {
-              "key": "left",
-              "label": "苹果多"
-            },
-            {
-              "key": "right",
-              "label": "香蕉多"
-            },
-            {
-              "key": "same",
-              "label": "一样多"
-            }
+          "unit": "个",
+          "question": "5 个苹果分两篮，左边 2 个，右边几个？",
+          "arithOptions": [
+            2,
+            3,
+            4
           ],
-          "answerKey": "right",
-          "hint": "一个对着一个，比一比",
-          "praise": "香蕉多，答对啦！"
+          "hint": "一共 5 个，左边有 2 个",
+          "praise": "分对啦，5 可以分成 2 和 3！"
         }
       ]
     },
     {
       "id": "math-3",
       "title": "第 4 关 气球派对",
-      "subtitle": "一样多",
+      "subtitle": "一样多 · 填一填",
       "steps": [
         {
           "id": "math-3-cmp",
@@ -174,6 +151,24 @@
           "answerKey": "same",
           "hint": "一个对着一个，比一比",
           "praise": "火眼金睛！一样多！"
+        },
+        {
+          "id": "math-3-n1",
+          "kind": "neighbor",
+          "nums": [
+            3,
+            0,
+            5
+          ],
+          "question": "想一想：藏起来的数字是几？",
+          "arithOptions": [
+            3,
+            4,
+            5
+          ],
+          "answer": 1,
+          "hint": "3 的后面是几？5 的前面是几？",
+          "praise": "是 4！3 和 5 的中间是 4！"
         }
       ]
     },
@@ -227,7 +222,7 @@
     {
       "id": "math-5",
       "title": "第 6 关 小火车",
-      "subtitle": "7 以内点数",
+      "subtitle": "7 以内 · 排一排",
       "steps": [
         {
           "id": "math-5-c",
@@ -242,13 +237,26 @@
           ],
           "backdrop": "grass",
           "unit": "辆"
+        },
+        {
+          "id": "math-5-o2",
+          "kind": "order",
+          "nums": [
+            3,
+            6,
+            4
+          ],
+          "dir": "up",
+          "question": "从小到大，依次点一点",
+          "hint": "从小到大：小的排前面",
+          "praise": "排队排好啦！"
         }
       ]
     },
     {
       "id": "math-6",
       "title": "第 7 关 花园蜜蜂",
-      "subtitle": "8 以内点数",
+      "subtitle": "8 以内 · 分一分",
       "steps": [
         {
           "id": "math-6-c",
@@ -265,37 +273,27 @@
           "unit": "朵"
         },
         {
-          "id": "math-6-cmp",
-          "kind": "compare",
-          "question": "叶子和花哪边多？",
-          "leftIcon": "leaf",
-          "leftCount": 5,
-          "rightIcon": "flower",
-          "rightCount": 8,
-          "compareOptions": [
-            {
-              "key": "left",
-              "label": "叶子多"
-            },
-            {
-              "key": "right",
-              "label": "花多"
-            },
-            {
-              "key": "same",
-              "label": "一样多"
-            }
+          "id": "math-6-s2",
+          "kind": "split",
+          "total": 8,
+          "part": 3,
+          "leftIcon": "flower",
+          "unit": "朵",
+          "question": "8 朵花分两个花瓶，左边 3 朵，右边几朵？",
+          "arithOptions": [
+            4,
+            5,
+            6
           ],
-          "answerKey": "right",
-          "hint": "一个对着一个，比一比",
-          "praise": "花多，答对啦！"
+          "hint": "一共 8 朵，左边有 3 朵",
+          "praise": "分对啦，8 可以分成 3 和 5！"
         }
       ]
     },
     {
       "id": "math-7",
       "title": "第 8 关 爱心礼盒",
-      "subtitle": "9 以内点数",
+      "subtitle": "9 以内 · 排一排",
       "steps": [
         {
           "id": "math-7-c",
@@ -310,6 +308,19 @@
           ],
           "backdrop": "grass",
           "unit": "颗"
+        },
+        {
+          "id": "math-7-o3",
+          "kind": "order",
+          "nums": [
+            9,
+            4,
+            7
+          ],
+          "dir": "down",
+          "question": "从大到小，依次点一点",
+          "hint": "从大到小：大的排前面",
+          "praise": "排队排好啦！"
         }
       ]
     },
@@ -360,8 +371,8 @@
     },
     {
       "id": "math-9",
-      "title": "第 10 关 比大小",
-      "subtitle": "谁是冠军",
+      "title": "第 10 关 数字擂台",
+      "subtitle": "比大小 · 归类",
       "steps": [
         {
           "id": "math-9-q1",
@@ -399,7 +410,26 @@
           ],
           "answer": 0,
           "hint": "越早数到的越小哦",
-          "praise": "思维小达人，通关！"
+          "praise": "思维小达人！"
+        },
+        {
+          "id": "math-9-q3",
+          "kind": "quiz",
+          "question": "火眼金睛：哪个是交通工具？",
+          "options": [
+            {
+              "icon": "duck"
+            },
+            {
+              "icon": "train"
+            },
+            {
+              "icon": "cake"
+            }
+          ],
+          "answer": 1,
+          "hint": "想一想它们分别是做什么的",
+          "praise": "分类小能手！"
         }
       ]
     },
@@ -447,7 +477,7 @@
     {
       "id": "math-11",
       "title": "第 12 关 苹果加法",
-      "subtitle": "5 以内",
+      "subtitle": "加法 · 分一分",
       "steps": [
         {
           "id": "math-11-a+22",
@@ -467,21 +497,20 @@
           "praise": "算对啦，等于 4！"
         },
         {
-          "id": "math-11-a+32",
-          "kind": "arith",
-          "op": "+",
+          "id": "math-11-s3",
+          "kind": "split",
+          "total": 6,
+          "part": 2,
           "leftIcon": "apple",
-          "leftCount": 3,
-          "rightCount": 2,
           "unit": "个",
-          "question": "3 个苹果加 2 个苹果，一共有几个？",
+          "question": "6 个苹果分两篮，左边 2 个，右边几个？",
           "arithOptions": [
+            3,
             4,
-            5,
-            6
+            5
           ],
-          "hint": "指着图一个一个数",
-          "praise": "算对啦，等于 5！"
+          "hint": "一共 6 个，左边有 2 个",
+          "praise": "分对啦，6 可以分成 2 和 4！"
         }
       ]
     },
@@ -529,7 +558,7 @@
     {
       "id": "math-13",
       "title": "第 14 关 星星回家",
-      "subtitle": "5 以内减法",
+      "subtitle": "减法 · 填一填",
       "steps": [
         {
           "id": "math-13-a-52",
@@ -549,28 +578,29 @@
           "praise": "算对啦，等于 3！"
         },
         {
-          "id": "math-13-a-53",
-          "kind": "arith",
-          "op": "-",
-          "leftIcon": "star",
-          "leftCount": 5,
-          "rightCount": 3,
-          "unit": "颗",
-          "question": "5 颗星星回家 3 颗，还剩几颗？",
-          "arithOptions": [
-            1,
-            2,
-            3
+          "id": "math-13-n2",
+          "kind": "neighbor",
+          "nums": [
+            6,
+            0,
+            8
           ],
-          "hint": "划掉的不算哦",
-          "praise": "算对啦，等于 2！"
+          "question": "想一想：藏起来的数字是几？",
+          "arithOptions": [
+            6,
+            7,
+            8
+          ],
+          "answer": 1,
+          "hint": "6 的后面是几？8 的前面是几？",
+          "praise": "是 7！6 和 8 的中间是 7！"
         }
       ]
     },
     {
       "id": "math-14",
       "title": "第 15 关 思维大挑战",
-      "subtitle": "加减 + 找规律",
+      "subtitle": "加减 · 排队 · 找规律",
       "steps": [
         {
           "id": "math-14-a+44",
@@ -607,21 +637,17 @@
           "praise": "算对啦，等于 6！"
         },
         {
-          "id": "math-14-a+63",
-          "kind": "arith",
-          "op": "+",
-          "leftIcon": "candy",
-          "leftCount": 6,
-          "rightCount": 3,
-          "unit": "颗",
-          "question": "6 颗糖加 3 颗糖，一共几颗？",
-          "arithOptions": [
-            8,
-            9,
-            10
+          "id": "math-14-o4",
+          "kind": "order",
+          "nums": [
+            10,
+            2,
+            7
           ],
-          "hint": "指着图一个一个数",
-          "praise": "算对啦，等于 9！"
+          "dir": "down",
+          "question": "从大到小，依次点一点",
+          "hint": "从大到小：大的排前面",
+          "praise": "排队排好啦！"
         },
         {
           "id": "math-14-p2",
