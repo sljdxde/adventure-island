@@ -1,0 +1,506 @@
+{
+  "subject": "astro",
+  "title": "天文台",
+  "guide": "robot",
+  "levels": [
+    {
+      "id": "astro-0",
+      "title": "第 1 关 Sun",
+      "subtitle": "太阳",
+      "steps": [
+        {
+          "id": "astro-0-t",
+          "kind": "letter",
+          "letters": [
+            "Sun"
+          ],
+          "display": "太阳",
+          "examples": [
+            {
+              "icon": "sun",
+              "text": "太阳 Sun",
+              "say": "太阳"
+            },
+            {
+              "icon": "sunrise",
+              "text": "日出 Sunrise",
+              "say": "日出"
+            }
+          ],
+          "question": "学一学：太阳 Sun"
+        },
+        {
+          "id": "astro-0-q",
+          "kind": "quiz",
+          "question": "找一找：哪个是太阳？",
+          "options": [
+            {
+              "icon": "moon"
+            },
+            {
+              "icon": "sun",
+              "text": "太阳"
+            },
+            {
+              "icon": "star"
+            }
+          ],
+          "answer": 1,
+          "hint": "太阳会发光发热，白天照亮大地",
+          "praise": "对啦！太阳会发光发热，白天照亮大地"
+        }
+      ]
+    },
+    {
+      "id": "astro-1",
+      "title": "第 2 关 Moon",
+      "subtitle": "月亮",
+      "steps": [
+        {
+          "id": "astro-1-t",
+          "kind": "letter",
+          "letters": [
+            "Moon"
+          ],
+          "display": "月亮",
+          "examples": [
+            {
+              "icon": "moon",
+              "text": "月亮 Moon",
+              "say": "月亮"
+            },
+            {
+              "icon": "starface",
+              "text": "星夜 Night",
+              "say": "星夜"
+            }
+          ],
+          "question": "学一学：月亮 Moon"
+        },
+        {
+          "id": "astro-1-q",
+          "kind": "quiz",
+          "question": "找一找：哪个是月亮？",
+          "options": [
+            {
+              "icon": "moon",
+              "text": "月亮"
+            },
+            {
+              "icon": "sun"
+            },
+            {
+              "icon": "crystal"
+            }
+          ],
+          "answer": 0,
+          "hint": "月亮晚上出来，有时圆圆、有时弯弯",
+          "praise": "对啦！月亮晚上出来，有时圆圆、有时弯弯"
+        }
+      ]
+    },
+    {
+      "id": "astro-2",
+      "title": "第 3 关 Star",
+      "subtitle": "星星",
+      "steps": [
+        {
+          "id": "astro-2-t",
+          "kind": "letter",
+          "letters": [
+            "Star"
+          ],
+          "display": "星星",
+          "examples": [
+            {
+              "icon": "star",
+              "text": "星星 Star",
+              "say": "星星"
+            },
+            {
+              "icon": "starface",
+              "text": "小星星 Shine",
+              "say": "小星星"
+            }
+          ],
+          "question": "学一学：星星 Star"
+        },
+        {
+          "id": "astro-2-q",
+          "kind": "quiz",
+          "question": "找一找：哪个是星星？",
+          "options": [
+            {
+              "icon": "balloon"
+            },
+            {
+              "icon": "moon"
+            },
+            {
+              "icon": "star",
+              "text": "星星"
+            }
+          ],
+          "answer": 2,
+          "hint": "星星在夜空里一闪一闪",
+          "praise": "对啦！星星在夜空里一闪一闪"
+        }
+      ]
+    },
+    {
+      "id": "astro-3",
+      "title": "第 4 关 Earth",
+      "subtitle": "地球",
+      "steps": [
+        {
+          "id": "astro-3-t",
+          "kind": "letter",
+          "letters": [
+            "Earth"
+          ],
+          "display": "地球",
+          "examples": [
+            {
+              "icon": "earth",
+              "text": "地球 Earth",
+              "say": "地球"
+            },
+            {
+              "icon": "rocket",
+              "text": "坐火箭 Fly",
+              "say": "坐火箭"
+            }
+          ],
+          "question": "学一学：地球 Earth"
+        },
+        {
+          "id": "astro-3-q",
+          "kind": "quiz",
+          "question": "找一找：哪个是地球？",
+          "options": [
+            {
+              "icon": "sun"
+            },
+            {
+              "icon": "earth",
+              "text": "地球"
+            },
+            {
+              "icon": "moon"
+            }
+          ],
+          "answer": 1,
+          "hint": "地球是我们的家，蓝蓝的、圆圆的",
+          "praise": "对啦！地球是我们的家，蓝蓝的、圆圆的"
+        }
+      ]
+    },
+    {
+      "id": "astro-4",
+      "title": "第 5 关 Rocket",
+      "subtitle": "火箭",
+      "steps": [
+        {
+          "id": "astro-4-t",
+          "kind": "letter",
+          "letters": [
+            "Rocket"
+          ],
+          "display": "火箭",
+          "examples": [
+            {
+              "icon": "rocket",
+              "text": "火箭 Rocket",
+              "say": "火箭"
+            },
+            {
+              "icon": "flame",
+              "text": "点火 Go",
+              "say": "点火"
+            }
+          ],
+          "question": "学一学：火箭 Rocket"
+        },
+        {
+          "id": "astro-4-q",
+          "kind": "quiz",
+          "question": "找一找：哪个是火箭？",
+          "options": [
+            {
+              "icon": "rocket",
+              "text": "火箭"
+            },
+            {
+              "icon": "train"
+            },
+            {
+              "icon": "balloon"
+            }
+          ],
+          "answer": 0,
+          "hint": "火箭轰隆一声，飞向太空",
+          "praise": "对啦！火箭轰隆一声，飞向太空"
+        }
+      ]
+    },
+    {
+      "id": "astro-5",
+      "title": "第 6 关 Planet",
+      "subtitle": "行星",
+      "steps": [
+        {
+          "id": "astro-5-t",
+          "kind": "letter",
+          "letters": [
+            "Planet"
+          ],
+          "display": "行星",
+          "examples": [
+            {
+              "icon": "planet",
+              "text": "行星 Planet",
+              "say": "行星"
+            },
+            {
+              "icon": "crystal",
+              "text": "光环 Ring",
+              "say": "光环"
+            }
+          ],
+          "question": "学一学：行星 Planet"
+        },
+        {
+          "id": "astro-5-q",
+          "kind": "quiz",
+          "question": "找一找：哪个是行星？",
+          "options": [
+            {
+              "icon": "earth"
+            },
+            {
+              "icon": "star"
+            },
+            {
+              "icon": "planet",
+              "text": "行星"
+            }
+          ],
+          "answer": 2,
+          "hint": "有的行星戴着光环，像大草帽",
+          "praise": "对啦！有的行星戴着光环，像大草帽"
+        }
+      ]
+    },
+    {
+      "id": "astro-6",
+      "title": "第 7 关 Comet",
+      "subtitle": "彗星",
+      "steps": [
+        {
+          "id": "astro-6-t",
+          "kind": "letter",
+          "letters": [
+            "Comet"
+          ],
+          "display": "彗星",
+          "examples": [
+            {
+              "icon": "comet",
+              "text": "彗星 Comet",
+              "say": "彗星"
+            },
+            {
+              "icon": "sparkle",
+              "text": "亮尾巴 Tail",
+              "say": "亮尾巴"
+            }
+          ],
+          "question": "学一学：彗星 Comet"
+        },
+        {
+          "id": "astro-6-q",
+          "kind": "quiz",
+          "question": "找一找：哪个是彗星？",
+          "options": [
+            {
+              "icon": "rocket"
+            },
+            {
+              "icon": "comet",
+              "text": "彗星"
+            },
+            {
+              "icon": "star"
+            }
+          ],
+          "answer": 1,
+          "hint": "彗星拖着长长的大尾巴，扫过夜空",
+          "praise": "对啦！彗星拖着长长的大尾巴，扫过夜空"
+        }
+      ]
+    },
+    {
+      "id": "astro-7",
+      "title": "第 8 关 Meteor",
+      "subtitle": "流星",
+      "steps": [
+        {
+          "id": "astro-7-t",
+          "kind": "letter",
+          "letters": [
+            "Meteor"
+          ],
+          "display": "流星",
+          "examples": [
+            {
+              "icon": "sparkle",
+              "text": "流星 Meteor",
+              "say": "流星"
+            },
+            {
+              "icon": "star",
+              "text": "许个愿 Wish",
+              "say": "许个愿"
+            }
+          ],
+          "question": "学一学：流星 Meteor"
+        },
+        {
+          "id": "astro-7-q",
+          "kind": "quiz",
+          "question": "找一找：哪个是流星？",
+          "options": [
+            {
+              "icon": "sparkle",
+              "text": "流星"
+            },
+            {
+              "icon": "star"
+            },
+            {
+              "icon": "comet"
+            }
+          ],
+          "answer": 0,
+          "hint": "流星噌——地划过夜空，可以许个愿",
+          "praise": "对啦！流星噌——地划过夜空，可以许个愿"
+        }
+      ]
+    },
+    {
+      "id": "astro-8",
+      "title": "第 9 关 Rover",
+      "subtitle": "火星车",
+      "steps": [
+        {
+          "id": "astro-8-t",
+          "kind": "letter",
+          "letters": [
+            "Rover"
+          ],
+          "display": "火星车",
+          "examples": [
+            {
+              "icon": "robot",
+              "text": "火星车 Rover",
+              "say": "火星车"
+            },
+            {
+              "icon": "volcano",
+              "text": "红色火星 Mars",
+              "say": "红色火星"
+            }
+          ],
+          "question": "学一学：火星车 Rover"
+        },
+        {
+          "id": "astro-8-q",
+          "kind": "quiz",
+          "question": "找一找：哪个是火星车？",
+          "options": [
+            {
+              "icon": "rocket"
+            },
+            {
+              "icon": "earth"
+            },
+            {
+              "icon": "robot",
+              "text": "火星车"
+            }
+          ],
+          "answer": 2,
+          "hint": "机器人火星车，在火星上慢慢探险",
+          "praise": "对啦！机器人火星车，在火星上慢慢探险"
+        }
+      ]
+    },
+    {
+      "id": "astro-9",
+      "title": "第 10 关 星空大挑战",
+      "subtitle": "复习",
+      "steps": [
+        {
+          "id": "astro-9-q1",
+          "kind": "quiz",
+          "question": "我们的家是哪个星球？",
+          "options": [
+            {
+              "icon": "sun"
+            },
+            {
+              "icon": "earth",
+              "text": "地球"
+            },
+            {
+              "icon": "moon"
+            }
+          ],
+          "answer": 1,
+          "hint": "蓝蓝的、圆圆的",
+          "praise": "地球是我们的家！"
+        },
+        {
+          "id": "astro-9-q2",
+          "kind": "quiz",
+          "question": "晚上挂在天上的是哪个？",
+          "options": [
+            {
+              "icon": "moon",
+              "text": "月亮"
+            },
+            {
+              "icon": "sun"
+            },
+            {
+              "icon": "rocket"
+            }
+          ],
+          "answer": 0,
+          "hint": "有时圆圆、有时弯弯",
+          "praise": "月亮答对啦！"
+        },
+        {
+          "id": "astro-9-q3",
+          "kind": "quiz",
+          "question": "谁会轰隆隆飞向太空？",
+          "options": [
+            {
+              "icon": "train"
+            },
+            {
+              "icon": "balloon"
+            },
+            {
+              "icon": "rocket",
+              "text": "火箭"
+            }
+          ],
+          "answer": 2,
+          "hint": "倒计时 3、2、1，发射！",
+          "praise": "火箭发射！全部通关！"
+        }
+      ]
+    }
+  ]
+}

@@ -32,7 +32,7 @@ const GRADS = {
   'g-cream': ['#FFFDF4', '#FFE9C2'], 'g-white': ['#FFFFFF', '#E9EDF2'],
   'g-ice': ['#EAF9FF', '#A8DCF5'],
   'g-skin': ['#FFEFD9', '#FFD3AE'], 'g-hair': ['#9C6B44', '#7A4E2C'],
-  'g-pblack': ['#6A6A78', '#3A3A46'],
+  'g-pblack': ['#6A6A78', '#3A3A46'], 'g-sand': ['#F7D98C', '#E0A952'],
 };
 
 /* ---------- 图标体（viewBox 0 0 64 64） ---------- */
@@ -411,6 +411,66 @@ S.hanzi = `
   <rect x="12" y="8" width="40" height="48" rx="8" fill="url(#g-white)"/>
   <rect x="18" y="14" width="28" height="36" rx="3" fill="none" stroke="#F0A898" stroke-width="2" opacity=".7"/>
   <text x="32" y="42" text-anchor="middle" font-size="26" font-weight="700" fill="#E2582A" font-family="Kaiti SC, KaiTi, STKaiti, serif">字</text>`;
+
+/* ---------- 关卡扩展图标 ---------- */
+S.flame = `
+  <path d="M32 4 Q46 18 46 34 Q46 50 32 56 Q18 50 18 34 Q18 24 24 16 Q24 26 30 28 Q28 14 32 4 Z" fill="url(#g-orange)"/>
+  <path d="M32 26 Q38 32 38 40 Q38 48 32 51 Q26 48 26 40 Q26 32 32 26 Z" fill="url(#g-gold)"/>
+  <ellipse cx="32" cy="42" rx="4" ry="5" fill="#FFF3C4"/>`;
+
+S.salt = `
+  <rect x="22" y="18" width="20" height="36" rx="9" fill="url(#g-white)"/>
+  <rect x="22" y="10" width="20" height="11" rx="5.5" fill="url(#g-blue)"/>
+  <circle cx="28" cy="15" r="1.5" fill="#fff"/><circle cx="32" cy="13.5" r="1.5" fill="#fff"/><circle cx="36" cy="15" r="1.5" fill="#fff"/>
+  <circle cx="28" cy="40" r="2" fill="#DCE4EC"/><circle cx="35" cy="45" r="2" fill="#DCE4EC"/><circle cx="31" cy="34" r="1.7" fill="#DCE4EC"/>
+  <rect x="25" y="22" width="5" height="14" rx="2.5" fill="#fff" opacity=".6"/>`;
+
+S.sugar = `
+  <rect x="10" y="34" width="20" height="20" rx="5" fill="url(#g-white)"/>
+  <rect x="32" y="34" width="20" height="20" rx="5" fill="url(#g-white)"/>
+  <rect x="21" y="14" width="20" height="20" rx="5" fill="url(#g-white)"/>
+  <rect x="10" y="34" width="20" height="20" rx="5" fill="none" stroke="#DCE4EC" stroke-width="2"/>
+  <rect x="32" y="34" width="20" height="20" rx="5" fill="none" stroke="#DCE4EC" stroke-width="2"/>
+  <rect x="21" y="14" width="20" height="20" rx="5" fill="none" stroke="#DCE4EC" stroke-width="2"/>
+  <path d="M52 12 L53 15 L56 16 L53 17 L52 20 L51 17 L48 16 L51 15 Z" fill="url(#g-gold)"/>`;
+
+S.sand = `
+  <path d="M6 52 Q18 28 32 28 Q46 28 58 52 Z" fill="url(#g-sand)"/>
+  <circle cx="24" cy="42" r="1.8" fill="#C08552" opacity=".6"/><circle cx="36" cy="46" r="1.8" fill="#C08552" opacity=".6"/><circle cx="31" cy="36" r="1.6" fill="#C08552" opacity=".5"/>
+  <path d="M14 46 Q22 34 32 33" stroke="#fff" stroke-width="3" fill="none" opacity=".45" stroke-linecap="round"/>
+  <path d="M44 20 L45.2 23.3 L48.5 24.5 L45.2 25.7 L44 29 L42.8 25.7 L39.5 24.5 L42.8 23.3 Z" fill="url(#g-golddk)"/>`;
+
+S.tree = `
+  <rect x="28" y="38" width="8" height="20" rx="3" fill="url(#g-brown)"/>
+  <circle cx="32" cy="22" r="15" fill="url(#g-greendk)"/>
+  <circle cx="19" cy="30" r="10" fill="url(#g-green)"/>
+  <circle cx="45" cy="30" r="10" fill="url(#g-green)"/>
+  <circle cx="26" cy="14" r="5" fill="#fff" opacity=".35"/>
+  <circle cx="26" cy="24" r="3" fill="url(#g-red)"/><circle cx="40" cy="20" r="3" fill="url(#g-red)"/><circle cx="36" cy="32" r="3" fill="url(#g-red)"/>`;
+
+S.train = `
+  <rect x="12" y="14" width="7" height="12" rx="3" fill="url(#g-graydk)"/>
+  <circle cx="15.5" cy="9" r="4" fill="url(#g-white)" opacity=".9"/>
+  <rect x="8" y="24" width="34" height="20" rx="6" fill="url(#g-red)"/>
+  <rect x="30" y="12" width="18" height="18" rx="5" fill="url(#g-coral)"/>
+  <rect x="34" y="16" width="9" height="8" rx="2.5" fill="url(#g-sky)"/>
+  <rect x="8" y="40" width="40" height="6" rx="3" fill="#8E150E"/>
+  <circle cx="16" cy="50" r="6" fill="#3A3A46"/><circle cx="30" cy="50" r="6" fill="#3A3A46"/><circle cx="42" cy="50" r="6" fill="#3A3A46"/>
+  <circle cx="16" cy="50" r="2.2" fill="#fff"/><circle cx="30" cy="50" r="2.2" fill="#fff"/><circle cx="42" cy="50" r="2.2" fill="#fff"/>
+  <rect x="12" y="28" width="10" height="5" rx="2.5" fill="#fff" opacity=".4"/>`;
+
+S.jar = `
+  <rect x="16" y="20" width="32" height="36" rx="11" fill="url(#g-ice)" opacity=".92"/>
+  <rect x="16" y="20" width="32" height="36" rx="11" fill="none" stroke="#7FCDF4" stroke-width="2.5" opacity=".7"/>
+  <rect x="13" y="10" width="38" height="11" rx="5.5" fill="url(#g-coral)"/>
+  <path d="M22 28 L22 46" stroke="#fff" stroke-width="3.5" stroke-linecap="round" opacity=".7"/>`;
+
+S.candy = `
+  <path d="M20 32 L8 23 L11 32 L8 41 Z" fill="url(#g-pink)"/>
+  <path d="M44 32 L56 23 L53 32 L56 41 Z" fill="url(#g-pink)"/>
+  <circle cx="32" cy="32" r="13" fill="url(#g-pink)"/>
+  <path d="M24 26 Q32 32 24 38 M32 22 Q40 32 32 42 M40 26 Q46 32 40 38" stroke="#fff" stroke-width="3" fill="none" opacity=".6" stroke-linecap="round"/>
+  <ellipse cx="27" cy="24" rx="3.5" ry="2.5" fill="#fff" opacity=".6" transform="rotate(-20 27 24)"/>`;
 
 /* ---------- 派对棋盘元素 ---------- */
 S.block = `

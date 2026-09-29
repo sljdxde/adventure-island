@@ -21,6 +21,10 @@ enum IconEmoji {
         "hanzi": "🈶", "block": "🟨", "blockok": "✅", "blocklock": "🔒",
         "coin": "🪙", "dice": "🎲", "pipe-red": "🟥", "pipe-blue": "🟦",
         "pipe-purple": "🟪", "flag": "🏁", "starface": "🌟", "brick": "🧱",
+        "pipe-orange": "🟧", "pipe-green": "🟩", "pipe-indigo": "🔷",
+        "candy": "🍬", "flame": "🔥", "jar": "🫙", "salt": "🧂", "sand": "🏖️",
+        "sugar": "🍚", "train": "🚂", "tree": "🌳",
+        "earth": "🌍", "planet": "🪐", "comet": "☄️",
         "hills-back": "⛰", "hills-front": "🏞"
     ]
 }
@@ -306,45 +310,150 @@ struct DashSeparator: View {
     }
 }
 
-// MARK: - 场景背景（天空+光晕+云+远山）
+// MARK: - 场景背景（天空+光晕+云+远山；variant: 0 白天 / 1 黄昏 / 2 星夜，让相邻关卡有区别）
 
 struct SceneBackground: View {
     let theme: AppTheme
+    var variant: Int = 0
+
+    private var isNight: Bool { theme.isNight || variant == 2 }
+    private var isDusk: Bool { !theme.isNight && variant == 1 }
 
     var body: some View {
         ZStack {
             LinearGradient(colors: theme.sky, startPoint: .top, endPoint: .bottom)
+
+            // 星夜：整片星星装饰（天文台常驻；其他学科第 3n 关轮换到夜景）
+            if isNight {
+                StarField()
+            }
+
+            // 黄昏：暖色天光
+            if isDusk {
+                LinearGradient(colors: [Color(hex: 0xFF9E5E).opacity(0.38), Color(hex: 0xFFB56B).opacity(0.16), .clear],
+                               startPoint: .top, endPoint: .bottom)
+            }
+
+            glow
+            clouds
+            hills
+        }
+        .ignoresSafeArea()
+    }
+
+    @ViewBuilder
+    private var glow: some View {
+        if isNight {
+            // 月亮 + 月晕
+            ZStack {
+                Circle()
+                    .fill(RadialGradient(colors: [Color(hex: 0xFFF6C9).opacity(0.5), .clear],
+                                         center: .center, startRadius: 0, endRadius: 150))
+                    .frame(width: 300, height: 300)
+                Circle()
+                    .fill(LinearGradient(colors: [Color(hex: 0xFFF9E2), Color(hex: 0xFFE9A8)],
+                                         startPoint: .topLeading, endPoint: .bottomTrailing))
+                    .frame(width: 96, height: 96)
+                    .shadow(color: Color(hex: 0xFFF3C4).opacity(0.9), radius: 22)
+                Circle()
+                    .fill(Color(hex: 0xF3D98A).opacity(0.5))
+                    .frame(width: 22, height: 22)
+                    .offset(x: 26, y: -18)
+                Circle()
+                    .fill(Color(hex: 0xF3D98A).opacity(0.4))
+                    .frame(width: 14, height: 14)
+                    .offset(x: 12, y: 22)
+            }
+            .frame(width: 320, height: 320)
+            .offset(x: 250, y: -190)
+        } else {
             Circle()
                 .fill(
-                    RadialGradient(colors: [Color(hex: 0xFFF6C9).opacity(0.95), Color(hex: 0xFFE28A).opacity(0.35), .clear],
+                    RadialGradient(colors: [Color(hex: 0xFFF6C9).opacity(0.95),
+                                            Color(hex: isDusk ? 0xFFC27A : 0xFFE28A).opacity(0.35), .clear],
                                    center: .center, startRadius: 0, endRadius: 150)
                 )
                 .frame(width: 320, height: 320)
                 .offset(x: -180, y: -180)
+        }
+    }
+
+    @ViewBuilder
+    private var clouds: some View {
+        let opacity: Double = isNight ? 0.32 : (isDusk ? 0.7 : 1)
+        CloudShape()
+            .fill(isNight ? Color(hex: 0xC9D4FF) : .white)
+            .opacity(0.92 * opacity)
+            .frame(width: 150, height: 40)
+            .offset(x: -240, y: -270)
+            .modifier(DriftModifier(duration: 38))
+        CloudShape()
+            .fill(isNight ? Color(hex: 0xC9D4FF) : .white)
+            .opacity(0.8 * opacity)
+            .frame(width: 100, height: 30)
+            .offset(x: 100, y: -190)
+            .modifier(DriftModifier(duration: 28, reverse: true))
+        if !isNight {
             CloudShape()
-                .fill(.white.opacity(0.92))
-                .frame(width: 150, height: 40)
-                .offset(x: -240, y: -270)
-                .modifier(DriftModifier(duration: 38))
-            CloudShape()
-                .fill(.white.opacity(0.8))
-                .frame(width: 100, height: 30)
-                .offset(x: 100, y: -190)
-                .modifier(DriftModifier(duration: 28, reverse: true))
-            CloudShape()
-                .fill(.white.opacity(0.85))
+                .fill(.white)
+                .opacity(0.85 * opacity)
                 .frame(width: 180, height: 46)
                 .offset(x: 60, y: -310)
                 .modifier(DriftModifier(duration: 46))
-            HillLayer(asset: "hills-back", tint: Color(hex: 0xB9E88C), fallback: .brandGreen.opacity(0.45))
+        }
+    }
+
+    private var hills: some View {
+        ZStack {
+            HillLayer(asset: "hills-back", tint: isNight ? Color(hex: 0x5E6BC0) : (isDusk ? Color(hex: 0xB9E88C) : Color(hex: 0xB9E88C)),
+                      fallback: isNight ? Color(hex: 0x5E6BC0) : .brandGreen.opacity(0.45))
                 .frame(height: 300)
                 .frame(maxHeight: .infinity, alignment: .bottom)
-                .opacity(theme.hillOpacity)
-            HillLayer(asset: "hills-front", tint: .brandGreen, fallback: .brandGreen)
+                .opacity(theme.hillOpacity * (isDusk ? 0.85 : 1))
+            HillLayer(asset: "hills-front",
+                      tint: isNight ? Color(hex: 0x4A57A8) : .brandGreen,
+                      fallback: isNight ? Color(hex: 0x4A57A8) : .brandGreen)
                 .frame(height: 250)
                 .frame(maxHeight: .infinity, alignment: .bottom)
+                .opacity(theme.hillOpacity * (isDusk ? 0.85 : 1))
         }
-        .ignoresSafeArea()
+    }
+}
+
+// 星空：确定性散布的小星星（伪随机但每次布局稳定，不闪屏）
+struct StarField: View {
+    @State private var twinkle = false
+
+    // (x比例, y比例, 大小, 相位) — 手工散布，避开中下部主内容区
+    private static let stars: [(Double, Double, CGFloat, Double)] = [
+        (0.06, 0.10, 5, 0.0), (0.13, 0.32, 3.5, 0.4), (0.22, 0.08, 4, 0.9),
+        (0.31, 0.24, 3, 0.2), (0.38, 0.06, 5, 0.7), (0.47, 0.18, 3.5, 0.1),
+        (0.55, 0.05, 4, 0.5), (0.63, 0.26, 3, 0.8), (0.71, 0.11, 5, 0.3),
+        (0.79, 0.30, 3.5, 0.6), (0.87, 0.09, 4, 0.15), (0.94, 0.24, 3, 0.85),
+        (0.18, 0.44, 3, 0.55), (0.44, 0.38, 3, 0.05), (0.68, 0.42, 3.5, 0.75),
+        (0.90, 0.46, 3, 0.35), (0.28, 0.15, 2.5, 0.65), (0.59, 0.14, 2.5, 0.25)
+    ]
+
+    var body: some View {
+        GeometryReader { geo in
+            ForEach(0..<Self.stars.count, id: \.self) { i in
+                let s = Self.stars[i]
+                Circle()
+                    .fill(.white.opacity(twinkle ? 0.95 : 0.55))
+                    .frame(width: s.2, height: s.2)
+                    .position(x: geo.size.width * s.0, y: geo.size.height * s.1)
+                    .animation(.easeInOut(duration: 1.6).repeatForever(autoreverses: true).delay(s.3),
+                               value: twinkle)
+            }
+            IconView(name: "sparkle", size: 16)
+                .position(x: geo.size.width * 0.35, y: geo.size.height * 0.16)
+                .opacity(0.9)
+            IconView(name: "sparkle", size: 12)
+                .position(x: geo.size.width * 0.82, y: geo.size.height * 0.34)
+                .opacity(0.8)
+        }
+        .allowsHitTesting(false)
+        .onAppear { twinkle = true }
     }
 }
 

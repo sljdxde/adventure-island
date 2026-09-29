@@ -44,7 +44,7 @@ extension Color {
 
 /// 页面主题：天空配色 + 面板描边色（对应 CSS data-theme）
 enum AppTheme {
-    case home, cn, math, lab, coll, parent
+    case home, cn, math, lab, coll, parent, pinyin, english, astro
 
     var sky: [Color] {
         switch self {
@@ -54,6 +54,9 @@ enum AppTheme {
         case .lab: return [Color(hex: 0x8F74EC), Color(hex: 0xB39CF7), Color(hex: 0xE2DAFE)]
         case .coll: return [Color(hex: 0xFFC964), Color(hex: 0xFFDE94), Color(hex: 0xFFF2C4)]
         case .parent: return [Color(hex: 0xA9C0DC), Color(hex: 0xC6D6E9), Color(hex: 0xE6EEF5)]
+        case .pinyin: return [Color(hex: 0xFFC98A), Color(hex: 0xFFDCA8), Color(hex: 0xFFF0CE)]
+        case .english: return [Color(hex: 0x6FD0A8), Color(hex: 0xA8E5C8), Color(hex: 0xE1F8EC)]
+        case .astro: return [Color(hex: 0x2E3A87), Color(hex: 0x4A5AB8), Color(hex: 0x8C9BE8)]
         }
     }
 
@@ -65,6 +68,9 @@ enum AppTheme {
         case .lab: return .brandPurple
         case .coll: return .goldDk
         case .parent: return Color(hex: 0x9AA7B4)
+        case .pinyin: return .brandOrangeDdk
+        case .english: return .brandGreenDk
+        case .astro: return Color(hex: 0x6C7BE8)
         }
     }
 
@@ -76,10 +82,38 @@ enum AppTheme {
         case .lab: return .brandPurpleDk
         case .coll: return .goldDdk
         case .parent: return Color(hex: 0x5C7089)
+        case .pinyin: return Color(hex: 0xB85E14)
+        case .english: return .brandGreenDdk
+        case .astro: return Color(hex: 0x3D4CB0)
         }
     }
 
-    var hillOpacity: Double { self == .parent ? 0.35 : 0.95 }
+    var hillOpacity: Double {
+        switch self {
+        case .parent: return 0.35
+        case .astro: return 0.5
+        default: return 0.95
+        }
+    }
+
+    /// 星夜主题：常驻星星装饰
+    var isNight: Bool { self == .astro }
+}
+
+/// 学科配置：文件名 / 标题 / 向导 / 主题
+struct SubjectConfig {
+    let file: String
+    let title: String
+    let guide: String
+    let theme: AppTheme
+
+    static let map: [String: SubjectConfig] = [
+        "cn": SubjectConfig(file: "cn_levels", title: "识字村", guide: "panda", theme: .cn),
+        "math": SubjectConfig(file: "math_levels", title: "思维镇", guide: "fox", theme: .math),
+        "pinyin": SubjectConfig(file: "pinyin_levels", title: "拼音谷", guide: "panda", theme: .pinyin),
+        "english": SubjectConfig(file: "english_levels", title: "英语王国", guide: "robot", theme: .english),
+        "astro": SubjectConfig(file: "astro_levels", title: "天文台", guide: "robot", theme: .astro),
+    ]
 }
 
 // MARK: - 字体

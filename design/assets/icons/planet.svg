@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs><linearGradient id="g-planet" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFD98A"/><stop offset="1" stop-color="#F5A623"/></linearGradient><linearGradient id="g-ring" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#FFE3B3"/><stop offset=".5" stop-color="#FFC98A"/><stop offset="1" stop-color="#F08C1F"/></linearGradient></defs>
+  <path d="M 2.5 32 A 29.5 10 0 0 1 61.5 32" fill="none" stroke="url(#g-ring)" stroke-width="5" stroke-linecap="round" opacity=".85"/>
+  <circle cx="32" cy="32" r="20" fill="url(#g-planet)"/>
+  <path d="M18 27 q9-5 19-2" stroke="#E2582A" stroke-width="3" fill="none" stroke-linecap="round" opacity=".45"/>
+  <path d="M15 38 q11 6 26 1" stroke="#E2582A" stroke-width="3" fill="none" stroke-linecap="round" opacity=".35"/>
+  <ellipse cx="25" cy="21" rx="6" ry="3.5" fill="#fff" opacity=".5" transform="rotate(-20 25 21)"/>
+  <path d="M 2.5 32 A 29.5 10 0 0 0 61.5 32" fill="none" stroke="url(#g-ring)" stroke-width="5" stroke-linecap="round"/></svg>

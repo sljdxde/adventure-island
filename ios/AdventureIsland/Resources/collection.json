@@ -6,30 +6,92 @@
       "icon": "flask",
       "lockedLabel": "？？？",
       "items": [
-        { "id": "sci-apple", "name": "苹果", "icon": "apple", "tag": "浮", "tagColor": "blue",
-          "fact": "苹果能浮起来，是因为果肉里藏着小气孔，像穿了救生衣！" },
-        { "id": "sci-rock", "name": "石头", "icon": "rock", "tag": "沉", "tagColor": "coral",
-          "fact": "石头比同体积的水重很多，所以一放就沉底啦。" },
-        { "id": "sci-wood", "name": "木头", "icon": "wood", "tag": "浮", "tagColor": "blue",
-          "fact": "木头里有很多小空隙，轻轻的，所以能浮在水面上。" },
-        { "id": "sci-key", "name": "钥匙", "icon": "key", "tag": "沉", "tagColor": "coral",
-          "fact": "金属钥匙个头小却很重，扑通一下就沉下去了。" },
-        { "id": "sci-sponge", "name": "海绵", "icon": "sponge", "tag": "浮", "tagColor": "blue",
-          "fact": "干海绵会浮，吸满水之后会慢慢往下沉，试试看！" },
-        { "id": "sci-balloon", "name": "气球", "icon": "balloon", "tag": "浮", "tagColor": "blue",
-          "fact": "气球里装的是空气，最轻最轻，漂在最上面。" },
-        { "id": "sci-ice", "name": "冰块", "icon": "ice", "tag": "浮", "tagColor": "blue",
-          "fact": "冰比水轻一点点，所以冰块会浮在饮料上。" },
-        { "id": "sci-magnet", "name": "磁铁", "icon": "magnet",
-          "fact": "磁铁能吸住铁做的东西，比如回形针和钥匙。" },
-        { "id": "sci-rainbow", "name": "彩虹", "icon": "rainbow",
-          "fact": "阳光穿过小水滴，会折出红橙黄绿蓝靛紫七种颜色。" },
-        { "id": "sci-volcano", "name": "火山", "icon": "volcano",
-          "fact": "地底下岩浆压力太大时，就会从火山口喷出来。" },
-        { "id": "sci-sprout", "name": "种子", "icon": "sprout",
-          "fact": "种子喝饱水、晒到太阳，就会发芽慢慢长大。" },
-        { "id": "sci-heart", "name": "心跳", "icon": "heart",
-          "fact": "你的心脏一直在跳，跑完步会跳得更快哦。" }
+        {
+          "id": "sci-apple",
+          "name": "苹果",
+          "icon": "apple",
+          "fact": "苹果能浮起来，是因为果肉里藏着小气孔，像穿了救生衣！",
+          "tag": "浮",
+          "tagColor": "blue"
+        },
+        {
+          "id": "sci-rock",
+          "name": "石头",
+          "icon": "rock",
+          "fact": "石头比同体积的水重很多，所以一放就沉底啦。",
+          "tag": "沉",
+          "tagColor": "coral"
+        },
+        {
+          "id": "sci-wood",
+          "name": "木头",
+          "icon": "wood",
+          "fact": "木头里有很多小空隙，轻轻的，所以能浮在水面上。",
+          "tag": "浮",
+          "tagColor": "blue"
+        },
+        {
+          "id": "sci-key",
+          "name": "钥匙",
+          "icon": "key",
+          "fact": "金属钥匙个头小却很重，扑通一下就沉下去了。",
+          "tag": "沉",
+          "tagColor": "coral"
+        },
+        {
+          "id": "sci-sponge",
+          "name": "海绵",
+          "icon": "sponge",
+          "fact": "干海绵会浮，吸满水之后会慢慢往下沉，试试看！",
+          "tag": "浮",
+          "tagColor": "blue"
+        },
+        {
+          "id": "sci-balloon",
+          "name": "气球",
+          "icon": "balloon",
+          "fact": "气球里装的是空气，最轻最轻，漂在最上面。",
+          "tag": "浮",
+          "tagColor": "blue"
+        },
+        {
+          "id": "sci-ice",
+          "name": "冰块",
+          "icon": "ice",
+          "fact": "冰比水轻一点点，所以冰块会浮在饮料上。",
+          "tag": "浮",
+          "tagColor": "blue"
+        },
+        {
+          "id": "sci-magnet",
+          "name": "磁铁",
+          "icon": "magnet",
+          "fact": "磁铁能吸住铁做的东西，比如回形针和钥匙。"
+        },
+        {
+          "id": "sci-rainbow",
+          "name": "彩虹",
+          "icon": "rainbow",
+          "fact": "阳光穿过小水滴，会折出七种颜色。"
+        },
+        {
+          "id": "sci-volcano",
+          "name": "火山",
+          "icon": "volcano",
+          "fact": "岩浆压力太大时，就会从火山口喷出来。"
+        },
+        {
+          "id": "sci-sprout",
+          "name": "种子",
+          "icon": "sprout",
+          "fact": "种子喝饱水、晒到太阳，就会发芽长大。"
+        },
+        {
+          "id": "sci-heart",
+          "name": "心跳",
+          "icon": "heart",
+          "fact": "你的心脏一直在跳，跑完步会跳得更快哦。"
+        }
       ]
     },
     {
@@ -38,18 +100,66 @@
       "icon": "sparkle",
       "lockedLabel": "？？？",
       "items": [
-        { "id": "st-fuchen", "name": "浮沉小侦探", "icon": "medal" },
-        { "id": "st-shizi", "name": "识字新星", "icon": "book" },
-        { "id": "st-shuyazi", "name": "数数小鸭", "icon": "duck" },
-        { "id": "st-party", "name": "闯关欢呼", "icon": "party" },
-        { "id": "st-flower", "name": "春日限定", "icon": "flower" },
-        { "id": "st-rocket", "name": "未来科学家", "icon": "rocket" },
-        { "id": "st-bulb", "name": "金点子", "icon": "bulb" },
-        { "id": "st-crystal", "name": "闪亮宝石", "icon": "crystal" },
-        { "id": "st-star", "name": "大星星", "icon": "starface" },
-        { "id": "st-sun", "name": "小太阳", "icon": "sunface" },
-        { "id": "st-heart", "name": "爱心", "icon": "heart" },
-        { "id": "st-gift", "name": "神秘礼物", "icon": "gift" }
+        {
+          "id": "st-fuchen",
+          "name": "浮沉小侦探",
+          "icon": "medal"
+        },
+        {
+          "id": "st-shizi",
+          "name": "识字新星",
+          "icon": "book"
+        },
+        {
+          "id": "st-shuyazi",
+          "name": "数数小鸭",
+          "icon": "duck"
+        },
+        {
+          "id": "st-party",
+          "name": "闯关欢呼",
+          "icon": "party"
+        },
+        {
+          "id": "st-flower",
+          "name": "春日限定",
+          "icon": "flower"
+        },
+        {
+          "id": "st-rocket",
+          "name": "未来科学家",
+          "icon": "rocket"
+        },
+        {
+          "id": "st-bulb",
+          "name": "金点子",
+          "icon": "bulb"
+        },
+        {
+          "id": "st-crystal",
+          "name": "闪亮宝石",
+          "icon": "crystal"
+        },
+        {
+          "id": "st-star",
+          "name": "大星星",
+          "icon": "starface"
+        },
+        {
+          "id": "st-sun",
+          "name": "小太阳",
+          "icon": "sunface"
+        },
+        {
+          "id": "st-heart",
+          "name": "爱心",
+          "icon": "heart"
+        },
+        {
+          "id": "st-gift",
+          "name": "神秘礼物",
+          "icon": "gift"
+        }
       ]
     },
     {
@@ -58,16 +168,284 @@
       "icon": "hanzi",
       "lockedLabel": "？？？",
       "items": [
-        { "id": "hz-ri", "name": "日", "text": "日", "pinyin": "rì" },
-        { "id": "hz-yue", "name": "月", "text": "月", "pinyin": "yuè" },
-        { "id": "hz-shui", "name": "水", "text": "水", "pinyin": "shuǐ" },
-        { "id": "hz-shan", "name": "山", "text": "山", "pinyin": "shān" },
-        { "id": "hz-mu", "name": "木", "text": "木", "pinyin": "mù" },
-        { "id": "hz-ren", "name": "人", "text": "人", "pinyin": "rén" },
-        { "id": "hz-kou", "name": "口", "text": "口", "pinyin": "kǒu" },
-        { "id": "hz-tian", "name": "天", "text": "天", "pinyin": "tiān" },
-        { "id": "hz-tian2", "name": "田", "text": "田", "pinyin": "tián" },
-        { "id": "hz-shi", "name": "石", "text": "石", "pinyin": "shí" }
+        {
+          "id": "hz-ri",
+          "name": "日",
+          "text": "日",
+          "pinyin": "rì"
+        },
+        {
+          "id": "hz-yue",
+          "name": "月",
+          "text": "月",
+          "pinyin": "yuè"
+        },
+        {
+          "id": "hz-shui",
+          "name": "水",
+          "text": "水",
+          "pinyin": "shuǐ"
+        },
+        {
+          "id": "hz-shan",
+          "name": "山",
+          "text": "山",
+          "pinyin": "shān"
+        },
+        {
+          "id": "hz-mu",
+          "name": "木",
+          "text": "木",
+          "pinyin": "mù"
+        },
+        {
+          "id": "hz-ren",
+          "name": "人",
+          "text": "人",
+          "pinyin": "rén"
+        },
+        {
+          "id": "hz-kou",
+          "name": "口",
+          "text": "口",
+          "pinyin": "kǒu"
+        },
+        {
+          "id": "hz-tian",
+          "name": "天",
+          "text": "天",
+          "pinyin": "tiān"
+        },
+        {
+          "id": "hz-tian2",
+          "name": "田",
+          "text": "田",
+          "pinyin": "tián"
+        },
+        {
+          "id": "hz-shi",
+          "name": "石",
+          "text": "石",
+          "pinyin": "shí"
+        },
+        {
+          "id": "hz-huo",
+          "name": "火",
+          "text": "火",
+          "pinyin": "huǒ"
+        },
+        {
+          "id": "hz-hua",
+          "name": "花",
+          "text": "花",
+          "pinyin": "huā"
+        },
+        {
+          "id": "hz-cao",
+          "name": "草",
+          "text": "草",
+          "pinyin": "cǎo"
+        },
+        {
+          "id": "hz-niao",
+          "name": "鸟",
+          "text": "鸟",
+          "pinyin": "niǎo"
+        }
+      ]
+    },
+    {
+      "id": "pinyin",
+      "title": "拼音卡",
+      "icon": "speaker",
+      "lockedLabel": "？？？",
+      "items": [
+        {
+          "id": "py-b",
+          "name": "b 爸",
+          "text": "b"
+        },
+        {
+          "id": "py-p",
+          "name": "p 坡",
+          "text": "p"
+        },
+        {
+          "id": "py-m",
+          "name": "m 妈",
+          "text": "m"
+        },
+        {
+          "id": "py-f",
+          "name": "f 发",
+          "text": "f"
+        },
+        {
+          "id": "py-d",
+          "name": "d 大",
+          "text": "d"
+        },
+        {
+          "id": "py-t",
+          "name": "t 他",
+          "text": "t"
+        },
+        {
+          "id": "py-n",
+          "name": "n 拿",
+          "text": "n"
+        },
+        {
+          "id": "py-l",
+          "name": "l 拉",
+          "text": "l"
+        },
+        {
+          "id": "py-g",
+          "name": "g 哥",
+          "text": "g"
+        },
+        {
+          "id": "py-k",
+          "name": "k 开",
+          "text": "k"
+        },
+        {
+          "id": "py-a",
+          "name": "a 啊",
+          "text": "a"
+        },
+        {
+          "id": "py-zhi",
+          "name": "zhi 蜘",
+          "text": "zhi"
+        }
+      ]
+    },
+    {
+      "id": "english",
+      "title": "单词卡",
+      "icon": "book",
+      "lockedLabel": "？？？",
+      "items": [
+        {
+          "id": "en-apple",
+          "name": "Apple",
+          "icon": "apple"
+        },
+        {
+          "id": "en-banana",
+          "name": "Banana",
+          "icon": "banana"
+        },
+        {
+          "id": "en-cake",
+          "name": "Cake",
+          "icon": "cake"
+        },
+        {
+          "id": "en-duck",
+          "name": "Duck",
+          "icon": "duck"
+        },
+        {
+          "id": "en-sun",
+          "name": "Sun",
+          "icon": "sun"
+        },
+        {
+          "id": "en-moon",
+          "name": "Moon",
+          "icon": "moon"
+        },
+        {
+          "id": "en-flower",
+          "name": "Flower",
+          "icon": "flower"
+        },
+        {
+          "id": "en-leaf",
+          "name": "Leaf",
+          "icon": "leaf"
+        },
+        {
+          "id": "en-key",
+          "name": "Key",
+          "icon": "key"
+        },
+        {
+          "id": "en-heart",
+          "name": "Heart",
+          "icon": "heart"
+        },
+        {
+          "id": "en-rainbow",
+          "name": "Rainbow",
+          "icon": "rainbow"
+        },
+        {
+          "id": "en-gift",
+          "name": "Gift",
+          "icon": "gift"
+        }
+      ]
+    },
+    {
+      "id": "astro",
+      "title": "星空卡",
+      "icon": "starface",
+      "lockedLabel": "？？？",
+      "items": [
+        {
+          "id": "as-sun",
+          "name": "太阳 Sun",
+          "icon": "sun"
+        },
+        {
+          "id": "as-moon",
+          "name": "月亮 Moon",
+          "icon": "moon"
+        },
+        {
+          "id": "as-star",
+          "name": "星星 Star",
+          "icon": "star"
+        },
+        {
+          "id": "as-earth",
+          "name": "地球 Earth",
+          "icon": "earth"
+        },
+        {
+          "id": "as-rocket",
+          "name": "火箭 Rocket",
+          "icon": "rocket"
+        },
+        {
+          "id": "as-planet",
+          "name": "行星 Planet",
+          "icon": "planet"
+        },
+        {
+          "id": "as-comet",
+          "name": "彗星 Comet",
+          "icon": "comet"
+        },
+        {
+          "id": "as-meteor",
+          "name": "流星 Meteor",
+          "icon": "sparkle"
+        },
+        {
+          "id": "as-rover",
+          "name": "火星车 Rover",
+          "icon": "robot"
+        },
+        {
+          "id": "as-sky",
+          "name": "星晶夜空",
+          "icon": "crystal"
+        }
       ]
     },
     {
@@ -76,16 +454,71 @@
       "icon": "medal",
       "lockedLabel": "？？？",
       "items": [
-        { "id": "bg-start", "name": "初来乍到", "icon": "home" },
-        { "id": "bg-hanzi10", "name": "识字新星", "icon": "book" },
-        { "id": "bg-math5", "name": "思维小达人", "icon": "equal" },
-        { "id": "bg-lab1", "name": "实验狂人", "icon": "flask" },
-        { "id": "bg-listen7", "name": "磨耳朵七天", "icon": "speaker" },
-        { "id": "bg-all", "name": "全勤之星", "icon": "star" },
-        { "id": "bg-shield", "name": "护眼小卫士", "icon": "shield" },
-        { "id": "bg-chart", "name": "进步王", "icon": "chart" },
-        { "id": "bg-rocket", "name": "冲鸭！", "icon": "rocket" },
-        { "id": "bg-king", "name": "全科通", "icon": "medal" }
+        {
+          "id": "bg-start",
+          "name": "初来乍到",
+          "icon": "home"
+        },
+        {
+          "id": "bg-hanzi10",
+          "name": "识字新星",
+          "icon": "book"
+        },
+        {
+          "id": "bg-math5",
+          "name": "思维小达人",
+          "icon": "equal"
+        },
+        {
+          "id": "bg-lab1",
+          "name": "实验狂人",
+          "icon": "flask"
+        },
+        {
+          "id": "bg-py1",
+          "name": "拼音小能手",
+          "icon": "speaker"
+        },
+        {
+          "id": "bg-en1",
+          "name": "ABC达人",
+          "icon": "book"
+        },
+        {
+          "id": "bg-astro1",
+          "name": "摘星少年",
+          "icon": "rocket"
+        },
+        {
+          "id": "bg-listen7",
+          "name": "磨耳朵七天",
+          "icon": "speaker"
+        },
+        {
+          "id": "bg-all",
+          "name": "全勤之星",
+          "icon": "star"
+        },
+        {
+          "id": "bg-shield",
+          "name": "护眼小卫士",
+          "icon": "shield"
+        },
+        {
+          "id": "bg-chart",
+          "name": "进步王",
+          "icon": "chart"
+        },
+        {
+          "id": "bg-rocket",
+          "name": "冲鸭！",
+          "icon": "rocket"
+        },
+        {
+          "id": "bg-king",
+          "name": "全科通",
+          "icon": "medal"
+        }
       ]
     }
   ]

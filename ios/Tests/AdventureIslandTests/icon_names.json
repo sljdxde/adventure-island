@@ -55,6 +55,14 @@
     "heart",
     "equal",
     "hanzi",
+    "flame",
+    "salt",
+    "sugar",
+    "sand",
+    "tree",
+    "train",
+    "jar",
+    "candy",
     "block",
     "blockok",
     "blocklock",
@@ -63,10 +71,16 @@
     "pipe-red",
     "pipe-blue",
     "pipe-purple",
+    "pipe-green",
+    "pipe-orange",
     "flag",
     "starface",
     "brick",
     "hills-back",
-    "hills-front"
+    "hills-front",
+    "earth",
+    "planet",
+    "comet",
+    "pipe-indigo"
   ]
 }

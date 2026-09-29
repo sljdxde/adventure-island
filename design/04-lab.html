@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<title>04 · 科学实验室 · 浮与沉</title>
+<title>04 · 科学实验室 · 三实验探究</title>
 <link rel="stylesheet" href="style.css">
 <style>
   .scene .star { position: absolute; font-size: 20px; opacity: .85; animation: twinkle 2.4s ease-in-out infinite; color: #fff; }
@@ -49,16 +49,33 @@
   }
 
   .shelf {
-    width: 206px;
+    width: 210px;
     background: linear-gradient(180deg, #FFFDF4, #FFF1D6);
     border-radius: 30px;
     border: 5px solid var(--pb);
     box-shadow: var(--sh-2);
-    padding: 14px 14px 10px;
+    padding: 12px 12px 10px;
     display: flex; flex-direction: column;
   }
+  .exp-tabs { display: flex; gap: 6px; margin-bottom: 8px; }
+  .exp-tab {
+    flex: 1;
+    border: 2.5px solid #E4D6C0; background: #fff;
+    border-radius: 12px; padding: 5px 2px;
+    font-family: var(--font-round);
+    font-size: 13px; font-weight: 900; color: var(--ink-soft);
+    cursor: pointer;
+    box-shadow: 0 3px 0 #E4D6C0;
+    white-space: nowrap;
+  }
+  .exp-tab.on {
+    background: linear-gradient(180deg, #C7B4FF, var(--purple));
+    border-color: var(--purple-ddk);
+    color: #fff;
+    box-shadow: 0 3px 0 var(--purple-ddk);
+  }
   .shelf h4 {
-    font-size: 18px; text-align: center; margin-bottom: 10px;
+    font-size: 17px; text-align: center; margin-bottom: 8px;
     color: #7A4A00;
     background: linear-gradient(180deg, #FFE7A8, var(--gold));
     border: 2.5px solid var(--gold-ddk);
@@ -67,19 +84,19 @@
     letter-spacing: 2px;
     display: flex; align-items: center; justify-content: center; gap: 7px;
   }
-  .shelf h4 .ic { font-size: 20px; }
-  .shelf-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; flex: 1; }
+  .shelf h4 .ic { font-size: 19px; }
+  .shelf-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; flex: 1; }
   .item-card {
     background: #fff;
-    border-radius: 20px;
+    border-radius: 18px;
     border: 3px solid #F2E2C4;
     display: grid; place-items: center;
-    font-size: 44px;
+    font-size: 40px;
     cursor: grab;
     transition: transform .12s, border-color .12s, opacity .3s;
     user-select: none;
     position: relative;
-    min-height: 82px;
+    min-height: 74px;
     box-shadow: 0 4px 0 #EFE3C8;
   }
   .item-card:hover { transform: translateY(-4px) scale(1.05); }
@@ -93,9 +110,9 @@
     display: none; place-items: center;
   }
   .item-card.used .tick { display: grid; }
-  .shelf-tip { font-size: 13.5px; color: var(--ink-soft); text-align: center; font-weight: 800; margin-top: 8px; line-height: 1.5; }
+  .shelf-tip { font-size: 13px; color: var(--ink-soft); text-align: center; font-weight: 800; margin-top: 8px; line-height: 1.5; }
 
-  /* 水箱（玻璃质感） */
+  /* 水箱 / 实验台 */
   .tank-zone {
     flex: 1;
     display: flex; flex-direction: column;
@@ -114,6 +131,10 @@
     cursor: pointer;
     transition: box-shadow .2s;
   }
+  .tank.bench {
+    background: linear-gradient(180deg, #F7ECD8 0%, #EAD3AC 60%, #DDBE8C 100%);
+    box-shadow: var(--sh-3), 0 0 0 4px var(--pb), inset 0 10px 20px rgba(140,90,43,.15);
+  }
   .tank.armed { box-shadow: var(--sh-3), 0 0 0 7px rgba(155,123,245,.6), inset 0 0 0 3px #C9ECFA; }
   .tank .waterline {
     position: absolute; top: 50px; left: 0; right: 0; height: 12px;
@@ -121,6 +142,7 @@
     border-radius: 40%;
     animation: water 3.2s ease-in-out infinite;
   }
+  .tank.bench .waterline { display: none; }
   @keyframes water {
     0%,100% { transform: translateX(-14px) scaleY(1); }
     50%     { transform: translateX(14px) scaleY(1.5); }
@@ -132,15 +154,31 @@
       radial-gradient(circle at 70% 60%, rgba(255,255,255,.2) 0 34px, transparent 35px),
       radial-gradient(circle at 45% 80%, rgba(255,255,255,.18) 0 30px, transparent 31px);
   }
+  .tank.bench .caustics { display: none; }
+  .tank .magnet-anchor {
+    position: absolute; bottom: 6px; left: 50%; transform: translateX(-50%);
+    font-size: 92px;
+    filter: drop-shadow(0 6px 8px rgba(0,0,0,.25));
+    display: none;
+  }
+  .tank.bench .magnet-anchor { display: block; }
+  .tank .bench-label {
+    position: absolute; top: 12px; left: 50%; transform: translateX(-50%);
+    font-size: 15px; font-weight: 900; color: #8A6540;
+    background: rgba(255,255,255,.75); border-radius: 999px; padding: 4px 16px;
+    display: none;
+  }
+  .tank.bench .bench-label { display: block; }
   .tank-item {
     position: absolute;
-    font-size: 58px;
+    font-size: 56px;
     left: 50%;
-    transition: top 1.1s cubic-bezier(.45,.05,.35,1), transform 1.1s;
+    transition: top 1.1s cubic-bezier(.45,.05,.35,1), transform 1.1s, opacity 1s, filter 1s;
     filter: drop-shadow(0 6px 6px rgba(20,60,90,.25));
     z-index: 4;
   }
   .tank-item.floating { animation: float-bob 2.8s ease-in-out infinite; }
+  .tank-item.dissolving { opacity: 0; filter: blur(3px); }
   .bubble {
     position: absolute;
     bottom: -20px;
@@ -187,16 +225,16 @@
     border-radius: 30px;
     border: 5px solid var(--pb);
     box-shadow: var(--sh-3);
-    padding: 24px 42px;
+    padding: 22px 40px;
     text-align: center;
     animation: pop .4s;
   }
-  .guess-card h3 { font-size: 26px; margin-bottom: 4px; color: var(--purple-dk); letter-spacing: 2px; display: flex; align-items: center; justify-content: center; gap: 8px; }
-  .guess-card h3 .ic { font-size: 26px; }
-  .guess-card .sub { font-size: 17px; color: var(--ink-soft); font-weight: 800; margin-bottom: 16px; }
-  .guess-card .big { font-size: 76px; margin: 2px 0 8px; filter: drop-shadow(0 8px 8px rgba(0,0,0,.18)); }
-  .guess-btns { display: flex; gap: 18px; justify-content: center; }
-  .guess-btns .jbtn { white-space: nowrap; font-size: 21px; }
+  .guess-card h3 { font-size: 25px; margin-bottom: 4px; color: var(--purple-dk); letter-spacing: 2px; display: flex; align-items: center; justify-content: center; gap: 8px; }
+  .guess-card h3 .ic { font-size: 25px; }
+  .guess-card .sub { font-size: 17px; color: var(--ink-soft); font-weight: 800; margin-bottom: 14px; }
+  .guess-card .big { font-size: 72px; margin: 2px 0 8px; filter: drop-shadow(0 8px 8px rgba(0,0,0,.18)); }
+  .guess-btns { display: flex; gap: 16px; justify-content: center; }
+  .guess-btns .jbtn { white-space: nowrap; font-size: 20px; padding: 12px 24px; }
 
   /* 图鉴面板 */
   .codex {
@@ -223,7 +261,7 @@
   .codex .list {
     background: #fff;
     border-radius: 18px;
-    min-height: 88px;
+    min-height: 84px;
     padding: 8px;
     display: flex; flex-wrap: wrap; gap: 6px;
     align-content: flex-start;
@@ -234,13 +272,14 @@
     border: 2.5px solid #F0DCAC;
     border-radius: 12px;
     padding: 3px 10px;
-    font-size: 17px;
+    font-size: 16px;
     font-weight: 900;
     box-shadow: 0 3px 0 #F0DCAC;
     animation: pop .35s;
     display: inline-flex; align-items: center; gap: 5px;
+    cursor: pointer;
   }
-  .codex .chip .ic { font-size: 20px; }
+  .codex .chip .ic { font-size: 19px; }
   .codex .empty { color: #C6BADF; font-size: 15px; font-weight: 700; padding: 6px; }
   .codex .progress-line { text-align: center; font-size: 16px; font-weight: 900; color: var(--purple-dk); }
 
@@ -268,8 +307,8 @@
     <div class="hud-left">
       <button class="sqbtn" onclick="goHome()" title="返回"><img class="ic" src="assets/icons/back.svg" alt=""></button>
       <div>
-        <div class="page-title"><img class="ic" src="assets/icons/flask.svg" alt="">科学实验室 · 浮与沉</div>
-        <div class="page-sub">实验 7 / 10 · 向导闪闪 <img class="ic" src="assets/icons/robot.svg" alt=""></div>
+        <div class="page-title"><img class="ic" src="assets/icons/flask.svg" alt="">科学实验室</div>
+        <div class="page-sub"><span id="expSub">实验 7 / 10 · 浮与沉</span> · 向导闪闪 <img class="ic" src="assets/icons/robot.svg" alt=""></div>
       </div>
     </div>
     <div class="hud-right">
@@ -293,28 +332,28 @@
 
     <!-- 工具箱 -->
     <div class="shelf">
+      <div class="exp-tabs" id="expTabs"></div>
       <h4><img class="ic" src="assets/icons/flask.svg" alt="">工具箱</h4>
       <div class="shelf-grid" id="shelf"></div>
-      <div class="shelf-tip">点选物品<br>再点水箱放进去<br>（也可直接拖拽）</div>
+      <div class="shelf-tip">点选物品<br>再点实验区放进去<br>（也可直接拖拽）</div>
     </div>
 
-    <!-- 水箱 -->
+    <!-- 实验区 -->
     <div class="tank-zone">
       <div class="tank" id="tank">
         <div class="waterline"></div>
         <div class="caustics"></div>
+        <div class="magnet-anchor"><img class="ic" src="assets/icons/magnet.svg" alt=""></div>
+        <div class="bench-label">实验台 · 磁铁放在中间</div>
         <div class="result-chip" id="resultChip"></div>
 
         <!-- 猜想浮层 -->
         <div class="guess-overlay" id="guessOverlay">
           <div class="guess-card">
             <h3>猜一猜 <img class="ic" src="assets/icons/crystal.svg" alt=""></h3>
-            <div class="big"><img class="ic" src="assets/icons/apple.svg" alt=""></div>
-            <div class="sub">苹果放进水里，会怎么样？</div>
-            <div class="guess-btns">
-              <button class="jbtn jbtn-yellow" onclick="makeGuess('float')">↑ 浮起来</button>
-              <button class="jbtn jbtn-blue" onclick="makeGuess('sink')">↓ 沉下去</button>
-            </div>
+            <div class="big" id="guessBig"></div>
+            <div class="sub" id="guessSub"></div>
+            <div class="guess-btns" id="guessBtns"></div>
           </div>
         </div>
       </div>
@@ -323,62 +362,143 @@
     <!-- 图鉴 -->
     <div class="codex">
       <h4><img class="ic" src="assets/icons/book.svg" alt="">现象图鉴</h4>
-      <div class="col-title" style="color:var(--blue-dk);">↑ 浮起来</div>
-      <div class="list" id="listFloat"><span class="empty">还没有发现…</span></div>
-      <div class="col-title" style="color:var(--coral-dk);">↓ 沉下去</div>
-      <div class="list" id="listSink"><span class="empty">还没有发现…</span></div>
+      <div class="col-title" style="color:var(--blue-dk);" id="colTitle0">↑ 浮起来</div>
+      <div class="list" id="list0"><span class="empty">还没有发现…</span></div>
+      <div class="col-title" style="color:var(--coral-dk);" id="colTitle1">↓ 沉下去</div>
+      <div class="list" id="list1"><span class="empty">还没有发现…</span></div>
       <div class="progress-line" id="codexProg">已测试 0 / 6</div>
       <button class="jbtn jbtn-purple btn-collect" id="collectBtn" style="font-size:19px; padding:11px 0; width:100%;" disabled onclick="collect()"><img class="ic" src="assets/icons/star.svg" alt="">收进图鉴</button>
     </div>
   </div>
 
   <div class="lab-footer">
-    <button class="jbtn jbtn-cream" style="font-size:18px; padding:10px 22px;" onclick="location.reload()">↻ 重新实验</button>
+    <button class="jbtn jbtn-cream" style="font-size:18px; padding:10px 22px;" onclick="loadExp(ei)">↻ 重新实验</button>
   </div>
 
   <div class="safe-tip"><img class="ic" src="assets/icons/goggles.svg" alt=""> 虚拟实验室随便玩 · 真的做实验时，一定要请爸爸妈妈陪哦！</div>
-  <div class="design-note" style="bottom:44px;">设计稿 04 · 科学实验室（派对风面板 × 四步探究法）</div>
+  <div class="design-note" style="bottom:44px;">设计稿 04 · 科学实验室（3 实验：浮与沉 / 磁铁吸谁 / 溶不溶解 × 四步探究法）</div>
 </div>
 
 <script src="art.js"></script>
 <script src="app.js"></script>
 <script>
-  const ITEMS = [
-    { id: 'apple',   name: '苹果', sink: false },
-    { id: 'rock',    name: '石头', sink: true  },
-    { id: 'wood',    name: '木头', sink: false },
-    { id: 'key',     name: '钥匙', sink: true  },
-    { id: 'sponge',  name: '海绵', sink: false },
-    { id: 'balloon', name: '气球', sink: false },
+  /* ============ 实验数据 ============ */
+  const EXPS = [
+    {
+      id: 7, tab: '浮与沉', name: '浮与沉', tank: 'water',
+      cols: ['↑ 浮起来', '↓ 沉下去'],
+      guessQ: (n) => n + '放进水里，会怎么样？',
+      items: [
+        { id: 'apple',   name: '苹果', col: 0 },
+        { id: 'rock',    name: '石头', col: 1 },
+        { id: 'wood',    name: '木头', col: 0 },
+        { id: 'key',     name: '钥匙', col: 1 },
+        { id: 'sponge',  name: '海绵', col: 0 },
+        { id: 'balloon', name: '气球', col: 0 },
+      ],
+      facts: {
+        apple: '苹果皮里有小气孔，像穿了救生衣', rock: '石头比同体积的水重很多，所以沉底',
+        wood: '木头里有空隙，轻，所以能浮', key: '金属钥匙小小的却很重，一下就沉啦',
+        sponge: '海绵干的时候会浮，吸满水会慢慢沉哦', balloon: '气球里是空气，最轻，漂在最上面',
+      },
+      sticker: '浮沉小侦探',
+    },
+    {
+      id: 8, tab: '磁铁吸谁', name: '磁铁吸谁', tank: 'bench',
+      cols: ['⊙ 被吸住', '○ 没被吸'],
+      guessQ: (n) => n + '靠近磁铁，会被吸住吗？',
+      items: [
+        { id: 'key',     name: '钥匙', col: 0 },
+        { id: 'coin',    name: '硬币', col: 0 },
+        { id: 'rock',    name: '石头', col: 1 },
+        { id: 'wood',    name: '木头', col: 1 },
+        { id: 'sponge',  name: '海绵', col: 1 },
+        { id: 'balloon', name: '气球', col: 1 },
+      ],
+      facts: {
+        key: '钥匙是铁做的，磁铁最喜欢铁', coin: '硬币里也有金属，一下就被吸住',
+        rock: '石头不是金属，磁铁吸不动它', wood: '木头和磁铁没有缘分，吸不住',
+        sponge: '海绵软软的，磁铁对它没感觉', balloon: '气球是橡胶的，磁铁吸不住哦',
+      },
+      sticker: '磁铁小行家',
+    },
+    {
+      id: 9, tab: '溶不溶解', name: '溶不溶解', tank: 'water',
+      cols: ['✦ 溶解了', '● 没溶解'],
+      guessQ: (n) => n + '放进水里搅一搅，会溶解吗？',
+      items: [
+        { id: 'salt',   name: '盐', col: 0 },
+        { id: 'sugar',  name: '糖', col: 0 },
+        { id: 'candy',  name: '糖果', col: 0 },
+        { id: 'sand',   name: '沙子', col: 1 },
+        { id: 'rock',   name: '石头', col: 1 },
+        { id: 'key',    name: '钥匙', col: 1 },
+      ],
+      facts: {
+        salt: '盐粒躲进水里不见了，水却变咸了', sugar: '糖慢慢化在水里，水变甜啦',
+        candy: '糖果的外衣溶化了，水还会变色呢', sand: '沙子再搅也不溶，最后沉在杯底',
+        rock: '石头硬硬的，水可溶不动它', key: '钥匙是金属，泡多久都不会溶',
+      },
+      sticker: '溶解小博士',
+    },
   ];
-  const FACTS = {
-    apple:   '苹果皮里有小气孔，像穿了救生衣',
-    rock:    '石头比同体积的水重很多，所以沉底',
-    wood:    '木头里有空隙，轻，所以能浮',
-    key:     '金属钥匙小小的却很重，一下就沉啦',
-    sponge:  '海绵干的时候会浮，吸满水会慢慢沉哦',
-    balloon: '气球里是空气，最轻，漂在最上面',
-  };
 
+  let ei = 0;
   let phase = 'guess';
   let selected = null;
   let tested = new Set();
-  let guessApple = null;
-
-  const shelfEl = document.getElementById('shelf');
-  ITEMS.forEach(it => {
-    const d = document.createElement('div');
-    d.className = 'item-card';
-    d.id = 'card-' + it.id;
-    d.title = it.name;
-    d.draggable = true;
-    d.innerHTML = icon(it.id) + '<span class="tick">✓</span>';
-    d.onclick = () => selectItem(it.id);
-    d.ondragstart = (e) => { e.dataTransfer.setData('text/plain', it.id); selectItem(it.id, true); };
-    shelfEl.appendChild(d);
-  });
+  let guessCol = null;
 
   const tank = document.getElementById('tank');
+
+  /* ============ 实验切换 ============ */
+  function buildTabs() {
+    document.getElementById('expTabs').innerHTML = EXPS.map((e, i) =>
+      `<button class="exp-tab${i === ei ? ' on' : ''}" onclick="loadExp(${i})">${e.id} ${e.tab}</button>`).join('');
+  }
+
+  function loadExp(i) {
+    ei = i;
+    const E = EXPS[i];
+    phase = 'guess'; selected = null; tested = new Set(); guessCol = null;
+    buildTabs();
+    document.getElementById('expSub').textContent = '实验 ' + E.id + ' / 10 · ' + E.name;
+    tank.className = 'tank' + (E.tank === 'bench' ? ' bench' : '');
+    tank.querySelectorAll('.tank-item, .bubble').forEach(el => el.remove());
+    document.getElementById('resultChip').classList.remove('show');
+    document.getElementById('colTitle0').textContent = E.cols[0];
+    document.getElementById('colTitle1').textContent = E.cols[1];
+    document.getElementById('list0').innerHTML = '<span class="empty">还没有发现…</span>';
+    document.getElementById('list1').innerHTML = '<span class="empty">还没有发现…</span>';
+    document.getElementById('codexProg').textContent = '已测试 0 / ' + E.items.length;
+    const btn = document.getElementById('collectBtn');
+    btn.disabled = true; btn.classList.remove('ready');
+    // 工具箱
+    const shelf = document.getElementById('shelf');
+    shelf.innerHTML = '';
+    E.items.forEach(it => {
+      const d = document.createElement('div');
+      d.className = 'item-card';
+      d.id = 'card-' + it.id;
+      d.title = it.name;
+      d.draggable = true;
+      d.innerHTML = icon(it.id) + '<span class="tick">✓</span>';
+      d.onclick = () => selectItem(it.id);
+      d.ondragstart = (e) => { e.dataTransfer.setData('text/plain', it.id); selectItem(it.id, true); };
+      shelf.appendChild(d);
+    });
+    // 猜想浮层
+    const g = E.items[0];
+    document.getElementById('guessBig').innerHTML = icon(g.id);
+    document.getElementById('guessSub').textContent = E.guessQ(g.name);
+    document.getElementById('guessBtns').innerHTML =
+      `<button class="jbtn jbtn-yellow" onclick="makeGuess(0)">${E.cols[0]}</button>
+       <button class="jbtn jbtn-blue" onclick="makeGuess(1)">${E.cols[1]}</button>`;
+    document.getElementById('guessOverlay').style.display = 'grid';
+    setFlow(1);
+  }
+
+  /* ============ 交互 ============ */
   tank.ondragover = (e) => { e.preventDefault(); tank.classList.add('armed'); };
   tank.ondragleave = () => tank.classList.remove('armed');
   tank.ondrop = (e) => {
@@ -388,11 +508,8 @@
     if (phase === 'play') dropIn(id, e.offsetX);
   };
   tank.onclick = (e) => {
-    if (phase === 'play' && selected) {
-      dropIn(selected, e.offsetX);
-    } else if (phase === 'play') {
-      toast('先在左边工具箱里选一个物品哦');
-    }
+    if (phase === 'play' && selected) dropIn(selected, e.offsetX);
+    else if (phase === 'play') toast('先在左边工具箱里选一个物品哦');
   };
 
   function selectItem(id, quiet) {
@@ -403,17 +520,17 @@
     const card = document.getElementById('card-' + id);
     if (card) card.classList.add('selected');
     tank.classList.add('armed');
-    const it = ITEMS.find(i => i.id === id);
-    if (!quiet) { speak(it.name); toast('已选中 ' + it.name + '，现在点水箱放进去！'); }
+    const it = EXPS[ei].items.find(i => i.id === id);
+    if (!quiet) { speak(it.name); toast('已选中 ' + it.name + '，现在点实验区放进去！'); }
   }
 
-  function makeGuess(g) {
-    guessApple = g;
+  function makeGuess(col) {
+    guessCol = col;
     phase = 'play';
     document.getElementById('guessOverlay').style.display = 'none';
     setFlow(2);
     speak('好，记下你的猜想啦。动手试试看！');
-    toast('猜想已记录！把物品放进水箱验证吧');
+    toast('猜想已记录！把物品放进实验区验证吧');
   }
 
   function setFlow(n) {
@@ -426,8 +543,10 @@
   }
 
   function dropIn(id, x) {
+    const E = EXPS[ei];
     if (phase !== 'play' || !id || tested.has(id)) return;
-    const it = ITEMS.find(i => i.id === id);
+    const it = E.items.find(i => i.id === id);
+    if (!it) return;
     tested.add(id);
 
     const card = document.getElementById('card-' + id);
@@ -443,42 +562,39 @@
     el.style.left = tx + 'px';
     el.style.top = '-70px';
     tank.appendChild(el);
-    requestAnimationFrame(() => requestAnimationFrame(() => {
-      el.style.top = it.sink ? '310px' : '110px';
-    }));
-    if (!it.sink) setTimeout(() => el.classList.add('floating'), 1150);
 
-    for (let i = 0; i < 7; i++) {
-      setTimeout(() => spawnBubble(tx + 10 + Math.random() * 40), i * 130);
-    }
+    const isBench = E.tank === 'bench';
+    const restTop = isBench ? (it.col === 0 ? 236 : 316) : (E.id === 9 ? (it.col === 0 ? 250 : 316) : (it.col === 1 ? 316 : 110));
+    requestAnimationFrame(() => requestAnimationFrame(() => { el.style.top = restTop + 'px'; }));
+    if (!isBench && E.id === 7 && it.col === 0) setTimeout(() => el.classList.add('floating'), 1150);
+    if (E.id === 9 && it.col === 0) setTimeout(() => { el.classList.add('dissolving'); swirl(tx); }, 1300);
+
+    if (!isBench) for (let i = 0; i < 7; i++) setTimeout(() => spawnBubble(tx + 10 + Math.random() * 40), i * 130);
 
     setFlow(3);
-    const verb = it.sink ? '沉下去了 ↓' : '浮起来了 ↑';
     const chip = document.getElementById('resultChip');
-    chip.innerHTML = icon(it.id) + '<span>' + it.name + ' ' + verb + '</span>';
+    chip.innerHTML = icon(it.id) + '<span>' + it.name + ' ' + E.cols[it.col].slice(2) + '</span>';
     chip.classList.add('show');
-    speak(it.name + (it.sink ? '沉下去了' : '浮起来了'));
+    speak(it.name + E.cols[it.col].slice(2));
 
     setTimeout(() => {
-      const list = it.sink ? document.getElementById('listSink') : document.getElementById('listFloat');
+      const list = document.getElementById('list' + it.col);
       const emp = list.querySelector('.empty'); if (emp) emp.remove();
       const c = document.createElement('span');
       c.className = 'chip';
       c.innerHTML = icon(it.id) + it.name;
-      c.style.cursor = 'pointer';
       c.title = '点我看小知识';
-      c.onclick = () => { toast(FACTS[it.id]); speak(FACTS[it.id]); };
+      c.onclick = () => { toast(E.facts[it.id]); speak(E.facts[it.id]); };
       list.appendChild(c);
-      document.getElementById('codexProg').textContent = '已测试 ' + tested.size + ' / ' + ITEMS.length;
+      document.getElementById('codexProg').textContent = '已测试 ' + tested.size + ' / ' + E.items.length;
       setFlow(2);
 
-      if (it.id === 'apple' && guessApple) {
-        const right = (guessApple === 'float') === !it.sink;
+      if (it.id === E.items[0].id && guessCol !== null) {
+        const right = guessCol === it.col;
         if (right) { confetti(); dingOK(); toast('猜对啦！加一颗智慧星'); }
-        else { toast('没关系～科学家就是靠不断试错发现规律的'); }
-      } else {
-        dingOK();
-      }
+        else toast('没关系～科学家就是靠不断试错发现规律的');
+        guessCol = null;
+      } else dingOK();
 
       if (tested.size >= 3) {
         const btn = document.getElementById('collectBtn');
@@ -497,14 +613,20 @@
     tank.appendChild(b);
     setTimeout(() => b.remove(), 1400);
   }
+  function swirl(x) {
+    for (let i = 0; i < 10; i++) setTimeout(() => spawnBubble(x + Math.random() * 50), i * 110);
+  }
 
   function collect() {
+    const E = EXPS[ei];
     confetti();
     speak('太棒了，实验记录收进图鉴！');
-    toast('图鉴 +1 · 获得「浮沉小侦探」贴纸');
+    toast('图鉴 +1 · 获得「' + E.sticker + '」贴纸');
     setFlow(4);
     setTimeout(() => location.href = '05-collection.html', 1600);
   }
+
+  loadExp(0);
 </script>
 </body>
 </html>

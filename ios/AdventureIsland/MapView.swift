@@ -14,10 +14,13 @@ struct MapView: View {
     @State private var cnContent: SubjectFile?
     @State private var mathContent: SubjectFile?
 
-    private let zones: [(icon: String, label: String, meta: String, pipe: String, subject: String, unit: String)] = [
-        ("panda", "识字村", "象形字 · 认读", "pipe-red", "cn", "关"),
-        ("fox", "思维镇", "数感 · 图形 · 逻辑", "pipe-blue", "math", "关"),
-        ("robot", "科学岛", "动手做实验 · 现象图鉴", "pipe-purple", "lab", "项已点亮")
+    private let zones: [(icon: String, label: String, meta: String, pipe: String, subject: String, unit: String, total: Int)] = [
+        ("panda", "识字村", "象形字 · 认读", "pipe-red", "cn", "关", 15),
+        ("fox", "思维镇", "数感 · 加减法", "pipe-blue", "math", "关", 15),
+        ("robot", "科学岛", "动手做实验", "pipe-purple", "lab", "项已点亮", 12),
+        ("panda", "拼音谷", "声母 · 韵母 · 拼读", "pipe-orange", "pinyin", "关", 12),
+        ("robot", "英语王国", "ABC · 单词", "pipe-green", "english", "关", 12),
+        ("robot", "天文台", "太阳 · 月亮 · 星星", "pipe-indigo", "astro", "关", 10)
     ]
 
     var body: some View {
@@ -139,14 +142,17 @@ struct MapView: View {
     // MARK: 三个水管入口
 
     private var pipesRow: some View {
-        HStack(alignment: .bottom, spacing: 10) {
-            zonePipe(zones[0], done: store.doneCount(subject: "cn", total: 10), total: 10, isNew: false)
-            zonePipe(zones[1], done: store.doneCount(subject: "math", total: 10), total: 10, isNew: false)
-            zonePipe(zones[2], done: store.snapshot.collectedScience.count, total: 12, isNew: true)
+        HStack(alignment: .bottom, spacing: 2) {
+            zonePipe(zones[0], done: store.doneCount(subject: "cn", total: zones[0].total), total: zones[0].total, isNew: false)
+            zonePipe(zones[1], done: store.doneCount(subject: "math", total: zones[1].total), total: zones[1].total, isNew: false)
+            zonePipe(zones[2], done: store.snapshot.collectedScience.count, total: zones[2].total, isNew: false)
+            zonePipe(zones[3], done: store.doneCount(subject: "pinyin", total: zones[3].total), total: zones[3].total, isNew: false)
+            zonePipe(zones[4], done: store.doneCount(subject: "english", total: zones[4].total), total: zones[4].total, isNew: false)
+            zonePipe(zones[5], done: store.doneCount(subject: "astro", total: zones[5].total), total: zones[5].total, isNew: true)
         }
     }
 
-    private func zonePipe(_ zone: (icon: String, label: String, meta: String, pipe: String, subject: String, unit: String),
+    private func zonePipe(_ zone: (icon: String, label: String, meta: String, pipe: String, subject: String, unit: String, total: Int),
                           done: Int, total: Int, isNew: Bool) -> some View {
         Button {
             sound.systemTap()
@@ -163,18 +169,18 @@ struct MapView: View {
         } label: {
             VStack(spacing: 0) {
                 ZStack {
-                    IconView(name: zone.pipe, size: 118)
+                    IconView(name: zone.pipe, size: 84)
                     VStack {
                         Text("") // 占位
                     }
                     VStack {
                         QuestionBlock()
-                            .offset(y: -46)
+                            .offset(y: -42)
                     }
-                    IconView(name: zone.icon, size: 44)
-                        .offset(x: 52, y: 30)
+                    IconView(name: zone.icon, size: 30)
+                        .offset(x: 36, y: 24)
                 }
-                .frame(height: 150)
+                .frame(height: 116)
                 .overlay(alignment: .topTrailing) {
                     if isNew {
                         Text("NEW ✦")
@@ -189,10 +195,10 @@ struct MapView: View {
                 }
 
                 Text(zone.label)
-                    .font(.kidHead(21))
+                    .font(.kidHead(19))
                     .foregroundColor(Color(hex: 0x8A5B00))
-                    .padding(.horizontal, 24)
-                    .padding(.vertical, 8)
+                    .padding(.horizontal, 20)
+                    .padding(.vertical, 7)
                     .background(
                         Capsule().fill(LinearGradient(colors: [Color(hex: 0xFFE58A), .brandYellowDk], startPoint: .top, endPoint: .bottom))
                     )
@@ -201,13 +207,15 @@ struct MapView: View {
                     .padding(.top, 2)
 
                 Text("\(zone.meta) ｜ \(done)/\(total) \(zone.unit)")
-                    .font(.kidBody(14))
+                    .font(.kidBody(12.5))
                     .foregroundColor(.brandGreenDdk)
-                    .padding(.top, 5)
+                    .padding(.top, 4)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.8)
 
-                GoldTrack(ratio: total == 0 ? 0 : Double(done) / Double(total), height: 10)
-                    .frame(width: 170)
-                    .padding(.top, 5)
+                GoldTrack(ratio: total == 0 ? 0 : Double(done) / Double(total), height: 9)
+                    .frame(width: 138)
+                    .padding(.top, 4)
             }
         }
         .buttonStyle(.plain)
@@ -264,10 +272,10 @@ struct MapView: View {
                     route = .collection
                 }
                 dockItem(icon: "clip", badge: "\(dailyTotal())/3", title: "今日任务") {
-                    toast.show(dailyTotal() >= 3 ? "今日任务全部完成，明天见 🎉" : "完成 语文/数学/实验 各一次就达标啦")
+                    toast.show(dailyTotal() >= 3 ? "今日任务全部完成，明天见 🎉" : "六个学科任玩三个就达标啦")
                 }
-                dockItem(icon: "castle", badge: nil, title: "英语王国·二期", locked: true) {
-                    toast.show("英语王国 · 二期开放，敬请期待 🚧")
+                dockItem(icon: "clock", badge: nil, title: "休息一下") {
+                    toast.show("👀 看看窗外最远的地方，数 20 个数～")
                 }
             }
             .padding(.bottom, 8)
@@ -325,17 +333,18 @@ struct MapView: View {
     // MARK: 行为
 
     private func dailyTotal() -> Int {
-        ["cn", "math", "lab"].reduce(0) { $0 + (store.dailyDone(subject: $1) > 0 ? 1 : 0) }
+        ["cn", "math", "lab", "pinyin", "english", "astro"].reduce(0) { $0 + (store.dailyDone(subject: $1) > 0 ? 1 : 0) }
     }
 
     private func rollDice() {
-        let subjects = ["cn", "math"]
+        let subjects = ["cn", "math", "pinyin", "english", "astro"]
         let subject = subjects.randomElement()!
+        let total = zones.first(where: { $0.subject == subject })?.total ?? 10
         var index = 0
-        while index < 10, store.nodeState(subject: subject, index: index, total: 10) == .done {
+        while index < total, store.nodeState(subject: subject, index: index, total: total) == .done {
             index += 1
         }
-        route = .level(subject: subject, index: min(index, 9))
+        route = .level(subject: subject, index: min(index, total - 1))
         toast.show("🎲 命运骰子：出发！")
     }
 }

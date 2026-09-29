@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs><linearGradient id="g-earth" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7FD4F8"/><stop offset="1" stop-color="#2F86C9"/></linearGradient><linearGradient id="g-land" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#A8E57C"/><stop offset="1" stop-color="#58C96B"/></linearGradient></defs>
+  <circle cx="32" cy="32" r="26" fill="url(#g-earth)"/>
+  <path d="M17 24 q5-8 15-6 q7 1.5 5 8 q-2 6-10 6 q-9 0-10-8z" fill="url(#g-land)"/>
+  <path d="M34 38 q8-4 13 1 q4 5-2 9 q-8 4-13-1 q-4-5 2-9z" fill="url(#g-land)"/>
+  <ellipse cx="23" cy="19" rx="8" ry="4.5" fill="#fff" opacity=".4" transform="rotate(-22 23 19)"/></svg>

@@ -2,9 +2,9 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<title>探险岛 App 模拟器 · iOS v0.1 预览</title>
+<title>探险岛 App 模拟器 · iOS v0.3 预览</title>
 <style>
-/* ============ 探险岛 App 模拟器（1:1 还原 ios/ SwiftUI 工程） ============ */
+/* ============ 探险岛 App 模拟器（1:1 还原 ios/ SwiftUI 工程；数据由 tools/gen_preview_data.py 注入） ============ */
 :root{
   --orange:#FF9F43;--orange-dk:#F08C1F;--orange-ddk:#D97706;
   --yellow:#FFC53D;--yellow-dk:#F5A623;--yellow-ddk:#D98A0F;
@@ -39,15 +39,44 @@ img.ic{display:inline-block;vertical-align:middle}
 .c2{width:100px;height:30px;top:140px;opacity:.8;animation:drift 28s linear infinite reverse}
 .c3{width:180px;height:50px;top:26px;animation:drift 46s linear infinite;animation-delay:-18s}
 @keyframes drift{0%{left:-200px}100%{left:1060px}}
+/* 关卡场景变体：v1 黄昏 / v2 星夜（index%3 轮换）+ astro 常驻星夜 */
+.tint{position:absolute;inset:0;pointer-events:none}
+.tint.dusk{background:linear-gradient(180deg,rgba(255,150,80,.42),rgba(255,181,107,.18) 45%,transparent 80%)}
+.tint.night{background:linear-gradient(180deg,rgba(22,30,78,.55),rgba(34,46,110,.34) 48%,rgba(58,72,148,.16) 90%)}
+.stars{position:absolute;inset:0 0 34% 0;pointer-events:none;animation:twinkle 2.4s ease-in-out infinite alternate;background-image:
+ radial-gradient(2px 2px at 6% 14%,#fff 55%,transparent 60%),radial-gradient(1.6px 1.6px at 13% 42%,#fff 55%,transparent 60%),
+ radial-gradient(2.4px 2.4px at 21% 10%,#fff 55%,transparent 60%),radial-gradient(1.6px 1.6px at 30% 30%,#fff 55%,transparent 60%),
+ radial-gradient(2px 2px at 38% 8%,#fff 55%,transparent 60%),radial-gradient(1.6px 1.6px at 47% 24%,#fff 55%,transparent 60%),
+ radial-gradient(2.2px 2.2px at 55% 7%,#fff 55%,transparent 60%),radial-gradient(1.6px 1.6px at 63% 34%,#fff 55%,transparent 60%),
+ radial-gradient(2px 2px at 71% 13%,#fff 55%,transparent 60%),radial-gradient(1.6px 1.6px at 79% 40%,#fff 55%,transparent 60%),
+ radial-gradient(2.2px 2.2px at 87% 11%,#fff 55%,transparent 60%),radial-gradient(1.6px 1.6px at 94% 30%,#fff 55%,transparent 60%),
+ radial-gradient(1.6px 1.6px at 18% 55%,#fff 55%,transparent 60%),radial-gradient(2px 2px at 44% 48%,#fff 55%,transparent 60%),
+ radial-gradient(1.6px 1.6px at 68% 52%,#fff 55%,transparent 60%),radial-gradient(2px 2px at 90% 56%,#fff 55%,transparent 60%)}
+@keyframes twinkle{0%{opacity:.75}100%{opacity:1}}
+.moon{position:absolute;right:74px;top:34px;width:62px;height:62px;border-radius:50%;background:radial-gradient(circle at 36% 32%,#FFFBEE,#FFE9A8 70%,#F7D77E);box-shadow:0 0 36px 12px rgba(255,240,190,.5);pointer-events:none}
+.moon::before,.moon::after{content:'';position:absolute;border-radius:50%;background:rgba(214,178,90,.4)}
+.moon::before{width:14px;height:14px;right:12px;top:10px}
+.moon::after{width:9px;height:9px;right:26px;top:32px}
 .theme-cn .sky{background:linear-gradient(180deg,#FFDE9E,#FFCF87 46%,#FFE9BE)}
 .theme-cn .hill.back{opacity:.5}
 .theme-math .sky{background:linear-gradient(180deg,#58C4F7,#9FE0FB 46%,#DCF6FE)}
 .theme-lab .sky{background:linear-gradient(180deg,#8F74EC,#B39CF7 40%,#E2DAFE)}
 .theme-lab .hill{opacity:.5}
+.theme-pinyin .sky{background:linear-gradient(180deg,#FFC98A,#FFDCA8 46%,#FFF0CE)}
+.theme-pinyin .hill{opacity:.8}
+.theme-english .sky{background:linear-gradient(180deg,#6FD0A8,#A8E5C8 46%,#E1F8EC)}
+.theme-english .hill{opacity:.85}
+.theme-astro .sky{background:linear-gradient(180deg,#232C68,#3D4CB0 48%,#7B8ADF)}
+.theme-astro .hill{opacity:.5;filter:saturate(.45) brightness(.62) hue-rotate(28deg)}
 .theme-coll .sky{background:linear-gradient(180deg,#FFC964,#FFDE94 40%,#FFF2C4)}
 .theme-coll .hill{opacity:.6}
 .theme-parent .sky{background:linear-gradient(180deg,#A9C0DC,#C6D6E9 44%,#E6EEF5)}
 .theme-parent .hill{opacity:.35}
+.v1 .hill{filter:saturate(1.05) brightness(.88) sepia(.18)}
+.v1 .cloud{opacity:.7;background:#FFE9CF}
+.v2 .hill{filter:saturate(.5) brightness(.62) hue-rotate(24deg)}
+.v2 .cloud{opacity:.35;background:#C9D4FF}
+.is-night .cloud{opacity:.35;background:#C9D4FF}
 
 /* ---------- 通用组件 ---------- */
 .screen{position:absolute;inset:0;z-index:2;animation:screenIn .28s ease}
@@ -87,16 +116,16 @@ img.ic{display:inline-block;vertical-align:middle}
 .popt{animation:pop .45s}
 
 /* ---------- 主页 ---------- */
-.pipes{display:flex;align-items:flex-end;justify-content:space-around;padding:0 30px;margin-top:4px}
-.pipe-zone{cursor:pointer;text-align:center;width:300px;transition:transform .15s}
+.pipes{display:flex;align-items:flex-end;justify-content:space-between;padding:0 12px;margin-top:4px}
+.pipe-zone{cursor:pointer;text-align:center;width:164px;transition:transform .15s}
 .pipe-zone:hover{transform:translateY(-6px)}
-.pipe-wrap{position:relative;height:158px;display:flex;align-items:flex-end;justify-content:center}
-.pipe-wrap .blk{position:absolute;top:-6px;left:50%;transform:translateX(-50%);width:54px;height:54px;border-radius:11px;background:linear-gradient(180deg,#FFE58A,#F7B32B);border:3.5px solid #B8770A;display:grid;place-items:center;font-size:28px;font-weight:900;color:#fff;text-shadow:1px 2px 0 #B8770A;animation:pulse 1.6s infinite}
-.pipe-wrap .guide{position:absolute;right:6px;bottom:4px}
-.zone-label{display:inline-block;margin-top:-18px;position:relative;z-index:3;background:linear-gradient(180deg,#FFE58A,var(--yellow-dk));border:2.5px solid #B8770A;border-radius:999px;padding:8px 26px;font-size:21px;font-weight:900;color:#8A5B00;box-shadow:0 4px 0 rgba(0,0,0,.14)}
-.zone-meta{margin-top:6px;font-size:14px;font-weight:900;color:var(--green-ddk);text-shadow:0 1px 0 rgba(255,255,255,.55)}
-.zone-meta .track{width:170px;margin:6px auto 0}
-.badge-new{position:absolute;top:6px;right:-6px;background:linear-gradient(180deg,#FF9068,var(--coral-dk));color:#fff;font-size:13px;font-weight:900;border-radius:999px;padding:4px 12px;transform:rotate(8deg);box-shadow:0 3px 0 rgba(0,0,0,.15);z-index:4}
+.pipe-wrap{position:relative;height:120px;display:flex;align-items:flex-end;justify-content:center}
+.pipe-wrap .blk{position:absolute;top:-6px;left:50%;transform:translateX(-50%);width:42px;height:42px;border-radius:9px;background:linear-gradient(180deg,#FFE58A,#F7B32B);border:3px solid #B8770A;display:grid;place-items:center;font-size:22px;font-weight:900;color:#fff;text-shadow:1px 2px 0 #B8770A;animation:pulse 1.6s infinite}
+.pipe-wrap .guide{position:absolute;right:2px;bottom:0}
+.zone-label{display:inline-block;margin-top:-14px;position:relative;z-index:3;background:linear-gradient(180deg,#FFE58A,var(--yellow-dk));border:2.5px solid #B8770A;border-radius:999px;padding:5px 13px;font-size:15.5px;font-weight:900;color:#8A5B00;box-shadow:0 4px 0 rgba(0,0,0,.14);white-space:nowrap}
+.zone-meta{margin-top:5px;font-size:12px;font-weight:900;color:var(--green-ddk);text-shadow:0 1px 0 rgba(255,255,255,.55);white-space:nowrap}
+.zone-meta .track{width:132px;margin:6px auto 0}
+.badge-new{position:absolute;top:4px;right:-4px;background:linear-gradient(180deg,#FF9068,var(--coral-dk));color:#fff;font-size:12.5px;font-weight:900;border-radius:999px;padding:4px 11px;transform:rotate(8deg);box-shadow:0 3px 0 rgba(0,0,0,.15);z-index:4}
 .banner{position:absolute;top:104px;left:50%;transform:translateX(-50%);z-index:20;text-align:center;background:linear-gradient(180deg,#FF8A70,var(--coral-dk));border:4px solid #B8493A;border-radius:22px;padding:12px 58px 14px;box-shadow:0 12px 20px rgba(0,0,0,.22)}
 .banner h1{font-size:38px;font-weight:900;color:#fff;letter-spacing:10px;text-shadow:0 3px 0 rgba(0,0,0,.25)}
 .banner p{font-size:14px;color:#fff;opacity:.95;font-weight:800;letter-spacing:2px}
@@ -125,13 +154,17 @@ img.ic{display:inline-block;vertical-align:middle}
 
 /* ---------- 关卡页 ---------- */
 .lv-body{position:absolute;top:98px;left:22px;right:22px;bottom:14px;z-index:10}
-.q-pill{display:inline-block;font-size:25px;font-weight:900;background:linear-gradient(180deg,#FFF3D8,#FFE9BC);border-radius:999px;padding:11px 32px;box-shadow:0 4px 0 #F0DCAC}
-.opt{width:168px;height:168px;border-radius:28px;border:5px solid #fff;outline:4px solid #F2E2C4;background:#fff;box-shadow:0 10px 20px rgba(84,66,58,.16);display:grid;place-items:center;cursor:pointer;font-size:84px;transition:transform .12s;position:relative}
+.q-pill{display:inline-block;font-size:24px;font-weight:900;background:linear-gradient(180deg,#FFF3D8,#FFE9BC);border-radius:999px;padding:11px 30px;box-shadow:0 4px 0 #F0DCAC}
+.opt{width:164px;height:164px;border-radius:28px;border:5px solid #fff;outline:4px solid #F2E2C4;background:#fff;box-shadow:0 10px 20px rgba(84,66,58,.16);display:grid;place-items:center;cursor:pointer;font-size:84px;transition:transform .12s;position:relative}
 .opt:hover{transform:translateY(-6px) rotate(-1deg)}
 .opt.ok{outline-color:var(--green);background:#EDFBF0;animation:pop .45s}
 .opt.no{outline-color:var(--coral);animation:shake .4s}
 .opt.dim{opacity:.4;pointer-events:none}
-.opt .bigchar{font-size:80px;font-weight:900}
+.opt .bigchar{font-size:76px;font-weight:900}
+.opt .slabel{font-size:15px;font-weight:900;color:var(--ink-soft)}
+.tcard{min-width:168px;height:112px;padding:0 30px;border-radius:24px;background:linear-gradient(180deg,#FFE58A,#F7B32B);border:4px solid #fff;box-shadow:0 6px 0 #B8770A88;display:grid;place-items:center;font-weight:900;color:#fff;text-shadow:1px 3px 0 #B8770A}
+.optrow{display:flex;gap:26px}
+.speakopt{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.9);border:2.5px solid #F2E2C4;border-radius:999px;padding:8px 18px;font-size:15px;font-weight:800;color:var(--ink-soft);cursor:pointer;font-family:inherit}
 .morph{position:relative;width:300px;height:265px;display:grid;place-items:center}
 .morph .char{position:absolute;font-size:165px;font-weight:900;color:#E2582A;text-shadow:0 5px 0 #FFD9A0;opacity:0;transform:scale(.4);transition:all .5s cubic-bezier(.22,1.2,.36,1)}
 .morph.play .char{opacity:1;transform:scale(1)}
@@ -141,10 +174,18 @@ img.ic{display:inline-block;vertical-align:middle}
 .speakbtn{width:56px;height:56px;border:none;border-radius:50%;background:linear-gradient(180deg,#FFDD7A,var(--yellow-dk));box-shadow:0 4px 0 var(--yellow-ddk);cursor:pointer;display:grid;place-items:center}
 .wordchip{display:inline-flex;align-items:center;gap:6px;background:#fff;border:3px solid #FFE3B3;border-radius:15px;padding:8px 15px;font-size:18px;font-weight:900;color:#B06A00;box-shadow:0 3px 0 #F2E2C4;cursor:pointer}
 .pond{position:relative;height:200px;border-radius:24px;border:5px solid #fff;outline:3px solid rgba(47,134,201,.25);background:linear-gradient(180deg,#C9EFFB,#6FC9EE);overflow:hidden;box-shadow:inset 0 6px 14px rgba(47,134,201,.25)}
+.pond.sky{background:linear-gradient(180deg,#E0F4FF,#A6DBF8);outline-color:rgba(143,201,236,.5)}
+.pond.night{background:linear-gradient(180deg,#2E3A87,#4A5AB8);outline-color:rgba(140,155,232,.55)}
+.pond.grass{background:linear-gradient(180deg,#E8F6CF,#B4E18E);outline-color:rgba(143,201,107,.5)}
 .pond .wave{position:absolute;left:-5%;right:-5%;bottom:-24px;height:52px;background:radial-gradient(circle at 10px -8px,transparent 18px,rgba(255,255,255,.45) 19px);background-size:42px 28px}
-.duck{position:absolute;font-size:54px;cursor:pointer;filter:drop-shadow(0 5px 5px rgba(20,60,90,.25));transition:transform .15s;animation:bob 2.2s ease-in-out infinite}
-.duck:hover{transform:scale(1.12)}
-.duck.counted{filter:drop-shadow(0 0 10px #FFD54F)}
+.pond .ndeco{position:absolute;inset:0;pointer-events:none;background-image:
+ radial-gradient(2px 2px at 8% 16%,#fff 55%,transparent 60%),radial-gradient(1.6px 1.6px at 20% 34%,#fff 55%,transparent 60%),
+ radial-gradient(2.2px 2.2px at 33% 12%,#fff 55%,transparent 60%),radial-gradient(1.6px 1.6px at 47% 30%,#fff 55%,transparent 60%),
+ radial-gradient(2px 2px at 60% 10%,#fff 55%,transparent 60%),radial-gradient(1.6px 1.6px at 73% 28%,#fff 55%,transparent 60%),
+ radial-gradient(2.2px 2.2px at 86% 14%,#fff 55%,transparent 60%),radial-gradient(1.6px 1.6px at 94% 32%,#fff 55%,transparent 60%)}
+.countitem{position:absolute;font-size:0;cursor:pointer;filter:drop-shadow(0 5px 5px rgba(20,60,90,.25));animation:bob 2.4s ease-in-out infinite;transition:transform .12s}
+.countitem:hover{transform:scale(1.1)}
+.countitem.counted{filter:drop-shadow(0 0 10px #FFD54F)}
 .cbub{position:absolute;width:40px;height:40px;border-radius:50%;background:linear-gradient(180deg,#FFE58A,var(--gold));border:2.5px solid #B8770A;display:grid;place-items:center;font-size:20px;font-weight:900;color:#8A5B00;animation:bub .8s ease-out forwards;pointer-events:none;z-index:5}
 @keyframes bub{0%{transform:translateY(0) scale(.5);opacity:0}30%{transform:translateY(-24px) scale(1.15);opacity:1}100%{transform:translateY(-52px) scale(1);opacity:0}}
 .cnt-chip{position:absolute;top:10px;right:12px;background:#fff;border-radius:999px;padding:7px 16px;font-size:19px;font-weight:900;z-index:6;box-shadow:0 3px 0 rgba(47,134,201,.18)}
@@ -152,15 +193,18 @@ img.ic{display:inline-block;vertical-align:middle}
 .numblock:hover{transform:translateY(-4px)}
 .numblock:active{transform:translateY(4px)}
 .numblock.ok{background:linear-gradient(180deg,#C6F0A0,#5CB444);border-color:#3F8F30;color:#2F6B22}
-.plate{width:262px;height:170px;border-radius:50%;background:radial-gradient(circle at 40% 34%,#fff,#F2EDDF 78%);border:5px solid #fff;box-shadow:0 7px 0 #E4D9C2,0 10px 16px rgba(84,66,58,.12);display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:2px 6px;padding:16px}
+.plate{width:250px;height:162px;border-radius:50%;background:radial-gradient(circle at 40% 34%,#fff,#F2EDDF 78%);border:5px solid #fff;box-shadow:0 7px 0 #E4D9C2,0 10px 16px rgba(84,66,58,.12);display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:2px 6px;padding:16px}
 .plate img{width:36px;height:36px}
-.textopt{padding:13px 28px;font-size:22px;border-radius:999px;border:4px solid #F2E2C4;background:#fff;font-weight:900;font-family:inherit;cursor:pointer;box-shadow:0 4px 0 #E4D2AC;transition:transform .12s}
+.textopt{padding:13px 26px;font-size:21px;border-radius:999px;border:4px solid #F2E2C4;background:#fff;font-weight:900;font-family:inherit;cursor:pointer;box-shadow:0 4px 0 #E4D2AC;transition:transform .12s}
 .textopt:hover{transform:translateY(-4px)}
 .textopt.ok{background:linear-gradient(180deg,#C6F0A0,#5CB444);border-color:#3F8F30;color:#2F6B22}
+.seqrow{display:flex;align-items:center;gap:10px}
+.seqcard{width:84px;height:84px;border-radius:20px;background:#fff;border:4px solid #F2E2C4;box-shadow:0 4px 0 #F2E2C4;display:grid;place-items:center}
+.seqq{width:84px;height:84px;border-radius:20px;background:linear-gradient(180deg,#FFFDF4,#FFF3D8);border:4px solid #E8B54A;box-shadow:0 4px 0 #E8B54A66;display:grid;place-items:center;font-size:42px;font-weight:900;color:var(--orange-ddk)}
 .finish{position:absolute;inset:0;background:rgba(30,22,16,.45);display:grid;place-items:center;z-index:60}
-.finish .card{text-align:center;padding:38px 54px;border-radius:32px;border:5px solid var(--yellow);background:linear-gradient(180deg,#fff,var(--cream-dk));box-shadow:0 20px 40px rgba(0,0,0,.3);animation:pop .45s}
+.finish .card{text-align:center;padding:38px 50px;border-radius:32px;border:5px solid var(--yellow);background:linear-gradient(180deg,#fff,var(--cream-dk));box-shadow:0 20px 40px rgba(0,0,0,.3);animation:pop .45s}
 .stepchips{display:flex;align-items:center;gap:5px}
-.schip{display:flex;align-items:center;gap:6px;padding:7px 14px;background:rgba(255,255,255,.94);color:var(--ink-soft);font-size:15px;font-weight:800;border-radius:999px;box-shadow:0 3px 0 rgba(84,66,58,.1);white-space:nowrap}
+.schip{display:flex;align-items:center;gap:6px;padding:7px 13px;background:rgba(255,255,255,.94);color:var(--ink-soft);font-size:15px;font-weight:800;border-radius:999px;box-shadow:0 3px 0 rgba(84,66,58,.1);white-space:nowrap}
 .schip .dot{width:19px;height:19px;border-radius:50%;display:grid;place-items:center;font-size:11px;font-weight:900;background:#EFE6D2;color:#B7A88F}
 .schip.done{background:#EFFBEF;color:var(--green-dk)}.schip.done .dot{background:var(--green);color:#fff}
 .schip.now{background:linear-gradient(180deg,var(--orange),var(--orange-dk));color:#fff;box-shadow:0 3px 0 var(--orange-ddk)}.schip.now .dot{background:rgba(255,255,255,.3);color:#fff}
@@ -204,9 +248,9 @@ img.ic{display:inline-block;vertical-align:middle}
 .empty{color:#C6BADF;font-size:13.5px;font-weight:700;padding:4px}
 
 /* ---------- 收集册 ---------- */
-.tabs{position:absolute;top:92px;left:38px;display:flex;gap:15px;z-index:20}
+.tabs{position:absolute;top:92px;left:26px;display:flex;gap:11px;z-index:20}
 .tab{border:none;background:none;cursor:pointer;font-family:inherit;display:flex;flex-direction:column;align-items:center;gap:3px}
-.tab .icw{width:56px;height:56px;border-radius:18px;background:rgba(255,255,255,.88);box-shadow:0 4px 0 rgba(84,66,58,.15);display:grid;place-items:center;transition:all .12s}
+.tab .icw{width:50px;height:50px;border-radius:18px;background:rgba(255,255,255,.88);box-shadow:0 4px 0 rgba(84,66,58,.15);display:grid;place-items:center;transition:all .12s}
 .tab .t{font-size:14px;font-weight:900;color:#8A6520;text-shadow:0 1px 0 rgba(255,255,255,.6)}
 .tab.active .icw{background:linear-gradient(180deg,#FFDD7A,var(--yellow-dk));box-shadow:inset 0 3px 0 rgba(255,255,255,.5),0 4px 0 var(--yellow-ddk);transform:translateY(-4px) scale(1.08)}
 .board{position:absolute;left:18px;right:18px;top:186px;bottom:14px;background:linear-gradient(180deg,#FFFBF0,var(--cream-dk));border-radius:40px;border:5px solid #fff;box-shadow:0 14px 28px rgba(84,66,58,.15);z-index:15;overflow:hidden;display:flex;flex-direction:column}
@@ -257,83 +301,44 @@ img.ic{display:inline-block;vertical-align:middle}
 </style>
 </head>
 <body>
-<div class="note"><b>探险岛 App 模拟器</b> · ios/ SwiftUI 工程的 1:1 浏览器预览<br>数据为模拟进度（与真机无关）· 图标取自 design/assets</div>
+<div class="note"><b>探险岛 App 模拟器</b> · ios/ SwiftUI 工程的 1:1 浏览器预览<br>数据自动注入自 Resources/*.json · 图标取自 design/assets</div>
 <div class="frame"><div class="stage" id="stage"></div></div>
 <div class="toast" id="toast"></div>
 
 <script>
-/* ================= 数据（与 ios/AdventureIsland/Resources 一致） ================= */
-const ICON_DIR = "../../design/assets/icons/";
-const EMOJI = {girl:"🧒",panda:"🐼",fox:"🦊",robot:"🤖",duck:"🦆",school:"🏫",ferris:"🎡",volcano:"🌋",castle:"🏰",apple:"🍎",banana:"🍌",rock:"🪨",wood:"🪵",key:"🔑",sponge:"🧽",balloon:"🎈",ice:"🧊",magnet:"🧲",rainbow:"🌈",sprout:"🌱",sun:"☀️",sunrays:"🌞",sunface:"😊",moon:"🌙",wave:"🌊",sunrise:"🌅",cake:"🎂",calendar:"📅",star:"⭐",medal:"🏅",gift:"🎁",clip:"📋",lock:"🔒",speaker:"🔊",home:"🏠",back:"🔙",fire:"🔥",goggles:"🥽",flask:"🧪",book:"📖",sparkle:"✨",crystal:"💎",flower:"🌸",leaf:"🍃",rocket:"🚀",party:"🎉",question:"❓",clock:"⏰",shield:"🛡",chart:"📈",slider:"🎚",bulb:"💡",heart:"❤️",equal:"🟰",hanzi:"🈶",block:"🟨",coin:"🪙",dice:"🎲","pipe-red":"🟥","pipe-blue":"🟦","pipe-purple":"🟪",flag:"🏁",starface:"🌟",brick:"🧱","hills-back":"⛰","hills-front":"🏞"};
+/* ================= 数据（tools/gen_preview_data.py 自动注入，与 iOS Resources 同源） ================= */
+/* === DATA-BEGIN === */
+const CONTENT = {"cn":{"subject":"cn","title":"识字村","guide":"panda","levels":[{"id":"cn-0","title":"第 1 关 象形字","subtitle":"认识「日」","steps":[{"id":"cn-0-t","kind":"teach","morphFrom":"sunface","char":"日","pinyin":"rì","words":[{"icon":"sunrise","text":"日出","say":"日出"},{"icon":"cake","text":"生日","say":"生日"},{"icon":"calendar","text":"日子","say":"日子"}]},{"id":"cn-0-l","kind":"listen","prompt":"日","speakText":"日","question":"找一找：哪张图片是「日」？","options":[{"icon":"sunrise","text":"日"},{"icon":"moon"},{"icon":"cake"}],"answer":0,"hint":"想想刚才的图片：「日」","praise":"眼睛真亮！日 找对啦！"},{"id":"cn-0-q","kind":"quiz","question":"练一练：哪个字是「日」？","options":[{"text":"日"},{"text":"木"},{"text":"口"}],"answer":0,"hint":"想一想刚才的字","praise":"记住啦！"}]},{"id":"cn-1","title":"第 2 关 象形字","subtitle":"认识「月」","steps":[{"id":"cn-1-t","kind":"teach","morphFrom":"moon","char":"月","pinyin":"yuè","words":[{"icon":"moon","text":"月亮","say":"月亮"},{"icon":"starface","text":"星星","say":"星星"},{"icon":"cake","text":"月饼","say":"月饼"}]},{"id":"cn-1-l","kind":"listen","prompt":"月","speakText":"月","question":"找一找：哪张图片是「月」？","options":[{"icon":"star"},{"icon":"sun"},{"icon":"moon","text":"月"}],"answer":2,"hint":"想想刚才的图片：「月」","praise":"眼睛真亮！月 找对啦！"},{"id":"cn-1-q","kind":"quiz","question":"练一练：哪个字是「月」？","options":[{"text":"月"},{"text":"木"},{"text":"口"}],"answer":0,"hint":"想一想刚才的字","praise":"记住啦！"}]},{"id":"cn-2","title":"第 3 关 象形字","subtitle":"认识「水」","steps":[{"id":"cn-2-t","kind":"teach","morphFrom":"wave","char":"水","pinyin":"shuǐ","words":[{"icon":"wave","text":"海浪","say":"海浪"},{"icon":"crystal","text":"泉水","say":"泉水"},{"icon":"leaf","text":"露珠","say":"露珠"}]},{"id":"cn-2-l","kind":"listen","prompt":"水","speakText":"水","question":"找一找：哪张图片是「水」？","options":[{"icon":"wave","text":"水"},{"icon":"sun"},{"icon":"crystal"}],"answer":0,"hint":"想想刚才的图片：「水」","praise":"眼睛真亮！水 找对啦！"},{"id":"cn-2-q","kind":"quiz","question":"练一练：哪个字是「水」？","options":[{"text":"水"},{"text":"木"},{"text":"口"}],"answer":0,"hint":"想一想刚才的字","praise":"记住啦！"}]},{"id":"cn-3","title":"第 4 关 象形字","subtitle":"认识「山」","steps":[{"id":"cn-3-t","kind":"teach","morphFrom":"volcano","char":"山","pinyin":"shān","words":[{"icon":"school","text":"上山","say":"上山"},{"icon":"leaf","text":"山林","say":"山林"}]},{"id":"cn-3-l","kind":"listen","prompt":"山","speakText":"山","question":"找一找：哪张图片是「山」？","options":[{"icon":"rocket"},{"icon":"volcano","text":"山"},{"icon":"home"}],"answer":1,"hint":"想想刚才的图片：「山」","praise":"眼睛真亮！山 找对啦！"},{"id":"cn-3-q","kind":"quiz","question":"练一练：哪个字是「山」？","options":[{"text":"山"},{"text":"木"},{"text":"口"}],"answer":0,"hint":"想一想刚才的字","praise":"记住啦！"}]},{"id":"cn-4","title":"第 5 关 象形字","subtitle":"认识「木」","steps":[{"id":"cn-4-t","kind":"teach","morphFrom":"sprout","char":"木","pinyin":"mù","words":[{"icon":"leaf","text":"树叶","say":"树叶"},{"icon":"flower","text":"花木","say":"花木"}]},{"id":"cn-4-l","kind":"listen","prompt":"木","speakText":"木","question":"找一找：哪张图片是「木」？","options":[{"icon":"sprout","text":"木"},{"icon":"flower"},{"icon":"rock"}],"answer":0,"hint":"想想刚才的图片：「木」","praise":"眼睛真亮！木 找对啦！"},{"id":"cn-4-q","kind":"quiz","question":"练一练：哪个字是「木」？","options":[{"text":"木"},{"text":"水"},{"text":"口"}],"answer":0,"hint":"想一想刚才的字","praise":"记住啦！"}]},{"id":"cn-5","title":"第 6 关 象形字","subtitle":"认识「人」","steps":[{"id":"cn-5-t","kind":"teach","morphFrom":"girl","char":"人","pinyin":"rén","words":[{"icon":"heart","text":"大人","say":"大人"},{"icon":"party","text":"人们","say":"人们"}]},{"id":"cn-5-l","kind":"listen","prompt":"人","speakText":"人","question":"找一找：哪张图片是「人」？","options":[{"icon":"sun"},{"icon":"duck"},{"icon":"girl","text":"人"}],"answer":2,"hint":"想想刚才的图片：「人」","praise":"眼睛真亮！人 找对啦！"},{"id":"cn-5-q","kind":"quiz","question":"练一练：哪个字是「人」？","options":[{"text":"人"},{"text":"木"},{"text":"口"}],"answer":0,"hint":"想一想刚才的字","praise":"记住啦！"}]},{"id":"cn-6","title":"第 7 关 象形字","subtitle":"认识「口」","steps":[{"id":"cn-6-t","kind":"teach","morphFrom":"speaker","char":"口","pinyin":"kǒu","words":[{"icon":"speaker","text":"开口","say":"开口"},{"icon":"heart","text":"口水","say":"口水"}]},{"id":"cn-6-l","kind":"listen","prompt":"口","speakText":"口","question":"找一找：哪张图片是「口」？","options":[{"icon":"speaker","text":"口"},{"icon":"clock"},{"icon":"moon"}],"answer":0,"hint":"想想刚才的图片：「口」","praise":"眼睛真亮！口 找对啦！"},{"id":"cn-6-q","kind":"quiz","question":"练一练：哪个字是「口」？","options":[{"text":"口"},{"text":"木"},{"text":"日"}],"answer":0,"hint":"想一想刚才的字","praise":"记住啦！"}]},{"id":"cn-7","title":"第 8 关 象形字","subtitle":"认识「天」","steps":[{"id":"cn-7-t","kind":"teach","morphFrom":"sunrays","char":"天","pinyin":"tiān","words":[{"icon":"sun","text":"天空","say":"天空"},{"icon":"sunrise","text":"今天","say":"今天"}]},{"id":"cn-7-l","kind":"listen","prompt":"天","speakText":"天","question":"找一找：哪张图片是「天」？","options":[{"icon":"banana"},{"icon":"sun","text":"天"},{"icon":"rocket"}],"answer":1,"hint":"想想刚才的图片：「天」","praise":"眼睛真亮！天 找对啦！"},{"id":"cn-7-q","kind":"quiz","question":"练一练：哪个字是「天」？","options":[{"text":"天"},{"text":"木"},{"text":"口"}],"answer":0,"hint":"想一想刚才的字","praise":"记住啦！"}]},{"id":"cn-8","title":"第 9 关 象形字","subtitle":"认识「田」","steps":[{"id":"cn-8-t","kind":"teach","morphFrom":"calendar","char":"田","pinyin":"tián","words":[{"icon":"sprout","text":"田里","say":"田里"},{"icon":"flower","text":"水田","say":"水田"}]},{"id":"cn-8-l","kind":"listen","prompt":"田","speakText":"田","question":"找一找：哪张图片是「田」？","options":[{"icon":"star"},{"icon":"gift"},{"icon":"calendar","text":"田"}],"answer":2,"hint":"想想刚才的图片：「田」","praise":"眼睛真亮！田 找对啦！"},{"id":"cn-8-q","kind":"quiz","question":"练一练：哪个字是「田」？","options":[{"text":"田"},{"text":"木"},{"text":"口"}],"answer":0,"hint":"想一想刚才的字","praise":"记住啦！"}]},{"id":"cn-9","title":"第 10 关 象形字","subtitle":"认识「石」","steps":[{"id":"cn-9-t","kind":"teach","morphFrom":"rock","char":"石","pinyin":"shí","words":[{"icon":"rock","text":"石头","say":"石头"},{"icon":"castle","text":"石桥","say":"石桥"}]},{"id":"cn-9-l","kind":"listen","prompt":"石","speakText":"石","question":"找一找：哪张图片是「石」？","options":[{"icon":"rock","text":"石"},{"icon":"balloon"},{"icon":"leaf"}],"answer":0,"hint":"想想刚才的图片：「石」","praise":"眼睛真亮！石 找对啦！"},{"id":"cn-9-q","kind":"quiz","question":"练一练：哪个字是「石」？","options":[{"text":"石"},{"text":"木"},{"text":"口"}],"answer":0,"hint":"想一想刚才的字","praise":"记住啦！"}]},{"id":"cn-10","title":"第 11 关 象形字","subtitle":"认识「火」","steps":[{"id":"cn-10-t","kind":"teach","morphFrom":"flame","char":"火","pinyin":"huǒ","words":[{"icon":"flame","text":"火焰","say":"火焰"},{"icon":"volcano","text":"火山","say":"火山"},{"icon":"starface","text":"火花","say":"火花"}]},{"id":"cn-10-l","kind":"listen","prompt":"火","speakText":"火","question":"找一找：哪张图片是「火」？","options":[{"icon":"flame","text":"火"},{"icon":"crystal"},{"icon":"key"}],"answer":0,"hint":"想想刚才的图片：「火」","praise":"眼睛真亮！火 找对啦！"},{"id":"cn-10-q","kind":"quiz","question":"练一练：哪个字是「火」？","options":[{"text":"火"},{"text":"木"},{"text":"口"}],"answer":0,"hint":"想一想刚才的字","praise":"记住啦！"}]},{"id":"cn-11","title":"第 12 关 象形字","subtitle":"认识「花」","steps":[{"id":"cn-11-t","kind":"teach","morphFrom":"flower","char":"花","pinyin":"huā","words":[{"icon":"flower","text":"花朵","say":"花朵"},{"icon":"leaf","text":"花瓣","say":"花瓣"},{"icon":"heart","text":"花园","say":"花园"}]},{"id":"cn-11-l","kind":"listen","prompt":"花","speakText":"花","question":"找一找：哪张图片是「花」？","options":[{"icon":"star"},{"icon":"flower","text":"花"},{"icon":"train"}],"answer":1,"hint":"想想刚才的图片：「花」","praise":"眼睛真亮！花 找对啦！"},{"id":"cn-11-q","kind":"quiz","question":"练一练：哪个字是「花」？","options":[{"text":"花"},{"text":"木"},{"text":"口"}],"answer":0,"hint":"想一想刚才的字","praise":"记住啦！"}]},{"id":"cn-12","title":"第 13 关 象形字","subtitle":"认识「草」","steps":[{"id":"cn-12-t","kind":"teach","morphFrom":"leaf","char":"草","pinyin":"cǎo","words":[{"icon":"leaf","text":"小草","say":"小草"},{"icon":"sprout","text":"草地","say":"草地"}]},{"id":"cn-12-l","kind":"listen","prompt":"草","speakText":"草","question":"找一找：哪张图片是「草」？","options":[{"icon":"cake"},{"icon":"leaf","text":"草"},{"icon":"duck"}],"answer":1,"hint":"想想刚才的图片：「草」","praise":"眼睛真亮！草 找对啦！"},{"id":"cn-12-q","kind":"quiz","question":"练一练：哪个字是「草」？","options":[{"text":"草"},{"text":"木"},{"text":"口"}],"answer":0,"hint":"想一想刚才的字","praise":"记住啦！"}]},{"id":"cn-13","title":"第 14 关 象形字","subtitle":"认识「鸟」","steps":[{"id":"cn-13-t","kind":"teach","morphFrom":"duck","char":"鸟","pinyin":"niǎo","words":[{"icon":"duck","text":"小鸟","say":"小鸟"},{"icon":"leaf","text":"鸟窝","say":"鸟窝"}]},{"id":"cn-13-l","kind":"listen","prompt":"鸟","speakText":"鸟","question":"找一找：哪张图片是「鸟」？","options":[{"icon":"duck","text":"鸟"},{"icon":"apple"},{"icon":"rocket"}],"answer":0,"hint":"想想刚才的图片：「鸟」","praise":"眼睛真亮！鸟 找对啦！"},{"id":"cn-13-q","kind":"quiz","question":"练一练：哪个字是「鸟」？","options":[{"text":"鸟"},{"text":"木"},{"text":"口"}],"answer":0,"hint":"想一想刚才的字","praise":"记住啦！"}]},{"id":"cn-14","title":"第 15 关 复习挑战","subtitle":"汉字小达人","steps":[{"id":"cn-14-l1","kind":"listen","prompt":"火","speakText":"火","question":"找一找：哪张图片是「火」？","options":[{"icon":"crystal"},{"icon":"flame","text":"火"},{"icon":"key"}],"answer":1,"hint":"热热的、红红的","praise":"真棒！"},{"id":"cn-14-l2","kind":"listen","prompt":"花","speakText":"花","question":"找一找：哪张图片是「花」？","options":[{"icon":"star"},{"icon":"flower","text":"花"},{"icon":"duck"}],"answer":1,"hint":"香香的、漂亮的","praise":"眼睛真亮！"},{"id":"cn-14-q","kind":"quiz","question":"大挑战：哪个是「鸟」？","options":[{"text":"鸟"},{"text":"乌"},{"text":"鸣"}],"answer":0,"hint":"有一点点，就是小鸟","praise":"复习家！全对啦！"}]}]},"math":{"subject":"math","title":"思维镇","guide":"fox","levels":[{"id":"math-0","title":"第 1 关 池塘数鸭","subtitle":"3 以内点数","steps":[{"id":"math-0-c","kind":"count","question":"池塘里有几只小鸭（点一点，数数看）","duckIcon":"duck","count":3,"countOptions":[2,3,4],"backdrop":"pond","unit":"只"},{"id":"math-0-cmp","kind":"compare","question":"哪边的水果更多？","leftIcon":"apple","leftCount":3,"rightIcon":"banana","rightCount":1,"compareOptions":[{"key":"left","label":"苹果多"},{"key":"right","label":"香蕉多"},{"key":"same","label":"一样多"}],"answerKey":"left","hint":"一个对着一个，比一比","praise":"苹果多，答对啦！"}]},{"id":"math-1","title":"第 2 关 糖果店","subtitle":"4 以内点数","steps":[{"id":"math-1-c","kind":"count","question":"盘子里有几颗糖（点一点，数数看）","duckIcon":"candy","count":4,"countOptions":[3,4,5],"backdrop":"grass","unit":"颗"},{"id":"math-1-cmp","kind":"compare","question":"哪边更多？","leftIcon":"candy","leftCount":4,"rightIcon":"cake","rightCount":2,"compareOptions":[{"key":"left","label":"糖多"},{"key":"right","label":"蛋糕多"},{"key":"same","label":"一样多"}],"answerKey":"left","hint":"一个对着一个，比一比","praise":"糖多，答对啦！"}]},{"id":"math-2","title":"第 3 关 果园丰收","subtitle":"5 以内点数","steps":[{"id":"math-2-c","kind":"count","question":"果园里摘了几个苹果（点一点，数数看）","duckIcon":"apple","count":5,"countOptions":[4,5,6],"backdrop":"grass","unit":"个"},{"id":"math-2-cmp","kind":"compare","question":"哪边的水果更多？","leftIcon":"apple","leftCount":3,"rightIcon":"banana","rightCount":5,"compareOptions":[{"key":"left","label":"苹果多"},{"key":"right","label":"香蕉多"},{"key":"same","label":"一样多"}],"answerKey":"right","hint":"一个对着一个，比一比","praise":"香蕉多，答对啦！"}]},{"id":"math-3","title":"第 4 关 气球派对","subtitle":"一样多","steps":[{"id":"math-3-cmp","kind":"compare","question":"两边气球哪边多？","leftIcon":"balloon","leftCount":4,"rightIcon":"balloon","rightCount":4,"compareOptions":[{"key":"left","label":"左边多"},{"key":"right","label":"右边多"},{"key":"same","label":"一样多"}],"answerKey":"same","hint":"一个对着一个，比一比","praise":"火眼金睛！一样多！"}]},{"id":"math-4","title":"第 5 关 夜空数星","subtitle":"6 以内点数","steps":[{"id":"math-4-c","kind":"count","question":"夜空里有几颗星星（点一点，数数看）","duckIcon":"star","count":6,"countOptions":[5,6,7],"backdrop":"night","unit":"颗"},{"id":"math-4-cmp","kind":"compare","question":"星星和月亮哪边多？","leftIcon":"star","leftCount":6,"rightIcon":"moon","rightCount":4,"compareOptions":[{"key":"left","label":"星星多"},{"key":"right","label":"月亮多"},{"key":"same","label":"一样多"}],"answerKey":"left","hint":"一个对着一个，比一比","praise":"星星多，答对啦！"}]},{"id":"math-5","title":"第 6 关 小火车","subtitle":"7 以内点数","steps":[{"id":"math-5-c","kind":"count","question":"轨道上有几辆小火车（点一点，数数看）","duckIcon":"train","count":7,"countOptions":[6,7,8],"backdrop":"grass","unit":"辆"}]},{"id":"math-6","title":"第 7 关 花园蜜蜂","subtitle":"8 以内点数","steps":[{"id":"math-6-c","kind":"count","question":"花园里开了几朵花（点一点，数数看）","duckIcon":"flower","count":8,"countOptions":[7,8,9],"backdrop":"grass","unit":"朵"},{"id":"math-6-cmp","kind":"compare","question":"叶子和花哪边多？","leftIcon":"leaf","leftCount":5,"rightIcon":"flower","rightCount":8,"compareOptions":[{"key":"left","label":"叶子多"},{"key":"right","label":"花多"},{"key":"same","label":"一样多"}],"answerKey":"right","hint":"一个对着一个，比一比","praise":"花多，答对啦！"}]},{"id":"math-7","title":"第 8 关 爱心礼盒","subtitle":"9 以内点数","steps":[{"id":"math-7-c","kind":"count","question":"礼盒里有几颗爱心糖（点一点，数数看）","duckIcon":"heart","count":9,"countOptions":[8,9,10],"backdrop":"grass","unit":"颗"}]},{"id":"math-8","title":"第 9 关 宝藏金币","subtitle":"10 以内点数","steps":[{"id":"math-8-c","kind":"count","question":"宝箱里有几枚金币（点一点，数数看）","duckIcon":"coin","count":10,"countOptions":[8,9,10],"backdrop":"night","unit":"枚"},{"id":"math-8-p1","kind":"pattern","seq":["star","moon","star"],"question":"找规律：下一个是哪个？","options":[{"icon":"moon"},{"icon":"star"},{"icon":"candy"}],"answer":0,"hint":"先读一读前面几个，找一找谁在轮流出现","praise":"规律找对啦，小侦探！"}]},{"id":"math-9","title":"第 10 关 比大小","subtitle":"谁是冠军","steps":[{"id":"math-9-q1","kind":"quiz","question":"哪个数字最大？","options":[{"text":"5"},{"text":"9"},{"text":"3"}],"answer":1,"hint":"从 1 数到 10，谁排在最后？","praise":"9 最大，答对啦！"},{"id":"math-9-q2","kind":"quiz","question":"哪个数字最小？","options":[{"text":"2"},{"text":"7"},{"text":"10"}],"answer":0,"hint":"越早数到的越小哦","praise":"思维小达人，通关！"}]},{"id":"math-10","title":"第 11 关 糖果加法","subtitle":"合起来","steps":[{"id":"math-10-a+11","kind":"arith","op":"+","leftIcon":"candy","leftCount":1,"rightCount":1,"unit":"颗","question":"1 颗糖加 1 颗糖，一共有几颗？","arithOptions":[1,2,3],"hint":"指着图一个一个数","praise":"算对啦，等于 2！"},{"id":"math-10-a+21","kind":"arith","op":"+","leftIcon":"candy","leftCount":2,"rightCount":1,"unit":"颗","question":"2 颗糖加 1 颗糖，一共有几颗？","arithOptions":[2,3,4],"hint":"指着图一个一个数","praise":"算对啦，等于 3！"}]},{"id":"math-11","title":"第 12 关 苹果加法","subtitle":"5 以内","steps":[{"id":"math-11-a+22","kind":"arith","op":"+","leftIcon":"apple","leftCount":2,"rightCount":2,"unit":"个","question":"2 个苹果加 2 个苹果，一共有几个？","arithOptions":[3,4,5],"hint":"指着图一个一个数","praise":"算对啦，等于 4！"},{"id":"math-11-a+32","kind":"arith","op":"+","leftIcon":"apple","leftCount":3,"rightCount":2,"unit":"个","question":"3 个苹果加 2 个苹果，一共有几个？","arithOptions":[4,5,6],"hint":"指着图一个一个数","praise":"算对啦，等于 5！"}]},{"id":"math-12","title":"第 13 关 气球飞走了","subtitle":"减法初识","steps":[{"id":"math-12-a-31","kind":"arith","op":"-","leftIcon":"balloon","leftCount":3,"rightCount":1,"unit":"个","question":"3 个气球飞走 1 个，还剩几个？","arithOptions":[1,2,3],"hint":"划掉的不算哦","praise":"算对啦，等于 2！"},{"id":"math-12-a-42","kind":"arith","op":"-","leftIcon":"balloon","leftCount":4,"rightCount":2,"unit":"个","question":"4 个气球飞走 2 个，还剩几个？","arithOptions":[1,2,3],"hint":"划掉的不算哦","praise":"算对啦，等于 2！"}]},{"id":"math-13","title":"第 14 关 星星回家","subtitle":"5 以内减法","steps":[{"id":"math-13-a-52","kind":"arith","op":"-","leftIcon":"star","leftCount":5,"rightCount":2,"unit":"颗","question":"5 颗星星回家 2 颗，还剩几颗？","arithOptions":[2,3,4],"hint":"划掉的不算哦","praise":"算对啦，等于 3！"},{"id":"math-13-a-53","kind":"arith","op":"-","leftIcon":"star","leftCount":5,"rightCount":3,"unit":"颗","question":"5 颗星星回家 3 颗，还剩几颗？","arithOptions":[1,2,3],"hint":"划掉的不算哦","praise":"算对啦，等于 2！"}]},{"id":"math-14","title":"第 15 关 思维大挑战","subtitle":"加减 + 找规律","steps":[{"id":"math-14-a+44","kind":"arith","op":"+","leftIcon":"star","leftCount":4,"rightCount":4,"unit":"颗","question":"4 颗星星加 4 颗星星，一共几颗？","arithOptions":[7,8,9],"hint":"指着图一个一个数","praise":"算对啦，等于 8！"},{"id":"math-14-a-93","kind":"arith","op":"-","leftIcon":"duck","leftCount":9,"rightCount":3,"unit":"只","question":"9 只小鸭游走 3 只，还剩几只？","arithOptions":[5,6,7],"hint":"划掉的不算哦","praise":"算对啦，等于 6！"},{"id":"math-14-a+63","kind":"arith","op":"+","leftIcon":"candy","leftCount":6,"rightCount":3,"unit":"颗","question":"6 颗糖加 3 颗糖，一共几颗？","arithOptions":[8,9,10],"hint":"指着图一个一个数","praise":"算对啦，等于 9！"},{"id":"math-14-p2","kind":"pattern","seq":["sun","moon","star","sun","moon"],"question":"找规律：下一个是哪个？","options":[{"icon":"moon"},{"icon":"sun"},{"icon":"star"}],"answer":2,"hint":"先读一读前面几个，找一找谁在轮流出现","praise":"规律找对啦，小侦探！"}]}]},"pinyin":{"subject":"pinyin","title":"拼音谷","guide":"panda","levels":[{"id":"py-0","title":"第 1 关 声母","subtitle":"认识「b」","steps":[{"id":"py-0-t","kind":"letter","letters":["b"],"display":"b","examples":[{"icon":"girl","text":"爸爸 bà","say":"爸爸"},{"icon":"banana","text":"白菜 bái","say":"白菜"}],"question":"学一学声母 b"},{"id":"py-0-l","kind":"listen","prompt":"b","speakText":"b","question":"找一找：哪个是「b」？","options":[{"text":"d"},{"text":"p"},{"text":"b"}],"answer":2,"hint":"「爸爸」的开头","praise":"「b」找对啦！"},{"id":"py-0-b","kind":"blend","parts":["b","a"],"question":"拼一拼：b — a = ?","options":[{"text":"ba"},{"text":"bo"},{"text":"bu"}],"answer":0,"hint":"b 碰上 a","praise":"拼对了，ba！"}]},{"id":"py-1","title":"第 2 关 声母","subtitle":"认识「p」","steps":[{"id":"py-1-t","kind":"letter","letters":["p"],"display":"p","examples":[{"icon":"volcano","text":"山坡 pō","say":"山坡"},{"icon":"rocket","text":"跑步 pǎo","say":"跑步"}],"question":"学一学声母 p"},{"id":"py-1-l","kind":"listen","prompt":"p","speakText":"p","question":"找一找：哪个是「p」？","options":[{"text":"d"},{"text":"m"},{"text":"p"}],"answer":2,"hint":"「山坡」的开头","praise":"「p」找对啦！"},{"id":"py-1-b","kind":"blend","parts":["p","o"],"question":"拼一拼：p — o = ?","options":[{"text":"po"},{"text":"pa"},{"text":"pi"}],"answer":0,"hint":"p 碰上 o","praise":"拼对了，po！"}]},{"id":"py-2","title":"第 3 关 声母","subtitle":"认识「m」","steps":[{"id":"py-2-t","kind":"letter","letters":["m"],"display":"m","examples":[{"icon":"girl","text":"妈妈 mā","say":"妈妈"},{"icon":"moon","text":"米粒 mǐ","say":"米粒"}],"question":"学一学声母 m"},{"id":"py-2-l","kind":"listen","prompt":"m","speakText":"m","question":"找一找：哪个是「m」？","options":[{"text":"d"},{"text":"p"},{"text":"m"}],"answer":2,"hint":"「妈妈」的开头","praise":"「m」找对啦！"},{"id":"py-2-b","kind":"blend","parts":["m","a"],"question":"拼一拼：m — a = ?","options":[{"text":"ma"},{"text":"mo"},{"text":"mu"}],"answer":0,"hint":"m 碰上 a","praise":"拼对了，ma！"}]},{"id":"py-3","title":"第 4 关 声母","subtitle":"认识「f」","steps":[{"id":"py-3-t","kind":"letter","letters":["f"],"display":"f","examples":[{"icon":"flame","text":"发烧 fā","say":"发烧"},{"icon":"leaf","text":"飞机 fēi","say":"飞机"}],"question":"学一学声母 f"},{"id":"py-3-l","kind":"listen","prompt":"f","speakText":"f","question":"找一找：哪个是「f」？","options":[{"text":"d"},{"text":"p"},{"text":"f"}],"answer":2,"hint":"「发烧」的开头","praise":"「f」找对啦！"},{"id":"py-3-b","kind":"blend","parts":["f","a"],"question":"拼一拼：f — a = ?","options":[{"text":"fa"},{"text":"fo"},{"text":"fu"}],"answer":0,"hint":"f 碰上 a","praise":"拼对了，fa！"}]},{"id":"py-4","title":"第 5 关 声母","subtitle":"认识「d」","steps":[{"id":"py-4-t","kind":"letter","letters":["d"],"display":"d","examples":[{"icon":"sun","text":"大地 dì","say":"大地"},{"icon":"duck","text":"大刀 dāo","say":"大刀"}],"question":"学一学声母 d"},{"id":"py-4-l","kind":"listen","prompt":"d","speakText":"d","question":"找一找：哪个是「d」？","options":[{"text":"p"},{"text":"m"},{"text":"d"}],"answer":2,"hint":"「大地」的开头","praise":"「d」找对啦！"},{"id":"py-4-b","kind":"blend","parts":["d","e"],"question":"拼一拼：d — e = ?","options":[{"text":"de"},{"text":"da"},{"text":"du"}],"answer":0,"hint":"d 碰上 e","praise":"拼对了，de！"}]},{"id":"py-5","title":"第 6 关 声母","subtitle":"认识「t」","steps":[{"id":"py-5-t","kind":"letter","letters":["t"],"display":"t","examples":[{"icon":"train","text":"太阳 tài","say":"太阳"},{"icon":"tree","text":"跳高 tiào","say":"跳高"}],"question":"学一学声母 t"},{"id":"py-5-l","kind":"listen","prompt":"t","speakText":"t","question":"找一找：哪个是「t」？","options":[{"text":"d"},{"text":"p"},{"text":"t"}],"answer":2,"hint":"「太阳」的开头","praise":"「t」找对啦！"},{"id":"py-5-b","kind":"blend","parts":["t","a"],"question":"拼一拼：t — a = ?","options":[{"text":"ta"},{"text":"te"},{"text":"tu"}],"answer":0,"hint":"t 碰上 a","praise":"拼对了，ta！"}]},{"id":"py-6","title":"第 7 关 声母","subtitle":"认识「n」","steps":[{"id":"py-6-t","kind":"letter","letters":["n"],"display":"n","examples":[{"icon":"girl","text":"拿苹果 ná","say":"拿苹果"},{"icon":"heart","text":"你好 nǐ","say":"你好"}],"question":"学一学声母 n"},{"id":"py-6-l","kind":"listen","prompt":"n","speakText":"n","question":"找一找：哪个是「n」？","options":[{"text":"d"},{"text":"p"},{"text":"n"}],"answer":2,"hint":"「拿苹果」的开头","praise":"「n」找对啦！"},{"id":"py-6-b","kind":"blend","parts":["n","i"],"question":"拼一拼：n — i = ?","options":[{"text":"ni"},{"text":"na"},{"text":"nu"}],"answer":0,"hint":"n 碰上 i","praise":"拼对了，ni！"}]},{"id":"py-7","title":"第 8 关 声母","subtitle":"认识「l」","steps":[{"id":"py-7-t","kind":"letter","letters":["l"],"display":"l","examples":[{"icon":"leaf","text":"拉手 lā","say":"拉手"},{"icon":"gift","text":"老虎 lǎo","say":"老虎"}],"question":"学一学声母 l"},{"id":"py-7-l","kind":"listen","prompt":"l","speakText":"l","question":"找一找：哪个是「l」？","options":[{"text":"d"},{"text":"p"},{"text":"l"}],"answer":2,"hint":"「拉手」的开头","praise":"「l」找对啦！"},{"id":"py-7-b","kind":"blend","parts":["l","a"],"question":"拼一拼：l — a = ?","options":[{"text":"la"},{"text":"le"},{"text":"lu"}],"answer":0,"hint":"l 碰上 a","praise":"拼对了，la！"}]},{"id":"py-8","title":"第 9 关 声母","subtitle":"认识「g」","steps":[{"id":"py-8-t","kind":"letter","letters":["g"],"display":"g","examples":[{"icon":"tree","text":"哥哥 gē","say":"哥哥"},{"icon":"moon","text":"故事 gù","say":"故事"}],"question":"学一学声母 g"},{"id":"py-8-l","kind":"listen","prompt":"g","speakText":"g","question":"找一找：哪个是「g」？","options":[{"text":"d"},{"text":"p"},{"text":"g"}],"answer":2,"hint":"「哥哥」的开头","praise":"「g」找对啦！"},{"id":"py-8-b","kind":"blend","parts":["g","e"],"question":"拼一拼：g — e = ?","options":[{"text":"ge"},{"text":"ga"},{"text":"gu"}],"answer":0,"hint":"g 碰上 e","praise":"拼对了，ge！"}]},{"id":"py-9","title":"第 10 关 声母","subtitle":"认识「k」","steps":[{"id":"py-9-t","kind":"letter","letters":["k"],"display":"k","examples":[{"icon":"heart","text":"开心 kāi","say":"开心"},{"icon":"book","text":"看书 kàn","say":"看书"}],"question":"学一学声母 k"},{"id":"py-9-l","kind":"listen","prompt":"k","speakText":"k","question":"找一找：哪个是「k」？","options":[{"text":"d"},{"text":"p"},{"text":"k"}],"answer":2,"hint":"「开心」的开头","praise":"「k」找对啦！"},{"id":"py-9-b","kind":"blend","parts":["k","e"],"question":"拼一拼：k — e = ?","options":[{"text":"ke"},{"text":"ka"},{"text":"ku"}],"answer":0,"hint":"k 碰上 e","praise":"拼对了，ke！"}]},{"id":"py-10","title":"第 11 关 韵母","subtitle":"a o e i u ü","steps":[{"id":"py-10-t","kind":"letter","letters":["a","o","e","i","u","ü"],"display":"a","examples":[{"icon":"duck","text":"啊 ā 张大嘴","say":"ā"},{"icon":"flame","text":"哦 ó","say":"ó"}],"question":"学一学韵母 a"},{"id":"py-10-l","kind":"listen","prompt":"a","speakText":"a","question":"找一找：哪个是韵母「a」？","options":[{"text":"o"},{"text":"a"},{"text":"e"}],"answer":1,"hint":"张大嘴巴 āāā","praise":"韵母 a 找对啦！"}]},{"id":"py-11","title":"第 12 关 复习","subtitle":"整体认读","steps":[{"id":"py-11-l1","kind":"listen","prompt":"zhi","speakText":"zhi","question":"找一找：哪个是「zhi」？","options":[{"text":"chi"},{"text":"zhi"},{"text":"zi"}],"answer":1,"hint":"蜘蛛 zhī zhī 叫","praise":"整体认读 zhi！"},{"id":"py-11-b","kind":"blend","parts":["b","a"],"question":"拼一拼：b — a = ?","options":[{"text":"ba"},{"text":"bo"},{"text":"pa"}],"answer":0,"hint":"爸爸的爸","praise":"拼读小能手！"}]}]},"english":{"subject":"english","title":"英语王国","guide":"robot","levels":[{"id":"en-0","title":"Level 1 Letters","subtitle":"Aa","steps":[{"id":"en-0-t","kind":"letter","letters":["A"],"display":"Aa","examples":[{"icon":"apple","text":"Apple 苹果","say":"Apple"}],"question":"Learn letter Aa"},{"id":"en-0-l","kind":"listen","prompt":"Aa","speakText":"A","question":"Find: which one is Aa ?","options":[{"text":"Bb"},{"text":"Cc"},{"text":"Aa"}],"answer":2,"hint":"Apple 苹果","praise":"Yes! Aa!"},{"id":"en-0-q","kind":"quiz","question":"Which picture starts with Aa?","options":[{"icon":"duck"},{"icon":"apple"},{"icon":"sun"}],"answer":1,"hint":"Apple 苹果","praise":"Great job!"}]},{"id":"en-1","title":"Level 2 Letters","subtitle":"Bb","steps":[{"id":"en-1-t","kind":"letter","letters":["B"],"display":"Bb","examples":[{"icon":"banana","text":"Banana 香蕉","say":"Banana"}],"question":"Learn letter Bb"},{"id":"en-1-l","kind":"listen","prompt":"Bb","speakText":"B","question":"Find: which one is Bb ?","options":[{"text":"Cc"},{"text":"Dd"},{"text":"Bb"}],"answer":2,"hint":"Banana 香蕉","praise":"Yes! Bb!"},{"id":"en-1-q","kind":"quiz","question":"Which picture starts with Bb?","options":[{"icon":"sun"},{"icon":"banana"},{"icon":"moon"}],"answer":1,"hint":"Banana 香蕉","praise":"Great job!"}]},{"id":"en-2","title":"Level 3 Letters","subtitle":"Cc","steps":[{"id":"en-2-t","kind":"letter","letters":["C"],"display":"Cc","examples":[{"icon":"cake","text":"Cake 蛋糕","say":"Cake"}],"question":"Learn letter Cc"},{"id":"en-2-l","kind":"listen","prompt":"Cc","speakText":"C","question":"Find: which one is Cc ?","options":[{"text":"Dd"},{"text":"Ss"},{"text":"Cc"}],"answer":2,"hint":"Cake 蛋糕","praise":"Yes! Cc!"},{"id":"en-2-q","kind":"quiz","question":"Which picture starts with Cc?","options":[{"icon":"moon"},{"icon":"cake"},{"icon":"flower"}],"answer":1,"hint":"Cake 蛋糕","praise":"Great job!"}]},{"id":"en-3","title":"Level 4 Letters","subtitle":"Dd","steps":[{"id":"en-3-t","kind":"letter","letters":["D"],"display":"Dd","examples":[{"icon":"duck","text":"Duck 小鸭","say":"Duck"}],"question":"Learn letter Dd"},{"id":"en-3-l","kind":"listen","prompt":"Dd","speakText":"D","question":"Find: which one is Dd ?","options":[{"text":"Ss"},{"text":"Aa"},{"text":"Dd"}],"answer":2,"hint":"Duck 小鸭","praise":"Yes! Dd!"},{"id":"en-3-q","kind":"quiz","question":"Which picture starts with Dd?","options":[{"icon":"flower"},{"icon":"duck"},{"icon":"leaf"}],"answer":1,"hint":"Duck 小鸭","praise":"Great job!"}]},{"id":"en-4","title":"Level 5 Letters","subtitle":"Ss","steps":[{"id":"en-4-t","kind":"letter","letters":["S"],"display":"Ss","examples":[{"icon":"sun","text":"Sun 太阳","say":"Sun"}],"question":"Learn letter Ss"},{"id":"en-4-l","kind":"listen","prompt":"Ss","speakText":"S","question":"Find: which one is Ss ?","options":[{"text":"Aa"},{"text":"Bb"},{"text":"Ss"}],"answer":2,"hint":"Sun 太阳","praise":"Yes! Ss!"},{"id":"en-4-q","kind":"quiz","question":"Which picture starts with Ss?","options":[{"icon":"leaf"},{"icon":"sun"},{"icon":"key"}],"answer":1,"hint":"Sun 太阳","praise":"Great job!"}]},{"id":"en-5","title":"Level 6 Letters","subtitle":"Mm","steps":[{"id":"en-5-t","kind":"letter","letters":["M"],"display":"Mm","examples":[{"icon":"moon","text":"Moon 月亮","say":"Moon"}],"question":"Learn letter Mm"},{"id":"en-5-l","kind":"listen","prompt":"Mm","speakText":"M","question":"Find: which one is Mm ?","options":[{"text":"Bb"},{"text":"Cc"},{"text":"Mm"}],"answer":2,"hint":"Moon 月亮","praise":"Yes! Mm!"},{"id":"en-5-q","kind":"quiz","question":"Which picture starts with Mm?","options":[{"icon":"key"},{"icon":"moon"},{"icon":"apple"}],"answer":1,"hint":"Moon 月亮","praise":"Great job!"}]},{"id":"en-6","title":"Level 7 Letters","subtitle":"Ff","steps":[{"id":"en-6-t","kind":"letter","letters":["F"],"display":"Ff","examples":[{"icon":"flower","text":"Flower 花","say":"Flower"}],"question":"Learn letter Ff"},{"id":"en-6-l","kind":"listen","prompt":"Ff","speakText":"F","question":"Find: which one is Ff ?","options":[{"text":"Cc"},{"text":"Dd"},{"text":"Ff"}],"answer":2,"hint":"Flower 花","praise":"Yes! Ff!"},{"id":"en-6-q","kind":"quiz","question":"Which picture starts with Ff?","options":[{"icon":"apple"},{"icon":"flower"},{"icon":"banana"}],"answer":1,"hint":"Flower 花","praise":"Great job!"}]},{"id":"en-7","title":"Level 8 Letters","subtitle":"Ll","steps":[{"id":"en-7-t","kind":"letter","letters":["L"],"display":"Ll","examples":[{"icon":"leaf","text":"Leaf 叶子","say":"Leaf"}],"question":"Learn letter Ll"},{"id":"en-7-l","kind":"listen","prompt":"Ll","speakText":"L","question":"Find: which one is Ll ?","options":[{"text":"Dd"},{"text":"Aa"},{"text":"Ll"}],"answer":2,"hint":"Leaf 叶子","praise":"Yes! Ll!"},{"id":"en-7-q","kind":"quiz","question":"Which picture starts with Ll?","options":[{"icon":"banana"},{"icon":"leaf"},{"icon":"cake"}],"answer":1,"hint":"Leaf 叶子","praise":"Great job!"}]},{"id":"en-8","title":"Level 9 Letters","subtitle":"Rr","steps":[{"id":"en-8-t","kind":"letter","letters":["R"],"display":"Rr","examples":[{"icon":"rainbow","text":"Rainbow 彩虹","say":"Rainbow"}],"question":"Learn letter Rr"},{"id":"en-8-q","kind":"quiz","question":"Which one is Rainbow?","options":[{"icon":"book"},{"icon":"rainbow"},{"icon":"clock"}],"answer":1,"hint":"Rainbow 彩虹","praise":"Nice!"}]},{"id":"en-9","title":"Level 10 Letters","subtitle":"Gg","steps":[{"id":"en-9-t","kind":"letter","letters":["G"],"display":"Gg","examples":[{"icon":"gift","text":"Gift 礼物","say":"Gift"}],"question":"Learn letter Gg"},{"id":"en-9-q","kind":"quiz","question":"Which one is Gift?","options":[{"icon":"book"},{"icon":"gift"},{"icon":"clock"}],"answer":1,"hint":"Gift 礼物","praise":"Nice!"}]},{"id":"en-10","title":"Level 11 Words","subtitle":"图词配对","steps":[{"id":"en-10-q1","kind":"quiz","question":"Which one is the sun? 太阳是哪一个？","options":[{"icon":"sun","text":"sun"},{"icon":"moon","text":"moon"},{"icon":"star","text":"starface"}],"answer":0,"hint":"Sun 太阳","praise":"Great! It's the sun!"},{"id":"en-10-q2","kind":"quiz","question":"Which one is the duck? 小鸭是哪一个？","options":[{"icon":"heart","text":"heart"},{"icon":"duck","text":"duck"},{"icon":"leaf","text":"leaf"}],"answer":1,"hint":"Duck 小鸭","praise":"Great! It's a duck!"},{"id":"en-10-q3","kind":"quiz","question":"Which one is the apple? 苹果是哪一个？","options":[{"icon":"banana","text":"banana"},{"icon":"cake","text":"cake"},{"icon":"apple","text":"apple"}],"answer":2,"hint":"Apple 苹果","praise":"Yes! Apple!"}]},{"id":"en-11","title":"Level 12 Review","subtitle":"单词复习","steps":[{"id":"en-11-q1","kind":"quiz","question":"Which one is the moon? 月亮是哪一个？","options":[{"icon":"moon","text":"moon"},{"icon":"sun","text":"sun"},{"icon":"star","text":"starface"}],"answer":0,"hint":"Moon 月亮","praise":"Yes! Moon!"},{"id":"en-11-q2","kind":"quiz","question":"Which one is the flower? 花是哪一个？","options":[{"icon":"leaf","text":"leaf"},{"icon":"flower","text":"flower"},{"icon":"tree","text":"tree"}],"answer":1,"hint":"Flower 花","praise":"Yes! Flower!"},{"id":"en-11-q3","kind":"quiz","question":"Which one is the cake? 蛋糕是哪一个？","options":[{"icon":"gift","text":"gift"},{"icon":"key","text":"key"},{"icon":"cake","text":"cake"}],"answer":2,"hint":"Cake 蛋糕","praise":"Super star! 全部通关!"}]}]},"astro":{"subject":"astro","title":"天文台","guide":"robot","levels":[{"id":"astro-0","title":"第 1 关 Sun","subtitle":"太阳","steps":[{"id":"astro-0-t","kind":"letter","letters":["Sun"],"display":"太阳","examples":[{"icon":"sun","text":"太阳 Sun","say":"太阳"},{"icon":"sunrise","text":"日出 Sunrise","say":"日出"}],"question":"学一学：太阳 Sun"},{"id":"astro-0-q","kind":"quiz","question":"找一找：哪个是太阳？","options":[{"icon":"moon"},{"icon":"sun","text":"太阳"},{"icon":"star"}],"answer":1,"hint":"太阳会发光发热，白天照亮大地","praise":"对啦！太阳会发光发热，白天照亮大地"}]},{"id":"astro-1","title":"第 2 关 Moon","subtitle":"月亮","steps":[{"id":"astro-1-t","kind":"letter","letters":["Moon"],"display":"月亮","examples":[{"icon":"moon","text":"月亮 Moon","say":"月亮"},{"icon":"starface","text":"星夜 Night","say":"星夜"}],"question":"学一学：月亮 Moon"},{"id":"astro-1-q","kind":"quiz","question":"找一找：哪个是月亮？","options":[{"icon":"moon","text":"月亮"},{"icon":"sun"},{"icon":"crystal"}],"answer":0,"hint":"月亮晚上出来，有时圆圆、有时弯弯","praise":"对啦！月亮晚上出来，有时圆圆、有时弯弯"}]},{"id":"astro-2","title":"第 3 关 Star","subtitle":"星星","steps":[{"id":"astro-2-t","kind":"letter","letters":["Star"],"display":"星星","examples":[{"icon":"star","text":"星星 Star","say":"星星"},{"icon":"starface","text":"小星星 Shine","say":"小星星"}],"question":"学一学：星星 Star"},{"id":"astro-2-q","kind":"quiz","question":"找一找：哪个是星星？","options":[{"icon":"balloon"},{"icon":"moon"},{"icon":"star","text":"星星"}],"answer":2,"hint":"星星在夜空里一闪一闪","praise":"对啦！星星在夜空里一闪一闪"}]},{"id":"astro-3","title":"第 4 关 Earth","subtitle":"地球","steps":[{"id":"astro-3-t","kind":"letter","letters":["Earth"],"display":"地球","examples":[{"icon":"earth","text":"地球 Earth","say":"地球"},{"icon":"rocket","text":"坐火箭 Fly","say":"坐火箭"}],"question":"学一学：地球 Earth"},{"id":"astro-3-q","kind":"quiz","question":"找一找：哪个是地球？","options":[{"icon":"sun"},{"icon":"earth","text":"地球"},{"icon":"moon"}],"answer":1,"hint":"地球是我们的家，蓝蓝的、圆圆的","praise":"对啦！地球是我们的家，蓝蓝的、圆圆的"}]},{"id":"astro-4","title":"第 5 关 Rocket","subtitle":"火箭","steps":[{"id":"astro-4-t","kind":"letter","letters":["Rocket"],"display":"火箭","examples":[{"icon":"rocket","text":"火箭 Rocket","say":"火箭"},{"icon":"flame","text":"点火 Go","say":"点火"}],"question":"学一学：火箭 Rocket"},{"id":"astro-4-q","kind":"quiz","question":"找一找：哪个是火箭？","options":[{"icon":"rocket","text":"火箭"},{"icon":"train"},{"icon":"balloon"}],"answer":0,"hint":"火箭轰隆一声，飞向太空","praise":"对啦！火箭轰隆一声，飞向太空"}]},{"id":"astro-5","title":"第 6 关 Planet","subtitle":"行星","steps":[{"id":"astro-5-t","kind":"letter","letters":["Planet"],"display":"行星","examples":[{"icon":"planet","text":"行星 Planet","say":"行星"},{"icon":"crystal","text":"光环 Ring","say":"光环"}],"question":"学一学：行星 Planet"},{"id":"astro-5-q","kind":"quiz","question":"找一找：哪个是行星？","options":[{"icon":"earth"},{"icon":"star"},{"icon":"planet","text":"行星"}],"answer":2,"hint":"有的行星戴着光环，像大草帽","praise":"对啦！有的行星戴着光环，像大草帽"}]},{"id":"astro-6","title":"第 7 关 Comet","subtitle":"彗星","steps":[{"id":"astro-6-t","kind":"letter","letters":["Comet"],"display":"彗星","examples":[{"icon":"comet","text":"彗星 Comet","say":"彗星"},{"icon":"sparkle","text":"亮尾巴 Tail","say":"亮尾巴"}],"question":"学一学：彗星 Comet"},{"id":"astro-6-q","kind":"quiz","question":"找一找：哪个是彗星？","options":[{"icon":"rocket"},{"icon":"comet","text":"彗星"},{"icon":"star"}],"answer":1,"hint":"彗星拖着长长的大尾巴，扫过夜空","praise":"对啦！彗星拖着长长的大尾巴，扫过夜空"}]},{"id":"astro-7","title":"第 8 关 Meteor","subtitle":"流星","steps":[{"id":"astro-7-t","kind":"letter","letters":["Meteor"],"display":"流星","examples":[{"icon":"sparkle","text":"流星 Meteor","say":"流星"},{"icon":"star","text":"许个愿 Wish","say":"许个愿"}],"question":"学一学：流星 Meteor"},{"id":"astro-7-q","kind":"quiz","question":"找一找：哪个是流星？","options":[{"icon":"sparkle","text":"流星"},{"icon":"star"},{"icon":"comet"}],"answer":0,"hint":"流星噌——地划过夜空，可以许个愿","praise":"对啦！流星噌——地划过夜空，可以许个愿"}]},{"id":"astro-8","title":"第 9 关 Rover","subtitle":"火星车","steps":[{"id":"astro-8-t","kind":"letter","letters":["Rover"],"display":"火星车","examples":[{"icon":"robot","text":"火星车 Rover","say":"火星车"},{"icon":"volcano","text":"红色火星 Mars","say":"红色火星"}],"question":"学一学：火星车 Rover"},{"id":"astro-8-q","kind":"quiz","question":"找一找：哪个是火星车？","options":[{"icon":"rocket"},{"icon":"earth"},{"icon":"robot","text":"火星车"}],"answer":2,"hint":"机器人火星车，在火星上慢慢探险","praise":"对啦！机器人火星车，在火星上慢慢探险"}]},{"id":"astro-9","title":"第 10 关 星空大挑战","subtitle":"复习","steps":[{"id":"astro-9-q1","kind":"quiz","question":"我们的家是哪个星球？","options":[{"icon":"sun"},{"icon":"earth","text":"地球"},{"icon":"moon"}],"answer":1,"hint":"蓝蓝的、圆圆的","praise":"地球是我们的家！"},{"id":"astro-9-q2","kind":"quiz","question":"晚上挂在天上的是哪个？","options":[{"icon":"moon","text":"月亮"},{"icon":"sun"},{"icon":"rocket"}],"answer":0,"hint":"有时圆圆、有时弯弯","praise":"月亮答对啦！"},{"id":"astro-9-q3","kind":"quiz","question":"谁会轰隆隆飞向太空？","options":[{"icon":"train"},{"icon":"balloon"},{"icon":"rocket","text":"火箭"}],"answer":2,"hint":"倒计时 3、2、1，发射！","praise":"火箭发射！全部通关！"}]}]},"collection":{"groups":[{"id":"science","title":"科学图鉴","icon":"flask","lockedLabel":"？？？","items":[{"id":"sci-apple","name":"苹果","icon":"apple","fact":"苹果能浮起来，是因为果肉里藏着小气孔，像穿了救生衣！","tag":"浮","tagColor":"blue"},{"id":"sci-rock","name":"石头","icon":"rock","fact":"石头比同体积的水重很多，所以一放就沉底啦。","tag":"沉","tagColor":"coral"},{"id":"sci-wood","name":"木头","icon":"wood","fact":"木头里有很多小空隙，轻轻的，所以能浮在水面上。","tag":"浮","tagColor":"blue"},{"id":"sci-key","name":"钥匙","icon":"key","fact":"金属钥匙个头小却很重，扑通一下就沉下去了。","tag":"沉","tagColor":"coral"},{"id":"sci-sponge","name":"海绵","icon":"sponge","fact":"干海绵会浮，吸满水之后会慢慢往下沉，试试看！","tag":"浮","tagColor":"blue"},{"id":"sci-balloon","name":"气球","icon":"balloon","fact":"气球里装的是空气，最轻最轻，漂在最上面。","tag":"浮","tagColor":"blue"},{"id":"sci-ice","name":"冰块","icon":"ice","fact":"冰比水轻一点点，所以冰块会浮在饮料上。","tag":"浮","tagColor":"blue"},{"id":"sci-magnet","name":"磁铁","icon":"magnet","fact":"磁铁能吸住铁做的东西，比如回形针和钥匙。"},{"id":"sci-rainbow","name":"彩虹","icon":"rainbow","fact":"阳光穿过小水滴，会折出七种颜色。"},{"id":"sci-volcano","name":"火山","icon":"volcano","fact":"岩浆压力太大时，就会从火山口喷出来。"},{"id":"sci-sprout","name":"种子","icon":"sprout","fact":"种子喝饱水、晒到太阳，就会发芽长大。"},{"id":"sci-heart","name":"心跳","icon":"heart","fact":"你的心脏一直在跳，跑完步会跳得更快哦。"}]},{"id":"sticker","title":"贴纸","icon":"sparkle","lockedLabel":"？？？","items":[{"id":"st-fuchen","name":"浮沉小侦探","icon":"medal"},{"id":"st-shizi","name":"识字新星","icon":"book"},{"id":"st-shuyazi","name":"数数小鸭","icon":"duck"},{"id":"st-party","name":"闯关欢呼","icon":"party"},{"id":"st-flower","name":"春日限定","icon":"flower"},{"id":"st-rocket","name":"未来科学家","icon":"rocket"},{"id":"st-bulb","name":"金点子","icon":"bulb"},{"id":"st-crystal","name":"闪亮宝石","icon":"crystal"},{"id":"st-star","name":"大星星","icon":"starface"},{"id":"st-sun","name":"小太阳","icon":"sunface"},{"id":"st-heart","name":"爱心","icon":"heart"},{"id":"st-gift","name":"神秘礼物","icon":"gift"}]},{"id":"hanzi","title":"汉字卡","icon":"hanzi","lockedLabel":"？？？","items":[{"id":"hz-ri","name":"日","text":"日","pinyin":"rì"},{"id":"hz-yue","name":"月","text":"月","pinyin":"yuè"},{"id":"hz-shui","name":"水","text":"水","pinyin":"shuǐ"},{"id":"hz-shan","name":"山","text":"山","pinyin":"shān"},{"id":"hz-mu","name":"木","text":"木","pinyin":"mù"},{"id":"hz-ren","name":"人","text":"人","pinyin":"rén"},{"id":"hz-kou","name":"口","text":"口","pinyin":"kǒu"},{"id":"hz-tian","name":"天","text":"天","pinyin":"tiān"},{"id":"hz-tian2","name":"田","text":"田","pinyin":"tián"},{"id":"hz-shi","name":"石","text":"石","pinyin":"shí"},{"id":"hz-huo","name":"火","text":"火","pinyin":"huǒ"},{"id":"hz-hua","name":"花","text":"花","pinyin":"huā"},{"id":"hz-cao","name":"草","text":"草","pinyin":"cǎo"},{"id":"hz-niao","name":"鸟","text":"鸟","pinyin":"niǎo"}]},{"id":"pinyin","title":"拼音卡","icon":"speaker","lockedLabel":"？？？","items":[{"id":"py-b","name":"b 爸","text":"b"},{"id":"py-p","name":"p 坡","text":"p"},{"id":"py-m","name":"m 妈","text":"m"},{"id":"py-f","name":"f 发","text":"f"},{"id":"py-d","name":"d 大","text":"d"},{"id":"py-t","name":"t 他","text":"t"},{"id":"py-n","name":"n 拿","text":"n"},{"id":"py-l","name":"l 拉","text":"l"},{"id":"py-g","name":"g 哥","text":"g"},{"id":"py-k","name":"k 开","text":"k"},{"id":"py-a","name":"a 啊","text":"a"},{"id":"py-zhi","name":"zhi 蜘","text":"zhi"}]},{"id":"english","title":"单词卡","icon":"book","lockedLabel":"？？？","items":[{"id":"en-apple","name":"Apple","icon":"apple"},{"id":"en-banana","name":"Banana","icon":"banana"},{"id":"en-cake","name":"Cake","icon":"cake"},{"id":"en-duck","name":"Duck","icon":"duck"},{"id":"en-sun","name":"Sun","icon":"sun"},{"id":"en-moon","name":"Moon","icon":"moon"},{"id":"en-flower","name":"Flower","icon":"flower"},{"id":"en-leaf","name":"Leaf","icon":"leaf"},{"id":"en-key","name":"Key","icon":"key"},{"id":"en-heart","name":"Heart","icon":"heart"},{"id":"en-rainbow","name":"Rainbow","icon":"rainbow"},{"id":"en-gift","name":"Gift","icon":"gift"}]},{"id":"astro","title":"星空卡","icon":"starface","lockedLabel":"？？？","items":[{"id":"as-sun","name":"太阳 Sun","icon":"sun"},{"id":"as-moon","name":"月亮 Moon","icon":"moon"},{"id":"as-star","name":"星星 Star","icon":"star"},{"id":"as-earth","name":"地球 Earth","icon":"earth"},{"id":"as-rocket","name":"火箭 Rocket","icon":"rocket"},{"id":"as-planet","name":"行星 Planet","icon":"planet"},{"id":"as-comet","name":"彗星 Comet","icon":"comet"},{"id":"as-meteor","name":"流星 Meteor","icon":"sparkle"},{"id":"as-rover","name":"火星车 Rover","icon":"robot"},{"id":"as-sky","name":"星晶夜空","icon":"crystal"}]},{"id":"badge","title":"徽章","icon":"medal","lockedLabel":"？？？","items":[{"id":"bg-start","name":"初来乍到","icon":"home"},{"id":"bg-hanzi10","name":"识字新星","icon":"book"},{"id":"bg-math5","name":"思维小达人","icon":"equal"},{"id":"bg-lab1","name":"实验狂人","icon":"flask"},{"id":"bg-py1","name":"拼音小能手","icon":"speaker"},{"id":"bg-en1","name":"ABC达人","icon":"book"},{"id":"bg-astro1","name":"摘星少年","icon":"rocket"},{"id":"bg-listen7","name":"磨耳朵七天","icon":"speaker"},{"id":"bg-all","name":"全勤之星","icon":"star"},{"id":"bg-shield","name":"护眼小卫士","icon":"shield"},{"id":"bg-chart","name":"进步王","icon":"chart"},{"id":"bg-rocket","name":"冲鸭！","icon":"rocket"},{"id":"bg-king","name":"全科通","icon":"medal"}]}]},"experiments":{"experiments":[{"id":"float-sink","title":"浮与沉","guide":"robot","guessItem":"apple","guessIcon":"apple","guessQuestion":"苹果放进水里，会怎么样？","items":[{"id":"apple","name":"苹果","icon":"apple","isFloat":true,"fact":"苹果皮里有小气孔，像穿了救生衣"},{"id":"rock","name":"石头","icon":"rock","isFloat":false,"fact":"石头比同体积的水重很多，所以沉底"},{"id":"wood","name":"木头","icon":"wood","isFloat":true,"fact":"木头里有很多小空隙，轻轻的，所以能浮"},{"id":"key","name":"钥匙","icon":"key","isFloat":false,"fact":"金属钥匙小小的却很重，一下就沉啦"},{"id":"sponge","name":"海绵","icon":"sponge","isFloat":true,"fact":"干海绵会浮，吸满水会慢慢沉下去"},{"id":"balloon","name":"气球","icon":"balloon","isFloat":true,"fact":"气球里是空气，最轻，漂在最上面"}]}]}};
+/* === DATA-END === */
 
-const CN_LEVELS = [
- {ch:"日",py:"rì",from:"sunface",words:[["sunrise","日出"],["cake","生日"],["calendar","日子"]],
-  q1:[["sun",""],["moon",""],["wave",""]],a1:0,h1:"太阳每天从东边升起来哦 ☀️",p1:"真棒！日，就是太阳的日！"},
- {ch:"月",py:"yuè",from:"moon",words:[["moon","月亮"],["starface","星星"],["cake","月饼"]],
-  q1:[["sun",""],["wave",""],["moon",""]],a1:2,h1:"弯弯的，晚上才出来哦 🌙",p1:"对啦！月亮的月！"},
- {ch:"水",py:"shuǐ",from:"wave",words:[["wave","海浪"],["crystal","泉水"],["leaf","露珠"]],
-  q1:[["wave",""],["sun",""],["moon",""]],a1:0,h1:"哗啦哗啦流动的就是它",p1:"真棒！水就是这样写的！"},
- {ch:"山",py:"shān",from:"volcano",words:[["school","上山"],["leaf","山林"]],find:true},
- {ch:"木",py:"mù",from:"sprout",words:[["leaf","树叶"],["flower","花木"]],find:true,d:["木","水","人"],a:0},
- {ch:"人",py:"rén",from:"girl",words:[["heart","大人"],["party","人们"]],find:true,d:["月","山","人"],a:2},
- {ch:"口",py:"kǒu",from:"speaker",words:[["speaker","开口"],["heart","口水"]],find:true,d:["口","日","田"],a:0},
- {ch:"天",py:"tiān",from:"sunrays",words:[["sun","天空"],["sunrise","今天"]],find:true,d:["大","天","人"],a:1},
- {ch:"田",py:"tián",from:"calendar",words:[["sprout","田里"],["flower","水田"]],find:true,d:["口","日","田"],a:2},
- {ch:"石",py:"shí",from:"medal",words:[["rock","石头"]],find:true,d:["石","山","田"],a:0}
-];
-const MATH_LEVELS = [
- {count:3,opts:[2,3,4],cmp:[3,1]}, {count:4,opts:[3,4,5],cmp:[4,2]}, {count:5,opts:[4,5,6],cmp:[3,5]},
- {cmpOnly:[4,4]}, {count:6,opts:[5,6,7],cmp:[6,4]}, {count:7,opts:[6,7,8]}, {count:8,opts:[7,8,9],cmp:[5,8]},
- {count:9,opts:[8,9,10]}, {count:10,opts:[8,9,10]}, {challenge:true}
-];
-const EXP_ITEMS = [
- {id:"apple",name:"苹果",icon:"apple",isFloat:true,fact:"苹果皮里有小气孔，像穿了救生衣"},
- {id:"rock",name:"石头",icon:"rock",isFloat:false,fact:"石头比同体积的水重很多，所以沉底"},
- {id:"wood",name:"木头",icon:"wood",isFloat:true,fact:"木头里有很多小空隙，轻轻的，所以能浮"},
- {id:"key",name:"钥匙",icon:"key",isFloat:false,fact:"金属钥匙小小的却很重，一下就沉啦"},
- {id:"sponge",name:"海绵",icon:"sponge",isFloat:true,fact:"干海绵会浮，吸满水会慢慢沉下去"},
- {id:"balloon",name:"气球",icon:"balloon",isFloat:true,fact:"气球里是空气，最轻，漂在最上面"}
-];
-const COLLECTION = [
- {id:"science",title:"科学图鉴",icon:"flask",items:[
-  ["sci-apple","苹果","apple","浮","blue","苹果能浮起来，是因为果肉里藏着小气孔，像穿了救生衣！"],
-  ["sci-rock","石头","rock","沉","coral","石头比同体积的水重很多，所以一放就沉底啦。"],
-  ["sci-wood","木头","wood","浮","blue","木头里有很多小空隙，轻轻的，所以能浮在水面上。"],
-  ["sci-key","钥匙","key","沉","coral","金属钥匙个头小却很重，扑通一下就沉下去了。"],
-  ["sci-sponge","海绵","sponge","浮","blue","干海绵会浮，吸满水之后会慢慢往下沉，试试看！"],
-  ["sci-balloon","气球","balloon","浮","blue","气球里装的是空气，最轻最轻，漂在最上面。"],
-  ["sci-ice","冰块","ice","浮","blue","冰比水轻一点点，所以冰块会浮在饮料上。"],
-  ["sci-magnet","磁铁","magnet","","","磁铁能吸住铁做的东西，比如回形针和钥匙。"],
-  ["sci-rainbow","彩虹","rainbow","","","阳光穿过小水滴，会折出七种颜色。"],
-  ["sci-volcano","火山","volcano","","","岩浆压力太大时，就会从火山口喷出来。"],
-  ["sci-sprout","种子","sprout","","","种子喝饱水、晒到太阳，就会发芽长大。"],
-  ["sci-heart","心跳","heart","","","你的心脏一直在跳，跑完步会跳得更快哦。"]]},
- {id:"sticker",title:"贴纸",icon:"sparkle",items:[
-  ["st-fuchen","浮沉小侦探","medal"],["st-shizi","识字新星","book"],["st-shuyazi","数数小鸭","duck"],
-  ["st-party","闯关欢呼","party"],["st-flower","春日限定","flower"],["st-rocket","未来科学家","rocket"],
-  ["st-bulb","金点子","bulb"],["st-crystal","闪亮宝石","crystal"],["st-star","大星星","starface"],
-  ["st-sun","小太阳","sunface"],["st-heart","爱心","heart"],["st-gift","神秘礼物","gift"]]},
- {id:"hanzi",title:"汉字卡",icon:"hanzi",items:[
-  ["hz-ri","日","rì"],["hz-yue","月","yuè"],["hz-shui","水","shuǐ"],["hz-shan","山","shān"],["hz-mu","木","mù"],
-  ["hz-ren","人","rén"],["hz-kou","口","kǒu"],["hz-tian","天","tiān"],["hz-tian2","田","tián"],["hz-shi","石","shí"]]},
- {id:"badge",title:"徽章",icon:"medal",items:[
-  ["bg-start","初来乍到","home"],["bg-hanzi10","识字新星","book"],["bg-math5","思维小达人","equal"],
-  ["bg-lab1","实验狂人","flask"],["bg-listen7","磨耳朵七天","speaker"],["bg-all","全勤之星","star"],
-  ["bg-shield","护眼小卫士","shield"],["bg-chart","进步王","chart"],["bg-rocket","冲鸭！","rocket"],["bg-king","全科通","medal"]]}
-];
+const ICON_DIR = "../../design/assets/icons/";
+const EMOJI = {girl:"🧒",panda:"🐼",fox:"🦊",robot:"🤖",duck:"🦆",school:"🏫",ferris:"🎡",volcano:"🌋",castle:"🏰",apple:"🍎",banana:"🍌",rock:"🪨",wood:"🪵",key:"🔑",sponge:"🧽",balloon:"🎈",ice:"🧊",magnet:"🧲",rainbow:"🌈",sprout:"🌱",sun:"☀️",sunrays:"🌞",sunface:"😊",moon:"🌙",wave:"🌊",sunrise:"🌅",cake:"🎂",calendar:"📅",star:"⭐",medal:"🏅",gift:"🎁",clip:"📋",lock:"🔒",speaker:"🔊",home:"🏠",back:"🔙",fire:"🔥",goggles:"🥽",flask:"🧪",book:"📖",sparkle:"✨",crystal:"💎",flower:"🌸",leaf:"🍃",rocket:"🚀",party:"🎉",question:"❓",clock:"⏰",shield:"🛡",chart:"📈",slider:"🎚",bulb:"💡",heart:"❤️",equal:"🟰",hanzi:"🈶",block:"🟨",coin:"🪙",dice:"🎲","pipe-red":"🟥","pipe-blue":"🟦","pipe-purple":"🟪","pipe-orange":"🟧","pipe-green":"🟩","pipe-indigo":"🔷",flag:"🏁",starface:"🌟",brick:"🧱","hills-back":"⛰","hills-front":"🏞",candy:"🍬",flame:"🔥",jar:"🫙",salt:"🧂",sand:"🏖️",sugar:"🍚",train:"🚂",tree:"🌳",earth:"🌍",planet:"🪐",comet:"☄️"};
+
+const CHIP_NAMES = {teach:"认一认",letter:"学一学",listen:"找一找",quiz:"练一练",count:"数一数",compare:"比一比",blend:"拼一拼",arith:"算一算",pattern:"找规律"};
+const SUBJECTS = {
+  cn:     {title:"识字村",  pipe:"pipe-red",    guide:"panda", theme:"theme-cn",     meta:"象形字 · 认读"},
+  math:   {title:"思维镇",  pipe:"pipe-blue",   guide:"fox",   theme:"theme-math",   meta:"数感 · 加减法"},
+  lab:    {title:"科学岛",  pipe:"pipe-purple", guide:"robot", theme:"theme-lab",    meta:"动手做实验"},
+  pinyin: {title:"拼音谷",  pipe:"pipe-orange", guide:"panda", theme:"theme-pinyin", meta:"声母 · 拼读"},
+  english:{title:"英语王国",pipe:"pipe-green",  guide:"robot", theme:"theme-english",meta:"ABC · 单词"},
+  astro:  {title:"天文台",  pipe:"pipe-indigo", guide:"robot", theme:"theme-astro",  meta:"太阳 · 月亮 · 星星"}
+};
+for(const k in SUBJECTS){ const d=CONTENT[k]; SUBJECTS[k].total = d ? d.levels.length : 12; }
+const EXP = CONTENT.experiments.experiments[0];
+const COLLECTION = CONTENT.collection.groups;
 
 /* ================= 状态（模拟 ProgressStore / SettingsStore） ================= */
 const S = {
   route:"map", coins:12,
-  stars:{}, tested:[], science:[], stickers:[], hanzi:[],
+  stars:{}, tested:[], science:[], stickers:[], hanzi:[], learnedPinyin:[], learnedEnglish:[], learnedAstro:[],
   daily:{cn:0, math:0, lab:0},
   settings:{once:15, daily:45, rest:15, diff:"auto", name:"糖糖"},
-  lv:{subject:null, index:0, step:0, wrong:0, solved:{}, counted:[], finished:false},
+  lv:{subject:null, index:0, step:0, wrong:0, counted:[], finished:false},
   lab:{phase:"guess", guess:null, sel:null, chip:null, settled:[], floats:[], raf:null},
   collTab:"science",
   timers:[]
 };
-function save(){ try{ localStorage.setItem("adventure-sim", JSON.stringify({coins:S.coins,stars:S.stars,tested:S.tested,science:S.science,stickers:S.stickers,hanzi:S.hanzi,daily:S.daily,settings:S.settings})); }catch(e){} }
+function save(){ try{ localStorage.setItem("adventure-sim", JSON.stringify({coins:S.coins,stars:S.stars,tested:S.tested,science:S.science,stickers:S.stickers,hanzi:S.hanzi,learnedPinyin:S.learnedPinyin,learnedEnglish:S.learnedEnglish,learnedAstro:S.learnedAstro,daily:S.daily,settings:S.settings})); }catch(e){} }
 function load(){ try{ const d=JSON.parse(localStorage.getItem("adventure-sim")); if(d) Object.assign(S,d); }catch(e){} }
 load();
 
@@ -344,12 +349,25 @@ function ic(name,size,cls){ return `<img class="ic ${cls||''}" src="${ICON_DIR}$
 let toastT=null;
 function toast(msg,sec){ const t=$('#toast'); t.textContent=msg; t.classList.add('show'); clearTimeout(toastT); toastT=setTimeout(()=>t.classList.remove('show'), (sec||1.8)*1000); }
 function confetti(){ const icons=["⭐","🎉","✨","🌟","🎊","💛"]; for(let i=0;i<22;i++){ const c=document.createElement('span'); c.className='confetti'; c.textContent=icons[i%6]; c.style.left=(60+Math.random()*900)+'px'; c.style.top=(60+Math.random()*120)+'px'; c.style.animationDelay=(Math.random()*.35)+'s'; stage.appendChild(c); setTimeout(()=>c.remove(),2100);} }
-function speak(t){ try{ const u=new SpeechSynthesisUtterance(t); u.lang='zh-CN'; u.rate=.8; u.pitch=1.15; speechSynthesis.cancel(); speechSynthesis.speak(u);}catch(e){} }
-function doneCount(sub){ let n=0; for(let i=0;i<10;i++) if((S.stars[sub+"-"+i]||0)>0) n++; return n; }
+function speak(t){ if(!t) return; try{ const u=new SpeechSynthesisUtterance(t); u.lang='zh-CN'; u.rate=.8; u.pitch=1.15; speechSynthesis.cancel(); speechSynthesis.speak(u);}catch(e){} }
+function doneCount(sub){ const total=SUBJECTS[sub].total; let n=0; for(let i=0;i<total;i++) if((S.stars[sub+"-"+i]||0)>0) n++; return n; }
 function nodeState(sub,i){ if((S.stars[sub+"-"+i]||0)>0) return "done"; if(i===0) return "cur"; return (S.stars[sub+"-"+(i-1)]||0)>0 ? "cur" : "lock"; }
 function timersClear(){ S.timers.forEach(t=>clearInterval(t)); S.timers=[]; if(S.lab.raf) cancelAnimationFrame(S.lab.raf); }
+function route(r){ S.route=r; if(r==="map")renderMap(); else if(r==="level")renderLevel(); else if(r==="lab")renderLab(); else if(r==="collection")renderCollection(); else if(r==="parent")renderParent(); }
+function sceneHTML(extraCls){
+  return `<div class="scene ${extraCls||''}"><div class="sky"></div><div class="glow"></div><div class="cloud c1"></div><div class="cloud c2"></div><div class="cloud c3"></div><div class="hill back"></div><div class="hill front"></div></div>`;
+}
+function nightDecor(){ return `<div class="tint night"></div><div class="stars"></div><div class="moon"></div>`; }
 
 /* ================= 主页 ================= */
+const ZONES = [
+  {sub:"cn",label:"识字村",done:()=>doneCount("cn"),isNew:false},
+  {sub:"math",label:"思维镇",done:()=>doneCount("math"),isNew:false},
+  {sub:"lab",label:"科学岛",done:()=>S.science.length,isNew:false},
+  {sub:"pinyin",label:"拼音谷",done:()=>doneCount("pinyin"),isNew:false},
+  {sub:"english",label:"英语王国",done:()=>doneCount("english"),isNew:false},
+  {sub:"astro",label:"天文台",done:()=>doneCount("astro"),isNew:true}
+];
 function renderMap(){
   timersClear();
   stage.innerHTML = `<div class="screen theme-home">
@@ -378,9 +396,7 @@ function renderMap(){
       <h1>探 险 岛</h1><p>每天玩一小会儿 · 养成好习惯</p></div>
 
     <div class="pipes" style="position:absolute;left:0;right:0;bottom:196px;z-index:15">
-      ${pipeZone("panda","识字村","象形字 · 认读","pipe-red","cn","关",doneCount("cn"),10,false)}
-      ${pipeZone("fox","思维镇","数感 · 图形 · 逻辑","pipe-blue","math","关",doneCount("math"),10,false)}
-      ${pipeZone("robot","科学岛","动手做实验 · 现象图鉴","pipe-purple","lab","项已点亮",S.science.length,12,true)}
+      ${ZONES.map(z=>pipeZone(z)).join("")}
     </div>
 
     <div class="trail">
@@ -395,28 +411,32 @@ function renderMap(){
 
     <div class="arcpanel"><div class="arc-notch">${ic("gift",28)}</div>
       <div class="dock">
-        <div class="dock-item" onclick="route('collection')"><div class="icw">${ic("medal",30)}<span class="cnt">${S.science.length+S.stickers.length}/34</span></div><div class="t">收集册</div></div>
+        <div class="dock-item" onclick="route('collection')"><div class="icw">${ic("medal",30)}<span class="cnt">${collectTotal()}</span></div><div class="t">收集册</div></div>
         <div class="dock-item" onclick="dailyToast()"><div class="icw">${ic("clip",28)}<span class="cnt">${dailyTotal()}/3</span></div><div class="t">今日任务</div></div>
-        <div class="dock-item locked" onclick="toast('英语王国 · 二期开放，敬请期待 🚧')"><div class="icw">${ic("castle",28)}</div><div class="t">英语王国·二期</div></div>
+        <div class="dock-item" onclick="toast('👀 看看窗外最远的地方，数 20 个数～')"><div class="icw">${ic("clock",28)}</div><div class="t">休息一下</div></div>
       </div>
       <div class="dice" onclick="rollDice()" title="命运骰子">${ic("dice",32)}</div>
     </div>
   </div>`;
-  speak("欢迎回到探险岛！");
 }
-function pipeZone(guide,label,meta,pipe,subject,unit,done,total,isNew){
-  return `<div class="pipe-zone" onclick="enterZone('${subject}')">
-    <div class="pipe-wrap">${ic(pipe,120)}<span class="blk">?</span><span class="guide">${ic(guide,44)}</span>
-      ${isNew?'<span class="badge-new">NEW ✦</span>':''}</div>
-    <div class="zone-label">${label}</div>
-    <div class="zone-meta">${meta} ｜ ${done}/${total} ${unit}<div class="track"><i style="width:${Math.round(done/total*100)}%"></i></div></div>
+function collectTotal(){ const sci=COLLECTION.find(g=>g.id==="science"); const sti=COLLECTION.find(g=>g.id==="sticker");
+  return `${S.science.length+S.stickers.length}/${sci.items.length+sti.items.length}`; }
+function pipeZone(z){
+  const cfg=SUBJECTS[z.sub], done=z.done(), total=cfg.total;
+  return `<div class="pipe-zone" onclick="enterZone('${z.sub}')">
+    <div class="pipe-wrap">${ic(cfg.pipe,88)}<span class="blk">?</span><span class="guide">${ic(cfg.guide,30)}</span>
+      ${z.isNew?'<span class="badge-new">NEW ✦</span>':''}</div>
+    <div class="zone-label">${cfg.title}</div>
+    <div class="zone-meta">${cfg.meta} ｜ ${done}/${total} ${z.sub==="lab"?"项已点亮":"关"}<div class="track"><i style="width:${Math.round(done/total*100)}%"></i></div></div>
   </div>`;
 }
 function pathNodes(){
   let html="";
-  for(let i=0;i<10;i++){
+  const NT=SUBJECTS.cn.total;
+  const gap=Math.min(86,(1024-160)/(NT-1));
+  for(let i=0;i<NT;i++){
     const st=nodeState("cn",i);
-    const x=96+i*86, y=60+Math.sin(i*0.85)*13;
+    const x=68+i*gap, y=60+Math.sin(i*0.85)*13;
     const cls = st==="done" ? (i%2? "done2":"done") : st;
     const label = st==="done" ? `识字 ${i+1}` : (st==="cur" ? "下一关▶" : "");
     html+=`<div class="lnode ${cls}" style="left:${x}px;top:${y}px" onclick="enterLevel('cn',${i})">
@@ -425,83 +445,116 @@ function pathNodes(){
   }
   return html;
 }
-function dailyTotal(){ return ["cn","math","lab"].filter(k=>S.daily[k]>0).length; }
-function dailyToast(){ toast(dailyTotal()>=3?"今日任务全部完成，明天见 🎉":"完成 语文/数学/实验 各一次就达标啦"); }
-function enterZone(sub){ if(sub==="lab") return route("lab"); let i=0; while(i<10&&nodeState(sub,i)==="done") i++; enterLevel(sub,Math.min(i,9)); }
-function rollDice(){ const sub=Math.random()<.5?"cn":"math"; let i=0; while(i<10&&nodeState(sub,i)==="done") i++; toast("🎲 命运骰子：出发！"); enterLevel(sub,Math.min(i,9)); }
+function dailyTotal(){ return ["cn","math","lab","pinyin","english","astro"].filter(k=>S.daily[k]>0).length; }
+function dailyToast(){ toast(dailyTotal()>=3?"今日任务全部完成，明天见 🎉":"六个学科任玩三个就达标啦"); }
+function enterZone(sub){ if(sub==="lab") return route("lab"); const total=SUBJECTS[sub].total; let i=0; while(i<total&&nodeState(sub,i)==="done") i++; enterLevel(sub,Math.min(i,total-1)); }
+function rollDice(){ const subs=["cn","math","pinyin","english","astro"]; const sub=subs[Math.floor(Math.random()*subs.length)];
+  const total=SUBJECTS[sub].total; let i=0; while(i<total&&nodeState(sub,i)==="done") i++;
+  toast("🎲 命运骰子：出发！"); enterLevel(sub,Math.min(i,total-1)); }
 
-/* ================= 关卡页 ================= */
+/* ================= 关卡页（渲染器直接消费 Resources step 结构） ================= */
 function enterLevel(sub,i){
   timersClear();
-  Object.assign(S.lv,{subject:sub,index:i,step:0,wrong:0,solved:{},counted:[],finished:false});
+  Object.assign(S.lv,{subject:sub,index:i,step:0,wrong:0,counted:[],finished:false});
   route("level");
 }
+function curLevelObj(){ return CONTENT[S.lv.subject].levels[S.lv.index]; }
 function renderLevel(){
-  const L=S.lv, sub=L.subject, isCN=sub==="cn";
-  const theme=isCN?"theme-cn":"theme-math";
-  const steps=isCN?["teach","quiz","quiz"]:mathSteps(L.index);
-  const titles=steps.map(k=>({teach:"认一认",quiz:"练一练",count:"数一数",compare:"比一比"}[k]));
-  const idx=L.index;
-  const title=isCN?`识字村 · 第 ${idx+1} 关 象形字`:`思维镇 · 第 ${idx+1} 关`;
-  const subT=isCN?`认识「${CN_LEVELS[idx].ch}」`:mathSub(idx);
-  let body="";
-  const kind=steps[L.step];
-  if(kind==="teach") body=teachHTML(isCN?CN_LEVELS[idx]:null);
-  else if(kind==="quiz") body=quizHTML(L,idx,steps,L.step);
-  else if(kind==="count") body=countHTML(MATH_LEVELS[idx].count, MATH_LEVELS[idx].opts, idx);
-  else if(kind==="compare") body=compareHTML(MATH_LEVELS[idx].cmp, idx);
-  stage.innerHTML=`<div class="screen ${theme}">
-    <div class="scene"><div class="sky"></div><div class="glow"></div><div class="cloud c1"></div><div class="cloud c2"></div><div class="hill back"></div><div class="hill front"></div></div>
+  const L=S.lv, sub=L.subject, cfg=SUBJECTS[sub], lv=curLevelObj();
+  const steps=lv.steps, st=steps[L.step];
+  // 场景变体：相邻关卡 白天/黄昏/星夜 轮换；天文台常驻星夜
+  const v=L.index%3;
+  const sceneCls = v===1 ? "v1" : (v===2 ? "v2" : "");
+  const night = sub==="astro";
+  let body=renderStep(sub, st);
+  const hudTitleColor = {cn:"#C96A06",math:"var(--blue-dk)",pinyin:"#B85E14",english:"var(--green-dk)",astro:"#8C9BE8"}[sub];
+  stage.innerHTML=`<div class="screen ${cfg.theme}${night?' is-night':''}">
+    ${night ? sceneHTML("")+nightDecor() : sceneHTML(sceneCls)}
     <div class="hud">
       <div class="hud-l">
         <button class="sqbtn" onclick="route('map')">${ic("back",26)}</button>
-        <div><div style="font-size:21px;font-weight:900;color:${isCN?'#C96A06':'var(--blue-dk)'}">${title}</div>
-        <div style="font-size:13px;color:var(--ink-soft);font-weight:800">关卡进度 ${idx+1} / 10 · ${subT}</div></div>
+        <div><div style="font-size:21px;font-weight:900;color:${hudTitleColor}">${cfg.title} · ${lv.title}</div>
+        <div style="font-size:13px;color:var(--ink-soft);font-weight:800">关卡进度 ${L.index+1} / ${cfg.total} · ${lv.subtitle||""}</div></div>
       </div>
       <div class="hud-r">
-        <div class="stepchips">${steps.map((k,i)=>`<span class="schip ${i<L.step?'done':(i===L.step?'now':'')}"><span class="dot">${i<L.step?'✓':i+1}</span>${titles[i]}</span>`).join('<span class="sgap"></span>')}</div>
+        <div class="stepchips">${steps.map((s,i)=>`<span class="schip ${i<L.step?'done':(i===L.step?'now':'')}"><span class="dot">${i<L.step?'✓':i+1}</span>${CHIP_NAMES[s.kind]||"练一练"}</span>`).join('<span class="sgap"></span>')}</div>
         <div class="goldchip"><span class="ico">${ic("coin",18)}</span>${S.coins}</div>
       </div>
     </div>
     <div class="lv-body" id="lvbody">${body}</div>
     ${L.finished?finishHTML():''}
   </div>`;
-  if(kind==="teach") startMorph();
-  const q = kind==="teach" ? `欢迎来到${isCN?'识字村':'思维镇'}！${subT}` :
-            kind==="quiz" ? quizText(L,idx,steps,L.step) :
-            kind==="count" ? "池塘里有几只小鸭？点一点，数数看" : "哪边的水果更多？";
-  speak(q);
+  if(st.kind==="teach") startMorph();
+  // 学过即收集（与 Swift onAppear 一致）
+  const teach=steps.find(s=>s.kind==="teach");
+  if(teach&&teach.char&&!S.hanzi.includes(teach.char)){ S.hanzi.push(teach.char); save(); }
+  const letter=steps.find(s=>s.kind==="letter");
+  if(letter){
+    if(sub==="pinyin"){ const l=letter.letters[0]; if(!S.learnedPinyin.includes(l)){ S.learnedPinyin.push(l); save(); } }
+    if(sub==="english"){ const w=letter.examples[0].text.split(" ")[0]; if(!S.learnedEnglish.includes(w)){ S.learnedEnglish.push(w); save(); } }
+    if(sub==="astro"){ const n=letter.display; if(!S.learnedAstro.includes(n)){ S.learnedAstro.push(n); save(); } }
+  }
 }
-function mathSteps(i){ const m=MATH_LEVELS[i]; if(m.challenge) return ["quiz","quiz"]; if(m.cmpOnly) return ["compare"]; if(m.cmp) return ["count","compare"]; return ["count"]; }
-function mathSub(i){ const m=MATH_LEVELS[i]; if(m.challenge) return "比大小"; if(m.cmpOnly) return "一样多"; return `${m.count} 以内点数`; }
-function quizText(L,idx,steps,si){
-  if(L.subject==="cn"){ const lv=CN_LEVELS[idx];
-    if(steps[si]==="quiz"&&si===1&&lv.q1) return "找一找：哪个图片是「"+lv.ch+"」？";
-    if(lv.find) return "练一练：哪个字是「"+lv.ch+"」？";
-    if(si===2) return "大挑战：哪个是「日」？";
-    return "练一练：下面哪个字念 "+lv.py+"？"; }
-  const m=MATH_LEVELS[idx]; return m.challenge ? (si===1?"哪个数字最小？":"哪个数字最大？") : "再练一练";
+function renderStep(sub, st){
+  switch(st.kind){
+    case "teach":   return teachHTML(st);
+    case "letter":  return letterHTML(sub, st);
+    case "listen":  return listenHTML(st);
+    case "quiz":    return quizHTML(st);
+    case "count":   return countHTML(st);
+    case "compare": return compareHTML(st);
+    case "blend":   return blendHTML(st);
+    case "arith":   return arithHTML(st);
+    case "pattern": return patternHTML(st);
+  }
+  return `<div style="padding:40px">未知步骤：${st.kind}</div>`;
 }
-/* --- 认一认 --- */
+function nextStep(){
+  const L=S.lv, steps=curLevelObj().steps;
+  if(L.step<steps.length-1){ L.step++; renderLevel(); }
+  else { L.finished=true; renderLevel(); const stars=L.wrong===0?3:(L.wrong===1?2:1);
+    const key=L.subject+"-"+L.index;
+    const old=S.stars[key]||0;
+    if(stars>old||old===0){ S.stars[key]=stars; S.coins+=stars; }
+    S.daily[L.subject]=(S.daily[L.subject]||0)+1;
+    save(); }
+}
+function finishHTML(){
+  const L=S.lv, total=SUBJECTS[L.subject].total, hasNext=L.index+1<total;
+  const stars=L.wrong===0?3:(L.wrong===1?2:1);
+  return `<div class="finish"><div class="card">
+    <div style="font-size:60px">🎉</div>
+    <div style="font-size:28px;font-weight:900;margin:4px 0">本关完成！</div>
+    <div style="font-size:42px;letter-spacing:10px;margin:6px 0">${[0,1,2].map(i=>`<span style="opacity:${i<stars?1:.25}">${ic("starface",40)}</span>`).join("")}</div>
+    <div style="font-size:15px;color:var(--ink-soft);font-weight:800;margin-bottom:16px">${L.wrong===0?"一次没错，完美通关！":`答错了 ${L.wrong} 次也没关系，你已经学会啦`}</div>
+    ${hasNext?`<button class="jbtn j-green" onclick="enterLevel(LvSubject(),LvNext())">下一关 ▶</button>`:""}
+    <button class="jbtn j-orange" onclick="route('map')">返回地图</button>
+    <button class="jbtn j-cream" style="margin-left:10px" onclick="enterLevel(S.lv.subject,S.lv.index)">再玩一次</button>
+  </div></div>`;
+}
+function LvSubject(){ return S.lv.subject; }
+function LvNext(){ return S.lv.index+1; }
+
+/* --- 认一认（语文 teach） --- */
 let morphT=null;
-function teachHTML(lv){
-  const words=(lv.words||[]).map(w=>`<span class="wordchip" onclick="speak('${w[1]}');toast('词卡：${w[1]}')">${ic(w[0],22)} ${w[1]}</span>`).join("");
+function teachHTML(st){
+  const words=(st.words||[]).map(w=>`<span class="wordchip" onclick="speak('${w.text}');toast('词卡：${w.text}')">${ic(w.icon,22)} ${w.text}</span>`).join("");
   return `<div style="display:flex;gap:20px;height:100%">
     <div class="sticker" style="width:452px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:16px">
-      <div style="font-size:16px;font-weight:900;color:var(--orange-ddk);background:linear-gradient(180deg,#FFE7A8,var(--yellow));border-radius:999px;padding:7px 22px;box-shadow:0 3px 0 var(--gold-ddk)">看一看：${lv.ch} 是怎么变来的？</div>
+      <div style="font-size:16px;font-weight:900;color:var(--orange-ddk);background:linear-gradient(180deg,#FFE7A8,var(--yellow));border-radius:999px;padding:7px 22px;box-shadow:0 3px 0 var(--gold-ddk)">看一看：${st.char} 是怎么变来的？</div>
       <div class="morph" id="morph">
-        <span class="pic">${ic(lv.from,205)}</span>
-        <span class="char">${lv.ch}</span>
+        <span class="pic">${ic(st.morphFrom,205)}</span>
+        <span class="char">${st.char}</span>
       </div>
       <div style="display:flex;gap:12px;align-items:center">
-        <span class="pinyin">${lv.py}</span>
-        <button class="speakbtn" onclick="speak('${lv.py}。${lv.ch}')">${ic("speaker",24)}</button>
+        <span class="pinyin">${st.pinyin}</span>
+        <button class="speakbtn" onclick="speak('${st.pinyin}。${st.char}')">${ic("speaker",24)}</button>
       </div>
       <div style="display:flex;gap:9px">${words}</div>
     </div>
     <div class="sticker" style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px">
-      <div style="font-size:23px;font-weight:900">点一点下面的语音喇叭，跟读两遍～</div>
-      <div style="font-size:16px;color:var(--ink-soft);font-weight:800">看它变成了什么字？盯住它 3 秒！</div>
+      <div style="font-size:23px;font-weight:900">看一看：图片变成了什么字？</div>
+      <div style="font-size:16px;color:var(--ink-soft);font-weight:800">想听读音可以点小喇叭哦（不出声也可以）</div>
       ${ic("panda",105)}
       <button class="jbtn j-green" style="margin-top:4px" onclick="teachNext()">练一练 ▶</button>
     </div>
@@ -509,22 +562,81 @@ function teachHTML(lv){
 }
 function teachNext(){ S.lv.step++; renderLevel(); }
 function startMorph(){ clearInterval(morphT); const m=$("#morph"); if(!m) return; morphT=setInterval(()=>m.classList.toggle("play"),2600); }
-/* --- 答题 --- */
+
+/* --- 学一学（letter：拼音/英语/天文） --- */
+function letterHTML(sub, st){
+  const en=sub==="english", astro=sub==="astro";
+  const accent = en ? "var(--green-dk)" : (astro ? "#4A5AB8" : "#B85E14");
+  const guideIcon = (en||astro) ? "robot" : "panda";
+  const disp = st.display || (st.letters&&st.letters[0]) || "?";
+  const fs = disp.length>=3 ? 62 : (disp.length===2 ? 84 : 122);
+  const exs=(st.examples||[]).map(w=>`<span class="wordchip" onclick="speak('${(w.say||w.text).replace(/'/g,'')}');toast('例词：${w.text}')">${ic(w.icon,22)} ${w.text}</span>`).join("");
+  return `<div style="display:flex;gap:20px;height:100%">
+    <div class="sticker" style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:13px;padding:16px">
+      <div style="font-size:16px;font-weight:900;color:${accent};background:linear-gradient(180deg,#FFE7A8,var(--yellow));border-radius:999px;padding:7px 22px;box-shadow:0 3px 0 var(--gold-ddk)">${st.question||"学一学"}</div>
+      <div style="width:238px;min-height:238px;border-radius:26px;background:linear-gradient(180deg,#fff,#FFF6E0);border:5px solid var(--yellow);box-shadow:0 6px 0 rgba(217,138,15,.45);display:grid;place-items:center;padding:0 10px">
+        <div style="font-size:${fs}px;font-weight:900;color:${accent};text-align:center;line-height:1.15">${disp}</div>
+      </div>
+      ${(st.letters&&st.letters.length>1)?`<div style="font-size:15px;color:var(--ink-soft);font-weight:800">本关字母：${st.letters.join(" ")}</div>`:""}
+      <button class="jbtn" style="background:linear-gradient(180deg,var(--coral),var(--coral-dk));box-shadow:0 4px 0 var(--coral-ddk)" onclick="speak('${disp}')">${ic("speaker",20)} ${en?"Listen":"读一读"}</button>
+      <div style="display:flex;gap:9px;flex-wrap:wrap;justify-content:center">${exs}</div>
+    </div>
+    <div class="sticker" style="width:360px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px">
+      <div style="font-size:22px;font-weight:900;text-align:center">${en?"Look and say!<br>看一看，读一读～":(astro?"认识新朋友啦！<br>看一看，读一读～":"看卡片，读一读～<br>（不出声也可以）")}</div>
+      ${ic(guideIcon,100)}
+      <button class="jbtn j-green" onclick="teachNext()">${en?"Next ▶":"下一步 ▶"}</button>
+    </div>
+  </div>`;
+}
+
+/* --- 找一找（listen：视觉匹配，朗读可选） --- */
+let listenState={solved:false};
+function listenHTML(st){
+  listenState={solved:false};
+  window._listen={ans:st.answer, hint:st.hint, praise:st.praise, say:st.speakText};
+  const prompt=st.prompt||st.speakText||"?";
+  const pfs = prompt.length>=3 ? 40 : (prompt.length===2 ? 52 : 68);
+  const card=o=>{
+    if(o.icon) return `<div style="display:flex;flex-direction:column;align-items:center;gap:5px">${ic(o.icon,92)}${o.text?`<span class="slabel">${o.text}</span>`:""}</div>`;
+    return `<span class="bigchar">${o.text}</span>`;
+  };
+  return `<div style="height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px" class="sticker">
+    <div class="q-pill">${st.question||"找一找"}</div>
+    <div class="tcard" style="font-size:${pfs}px">${prompt}</div>
+    <div class="optrow">
+      ${(st.options||[]).map((o,i)=>`<div class="opt" id="lopt${i}" onclick="pickListen(${i})">${card(o)}</div>`).join("")}
+    </div>
+    <div id="lfb" style="min-height:40px;display:flex;align-items:center">
+      <button class="speakopt" onclick="speak(window._listen.say);toast('🔊 朗读：'+window._listen.say)">${ic("speaker",18)} 想听点这里</button>
+    </div>
+  </div>`;
+}
+function pickListen(i){
+  const {ans,hint,praise}=window._listen;
+  if(listenState.solved) return;
+  const el=$("#lopt"+i);
+  if(i===ans){ listenState.solved=true; el.classList.add("ok");
+    for(let k=0;k<3;k++) if(k!==i) $("#lopt"+k).classList.add("dim");
+    $("#lfb").innerHTML=`<span style="font-size:20px;font-weight:900;color:var(--green-dk)">${praise}</span>`;
+    confetti(); setTimeout(()=>nextStep(),1400);
+  } else { el.classList.add("no","shakeit");
+    toast(hint,2.2); S.lv.wrong++;
+    setTimeout(()=>el.classList.remove("no","shakeit"),600); }
+}
+
+/* --- 练一练（quiz 通用） --- */
 let quizState={solved:false};
-function quizHTML(L,idx,steps,si){
+function quizHTML(st){
   quizState={solved:false};
-  let q=quizText(L,idx,steps,si), opts=[], ans=0, hint="再想一想哦", praise="答对啦！";
-  if(L.subject==="cn"){ const lv=CN_LEVELS[idx];
-    if(si===1&&lv.q1){ opts=lv.q1.map(o=>({icon:o[0],emoji:o[1]})); ans=lv.a1; hint=lv.h1; praise=lv.p1; }
-    else { const d=si===2&&idx===0?["口","日","目"]:lv.d; opts=d.map(t=>({text:t})); ans=si===2&&idx===0?1:lv.a; hint="再想一想哦"; praise="记住啦！"; }
-  } else { const m=MATH_LEVELS[idx];
-    opts=(si===1?["2","7","10"]:["5","9","3"]).map(t=>({text:t})); ans=si===1?0:1; hint=si===1?"越早数到的越小哦":"从 1 数到 10，谁排在最后？"; praise=si===1?"思维小达人，通关！":"9 最大，答对啦！";
-  }
-  window._quiz={opts,ans,hint,praise};
+  window._quiz={opts:st.options||[],ans:st.answer,hint:st.hint||"再想一想哦",praise:st.praise||"答对啦！"};
+  const card=o=>{
+    if(o.icon) return `<div style="display:flex;flex-direction:column;align-items:center;gap:5px">${ic(o.icon,104)}${o.text?`<span class="slabel">${o.text}</span>`:""}</div>`;
+    return `<span class="bigchar">${o.text}</span>`;
+  };
   return `<div style="height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px" class="sticker">
-    <div class="q-pill">${q}</div>
-    <div style="display:flex;gap:26px">
-      ${opts.map((o,i)=>`<div class="opt" id="opt${i}" onclick="pickOpt(${i})">${o.text?`<span class="bigchar">${o.text}</span>`:ic(o.icon,112)}</div>`).join("")}
+    <div class="q-pill">${st.question||""}</div>
+    <div class="optrow">
+      ${window._quiz.opts.map((o,i)=>`<div class="opt" id="opt${i}" onclick="pickOpt(${i})">${card(o)}</div>`).join("")}
     </div>
     <div id="fb" style="height:34px;font-size:22px;font-weight:900;color:var(--green-dk)"></div>
   </div>`;
@@ -536,86 +648,73 @@ function pickOpt(i){
   if(i===ans){ quizState.solved=true; el.classList.add("ok");
     for(let k=0;k<3;k++){ if(k!==i) $("#opt"+k).classList.add("dim"); }
     $("#fb").textContent="🎉 "+praise;
-    confetti(); speak(praise);
+    confetti();
     setTimeout(()=>nextStep(),1400);
-  } else { el.classList.remove("noit"); el.classList.add("no","shakeit");
-    toast(hint,2.2); speak(hint); S.lv.wrong++;
-    setTimeout(()=>el.classList.remove("no","shakeit"),600);
-  }
+  } else { el.classList.add("no","shakeit");
+    toast(hint,2.2); S.lv.wrong++;
+    setTimeout(()=>el.classList.remove("no","shakeit"),600); }
 }
-function nextStep(){
-  const L=S.lv, steps=L.subject==="cn"?["teach","quiz","quiz"]:mathSteps(L.index);
-  if(L.step<steps.length-1){ L.step++; renderLevel(); }
-  else { L.finished=true; renderLevel(); const stars=L.wrong===0?3:(L.wrong===1?2:1);
-    const key=L.subject+"-"+L.index;
-    const old=S.stars[key]||0;
-    if(stars>old||old===0){ S.stars[key]=stars; S.coins+=stars; }
-    S.daily[L.subject]=(S.daily[L.subject]||0)+1;
-    if(L.subject==="cn"){ const ch=CN_LEVELS[L.index].ch; if(!S.hanzi.includes(ch)) S.hanzi.push(ch); }
-    save(); }
-}
-function finishHTML(){
-  const stars=S.lv.wrong===0?3:(S.lv.wrong===1?2:1);
-  return `<div class="finish"><div class="card">
-    <div style="font-size:60px">🎉</div>
-    <div style="font-size:28px;font-weight:900;margin:4px 0">本关完成！</div>
-    <div style="font-size:42px;letter-spacing:10px;margin:6px 0">${[0,1,2].map(i=>`<span style="opacity:${i<stars?1:.25}">${ic("starface",40)}</span>`).join("")}</div>
-    <div style="font-size:15px;color:var(--ink-soft);font-weight:800;margin-bottom:16px">${S.lv.wrong===0?"一次没错，完美通关！":`答错了 ${S.lv.wrong} 次也没关系，你已经学会啦`}</div>
-    <button class="jbtn j-orange" onclick="route('map')">返回地图</button>
-    <button class="jbtn j-cream" style="margin-left:10px" onclick="enterLevel(S.lv.subject,S.lv.index)">再玩一次</button>
-  </div></div>`;
-}
-/* --- 点数 --- */
-function countHTML(n,opts,idx){
+
+/* --- 数一数（count：情境道具 + 场景底色） --- */
+function countHTML(st){
+  const n=st.count, opts=st.countOptions, icon=st.duckIcon||"duck", unit=st.unit||"个";
   window._count={n,opts};
-  let ducks="";
-  const cols=Math.min(n,5), rows=Math.ceil(n/cols);
+  let items="";
+  const cols=Math.min(n,5);
   for(let i=0;i<n;i++){
     const row=Math.floor(i/cols), col=i%cols, inRow=Math.min(cols,n-row*cols);
     const x=(92/(inRow+1))*(col+1), y=52+row*52;
-    ducks+=`<span class="duck" id="dk${i}" style="left:calc(${x}% - 26px);top:${y}px;animation-delay:${(Math.random()*2).toFixed(2)}s" onclick="tapDuck(${i})">${ic("duck",52)}</span>`;
+    items+=`<span class="countitem" id="dk${i}" style="left:calc(${x}% - 26px);top:${y}px;animation-delay:${(Math.random()*2).toFixed(2)}s" onclick="tapDuck(${i})">${ic(icon,52)}</span>`;
   }
+  const bd=st.backdrop||"pond";
+  let deco="";
+  if(bd==="night") deco=`<div class="ndeco"></div><span style="position:absolute;right:26px;top:16px">${ic("moon",30)}</span>`;
+  else if(bd==="sky") deco=`<span style="position:absolute;left:70px;top:24px">${ic("sunface",30)}</span><span class="cloud" style="width:84px;height:26px;left:40%;top:20px;opacity:.7"></span>`;
+  else if(bd==="grass") deco=`<span style="position:absolute;left:24px;bottom:12px">${ic("flower",26)}</span><span style="position:absolute;right:30px;bottom:10px">${ic("sprout",24)}</span><span style="position:absolute;right:60px;top:14px">${ic("tree",34)}</span>`;
+  else deco=`<div class="wave"></div><span style="position:absolute;left:36px;top:44px">${ic("flower",28)}</span>`;
   return `<div style="height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px" class="sticker">
-    <div class="q-pill" style="background:#E7F6FF;box-shadow:0 4px 0 #BFE4F7">池塘里有几只小鸭？（点一点，数数看 👆）</div>
-    <div class="pond" style="width:92%">${ducks}<div class="wave"></div>
-      <div class="cnt-chip">已数 <b id="cnt" style="font-size:24px;color:var(--blue-dk)">0</b> 只</div></div>
+    <div class="q-pill">${st.question||""}</div>
+    <div class="pond ${bd}" style="width:92%">${deco}${items}
+      <div class="cnt-chip">已数 <b id="cnt" style="font-size:24px;color:var(--blue-dk)">0</b> ${unit}</div></div>
     <div style="display:flex;gap:24px">${opts.map(o=>`<button class="numblock" id="nb${o}" onclick="pickCount(${o})">${o}</button>`).join("")}</div>
   </div>`;
 }
 function tapDuck(i){
-  const {n}=window._count;
   const dk=$("#dk"+i);
   if(dk.classList.contains("counted")) return;
   dk.classList.add("counted");
   const c=S.lv.counted.length+1; S.lv.counted.push(1);
-  $("#cnt").textContent=c; speak(String(c));
+  $("#cnt").textContent=c;
   const b=document.createElement('span'); b.className='cbub'; b.textContent=c;
   b.style.left=dk.style.left; b.style.top=(parseFloat(dk.style.top)-10)+'px';
   dk.parentElement.appendChild(b); setTimeout(()=>b.remove(),850);
 }
 function pickCount(v){
   const {n,opts}=window._count;
-  if(v===n){ $("#nb"+v).classList.add("ok"); confetti(); speak(`答对啦，一共${n}只！`);
+  if(v===n){ $("#nb"+v).classList.add("ok"); confetti();
     for(const o of opts) if(o!==v) $("#nb"+o).style.opacity=.4;
     setTimeout(()=>nextStep(),1300);
   } else { const b=$("#nb"+v); b.classList.remove("shakeit"); void b.offsetWidth; b.classList.add("shakeit");
-    toast("再数一数：点一只小鸭数一个数",2); speak("再数一数：点一只小鸭数一个数"); }
+    toast("再数一数：点一个数一个数",2); }
 }
-/* --- 比多少 --- */
-function compareHTML(cmp,idx){
-  const [l,r]=cmp; const ansKey=l===r?"same":(l>r?"left":"right");
+
+/* --- 比一比（compare：数据驱动） --- */
+function compareHTML(st){
+  const l=st.leftCount, r=st.rightCount;
+  const ansKey=l===r?"same":(l>r?"left":"right");
   window._cmp={ansKey};
-  const grid=(icon,n)=>{ let h=""; for(let i=0;i<n;i++) h+=ic(icon,36); return h; };
+  const label=k=>{ const o=(st.compareOptions||[]).find(x=>x.key===k); return o?o.label:k; };
+  const grid=(icon,n)=>Array.from({length:n},()=>ic(icon,36)).join("");
   return `<div style="height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px" class="sticker">
-    <div class="q-pill" style="background:#EAFBEF;box-shadow:0 4px 0 #BFE8C9">哪边的水果更多？</div>
+    <div class="q-pill" style="background:#EAFBEF;box-shadow:0 4px 0 #BFE8C9">${st.question||"哪一边更多？"}</div>
     <div style="display:flex;gap:44px">
-      <div style="text-align:center"><div class="plate">${grid("apple",l)}</div><div style="font-size:15px;color:var(--ink-soft);font-weight:900;margin-top:8px">苹果盘</div></div>
-      <div style="text-align:center"><div class="plate">${grid("banana",r)}</div><div style="font-size:15px;color:var(--ink-soft);font-weight:900;margin-top:8px">香蕉盘</div></div>
+      <div style="text-align:center"><div class="plate">${grid(st.leftIcon,l)}</div><div style="font-size:15px;color:var(--ink-soft);font-weight:900;margin-top:8px">${label("left")}</div></div>
+      <div style="text-align:center"><div class="plate">${grid(st.rightIcon,r)}</div><div style="font-size:15px;color:var(--ink-soft);font-weight:900;margin-top:8px">${label("right")}</div></div>
     </div>
     <div style="display:flex;gap:20px">
-      <button class="textopt" onclick="pickCmp('left')">🍎 苹果多</button>
-      <button class="textopt" onclick="pickCmp('right')">🍌 香蕉多</button>
-      <button class="textopt" onclick="pickCmp('same')">🟰 一样多</button>
+      <button class="textopt" onclick="pickCmp('left')">${label("left")}</button>
+      <button class="textopt" onclick="pickCmp('right')">${label("right")}</button>
+      <button class="textopt" onclick="pickCmp('same')">🟰 ${label("same")}</button>
     </div>
   </div>`;
 }
@@ -623,27 +722,116 @@ function pickCmp(k){
   const {ansKey}=window._cmp;
   const btns=document.querySelectorAll(".textopt");
   const map={left:0,right:1,same:2};
-  if(k===ansKey){ btns[map[k]].classList.add("ok"); confetti();
-    const msgs={left:"答对啦，左边更多！",right:"答对啦，右边更多！",same:"火眼金睛！一样多！"};
-    speak(msgs[k]); setTimeout(()=>nextStep(),1300);
+  if(k===ansKey){ btns[map[k]].classList.add("ok"); confetti(); setTimeout(()=>nextStep(),1300);
   } else { btns[map[k]].classList.add("shakeit"); setTimeout(()=>btns[map[k]].classList.remove("shakeit"),450);
-    toast("一一对应比一比 🍎→🍌",2); speak("一一对应比一比"); }
+    toast("一个对着一个，比一比",2); }
+}
+
+/* --- 拼一拼（blend） --- */
+let blendState={solved:false};
+function blendHTML(st){
+  blendState={solved:false};
+  const b={p:st.parts,o:(st.options||[]).map(o=>o.text),a:st.answer};
+  const correct=b.o[b.a];
+  window._blend={b, correct};
+  return `<div style="height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px" class="sticker">
+    <div class="q-pill">${st.question||"拼一拼"}</div>
+    <div style="display:flex;align-items:center;gap:14px">
+      ${b.p.map(t=>`<div style="width:120px;height:120px;border-radius:22px;background:#fff;border:4px solid #FFE3B3;box-shadow:0 4px 0 #F2E2C4;display:grid;place-items:center;font-size:66px;font-weight:900;color:var(--orange-dk)">${t}</div>`).join('<span style="font-size:38px;font-weight:900;color:var(--ink-soft)">—</span>')}
+      <span style="font-size:38px;font-weight:900;color:var(--ink-soft)">=</span>
+      <div id="bresult" style="width:120px;height:120px;border-radius:22px;background:linear-gradient(180deg,#FFFDF4,#FFF3D8);border:4px solid #FFE3B3;display:grid;place-items:center;font-size:60px;font-weight:900;color:var(--ink-soft)">?</div>
+    </div>
+    <div style="display:flex;gap:18px">
+      ${b.o.map((t,i)=>`<button class="numblock" style="width:130px;height:78px;font-size:34px" id="bb${i}" onclick="pickBlend(${i})">${t}</button>`).join("")}
+    </div>
+  </div>`;
+}
+function pickBlend(i){
+  const {b, correct}=window._blend;
+  if(blendState.solved) return;
+  if(i===b.a){ blendState.solved=true; $("#bb"+i).classList.add("ok");
+    $("#bresult").textContent=correct; $("#bresult").style.color="#2F6B22";
+    confetti(); setTimeout(()=>nextStep(),1400);
+  } else { const el=$("#bb"+i); el.classList.remove("shakeit"); void el.offsetWidth; el.classList.add("shakeit");
+    toast("声母碰韵母，再试一次",2); }
+}
+
+/* --- 算一算（arith：情境图示） --- */
+let arithState={solved:false};
+function arithHTML(st){
+  arithState={solved:false};
+  const op=st.op, a=st.leftCount, b=st.rightCount, opts=st.arithOptions, icon=st.leftIcon||"duck";
+  const correct = op==="+" ? a+b : a-b;
+  window._arith={op,a,b,opts,correct};
+  const group=(n,crossed)=>Array.from({length:n},()=>{
+    return `<div style="position:relative">${ic(icon,40)}${crossed?'<span style="position:absolute;left:-2px;top:16px;width:44px;height:6px;background:var(--coral-dk);border-radius:3px;transform:rotate(-14deg)"></span>':''}</div>`;
+  }).join("");
+  return `<div style="height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px" class="sticker">
+    <div class="q-pill">${st.question||""}</div>
+    <div style="display:flex;align-items:center;gap:14px;padding:10px 0">
+      <div style="display:flex;flex-direction:column;gap:2px">${group(a,false)}</div>
+      <span style="font-size:42px;font-weight:900;color:var(--orange-dk)">${op==="+"?"+":"−"}</span>
+      <div style="display:flex;flex-direction:column;gap:2px;${op!=="+"?"opacity:.65":""}">${group(b,op!=="+")}</div>
+      <span style="font-size:42px;font-weight:900;color:var(--ink-soft)">=</span>
+      <div id="aresult" style="width:88px;height:80px;border-radius:16px;background:linear-gradient(180deg,#FFE58A,#F7B32B);border:3.5px solid #B8770A;box-shadow:0 5px 0 rgba(184,119,10,.55);display:grid;place-items:center;font-size:42px;font-weight:900;color:#8A5B00">?</div>
+    </div>
+    <div style="display:flex;gap:24px">
+      ${opts.map(n=>`<button class="numblock" id="ab${n}" onclick="pickArith(${n})">${n}</button>`).join("")}
+    </div>
+  </div>`;
+}
+function pickArith(n){
+  const {correct,op}=window._arith;
+  if(arithState.solved) return;
+  if(n===correct){ arithState.solved=true; $("#ab"+n).classList.add("ok");
+    $("#aresult").textContent=correct;
+    confetti(); setTimeout(()=>nextStep(),1400);
+  } else { const el=$("#ab"+n); el.classList.remove("shakeit"); void el.offsetWidth; el.classList.add("shakeit");
+    toast(op==="+"?"指着图一个一个数":"划掉的不算哦",2); }
+}
+
+/* --- 找规律（pattern） --- */
+let patternState={solved:false};
+function patternHTML(st){
+  patternState={solved:false};
+  const seq=st.seq||[];
+  window._pattern={ans:st.answer,hint:st.hint,praise:st.praise};
+  return `<div style="height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px" class="sticker">
+    <div class="q-pill" style="background:#F3EDFF;box-shadow:0 4px 0 #D9CCF5">${st.question||"找规律：下一个是哪个？"}</div>
+    <div class="seqrow">
+      ${seq.map((ic2,i)=>`<span class="seqcard">${ic(ic2,56)}</span>${i<seq.length-1?'<span style="font-size:22px;font-weight:900;color:var(--ink-soft);opacity:.6">→</span>':''}`).join("")}
+      <div class="seqq">?</div>
+    </div>
+    <div class="optrow">
+      ${(st.options||[]).map((o,i)=>`<div class="opt" style="width:120px;height:120px" id="pt${i}" onclick="pickPattern(${i})">${ic(o.icon,72)}</div>`).join("")}
+    </div>
+    <div id="ptfb" style="min-height:34px;font-size:22px;font-weight:900;color:var(--green-dk)"></div>
+  </div>`;
+}
+function pickPattern(i){
+  const {ans,hint,praise}=window._pattern;
+  if(patternState.solved) return;
+  const el=$("#pt"+i);
+  if(i===ans){ patternState.solved=true; el.classList.add("ok");
+    for(let k=0;k<3;k++) if(k!==i) $("#pt"+k).classList.add("dim");
+    $("#ptfb").textContent="🎉 "+(praise||"规律找对啦！");
+    confetti(); setTimeout(()=>nextStep(),1400);
+  } else { el.classList.add("no","shakeit");
+    toast(hint||"读一读前面几个，找找谁在轮流出现",2.4); S.lv.wrong++;
+    setTimeout(()=>el.classList.remove("no","shakeit"),600); }
 }
 
 /* ================= 实验室 ================= */
-const BUOY={g:-980,b:1400,d:6.0,dt:1/60};
-function buoyStep(s,isFloat){ let v=s.v; if(s.y<=0){ const a=isFloat?BUOY.b:BUOY.g; v+=a*BUOY.dt; v-=v*BUOY.d*BUOY.dt; } else { v+=BUOY.g*BUOY.dt; } return {y:s.y+v*BUOY.dt,v}; }
-function route(r){ S.route=r; if(r==="map")renderMap(); else if(r==="level")renderLevel(); else if(r==="lab")renderLab(); else if(r==="collection")renderCollection(); else if(r==="parent")renderParent(); }
-
 function renderLab(){
   timersClear();
   Object.assign(S.lab,{phase:"guess",guess:null,sel:null,chip:null,settled:[],floats:[]});
+  const totalItems=EXP.items.length;
   stage.innerHTML=`<div class="screen theme-lab">
     <div class="scene"><div class="sky"></div><div class="glow" style="background:radial-gradient(circle,#FFF3D8cc,#E8D5FF66 45%,transparent 72%)"></div><div class="cloud c1" style="opacity:.55"></div><div class="hill back"></div><div class="hill front"></div></div>
     <div class="hud">
       <div class="hud-l">
         <button class="sqbtn" onclick="route('map')">${ic("back",26)}</button>
-        <div><div style="font-size:21px;font-weight:900;color:var(--purple-dk)">🔬 科学实验室 · 浮与沉</div>
+        <div><div style="font-size:21px;font-weight:900;color:var(--purple-dk)">🔬 科学实验室 · ${EXP.title}</div>
         <div style="font-size:13px;color:var(--ink-soft);font-weight:800">实验 1 / 1 · 向导闪闪</div></div>
       </div>
       <div class="hud-r">
@@ -654,7 +842,7 @@ function renderLab(){
     <div class="flow" id="flow"></div>
     <div class="lab-cols">
       <div class="shelf sticker"><div class="hd">🧰 工具箱</div>
-        <div class="shelf-grid">${EXP_ITEMS.map(it=>shelfItem(it)).join("")}</div>
+        <div class="shelf-grid">${EXP.items.map(it=>shelfItem(it)).join("")}</div>
         <div style="font-size:12.5px;color:var(--ink-soft);text-align:center;font-weight:800;line-height:1.5">点选物品<br>再点水箱放进去</div>
       </div>
       <div class="tank" id="tank">
@@ -662,7 +850,7 @@ function renderLab(){
         <div class="result-chip" id="rchip" style="display:none"></div>
         <div class="guess-card" id="guessCard"><div class="card">
           <div style="font-size:25px;font-weight:900;color:var(--purple-dk);margin-bottom:4px">猜一猜 🔮</div>
-          ${ic("apple",86)}<div style="font-size:18px;font-weight:900;color:var(--ink-soft);margin:6px 0 14px">苹果放进水里，会怎么样？</div>
+          ${ic(EXP.guessIcon,86)}<div style="font-size:18px;font-weight:900;color:var(--ink-soft);margin:6px 0 14px">${EXP.guessQuestion}</div>
           <div style="display:flex;gap:16px;justify-content:center">
             <button class="jbtn j-yellow" onclick="makeGuess('float')">⬆ 浮起来</button>
             <button class="jbtn j-blue" onclick="makeGuess('sink')">⬇ 沉下去</button>
@@ -673,14 +861,14 @@ function renderLab(){
         <div class="clist" id="listFloat"><span class="empty">还没有发现…</span></div>
         <div style="font-size:15px;font-weight:900;color:var(--coral-dk)">↓ 沉下去</div>
         <div class="clist" id="listSink"><span class="empty">还没有发现…</span></div>
-        <div style="text-align:center;font-size:15px;font-weight:900;color:var(--purple-dk)" id="tested">已测试 ${S.tested.length} / 6</div>
+        <div style="text-align:center;font-size:15px;font-weight:900;color:var(--purple-dk)" id="tested">已测试 ${S.tested.length} / ${totalItems}</div>
         <button class="jbtn j-purple" id="collectBtn" style="width:100%;padding:11px 0" disabled onclick="collect()">⭐ 收进图鉴</button>
       </div>
     </div>
     <div style="position:absolute;left:26px;bottom:14px;z-index:20"><button class="jbtn j-cream" style="font-size:17px;padding:10px 20px" onclick="renderLab()">🔄 重新实验</button></div>
     <div class="deco" style="right:30px;bottom:16px;font-size:14px;color:rgba(255,255,255,.85);font-weight:700">🥽 虚拟实验室随便玩 · 真的做实验时，一定要请爸爸妈妈陪哦！</div>
   </div>`;
-  updateFlow(); speak("欢迎来到科学实验室！猜一猜，苹果放进水里会怎么样？");
+  updateFlow(); 
 }
 function shelfItem(it){
   const used=S.tested.includes(it.id);
@@ -701,13 +889,13 @@ function pickItem(id){
   document.querySelectorAll(".item").forEach(e=>e.classList.remove("sel"));
   $("#item-"+id).classList.add("sel");
   $("#glass").classList.add("armed");
-  const it=EXP_ITEMS.find(x=>x.id===id);
-  speak(it.name); toast(`已选中 ${it.name}，现在点水箱放进去！`);
+  const it=EXP.items.find(x=>x.id===id);
+  toast(`已选中 ${it.name}，现在点水箱放进去！`);
 }
 function makeGuess(g){
   S.lab.guess=g; S.lab.phase="play";
   $("#guessCard").style.display="none"; updateFlow();
-  speak("好，记下你的猜想啦，动手试试看！"); toast("🔮 猜想已记录！把物品放进水箱验证吧");
+  toast("🔮 猜想已记录！把物品放进水箱验证吧");
 }
 function tankTap(ev){
   const glass=$("#glass");
@@ -715,7 +903,7 @@ function tankTap(ev){
   if(!S.lab.sel||S.tested.includes(S.lab.sel)){ toast("先在左边工具箱里选一个物品哦 🧰"); return; }
   const rect=glass.getBoundingClientRect();
   const x=ev.clientX-rect.left;
-  const item=EXP_ITEMS.find(i=>i.id===S.lab.sel);
+  const item=EXP.items.find(i=>i.id===S.lab.sel);
   dropIntoTank(item,x);
   $("#item-"+item.id).classList.add("used");
   S.lab.sel=null; $("#glass").classList.remove("armed");
@@ -748,20 +936,21 @@ function dropIntoTank(item,x){
   }
   S.lab.raf=requestAnimationFrame(frame);
 }
+const BUOY={g:-980,b:1400,d:6.0,dt:1/60};
+function buoyStep(s,isFloat){ let v=s.v; if(s.y<=0){ const a=isFloat?BUOY.b:BUOY.g; v+=a*BUOY.dt; v-=v*BUOY.d*BUOY.dt; } else { v+=BUOY.g*BUOY.dt; } return {y:s.y+v*BUOY.dt,v}; }
 function onSettled(item,isFloat){
   if(S.tested.includes(item.id)) return;
   S.tested.push(item.id);
   const chip=$("#rchip");
   chip.textContent=`${item.name} ${isFloat?"浮起来了 ⬆":"沉下去了 ⬇"}`;
   chip.style.display="block";
-  speak(`${item.name}${isFloat?"浮起来了":"沉下去了"}`);
   const list=$(isFloat?"#listFloat":"#listSink");
   const emp=list.querySelector(".empty"); if(emp) emp.remove();
   const c=document.createElement('span'); c.className='cchip'; c.innerHTML=`${ic(item.icon,16)}${item.name}`;
-  c.title="点我看小知识"; c.onclick=()=>{toast(item.fact,3.2);speak(item.fact);};
+  c.title="点我看小知识"; c.onclick=()=>{toast(item.fact,3.2);};
   list.appendChild(c);
-  $("#tested").textContent=`已测试 ${S.tested.length} / 6`;
-  if(item.id==="apple"){
+  $("#tested").textContent=`已测试 ${S.tested.length} / ${EXP.items.length}`;
+  if(item.id===EXP.guessItem){
     if((S.lab.guess==="float")===isFloat){ confetti(); toast("🔮 猜对啦！加一颗智慧星 ⭐"); S.coins++; }
     else toast("没关系～科学家就是靠不断试错发现规律的 🔬",2.6);
   }
@@ -769,9 +958,9 @@ function onSettled(item,isFloat){
   if(S.tested.length>=3){ const b=$("#collectBtn"); b.disabled=false; b.classList.add("pulse"); }
 }
 function collect(){
-  confetti(); speak("太棒了，实验记录收进图鉴！");
+  confetti();
   if(!S.stickers.includes("st-fuchen")){ S.stickers.push("st-fuchen"); toast("📓 图鉴 +1 · 获得「浮沉小侦探」贴纸 🏅",2.2); }
-  if(!S.science.includes("sci-apple")){ S.science.push("sci-apple"); S.coins++; }
+  if(!S.science.includes(EXP.guessItem)){ S.science.push(EXP.guessItem); S.coins++; }
   S.daily.lab=(S.daily.lab||0)+1;
   save();
   setTimeout(()=>route("collection"),1400);
@@ -798,50 +987,65 @@ function renderCollection(){
   </div>`;
   renderBoard();
 }
-function groupGot(g){
-  if(g.id==="science") return g.items.filter(it=>needExperiment(it[0])?S.science.includes(it[0]):true).length;
-  if(g.id==="sticker") return g.items.filter(it=>S.stickers.includes(it[0])).length;
-  if(g.id==="hanzi") return g.items.filter(it=>S.hanzi.includes(it[1])).length;
-  return 0;
+function slotCollected(g,it){
+  if(g.id==="science") return needExperiment(it.id)?S.science.includes(it.id):true;
+  if(g.id==="sticker") return S.stickers.includes(it.id);
+  if(g.id==="hanzi") return S.hanzi.includes(it.text);
+  if(g.id==="pinyin") return S.learnedPinyin.includes((it.text||" ")[0]);
+  if(g.id==="english") return S.learnedEnglish.includes(it.name);
+  if(g.id==="astro") return S.learnedAstro.includes(it.name.split(" ")[0]);
+  return true;
 }
 function needExperiment(id){ return ["sci-apple","sci-rock","sci-wood","sci-key","sci-sponge","sci-balloon"].includes(id); }
 function renderBoard(){
   const g=COLLECTION.find(x=>x.id===S.collTab);
-  const got=groupGot(g);
+  const got=g.items.filter(it=>slotCollected(g,it)).length;
   let slots="";
   for(const it of g.items){
-    const [id,name,icon,tag,tagColor,fact]=it;
-    let collected=true;
-    if(g.id==="science"&&needExperiment(id)) collected=S.science.includes(id);
-    if(g.id==="sticker") collected=S.stickers.includes(id);
-    if(g.id==="hanzi") collected=S.hanzi.includes(name);
-    const tagHtml=collected&&tag?`<span class="tag" style="background:${tagColor==='blue'?'var(--blue)':'var(--coral-dk)'}">${tag}</span>`:"";
-    slots+=`<div class="slot ${collected?'got':'lock'}" onclick="slotTap('${g.id}','${id}','${name}','${fact?fact.replace(/'/g,''):""}','${collected}')">
-      <span class="em">${collected?(g.id==='hanzi'?`<span style="font-size:42px;font-weight:900;color:#E2582A">${name}</span>`:ic(icon,46)):`<span style="font-size:38px;font-weight:900">？</span>`}</span>${tagHtml}
-      <span class="nm">${collected?name:"？？？"}</span></div>`;
+    const collected=slotCollected(g,it);
+    const em = collected ? ((g.id==="hanzi"||g.id==="pinyin")
+        ? `<span style="font-size:42px;font-weight:900;color:#E2582A">${it.text}</span>`
+        : (it.icon?ic(it.icon,46):""))
+      : `<span style="font-size:38px;font-weight:900">？</span>`;
+    const tagHtml=collected&&it.tag?`<span class="tag" style="background:${it.tagColor==='blue'?'var(--blue)':'var(--coral-dk)'}">${it.tag}</span>`:"";
+    slots+=`<div class="slot ${collected?'got':'lock'}" onclick="slotTap('${g.id}','${it.id}')">
+      <span class="em">${em}</span>${tagHtml}
+      <span class="nm">${collected?it.name:"？？？"}</span></div>`;
   }
+  const hints={science:"💡 去科学岛做实验，就能点亮更多现象图鉴",sticker:"💡 完成每日任务、闯关成功都能掉落贴纸",hanzi:"💡 在识字村闯关，就能点亮更多汉字卡",
+    pinyin:"💡 在拼音谷闯关，就能点亮拼音卡",english:"💡 在英语王国闯关，就能点亮单词卡",
+    astro:"💡 去天文台闯关，认识更多星空朋友",badge:"💡 徽章记录每一次了不起的坚持"};
   $("#board").innerHTML=`
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
       <span style="font-size:19px;font-weight:900;color:var(--ink-soft)">${groupTitle(g,got)}</span>
       <div class="track" style="width:250px"><i style="width:${Math.round(got/g.items.length*100)}%"></i></div></div>
     <div class="grid6">${slots}</div>
-    <div class="hint">${{science:"💡 去科学岛做实验，就能点亮更多现象图鉴",sticker:"💡 完成每日任务、闯关成功都能掉落贴纸",hanzi:"💡 在识字村闯关，就能点亮更多汉字卡",badge:"💡 徽章记录每一次了不起的坚持"}[g.id]}</div>`;
+    <div class="hint">${hints[g.id]||""}</div>`;
 }
 function groupTitle(g,got){
   if(g.id==="science") return `已完成 ${got} / ${g.items.length} 个现象`;
   if(g.id==="sticker") return `已获得 ${got} / ${g.items.length} 张`;
   if(g.id==="hanzi") return `已认读 ${got} / ${g.items.length} 字`;
+  if(g.id==="pinyin") return `已学会 ${got} / ${g.items.length} 个`;
+  if(g.id==="english") return `已学会 ${got} / ${g.items.length} 词`;
+  if(g.id==="astro") return `已认识 ${got} / ${g.items.length} 个星空朋友`;
   return "每一枚徽章都是了不起的坚持";
 }
-function slotTap(gid,id,name,fact,collected){
-  if(!collected) return;
-  if(fact){ toast(fact,3.2); speak(fact); }
-  else if(gid==="hanzi"){ toast(name); speak(name); }
+function slotTap(gid,id){
+  const g=COLLECTION.find(x=>x.id===gid);
+  const it=g.items.find(x=>x.id===id);
+  if(!slotCollected(g,it)) return;
+  if(it.fact){ toast(it.fact,3.2); speak(it.fact); }
+  else if(gid==="english"){ toast(it.name); speak(it.name); }
+  else if(gid==="astro"){ toast(it.name); speak(it.name.split(" ").join("，")); }
+  else if(gid==="hanzi"){ toast(it.text); speak(it.text); }
+  else if(gid==="pinyin"){ toast(it.name); speak((it.text||" ")[0]); }
 }
 
 /* ================= 家长中心 ================= */
 function renderParent(){
   timersClear();
+  const cnT=SUBJECTS.cn.total, mT=SUBJECTS.math.total, aT=SUBJECTS.astro.total;
   stage.innerHTML=`<div class="screen theme-parent">
     <div class="scene"><div class="sky"></div><div class="glow" style="opacity:.5"></div><div class="cloud c1" style="opacity:.7"></div><div class="hill back"></div><div class="hill front"></div></div>
     <div class="hud">
@@ -872,8 +1076,9 @@ function renderParent(){
         ${seg("休息间隔提醒",[15,30,0],S.settings.rest,v=>v===0?"关闭":`每 ${v} 分钟`,v=>{S.settings.rest=v;save()})}
       </div>
       <div class="panel"><h3><span class="icw">${ic("chart",18)}</span>学习进度</h3>
-        ${pRow("book","识字村",doneCount("cn")/10,`${doneCount("cn")}/10 关`)}
-        ${pRow("equal","思维镇",doneCount("math")/10,`${doneCount("math")}/10 关`)}
+        ${pRow("book","识字村",doneCount("cn")/cnT,`${doneCount("cn")}/${cnT} 关`)}
+        ${pRow("equal","思维镇",doneCount("math")/mT,`${doneCount("math")}/${mT} 关`)}
+        ${pRow("starface","天文台",doneCount("astro")/aT,`${doneCount("astro")}/${aT} 关`)}
         ${pRow("flask","科学岛",S.science.length/6,`实验 ${S.tested.length} 项`)}
         <div style="margin-top:4px"><span class="stat-chip">累计金币 ${S.coins}</span><span class="stat-chip">汉字 ${S.hanzi.length} 个</span><span class="stat-chip">贴纸 ${S.stickers.length} 张</span></div>
       </div>
@@ -936,7 +1141,8 @@ function checkGate(){
   else { const c=$("#gateCard"); c.classList.remove("shakeit"); void c.offsetWidth; c.classList.add("shakeit"); toast("答案不对哦，再试试"); newGate(); }
 }
 function resetAll(){
-  S.coins=12; S.stars={}; S.tested=[]; S.science=[]; S.stickers=[]; S.hanzi=[]; S.daily={};
+  S.coins=12; S.stars={}; S.tested=[]; S.science=[]; S.stickers=[]; S.hanzi=[];
+  S.learnedPinyin=[]; S.learnedEnglish=[]; S.learnedAstro=[]; S.daily={};
   save(); toast("已重置全部学习进度"); renderParent();
 }
 function showRest(dayOver){

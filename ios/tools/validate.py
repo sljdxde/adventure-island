@@ -34,8 +34,8 @@ manifest = load_json(os.path.join(DESIGN, "design/assets/manifest.json"))
 manifest_icons = {p.split("/")[1].replace(".svg", "") for p in manifest["icons"]} | \
                  {p.split("/")[1].replace(".svg", "") for p in manifest["bg"]}
 
-cn = load_json(os.path.join(RES, "cn_levels.json"))
-math = load_json(os.path.join(RES, "math_levels.json"))
+SUBJECTS = [("cn_levels", 15), ("math_levels", 15), ("pinyin_levels", 12), ("english_levels", 12), ("astro_levels", 10)]
+subject_docs = {name: load_json(os.path.join(RES, name + ".json")) for name, _ in SUBJECTS}
 exps = load_json(os.path.join(RES, "experiments.json"))
 coll = load_json(os.path.join(RES, "collection.json"))
 
@@ -47,11 +47,14 @@ def collect_icons(node):
             if k == "morphFrom" and isinstance(v, str): json_icons.add(v)
             if k == "duckIcon" and isinstance(v, str): json_icons.add(v)
             if k in ("leftIcon", "rightIcon", "guessIcon") and isinstance(v, str): json_icons.add(v)
+            if k == "seq" and isinstance(v, list):
+                for s in v:
+                    if isinstance(s, str): json_icons.add(s)
             collect_icons(v)
     elif isinstance(node, list):
         for v in node: collect_icons(v)
 
-for doc in (cn, math, exps, coll): collect_icons(doc)
+for doc in list(subject_docs.values()) + [exps, coll]: collect_icons(doc)
 
 def check_subject(doc, name, expect_levels):
     levels = doc["levels"]
@@ -82,6 +85,44 @@ def check_subject(doc, name, expect_levels):
                 n = st.get("count"); opts = st.get("countOptions") or []
                 if not (3 <= (n or 0) <= 10): err(f"{sid} 数量 {n} 超范围")
                 if n not in opts: err(f"{sid} 选项不含正确数量 {n}")
+                if st.get("backdrop") not in ("pond", "sky", "night", "grass"):
+                    err(f"{sid} 点数场景 backdrop 非法: {st.get('backdrop')}")
+                if not st.get("unit"): err(f"{sid} 点数缺量词 unit")
+            elif kind == "letter":
+                if not st.get("letters") or not st.get("display") or not st.get("examples"):
+                    err(f"{sid} letter 缺 letters/display/examples")
+            elif kind == "listen":
+                # 视觉化找一找：必须有目标大卡 prompt（不依赖声音可作答）；speakText 为可选朗读
+                if not st.get("prompt"): err(f"{sid} listen 缺视觉目标 prompt")
+                if not st.get("speakText"): err(f"{sid} listen 缺 speakText（可选朗读）")
+                opts = st.get("options") or []
+                if len(opts) != 3 or not isinstance(st.get("answer"), int) or not (0 <= st["answer"] < 3):
+                    err(f"{sid} listen 选项/答案非法")
+            elif kind == "pattern":
+                seq = st.get("seq") or []
+                opts = st.get("options") or []
+                ans = st.get("answer")
+                if len(seq) < 3: err(f"{sid} pattern 序列过短 {len(seq)}")
+                if len(opts) != 3 or not isinstance(ans, int) or not (0 <= ans < 3):
+                    err(f"{sid} pattern 选项/答案非法")
+                for o in opts:
+                    if not o.get("icon"): err(f"{sid} pattern 选项缺 icon")
+            elif kind == "blend":
+                parts = st.get("parts") or []
+                opts = st.get("options") or []
+                ans = st.get("answer")
+                if len(parts) != 2 or len(opts) != 3 or not isinstance(ans, int):
+                    err(f"{sid} blend 结构非法")
+                elif opts[ans]["text"] != parts[0] + parts[1]:
+                    err(f"{sid} blend 答案 {opts[ans]['text']} != {parts[0]+parts[1]}")
+            elif kind == "arith":
+                op = st.get("op")
+                l, r = st.get("leftCount", 0), st.get("rightCount", 0)
+                if op not in ("+", "-"): err(f"{sid} op 非法 {op}")
+                correct = l + r if op == "+" else l - r
+                if correct not in (st.get("arithOptions") or []):
+                    err(f"{sid} 选项不含正确答案 {correct}")
+                if not (0 <= correct <= 10): err(f"{sid} 结果超范围 {correct}")
             elif kind == "compare":
                 keys = {o["key"] for o in st.get("compareOptions") or []}
                 if keys != {"left", "right", "same"}: err(f"{sid} 比较选项不完整 {keys}")
@@ -92,8 +133,8 @@ def check_subject(doc, name, expect_levels):
             else:
                 err(f"{sid} 未知步骤类型 {kind}")
 
-check_subject(cn, "cn_levels", 10)
-check_subject(math, "math_levels", 10)
+for name, cnt in SUBJECTS:
+    check_subject(subject_docs[name], name, cnt)
 
 for exp in exps["experiments"]:
     if len(exp["items"]) < 3: err(f"[实验 {exp['id']}] 物品少于 3")
@@ -104,10 +145,10 @@ for exp in exps["experiments"]:
 ok(f"[experiments] {len(exps['experiments'])} 个实验校验完成")
 
 group_ids = [g["id"] for g in coll["groups"]]
-if group_ids != ["science", "sticker", "hanzi", "badge"]: err(f"[collection] 分组顺序异常 {group_ids}")
+if group_ids != ["science", "sticker", "hanzi", "pinyin", "english", "astro", "badge"]: err(f"[collection] 分组顺序异常 {group_ids}")
 for g in coll["groups"]:
     if len(g["items"]) < 10: warn(f"[collection/{g['id']}] 条目 {len(g['items'])} 偏少")
-ok("[collection] 4 个分组校验完成")
+ok("[collection] 7 个分组校验完成")
 
 # ---------- 2. 资产一致性 ----------
 missing = json_icons - manifest_icons

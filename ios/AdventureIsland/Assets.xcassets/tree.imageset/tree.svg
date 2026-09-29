@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs><linearGradient id="g-brown" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#D9A066"/><stop offset="1" stop-color="#A9743B"/></linearGradient><linearGradient id="g-greendk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6FCB6A"/><stop offset="1" stop-color="#3BA851"/></linearGradient><linearGradient id="g-green" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8CE08A"/><stop offset="1" stop-color="#46B45A"/></linearGradient><linearGradient id="g-red" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FF8A7A"/><stop offset="1" stop-color="#E8564A"/></linearGradient></defs>
+  <rect x="28" y="38" width="8" height="20" rx="3" fill="url(#g-brown)"/>
+  <circle cx="32" cy="22" r="15" fill="url(#g-greendk)"/>
+  <circle cx="19" cy="30" r="10" fill="url(#g-green)"/>
+  <circle cx="45" cy="30" r="10" fill="url(#g-green)"/>
+  <circle cx="26" cy="14" r="5" fill="#fff" opacity=".35"/>
+  <circle cx="26" cy="24" r="3" fill="url(#g-red)"/><circle cx="40" cy="20" r="3" fill="url(#g-red)"/><circle cx="36" cy="32" r="3" fill="url(#g-red)"/></svg>

@@ -1,0 +1,832 @@
+{
+  "subject": "pinyin",
+  "title": "拼音谷",
+  "guide": "panda",
+  "levels": [
+    {
+      "id": "py-0",
+      "title": "第 1 关 声母",
+      "subtitle": "认识「b」",
+      "steps": [
+        {
+          "id": "py-0-t",
+          "kind": "letter",
+          "letters": [
+            "b"
+          ],
+          "display": "b",
+          "examples": [
+            {
+              "icon": "girl",
+              "text": "爸爸 bà",
+              "say": "爸爸"
+            },
+            {
+              "icon": "banana",
+              "text": "白菜 bái",
+              "say": "白菜"
+            }
+          ],
+          "question": "学一学声母 b"
+        },
+        {
+          "id": "py-0-l",
+          "kind": "listen",
+          "prompt": "b",
+          "speakText": "b",
+          "question": "找一找：哪个是「b」？",
+          "options": [
+            {
+              "text": "d"
+            },
+            {
+              "text": "p"
+            },
+            {
+              "text": "b"
+            }
+          ],
+          "answer": 2,
+          "hint": "「爸爸」的开头",
+          "praise": "「b」找对啦！"
+        },
+        {
+          "id": "py-0-b",
+          "kind": "blend",
+          "parts": [
+            "b",
+            "a"
+          ],
+          "question": "拼一拼：b — a = ?",
+          "options": [
+            {
+              "text": "ba"
+            },
+            {
+              "text": "bo"
+            },
+            {
+              "text": "bu"
+            }
+          ],
+          "answer": 0,
+          "hint": "b 碰上 a",
+          "praise": "拼对了，ba！"
+        }
+      ]
+    },
+    {
+      "id": "py-1",
+      "title": "第 2 关 声母",
+      "subtitle": "认识「p」",
+      "steps": [
+        {
+          "id": "py-1-t",
+          "kind": "letter",
+          "letters": [
+            "p"
+          ],
+          "display": "p",
+          "examples": [
+            {
+              "icon": "volcano",
+              "text": "山坡 pō",
+              "say": "山坡"
+            },
+            {
+              "icon": "rocket",
+              "text": "跑步 pǎo",
+              "say": "跑步"
+            }
+          ],
+          "question": "学一学声母 p"
+        },
+        {
+          "id": "py-1-l",
+          "kind": "listen",
+          "prompt": "p",
+          "speakText": "p",
+          "question": "找一找：哪个是「p」？",
+          "options": [
+            {
+              "text": "d"
+            },
+            {
+              "text": "m"
+            },
+            {
+              "text": "p"
+            }
+          ],
+          "answer": 2,
+          "hint": "「山坡」的开头",
+          "praise": "「p」找对啦！"
+        },
+        {
+          "id": "py-1-b",
+          "kind": "blend",
+          "parts": [
+            "p",
+            "o"
+          ],
+          "question": "拼一拼：p — o = ?",
+          "options": [
+            {
+              "text": "po"
+            },
+            {
+              "text": "pa"
+            },
+            {
+              "text": "pi"
+            }
+          ],
+          "answer": 0,
+          "hint": "p 碰上 o",
+          "praise": "拼对了，po！"
+        }
+      ]
+    },
+    {
+      "id": "py-2",
+      "title": "第 3 关 声母",
+      "subtitle": "认识「m」",
+      "steps": [
+        {
+          "id": "py-2-t",
+          "kind": "letter",
+          "letters": [
+            "m"
+          ],
+          "display": "m",
+          "examples": [
+            {
+              "icon": "girl",
+              "text": "妈妈 mā",
+              "say": "妈妈"
+            },
+            {
+              "icon": "moon",
+              "text": "米粒 mǐ",
+              "say": "米粒"
+            }
+          ],
+          "question": "学一学声母 m"
+        },
+        {
+          "id": "py-2-l",
+          "kind": "listen",
+          "prompt": "m",
+          "speakText": "m",
+          "question": "找一找：哪个是「m」？",
+          "options": [
+            {
+              "text": "d"
+            },
+            {
+              "text": "p"
+            },
+            {
+              "text": "m"
+            }
+          ],
+          "answer": 2,
+          "hint": "「妈妈」的开头",
+          "praise": "「m」找对啦！"
+        },
+        {
+          "id": "py-2-b",
+          "kind": "blend",
+          "parts": [
+            "m",
+            "a"
+          ],
+          "question": "拼一拼：m — a = ?",
+          "options": [
+            {
+              "text": "ma"
+            },
+            {
+              "text": "mo"
+            },
+            {
+              "text": "mu"
+            }
+          ],
+          "answer": 0,
+          "hint": "m 碰上 a",
+          "praise": "拼对了，ma！"
+        }
+      ]
+    },
+    {
+      "id": "py-3",
+      "title": "第 4 关 声母",
+      "subtitle": "认识「f」",
+      "steps": [
+        {
+          "id": "py-3-t",
+          "kind": "letter",
+          "letters": [
+            "f"
+          ],
+          "display": "f",
+          "examples": [
+            {
+              "icon": "flame",
+              "text": "发烧 fā",
+              "say": "发烧"
+            },
+            {
+              "icon": "leaf",
+              "text": "飞机 fēi",
+              "say": "飞机"
+            }
+          ],
+          "question": "学一学声母 f"
+        },
+        {
+          "id": "py-3-l",
+          "kind": "listen",
+          "prompt": "f",
+          "speakText": "f",
+          "question": "找一找：哪个是「f」？",
+          "options": [
+            {
+              "text": "d"
+            },
+            {
+              "text": "p"
+            },
+            {
+              "text": "f"
+            }
+          ],
+          "answer": 2,
+          "hint": "「发烧」的开头",
+          "praise": "「f」找对啦！"
+        },
+        {
+          "id": "py-3-b",
+          "kind": "blend",
+          "parts": [
+            "f",
+            "a"
+          ],
+          "question": "拼一拼：f — a = ?",
+          "options": [
+            {
+              "text": "fa"
+            },
+            {
+              "text": "fo"
+            },
+            {
+              "text": "fu"
+            }
+          ],
+          "answer": 0,
+          "hint": "f 碰上 a",
+          "praise": "拼对了，fa！"
+        }
+      ]
+    },
+    {
+      "id": "py-4",
+      "title": "第 5 关 声母",
+      "subtitle": "认识「d」",
+      "steps": [
+        {
+          "id": "py-4-t",
+          "kind": "letter",
+          "letters": [
+            "d"
+          ],
+          "display": "d",
+          "examples": [
+            {
+              "icon": "sun",
+              "text": "大地 dì",
+              "say": "大地"
+            },
+            {
+              "icon": "duck",
+              "text": "大刀 dāo",
+              "say": "大刀"
+            }
+          ],
+          "question": "学一学声母 d"
+        },
+        {
+          "id": "py-4-l",
+          "kind": "listen",
+          "prompt": "d",
+          "speakText": "d",
+          "question": "找一找：哪个是「d」？",
+          "options": [
+            {
+              "text": "p"
+            },
+            {
+              "text": "m"
+            },
+            {
+              "text": "d"
+            }
+          ],
+          "answer": 2,
+          "hint": "「大地」的开头",
+          "praise": "「d」找对啦！"
+        },
+        {
+          "id": "py-4-b",
+          "kind": "blend",
+          "parts": [
+            "d",
+            "e"
+          ],
+          "question": "拼一拼：d — e = ?",
+          "options": [
+            {
+              "text": "de"
+            },
+            {
+              "text": "da"
+            },
+            {
+              "text": "du"
+            }
+          ],
+          "answer": 0,
+          "hint": "d 碰上 e",
+          "praise": "拼对了，de！"
+        }
+      ]
+    },
+    {
+      "id": "py-5",
+      "title": "第 6 关 声母",
+      "subtitle": "认识「t」",
+      "steps": [
+        {
+          "id": "py-5-t",
+          "kind": "letter",
+          "letters": [
+            "t"
+          ],
+          "display": "t",
+          "examples": [
+            {
+              "icon": "train",
+              "text": "太阳 tài",
+              "say": "太阳"
+            },
+            {
+              "icon": "tree",
+              "text": "跳高 tiào",
+              "say": "跳高"
+            }
+          ],
+          "question": "学一学声母 t"
+        },
+        {
+          "id": "py-5-l",
+          "kind": "listen",
+          "prompt": "t",
+          "speakText": "t",
+          "question": "找一找：哪个是「t」？",
+          "options": [
+            {
+              "text": "d"
+            },
+            {
+              "text": "p"
+            },
+            {
+              "text": "t"
+            }
+          ],
+          "answer": 2,
+          "hint": "「太阳」的开头",
+          "praise": "「t」找对啦！"
+        },
+        {
+          "id": "py-5-b",
+          "kind": "blend",
+          "parts": [
+            "t",
+            "a"
+          ],
+          "question": "拼一拼：t — a = ?",
+          "options": [
+            {
+              "text": "ta"
+            },
+            {
+              "text": "te"
+            },
+            {
+              "text": "tu"
+            }
+          ],
+          "answer": 0,
+          "hint": "t 碰上 a",
+          "praise": "拼对了，ta！"
+        }
+      ]
+    },
+    {
+      "id": "py-6",
+      "title": "第 7 关 声母",
+      "subtitle": "认识「n」",
+      "steps": [
+        {
+          "id": "py-6-t",
+          "kind": "letter",
+          "letters": [
+            "n"
+          ],
+          "display": "n",
+          "examples": [
+            {
+              "icon": "girl",
+              "text": "拿苹果 ná",
+              "say": "拿苹果"
+            },
+            {
+              "icon": "heart",
+              "text": "你好 nǐ",
+              "say": "你好"
+            }
+          ],
+          "question": "学一学声母 n"
+        },
+        {
+          "id": "py-6-l",
+          "kind": "listen",
+          "prompt": "n",
+          "speakText": "n",
+          "question": "找一找：哪个是「n」？",
+          "options": [
+            {
+              "text": "d"
+            },
+            {
+              "text": "p"
+            },
+            {
+              "text": "n"
+            }
+          ],
+          "answer": 2,
+          "hint": "「拿苹果」的开头",
+          "praise": "「n」找对啦！"
+        },
+        {
+          "id": "py-6-b",
+          "kind": "blend",
+          "parts": [
+            "n",
+            "i"
+          ],
+          "question": "拼一拼：n — i = ?",
+          "options": [
+            {
+              "text": "ni"
+            },
+            {
+              "text": "na"
+            },
+            {
+              "text": "nu"
+            }
+          ],
+          "answer": 0,
+          "hint": "n 碰上 i",
+          "praise": "拼对了，ni！"
+        }
+      ]
+    },
+    {
+      "id": "py-7",
+      "title": "第 8 关 声母",
+      "subtitle": "认识「l」",
+      "steps": [
+        {
+          "id": "py-7-t",
+          "kind": "letter",
+          "letters": [
+            "l"
+          ],
+          "display": "l",
+          "examples": [
+            {
+              "icon": "leaf",
+              "text": "拉手 lā",
+              "say": "拉手"
+            },
+            {
+              "icon": "gift",
+              "text": "老虎 lǎo",
+              "say": "老虎"
+            }
+          ],
+          "question": "学一学声母 l"
+        },
+        {
+          "id": "py-7-l",
+          "kind": "listen",
+          "prompt": "l",
+          "speakText": "l",
+          "question": "找一找：哪个是「l」？",
+          "options": [
+            {
+              "text": "d"
+            },
+            {
+              "text": "p"
+            },
+            {
+              "text": "l"
+            }
+          ],
+          "answer": 2,
+          "hint": "「拉手」的开头",
+          "praise": "「l」找对啦！"
+        },
+        {
+          "id": "py-7-b",
+          "kind": "blend",
+          "parts": [
+            "l",
+            "a"
+          ],
+          "question": "拼一拼：l — a = ?",
+          "options": [
+            {
+              "text": "la"
+            },
+            {
+              "text": "le"
+            },
+            {
+              "text": "lu"
+            }
+          ],
+          "answer": 0,
+          "hint": "l 碰上 a",
+          "praise": "拼对了，la！"
+        }
+      ]
+    },
+    {
+      "id": "py-8",
+      "title": "第 9 关 声母",
+      "subtitle": "认识「g」",
+      "steps": [
+        {
+          "id": "py-8-t",
+          "kind": "letter",
+          "letters": [
+            "g"
+          ],
+          "display": "g",
+          "examples": [
+            {
+              "icon": "tree",
+              "text": "哥哥 gē",
+              "say": "哥哥"
+            },
+            {
+              "icon": "moon",
+              "text": "故事 gù",
+              "say": "故事"
+            }
+          ],
+          "question": "学一学声母 g"
+        },
+        {
+          "id": "py-8-l",
+          "kind": "listen",
+          "prompt": "g",
+          "speakText": "g",
+          "question": "找一找：哪个是「g」？",
+          "options": [
+            {
+              "text": "d"
+            },
+            {
+              "text": "p"
+            },
+            {
+              "text": "g"
+            }
+          ],
+          "answer": 2,
+          "hint": "「哥哥」的开头",
+          "praise": "「g」找对啦！"
+        },
+        {
+          "id": "py-8-b",
+          "kind": "blend",
+          "parts": [
+            "g",
+            "e"
+          ],
+          "question": "拼一拼：g — e = ?",
+          "options": [
+            {
+              "text": "ge"
+            },
+            {
+              "text": "ga"
+            },
+            {
+              "text": "gu"
+            }
+          ],
+          "answer": 0,
+          "hint": "g 碰上 e",
+          "praise": "拼对了，ge！"
+        }
+      ]
+    },
+    {
+      "id": "py-9",
+      "title": "第 10 关 声母",
+      "subtitle": "认识「k」",
+      "steps": [
+        {
+          "id": "py-9-t",
+          "kind": "letter",
+          "letters": [
+            "k"
+          ],
+          "display": "k",
+          "examples": [
+            {
+              "icon": "heart",
+              "text": "开心 kāi",
+              "say": "开心"
+            },
+            {
+              "icon": "book",
+              "text": "看书 kàn",
+              "say": "看书"
+            }
+          ],
+          "question": "学一学声母 k"
+        },
+        {
+          "id": "py-9-l",
+          "kind": "listen",
+          "prompt": "k",
+          "speakText": "k",
+          "question": "找一找：哪个是「k」？",
+          "options": [
+            {
+              "text": "d"
+            },
+            {
+              "text": "p"
+            },
+            {
+              "text": "k"
+            }
+          ],
+          "answer": 2,
+          "hint": "「开心」的开头",
+          "praise": "「k」找对啦！"
+        },
+        {
+          "id": "py-9-b",
+          "kind": "blend",
+          "parts": [
+            "k",
+            "e"
+          ],
+          "question": "拼一拼：k — e = ?",
+          "options": [
+            {
+              "text": "ke"
+            },
+            {
+              "text": "ka"
+            },
+            {
+              "text": "ku"
+            }
+          ],
+          "answer": 0,
+          "hint": "k 碰上 e",
+          "praise": "拼对了，ke！"
+        }
+      ]
+    },
+    {
+      "id": "py-10",
+      "title": "第 11 关 韵母",
+      "subtitle": "a o e i u ü",
+      "steps": [
+        {
+          "id": "py-10-t",
+          "kind": "letter",
+          "letters": [
+            "a",
+            "o",
+            "e",
+            "i",
+            "u",
+            "ü"
+          ],
+          "display": "a",
+          "examples": [
+            {
+              "icon": "duck",
+              "text": "啊 ā 张大嘴",
+              "say": "ā"
+            },
+            {
+              "icon": "flame",
+              "text": "哦 ó",
+              "say": "ó"
+            }
+          ],
+          "question": "学一学韵母 a"
+        },
+        {
+          "id": "py-10-l",
+          "kind": "listen",
+          "prompt": "a",
+          "speakText": "a",
+          "question": "找一找：哪个是韵母「a」？",
+          "options": [
+            {
+              "text": "o"
+            },
+            {
+              "text": "a"
+            },
+            {
+              "text": "e"
+            }
+          ],
+          "answer": 1,
+          "hint": "张大嘴巴 āāā",
+          "praise": "韵母 a 找对啦！"
+        }
+      ]
+    },
+    {
+      "id": "py-11",
+      "title": "第 12 关 复习",
+      "subtitle": "整体认读",
+      "steps": [
+        {
+          "id": "py-11-l1",
+          "kind": "listen",
+          "prompt": "zhi",
+          "speakText": "zhi",
+          "question": "找一找：哪个是「zhi」？",
+          "options": [
+            {
+              "text": "chi"
+            },
+            {
+              "text": "zhi"
+            },
+            {
+              "text": "zi"
+            }
+          ],
+          "answer": 1,
+          "hint": "蜘蛛 zhī zhī 叫",
+          "praise": "整体认读 zhi！"
+        },
+        {
+          "id": "py-11-b",
+          "kind": "blend",
+          "parts": [
+            "b",
+            "a"
+          ],
+          "question": "拼一拼：b — a = ?",
+          "options": [
+            {
+              "text": "ba"
+            },
+            {
+              "text": "bo"
+            },
+            {
+              "text": "pa"
+            }
+          ],
+          "answer": 0,
+          "hint": "爸爸的爸",
+          "praise": "拼读小能手！"
+        }
+      ]
+    }
+  ]
+}

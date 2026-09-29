@@ -152,6 +152,18 @@ struct CollectionView: View {
         case "hanzi":
             let got = group.items.filter { store.snapshot.learnedHanzi.contains($0.text ?? "") }.count
             return "已认读 \(got) / \(group.items.count) 字"
+        case "pinyin":
+            let got = group.items.filter { item in
+                let py = (item.text ?? "").first.map(String.init) ?? ""
+                return store.snapshot.learnedPinyin.contains(py)
+            }.count
+            return "已学会 \(got) / \(group.items.count) 个"
+        case "english":
+            let got = group.items.filter { store.snapshot.learnedEnglish.contains($0.name) }.count
+            return "已学会 \(got) / \(group.items.count) 词"
+        case "astro":
+            let got = group.items.filter { store.snapshot.learnedAstro.contains($0.name.components(separatedBy: " ").first ?? "") }.count
+            return "已认识 \(got) / \(group.items.count) 个星空朋友"
         default:
             return "每一枚徽章都是了不起的坚持"
         }
@@ -164,19 +176,38 @@ struct CollectionView: View {
         case "science": got = group.items.filter { isCollected(group, $0) }.count
         case "sticker": got = group.items.filter { store.snapshot.stickers.contains($0.id) }.count
         case "hanzi": got = group.items.filter { store.snapshot.learnedHanzi.contains($0.text ?? "") }.count
+        case "pinyin": got = group.items.filter { item in
+            let py = (item.text ?? "").first.map(String.init) ?? ""
+            return store.snapshot.learnedPinyin.contains(py)
+        }.count
+        case "english": got = group.items.filter { store.snapshot.learnedEnglish.contains($0.name) }.count
+        case "astro": got = group.items.filter { store.snapshot.learnedAstro.contains($0.name.components(separatedBy: " ").first ?? "") }.count
         default: got = 0
         }
         return Double(got) / Double(total)
     }
 
-    /// 科学图鉴：前 6 项由实验收集，其余默认已解锁展示知识
+    /// 解锁规则：science 前 6 项做实验收集；hanzi/pinyin/english/astro 学过即亮；贴纸/徽章默认展示
     private func isCollected(_ group: CollectionGroup, _ item: CollectionItem) -> Bool {
-        guard group.id == "science" else { return true }
-        let experimentIds = ["sci-apple", "sci-rock", "sci-wood", "sci-key", "sci-sponge", "sci-balloon"]
-        if experimentIds.contains(item.id) {
-            return store.snapshot.collectedScience.contains(item.id)
+        switch group.id {
+        case "science":
+            let experimentIds = ["sci-apple", "sci-rock", "sci-wood", "sci-key", "sci-sponge", "sci-balloon"]
+            if experimentIds.contains(item.id) {
+                return store.snapshot.collectedScience.contains(item.id)
+            }
+            return true
+        case "hanzi":
+            return store.snapshot.learnedHanzi.contains(item.text ?? "")
+        case "pinyin":
+            let py = (item.text ?? "").first.map(String.init) ?? ""
+            return store.snapshot.learnedPinyin.contains(py)
+        case "english":
+            return store.snapshot.learnedEnglish.contains(item.name)
+        case "astro":
+            return store.snapshot.learnedAstro.contains(item.name.components(separatedBy: " ").first ?? "")
+        default:
+            return true
         }
-        return true
     }
 
     @ViewBuilder
@@ -187,9 +218,19 @@ struct CollectionView: View {
             if let fact = item.fact {
                 speech.speak(fact)
                 toast.show(fact, seconds: 3.2)
+            } else if group.id == "english" {
+                speech.speak(item.name)
+                toast.show(item.name)
+            } else if group.id == "astro" {
+                let parts = item.name.components(separatedBy: " ")
+                speech.speak(parts.joined(separator: "，"))
+                toast.show(item.name)
             } else if let text = item.text, let pinyin = item.pinyin {
                 speech.speak("\(text)，\(pinyin)")
                 toast.show("\(text) · \(pinyin)")
+            } else if let text = item.text {
+                speech.speak(text)
+                toast.show(text)
             }
         } label: {
             VStack(spacing: 4) {
@@ -259,6 +300,7 @@ struct CollectionView: View {
         case "science": hint = "💡 去科学岛做实验，就能点亮更多现象图鉴"
         case "sticker": hint = "💡 完成每日任务、闯关成功都能掉落贴纸"
         case "hanzi": hint = "💡 在识字村闯关，就能点亮更多汉字卡"
+        case "astro": hint = "💡 去天文台闯关，认识更多星空朋友"
         default: hint = "💡 徽章记录每一次了不起的坚持"
         }
         return Text(hint)

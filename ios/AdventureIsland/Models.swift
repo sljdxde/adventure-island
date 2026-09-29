@@ -21,7 +21,7 @@ struct CompareOption: Codable, Equatable {
 
 struct Step: Codable, Equatable, Identifiable {
     var id: String
-    /// teach | quiz | count | compare
+    /// teach | quiz | count | compare | letter | listen | blend | arith | pattern
     var kind: String
 
     // teach（认一认：象形演变）
@@ -30,6 +30,25 @@ struct Step: Codable, Equatable, Identifiable {
     var pinyin: String?
     var words: [WordChip]?
 
+    // letter（认字母：拼音声母/韵母、英语字母）
+    var letters: [String]?
+    var display: String?
+    var examples: [WordChip]?
+
+    // listen（找一找：目标大卡字符，朗读可选）
+    var speakText: String?
+    var prompt: String?
+
+    // pattern（找规律：序列 + 选项）
+    var seq: [String]?
+
+    // blend（拼一拼：声母+韵母）
+    var parts: [String]?
+
+    // arith（加减法：op + 数量即等式）
+    var op: String?
+    var arithOptions: [Int]?
+
     // quiz
     var question: String?
     var options: [QuizOption]?
@@ -37,10 +56,12 @@ struct Step: Codable, Equatable, Identifiable {
     var hint: String?
     var praise: String?
 
-    // count（点数）
+    // count（点数：duckIcon 为本关情境道具，backdrop 池塘/夜空/白天场景）
     var duckIcon: String?
     var count: Int?
     var countOptions: [Int]?
+    var backdrop: String?   // pond | sky | night | grass
+    var unit: String?       // 只 / 颗 / 朵 / 个 / 辆 / 枚
 
     // compare（比多少）
     var leftIcon: String?

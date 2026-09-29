@@ -10,6 +10,9 @@ struct ProgressSnapshot: Codable, Equatable {
     var collectedScience: [String] = []
     var stickers: [String] = []
     var learnedHanzi: [String] = []
+    var learnedPinyin: [String] = []
+    var learnedEnglish: [String] = []
+    var learnedAstro: [String] = []
     var dailyDone: [String: Int] = [:]           // "2026-09-29|cn": 2
     var streak: Int = 0
     var lastPlayDay: String?
@@ -158,6 +161,27 @@ final class ProgressStore: ObservableObject {
     func learnHanzi(_ char: String) {
         if !snapshot.learnedHanzi.contains(char) {
             snapshot.learnedHanzi.append(char)
+            save()
+        }
+    }
+
+    func learnPinyin(_ letter: String) {
+        if !snapshot.learnedPinyin.contains(letter) {
+            snapshot.learnedPinyin.append(letter)
+            save()
+        }
+    }
+
+    func learnEnglish(_ word: String) {
+        if !snapshot.learnedEnglish.contains(word) {
+            snapshot.learnedEnglish.append(word)
+            save()
+        }
+    }
+
+    func learnAstro(_ name: String) {
+        if !snapshot.learnedAstro.contains(name) {
+            snapshot.learnedAstro.append(name)
             save()
         }
     }

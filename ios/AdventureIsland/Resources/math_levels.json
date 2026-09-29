@@ -4,109 +4,651 @@
   "guide": "fox",
   "levels": [
     {
-      "id": "math-0", "title": "第 1 关 数一数",
+      "id": "math-0",
+      "title": "第 1 关 池塘数鸭",
       "subtitle": "3 以内点数",
       "steps": [
-        { "id": "math-0-c", "kind": "count", "question": "池塘里有几只小鸭？（点一点，数数看）",
-          "duckIcon": "duck", "count": 3, "countOptions": [2, 3, 4] },
-        { "id": "math-0-cmp", "kind": "compare", "question": "哪边的水果更多？",
-          "leftIcon": "apple", "leftCount": 3, "rightIcon": "banana", "rightCount": 1,
-          "compareOptions": [ { "key": "left", "label": "苹果多" }, { "key": "right", "label": "香蕉多" }, { "key": "same", "label": "一样多" } ],
-          "answerKey": "left", "hint": "一一对应比一比：🍎→🍌", "praise": "答对啦，苹果更多！" }
+        {
+          "id": "math-0-c",
+          "kind": "count",
+          "question": "池塘里有几只小鸭（点一点，数数看）",
+          "duckIcon": "duck",
+          "count": 3,
+          "countOptions": [
+            2,
+            3,
+            4
+          ],
+          "backdrop": "pond",
+          "unit": "只"
+        },
+        {
+          "id": "math-0-cmp",
+          "kind": "compare",
+          "question": "哪边的水果更多？",
+          "leftIcon": "apple",
+          "leftCount": 3,
+          "rightIcon": "banana",
+          "rightCount": 1,
+          "compareOptions": [
+            {
+              "key": "left",
+              "label": "苹果多"
+            },
+            {
+              "key": "right",
+              "label": "香蕉多"
+            },
+            {
+              "key": "same",
+              "label": "一样多"
+            }
+          ],
+          "answerKey": "left",
+          "hint": "一个对着一个，比一比",
+          "praise": "苹果多，答对啦！"
+        }
       ]
     },
     {
-      "id": "math-1", "title": "第 2 关 数一数",
+      "id": "math-1",
+      "title": "第 2 关 糖果店",
       "subtitle": "4 以内点数",
       "steps": [
-        { "id": "math-1-c", "kind": "count", "question": "池塘里有几只小鸭？",
-          "duckIcon": "duck", "count": 4, "countOptions": [3, 4, 5] },
-        { "id": "math-1-cmp", "kind": "compare", "question": "哪边更多？",
-          "leftIcon": "apple", "leftCount": 4, "rightIcon": "banana", "rightCount": 2,
-          "compareOptions": [ { "key": "left", "label": "苹果多" }, { "key": "right", "label": "香蕉多" }, { "key": "same", "label": "一样多" } ],
-          "answerKey": "left", "hint": "把苹果和香蕉一只一只配对", "praise": "苹果 4 个，香蕉 2 个，苹果多！" }
+        {
+          "id": "math-1-c",
+          "kind": "count",
+          "question": "盘子里有几颗糖（点一点，数数看）",
+          "duckIcon": "candy",
+          "count": 4,
+          "countOptions": [
+            3,
+            4,
+            5
+          ],
+          "backdrop": "grass",
+          "unit": "颗"
+        },
+        {
+          "id": "math-1-cmp",
+          "kind": "compare",
+          "question": "哪边更多？",
+          "leftIcon": "candy",
+          "leftCount": 4,
+          "rightIcon": "cake",
+          "rightCount": 2,
+          "compareOptions": [
+            {
+              "key": "left",
+              "label": "糖多"
+            },
+            {
+              "key": "right",
+              "label": "蛋糕多"
+            },
+            {
+              "key": "same",
+              "label": "一样多"
+            }
+          ],
+          "answerKey": "left",
+          "hint": "一个对着一个，比一比",
+          "praise": "糖多，答对啦！"
+        }
       ]
     },
     {
-      "id": "math-2", "title": "第 3 关 数一数",
+      "id": "math-2",
+      "title": "第 3 关 果园丰收",
       "subtitle": "5 以内点数",
       "steps": [
-        { "id": "math-2-c", "kind": "count", "question": "池塘里有几只小鸭？",
-          "duckIcon": "duck", "count": 5, "countOptions": [4, 5, 6] },
-        { "id": "math-2-cmp", "kind": "compare", "question": "哪边更多？",
-          "leftIcon": "apple", "leftCount": 3, "rightIcon": "banana", "rightCount": 5,
-          "compareOptions": [ { "key": "left", "label": "苹果多" }, { "key": "right", "label": "香蕉多" }, { "key": "same", "label": "一样多" } ],
-          "answerKey": "right", "hint": "数一数两边各有几个", "praise": "香蕉有 5 个，香蕉多！" }
+        {
+          "id": "math-2-c",
+          "kind": "count",
+          "question": "果园里摘了几个苹果（点一点，数数看）",
+          "duckIcon": "apple",
+          "count": 5,
+          "countOptions": [
+            4,
+            5,
+            6
+          ],
+          "backdrop": "grass",
+          "unit": "个"
+        },
+        {
+          "id": "math-2-cmp",
+          "kind": "compare",
+          "question": "哪边的水果更多？",
+          "leftIcon": "apple",
+          "leftCount": 3,
+          "rightIcon": "banana",
+          "rightCount": 5,
+          "compareOptions": [
+            {
+              "key": "left",
+              "label": "苹果多"
+            },
+            {
+              "key": "right",
+              "label": "香蕉多"
+            },
+            {
+              "key": "same",
+              "label": "一样多"
+            }
+          ],
+          "answerKey": "right",
+          "hint": "一个对着一个，比一比",
+          "praise": "香蕉多，答对啦！"
+        }
       ]
     },
     {
-      "id": "math-3", "title": "第 4 关 比一比",
+      "id": "math-3",
+      "title": "第 4 关 气球派对",
       "subtitle": "一样多",
       "steps": [
-        { "id": "math-3-cmp", "kind": "compare", "question": "这次两边一样多吗？",
-          "leftIcon": "apple", "leftCount": 4, "rightIcon": "banana", "rightCount": 4,
-          "compareOptions": [ { "key": "left", "label": "苹果多" }, { "key": "right", "label": "香蕉多" }, { "key": "same", "label": "一样多" } ],
-          "answerKey": "same", "hint": "4 个对 4 个，正好配对", "praise": "火眼金睛！一样多！" }
+        {
+          "id": "math-3-cmp",
+          "kind": "compare",
+          "question": "两边气球哪边多？",
+          "leftIcon": "balloon",
+          "leftCount": 4,
+          "rightIcon": "balloon",
+          "rightCount": 4,
+          "compareOptions": [
+            {
+              "key": "left",
+              "label": "左边多"
+            },
+            {
+              "key": "right",
+              "label": "右边多"
+            },
+            {
+              "key": "same",
+              "label": "一样多"
+            }
+          ],
+          "answerKey": "same",
+          "hint": "一个对着一个，比一比",
+          "praise": "火眼金睛！一样多！"
+        }
       ]
     },
     {
-      "id": "math-4", "title": "第 5 关 数一数",
+      "id": "math-4",
+      "title": "第 5 关 夜空数星",
       "subtitle": "6 以内点数",
       "steps": [
-        { "id": "math-4-c", "kind": "count", "question": "池塘里有几只小鸭？",
-          "duckIcon": "duck", "count": 6, "countOptions": [5, 6, 7] },
-        { "id": "math-4-cmp", "kind": "compare", "question": "哪边更多？",
-          "leftIcon": "apple", "leftCount": 6, "rightIcon": "banana", "rightCount": 4,
-          "compareOptions": [ { "key": "left", "label": "苹果多" }, { "key": "right", "label": "香蕉多" }, { "key": "same", "label": "一样多" } ],
-          "answerKey": "left", "hint": "6 比 4 多还是少？", "praise": "6 个比 4 个多，答对啦！" }
+        {
+          "id": "math-4-c",
+          "kind": "count",
+          "question": "夜空里有几颗星星（点一点，数数看）",
+          "duckIcon": "star",
+          "count": 6,
+          "countOptions": [
+            5,
+            6,
+            7
+          ],
+          "backdrop": "night",
+          "unit": "颗"
+        },
+        {
+          "id": "math-4-cmp",
+          "kind": "compare",
+          "question": "星星和月亮哪边多？",
+          "leftIcon": "star",
+          "leftCount": 6,
+          "rightIcon": "moon",
+          "rightCount": 4,
+          "compareOptions": [
+            {
+              "key": "left",
+              "label": "星星多"
+            },
+            {
+              "key": "right",
+              "label": "月亮多"
+            },
+            {
+              "key": "same",
+              "label": "一样多"
+            }
+          ],
+          "answerKey": "left",
+          "hint": "一个对着一个，比一比",
+          "praise": "星星多，答对啦！"
+        }
       ]
     },
     {
-      "id": "math-5", "title": "第 6 关 数一数",
+      "id": "math-5",
+      "title": "第 6 关 小火车",
       "subtitle": "7 以内点数",
       "steps": [
-        { "id": "math-5-c", "kind": "count", "question": "池塘里有几只小鸭？",
-          "duckIcon": "duck", "count": 7, "countOptions": [6, 7, 8] }
+        {
+          "id": "math-5-c",
+          "kind": "count",
+          "question": "轨道上有几辆小火车（点一点，数数看）",
+          "duckIcon": "train",
+          "count": 7,
+          "countOptions": [
+            6,
+            7,
+            8
+          ],
+          "backdrop": "grass",
+          "unit": "辆"
+        }
       ]
     },
     {
-      "id": "math-6", "title": "第 7 关 数一数",
+      "id": "math-6",
+      "title": "第 7 关 花园蜜蜂",
       "subtitle": "8 以内点数",
       "steps": [
-        { "id": "math-6-c", "kind": "count", "question": "池塘里有几只小鸭？",
-          "duckIcon": "duck", "count": 8, "countOptions": [7, 8, 9] },
-        { "id": "math-6-cmp", "kind": "compare", "question": "哪边更多？",
-          "leftIcon": "apple", "leftCount": 5, "rightIcon": "banana", "rightCount": 8,
-          "compareOptions": [ { "key": "left", "label": "苹果多" }, { "key": "right", "label": "香蕉多" }, { "key": "same", "label": "一样多" } ],
-          "answerKey": "right", "hint": "逐个数一数", "praise": "8 个比 5 个多，真棒！" }
+        {
+          "id": "math-6-c",
+          "kind": "count",
+          "question": "花园里开了几朵花（点一点，数数看）",
+          "duckIcon": "flower",
+          "count": 8,
+          "countOptions": [
+            7,
+            8,
+            9
+          ],
+          "backdrop": "grass",
+          "unit": "朵"
+        },
+        {
+          "id": "math-6-cmp",
+          "kind": "compare",
+          "question": "叶子和花哪边多？",
+          "leftIcon": "leaf",
+          "leftCount": 5,
+          "rightIcon": "flower",
+          "rightCount": 8,
+          "compareOptions": [
+            {
+              "key": "left",
+              "label": "叶子多"
+            },
+            {
+              "key": "right",
+              "label": "花多"
+            },
+            {
+              "key": "same",
+              "label": "一样多"
+            }
+          ],
+          "answerKey": "right",
+          "hint": "一个对着一个，比一比",
+          "praise": "花多，答对啦！"
+        }
       ]
     },
     {
-      "id": "math-7", "title": "第 8 关 数一数",
+      "id": "math-7",
+      "title": "第 8 关 爱心礼盒",
       "subtitle": "9 以内点数",
       "steps": [
-        { "id": "math-7-c", "kind": "count", "question": "池塘里有几只小鸭？",
-          "duckIcon": "duck", "count": 9, "countOptions": [8, 9, 10] }
+        {
+          "id": "math-7-c",
+          "kind": "count",
+          "question": "礼盒里有几颗爱心糖（点一点，数数看）",
+          "duckIcon": "heart",
+          "count": 9,
+          "countOptions": [
+            8,
+            9,
+            10
+          ],
+          "backdrop": "grass",
+          "unit": "颗"
+        }
       ]
     },
     {
-      "id": "math-8", "title": "第 9 关 数一数",
+      "id": "math-8",
+      "title": "第 9 关 宝藏金币",
       "subtitle": "10 以内点数",
       "steps": [
-        { "id": "math-8-c", "kind": "count", "question": "好多小鸭！一共几只？",
-          "duckIcon": "duck", "count": 10, "countOptions": [8, 9, 10] }
+        {
+          "id": "math-8-c",
+          "kind": "count",
+          "question": "宝箱里有几枚金币（点一点，数数看）",
+          "duckIcon": "coin",
+          "count": 10,
+          "countOptions": [
+            8,
+            9,
+            10
+          ],
+          "backdrop": "night",
+          "unit": "枚"
+        },
+        {
+          "id": "math-8-p1",
+          "kind": "pattern",
+          "seq": [
+            "star",
+            "moon",
+            "star"
+          ],
+          "question": "找规律：下一个是哪个？",
+          "options": [
+            {
+              "icon": "moon"
+            },
+            {
+              "icon": "star"
+            },
+            {
+              "icon": "candy"
+            }
+          ],
+          "answer": 0,
+          "hint": "先读一读前面几个，找一找谁在轮流出现",
+          "praise": "规律找对啦，小侦探！"
+        }
       ]
     },
     {
-      "id": "math-9", "title": "第 10 关 挑战",
-      "subtitle": "比大小",
+      "id": "math-9",
+      "title": "第 10 关 比大小",
+      "subtitle": "谁是冠军",
       "steps": [
-        { "id": "math-9-q1", "kind": "quiz", "question": "哪个数字最大？",
-          "options": [ { "text": "5" }, { "text": "9" }, { "text": "3" } ],
-          "answer": 1, "hint": "从 1 数到 10，谁排在最后？", "praise": "9 最大，答对啦！" },
-        { "id": "math-9-q2", "kind": "quiz", "question": "哪个数字最小？",
-          "options": [ { "text": "2" }, { "text": "7" }, { "text": "10" } ],
-          "answer": 0, "hint": "越早数到的越小哦", "praise": "思维小达人，通关！" }
+        {
+          "id": "math-9-q1",
+          "kind": "quiz",
+          "question": "哪个数字最大？",
+          "options": [
+            {
+              "text": "5"
+            },
+            {
+              "text": "9"
+            },
+            {
+              "text": "3"
+            }
+          ],
+          "answer": 1,
+          "hint": "从 1 数到 10，谁排在最后？",
+          "praise": "9 最大，答对啦！"
+        },
+        {
+          "id": "math-9-q2",
+          "kind": "quiz",
+          "question": "哪个数字最小？",
+          "options": [
+            {
+              "text": "2"
+            },
+            {
+              "text": "7"
+            },
+            {
+              "text": "10"
+            }
+          ],
+          "answer": 0,
+          "hint": "越早数到的越小哦",
+          "praise": "思维小达人，通关！"
+        }
+      ]
+    },
+    {
+      "id": "math-10",
+      "title": "第 11 关 糖果加法",
+      "subtitle": "合起来",
+      "steps": [
+        {
+          "id": "math-10-a+11",
+          "kind": "arith",
+          "op": "+",
+          "leftIcon": "candy",
+          "leftCount": 1,
+          "rightCount": 1,
+          "unit": "颗",
+          "question": "1 颗糖加 1 颗糖，一共有几颗？",
+          "arithOptions": [
+            1,
+            2,
+            3
+          ],
+          "hint": "指着图一个一个数",
+          "praise": "算对啦，等于 2！"
+        },
+        {
+          "id": "math-10-a+21",
+          "kind": "arith",
+          "op": "+",
+          "leftIcon": "candy",
+          "leftCount": 2,
+          "rightCount": 1,
+          "unit": "颗",
+          "question": "2 颗糖加 1 颗糖，一共有几颗？",
+          "arithOptions": [
+            2,
+            3,
+            4
+          ],
+          "hint": "指着图一个一个数",
+          "praise": "算对啦，等于 3！"
+        }
+      ]
+    },
+    {
+      "id": "math-11",
+      "title": "第 12 关 苹果加法",
+      "subtitle": "5 以内",
+      "steps": [
+        {
+          "id": "math-11-a+22",
+          "kind": "arith",
+          "op": "+",
+          "leftIcon": "apple",
+          "leftCount": 2,
+          "rightCount": 2,
+          "unit": "个",
+          "question": "2 个苹果加 2 个苹果，一共有几个？",
+          "arithOptions": [
+            3,
+            4,
+            5
+          ],
+          "hint": "指着图一个一个数",
+          "praise": "算对啦，等于 4！"
+        },
+        {
+          "id": "math-11-a+32",
+          "kind": "arith",
+          "op": "+",
+          "leftIcon": "apple",
+          "leftCount": 3,
+          "rightCount": 2,
+          "unit": "个",
+          "question": "3 个苹果加 2 个苹果，一共有几个？",
+          "arithOptions": [
+            4,
+            5,
+            6
+          ],
+          "hint": "指着图一个一个数",
+          "praise": "算对啦，等于 5！"
+        }
+      ]
+    },
+    {
+      "id": "math-12",
+      "title": "第 13 关 气球飞走了",
+      "subtitle": "减法初识",
+      "steps": [
+        {
+          "id": "math-12-a-31",
+          "kind": "arith",
+          "op": "-",
+          "leftIcon": "balloon",
+          "leftCount": 3,
+          "rightCount": 1,
+          "unit": "个",
+          "question": "3 个气球飞走 1 个，还剩几个？",
+          "arithOptions": [
+            1,
+            2,
+            3
+          ],
+          "hint": "划掉的不算哦",
+          "praise": "算对啦，等于 2！"
+        },
+        {
+          "id": "math-12-a-42",
+          "kind": "arith",
+          "op": "-",
+          "leftIcon": "balloon",
+          "leftCount": 4,
+          "rightCount": 2,
+          "unit": "个",
+          "question": "4 个气球飞走 2 个，还剩几个？",
+          "arithOptions": [
+            1,
+            2,
+            3
+          ],
+          "hint": "划掉的不算哦",
+          "praise": "算对啦，等于 2！"
+        }
+      ]
+    },
+    {
+      "id": "math-13",
+      "title": "第 14 关 星星回家",
+      "subtitle": "5 以内减法",
+      "steps": [
+        {
+          "id": "math-13-a-52",
+          "kind": "arith",
+          "op": "-",
+          "leftIcon": "star",
+          "leftCount": 5,
+          "rightCount": 2,
+          "unit": "颗",
+          "question": "5 颗星星回家 2 颗，还剩几颗？",
+          "arithOptions": [
+            2,
+            3,
+            4
+          ],
+          "hint": "划掉的不算哦",
+          "praise": "算对啦，等于 3！"
+        },
+        {
+          "id": "math-13-a-53",
+          "kind": "arith",
+          "op": "-",
+          "leftIcon": "star",
+          "leftCount": 5,
+          "rightCount": 3,
+          "unit": "颗",
+          "question": "5 颗星星回家 3 颗，还剩几颗？",
+          "arithOptions": [
+            1,
+            2,
+            3
+          ],
+          "hint": "划掉的不算哦",
+          "praise": "算对啦，等于 2！"
+        }
+      ]
+    },
+    {
+      "id": "math-14",
+      "title": "第 15 关 思维大挑战",
+      "subtitle": "加减 + 找规律",
+      "steps": [
+        {
+          "id": "math-14-a+44",
+          "kind": "arith",
+          "op": "+",
+          "leftIcon": "star",
+          "leftCount": 4,
+          "rightCount": 4,
+          "unit": "颗",
+          "question": "4 颗星星加 4 颗星星，一共几颗？",
+          "arithOptions": [
+            7,
+            8,
+            9
+          ],
+          "hint": "指着图一个一个数",
+          "praise": "算对啦，等于 8！"
+        },
+        {
+          "id": "math-14-a-93",
+          "kind": "arith",
+          "op": "-",
+          "leftIcon": "duck",
+          "leftCount": 9,
+          "rightCount": 3,
+          "unit": "只",
+          "question": "9 只小鸭游走 3 只，还剩几只？",
+          "arithOptions": [
+            5,
+            6,
+            7
+          ],
+          "hint": "划掉的不算哦",
+          "praise": "算对啦，等于 6！"
+        },
+        {
+          "id": "math-14-a+63",
+          "kind": "arith",
+          "op": "+",
+          "leftIcon": "candy",
+          "leftCount": 6,
+          "rightCount": 3,
+          "unit": "颗",
+          "question": "6 颗糖加 3 颗糖，一共几颗？",
+          "arithOptions": [
+            8,
+            9,
+            10
+          ],
+          "hint": "指着图一个一个数",
+          "praise": "算对啦，等于 9！"
+        },
+        {
+          "id": "math-14-p2",
+          "kind": "pattern",
+          "seq": [
+            "sun",
+            "moon",
+            "star",
+            "sun",
+            "moon"
+          ],
+          "question": "找规律：下一个是哪个？",
+          "options": [
+            {
+              "icon": "moon"
+            },
+            {
+              "icon": "sun"
+            },
+            {
+              "icon": "star"
+            }
+          ],
+          "answer": 2,
+          "hint": "先读一读前面几个，找一找谁在轮流出现",
+          "praise": "规律找对啦，小侦探！"
+        }
       ]
     }
   ]

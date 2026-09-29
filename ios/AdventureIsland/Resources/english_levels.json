@@ -1,0 +1,741 @@
+{
+  "subject": "english",
+  "title": "英语王国",
+  "guide": "robot",
+  "levels": [
+    {
+      "id": "en-0",
+      "title": "Level 1 Letters",
+      "subtitle": "Aa",
+      "steps": [
+        {
+          "id": "en-0-t",
+          "kind": "letter",
+          "letters": [
+            "A"
+          ],
+          "display": "Aa",
+          "examples": [
+            {
+              "icon": "apple",
+              "text": "Apple 苹果",
+              "say": "Apple"
+            }
+          ],
+          "question": "Learn letter Aa"
+        },
+        {
+          "id": "en-0-l",
+          "kind": "listen",
+          "prompt": "Aa",
+          "speakText": "A",
+          "question": "Find: which one is Aa ?",
+          "options": [
+            {
+              "text": "Bb"
+            },
+            {
+              "text": "Cc"
+            },
+            {
+              "text": "Aa"
+            }
+          ],
+          "answer": 2,
+          "hint": "Apple 苹果",
+          "praise": "Yes! Aa!"
+        },
+        {
+          "id": "en-0-q",
+          "kind": "quiz",
+          "question": "Which picture starts with Aa?",
+          "options": [
+            {
+              "icon": "duck"
+            },
+            {
+              "icon": "apple"
+            },
+            {
+              "icon": "sun"
+            }
+          ],
+          "answer": 1,
+          "hint": "Apple 苹果",
+          "praise": "Great job!"
+        }
+      ]
+    },
+    {
+      "id": "en-1",
+      "title": "Level 2 Letters",
+      "subtitle": "Bb",
+      "steps": [
+        {
+          "id": "en-1-t",
+          "kind": "letter",
+          "letters": [
+            "B"
+          ],
+          "display": "Bb",
+          "examples": [
+            {
+              "icon": "banana",
+              "text": "Banana 香蕉",
+              "say": "Banana"
+            }
+          ],
+          "question": "Learn letter Bb"
+        },
+        {
+          "id": "en-1-l",
+          "kind": "listen",
+          "prompt": "Bb",
+          "speakText": "B",
+          "question": "Find: which one is Bb ?",
+          "options": [
+            {
+              "text": "Cc"
+            },
+            {
+              "text": "Dd"
+            },
+            {
+              "text": "Bb"
+            }
+          ],
+          "answer": 2,
+          "hint": "Banana 香蕉",
+          "praise": "Yes! Bb!"
+        },
+        {
+          "id": "en-1-q",
+          "kind": "quiz",
+          "question": "Which picture starts with Bb?",
+          "options": [
+            {
+              "icon": "sun"
+            },
+            {
+              "icon": "banana"
+            },
+            {
+              "icon": "moon"
+            }
+          ],
+          "answer": 1,
+          "hint": "Banana 香蕉",
+          "praise": "Great job!"
+        }
+      ]
+    },
+    {
+      "id": "en-2",
+      "title": "Level 3 Letters",
+      "subtitle": "Cc",
+      "steps": [
+        {
+          "id": "en-2-t",
+          "kind": "letter",
+          "letters": [
+            "C"
+          ],
+          "display": "Cc",
+          "examples": [
+            {
+              "icon": "cake",
+              "text": "Cake 蛋糕",
+              "say": "Cake"
+            }
+          ],
+          "question": "Learn letter Cc"
+        },
+        {
+          "id": "en-2-l",
+          "kind": "listen",
+          "prompt": "Cc",
+          "speakText": "C",
+          "question": "Find: which one is Cc ?",
+          "options": [
+            {
+              "text": "Dd"
+            },
+            {
+              "text": "Ss"
+            },
+            {
+              "text": "Cc"
+            }
+          ],
+          "answer": 2,
+          "hint": "Cake 蛋糕",
+          "praise": "Yes! Cc!"
+        },
+        {
+          "id": "en-2-q",
+          "kind": "quiz",
+          "question": "Which picture starts with Cc?",
+          "options": [
+            {
+              "icon": "moon"
+            },
+            {
+              "icon": "cake"
+            },
+            {
+              "icon": "flower"
+            }
+          ],
+          "answer": 1,
+          "hint": "Cake 蛋糕",
+          "praise": "Great job!"
+        }
+      ]
+    },
+    {
+      "id": "en-3",
+      "title": "Level 4 Letters",
+      "subtitle": "Dd",
+      "steps": [
+        {
+          "id": "en-3-t",
+          "kind": "letter",
+          "letters": [
+            "D"
+          ],
+          "display": "Dd",
+          "examples": [
+            {
+              "icon": "duck",
+              "text": "Duck 小鸭",
+              "say": "Duck"
+            }
+          ],
+          "question": "Learn letter Dd"
+        },
+        {
+          "id": "en-3-l",
+          "kind": "listen",
+          "prompt": "Dd",
+          "speakText": "D",
+          "question": "Find: which one is Dd ?",
+          "options": [
+            {
+              "text": "Ss"
+            },
+            {
+              "text": "Aa"
+            },
+            {
+              "text": "Dd"
+            }
+          ],
+          "answer": 2,
+          "hint": "Duck 小鸭",
+          "praise": "Yes! Dd!"
+        },
+        {
+          "id": "en-3-q",
+          "kind": "quiz",
+          "question": "Which picture starts with Dd?",
+          "options": [
+            {
+              "icon": "flower"
+            },
+            {
+              "icon": "duck"
+            },
+            {
+              "icon": "leaf"
+            }
+          ],
+          "answer": 1,
+          "hint": "Duck 小鸭",
+          "praise": "Great job!"
+        }
+      ]
+    },
+    {
+      "id": "en-4",
+      "title": "Level 5 Letters",
+      "subtitle": "Ss",
+      "steps": [
+        {
+          "id": "en-4-t",
+          "kind": "letter",
+          "letters": [
+            "S"
+          ],
+          "display": "Ss",
+          "examples": [
+            {
+              "icon": "sun",
+              "text": "Sun 太阳",
+              "say": "Sun"
+            }
+          ],
+          "question": "Learn letter Ss"
+        },
+        {
+          "id": "en-4-l",
+          "kind": "listen",
+          "prompt": "Ss",
+          "speakText": "S",
+          "question": "Find: which one is Ss ?",
+          "options": [
+            {
+              "text": "Aa"
+            },
+            {
+              "text": "Bb"
+            },
+            {
+              "text": "Ss"
+            }
+          ],
+          "answer": 2,
+          "hint": "Sun 太阳",
+          "praise": "Yes! Ss!"
+        },
+        {
+          "id": "en-4-q",
+          "kind": "quiz",
+          "question": "Which picture starts with Ss?",
+          "options": [
+            {
+              "icon": "leaf"
+            },
+            {
+              "icon": "sun"
+            },
+            {
+              "icon": "key"
+            }
+          ],
+          "answer": 1,
+          "hint": "Sun 太阳",
+          "praise": "Great job!"
+        }
+      ]
+    },
+    {
+      "id": "en-5",
+      "title": "Level 6 Letters",
+      "subtitle": "Mm",
+      "steps": [
+        {
+          "id": "en-5-t",
+          "kind": "letter",
+          "letters": [
+            "M"
+          ],
+          "display": "Mm",
+          "examples": [
+            {
+              "icon": "moon",
+              "text": "Moon 月亮",
+              "say": "Moon"
+            }
+          ],
+          "question": "Learn letter Mm"
+        },
+        {
+          "id": "en-5-l",
+          "kind": "listen",
+          "prompt": "Mm",
+          "speakText": "M",
+          "question": "Find: which one is Mm ?",
+          "options": [
+            {
+              "text": "Bb"
+            },
+            {
+              "text": "Cc"
+            },
+            {
+              "text": "Mm"
+            }
+          ],
+          "answer": 2,
+          "hint": "Moon 月亮",
+          "praise": "Yes! Mm!"
+        },
+        {
+          "id": "en-5-q",
+          "kind": "quiz",
+          "question": "Which picture starts with Mm?",
+          "options": [
+            {
+              "icon": "key"
+            },
+            {
+              "icon": "moon"
+            },
+            {
+              "icon": "apple"
+            }
+          ],
+          "answer": 1,
+          "hint": "Moon 月亮",
+          "praise": "Great job!"
+        }
+      ]
+    },
+    {
+      "id": "en-6",
+      "title": "Level 7 Letters",
+      "subtitle": "Ff",
+      "steps": [
+        {
+          "id": "en-6-t",
+          "kind": "letter",
+          "letters": [
+            "F"
+          ],
+          "display": "Ff",
+          "examples": [
+            {
+              "icon": "flower",
+              "text": "Flower 花",
+              "say": "Flower"
+            }
+          ],
+          "question": "Learn letter Ff"
+        },
+        {
+          "id": "en-6-l",
+          "kind": "listen",
+          "prompt": "Ff",
+          "speakText": "F",
+          "question": "Find: which one is Ff ?",
+          "options": [
+            {
+              "text": "Cc"
+            },
+            {
+              "text": "Dd"
+            },
+            {
+              "text": "Ff"
+            }
+          ],
+          "answer": 2,
+          "hint": "Flower 花",
+          "praise": "Yes! Ff!"
+        },
+        {
+          "id": "en-6-q",
+          "kind": "quiz",
+          "question": "Which picture starts with Ff?",
+          "options": [
+            {
+              "icon": "apple"
+            },
+            {
+              "icon": "flower"
+            },
+            {
+              "icon": "banana"
+            }
+          ],
+          "answer": 1,
+          "hint": "Flower 花",
+          "praise": "Great job!"
+        }
+      ]
+    },
+    {
+      "id": "en-7",
+      "title": "Level 8 Letters",
+      "subtitle": "Ll",
+      "steps": [
+        {
+          "id": "en-7-t",
+          "kind": "letter",
+          "letters": [
+            "L"
+          ],
+          "display": "Ll",
+          "examples": [
+            {
+              "icon": "leaf",
+              "text": "Leaf 叶子",
+              "say": "Leaf"
+            }
+          ],
+          "question": "Learn letter Ll"
+        },
+        {
+          "id": "en-7-l",
+          "kind": "listen",
+          "prompt": "Ll",
+          "speakText": "L",
+          "question": "Find: which one is Ll ?",
+          "options": [
+            {
+              "text": "Dd"
+            },
+            {
+              "text": "Aa"
+            },
+            {
+              "text": "Ll"
+            }
+          ],
+          "answer": 2,
+          "hint": "Leaf 叶子",
+          "praise": "Yes! Ll!"
+        },
+        {
+          "id": "en-7-q",
+          "kind": "quiz",
+          "question": "Which picture starts with Ll?",
+          "options": [
+            {
+              "icon": "banana"
+            },
+            {
+              "icon": "leaf"
+            },
+            {
+              "icon": "cake"
+            }
+          ],
+          "answer": 1,
+          "hint": "Leaf 叶子",
+          "praise": "Great job!"
+        }
+      ]
+    },
+    {
+      "id": "en-8",
+      "title": "Level 9 Letters",
+      "subtitle": "Rr",
+      "steps": [
+        {
+          "id": "en-8-t",
+          "kind": "letter",
+          "letters": [
+            "R"
+          ],
+          "display": "Rr",
+          "examples": [
+            {
+              "icon": "rainbow",
+              "text": "Rainbow 彩虹",
+              "say": "Rainbow"
+            }
+          ],
+          "question": "Learn letter Rr"
+        },
+        {
+          "id": "en-8-q",
+          "kind": "quiz",
+          "question": "Which one is Rainbow?",
+          "options": [
+            {
+              "icon": "book"
+            },
+            {
+              "icon": "rainbow"
+            },
+            {
+              "icon": "clock"
+            }
+          ],
+          "answer": 1,
+          "hint": "Rainbow 彩虹",
+          "praise": "Nice!"
+        }
+      ]
+    },
+    {
+      "id": "en-9",
+      "title": "Level 10 Letters",
+      "subtitle": "Gg",
+      "steps": [
+        {
+          "id": "en-9-t",
+          "kind": "letter",
+          "letters": [
+            "G"
+          ],
+          "display": "Gg",
+          "examples": [
+            {
+              "icon": "gift",
+              "text": "Gift 礼物",
+              "say": "Gift"
+            }
+          ],
+          "question": "Learn letter Gg"
+        },
+        {
+          "id": "en-9-q",
+          "kind": "quiz",
+          "question": "Which one is Gift?",
+          "options": [
+            {
+              "icon": "book"
+            },
+            {
+              "icon": "gift"
+            },
+            {
+              "icon": "clock"
+            }
+          ],
+          "answer": 1,
+          "hint": "Gift 礼物",
+          "praise": "Nice!"
+        }
+      ]
+    },
+    {
+      "id": "en-10",
+      "title": "Level 11 Words",
+      "subtitle": "图词配对",
+      "steps": [
+        {
+          "id": "en-10-q1",
+          "kind": "quiz",
+          "question": "Which one is the sun? 太阳是哪一个？",
+          "options": [
+            {
+              "icon": "sun",
+              "text": "sun"
+            },
+            {
+              "icon": "moon",
+              "text": "moon"
+            },
+            {
+              "icon": "star",
+              "text": "starface"
+            }
+          ],
+          "answer": 0,
+          "hint": "Sun 太阳",
+          "praise": "Great! It's the sun!"
+        },
+        {
+          "id": "en-10-q2",
+          "kind": "quiz",
+          "question": "Which one is the duck? 小鸭是哪一个？",
+          "options": [
+            {
+              "icon": "heart",
+              "text": "heart"
+            },
+            {
+              "icon": "duck",
+              "text": "duck"
+            },
+            {
+              "icon": "leaf",
+              "text": "leaf"
+            }
+          ],
+          "answer": 1,
+          "hint": "Duck 小鸭",
+          "praise": "Great! It's a duck!"
+        },
+        {
+          "id": "en-10-q3",
+          "kind": "quiz",
+          "question": "Which one is the apple? 苹果是哪一个？",
+          "options": [
+            {
+              "icon": "banana",
+              "text": "banana"
+            },
+            {
+              "icon": "cake",
+              "text": "cake"
+            },
+            {
+              "icon": "apple",
+              "text": "apple"
+            }
+          ],
+          "answer": 2,
+          "hint": "Apple 苹果",
+          "praise": "Yes! Apple!"
+        }
+      ]
+    },
+    {
+      "id": "en-11",
+      "title": "Level 12 Review",
+      "subtitle": "单词复习",
+      "steps": [
+        {
+          "id": "en-11-q1",
+          "kind": "quiz",
+          "question": "Which one is the moon? 月亮是哪一个？",
+          "options": [
+            {
+              "icon": "moon",
+              "text": "moon"
+            },
+            {
+              "icon": "sun",
+              "text": "sun"
+            },
+            {
+              "icon": "star",
+              "text": "starface"
+            }
+          ],
+          "answer": 0,
+          "hint": "Moon 月亮",
+          "praise": "Yes! Moon!"
+        },
+        {
+          "id": "en-11-q2",
+          "kind": "quiz",
+          "question": "Which one is the flower? 花是哪一个？",
+          "options": [
+            {
+              "icon": "leaf",
+              "text": "leaf"
+            },
+            {
+              "icon": "flower",
+              "text": "flower"
+            },
+            {
+              "icon": "tree",
+              "text": "tree"
+            }
+          ],
+          "answer": 1,
+          "hint": "Flower 花",
+          "praise": "Yes! Flower!"
+        },
+        {
+          "id": "en-11-q3",
+          "kind": "quiz",
+          "question": "Which one is the cake? 蛋糕是哪一个？",
+          "options": [
+            {
+              "icon": "gift",
+              "text": "gift"
+            },
+            {
+              "icon": "key",
+              "text": "key"
+            },
+            {
+              "icon": "cake",
+              "text": "cake"
+            }
+          ],
+          "answer": 2,
+          "hint": "Cake 蛋糕",
+          "praise": "Super star! 全部通关!"
+        }
+      ]
+    }
+  ]
+}
