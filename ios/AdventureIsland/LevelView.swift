@@ -411,13 +411,22 @@ struct QuizStepView: View {
 
     @ViewBuilder
     private func optionContent(_ opt: QuizOption) -> some View {
-        if let text = opt.text {
+        if let icon = opt.icon {
+            VStack(spacing: 4) {
+                IconView(name: icon, size: 100)
+                if let text = opt.text {
+                    Text(text)
+                        .font(.kidHead(16))
+                        .foregroundColor(.inkSoft)
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.7)
+                }
+            }
+            .frame(width: 165, height: 165)
+        } else if let text = opt.text {
             Text(text)
                 .font(.hanzi(86))
                 .foregroundColor(.ink)
-                .frame(width: 165, height: 165)
-        } else {
-            IconView(name: opt.icon ?? "", size: 116)
                 .frame(width: 165, height: 165)
         }
     }

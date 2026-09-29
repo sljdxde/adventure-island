@@ -243,13 +243,21 @@ struct ParentView: View {
 
     private var progressPanel: some View {
         panel("chart", "学习进度") {
-            progressRow(icon: "book", name: "识字村", ratio: Double(store.doneCount(subject: "cn", total: 10)) / 10, val: "\(store.doneCount(subject: "cn", total: 10))/10 关")
-            progressRow(icon: "equal", name: "思维镇", ratio: Double(store.doneCount(subject: "math", total: 10)) / 10, val: "\(store.doneCount(subject: "math", total: 10))/10 关")
+            progressRow(icon: "book", name: "识字村", ratio: Double(store.doneCount(subject: "cn", total: 15)) / 15, val: "\(store.doneCount(subject: "cn", total: 15))/15 关")
+            progressRow(icon: "equal", name: "思维镇", ratio: Double(store.doneCount(subject: "math", total: 15)) / 15, val: "\(store.doneCount(subject: "math", total: 15))/15 关")
+            progressRow(icon: "speaker", name: "拼音谷", ratio: Double(store.doneCount(subject: "pinyin", total: 12)) / 12, val: "\(store.doneCount(subject: "pinyin", total: 12))/12 关")
+            progressRow(icon: "castle", name: "英语王国", ratio: Double(store.doneCount(subject: "english", total: 12)) / 12, val: "\(store.doneCount(subject: "english", total: 12))/12 关")
+            progressRow(icon: "moon", name: "天文台", ratio: Double(store.doneCount(subject: "astro", total: 10)) / 10, val: "\(store.doneCount(subject: "astro", total: 10))/10 关")
             progressRow(icon: "flask", name: "科学岛", ratio: Double(store.snapshot.collectedScience.count) / 6, val: "实验 \(store.snapshot.testedItems.count) 项")
             HStack(spacing: 8) {
                 statChip("累计金币 \(store.snapshot.coins)")
                 statChip("连击 \(store.snapshot.streak) 天")
                 statChip("汉字 \(store.snapshot.learnedHanzi.count) 个")
+            }
+            HStack(spacing: 8) {
+                statChip("拼音 \(store.snapshot.learnedPinyin.count) 个")
+                statChip("单词 \(store.snapshot.learnedEnglish.count) 词")
+                statChip("星空 \(store.snapshot.learnedAstro.count) 个")
             }
         }
     }

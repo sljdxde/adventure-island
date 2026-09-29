@@ -100,7 +100,7 @@ struct MapView: View {
     }
 
     private var level: Int {
-        let done = store.doneCount(subject: "cn", total: 10) + store.doneCount(subject: "math", total: 10)
+        let done = store.doneCount(subject: "cn", total: 15) + store.doneCount(subject: "math", total: 15)
         return max(1, done / 4 + 1)
     }
 
@@ -374,18 +374,19 @@ private struct PathLevelNodes: View {
     @EnvironmentObject var store: ProgressStore
 
     var body: some View {
-        ForEach(0..<10, id: \.self) { i in
-            let state = store.nodeState(subject: "cn", index: i, total: 10)
-            let x = width * 0.09 + CGFloat(i) * (width * 0.84) / 9
+        let total = 15   // 识字村 v0.2 起为 15 关，节点随内容数自适应
+        ForEach(0..<total, id: \.self) { i in
+            let state = store.nodeState(subject: "cn", index: i, total: total)
+            let x = width * 0.07 + CGFloat(i) * (width * 0.88) / CGFloat(total - 1)
             let y = height * 0.58 + sin(Double(i) * 0.85) * height * 0.14
             ZStack(alignment: .bottom) {
                 nodeCircle(state)
                 if state == .current {
                     Text("下一关 ▶")
-                        .font(.system(size: 12.5, weight: .heavy, design: .rounded))
+                        .font(.system(size: 12, weight: .heavy, design: .rounded))
                         .foregroundColor(.white)
                         .shadow(color: .brandGreenDdk, radius: 0, y: 2)
-                        .offset(y: 26)
+                        .offset(y: 24)
                 }
             }
             .position(x: x, y: y)
@@ -421,7 +422,7 @@ private struct PathLevelNodes: View {
                     .shadow(color: Color(hex: 0x9AA1A9), radius: 0, y: 4)
             }
         }
-        .frame(width: 44, height: 44)
+        .frame(width: 38, height: 38)
         .modifier(NodePulse(active: state == .current))
     }
 }

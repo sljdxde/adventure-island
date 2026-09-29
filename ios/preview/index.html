@@ -1189,9 +1189,12 @@ function renderParent(){
       <div class="panel"><h3><span class="icw">${ic("chart",18)}</span>学习进度</h3>
         ${pRow("book","识字村",doneCount("cn")/cnT,`${doneCount("cn")}/${cnT} 关`)}
         ${pRow("equal","思维镇",doneCount("math")/mT,`${doneCount("math")}/${mT} 关`)}
+        ${pRow("speaker","拼音谷",doneCount("pinyin")/SUBJECTS.pinyin.total,`${doneCount("pinyin")}/${SUBJECTS.pinyin.total} 关`)}
+        ${pRow("castle","英语王国",doneCount("english")/SUBJECTS.english.total,`${doneCount("english")}/${SUBJECTS.english.total} 关`)}
         ${pRow("starface","天文台",doneCount("astro")/aT,`${doneCount("astro")}/${aT} 关`)}
         ${pRow("flask","科学岛",S.science.length/6,`实验 ${S.tested.length} 项`)}
         <div style="margin-top:4px"><span class="stat-chip">累计金币 ${S.coins}</span><span class="stat-chip">汉字 ${S.hanzi.length} 个</span><span class="stat-chip">贴纸 ${S.stickers.length} 张</span></div>
+        <div style="margin-top:2px"><span class="stat-chip">拼音 ${S.learnedPinyin.length} 个</span><span class="stat-chip">单词 ${S.learnedEnglish.length} 词</span><span class="stat-chip">星空 ${S.learnedAstro.length} 个</span></div>
       </div>
       <div class="panel"><h3><span class="icw">${ic("slider",18)}</span>难度与内容管理</h3>
         ${seg2("难度模式",["简单","自动适配","标准"],["easy","auto","normal"],S.settings.diff,v=>{S.settings.diff=v;save()})}

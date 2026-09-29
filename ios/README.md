@@ -1,10 +1,11 @@
-# 探险岛 · 幼小衔接 iPad App（v0.1）
+# 探险岛 · 幼小衔接 iPad App（v0.4）
 
 面向自家 3-6 岁孩子的幼小衔接 App，**仅个人使用、不上架**。马里奥风设计稿（`design/shots/final-*.png`）的 SwiftUI + SpriteKit 实现。
 
-- 学科：语文（识字村 10 关）· 数学（思维镇 10 关）· 科学实验室（浮与沉）
-- 激励：金币 + 收集册（图鉴/贴纸/汉字卡），无分数无排名
-- 家长中心：算术家长门 / 护眼时长 / 进度 / 难度
+- 学科（6 水管）：识字村 15 关 · 思维镇 15 关（8 种题型：点数/比多少/加减/找规律/分一分/排一排/填一填/归类）· 拼音谷 12 关 · 英语王国 12 关 · 天文台 10 关 · 科学岛（浮沉实验）
+- 飞机模式友好：所有题型纯视觉作答，朗读全部改为手动可选，不点喇叭也能通关
+- 激励：金币 + 收集册（图鉴/贴纸/汉字卡/拼音卡/单词卡/星空卡/徽章），无分数无排名
+- 家长中心：算术家长门 / 护眼时长 / 6 学科进度 / 难度
 - 数据全部存本机（Documents 下 JSON），无网络、无广告、无内购
 
 ---
@@ -18,9 +19,13 @@ ios/
 │  ├─ AdventureIsland 入口/主题/通用组件/模型/存储/服务
 │  ├─ RootView / MapView / LevelView / LabView / CollectionView / ParentView
 │  ├─ Resources/*.json            # 关卡与收集内容（加内容=加JSON）
-│  └─ Assets.xcassets/            # 由设计稿 assets 生成的 68 个 SVG 图标
+│  └─ Assets.xcassets/            # 82 个 SVG 图标（含矢量保留，可直接替换高清图）
 ├─ Tests/AdventureIslandTests/    # XCTest 测试套件
-└─ tools/validate.py              # 本机静态验证脚本（已执行通过）
+├─ preview/index.html             # 浏览器模拟器（1:1 预览，见 docs §5）
+└─ tools/
+   ├─ validate.py                 # 本机静态验证（18 项）
+   ├─ gen_content.py              # 内容生成器：改完重跑 → Resources/*.json
+   └─ gen_preview_data.py         # 把 Resources JSON 注入模拟器（改内容后必跑）
 ```
 
 源码文件说明见 `docs/开发与测试记录.md`。
@@ -80,14 +85,19 @@ python tools/validate.py
 
 ## 给孩子加新内容（不用写代码）
 
-编辑 `AdventureIsland/Resources/` 下的 JSON 后重新 Run：
+推荐走内容生成器：编辑 `tools/gen_content.py`（Python 数据表，注释齐全）→ 跑 `python tools/gen_content.py` 生成 JSON → 跑 `python tools/gen_preview_data.py` 同步模拟器 → Mac 上 `Cmd+U` 验证。
 
-- `cn_levels.json` / `math_levels.json`：加关卡。四种步骤：`teach`（认一认）/ `quiz`（答题）/ `count`（点数）/ `compare`（比多少）
-- `experiments.json`：加实验（目前浮沉物理引擎通用，可扩展磁性/光影实验需新增场景）
-- `collection.json`：加图鉴/贴纸/汉字卡/徽章
+也可以直接编辑 `AdventureIsland/Resources/` 下的 JSON：
 
-图标可用 `design/assets/icons/` 里的 68 个 SVG（加新图 = 拷入 `Assets.xcassets` 仿照现有 imageset 结构）。
-改完在 Mac 上跑一次 `Cmd+U`，内容校验测试会自动检查答案正确性和图标引用。
+- `cn_levels / math_levels / pinyin_levels / english_levels / astro_levels .json`：加关卡。12 种步骤：
+  `teach`（认一认）`letter`（学一学）`listen`（找一找，视觉匹配）`quiz`（练一练）
+  `count`（点数）`compare`（比多少）`arith`（加减法）`pattern`（找规律）
+  `split`（分一分）`order`（排一排）`neighbor`（填一填）`blend`（拼读）
+- `experiments.json`：加实验（浮沉物理引擎通用，磁性/光影需新场景）
+- `collection.json`：图鉴/贴纸/汉字卡/拼音卡/单词卡/星空卡/徽章
+
+图标可用 `design/assets/icons/` 里的 82 个 SVG（加新图 = 拷入 `Assets.xcassets` 仿照现有 imageset 结构，并在 `Common.swift` 的 IconEmoji.map 加 Emoji 兜底）。
+改完跑 `python tools/validate.py`（本机）+ `Cmd+U`（Mac），会自动检查答案正确性和图标引用。
 
 ## 常见问题
 
