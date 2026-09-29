@@ -25,6 +25,7 @@ enum IconEmoji {
         "candy": "🍬", "flame": "🔥", "jar": "🫙", "salt": "🧂", "sand": "🏖️",
         "sugar": "🍚", "train": "🚂", "tree": "🌳",
         "earth": "🌍", "planet": "🪐", "comet": "☄️",
+        "bush": "🌿", "mushroom": "🍄",
         "hills-back": "⛰", "hills-front": "🏞"
     ]
 }
@@ -310,7 +311,7 @@ struct DashSeparator: View {
     }
 }
 
-// MARK: - 场景背景（天空+光晕+云+远山；variant: 0 白天 / 1 黄昏 / 2 星夜，让相邻关卡有区别）
+// MARK: - 场景背景（天空+光晕+云+远山；variant: 0 白天 / 1 黄昏 / 2 星夜 / 3 地下砖块关，让相邻关卡有区别）
 
 struct SceneBackground: View {
     let theme: AppTheme
@@ -318,25 +319,26 @@ struct SceneBackground: View {
 
     private var isNight: Bool { theme.isNight || variant == 2 }
     private var isDusk: Bool { !theme.isNight && variant == 1 }
+    private var isUnderground: Bool { !theme.isNight && variant == 3 }
 
     var body: some View {
         ZStack {
-            LinearGradient(colors: theme.sky, startPoint: .top, endPoint: .bottom)
-
-            // 星夜：整片星星装饰（天文台常驻；其他学科第 3n 关轮换到夜景）
-            if isNight {
-                StarField()
-            }
-
-            // 黄昏：暖色天光
-            if isDusk {
-                LinearGradient(colors: [Color(hex: 0xFF9E5E).opacity(0.38), Color(hex: 0xFFB56B).opacity(0.16), .clear],
+            if isUnderground {
+                // 地下关：深蓝洞窟 + 底部马里奥砖块排
+                LinearGradient(colors: [Color(hex: 0x141F5C), Color(hex: 0x23337F), Color(hex: 0x3A55B0)],
                                startPoint: .top, endPoint: .bottom)
+                UndergroundBricks()
+            } else {
+                LinearGradient(colors: theme.sky, startPoint: .top, endPoint: .bottom)
+                if isNight { StarField() }
+                if isDusk {
+                    LinearGradient(colors: [Color(hex: 0xFF9E5E).opacity(0.38), Color(hex: 0xFFB56B).opacity(0.16), .clear],
+                                   startPoint: .top, endPoint: .bottom)
+                }
+                glow
+                clouds
+                hills
             }
-
-            glow
-            clouds
-            hills
         }
         .ignoresSafeArea()
     }
@@ -417,6 +419,23 @@ struct SceneBackground: View {
                 .frame(maxHeight: .infinity, alignment: .bottom)
                 .opacity(theme.hillOpacity * (isDusk ? 0.85 : 1))
         }
+    }
+}
+
+// 地下关砖块排（SMB 1-2 风：洞窟底部铺一排砖）
+struct UndergroundBricks: View {
+    var body: some View {
+        VStack {
+            Spacer()
+            HStack(spacing: 2) {
+                ForEach(0..<16, id: \.self) { _ in
+                    IconView(name: "brick", size: 52)
+                }
+            }
+            .frame(maxHeight: .infinity, alignment: .bottom)
+            .padding(.bottom, -4)
+        }
+        .allowsHitTesting(false)
     }
 }
 
@@ -562,8 +581,8 @@ struct ConfettiLayer: View {
         .allowsHitTesting(false)
         .onChange(of: trigger) { _ in
             guard trigger > 0 else { return }
-            let icons = ["⭐", "🎉", "✨", "🌟", "🎊", "💛"]
-            pieces = (0..<24).map { i in
+            let icons = ["⭐", "🎉", "✨", "🌟", "🎊", "💛", "🪙"]
+            pieces = (0..<28).map { i in
                 ConfettiPiece(
                     emoji: icons[i % icons.count],
                     x: CGFloat.random(in: 60...960),

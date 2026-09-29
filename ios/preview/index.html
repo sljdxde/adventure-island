@@ -77,6 +77,24 @@ img.ic{display:inline-block;vertical-align:middle}
 .v2 .hill{filter:saturate(.5) brightness(.62) hue-rotate(24deg)}
 .v2 .cloud{opacity:.35;background:#C9D4FF}
 .is-night .cloud{opacity:.35;background:#C9D4FF}
+/* 地下砖块关（SMB 1-2 风）：深蓝洞窟 + 底部砖排 */
+.v3 .sky{background:linear-gradient(180deg,#141F5C,#23337F 52%,#3A55B0)!important}
+.v3 .hill{filter:saturate(.45) brightness(.5) hue-rotate(190deg)}
+.v3 .cloud{display:none}
+.v3 .glow{opacity:.35;background:radial-gradient(circle,#9FB4FF80,transparent 70%)}
+.bricksrow{position:absolute;left:0;right:0;bottom:0;height:54px;display:flex;z-index:1;pointer-events:none}
+.bricksrow img{width:54px;height:54px;margin-right:2px;flex:none}
+/* 旋转金币 + 顶砖 + 金币飞行（马里奥元素） */
+@keyframes spincoin{0%{transform:rotateY(0)}100%{transform:rotateY(360deg)}}
+.sky-coins img{animation:spincoin 2.6s linear infinite}
+.sky-coins img:nth-child(2){animation-delay:.5s}
+.sky-coins img:nth-child(3){animation-delay:1s}
+@keyframes blockbump{0%{transform:translateX(-50%) translateY(0)}35%{transform:translateX(-50%) translateY(-16px)}100%{transform:translateX(-50%) translateY(0)}}
+.blk{cursor:pointer}
+.blk.bump{animation:blockbump .5s ease}
+.flycoin{position:absolute;z-index:70;pointer-events:none;transition:transform .75s cubic-bezier(.25,-.15,.55,1),opacity .75s}
+@keyframes chipbump{0%{transform:scale(1)}40%{transform:scale(1.25)}100%{transform:scale(1)}}
+.goldchip.bumped{animation:chipbump .45s}
 
 /* ---------- 通用组件 ---------- */
 .screen{position:absolute;inset:0;z-index:2;animation:screenIn .28s ease}
@@ -348,7 +366,27 @@ const $ = s => document.querySelector(s);
 function ic(name,size,cls){ return `<img class="ic ${cls||''}" src="${ICON_DIR}${name}.svg" style="width:${size}px;height:${size}px" onerror="this.outerHTML='<span style=&quot;font-size:${size}px&quot;>${EMOJI[name]||'❓'}</span>'">`; }
 let toastT=null;
 function toast(msg,sec){ const t=$('#toast'); t.textContent=msg; t.classList.add('show'); clearTimeout(toastT); toastT=setTimeout(()=>t.classList.remove('show'), (sec||1.8)*1000); }
-function confetti(){ const icons=["⭐","🎉","✨","🌟","🎊","💛"]; for(let i=0;i<22;i++){ const c=document.createElement('span'); c.className='confetti'; c.textContent=icons[i%6]; c.style.left=(60+Math.random()*900)+'px'; c.style.top=(60+Math.random()*120)+'px'; c.style.animationDelay=(Math.random()*.35)+'s'; stage.appendChild(c); setTimeout(()=>c.remove(),2100);} }
+function confetti(){ const icons=["⭐","🎉","✨","🌟","🎊","💛","🪙"]; for(let i=0;i<26;i++){ const c=document.createElement('span'); c.className='confetti'; c.textContent=icons[i%icons.length]; c.style.left=(60+Math.random()*900)+'px'; c.style.top=(60+Math.random()*120)+'px'; c.style.animationDelay=(Math.random()*.35)+'s'; stage.appendChild(c); setTimeout(()=>c.remove(),2100);} }
+/* 顶问号方块出金币（马里奥手感）：方块弹跳 + 金币飞向计数器 */
+function blockTap(ev,el){
+  ev.stopPropagation();
+  el.classList.remove("bump"); void el.offsetWidth; el.classList.add("bump");
+  const r=el.getBoundingClientRect(), sr=stage.getBoundingClientRect();
+  const c=document.createElement('div'); c.className='flycoin';
+  c.innerHTML=ic("coin",32);
+  c.style.left=(r.left-sr.left+r.width/2-16)+'px';
+  c.style.top=(r.top-sr.top-8)+'px';
+  stage.appendChild(c);
+  requestAnimationFrame(()=>{ requestAnimationFrame(()=>{
+    c.style.transform=`translate(${sr.right-r.left-(r.left-sr.left+r.width/2)-80}px,${sr.top-r.top+40}px) scale(.45)`;
+    c.style.opacity='0';
+  });});
+  setTimeout(()=>c.remove(),800);
+  S.coins++; save();
+  const chip=document.getElementById("mapcoin");
+  if(chip){ chip.innerHTML=`<span class="ico">${ic("coin",18)}</span>${S.coins}`;
+    chip.classList.remove("bumped"); void chip.offsetWidth; chip.classList.add("bumped"); }
+}
 function speak(t){ if(!t) return; try{ const u=new SpeechSynthesisUtterance(t); u.lang='zh-CN'; u.rate=.8; u.pitch=1.15; speechSynthesis.cancel(); speechSynthesis.speak(u);}catch(e){} }
 function doneCount(sub){ const total=SUBJECTS[sub].total; let n=0; for(let i=0;i<total;i++) if((S.stars[sub+"-"+i]||0)>0) n++; return n; }
 function nodeState(sub,i){ if((S.stars[sub+"-"+i]||0)>0) return "done"; if(i===0) return "cur"; return (S.stars[sub+"-"+(i-1)]||0)>0 ? "cur" : "lock"; }
@@ -386,7 +424,7 @@ function renderMap(){
         <div class="nameplate"><div class="ava">${ic("girl",30)}</div><div class="name">${S.settings.name} · Lv.${Math.max(1,Math.floor((doneCount("cn")+doneCount("math"))/4)+1)}</div></div>
       </div>
       <div class="hud-r">
-        <div class="goldchip"><span class="ico">${ic("coin",18)}</span>${S.coins}</div>
+        <div class="goldchip" id="mapcoin"><span class="ico">${ic("coin",18)}</span>${S.coins}</div>
         <button class="sqbtn" onclick="route('collection')">${ic("medal",28)}</button>
         <button class="sqbtn" onclick="route('parent')">${ic("lock",26)}</button>
       </div>
@@ -404,10 +442,13 @@ function renderMap(){
         <path d="M 40 80 C 200 22, 340 100, 512 56 C 690 12, 850 92, 990 52" stroke="#fff" stroke-width="9" stroke-linecap="round" stroke-dasharray="1 26" opacity=".95"/>
       </svg>
       ${pathNodes()}
-      <div class="lnode" style="left:962px;bottom:56px;width:auto;height:auto;background:none;border:none;box-shadow:none">
-        <div style="text-align:center">${ic("flag",40)}<div style="font-size:14px;font-weight:900;color:#fff;text-shadow:0 2px 0 rgba(63,158,56,.6)">终</div></div>
+      <div class="lnode" style="left:956px;bottom:52px;width:auto;height:auto;background:none;border:none;box-shadow:none">
+        <div style="text-align:center;line-height:1">${ic("flag",24)}${ic("castle",60)}<div style="font-size:13px;font-weight:900;color:#fff;text-shadow:0 2px 0 rgba(63,158,56,.6)">终点</div></div>
       </div>
     </div>
+
+    <div class="deco" style="left:6px;bottom:118px">${ic("bush",92)}</div>
+    <div class="deco" style="right:14px;bottom:126px">${ic("bush",70)}</div>
 
     <div class="arcpanel"><div class="arc-notch">${ic("gift",28)}</div>
       <div class="dock">
@@ -424,7 +465,7 @@ function collectTotal(){ const sci=COLLECTION.find(g=>g.id==="science"); const s
 function pipeZone(z){
   const cfg=SUBJECTS[z.sub], done=z.done(), total=cfg.total;
   return `<div class="pipe-zone" onclick="enterZone('${z.sub}')">
-    <div class="pipe-wrap">${ic(cfg.pipe,88)}<span class="blk">?</span><span class="guide">${ic(cfg.guide,30)}</span>
+    <div class="pipe-wrap">${ic(cfg.pipe,88)}<span class="blk" onclick="blockTap(event,this)">?</span><span class="guide">${ic(cfg.guide,30)}</span>
       ${z.isNew?'<span class="badge-new">NEW ✦</span>':''}</div>
     <div class="zone-label">${cfg.title}</div>
     <div class="zone-meta">${cfg.meta} ｜ ${done}/${total} ${z.sub==="lab"?"项已点亮":"关"}<div class="track"><i style="width:${Math.round(done/total*100)}%"></i></div></div>
@@ -462,14 +503,15 @@ function curLevelObj(){ return CONTENT[S.lv.subject].levels[S.lv.index]; }
 function renderLevel(){
   const L=S.lv, sub=L.subject, cfg=SUBJECTS[sub], lv=curLevelObj();
   const steps=lv.steps, st=steps[L.step];
-  // 场景变体：相邻关卡 白天/黄昏/星夜 轮换；天文台常驻星夜
-  const v=L.index%3;
-  const sceneCls = v===1 ? "v1" : (v===2 ? "v2" : "");
+  // 场景变体：相邻关卡 白天/黄昏/星夜/地下砖块关 轮换；天文台常驻星夜
+  const v=L.index%4;
+  const sceneCls = v===1 ? "v1" : (v===2 ? "v2" : (v===3 ? "v3" : ""));
   const night = sub==="astro";
+  const bricks = (v===3 && sub!=="astro") ? `<div class="bricksrow">${('<img src="'+ICON_DIR+'brick.svg">').repeat(20)}</div>` : "";
   let body=renderStep(sub, st);
   const hudTitleColor = {cn:"#C96A06",math:"var(--blue-dk)",pinyin:"#B85E14",english:"var(--green-dk)",astro:"#8C9BE8"}[sub];
   stage.innerHTML=`<div class="screen ${cfg.theme}${night?' is-night':''}">
-    ${night ? sceneHTML("")+nightDecor() : sceneHTML(sceneCls)}
+    ${night ? sceneHTML("")+nightDecor() : sceneHTML(sceneCls)+bricks}
     <div class="hud">
       <div class="hud-l">
         <button class="sqbtn" onclick="route('map')">${ic("back",26)}</button>
@@ -519,16 +561,25 @@ function nextStep(){
     const key=L.subject+"-"+L.index;
     const old=S.stars[key]||0;
     if(stars>old||old===0){ S.stars[key]=stars; S.coins+=stars; }
+    // 3 星通关的幸运蘑菇奖励（重复通关不重复给）
+    if(stars===3 && old<3){ S.coins+=2; }
     S.daily[L.subject]=(S.daily[L.subject]||0)+1;
     save(); }
 }
 function finishHTML(){
   const L=S.lv, total=SUBJECTS[L.subject].total, hasNext=L.index+1<total;
   const stars=L.wrong===0?3:(L.wrong===1?2:1);
+  const mushroom = stars===3
+    ? `<div style="font-size:17px;font-weight:900;color:#C24836;background:#FFEFE6;border-radius:999px;padding:6px 16px;margin:2px 0">${ic("mushroom",20)} 幸运蘑菇奖励 +2 金币！</div>` : "";
   return `<div class="finish"><div class="card">
-    <div style="font-size:60px">🎉</div>
+    <div style="display:flex;align-items:flex-end;justify-content:center;gap:14px">
+      <span style="line-height:1">${ic("flag",26)}${ic("castle",62)}</span>
+      <span style="font-size:52px;line-height:1.1">🎉</span>
+      <span style="opacity:${stars===3?1:.3};transform:scale(${stars===3?1:.85})">${ic("mushroom",50)}</span>
+    </div>
     <div style="font-size:28px;font-weight:900;margin:4px 0">本关完成！</div>
     <div style="font-size:42px;letter-spacing:10px;margin:6px 0">${[0,1,2].map(i=>`<span style="opacity:${i<stars?1:.25}">${ic("starface",40)}</span>`).join("")}</div>
+    ${mushroom}
     <div style="font-size:15px;color:var(--ink-soft);font-weight:800;margin-bottom:16px">${L.wrong===0?"一次没错，完美通关！":`答错了 ${L.wrong} 次也没关系，你已经学会啦`}</div>
     ${hasNext?`<button class="jbtn j-green" onclick="enterLevel(LvSubject(),LvNext())">下一关 ▶</button>`:""}
     <button class="jbtn j-orange" onclick="route('map')">返回地图</button>

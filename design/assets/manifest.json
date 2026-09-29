@@ -79,7 +79,9 @@
     "icons/earth.svg",
     "icons/planet.svg",
     "icons/comet.svg",
-    "icons/pipe-indigo.svg"
+    "icons/pipe-indigo.svg",
+    "icons/bush.svg",
+    "icons/mushroom.svg"
   ],
   "bg": [
     "bg/hills-back.svg",

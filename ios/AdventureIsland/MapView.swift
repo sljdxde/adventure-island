@@ -48,20 +48,33 @@ struct MapView: View {
                     .padding(.bottom, 10)
             }
 
-            // 天空装饰
+            // 天空装饰：砖块 + 无敌旋转金币
             VStack {
                 HStack {
                     ImageDecor(icon: "brick", size: 44).padding(.leading, 26)
                     ImageDecor(icon: "brick", size: 44).padding(.leading, -8)
                     Spacer()
-                    ImageDecor(icon: "coin", size: 30)
-                    ImageDecor(icon: "coin", size: 38).padding(.leading, -6).offset(y: 14)
-                    ImageDecor(icon: "coin", size: 30).padding(.leading, -6)
+                    SpinCoin(size: 30)
+                    SpinCoin(size: 38, delay: 0.4).padding(.leading, -6).offset(y: 14)
+                    SpinCoin(size: 30, delay: 0.8).padding(.leading, -6)
                 }
                 .padding(.top, 96)
                 Spacer()
             }
             .allowsHitTesting(false)
+
+            // 马里奥灌木丛（路径两端）
+            HStack {
+                IconView(name: "bush", size: 96)
+                    .padding(.leading, 8)
+                Spacer()
+                IconView(name: "bush", size: 72)
+                    .padding(.trailing, 18)
+            }
+            .frame(maxHeight: .infinity, alignment: .bottom)
+            .padding(.bottom, 130)
+            .allowsHitTesting(false)
+            .zIndex(11)
         }
         .onAppear {
             if cnContent == nil { cnContent = ContentLoader.load(SubjectFile.self, "cn_levels") }
@@ -154,27 +167,20 @@ struct MapView: View {
 
     private func zonePipe(_ zone: (icon: String, label: String, meta: String, pipe: String, subject: String, unit: String, total: Int),
                           done: Int, total: Int, isNew: Bool) -> some View {
-        Button {
-            sound.systemTap()
-            if zone.subject == "lab" {
-                route = .lab
-            } else {
-                // 进入该学科当前关卡
-                var index = 0
-                while index < total, store.nodeState(subject: zone.subject, index: index, total: total) == .done {
-                    index += 1
-                }
-                route = .level(subject: zone.subject, index: min(index, total - 1))
-            }
-        } label: {
-            VStack(spacing: 0) {
+        VStack(spacing: 0) {
                 ZStack {
                     IconView(name: zone.pipe, size: 84)
                     VStack {
                         Text("") // 占位
                     }
                     VStack {
-                        QuestionBlock()
+                        QuestionBlock(onTap: {
+                            // 顶砖块出金币（马里奥手感彩蛋）
+                            sound.systemTap()
+                            store.snapshot.coins += 1
+                            store.save()
+                            toast.show("🪙 +1", seconds: 1.0)
+                        })
                             .offset(y: -42)
                     }
                     IconView(name: zone.icon, size: 30)
@@ -217,9 +223,21 @@ struct MapView: View {
                     .frame(width: 138)
                     .padding(.top, 4)
             }
-        }
-        .buttonStyle(.plain)
-        .frame(maxWidth: .infinity)
+            .contentShape(Rectangle())
+            .onTapGesture {
+                sound.systemTap()
+                if zone.subject == "lab" {
+                    route = .lab
+                } else {
+                    // 进入该学科当前关卡
+                    var index = 0
+                    while index < total, store.nodeState(subject: zone.subject, index: index, total: total) == .done {
+                        index += 1
+                    }
+                    route = .level(subject: zone.subject, index: min(index, total - 1))
+                }
+            }
+            .frame(maxWidth: .infinity)
     }
 
     // MARK: 关卡路径（圆点 + 关卡节点 + 终点旗）
@@ -246,15 +264,17 @@ struct MapView: View {
                 PathDots(width: geo.size.width, height: geo.size.height)
                 PathLevelNodes(width: geo.size.width, height: geo.size.height, route: $route)
 
-                // 终点旗
+                // 终点：马里奥城堡（旗杆插在城堡上）
                 VStack(spacing: 0) {
-                    IconView(name: "flag", size: 38)
-                    Text("终")
-                        .font(.kidHead(14))
+                    IconView(name: "flag", size: 26)
+                        .offset(y: 6)
+                    IconView(name: "castle", size: 62)
+                    Text("终点")
+                        .font(.kidHead(13))
                         .foregroundColor(.white)
-                        .shadow(color: .brandGreenDdk, radius: 0, y: 2)
+                        .shadow(color: .ink, radius: 0, y: 2)
                 }
-                .position(x: geo.size.width - 32, y: geo.size.height * 0.42)
+                .position(x: geo.size.width - 40, y: geo.size.height * 0.44)
             }
         }
         .frame(height: 118)
@@ -440,9 +460,13 @@ private struct NodePulse: ViewModifier {
     }
 }
 
-// 问号方块（水管顶）
+// 问号方块（水管顶，可顶出金币）
 private struct QuestionBlock: View {
+    var onTap: (() -> Void)? = nil
     @State private var pulse = false
+    @State private var bump = false
+    @State private var showCoin = false
+
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 10, style: .continuous)
@@ -459,10 +483,41 @@ private struct QuestionBlock: View {
                     .frame(width: 4, height: 4)
                     .position(x: i % 2 == 0 ? 10 : 42, y: i < 2 ? 10 : 42)
             }
+            if showCoin {
+                IconView(name: "coin", size: 26)
+                    .offset(y: -44)
+                    .transition(.move(edge: .bottom).combined(with: .opacity))
+            }
         }
         .scaleEffect(pulse ? 1.07 : 1)
+        .offset(y: bump ? -12 : 0)
         .animation(.easeInOut(duration: 1.1).repeatForever(autoreverses: true), value: pulse)
         .onAppear { pulse = true }
+        .onTapGesture {
+            guard let action = onTap else { return }
+            withAnimation(.spring(response: 0.22, dampingFraction: 0.55)) { bump = true; showCoin = true }
+            action()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.24) {
+                withAnimation(.easeOut(duration: 0.2)) { bump = false }
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+                withAnimation(.easeOut(duration: 0.25)) { showCoin = false }
+            }
+        }
+    }
+}
+
+// 无敌旋转金币（SMB 风：绕纵轴转）
+private struct SpinCoin: View {
+    var size: CGFloat = 30
+    var delay: Double = 0
+    @State private var spinning = false
+
+    var body: some View {
+        IconView(name: "coin", size: size)
+            .rotation3DEffect(.degrees(spinning ? 360 : 0), axis: (x: 0, y: 1, z: 0))
+            .animation(.linear(duration: 2.4).repeatForever(autoreverses: false).delay(delay), value: spinning)
+            .onAppear { spinning = true }
     }
 }
 

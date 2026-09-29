@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 56"><defs><linearGradient id="g-bush" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8ED86C"/><stop offset="1" stop-color="#4CA84E"/></linearGradient></defs>
+  <ellipse cx="24" cy="38" rx="20" ry="16" fill="url(#g-bush)"/>
+  <ellipse cx="48" cy="30" rx="24" ry="20" fill="url(#g-bush)"/>
+  <ellipse cx="72" cy="38" rx="20" ry="16" fill="url(#g-bush)"/>
+  <ellipse cx="40" cy="22" rx="12" ry="6" fill="#fff" opacity=".28"/></svg>

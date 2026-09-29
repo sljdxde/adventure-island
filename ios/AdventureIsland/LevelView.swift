@@ -19,6 +19,7 @@ struct LevelView: View {
     @State private var wrongCount = 0
     @State private var finished = false
     @State private var earnedCoins = 0
+    @State private var mushroomGiven = false
 
     private var level: Level? { content?.levels[safe: index] }
     private var step: Step? { level?.steps[safe: stepIndex] }
@@ -28,8 +29,8 @@ struct LevelView: View {
 
     var body: some View {
         ZStack {
-            // 相邻关卡轮换 白天/黄昏/星夜，场景有区别
-            SceneBackground(theme: theme, variant: index % 3)
+            // 相邻关卡轮换 白天/黄昏/星夜/地下砖块关，场景有区别
+            SceneBackground(theme: theme, variant: index % 4)
 
             VStack(spacing: 10) {
                 header
@@ -146,7 +147,19 @@ struct LevelView: View {
         return ZStack {
             Color.black.opacity(0.4).ignoresSafeArea()
             VStack(spacing: 12) {
-                Text("🎉").font(.system(size: 64))
+                // 马里奥通关：城堡 + 旗杆 + 庆典
+                ZStack(alignment: .bottom) {
+                    HStack(spacing: 14) {
+                        VStack(spacing: -4) {
+                            IconView(name: "flag", size: 30)
+                            IconView(name: "castle", size: 66)
+                        }
+                        Text("🎉").font(.system(size: 56))
+                        IconView(name: "mushroom", size: 52)
+                            .opacity(stars == 3 ? 1 : 0.3)
+                            .scaleEffect(stars == 3 ? 1 : 0.85)
+                    }
+                }
                 Text("本关完成！")
                     .font(.kidTitle(30))
                     .foregroundColor(.ink)
@@ -156,6 +169,14 @@ struct LevelView: View {
                             .opacity(i < stars ? 1 : 0.25)
                             .scaleEffect(i < stars ? 1 : 0.8)
                     }
+                }
+                if stars == 3 {
+                    Text("🍄 幸运蘑菇奖励 +2 金币！")
+                        .font(.kidHead(17))
+                        .foregroundColor(Color(hex: 0xC24836))
+                        .padding(.horizontal, 16)
+                        .padding(.vertical, 6)
+                        .background(Capsule().fill(Color(hex: 0xFFEFE6)))
                 }
                 Text(wrongCount == 0 ? "一次没错，完美通关！" : "答错了 \(wrongCount) 次也没关系，你已经学会啦")
                     .font(.kidBody(16))
@@ -200,6 +221,12 @@ struct LevelView: View {
         .onAppear {
             store.completeLevel(subject: subject, index: index, stars: stars)
             earnedCoins = stars
+            // 3 星通关的幸运蘑菇奖励（马里奥蘑菇 = 额外金币），守卫防止重复发放
+            if stars == 3, !mushroomGiven {
+                mushroomGiven = true
+                store.snapshot.coins += 2
+                store.save()
+            }
         }
     }
 
