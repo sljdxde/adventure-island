@@ -994,6 +994,37 @@
       "subtitle": "汉字小达人",
       "steps": [
         {
+          "id": "cn-14-m",
+          "kind": "memory",
+          "question": "翻翻牌：把字和它的图片配成对",
+          "cards": [
+            {
+              "key": "日",
+              "icon": "sunface"
+            },
+            {
+              "key": "日",
+              "text": "日"
+            },
+            {
+              "key": "月",
+              "icon": "moon"
+            },
+            {
+              "key": "月",
+              "text": "月"
+            },
+            {
+              "key": "火",
+              "icon": "flame"
+            },
+            {
+              "key": "火",
+              "text": "火"
+            }
+          ]
+        },
+        {
           "id": "cn-14-l1",
           "kind": "listen",
           "promptIcon": "flame",

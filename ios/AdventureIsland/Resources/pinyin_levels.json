@@ -775,6 +775,37 @@
       "subtitle": "整体认读 · 拼读",
       "steps": [
         {
+          "id": "py-11-m",
+          "kind": "memory",
+          "question": "翻翻牌：声母和它的图片配成对",
+          "cards": [
+            {
+              "key": "b",
+              "icon": "girl"
+            },
+            {
+              "key": "b",
+              "text": "b"
+            },
+            {
+              "key": "d",
+              "icon": "duck"
+            },
+            {
+              "key": "d",
+              "text": "d"
+            },
+            {
+              "key": "l",
+              "icon": "leaf"
+            },
+            {
+              "key": "l",
+              "text": "l"
+            }
+          ]
+        },
+        {
           "id": "py-11-l1",
           "kind": "listen",
           "prompt": "zhi",

@@ -81,7 +81,9 @@
     "icons/comet.svg",
     "icons/pipe-indigo.svg",
     "icons/bush.svg",
-    "icons/mushroom.svg"
+    "icons/mushroom.svg",
+    "icons/mario.svg",
+    "icons/dino.svg"
   ],
   "bg": [
     "bg/hills-back.svg",

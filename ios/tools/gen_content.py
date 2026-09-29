@@ -27,6 +27,25 @@ def rot(opts, ans, pos):
     rest = [o for i, o in enumerate(opts) if i != ans]
     return rest[:pos] + [correct] + rest[pos:], pos
 
+def dice_step(did, n, opts):
+    """掷骰子：掷出 n 点 → 数一数 → 选数字"""
+    return {"id": did, "kind": "dice", "count": n, "countOptions": opts,
+            "question": "掷骰子：掷出了几点？",
+            "hint": "一个一个数红点点", "praise": f"对，是 {n} 点！"}
+
+def memory_step(mid, q, pairs):
+    """翻牌配对（扑克牌风）：pairs = [(key, iconA|None, textA|None, iconB|None, textB|None)]"""
+    cards = []
+    for key, ai, at, bi, bt in pairs:
+        c1 = {"key": key}
+        c2 = {"key": key}
+        if ai: c1["icon"] = ai
+        if at: c1["text"] = at
+        if bi: c2["icon"] = bi
+        if bt: c2["text"] = bt
+        cards += [c1, c2]
+    return {"id": mid, "kind": "memory", "question": q, "cards": cards}
+
 # ================= 语文 15 关（teach + 题型组合轮换） =================
 # (字, 拼音, 象形源图标, 词卡, 找一找目标图标, 找一找干扰×2, 找一找答案位)
 CN = [
@@ -116,8 +135,13 @@ for i, (ch, py, mfrom, words, lo, lans) in enumerate(CN):
     else:               # C：组词 + 找图片
         steps += [cn_word_quiz(i, ch, words), cn_listen_pic(i, ch, lo, lans)]
     cn_levels.append({"id": f"cn-{i}", "title": f"第 {i+1} 关 象形字", "subtitle": f"认识「{ch}」", "steps": steps})
-# 第15关 复习挑战：三种题型混合
+# 第15关 复习挑战：翻牌配对 + 三种题型混合
 cn_levels.append({"id": "cn-14", "title": "第 15 关 复习挑战", "subtitle": "汉字小达人", "steps": [
+    memory_step("cn-14-m", "翻翻牌：把字和它的图片配成对", [
+        ("日", "sunface", None, None, "日"),
+        ("月", "moon", None, None, "月"),
+        ("火", "flame", None, None, "火"),
+    ]),
     {"id": "cn-14-l1", "kind": "listen", "promptIcon": "flame", "speakText": "火",
      "question": "看一看：这张图变成的字是哪个？",
      "options": [{"text": t} for t in ["山","火","水"]], "answer": 1,
@@ -197,6 +221,7 @@ def classify_step(cid, q, items, ans):
             "hint": "想一想它们分别是做什么的",
             "praise": "分类小能手！"}
 
+
 SC_duck   = {"icon":"duck",   "unit":"只", "backdrop":"pond",  "q":"池塘里有几只小鸭"}
 SC_candy  = {"icon":"candy",  "unit":"颗", "backdrop":"grass", "q":"盘子里有几颗糖"}
 SC_apple  = {"icon":"apple",  "unit":"个", "backdrop":"grass", "q":"果园里摘了几个苹果"}
@@ -219,12 +244,14 @@ specs = [
         neighbor_step(f"math-{i}-n1",3,5)]),
     ("math-4","第 5 关 夜空数星","6 以内点数", lambda i: [count_step(i,6,[5,6,7],SC_star),
         compare_step(i,"star",6,"moon",4,["星星多","月亮多","一样多"],"星星和月亮哪边多？")]),
-    ("math-5","第 6 关 小火车","7 以内 · 排一排", lambda i: [count_step(i,7,[6,7,8],SC_train),
-        order_step(f"math-{i}-o2",[3,6,4],"up")]),
+    ("math-5","第 6 关 小火车","7 以内 · 排一排 · 掷骰子", lambda i: [count_step(i,7,[6,7,8],SC_train),
+        order_step(f"math-{i}-o2",[3,6,4],"up"),
+        dice_step(f"math-{i}-d1",5,[4,5,6])]),
     ("math-6","第 7 关 花园蜜蜂","8 以内 · 分一分", lambda i: [count_step(i,8,[7,8,9],SC_flower),
         split_step(f"math-{i}-s2",8,3,"flower","朵","8 朵花分两个花瓶，左边 3 朵，右边几朵？")]),
-    ("math-7","第 8 关 爱心礼盒","9 以内 · 排一排", lambda i: [count_step(i,9,[8,9,10],SC_heart),
-        order_step(f"math-{i}-o3",[9,4,7],"down")]),
+    ("math-7","第 8 关 爱心礼盒","9 以内 · 排一排 · 掷骰子", lambda i: [count_step(i,9,[8,9,10],SC_heart),
+        order_step(f"math-{i}-o3",[9,4,7],"down"),
+        dice_step(f"math-{i}-d2",6,[5,6,7])]),
     ("math-8","第 9 关 宝藏金币","10 以内点数", lambda i: [count_step(i,10,[8,9,10],SC_coin),
         pattern_step(f"math-{i}-p1",["star","moon","star"],["moon","star","candy"],0)]),
     ("math-9","第 10 关 数字擂台","比大小 · 归类", lambda i: [
@@ -337,6 +364,11 @@ pinyin_levels.append({"id": "py-10", "title": "第 11 关 韵母", "subtitle": "
      "hint": "张大嘴巴 āāā", "praise": "韵母 a 找对啦！"},
 ]})
 pinyin_levels.append({"id": "py-11", "title": "第 12 关 复习", "subtitle": "整体认读 · 拼读", "steps": [
+    memory_step("py-11-m", "翻翻牌：声母和它的图片配成对", [
+        ("b", "girl", None, None, "b"),
+        ("d", "duck", None, None, "d"),
+        ("l", "leaf", None, None, "l"),
+    ]),
     {"id": "py-11-l1", "kind": "listen", "prompt": "zhi", "speakText": "zhi",
      "question": "找一找：哪个是「zhi」？",
      "options": [{"text": t} for t in ["chi","zhi","zi"]], "answer": 1,
@@ -440,6 +472,11 @@ english_levels.append({"id": "en-10", "title": "Level 11 Words", "subtitle": "�
     word_quiz("en-10-q3", "Which one is the apple? 苹果是哪一个？", [("banana","banana"),("cake","cake"),("apple","apple")], 2, "Apple 苹果", "Yes! Apple!"),
 ]})
 english_levels.append({"id": "en-11", "title": "Level 12 Review", "subtitle": "单词复习", "steps": [
+    memory_step("en-11-m", "翻翻牌：单词和图片配成对", [
+        ("sun", "sun", None, None, "sun"),
+        ("moon", "moon", None, None, "moon"),
+        ("duck", "duck", None, None, "duck"),
+    ]),
     word_quiz("en-11-q1", "Which one is the moon? 月亮是哪一个？", [("moon","moon"),("sun","sun"),("starface","star")], 0, "Moon 月亮", "Yes! Moon!"),
     word_quiz("en-11-q2", "Which one is the flower? 花是哪一个？", [("leaf","leaf"),("flower","flower"),("tree","tree")], 1, "Flower 花", "Yes! Flower!"),
     word_quiz("en-11-q3", "Which one is the cake? 蛋糕是哪一个？", [("gift","gift"),("key","key"),("cake","cake")], 2, "Cake 蛋糕", "Super star! 全部通关!"),
@@ -495,6 +532,11 @@ for i, (name, en, icon, chips, fact, d1, d2, feat_q) in enumerate(ASTRO_FULL):
                       "praise": "规律找对啦，小天文学家！"})
     astro_levels.append({"id": f"astro-{i}", "title": f"第 {i+1} 关 {en}", "subtitle": name, "steps": steps})
 astro_levels.append({"id": "astro-9", "title": "第 10 关 星空大挑战", "subtitle": "复习", "steps": [
+    memory_step("astro-9-m", "翻翻牌：星空朋友和名字配成对", [
+        ("sun", "sun", None, None, "太阳"),
+        ("earth", "earth", None, None, "地球"),
+        ("rocket", "rocket", None, None, "火箭"),
+    ]),
     {"id": "astro-9-q1", "kind": "quiz", "question": "我们的家是哪个星球？",
      "options": [{"icon": "sun"}, {"icon": "earth", "text": "地球"}, {"icon": "moon"}], "answer": 1,
      "hint": "蓝蓝的、圆圆的", "praise": "地球是我们的家！"},

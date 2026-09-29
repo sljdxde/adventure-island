@@ -19,6 +19,12 @@ struct CompareOption: Codable, Equatable {
     var label: String
 }
 
+struct MemoryCard: Codable, Equatable {
+    var key: String     // 配对键：相同 key 的两张牌是一对
+    var icon: String?
+    var text: String?
+}
+
 struct Step: Codable, Equatable, Identifiable {
     var id: String
     /// teach | quiz | count | compare | letter | listen | blend | arith | pattern | split | order | neighbor
@@ -50,6 +56,9 @@ struct Step: Codable, Equatable, Identifiable {
     // order（排一排）/ neighbor（填一填：nums[1]==0 为空位）
     var nums: [Int]?
     var dir: String?   // up | down
+
+    // memory（翻牌配对：扑克牌翻牌，cards 两两同 key 配对）
+    var cards: [MemoryCard]?
 
     // blend（拼一拼：声母+韵母）
     var parts: [String]?

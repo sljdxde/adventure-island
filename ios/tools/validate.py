@@ -134,6 +134,19 @@ def check_subject(doc, name, expect_levels):
                     if correct not in opts: err(f"{sid} neighbor 选项不含 {correct}")
                     elif not isinstance(ans, int) or not (0 <= ans < len(opts)) or opts[ans] != correct:
                         err(f"{sid} neighbor answer 指向错误")
+            elif kind == "memory":
+                cards = st.get("cards") or []
+                if len(cards) != 6: err(f"{sid} memory 应为 6 张牌（3 对），实际 {len(cards)}")
+                keys = [c.get("key") for c in cards]
+                if sorted(keys) != sorted(list(set(keys)) * 2):
+                    err(f"{sid} memory 牌必须两两同 key：{keys}")
+                for c in cards:
+                    if not (c.get("icon") or c.get("text")):
+                        err(f"{sid} memory 牌缺少内容（icon/text 至少一项）")
+            elif kind == "dice":
+                n = st.get("count"); opts = st.get("countOptions") or []
+                if not (1 <= (n or 0) <= 6): err(f"{sid} dice 点数 {n} 超范围")
+                if n not in opts: err(f"{sid} dice 选项不含正确点数 {n}")
             elif kind == "blend":
                 parts = st.get("parts") or []
                 opts = st.get("options") or []

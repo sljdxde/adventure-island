@@ -25,7 +25,7 @@ enum IconEmoji {
         "candy": "🍬", "flame": "🔥", "jar": "🫙", "salt": "🧂", "sand": "🏖️",
         "sugar": "🍚", "train": "🚂", "tree": "🌳",
         "earth": "🌍", "planet": "🪐", "comet": "☄️",
-        "bush": "🌿", "mushroom": "🍄",
+        "bush": "🌿", "mushroom": "🍄", "mario": "🧢", "dino": "🦖",
         "hills-back": "⛰", "hills-front": "🏞"
     ]
 }

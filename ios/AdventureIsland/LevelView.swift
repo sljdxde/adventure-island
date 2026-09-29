@@ -46,6 +46,8 @@ struct LevelView: View {
                         case "split": SplitStepView(step: step, onWrong: { wrongCount += 1 }, onNext: advanceStep) { confetti += 1 }
                         case "neighbor": NeighborStepView(step: step, onWrong: { wrongCount += 1 }, onNext: advanceStep) { confetti += 1 }
                         case "order": OrderStepView(step: step, onWrong: { wrongCount += 1 }, onNext: advanceStep) { confetti += 1 }
+                        case "memory": MemoryStepView(step: step, onNext: advanceStep) { confetti += 1 }
+                        case "dice": DiceStepView(step: step, onWrong: { wrongCount += 1 }, onNext: advanceStep) { confetti += 1 }
                         case "quiz": QuizStepView(step: step, onWrong: { wrongCount += 1 }, onNext: advanceStep) { confetti += 1 }
                         case "count": CountStepView(step: step, onNext: advanceStep) { confetti += 1 }
                         case "compare": CompareStepView(step: step, onNext: advanceStep) { confetti += 1 }
@@ -117,6 +119,8 @@ struct LevelView: View {
             case "split": name = "分一分"
             case "order": name = "排一排"
             case "neighbor": name = "填一填"
+            case "memory": name = "翻翻牌"
+            case "dice": name = "掷骰子"
             default: name = "比一比"
             }
             return StepChipState(title: name, state: i < stepIndex ? .done : (i == stepIndex ? .now : .todo))
@@ -147,14 +151,16 @@ struct LevelView: View {
         return ZStack {
             Color.black.opacity(0.4).ignoresSafeArea()
             VStack(spacing: 12) {
-                // 马里奥通关：城堡 + 旗杆 + 庆典
+                // 马里奥通关：小人 + 城堡 + 旗杆 + 庆典
                 ZStack(alignment: .bottom) {
                     HStack(spacing: 14) {
                         VStack(spacing: -4) {
                             IconView(name: "flag", size: 30)
                             IconView(name: "castle", size: 66)
                         }
-                        Text("🎉").font(.system(size: 56))
+                        IconView(name: index % 2 == 0 ? "mario" : "dino", size: 58)
+                            .modifier(NodePulse(active: true))
+                        Text("🎉").font(.system(size: 52))
                         IconView(name: "mushroom", size: 52)
                             .opacity(stars == 3 ? 1 : 0.3)
                             .scaleEffect(stars == 3 ? 1 : 0.85)
@@ -1695,6 +1701,258 @@ struct NeighborStepView: View {
         .frame(width: 92, height: 92)
         .overlay(RoundedRectangle(cornerRadius: 20, style: .continuous).stroke(Color(hex: 0xF2E2C4), lineWidth: 4))
         .shadow(color: Color(hex: 0xF2E2C4), radius: 0, x: 0, y: 4)
+    }
+}
+
+// MARK: - 翻翻牌（memory：扑克牌翻牌配对，字↔图 / 字母↔图片 / 单词↔图片）
+
+struct MemoryStepView: View {
+    let step: Step
+    let onNext: () -> Void
+    let onCorrectCelebrate: () -> Void
+    @Environment(\.soundService) private var sound
+    @State private var deck: [MemoryCard] = []
+    @State private var flipped: Set<Int> = []
+    @State private var matched: Set<Int> = []
+    @State private var busy = false
+
+    private let suits = ["♠️", "♥️", "♦️", "♣️"]
+
+    var body: some View {
+        VStack(spacing: 18) {
+            Text(step.question ?? "翻一翻，找出一样的一对")
+                .font(.kidHead(24))
+                .foregroundColor(.ink)
+                .padding(.horizontal, 28)
+                .padding(.vertical, 11)
+                .background(Capsule().fill(Color(hex: 0xEFF3FF)))
+                .overlay(Capsule().stroke(Color(hex: 0xC5D2F5), lineWidth: 2))
+
+            if deck.count == 6 {
+                LazyVGrid(columns: Array(repeating: GridItem(.fixed(158), spacing: 18), count: 3), spacing: 16) {
+                    ForEach(0..<6, id: \.self) { i in
+                        cardView(i)
+                    }
+                }
+            }
+
+            Text(matched.count == 6 ? "🎉 全部配对成功！" : "已配对 \(matched.count / 2) / 3 对")
+                .font(.kidHead(matched.count == 6 ? 20 : 16))
+                .foregroundColor(matched.count == 6 ? .brandGreenDk : .inkSoft)
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .modifier(StickerCardModifier())
+        .onAppear {
+            if deck.isEmpty {
+                deck = (step.cards ?? []).shuffled()
+            }
+        }
+    }
+
+    @ViewBuilder
+    private func cardView(_ i: Int) -> some View {
+        let isUp = flipped.contains(i) || matched.contains(i)
+        let card = deck[i]
+        Button {
+            tap(i)
+        } label: {
+            ZStack {
+                // 牌背：派对蓝 + 花色角标
+                ZStack {
+                    RoundedRectangle(cornerRadius: 16, style: .continuous)
+                        .fill(LinearGradient(colors: [Color(hex: 0x5A78E8), Color(hex: 0x3A55C8)], startPoint: .top, endPoint: .bottom))
+                    VStack(spacing: 2) {
+                        Text(suits[i % 4]).font(.system(size: 17))
+                        Text("?").font(.system(size: 34, weight: .heavy, design: .rounded))
+                            .foregroundColor(.white)
+                        Text(suits[(i + 2) % 4]).font(.system(size: 17))
+                    }
+                }
+                .opacity(isUp ? 0 : 1)
+
+                // 牌面：白卡 + 内容 + 花色小角标
+                ZStack {
+                    RoundedRectangle(cornerRadius: 16, style: .continuous)
+                        .fill(LinearGradient(colors: [.white, Color(hex: 0xF6F9FF)], startPoint: .top, endPoint: .bottom))
+                    VStack(spacing: 4) {
+                        if let icon = card.icon {
+                            IconView(name: icon, size: 64)
+                        }
+                        if let text = card.text {
+                            Text(text)
+                                .font(.hanzi(text.count > 1 ? 34 : 52))
+                                .foregroundColor(.ink)
+                        }
+                    }
+                }
+                .overlay(RoundedRectangle(cornerRadius: 16, style: .continuous)
+                    .stroke(matched.contains(i) ? Color(hex: 0xBFE8C9) : Color(hex: 0xD8E2F8), lineWidth: matched.contains(i) ? 4 : 3))
+                .overlay(alignment: .topLeading) {
+                    Text(suits[i % 4]).font(.system(size: 13)).padding(6)
+                }
+                .opacity(isUp ? 1 : 0)
+            }
+            .frame(width: 150, height: 132)
+            .rotation3DEffect(.degrees(isUp ? 180 : 0), axis: (x: 0, y: 1, z: 0))
+            .animation(.spring(response: 0.45, dampingFraction: 0.75), value: isUp)
+        }
+        .buttonStyle(.plain)
+        .opacity(matched.contains(i) ? 0.88 : 1)
+        .disabled(busy || matched.contains(i) || flipped.contains(i))
+    }
+
+    private func tap(_ i: Int) {
+        guard !busy, !matched.contains(i), !flipped.contains(i) else { return }
+        flipped.insert(i)
+        guard flipped.count == 2 else { return }
+        busy = true
+        let idx = Array(flipped)
+        if deck[idx[0]].key == deck[idx[1]].key {
+            // 配对成功
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.45) {
+                matched.formUnion(idx)
+                flipped.removeAll()
+                busy = false
+                sound.correct()
+                if matched.count == deck.count {
+                    onCorrectCelebrate()
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { onNext() }
+                }
+            }
+        } else {
+            // 不匹配：翻回
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.9) {
+                flipped.removeAll()
+                busy = false
+            }
+        }
+    }
+}
+
+// MARK: - 掷骰子（dice：掷出点数 → 数一数 → 选数字）
+
+struct DiceStepView: View {
+    let step: Step
+    let onWrong: () -> Void
+    let onNext: () -> Void
+    let onCorrectCelebrate: () -> Void
+    @EnvironmentObject var toast: ToastCenter
+    @Environment(\.soundService) private var sound
+    @State private var face = 1
+    @State private var rolled = false
+    @State private var solved = false
+    @State private var wrongValue: Int?
+    @State private var shakeSeed = false
+
+    private var target: Int { step.count ?? 5 }
+
+    /// 1-6 点的骰子点位坐标（0-1 比例）
+    private static let pips: [Int: [(Double, Double)]] = [
+        1: [(0.5, 0.5)],
+        2: [(0.28, 0.28), (0.72, 0.72)],
+        3: [(0.26, 0.26), (0.5, 0.5), (0.74, 0.74)],
+        4: [(0.28, 0.28), (0.72, 0.28), (0.28, 0.72), (0.72, 0.72)],
+        5: [(0.26, 0.26), (0.74, 0.26), (0.5, 0.5), (0.26, 0.74), (0.74, 0.74)],
+        6: [(0.28, 0.22), (0.72, 0.22), (0.28, 0.5), (0.72, 0.5), (0.28, 0.78), (0.72, 0.78)],
+    ]
+
+    var body: some View {
+        VStack(spacing: 22) {
+            Text(step.question ?? "掷骰子：掷出了几点？")
+                .font(.kidHead(24))
+                .foregroundColor(.ink)
+                .padding(.horizontal, 28)
+                .padding(.vertical, 11)
+                .background(Capsule().fill(Color(hex: 0xFFF3D8)))
+                .overlay(Capsule().stroke(Color(hex: 0xF0DCAC), lineWidth: 2))
+
+            Button {
+                roll()
+            } label: {
+                ZStack {
+                    RoundedRectangle(cornerRadius: 24, style: .continuous)
+                        .fill(LinearGradient(colors: [.white, Color(hex: 0xF2EDDF)], startPoint: .top, endPoint: .bottom))
+                        .frame(width: 132, height: 132)
+                        .overlay(RoundedRectangle(cornerRadius: 24, style: .continuous).stroke(Color(hex: 0xD8CBAF), lineWidth: 4))
+                        .shadow(color: .ink.opacity(0.18), radius: 10, y: 6)
+                    ForEach(Self.pips[face] ?? [], id: \.0) { p in
+                        Circle()
+                            .fill(RadialGradient(colors: [Color(hex: 0xE84838), Color(hex: 0xC24836)],
+                                                 center: .center, startRadius: 0, endRadius: 7))
+                            .frame(width: 22, height: 22)
+                            .position(x: 132 * p.0, y: 132 * p.1)
+                    }
+                }
+                .rotation3DEffect(.degrees(rolled ? 0 : 12), axis: (x: 1, y: 1, z: 0))
+            }
+            .buttonStyle(.plain)
+            .disabled(rolled)
+
+            Text(rolled ? "数一数红点有几个" : "👆 点骰子，掷一掷！")
+                .font(.kidBody(16))
+                .foregroundColor(.inkSoft)
+
+            if rolled {
+                HStack(spacing: 26) {
+                    ForEach(step.countOptions ?? [], id: \.self) { n in
+                        numberBlock(n)
+                    }
+                }
+                .transition(.move(edge: .bottom).combined(with: .opacity))
+            }
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .modifier(StickerCardModifier())
+        .animation(.spring(response: 0.4, dampingFraction: 0.8), value: rolled)
+    }
+
+    private func roll() {
+        guard !rolled else { return }
+        var ticks = 0
+        // 快速滚动点数再落定（约 0.8s）
+        Timer.scheduledTimer(withTimeInterval: 0.08, repeats: true) { t in
+            face = Int.random(in: 1...6)
+            ticks += 1
+            if ticks >= 10 {
+                t.invalidate()
+                face = target
+                withAnimation(.spring(response: 0.3, dampingFraction: 0.6)) { rolled = true }
+                sound.systemTap()
+            }
+        }
+    }
+
+    private func numberBlock(_ n: Int) -> some View {
+        Button {
+            guard !solved else { return }
+            if n == target {
+                solved = true
+                sound.correct()
+                onCorrectCelebrate()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) { onNext() }
+            } else {
+                wrongValue = n
+                sound.wrong()
+                onWrong()
+                toast.show("再数一数红点点", seconds: 2.0)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.45) { wrongValue = nil }
+            }
+        } label: {
+            Text("\(n)")
+                .font(.kidTitle(44))
+                .foregroundColor(Color(hex: 0x8A5B00))
+                .frame(width: 100, height: 92)
+                .background(
+                    RoundedRectangle(cornerRadius: 18, style: .continuous)
+                        .fill(LinearGradient(colors: [Color(hex: 0xFFE58A), Color(hex: 0xF7B32B)], startPoint: .top, endPoint: .bottom))
+                )
+                .overlay(RoundedRectangle(cornerRadius: 18, style: .continuous).stroke(Color(hex: 0xB8770A), lineWidth: 3.5))
+                .shadow(color: Color(hex: 0xB8770A).opacity(0.6), radius: 0, x: 0, y: 6)
+        }
+        .buttonStyle(.plain)
+        .scaleEffect(solved && n == target ? 1.1 : 1)
+        .modifier(ShakeModifier(shake: wrongValue == n))
+        .animation(.spring(response: 0.3, dampingFraction: 0.6), value: solved)
     }
 }
 

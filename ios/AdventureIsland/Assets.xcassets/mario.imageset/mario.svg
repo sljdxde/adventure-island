@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 96"><defs>
+<linearGradient id="g-mcap" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FF7B6B"/><stop offset="1" stop-color="#E84838"/></linearGradient>
+<linearGradient id="g-mov" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5AB8F0"/><stop offset="1" stop-color="#2F86C9"/></linearGradient>
+</defs>
+  <!-- 鞋 -->
+  <ellipse cx="25" cy="91" rx="11" ry="5.5" fill="#7A4A2B"/>
+  <ellipse cx="47" cy="91" rx="11" ry="5.5" fill="#7A4A2B"/>
+  <!-- 腿 -->
+  <rect x="21" y="70" width="9" height="18" rx="4.5" fill="url(#g-mov)"/>
+  <rect x="42" y="70" width="9" height="18" rx="4.5" fill="url(#g-mov)"/>
+  <!-- 手臂 + 白手套 -->
+  <ellipse cx="13" cy="57" rx="7.5" ry="6" fill="#E84838"/>
+  <circle cx="9" cy="61" r="5.5" fill="#FFFDF6"/>
+  <ellipse cx="59" cy="57" rx="7.5" ry="6" fill="#E84838"/>
+  <circle cx="63" cy="61" r="5.5" fill="#FFFDF6"/>
+  <!-- 红上衣 -->
+  <path d="M22 50 Q22 45 30 44 L42 44 Q50 45 50 50 L51 66 Q51 71 46 71 L26 71 Q21 71 21 66 Z" fill="#E84838"/>
+  <!-- 蓝背带裤 -->
+  <path d="M24 54 L48 54 L49 71 L23 71 Z" fill="url(#g-mov)"/>
+  <rect x="26" y="45" width="5.5" height="11" rx="2.75" fill="url(#g-mov)"/>
+  <rect x="40.5" y="45" width="5.5" height="11" rx="2.75" fill="url(#g-mov)"/>
+  <circle cx="29" cy="57" r="2.6" fill="#FFD34D"/>
+  <circle cx="43" cy="57" r="2.6" fill="#FFD34D"/>
+  <!-- 耳朵 -->
+  <circle cx="16.5" cy="27" r="4.2" fill="#FFD9B3"/>
+  <circle cx="55.5" cy="27" r="4.2" fill="#FFD9B3"/>
+  <!-- 脸 -->
+  <circle cx="36" cy="26" r="20" fill="#FFD9B3"/>
+  <!-- 帽子 -->
+  <path d="M14 21 Q15 6 36 6 Q57 6 58 21 L58 22.5 Q58 24.5 55 24.5 L17 24.5 Q14 24.5 14 22.5 Z" fill="url(#g-mcap)"/>
+  <path d="M50 18.5 Q66 17.5 66 22 Q66 25.5 49 25 L49 20 Z" fill="url(#g-mcap)"/>
+  <!-- 帽徽：白圆 + 金星 -->
+  <circle cx="34" cy="14.5" r="6.2" fill="#fff"/>
+  <path d="M34 10.6 L35.2 13 L37.8 13.3 L35.9 15.1 L36.4 17.7 L34 16.4 L31.6 17.7 L32.1 15.1 L30.2 13.3 L32.8 13 Z" fill="#FFD34D"/>
+  <!-- 眼睛 -->
+  <ellipse cx="28" cy="27.5" rx="4" ry="5.4" fill="#fff"/>
+  <ellipse cx="44" cy="27.5" rx="4" ry="5.4" fill="#fff"/>
+  <circle cx="29" cy="28.5" r="2.2" fill="#3A2E22"/>
+  <circle cx="45" cy="28.5" r="2.2" fill="#3A2E22"/>
+  <circle cx="29.8" cy="27.6" r=".8" fill="#fff"/>
+  <circle cx="45.8" cy="27.6" r=".8" fill="#fff"/>
+  <!-- 鼻子 + 胡子 -->
+  <ellipse cx="36" cy="33.5" rx="5" ry="4" fill="#F5C69A"/>
+  <path d="M26 37.5 Q31 34.5 36 37.5 Q41 34.5 46 37.5 Q46 41.5 41 41.5 L31 41.5 Q26 41.5 26 37.5 Z" fill="#5A3A22"/>
+  <!-- 脸颊高光 -->
+  <ellipse cx="21" cy="18" rx="6" ry="3.2" fill="#fff" opacity=".3" transform="rotate(-18 21 18)"/>
+</svg>

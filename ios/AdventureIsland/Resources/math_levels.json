@@ -222,7 +222,7 @@
     {
       "id": "math-5",
       "title": "第 6 关 小火车",
-      "subtitle": "7 以内 · 排一排",
+      "subtitle": "7 以内 · 排一排 · 掷骰子",
       "steps": [
         {
           "id": "math-5-c",
@@ -250,6 +250,19 @@
           "question": "从小到大，依次点一点",
           "hint": "从小到大：小的排前面",
           "praise": "排队排好啦！"
+        },
+        {
+          "id": "math-5-d1",
+          "kind": "dice",
+          "count": 5,
+          "countOptions": [
+            4,
+            5,
+            6
+          ],
+          "question": "掷骰子：掷出了几点？",
+          "hint": "一个一个数红点点",
+          "praise": "对，是 5 点！"
         }
       ]
     },
@@ -293,7 +306,7 @@
     {
       "id": "math-7",
       "title": "第 8 关 爱心礼盒",
-      "subtitle": "9 以内 · 排一排",
+      "subtitle": "9 以内 · 排一排 · 掷骰子",
       "steps": [
         {
           "id": "math-7-c",
@@ -321,6 +334,19 @@
           "question": "从大到小，依次点一点",
           "hint": "从大到小：大的排前面",
           "praise": "排队排好啦！"
+        },
+        {
+          "id": "math-7-d2",
+          "kind": "dice",
+          "count": 6,
+          "countOptions": [
+            5,
+            6,
+            7
+          ],
+          "question": "掷骰子：掷出了几点？",
+          "hint": "一个一个数红点点",
+          "praise": "对，是 6 点！"
         }
       ]
     },

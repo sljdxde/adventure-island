@@ -714,6 +714,37 @@
       "subtitle": "单词复习",
       "steps": [
         {
+          "id": "en-11-m",
+          "kind": "memory",
+          "question": "翻翻牌：单词和图片配成对",
+          "cards": [
+            {
+              "key": "sun",
+              "icon": "sun"
+            },
+            {
+              "key": "sun",
+              "text": "sun"
+            },
+            {
+              "key": "moon",
+              "icon": "moon"
+            },
+            {
+              "key": "moon",
+              "text": "moon"
+            },
+            {
+              "key": "duck",
+              "icon": "duck"
+            },
+            {
+              "key": "duck",
+              "text": "duck"
+            }
+          ]
+        },
+        {
           "id": "en-11-q1",
           "kind": "quiz",
           "question": "Which one is the moon? 月亮是哪一个？",

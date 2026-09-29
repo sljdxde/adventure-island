@@ -453,6 +453,37 @@
       "subtitle": "复习",
       "steps": [
         {
+          "id": "astro-9-m",
+          "kind": "memory",
+          "question": "翻翻牌：星空朋友和名字配成对",
+          "cards": [
+            {
+              "key": "sun",
+              "icon": "sun"
+            },
+            {
+              "key": "sun",
+              "text": "太阳"
+            },
+            {
+              "key": "earth",
+              "icon": "earth"
+            },
+            {
+              "key": "earth",
+              "text": "地球"
+            },
+            {
+              "key": "rocket",
+              "icon": "rocket"
+            },
+            {
+              "key": "rocket",
+              "text": "火箭"
+            }
+          ]
+        },
+        {
           "id": "astro-9-q1",
           "kind": "quiz",
           "question": "我们的家是哪个星球？",

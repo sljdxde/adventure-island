@@ -74,6 +74,22 @@ final class ContentIntegrityTests: XCTestCase {
                         XCTAssertTrue(opts.contains(correct), "\(step.id) neighbor 选项应含 \(correct)")
                         let nans = try XCTUnwrap(step.answer, "\(step.id) neighbor 缺 answer")
                         XCTAssertEqual(opts[nans], correct, "\(step.id) neighbor answer 指向错误")
+                    case "memory":
+                        let cards = try XCTUnwrap(step.cards, "\(step.id) memory 缺 cards")
+                        XCTAssertEqual(cards.count, 6, "\(step.id) memory 应为 6 张牌")
+                        let keys = cards.map(\.key)
+                        XCTAssertEqual(Set(keys).count, 3, "\(step.id) memory 应为 3 对")
+                        XCTAssertTrue(keys.allSatisfy { key in keys.filter { $0 == key }.count == 2 },
+                                      "\(step.id) memory 牌必须两两同 key")
+                        for card in cards {
+                            XCTAssertTrue(card.icon != nil || card.text != nil, "\(step.id) memory 牌缺内容")
+                            if let icon = card.icon { XCTAssertTrue(iconNames.contains(icon), "\(step.id) 图标 \(icon) 不在资产清单") }
+                        }
+                    case "dice":
+                        let n = try XCTUnwrap(step.count, "\(step.id) dice 缺 count")
+                        XCTAssertTrue((1...6).contains(n), "\(step.id) dice 点数超范围")
+                        let opts = try XCTUnwrap(step.countOptions, "\(step.id) dice 缺选项")
+                        XCTAssertTrue(opts.contains(n), "\(step.id) dice 选项应含 \(n)")
                     case "blend":
                         XCTAssertEqual(step.parts?.count, 2, "\(step.id) blend 应为 声母+韵母")
                         XCTAssertEqual(step.options?.count, 3, "\(step.id) blend 选项应为 3")

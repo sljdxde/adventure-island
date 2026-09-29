@@ -313,6 +313,10 @@ struct MapView: View {
                     .shadow(color: .brandYellowDdk.opacity(0.5), radius: 10, y: 5)
                 }
                 .buttonStyle(.plain)
+                // 绿恐龙伙伴站在骰子旁边，一起掷骰子
+                IconView(name: "dino", size: 46)
+                    .modifier(NodePulse(active: true))
+                    .offset(x: -8, y: 6)
                 Spacer()
             }
             .padding(.leading, 26)
@@ -402,6 +406,10 @@ private struct PathLevelNodes: View {
             ZStack(alignment: .bottom) {
                 nodeCircle(state)
                 if state == .current {
+                    // 马里奥小人站在当前关卡节点上（蹦跳待机）
+                    IconView(name: "mario", size: 44)
+                        .offset(y: -50)
+                        .modifier(NodePulse(active: true))
                     Text("下一关 ▶")
                         .font(.system(size: 12, weight: .heavy, design: .rounded))
                         .foregroundColor(.white)
@@ -447,7 +455,7 @@ private struct PathLevelNodes: View {
     }
 }
 
-private struct NodePulse: ViewModifier {
+struct NodePulse: ViewModifier {
     let active: Bool
     @State private var up = false
     func body(content: Content) -> some View {
