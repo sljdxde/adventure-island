@@ -42,7 +42,7 @@
             }
           ],
           "answer": 2,
-          "hint": "Apple 苹果",
+          "hint": "A for Aa",
           "praise": "Yes! Aa!"
         },
         {
@@ -88,6 +88,25 @@
           "question": "Learn letter Bb"
         },
         {
+          "id": "en-1-c",
+          "kind": "quiz",
+          "question": "小写 b 对应哪个大写字母？",
+          "options": [
+            {
+              "text": "D"
+            },
+            {
+              "text": "S"
+            },
+            {
+              "text": "B"
+            }
+          ],
+          "answer": 2,
+          "hint": "Bb = Bb",
+          "praise": "Bb 配对成功！"
+        },
+        {
           "id": "en-1-l",
           "kind": "listen",
           "prompt": "Bb",
@@ -105,27 +124,8 @@
             }
           ],
           "answer": 2,
-          "hint": "Banana 香蕉",
+          "hint": "B for Bb",
           "praise": "Yes! Bb!"
-        },
-        {
-          "id": "en-1-q",
-          "kind": "quiz",
-          "question": "Which picture starts with Bb?",
-          "options": [
-            {
-              "icon": "sun"
-            },
-            {
-              "icon": "banana"
-            },
-            {
-              "icon": "moon"
-            }
-          ],
-          "answer": 1,
-          "hint": "Banana 香蕉",
-          "praise": "Great job!"
         }
       ]
     },
@@ -168,27 +168,32 @@
             }
           ],
           "answer": 2,
-          "hint": "Cake 蛋糕",
+          "hint": "C for Cc",
           "praise": "Yes! Cc!"
         },
         {
-          "id": "en-2-q",
-          "kind": "quiz",
-          "question": "Which picture starts with Cc?",
+          "id": "en-2-p",
+          "kind": "pattern",
+          "seq": [
+            "cake",
+            "moon",
+            "cake"
+          ],
+          "question": "Pattern: 下一个是谁？",
           "options": [
             {
-              "icon": "moon"
+              "icon": "flower"
             },
             {
               "icon": "cake"
             },
             {
-              "icon": "flower"
+              "icon": "moon"
             }
           ],
-          "answer": 1,
-          "hint": "Cake 蛋糕",
-          "praise": "Great job!"
+          "answer": 2,
+          "hint": "Who comes next?",
+          "praise": "Pattern star!"
         }
       ]
     },
@@ -214,27 +219,6 @@
           "question": "Learn letter Dd"
         },
         {
-          "id": "en-3-l",
-          "kind": "listen",
-          "prompt": "Dd",
-          "speakText": "D",
-          "question": "Find: which one is Dd ?",
-          "options": [
-            {
-              "text": "Ss"
-            },
-            {
-              "text": "Aa"
-            },
-            {
-              "text": "Dd"
-            }
-          ],
-          "answer": 2,
-          "hint": "Duck 小鸭",
-          "praise": "Yes! Dd!"
-        },
-        {
           "id": "en-3-q",
           "kind": "quiz",
           "question": "Which picture starts with Dd?",
@@ -252,6 +236,25 @@
           "answer": 1,
           "hint": "Duck 小鸭",
           "praise": "Great job!"
+        },
+        {
+          "id": "en-3-c",
+          "kind": "quiz",
+          "question": "小写 d 对应哪个大写字母？",
+          "options": [
+            {
+              "text": "L"
+            },
+            {
+              "text": "D"
+            },
+            {
+              "text": "K"
+            }
+          ],
+          "answer": 1,
+          "hint": "Dd = Dd",
+          "praise": "Dd 配对成功！"
         }
       ]
     },
@@ -294,7 +297,7 @@
             }
           ],
           "answer": 2,
-          "hint": "Sun 太阳",
+          "hint": "S for Ss",
           "praise": "Yes! Ss!"
         },
         {
@@ -340,6 +343,25 @@
           "question": "Learn letter Mm"
         },
         {
+          "id": "en-5-c",
+          "kind": "quiz",
+          "question": "小写 m 对应哪个大写字母？",
+          "options": [
+            {
+              "text": "M"
+            },
+            {
+              "text": "G"
+            },
+            {
+              "text": "A"
+            }
+          ],
+          "answer": 0,
+          "hint": "Mm = Mm",
+          "praise": "Mm 配对成功！"
+        },
+        {
           "id": "en-5-l",
           "kind": "listen",
           "prompt": "Mm",
@@ -357,27 +379,8 @@
             }
           ],
           "answer": 2,
-          "hint": "Moon 月亮",
+          "hint": "M for Mm",
           "praise": "Yes! Mm!"
-        },
-        {
-          "id": "en-5-q",
-          "kind": "quiz",
-          "question": "Which picture starts with Mm?",
-          "options": [
-            {
-              "icon": "key"
-            },
-            {
-              "icon": "moon"
-            },
-            {
-              "icon": "apple"
-            }
-          ],
-          "answer": 1,
-          "hint": "Moon 月亮",
-          "praise": "Great job!"
         }
       ]
     },
@@ -420,27 +423,32 @@
             }
           ],
           "answer": 2,
-          "hint": "Flower 花",
+          "hint": "F for Ff",
           "praise": "Yes! Ff!"
         },
         {
-          "id": "en-6-q",
-          "kind": "quiz",
-          "question": "Which picture starts with Ff?",
+          "id": "en-6-p",
+          "kind": "pattern",
+          "seq": [
+            "flower",
+            "banana",
+            "flower"
+          ],
+          "question": "Pattern: 下一个是谁？",
           "options": [
             {
-              "icon": "apple"
+              "icon": "banana"
+            },
+            {
+              "icon": "cake"
             },
             {
               "icon": "flower"
-            },
-            {
-              "icon": "banana"
             }
           ],
-          "answer": 1,
-          "hint": "Flower 花",
-          "praise": "Great job!"
+          "answer": 0,
+          "hint": "Who comes next?",
+          "praise": "Pattern star!"
         }
       ]
     },
@@ -466,27 +474,6 @@
           "question": "Learn letter Ll"
         },
         {
-          "id": "en-7-l",
-          "kind": "listen",
-          "prompt": "Ll",
-          "speakText": "L",
-          "question": "Find: which one is Ll ?",
-          "options": [
-            {
-              "text": "Dd"
-            },
-            {
-              "text": "Aa"
-            },
-            {
-              "text": "Ll"
-            }
-          ],
-          "answer": 2,
-          "hint": "Leaf 叶子",
-          "praise": "Yes! Ll!"
-        },
-        {
           "id": "en-7-q",
           "kind": "quiz",
           "question": "Which picture starts with Ll?",
@@ -504,6 +491,25 @@
           "answer": 1,
           "hint": "Leaf 叶子",
           "praise": "Great job!"
+        },
+        {
+          "id": "en-7-c",
+          "kind": "quiz",
+          "question": "小写 l 对应哪个大写字母？",
+          "options": [
+            {
+              "text": "D"
+            },
+            {
+              "text": "S"
+            },
+            {
+              "text": "L"
+            }
+          ],
+          "answer": 2,
+          "hint": "Ll = Ll",
+          "praise": "Ll 配对成功！"
         }
       ]
     },
@@ -529,23 +535,42 @@
           "question": "Learn letter Rr"
         },
         {
-          "id": "en-8-q",
+          "id": "en-8-c",
           "kind": "quiz",
-          "question": "Which one is Rainbow?",
+          "question": "小写 r 对应哪个大写字母？",
           "options": [
             {
-              "icon": "book"
+              "text": "R"
+            },
+            {
+              "text": "M"
+            },
+            {
+              "text": "F"
+            }
+          ],
+          "answer": 0,
+          "hint": "Rr = Rr",
+          "praise": "Rr 配对成功！"
+        },
+        {
+          "id": "en-8-q",
+          "kind": "quiz",
+          "question": "Which picture starts with Rr?",
+          "options": [
+            {
+              "icon": "cake"
             },
             {
               "icon": "rainbow"
             },
             {
-              "icon": "clock"
+              "icon": "duck"
             }
           ],
           "answer": 1,
           "hint": "Rainbow 彩虹",
-          "praise": "Nice!"
+          "praise": "Great job!"
         }
       ]
     },
@@ -571,23 +596,42 @@
           "question": "Learn letter Gg"
         },
         {
-          "id": "en-9-q",
+          "id": "en-9-c",
           "kind": "quiz",
-          "question": "Which one is Gift?",
+          "question": "小写 g 对应哪个大写字母？",
           "options": [
             {
-              "icon": "book"
+              "text": "L"
+            },
+            {
+              "text": "G"
+            },
+            {
+              "text": "K"
+            }
+          ],
+          "answer": 1,
+          "hint": "Gg = Gg",
+          "praise": "Gg 配对成功！"
+        },
+        {
+          "id": "en-9-q",
+          "kind": "quiz",
+          "question": "Which picture starts with Gg?",
+          "options": [
+            {
+              "icon": "duck"
             },
             {
               "icon": "gift"
             },
             {
-              "icon": "clock"
+              "icon": "sun"
             }
           ],
           "answer": 1,
           "hint": "Gift 礼物",
-          "praise": "Nice!"
+          "praise": "Great job!"
         }
       ]
     },

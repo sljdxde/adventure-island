@@ -874,16 +874,20 @@ struct ListenStepView: View {
                 .font(.kidHead(25))
                 .foregroundColor(.ink)
 
-            // 目标大卡：题目直接展示要找的字/字母，不依赖声音
+            // 目标大卡：文字（找字/找字母）或图片（看图找字/找声母），不依赖声音
             ZStack {
                 RoundedRectangle(cornerRadius: 24, style: .continuous)
                     .fill(LinearGradient(colors: [Color(hex: 0xFFE58A), Color(hex: 0xF7B32B)], startPoint: .top, endPoint: .bottom))
                     .frame(width: 168, height: 118)
                     .shadow(color: Color(hex: 0xB8770A).opacity(0.55), radius: 0, x: 0, y: 6)
-                Text(step.prompt ?? step.speakText ?? "?")
-                    .font(.system(size: promptSize, weight: .heavy))
-                    .foregroundColor(.white)
-                    .shadow(color: Color(hex: 0xB8770A), radius: 0, x: 1, y: 3)
+                if let pi = step.promptIcon {
+                    IconView(name: pi, size: 86)
+                } else {
+                    Text(step.prompt ?? step.speakText ?? "?")
+                        .font(.system(size: promptSize, weight: .heavy))
+                        .foregroundColor(.white)
+                        .shadow(color: Color(hex: 0xB8770A), radius: 0, x: 1, y: 3)
+                }
             }
 
             HStack(spacing: 26) {

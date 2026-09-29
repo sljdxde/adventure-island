@@ -1,13 +1,15 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""生成五学科关卡内容 + 收集册 JSON（v0.3：情境数学 / 视觉化找一找 / 天文镇 / 找规律）
+"""生成五学科关卡内容 + 收集册 JSON（v0.5：全模块题型多样化）
 
-v0.3 设计要点（飞机模式友好）：
-  · 所有「听一听」改为「找一找」视觉匹配 —— 题目直接展示目标字/字母大卡，
-    朗读永远可选（speakText 保留，但不做题的必要条件）
-  · 思维镇每关一个情境（池塘/糖果店/果园/气球/夜空/火车/花园/宝箱…），
-    点数/比多少/加减法全部换成情境道具，并新增「找规律」题型
-  · 新增天文镇 astro（10 关）：太阳/月亮/星星/地球/火箭/行星/彗星/流星/火星车/复习
+v0.5 设计要点（千篇一律 → 每关不同）：
+  · 每个学科的关卡按 index 轮换不同「题型组合」，相邻关卡体验不同
+  · 识字村：认一认 + [找图片 | 看图找字 | 组词选卡 | 找字] 轮换
+  · 拼音谷：学一学 + [找字母 | 看图找声母 | 拼读 | 音节选图] 轮换
+  · 英语王国：学一学 + [找字母 | 找图 | 大小写配对 | 图标规律] 轮换
+  · 天文台：学一学 + [找一找 | 特征配对 | 星空规律] 轮换
+  · 思维镇：8 种题型（v0.4 已完成）
+  · listen 新增 promptIcon：题目大卡显示图片（看图找字/找声母），仍纯视觉作答
 """
 import json, os
 
@@ -19,8 +21,14 @@ def W(name, obj):
         json.dump(obj, f, ensure_ascii=False, indent=2)
     print(name, "OK")
 
-# ================= 语文 15 关（teach + 找一找视觉匹配 + 练一练认字） =================
-# (字, 拼音, 象形源图标, 词卡, 找一找目标图标, 找一找干扰图标×2, 答案位)
+def rot(opts, ans, pos):
+    """把正确项挪到 pos 位置"""
+    correct = opts[ans]
+    rest = [o for i, o in enumerate(opts) if i != ans]
+    return rest[:pos] + [correct] + rest[pos:], pos
+
+# ================= 语文 15 关（teach + 题型组合轮换） =================
+# (字, 拼音, 象形源图标, 词卡, 找一找目标图标, 找一找干扰×2, 找一找答案位)
 CN = [
     ("日","rì","sunface",[("sunrise","日出"),("cake","生日"),("calendar","日子")],("sunrise","moon","cake"),0),
     ("月","yuè","moon",[("moon","月亮"),("starface","星星"),("cake","月饼")],("moon","sun","star"),2),
@@ -37,39 +45,90 @@ CN = [
     ("草","cǎo","leaf",[("leaf","小草"),("sprout","草地")],("leaf","cake","duck"),1),
     ("鸟","niǎo","duck",[("duck","小鸟"),("leaf","鸟窝")],("duck","apple","rocket"),0),
 ]
-cn_levels = []
-for i, (ch, py, mfrom, words, (tgt, d1, d2), lans) in enumerate(CN):
+WORD_POOL = [(ic, tx, ch) for (ch, py, mf, words, lo, la) in CN for (ic, tx) in words]
+
+def other_words(ch, k, start):
+    """从全词池里挑不含目标字的干扰词（按 start 轮转，各关不同）"""
+    cands = [w for w in WORD_POOL if w[2] != ch]
+    out, i = [], start
+    while len(out) < k and i < start + len(cands) * 2:
+        w = cands[i % len(cands)]
+        if all(w[1] != o[1] for o in out):
+            out.append(w)
+        i += 1
+    return out
+
+def cn_listen_pic(i, ch, lo, lans):
+    """找图片：目标大卡「字」，选项是图片"""
+    tgt, d1, d2 = lo
     opts = [{"icon": tgt, "text": ch}, {"icon": d1}, {"icon": d2}]
     if lans != 0:
         opts[0], opts[lans] = opts[lans], opts[0]
-    steps = [
-        {"id": f"cn-{i}-t", "kind": "teach", "morphFrom": mfrom, "char": ch, "pinyin": py,
-         "words": [{"icon": w, "text": t, "say": t} for w, t in words]},
-        {"id": f"cn-{i}-l", "kind": "listen", "prompt": ch, "speakText": ch,
-         "question": f"找一找：哪张图片是「{ch}」？",
-         "options": opts, "answer": lans,
-         "hint": f"想想刚才的图片：「{ch}」", "praise": f"眼睛真亮！{ch} 找对啦！"},
-        {"id": f"cn-{i}-q", "kind": "quiz", "question": f"练一练：哪个字是「{ch}」？",
-         "options": [{"text": t} for t in [ch, "木" if ch != "木" else "水", "口" if ch != "口" else "日"]],
-         "answer": 0, "hint": "想一想刚才的字", "praise": "记住啦！"},
-    ]
+    return {"id": f"cn-{i}-l", "kind": "listen", "prompt": ch, "speakText": ch,
+            "question": f"找一找：哪张图片是「{ch}」？",
+            "options": opts, "answer": lans,
+            "hint": f"想想刚才的图片：「{ch}」", "praise": f"眼睛真亮！{ch} 找对啦！"}
+
+def cn_listen_pic_to_char(i, ch, mfrom):
+    """看图找字：目标大卡是象形图片，选项是字"""
+    others = [c[0] for c in CN if c[0] != ch]
+    d1 = others[(i * 2) % len(others)]
+    d2 = others[(i * 2 + 1) % len(others)]
+    pos = i % 3
+    opts, ans = rot([{"text": ch}, {"text": d1}, {"text": d2}], 0, pos)
+    return {"id": f"cn-{i}-l2", "kind": "listen", "promptIcon": mfrom, "speakText": ch,
+            "question": "看一看：这张图变成的字是哪个？",
+            "options": opts, "answer": ans,
+            "hint": f"想一想它像什么字", "praise": f"对！这张图就是「{ch}」"}
+
+def cn_word_quiz(i, ch, words):
+    """组词选卡：哪个词里有这个字（图文选项）"""
+    correct = words[0]
+    dis = other_words(ch, 2, start=i * 3)
+    pos = (i + 1) % 3
+    opts, ans = rot([{"icon": correct[0], "text": correct[1]},
+                     {"icon": dis[0][0], "text": dis[0][1]},
+                     {"icon": dis[1][0], "text": dis[1][1]}], 0, pos)
+    return {"id": f"cn-{i}-w", "kind": "quiz",
+            "question": f"「{ch}」可以组成哪个词？",
+            "options": opts, "answer": ans,
+            "hint": f"找一找有「{ch}」的词", "praise": f"组词成功：{correct[1]}！"}
+
+def cn_char_quiz(i, ch):
+    d1 = "木" if ch != "木" else "水"
+    d2 = "口" if ch != "口" else "日"
+    pos = i % 3
+    opts, ans = rot([{"text": ch}, {"text": d1}, {"text": d2}], 0, pos)
+    return {"id": f"cn-{i}-q", "kind": "quiz",
+            "question": f"练一练：哪个字是「{ch}」？",
+            "options": opts, "answer": ans,
+            "hint": "想一想刚才的字", "praise": "记住啦！"}
+
+cn_levels = []
+for i, (ch, py, mfrom, words, lo, lans) in enumerate(CN):
+    steps = [{"id": f"cn-{i}-t", "kind": "teach", "morphFrom": mfrom, "char": ch, "pinyin": py,
+              "words": [{"icon": w, "text": t, "say": t} for w, t in words]}]
+    combo = i % 3
+    if combo == 0:      # A：找图片 + 找字
+        steps += [cn_listen_pic(i, ch, lo, lans), cn_char_quiz(i, ch)]
+    elif combo == 1:    # B：看图找字 + 组词
+        steps += [cn_listen_pic_to_char(i, ch, mfrom), cn_word_quiz(i, ch, words)]
+    else:               # C：组词 + 找图片
+        steps += [cn_word_quiz(i, ch, words), cn_listen_pic(i, ch, lo, lans)]
     cn_levels.append({"id": f"cn-{i}", "title": f"第 {i+1} 关 象形字", "subtitle": f"认识「{ch}」", "steps": steps})
-# 第15关 复习挑战
+# 第15关 复习挑战：三种题型混合
 cn_levels.append({"id": "cn-14", "title": "第 15 关 复习挑战", "subtitle": "汉字小达人", "steps": [
-    {"id": "cn-14-l1", "kind": "listen", "prompt": "火", "speakText": "火",
-     "question": "找一找：哪张图片是「火」？",
-     "options": [{"icon": "crystal"}, {"icon": "flame", "text": "火"}, {"icon": "key"}], "answer": 1,
+    {"id": "cn-14-l1", "kind": "listen", "promptIcon": "flame", "speakText": "火",
+     "question": "看一看：这张图变成的字是哪个？",
+     "options": [{"text": t} for t in ["山","火","水"]], "answer": 1,
      "hint": "热热的、红红的", "praise": "真棒！"},
-    {"id": "cn-14-l2", "kind": "listen", "prompt": "花", "speakText": "花",
-     "question": "找一找：哪张图片是「花」？",
-     "options": [{"icon": "star"}, {"icon": "flower", "text": "花"}, {"icon": "duck"}], "answer": 1,
-     "hint": "香香的、漂亮的", "praise": "眼睛真亮！"},
+    cn_word_quiz(14, "花", [("flower","花朵"),("leaf","花瓣")]),
     {"id": "cn-14-q", "kind": "quiz", "question": "大挑战：哪个是「鸟」？",
      "options": [{"text": t} for t in ["鸟","乌","鸣"]], "answer": 0, "hint": "有一点点，就是小鸟", "praise": "复习家！全对啦！"},
 ]})
 W("cn_levels.json", {"subject": "cn", "title": "识字村", "guide": "panda", "levels": cn_levels})
 
-# ================= 数学 15 关（情境化 + 找规律） =================
+# ================= 数学 15 关（8 种题型，v0.4） =================
 math_levels = []
 
 def count_step(i, n, opts, scene):
@@ -138,7 +197,6 @@ def classify_step(cid, q, items, ans):
             "hint": "想一想它们分别是做什么的",
             "praise": "分类小能手！"}
 
-# 情境表：icon/unit/backdrop/题目
 SC_duck   = {"icon":"duck",   "unit":"只", "backdrop":"pond",  "q":"池塘里有几只小鸭"}
 SC_candy  = {"icon":"candy",  "unit":"颗", "backdrop":"grass", "q":"盘子里有几颗糖"}
 SC_apple  = {"icon":"apple",  "unit":"个", "backdrop":"grass", "q":"果园里摘了几个苹果"}
@@ -194,40 +252,81 @@ for idx, (lid, title, sub, build) in enumerate(specs):
     math_levels.append({"id": lid, "title": title, "subtitle": sub, "steps": build(idx)})
 W("math_levels.json", {"subject": "math", "title": "思维镇", "guide": "fox", "levels": math_levels})
 
-# ================= 拼音 12 关（letter + 找一找 + blend） =================
+# ================= 拼音 12 关（letter + 题型组合轮换） =================
 PY = [
-    ("b", [("girl","爸爸 bà"),("banana","白菜 bái")], "b", "a", ["ba","bo","bu"], 0),
-    ("p", [("volcano","山坡 pō"),("rocket","跑步 pǎo")], "p", "o", ["po","pa","pi"], 0),
-    ("m", [("girl","妈妈 mā"),("moon","米粒 mǐ")], "m", "a", ["ma","mo","mu"], 0),
-    ("f", [("flame","发烧 fā"),("leaf","飞机 fēi")], "f", "a", ["fa","fo","fu"], 0),
-    ("d", [("sun","大地 dì"),("duck","大刀 dāo")], "d", "e", ["de","da","du"], 0),
-    ("t", [("train","太阳 tài"),("tree","跳高 tiào")], "t", "a", ["ta","te","tu"], 0),
-    ("n", [("girl","拿苹果 ná"),("heart","你好 nǐ")], "n", "i", ["ni","na","nu"], 0),
-    ("l", [("leaf","拉手 lā"),("gift","老虎 lǎo")], "l", "a", ["la","le","lu"], 0),
-    ("g", [("tree","哥哥 gē"),("moon","故事 gù")], "g", "e", ["ge","ga","gu"], 0),
-    ("k", [("heart","开心 kāi"),("book","看书 kàn")], "k", "e", ["ke","ka","ku"], 0),
+    ("b", [("girl","爸爸 bà"),("banana","白菜 bái")], "b", "a", ["ba","bo","bu"]),
+    ("p", [("volcano","山坡 pō"),("rocket","跑步 pǎo")], "p", "o", ["po","pa","pi"]),
+    ("m", [("girl","妈妈 mā"),("moon","米粒 mǐ")], "m", "a", ["ma","mo","mu"]),
+    ("f", [("flame","发烧 fā"),("leaf","飞机 fēi")], "f", "a", ["fa","fo","fu"]),
+    ("d", [("sun","大地 dì"),("duck","大刀 dāo")], "d", "e", ["de","da","du"]),
+    ("t", [("train","太阳 tài"),("tree","跳高 tiào")], "t", "a", ["ta","te","tu"]),
+    ("n", [("girl","拿苹果 ná"),("heart","你好 nǐ")], "n", "i", ["ni","na","nu"]),
+    ("l", [("leaf","拉手 lā"),("gift","老虎 lǎo")], "l", "a", ["la","le","lu"]),
+    ("g", [("tree","哥哥 gē"),("moon","故事 gù")], "g", "e", ["ge","ga","gu"]),
+    ("k", [("heart","开心 kāi"),("book","看书 kàn")], "k", "e", ["ke","ka","ku"]),
 ]
-pinyin_levels = []
-for i, (letter, examples, b0, b1, blends, bans) in enumerate(PY):
+ICON_POOL = ["duck","sun","moon","cake","star","train","candy","apple","heart","clock"]
+
+def py_listen_letter(i, letter):
     others = ["d","p","m","f","t","n","l","g","k","b"]
-    distractors = [x for x in others if x != letter][:2]
-    opts = distractors + [letter]
+    dis = [x for x in others if x != letter][:2]
+    opts = dis + [letter]
     ans = opts.index(letter)
-    steps = [
-        {"id": f"py-{i}-t", "kind": "letter", "letters": [letter], "display": letter,
-         "examples": [{"icon": ic, "text": t, "say": t.split(" ")[0]} for ic, t in examples],
-         "question": f"学一学声母 {letter}"},
-        {"id": f"py-{i}-l", "kind": "listen", "prompt": letter, "speakText": letter,
-         "question": f"找一找：哪个是「{letter}」？",
-         "options": [{"text": t} for t in opts], "answer": ans,
-         "hint": f"「{examples[0][1].split(' ')[0]}」的开头", "praise": f"「{letter}」找对啦！"},
-        {"id": f"py-{i}-b", "kind": "blend", "parts": [b0, b1],
-         "question": f"拼一拼：{b0} — {b1} = ?",
-         "options": [{"text": t} for t in blends], "answer": bans,
-         "hint": f"{b0} 碰上 {b1}", "praise": f"拼对了，{blends[bans]}！"},
-    ]
+    return {"id": f"py-{i}-l", "kind": "listen", "prompt": letter, "speakText": letter,
+            "question": f"找一找：哪个是「{letter}」？",
+            "options": [{"text": t} for t in opts], "answer": ans,
+            "hint": "想一想它的样子", "praise": f"「{letter}」找对啦！"}
+
+def py_listen_pic_to_initial(i, letter, ex0):
+    """看图找声母：大卡是图片，选项是声母"""
+    icon, text = ex0
+    word = text.split(" ")[0]
+    others = ["d","p","m","f","t","n","l","g","k","b"]
+    dis = [x for x in others if x != letter]
+    d1, d2 = dis[(i * 2) % len(dis)], dis[(i * 2 + 1) % len(dis)]
+    pos = i % 3
+    opts, ans = rot([{"text": letter}, {"text": d1}, {"text": d2}], 0, pos)
+    return {"id": f"py-{i}-l2", "kind": "listen", "promptIcon": icon, "speakText": letter,
+            "question": f"看一看：「{word}」的开头是哪个声母？",
+            "options": opts, "answer": ans,
+            "hint": f"{word} 的第一个音", "praise": f"对！{word} 开头是 {letter}"}
+
+def py_blend(i, b0, b1, blends):
+    return {"id": f"py-{i}-b", "kind": "blend", "parts": [b0, b1],
+            "question": f"拼一拼：{b0} — {b1} = ?",
+            "options": [{"text": t} for t in blends], "answer": 0,
+            "hint": f"{b0} 碰上 {b1}", "praise": f"拼对了，{blends[0]}！"}
+
+def py_pic_quiz(i, letter, ex0, b0, b1):
+    """音节选图：拼读音节，选对应的图"""
+    icon, text = ex0
+    word = text.split(" ")[0]
+    dis = [x for x in ICON_POOL if x != icon]
+    d1 = dis[(i * 3) % len(dis)]
+    d2 = dis[(i * 3 + 2) % len(dis)]
+    pos = (i + 1) % 3
+    opts, ans = rot([{"icon": icon, "text": word}, {"icon": d1}, {"icon": d2}], 0, pos)
+    return {"id": f"py-{i}-pq", "kind": "quiz",
+            "question": f"拼一拼 {b0} — {b1}：哪张图是「{word}」？",
+            "options": opts, "answer": ans,
+            "hint": f"{b0} 碰 {b1}", "praise": f"拼读小能手：{word}！"}
+
+pinyin_levels = []
+for i, (letter, examples, b0, b1, blends) in enumerate(PY):
+    steps = [{"id": f"py-{i}-t", "kind": "letter", "letters": [letter], "display": letter,
+              "examples": [{"icon": ic, "text": t, "say": t.split(" ")[0]} for ic, t in examples],
+              "question": f"学一学声母 {letter}"}]
+    combo = i % 4
+    if combo == 0:      # A：找字母 + 拼读
+        steps += [py_listen_letter(i, letter), py_blend(i, b0, b1, blends)]
+    elif combo == 1:    # B：看图找声母 + 拼读
+        steps += [py_listen_pic_to_initial(i, letter, examples[0]), py_blend(i, b0, b1, blends)]
+    elif combo == 2:    # C：音节选图 + 找字母
+        steps += [py_pic_quiz(i, letter, examples[0], b0, b1), py_listen_letter(i, letter)]
+    else:               # D：拼读 + 音节选图
+        steps += [py_blend(i, b0, b1, blends), py_pic_quiz(i, letter, examples[0], b0, b1)]
     pinyin_levels.append({"id": f"py-{i}", "title": f"第 {i+1} 关 声母", "subtitle": f"认识「{letter}」", "steps": steps})
-# 韵母关
+# 韵母关 + 复习关
 pinyin_levels.append({"id": "py-10", "title": "第 11 关 韵母", "subtitle": "a o e i u ü", "steps": [
     {"id": "py-10-t", "kind": "letter", "letters": ["a","o","e","i","u","ü"], "display": "a",
      "examples": [{"icon": "duck", "text": "啊 ā 张大嘴", "say": "ā"}, {"icon": "flame", "text": "哦 ó", "say": "ó"}],
@@ -237,8 +336,7 @@ pinyin_levels.append({"id": "py-10", "title": "第 11 关 韵母", "subtitle": "
      "options": [{"text": t} for t in ["o","a","e"]], "answer": 1,
      "hint": "张大嘴巴 āāā", "praise": "韵母 a 找对啦！"},
 ]})
-# 复习+整体认读
-pinyin_levels.append({"id": "py-11", "title": "第 12 关 复习", "subtitle": "整体认读", "steps": [
+pinyin_levels.append({"id": "py-11", "title": "第 12 关 复习", "subtitle": "整体认读 · 拼读", "steps": [
     {"id": "py-11-l1", "kind": "listen", "prompt": "zhi", "speakText": "zhi",
      "question": "找一找：哪个是「zhi」？",
      "options": [{"text": t} for t in ["chi","zhi","zi"]], "answer": 1,
@@ -247,10 +345,14 @@ pinyin_levels.append({"id": "py-11", "title": "第 12 关 复习", "subtitle": "
      "question": "拼一拼：b — a = ?",
      "options": [{"text": t} for t in ["ba","bo","pa"]], "answer": 0,
      "hint": "爸爸的爸", "praise": "拼读小能手！"},
+    {"id": "py-11-pq", "kind": "quiz",
+     "question": "拼一拼 m — a：哪张图是「妈妈」？",
+     "options": [{"icon": "girl", "text": "妈妈"}, {"icon": "moon"}, {"icon": "train"}], "answer": 0,
+     "hint": "m 碰 a", "praise": "拼读小达人！"},
 ]})
 W("pinyin_levels.json", {"subject": "pinyin", "title": "拼音谷", "guide": "panda", "levels": pinyin_levels})
 
-# ================= 英语 12 关（全部视觉化：字母大卡 + 找一找 + 图词配对） =================
+# ================= 英语 12 关（letter + 题型组合轮换） =================
 EN_LETTERS = [
     ("Aa", "apple", "Apple 苹果"), ("Bb", "banana", "Banana 香蕉"),
     ("Cc", "cake", "Cake 蛋糕"), ("Dd", "duck", "Duck 小鸭"),
@@ -259,41 +361,75 @@ EN_LETTERS = [
     ("Kk", "key", "Key 钥匙"), ("Hh", "heart", "Heart 爱心"),
     ("Rr", "rainbow", "Rainbow 彩虹"), ("Gg", "gift", "Gift 礼物"),
 ]
-english_levels = []
-pair_specs = [0,1,2,3,4,5,6,7]
-for li, idx in enumerate(pair_specs):
-    disp, icon, word = EN_LETTERS[idx]
+
+def en_listen_letter(li, disp):
     others = [d for d, _, _ in EN_LETTERS if d != disp]
-    opts = [others[li % 4], others[(li+1) % 4], disp]
+    opts = [others[li % 4], others[(li + 1) % 4], disp]
     ans = opts.index(disp)
-    d1, d2 = others[(li+2) % 8], others[(li+3) % 8]
+    return {"id": f"en-{li}-l", "kind": "listen", "prompt": disp, "speakText": disp[0],
+            "question": f"Find: which one is {disp} ?",
+            "options": [{"text": t} for t in opts], "answer": ans,
+            "hint": f"{disp[0]} for {disp}", "praise": f"Yes! {disp}!"}
+
+def en_pic_quiz(li, disp, icon, word):
+    others = [d for d, _, _ in EN_LETTERS if d != disp]
+    d1, d2 = others[(li + 2) % 8], others[(li + 3) % 8]
     d1i = next(x for x in EN_LETTERS if x[0] == d1)[1]
     d2i = next(x for x in EN_LETTERS if x[0] == d2)[1]
-    steps = [
-        {"id": f"en-{li}-t", "kind": "letter", "letters": [disp[0]], "display": disp,
-         "examples": [{"icon": icon, "text": word, "say": word.split(" ")[0]}],
-         "question": f"Learn letter {disp}"},
-        {"id": f"en-{li}-l", "kind": "listen", "prompt": disp, "speakText": disp[0],
-         "question": f"Find: which one is {disp} ?",
-         "options": [{"text": t} for t in opts], "answer": ans,
-         "hint": f"{word}", "praise": f"Yes! {disp}!"},
-        {"id": f"en-{li}-q", "kind": "quiz", "question": f"Which picture starts with {disp}?",
-         "options": [{"icon": d1i}, {"icon": icon}, {"icon": d2i}],
-         "answer": 1, "hint": word, "praise": "Great job!"},
-    ]
+    return {"id": f"en-{li}-q", "kind": "quiz",
+            "question": f"Which picture starts with {disp}?",
+            "options": [{"icon": d1i}, {"icon": icon}, {"icon": d2i}],
+            "answer": 1, "hint": word, "praise": "Great job!"}
+
+def en_case_quiz(li, disp):
+    """大小写配对：小写找大写"""
+    upper, lower = disp[0], disp[1]
+    others = [d[0] for d, _, _ in EN_LETTERS if d[0] != upper]
+    d1 = others[(li * 2) % len(others)]
+    d2 = others[(li * 2 + 1) % len(others)]
+    pos = (li + 1) % 3
+    opts, ans = rot([{"text": upper}, {"text": d1}, {"text": d2}], 0, pos)
+    return {"id": f"en-{li}-c", "kind": "quiz",
+            "question": f"小写 {lower} 对应哪个大写字母？",
+            "options": opts, "answer": ans,
+            "hint": f"{disp} = {upper}{lower}", "praise": f"{upper}{lower} 配对成功！"}
+
+def en_pattern(li, icon):
+    others = [ic for _, ic, _ in EN_LETTERS if ic != icon]
+    o1 = others[(li * 2) % len(others)]
+    o2 = others[(li * 2 + 1) % len(others)]
+    seq = [icon, o1, icon]
+    opts, ans = rot([{"icon": o1}, {"icon": o2}, {"icon": icon}], 0, li % 3)
+    return {"id": f"en-{li}-p", "kind": "pattern", "seq": seq,
+            "question": "Pattern: 下一个是谁？",
+            "options": opts, "answer": ans,
+            "hint": "Who comes next?", "praise": "Pattern star!"}
+
+english_levels = []
+for li in range(8):
+    disp, icon, word = EN_LETTERS[li]
+    steps = [{"id": f"en-{li}-t", "kind": "letter", "letters": [disp[0]], "display": disp,
+              "examples": [{"icon": icon, "text": word, "say": word.split(" ")[0]}],
+              "question": f"Learn letter {disp}"}]
+    combo = li % 4
+    if combo == 0:      # A：找字母 + 找图
+        steps += [en_listen_letter(li, disp), en_pic_quiz(li, disp, icon, word)]
+    elif combo == 1:    # B：大小写配对 + 找字母
+        steps += [en_case_quiz(li, disp), en_listen_letter(li, disp)]
+    elif combo == 2:    # C：找字母 + 图标规律
+        steps += [en_listen_letter(li, disp), en_pattern(li, icon)]
+    else:               # D：找图 + 大小写配对
+        steps += [en_pic_quiz(li, disp, icon, word), en_case_quiz(li, disp)]
     english_levels.append({"id": f"en-{li}", "title": f"Level {li+1} Letters", "subtitle": disp, "steps": steps})
 for li, idx in [(8, 10), (9, 11)]:
     disp, icon, word = EN_LETTERS[idx]
-    steps = [
+    english_levels.append({"id": f"en-{li}", "title": f"Level {li+1} Letters", "subtitle": disp, "steps": [
         {"id": f"en-{li}-t", "kind": "letter", "letters": [disp[0]], "display": disp,
          "examples": [{"icon": icon, "text": word, "say": word.split(" ")[0]}],
          "question": f"Learn letter {disp}"},
-        {"id": f"en-{li}-q", "kind": "quiz", "question": f"Which one is {word.split(' ')[0]}?",
-         "options": [{"icon": "book"}, {"icon": icon}, {"icon": "clock"}], "answer": 1,
-         "hint": word, "praise": "Nice!"},
-    ]
-    english_levels.append({"id": f"en-{li}", "title": f"Level {li+1} Letters", "subtitle": disp, "steps": steps})
-# 单词配对 L11 / 复习 L12（全部视觉：题目直接写出单词）
+        en_case_quiz(li, disp),
+        en_pic_quiz(li, disp, icon, word),
+    ]})
 def word_quiz(wid, q, items, ans, say_hint, praise):
     return {"id": wid, "kind": "quiz", "question": q,
             "options": [{"icon": ic, "text": tx} for tx, ic in items], "answer": ans,
@@ -310,57 +446,69 @@ english_levels.append({"id": "en-11", "title": "Level 12 Review", "subtitle": "�
 ]})
 W("english_levels.json", {"subject": "english", "title": "英语王国", "guide": "robot", "levels": english_levels})
 
-# ================= 天文镇 10 关（letter 学一学 + 找一找 quiz） =================
-ASTRO = [
-    ("太阳","Sun","sun",[("sun","太阳 Sun"),("sunrise","日出 Sunrise")],"太阳会发光发热，白天照亮大地",[("moon",0),("star",2)]),
-    ("月亮","Moon","moon",[("moon","月亮 Moon"),("starface","星夜 Night")],"月亮晚上出来，有时圆圆、有时弯弯",[("sun",1),("crystal",2)]),
-    ("星星","Star","star",[("star","星星 Star"),("starface","小星星 Shine")],"星星在夜空里一闪一闪",[("moon",2),("balloon",0)]),
-    ("地球","Earth","earth",[("earth","地球 Earth"),("rocket","飞呀 Fly")],"地球是我们的家，蓝蓝的、圆圆的",[("sun",2),("moon",1)]),
-    ("火箭","Rocket","rocket",[("rocket","火箭 Rocket"),("flame","点火 Go")],"火箭轰隆一声，飞向太空",[("train",2),("balloon",0)]),
-    ("行星","Planet","planet",[("planet","行星 Planet"),("crystal","光环 Ring")],"有的行星戴着漂亮的光环，像大草帽",[("earth",1),("star",2)]),
-    ("彗星","Comet","comet",[("comet","彗星 Comet"),("sparkle","亮亮 Sparkle")],"彗星拖着长长的大尾巴，扫过夜空",[("rocket",2),("star",0)]),
-    ("流星","Meteor","sparkle",[("sparkle","流星 Meteor"),("star","许愿 Wish")],"流星噌——地划过夜空，可以对它许个愿",[("star",1),("comet",2)]),
-    ("火星车","Rover","robot",[("robot","火星车 Rover"),("volcano","火星 Mars")],"机器人火星车，在火星上慢慢探险",[("rocket",2),("earth",0)]),
-]
-astro_levels = []
+# ================= 天文台 10 关（letter + 题型组合轮换） =================
 ASTRO_FULL = [
-    ("太阳","Sun","sun",[("sun","太阳 Sun"),("sunrise","日出 Sunrise")],"太阳会发光发热，白天照亮大地",("moon","star")),
-    ("月亮","Moon","moon",[("moon","月亮 Moon"),("starface","星夜 Night")],"月亮晚上出来，有时圆圆、有时弯弯",("sun","crystal")),
-    ("星星","Star","star",[("star","星星 Star"),("starface","小星星 Shine")],"星星在夜空里一闪一闪",("balloon","moon")),
-    ("地球","Earth","earth",[("earth","地球 Earth"),("rocket","坐火箭 Fly")],"地球是我们的家，蓝蓝的、圆圆的",("sun","moon")),
-    ("火箭","Rocket","rocket",[("rocket","火箭 Rocket"),("flame","点火 Go")],"火箭轰隆一声，飞向太空",("train","balloon")),
-    ("行星","Planet","planet",[("planet","行星 Planet"),("crystal","光环 Ring")],"有的行星戴着光环，像大草帽",("earth","star")),
-    ("彗星","Comet","comet",[("comet","彗星 Comet"),("sparkle","亮尾巴 Tail")],"彗星拖着长长的大尾巴，扫过夜空",("rocket","star")),
-    ("流星","Meteor","sparkle",[("sparkle","流星 Meteor"),("star","许个愿 Wish")],"流星噌——地划过夜空，可以许个愿",("star","comet")),
-    ("火星车","Rover","robot",[("robot","火星车 Rover"),("volcano","红色火星 Mars")],"机器人火星车，在火星上慢慢探险",("rocket","earth")),
+    # (名, 英, 图标, 例词, 冷知识, 干扰1, 干扰2, 特征问题)
+    ("太阳","Sun","sun",[("sun","太阳 Sun"),("sunrise","日出 Sunrise")],"太阳会发光发热，白天照亮大地","moon","star","白天照亮大地、发光发热的是谁？"),
+    ("月亮","Moon","moon",[("moon","月亮 Moon"),("starface","星夜 Night")],"月亮晚上出来，有时圆圆、有时弯弯","sun","crystal","晚上有时圆有时弯的是谁？"),
+    ("星星","Star","star",[("star","星星 Star"),("starface","小星星 Shine")],"星星在夜空里一闪一闪","balloon","moon","夜空里一闪一闪的是谁？"),
+    ("地球","Earth","earth",[("earth","地球 Earth"),("rocket","坐火箭 Fly")],"地球是我们的家，蓝蓝的、圆圆的","sun","moon","蓝蓝圆圆、我们的家是哪个星球？"),
+    ("火箭","Rocket","rocket",[("rocket","火箭 Rocket"),("flame","点火 Go")],"火箭轰隆一声，飞向太空","train","balloon","轰隆一声飞向太空的是谁？"),
+    ("行星","Planet","planet",[("planet","行星 Planet"),("crystal","光环 Ring")],"有的行星戴着光环，像大草帽","earth","star","戴着光环像大草帽的是谁？"),
+    ("彗星","Comet","comet",[("comet","彗星 Comet"),("sparkle","亮尾巴 Tail")],"彗星拖着长长的大尾巴，扫过夜空","rocket","star","拖着长长尾巴扫过夜空的是谁？"),
+    ("流星","Meteor","sparkle",[("sparkle","流星 Meteor"),("star","许个愿 Wish")],"流星噌——地划过夜空，可以许个愿","star","comet","噌地划过夜空、可以许愿的是谁？"),
+    ("火星车","Rover","robot",[("robot","火星车 Rover"),("volcano","红色火星 Mars")],"机器人火星车，在火星上慢慢探险","rocket","earth","在火星上慢慢探险的机器人是谁？"),
 ]
-for i, (name, en, icon, chips, fact, (d1, d2)) in enumerate(ASTRO_FULL):
-    quiz_opts = [{"icon": d1}, {"icon": d2}]
-    ans = (i * 2 + 1) % 3
-    quiz_opts.insert(ans, {"icon": icon, "text": name})
-    astro_levels.append({"id": f"astro-{i}", "title": f"第 {i+1} 关 {en}", "subtitle": name, "steps": [
-        {"id": f"astro-{i}-t", "kind": "letter", "letters": [en], "display": name,
-         "examples": [{"icon": ic, "text": t, "say": t.split(" ")[0]} for ic, t in chips],
-         "question": f"学一学：{name} {en}"},
-        {"id": f"astro-{i}-q", "kind": "quiz", "question": f"找一找：哪个是{name}？",
-         "options": quiz_opts, "answer": ans,
-         "hint": fact, "praise": f"对啦！{fact}"},
-    ]})
-# 第10关 复习挑战
+ASTRO_PATTERNS = {
+    2: (["moon","star","moon"], ["star","sun","comet"], 0),
+    5: (["earth","star","earth"], ["rocket","star","earth"], 1),
+    8: (["rocket","comet","rocket"], ["earth","comet","rocket"], 1),
+}
+astro_levels = []
+for i, (name, en, icon, chips, fact, d1, d2, feat_q) in enumerate(ASTRO_FULL):
+    steps = [{"id": f"astro-{i}-t", "kind": "letter", "letters": [en], "display": name,
+              "examples": [{"icon": ic, "text": t, "say": t.split(" ")[0]} for ic, t in chips],
+              "question": f"学一学：{name} {en}"}]
+    combo = i % 3
+    if combo == 0:      # A：找一找（直接找图标）
+        quiz_opts = [{"icon": d1}, {"icon": d2}]
+        ans = (i + 1) % 3
+        quiz_opts.insert(ans, {"icon": icon, "text": name})
+        steps.append({"id": f"astro-{i}-q", "kind": "quiz",
+                      "question": f"找一找：哪个是{name}？",
+                      "options": quiz_opts, "answer": ans,
+                      "hint": fact, "praise": f"对啦！{fact}"})
+    elif combo == 1:    # B：特征配对（听特征找图）
+        quiz_opts = [{"icon": d1}, {"icon": d2}]
+        ans = (i + 2) % 3
+        quiz_opts.insert(ans, {"icon": icon, "text": name})
+        steps.append({"id": f"astro-{i}-f", "kind": "quiz",
+                      "question": feat_q,
+                      "options": quiz_opts, "answer": ans,
+                      "hint": fact, "praise": f"对啦！{fact}"})
+    else:               # C：星空规律
+        seq, opts, ans = ASTRO_PATTERNS.get(i, (["sun","moon","sun"], ["moon","sun","star"], 0))
+        steps.append({"id": f"astro-{i}-p", "kind": "pattern", "seq": seq,
+                      "question": "星空规律：下一个是谁？",
+                      "options": [{"icon": o} for o in opts], "answer": ans,
+                      "hint": "读一读前面几个，谁在轮流出现",
+                      "praise": "规律找对啦，小天文学家！"})
+    astro_levels.append({"id": f"astro-{i}", "title": f"第 {i+1} 关 {en}", "subtitle": name, "steps": steps})
 astro_levels.append({"id": "astro-9", "title": "第 10 关 星空大挑战", "subtitle": "复习", "steps": [
     {"id": "astro-9-q1", "kind": "quiz", "question": "我们的家是哪个星球？",
      "options": [{"icon": "sun"}, {"icon": "earth", "text": "地球"}, {"icon": "moon"}], "answer": 1,
      "hint": "蓝蓝的、圆圆的", "praise": "地球是我们的家！"},
-    {"id": "astro-9-q2", "kind": "quiz", "question": "晚上挂在天上的是哪个？",
-     "options": [{"icon": "moon", "text": "月亮"}, {"icon": "sun"}, {"icon": "rocket"}], "answer": 0,
-     "hint": "有时圆圆、有时弯弯", "praise": "月亮答对啦！"},
-    {"id": "astro-9-q3", "kind": "quiz", "question": "谁会轰隆隆飞向太空？",
-     "options": [{"icon": "train"}, {"icon": "balloon"}, {"icon": "rocket", "text": "火箭"}], "answer": 2,
-     "hint": "倒计时 3、2、1，发射！", "praise": "火箭发射！全部通关！"},
+    {"id": "astro-9-q2", "kind": "quiz", "question": "谁拖着长长的尾巴扫过夜空？",
+     "options": [{"icon": "moon"}, {"icon": "rocket"}, {"icon": "comet", "text": "彗星"}], "answer": 2,
+     "hint": "像一把大扫帚", "praise": "彗星答对啦！"},
+    {"id": "astro-9-q3", "kind": "pattern", "seq": ["sun","moon","sun"],
+     "question": "星空规律：下一个是谁？",
+     "options": [{"icon": "star"}, {"icon": "moon"}, {"icon": "rocket"}], "answer": 1,
+     "hint": "谁和太阳在轮流出现？", "praise": "全部通关，小天文学家！"},
 ]})
 W("astro_levels.json", {"subject": "astro", "title": "天文台", "guide": "robot", "levels": astro_levels})
 
-# ================= 收集册 7 组（新增星空卡） =================
+# ================= 收集册 7 组 =================
 def C(id, name, icon=None, text=None, pinyin=None, fact=None, tag=None, tagColor=None):
     d = {"id": id, "name": name}
     if icon: d["icon"] = icon

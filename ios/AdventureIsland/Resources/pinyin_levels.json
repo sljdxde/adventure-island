@@ -47,7 +47,7 @@
             }
           ],
           "answer": 2,
-          "hint": "「爸爸」的开头",
+          "hint": "想一想它的样子",
           "praise": "「b」找对啦！"
         },
         {
@@ -102,25 +102,25 @@
           "question": "学一学声母 p"
         },
         {
-          "id": "py-1-l",
+          "id": "py-1-l2",
           "kind": "listen",
-          "prompt": "p",
+          "promptIcon": "volcano",
           "speakText": "p",
-          "question": "找一找：哪个是「p」？",
+          "question": "看一看：「山坡」的开头是哪个声母？",
           "options": [
             {
-              "text": "d"
-            },
-            {
-              "text": "m"
+              "text": "f"
             },
             {
               "text": "p"
+            },
+            {
+              "text": "t"
             }
           ],
-          "answer": 2,
-          "hint": "「山坡」的开头",
-          "praise": "「p」找对啦！"
+          "answer": 1,
+          "hint": "山坡 的第一个音",
+          "praise": "对！山坡 开头是 p"
         },
         {
           "id": "py-1-b",
@@ -174,6 +174,26 @@
           "question": "学一学声母 m"
         },
         {
+          "id": "py-2-pq",
+          "kind": "quiz",
+          "question": "拼一拼 m — a：哪张图是「妈妈」？",
+          "options": [
+            {
+              "icon": "girl",
+              "text": "妈妈"
+            },
+            {
+              "icon": "candy"
+            },
+            {
+              "icon": "heart"
+            }
+          ],
+          "answer": 0,
+          "hint": "m 碰 a",
+          "praise": "拼读小能手：妈妈！"
+        },
+        {
           "id": "py-2-l",
           "kind": "listen",
           "prompt": "m",
@@ -191,31 +211,8 @@
             }
           ],
           "answer": 2,
-          "hint": "「妈妈」的开头",
+          "hint": "想一想它的样子",
           "praise": "「m」找对啦！"
-        },
-        {
-          "id": "py-2-b",
-          "kind": "blend",
-          "parts": [
-            "m",
-            "a"
-          ],
-          "question": "拼一拼：m — a = ?",
-          "options": [
-            {
-              "text": "ma"
-            },
-            {
-              "text": "mo"
-            },
-            {
-              "text": "mu"
-            }
-          ],
-          "answer": 0,
-          "hint": "m 碰上 a",
-          "praise": "拼对了，ma！"
         }
       ]
     },
@@ -246,27 +243,6 @@
           "question": "学一学声母 f"
         },
         {
-          "id": "py-3-l",
-          "kind": "listen",
-          "prompt": "f",
-          "speakText": "f",
-          "question": "找一找：哪个是「f」？",
-          "options": [
-            {
-              "text": "d"
-            },
-            {
-              "text": "p"
-            },
-            {
-              "text": "f"
-            }
-          ],
-          "answer": 2,
-          "hint": "「发烧」的开头",
-          "praise": "「f」找对啦！"
-        },
-        {
           "id": "py-3-b",
           "kind": "blend",
           "parts": [
@@ -288,6 +264,26 @@
           "answer": 0,
           "hint": "f 碰上 a",
           "praise": "拼对了，fa！"
+        },
+        {
+          "id": "py-3-pq",
+          "kind": "quiz",
+          "question": "拼一拼 f — a：哪张图是「发烧」？",
+          "options": [
+            {
+              "icon": "clock"
+            },
+            {
+              "icon": "flame",
+              "text": "发烧"
+            },
+            {
+              "icon": "sun"
+            }
+          ],
+          "answer": 1,
+          "hint": "f 碰 a",
+          "praise": "拼读小能手：发烧！"
         }
       ]
     },
@@ -335,7 +331,7 @@
             }
           ],
           "answer": 2,
-          "hint": "「大地」的开头",
+          "hint": "想一想它的样子",
           "praise": "「d」找对啦！"
         },
         {
@@ -390,25 +386,25 @@
           "question": "学一学声母 t"
         },
         {
-          "id": "py-5-l",
+          "id": "py-5-l2",
           "kind": "listen",
-          "prompt": "t",
+          "promptIcon": "train",
           "speakText": "t",
-          "question": "找一找：哪个是「t」？",
+          "question": "看一看：「太阳」的开头是哪个声母？",
           "options": [
             {
-              "text": "d"
+              "text": "p"
             },
             {
-              "text": "p"
+              "text": "m"
             },
             {
               "text": "t"
             }
           ],
           "answer": 2,
-          "hint": "「太阳」的开头",
-          "praise": "「t」找对啦！"
+          "hint": "太阳 的第一个音",
+          "praise": "对！太阳 开头是 t"
         },
         {
           "id": "py-5-b",
@@ -462,6 +458,26 @@
           "question": "学一学声母 n"
         },
         {
+          "id": "py-6-pq",
+          "kind": "quiz",
+          "question": "拼一拼 n — i：哪张图是「拿苹果」？",
+          "options": [
+            {
+              "icon": "heart"
+            },
+            {
+              "icon": "girl",
+              "text": "拿苹果"
+            },
+            {
+              "icon": "duck"
+            }
+          ],
+          "answer": 1,
+          "hint": "n 碰 i",
+          "praise": "拼读小能手：拿苹果！"
+        },
+        {
           "id": "py-6-l",
           "kind": "listen",
           "prompt": "n",
@@ -479,31 +495,8 @@
             }
           ],
           "answer": 2,
-          "hint": "「拿苹果」的开头",
+          "hint": "想一想它的样子",
           "praise": "「n」找对啦！"
-        },
-        {
-          "id": "py-6-b",
-          "kind": "blend",
-          "parts": [
-            "n",
-            "i"
-          ],
-          "question": "拼一拼：n — i = ?",
-          "options": [
-            {
-              "text": "ni"
-            },
-            {
-              "text": "na"
-            },
-            {
-              "text": "nu"
-            }
-          ],
-          "answer": 0,
-          "hint": "n 碰上 i",
-          "praise": "拼对了，ni！"
         }
       ]
     },
@@ -534,27 +527,6 @@
           "question": "学一学声母 l"
         },
         {
-          "id": "py-7-l",
-          "kind": "listen",
-          "prompt": "l",
-          "speakText": "l",
-          "question": "找一找：哪个是「l」？",
-          "options": [
-            {
-              "text": "d"
-            },
-            {
-              "text": "p"
-            },
-            {
-              "text": "l"
-            }
-          ],
-          "answer": 2,
-          "hint": "「拉手」的开头",
-          "praise": "「l」找对啦！"
-        },
-        {
           "id": "py-7-b",
           "kind": "blend",
           "parts": [
@@ -576,6 +548,26 @@
           "answer": 0,
           "hint": "l 碰上 a",
           "praise": "拼对了，la！"
+        },
+        {
+          "id": "py-7-pq",
+          "kind": "quiz",
+          "question": "拼一拼 l — a：哪张图是「拉手」？",
+          "options": [
+            {
+              "icon": "sun"
+            },
+            {
+              "icon": "cake"
+            },
+            {
+              "icon": "leaf",
+              "text": "拉手"
+            }
+          ],
+          "answer": 2,
+          "hint": "l 碰 a",
+          "praise": "拼读小能手：拉手！"
         }
       ]
     },
@@ -623,7 +615,7 @@
             }
           ],
           "answer": 2,
-          "hint": "「哥哥」的开头",
+          "hint": "想一想它的样子",
           "praise": "「g」找对啦！"
         },
         {
@@ -678,25 +670,25 @@
           "question": "学一学声母 k"
         },
         {
-          "id": "py-9-l",
+          "id": "py-9-l2",
           "kind": "listen",
-          "prompt": "k",
+          "promptIcon": "heart",
           "speakText": "k",
-          "question": "找一找：哪个是「k」？",
+          "question": "看一看：「开心」的开头是哪个声母？",
           "options": [
+            {
+              "text": "k"
+            },
             {
               "text": "d"
             },
             {
               "text": "p"
-            },
-            {
-              "text": "k"
             }
           ],
-          "answer": 2,
-          "hint": "「开心」的开头",
-          "praise": "「k」找对啦！"
+          "answer": 0,
+          "hint": "开心 的第一个音",
+          "praise": "对！开心 开头是 k"
         },
         {
           "id": "py-9-b",
@@ -780,7 +772,7 @@
     {
       "id": "py-11",
       "title": "第 12 关 复习",
-      "subtitle": "整体认读",
+      "subtitle": "整体认读 · 拼读",
       "steps": [
         {
           "id": "py-11-l1",
@@ -825,6 +817,26 @@
           "answer": 0,
           "hint": "爸爸的爸",
           "praise": "拼读小能手！"
+        },
+        {
+          "id": "py-11-pq",
+          "kind": "quiz",
+          "question": "拼一拼 m — a：哪张图是「妈妈」？",
+          "options": [
+            {
+              "icon": "girl",
+              "text": "妈妈"
+            },
+            {
+              "icon": "moon"
+            },
+            {
+              "icon": "train"
+            }
+          ],
+          "answer": 0,
+          "hint": "m 碰 a",
+          "praise": "拼读小达人！"
         }
       ]
     }

@@ -35,9 +35,10 @@ struct Step: Codable, Equatable, Identifiable {
     var display: String?
     var examples: [WordChip]?
 
-    // listen（找一找：目标大卡字符，朗读可选）
+    // listen（找一找：目标大卡，prompt 文字或 promptIcon 图片；朗读可选）
     var speakText: String?
     var prompt: String?
+    var promptIcon: String?
 
     // pattern（找规律：序列 + 选项）
     var seq: [String]?

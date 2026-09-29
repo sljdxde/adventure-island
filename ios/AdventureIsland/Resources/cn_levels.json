@@ -105,45 +105,47 @@
           ]
         },
         {
-          "id": "cn-1-l",
+          "id": "cn-1-l2",
           "kind": "listen",
-          "prompt": "月",
+          "promptIcon": "moon",
           "speakText": "月",
-          "question": "找一找：哪张图片是「月」？",
+          "question": "看一看：这张图变成的字是哪个？",
           "options": [
             {
-              "icon": "star"
+              "text": "山"
             },
-            {
-              "icon": "sun"
-            },
-            {
-              "icon": "moon",
-              "text": "月"
-            }
-          ],
-          "answer": 2,
-          "hint": "想想刚才的图片：「月」",
-          "praise": "眼睛真亮！月 找对啦！"
-        },
-        {
-          "id": "cn-1-q",
-          "kind": "quiz",
-          "question": "练一练：哪个字是「月」？",
-          "options": [
             {
               "text": "月"
             },
             {
               "text": "木"
-            },
-            {
-              "text": "口"
             }
           ],
-          "answer": 0,
-          "hint": "想一想刚才的字",
-          "praise": "记住啦！"
+          "answer": 1,
+          "hint": "想一想它像什么字",
+          "praise": "对！这张图就是「月」"
+        },
+        {
+          "id": "cn-1-w",
+          "kind": "quiz",
+          "question": "「月」可以组成哪个词？",
+          "options": [
+            {
+              "icon": "wave",
+              "text": "海浪"
+            },
+            {
+              "icon": "crystal",
+              "text": "泉水"
+            },
+            {
+              "icon": "moon",
+              "text": "月亮"
+            }
+          ],
+          "answer": 2,
+          "hint": "找一找有「月」的词",
+          "praise": "组词成功：月亮！"
         }
       ]
     },
@@ -177,6 +179,28 @@
           ]
         },
         {
+          "id": "cn-2-w",
+          "kind": "quiz",
+          "question": "「水」可以组成哪个词？",
+          "options": [
+            {
+              "icon": "wave",
+              "text": "海浪"
+            },
+            {
+              "icon": "school",
+              "text": "上山"
+            },
+            {
+              "icon": "leaf",
+              "text": "山林"
+            }
+          ],
+          "answer": 0,
+          "hint": "找一找有「水」的词",
+          "praise": "组词成功：海浪！"
+        },
+        {
           "id": "cn-2-l",
           "kind": "listen",
           "prompt": "水",
@@ -197,25 +221,6 @@
           "answer": 0,
           "hint": "想想刚才的图片：「水」",
           "praise": "眼睛真亮！水 找对啦！"
-        },
-        {
-          "id": "cn-2-q",
-          "kind": "quiz",
-          "question": "练一练：哪个字是「水」？",
-          "options": [
-            {
-              "text": "水"
-            },
-            {
-              "text": "木"
-            },
-            {
-              "text": "口"
-            }
-          ],
-          "answer": 0,
-          "hint": "想一想刚才的字",
-          "praise": "记住啦！"
         }
       ]
     },
@@ -311,45 +316,47 @@
           ]
         },
         {
-          "id": "cn-4-l",
+          "id": "cn-4-l2",
           "kind": "listen",
-          "prompt": "木",
+          "promptIcon": "sprout",
           "speakText": "木",
-          "question": "找一找：哪张图片是「木」？",
+          "question": "看一看：这张图变成的字是哪个？",
           "options": [
             {
-              "icon": "sprout",
+              "text": "石"
+            },
+            {
               "text": "木"
             },
             {
-              "icon": "flower"
-            },
-            {
-              "icon": "rock"
+              "text": "火"
             }
           ],
-          "answer": 0,
-          "hint": "想想刚才的图片：「木」",
-          "praise": "眼睛真亮！木 找对啦！"
+          "answer": 1,
+          "hint": "想一想它像什么字",
+          "praise": "对！这张图就是「木」"
         },
         {
-          "id": "cn-4-q",
+          "id": "cn-4-w",
           "kind": "quiz",
-          "question": "练一练：哪个字是「木」？",
+          "question": "「木」可以组成哪个词？",
           "options": [
             {
-              "text": "木"
+              "icon": "party",
+              "text": "人们"
             },
             {
-              "text": "水"
+              "icon": "speaker",
+              "text": "开口"
             },
             {
-              "text": "口"
+              "icon": "leaf",
+              "text": "树叶"
             }
           ],
-          "answer": 0,
-          "hint": "想一想刚才的字",
-          "praise": "记住啦！"
+          "answer": 2,
+          "hint": "找一找有「木」的词",
+          "praise": "组词成功：树叶！"
         }
       ]
     },
@@ -378,6 +385,28 @@
           ]
         },
         {
+          "id": "cn-5-w",
+          "kind": "quiz",
+          "question": "「人」可以组成哪个词？",
+          "options": [
+            {
+              "icon": "heart",
+              "text": "大人"
+            },
+            {
+              "icon": "sun",
+              "text": "天空"
+            },
+            {
+              "icon": "sunrise",
+              "text": "今天"
+            }
+          ],
+          "answer": 0,
+          "hint": "找一找有「人」的词",
+          "praise": "组词成功：大人！"
+        },
+        {
           "id": "cn-5-l",
           "kind": "listen",
           "prompt": "人",
@@ -398,25 +427,6 @@
           "answer": 2,
           "hint": "想想刚才的图片：「人」",
           "praise": "眼睛真亮！人 找对啦！"
-        },
-        {
-          "id": "cn-5-q",
-          "kind": "quiz",
-          "question": "练一练：哪个字是「人」？",
-          "options": [
-            {
-              "text": "人"
-            },
-            {
-              "text": "木"
-            },
-            {
-              "text": "口"
-            }
-          ],
-          "answer": 0,
-          "hint": "想一想刚才的字",
-          "praise": "记住啦！"
         }
       ]
     },
@@ -512,45 +522,47 @@
           ]
         },
         {
-          "id": "cn-7-l",
+          "id": "cn-7-l2",
           "kind": "listen",
-          "prompt": "天",
+          "promptIcon": "sunrays",
           "speakText": "天",
-          "question": "找一找：哪张图片是「天」？",
+          "question": "看一看：这张图变成的字是哪个？",
           "options": [
             {
-              "icon": "banana"
+              "text": "月"
             },
             {
-              "icon": "sun",
               "text": "天"
             },
             {
-              "icon": "rocket"
+              "text": "水"
             }
           ],
           "answer": 1,
-          "hint": "想想刚才的图片：「天」",
-          "praise": "眼睛真亮！天 找对啦！"
+          "hint": "想一想它像什么字",
+          "praise": "对！这张图就是「天」"
         },
         {
-          "id": "cn-7-q",
+          "id": "cn-7-w",
           "kind": "quiz",
-          "question": "练一练：哪个字是「天」？",
+          "question": "「天」可以组成哪个词？",
           "options": [
             {
-              "text": "天"
+              "icon": "flame",
+              "text": "火焰"
             },
             {
-              "text": "木"
+              "icon": "volcano",
+              "text": "火山"
             },
             {
-              "text": "口"
+              "icon": "sun",
+              "text": "天空"
             }
           ],
-          "answer": 0,
-          "hint": "想一想刚才的字",
-          "praise": "记住啦！"
+          "answer": 2,
+          "hint": "找一找有「天」的词",
+          "praise": "组词成功：天空！"
         }
       ]
     },
@@ -579,6 +591,28 @@
           ]
         },
         {
+          "id": "cn-8-w",
+          "kind": "quiz",
+          "question": "「田」可以组成哪个词？",
+          "options": [
+            {
+              "icon": "sprout",
+              "text": "田里"
+            },
+            {
+              "icon": "flower",
+              "text": "花朵"
+            },
+            {
+              "icon": "leaf",
+              "text": "花瓣"
+            }
+          ],
+          "answer": 0,
+          "hint": "找一找有「田」的词",
+          "praise": "组词成功：田里！"
+        },
+        {
           "id": "cn-8-l",
           "kind": "listen",
           "prompt": "田",
@@ -599,25 +633,6 @@
           "answer": 2,
           "hint": "想想刚才的图片：「田」",
           "praise": "眼睛真亮！田 找对啦！"
-        },
-        {
-          "id": "cn-8-q",
-          "kind": "quiz",
-          "question": "练一练：哪个字是「田」？",
-          "options": [
-            {
-              "text": "田"
-            },
-            {
-              "text": "木"
-            },
-            {
-              "text": "口"
-            }
-          ],
-          "answer": 0,
-          "hint": "想一想刚才的字",
-          "praise": "记住啦！"
         }
       ]
     },
@@ -718,45 +733,47 @@
           ]
         },
         {
-          "id": "cn-10-l",
+          "id": "cn-10-l2",
           "kind": "listen",
-          "prompt": "火",
+          "promptIcon": "flame",
           "speakText": "火",
-          "question": "找一找：哪张图片是「火」？",
+          "question": "看一看：这张图变成的字是哪个？",
           "options": [
             {
-              "icon": "flame",
+              "text": "天"
+            },
+            {
               "text": "火"
             },
             {
-              "icon": "crystal"
-            },
-            {
-              "icon": "key"
+              "text": "田"
             }
           ],
-          "answer": 0,
-          "hint": "想想刚才的图片：「火」",
-          "praise": "眼睛真亮！火 找对啦！"
+          "answer": 1,
+          "hint": "想一想它像什么字",
+          "praise": "对！这张图就是「火」"
         },
         {
-          "id": "cn-10-q",
+          "id": "cn-10-w",
           "kind": "quiz",
-          "question": "练一练：哪个字是「火」？",
+          "question": "「火」可以组成哪个词？",
           "options": [
             {
-              "text": "火"
+              "icon": "sunrise",
+              "text": "日出"
             },
             {
-              "text": "木"
+              "icon": "cake",
+              "text": "生日"
             },
             {
-              "text": "口"
+              "icon": "flame",
+              "text": "火焰"
             }
           ],
-          "answer": 0,
-          "hint": "想一想刚才的字",
-          "praise": "记住啦！"
+          "answer": 2,
+          "hint": "找一找有「火」的词",
+          "praise": "组词成功：火焰！"
         }
       ]
     },
@@ -790,6 +807,28 @@
           ]
         },
         {
+          "id": "cn-11-w",
+          "kind": "quiz",
+          "question": "「花」可以组成哪个词？",
+          "options": [
+            {
+              "icon": "flower",
+              "text": "花朵"
+            },
+            {
+              "icon": "moon",
+              "text": "月亮"
+            },
+            {
+              "icon": "starface",
+              "text": "星星"
+            }
+          ],
+          "answer": 0,
+          "hint": "找一找有「花」的词",
+          "praise": "组词成功：花朵！"
+        },
+        {
           "id": "cn-11-l",
           "kind": "listen",
           "prompt": "花",
@@ -810,25 +849,6 @@
           "answer": 1,
           "hint": "想想刚才的图片：「花」",
           "praise": "眼睛真亮！花 找对啦！"
-        },
-        {
-          "id": "cn-11-q",
-          "kind": "quiz",
-          "question": "练一练：哪个字是「花」？",
-          "options": [
-            {
-              "text": "花"
-            },
-            {
-              "text": "木"
-            },
-            {
-              "text": "口"
-            }
-          ],
-          "answer": 0,
-          "hint": "想一想刚才的字",
-          "praise": "记住啦！"
         }
       ]
     },
@@ -924,45 +944,47 @@
           ]
         },
         {
-          "id": "cn-13-l",
+          "id": "cn-13-l2",
           "kind": "listen",
-          "prompt": "鸟",
+          "promptIcon": "duck",
           "speakText": "鸟",
-          "question": "找一找：哪张图片是「鸟」？",
+          "question": "看一看：这张图变成的字是哪个？",
           "options": [
             {
-              "icon": "duck",
+              "text": "日"
+            },
+            {
               "text": "鸟"
             },
             {
-              "icon": "apple"
-            },
-            {
-              "icon": "rocket"
+              "text": "月"
             }
           ],
-          "answer": 0,
-          "hint": "想想刚才的图片：「鸟」",
-          "praise": "眼睛真亮！鸟 找对啦！"
+          "answer": 1,
+          "hint": "想一想它像什么字",
+          "praise": "对！这张图就是「鸟」"
         },
         {
-          "id": "cn-13-q",
+          "id": "cn-13-w",
           "kind": "quiz",
-          "question": "练一练：哪个字是「鸟」？",
+          "question": "「鸟」可以组成哪个词？",
           "options": [
             {
-              "text": "鸟"
+              "icon": "leaf",
+              "text": "露珠"
             },
             {
-              "text": "木"
+              "icon": "school",
+              "text": "上山"
             },
             {
-              "text": "口"
+              "icon": "duck",
+              "text": "小鸟"
             }
           ],
-          "answer": 0,
-          "hint": "想一想刚才的字",
-          "praise": "记住啦！"
+          "answer": 2,
+          "hint": "找一找有「鸟」的词",
+          "praise": "组词成功：小鸟！"
         }
       ]
     },
@@ -974,19 +996,18 @@
         {
           "id": "cn-14-l1",
           "kind": "listen",
-          "prompt": "火",
+          "promptIcon": "flame",
           "speakText": "火",
-          "question": "找一找：哪张图片是「火」？",
+          "question": "看一看：这张图变成的字是哪个？",
           "options": [
             {
-              "icon": "crystal"
+              "text": "山"
             },
             {
-              "icon": "flame",
               "text": "火"
             },
             {
-              "icon": "key"
+              "text": "水"
             }
           ],
           "answer": 1,
@@ -994,26 +1015,26 @@
           "praise": "真棒！"
         },
         {
-          "id": "cn-14-l2",
-          "kind": "listen",
-          "prompt": "花",
-          "speakText": "花",
-          "question": "找一找：哪张图片是「花」？",
+          "id": "cn-14-w",
+          "kind": "quiz",
+          "question": "「花」可以组成哪个词？",
           "options": [
             {
-              "icon": "star"
+              "icon": "flower",
+              "text": "花朵"
             },
             {
               "icon": "flower",
-              "text": "花"
+              "text": "花木"
             },
             {
-              "icon": "duck"
+              "icon": "heart",
+              "text": "大人"
             }
           ],
-          "answer": 1,
-          "hint": "香香的、漂亮的",
-          "praise": "眼睛真亮！"
+          "answer": 0,
+          "hint": "找一找有「花」的词",
+          "praise": "组词成功：花朵！"
         },
         {
           "id": "cn-14-q",

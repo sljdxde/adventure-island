@@ -38,9 +38,11 @@ final class ContentIntegrityTests: XCTestCase {
                         XCTAssertNotNil(step.display)
                         XCTAssertFalse((step.examples ?? []).isEmpty, "\(step.id) letter 缺例词")
                     case "listen":
-                        // 视觉化找一找：必须有目标大卡 prompt（无声音也能作答），speakText 仅为可选朗读
-                        XCTAssertNotNil(step.prompt, "\(step.id) listen 缺视觉目标 prompt")
+                        // 视觉化找一找：目标大卡为 prompt 文字或 promptIcon 图片（无声音也能作答）
+                        XCTAssertTrue(step.prompt != nil || step.promptIcon != nil,
+                                      "\(step.id) listen 缺视觉目标 prompt/promptIcon")
                         XCTAssertNotNil(step.speakText, "\(step.id) listen 缺 speakText")
+                        if let pi = step.promptIcon { XCTAssertTrue(iconNames.contains(pi), "\(step.id) promptIcon 不在资产清单") }
                         XCTAssertEqual(step.options?.count, 3, "\(step.id) listen 选项应为 3")
                         let ans = try XCTUnwrap(step.answer, "\(step.id) 缺 answer")
                         XCTAssertTrue((0..<3).contains(ans), "\(step.id) answer 越界")

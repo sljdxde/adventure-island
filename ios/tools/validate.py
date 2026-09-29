@@ -47,6 +47,7 @@ def collect_icons(node):
             if k == "morphFrom" and isinstance(v, str): json_icons.add(v)
             if k == "duckIcon" and isinstance(v, str): json_icons.add(v)
             if k in ("leftIcon", "rightIcon", "guessIcon") and isinstance(v, str): json_icons.add(v)
+            if k == "promptIcon" and isinstance(v, str): json_icons.add(v)
             if k == "seq" and isinstance(v, list):
                 for s in v:
                     if isinstance(s, str): json_icons.add(s)
@@ -92,8 +93,9 @@ def check_subject(doc, name, expect_levels):
                 if not st.get("letters") or not st.get("display") or not st.get("examples"):
                     err(f"{sid} letter 缺 letters/display/examples")
             elif kind == "listen":
-                # 视觉化找一找：必须有目标大卡 prompt（不依赖声音可作答）；speakText 为可选朗读
-                if not st.get("prompt"): err(f"{sid} listen 缺视觉目标 prompt")
+                # 视觉化找一找：目标大卡为 prompt 文字或 promptIcon 图片（不依赖声音可作答）
+                if not (st.get("prompt") or st.get("promptIcon")):
+                    err(f"{sid} listen 缺视觉目标 prompt/promptIcon")
                 if not st.get("speakText"): err(f"{sid} listen 缺 speakText（可选朗读）")
                 opts = st.get("options") or []
                 if len(opts) != 3 or not isinstance(st.get("answer"), int) or not (0 <= st["answer"] < 3):
