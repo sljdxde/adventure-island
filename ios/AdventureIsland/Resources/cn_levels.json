@@ -172,26 +172,29 @@
             "step": "cn-0-l2"
           },
           {
-            "type": "question",
-            "step": "cn-0-w"
+            "type": "coin"
           },
           {
-            "type": "coin"
+            "type": "question",
+            "step": "cn-0-w"
           },
           {
             "type": "question",
             "step": "cn-0-q"
           },
           {
+            "type": "coin"
+          },
+          {
             "type": "question",
             "step": "cn-0-w2"
           },
           {
-            "type": "question",
-            "step": "cn-0-l3"
+            "type": "chest"
           },
           {
-            "type": "coin"
+            "type": "question",
+            "step": "cn-0-l3"
           }
         ]
       }
@@ -365,15 +368,18 @@
             "step": "cn-1-w"
           },
           {
-            "type": "question",
-            "step": "cn-1-q"
-          },
-          {
             "type": "coin"
           },
           {
             "type": "question",
+            "step": "cn-1-q"
+          },
+          {
+            "type": "question",
             "step": "cn-1-w2"
+          },
+          {
+            "type": "mushroom"
           },
           {
             "type": "question",
@@ -382,9 +388,6 @@
           {
             "type": "question",
             "step": "cn-1-l"
-          },
-          {
-            "type": "coin"
           }
         ]
       }
@@ -558,26 +561,29 @@
             "step": "cn-2-q"
           },
           {
-            "type": "question",
-            "step": "cn-2-w2"
+            "type": "coin"
           },
           {
-            "type": "coin"
+            "type": "question",
+            "step": "cn-2-w2"
           },
           {
             "type": "question",
             "step": "cn-2-l3"
           },
           {
+            "type": "coin"
+          },
+          {
             "type": "question",
             "step": "cn-2-l"
           },
           {
-            "type": "question",
-            "step": "cn-2-l2"
+            "type": "rest"
           },
           {
-            "type": "coin"
+            "type": "question",
+            "step": "cn-2-l2"
           }
         ]
       }
@@ -746,26 +752,29 @@
             "step": "cn-3-w2"
           },
           {
-            "type": "question",
-            "step": "cn-3-l3"
+            "type": "coin"
           },
           {
-            "type": "coin"
+            "type": "question",
+            "step": "cn-3-l3"
           },
           {
             "type": "question",
             "step": "cn-3-l"
           },
           {
+            "type": "chest"
+          },
+          {
             "type": "question",
             "step": "cn-3-l2"
           },
           {
-            "type": "question",
-            "step": "cn-3-w"
+            "type": "mushroom"
           },
           {
-            "type": "coin"
+            "type": "question",
+            "step": "cn-3-w"
           }
         ]
       }
@@ -934,26 +943,32 @@
             "step": "cn-4-l3"
           },
           {
-            "type": "question",
-            "step": "cn-4-l"
+            "type": "coin"
           },
           {
-            "type": "coin"
+            "type": "question",
+            "step": "cn-4-l"
           },
           {
             "type": "question",
             "step": "cn-4-l2"
           },
           {
+            "type": "coin"
+          },
+          {
             "type": "question",
             "step": "cn-4-w"
+          },
+          {
+            "type": "mushroom"
           },
           {
             "type": "question",
             "step": "cn-4-q"
           },
           {
-            "type": "coin"
+            "type": "rest"
           }
         ]
       }
@@ -1122,26 +1137,29 @@
             "step": "cn-5-l"
           },
           {
-            "type": "question",
-            "step": "cn-5-l2"
+            "type": "coin"
           },
           {
-            "type": "coin"
+            "type": "question",
+            "step": "cn-5-l2"
           },
           {
             "type": "question",
             "step": "cn-5-w"
           },
           {
+            "type": "chest"
+          },
+          {
             "type": "question",
             "step": "cn-5-q"
           },
           {
-            "type": "question",
-            "step": "cn-5-w2"
+            "type": "rest"
           },
           {
-            "type": "coin"
+            "type": "question",
+            "step": "cn-5-w2"
           }
         ]
       }
@@ -1310,26 +1328,29 @@
             "step": "cn-6-l2"
           },
           {
-            "type": "question",
-            "step": "cn-6-w"
+            "type": "coin"
           },
           {
-            "type": "coin"
+            "type": "question",
+            "step": "cn-6-w"
           },
           {
             "type": "question",
             "step": "cn-6-q"
           },
           {
+            "type": "coin"
+          },
+          {
             "type": "question",
             "step": "cn-6-w2"
           },
           {
-            "type": "question",
-            "step": "cn-6-l3"
+            "type": "chest"
           },
           {
-            "type": "coin"
+            "type": "question",
+            "step": "cn-6-l3"
           }
         ]
       }
@@ -1498,15 +1519,18 @@
             "step": "cn-7-w"
           },
           {
-            "type": "question",
-            "step": "cn-7-q"
-          },
-          {
             "type": "coin"
           },
           {
             "type": "question",
+            "step": "cn-7-q"
+          },
+          {
+            "type": "question",
             "step": "cn-7-w2"
+          },
+          {
+            "type": "mushroom"
           },
           {
             "type": "question",
@@ -1515,9 +1539,6 @@
           {
             "type": "question",
             "step": "cn-7-l"
-          },
-          {
-            "type": "coin"
           }
         ]
       }
@@ -1686,26 +1707,29 @@
             "step": "cn-8-q"
           },
           {
-            "type": "question",
-            "step": "cn-8-w2"
+            "type": "coin"
           },
           {
-            "type": "coin"
+            "type": "question",
+            "step": "cn-8-w2"
           },
           {
             "type": "question",
             "step": "cn-8-l3"
           },
           {
+            "type": "coin"
+          },
+          {
             "type": "question",
             "step": "cn-8-l"
           },
           {
-            "type": "question",
-            "step": "cn-8-l2"
+            "type": "rest"
           },
           {
-            "type": "coin"
+            "type": "question",
+            "step": "cn-8-l2"
           }
         ]
       }
@@ -1874,26 +1898,29 @@
             "step": "cn-9-w2"
           },
           {
-            "type": "question",
-            "step": "cn-9-l3"
+            "type": "coin"
           },
           {
-            "type": "coin"
+            "type": "question",
+            "step": "cn-9-l3"
           },
           {
             "type": "question",
             "step": "cn-9-l"
           },
           {
+            "type": "chest"
+          },
+          {
             "type": "question",
             "step": "cn-9-l2"
           },
           {
-            "type": "question",
-            "step": "cn-9-w"
+            "type": "mushroom"
           },
           {
-            "type": "coin"
+            "type": "question",
+            "step": "cn-9-w"
           }
         ]
       }
@@ -2067,26 +2094,32 @@
             "step": "cn-10-l3"
           },
           {
-            "type": "question",
-            "step": "cn-10-l"
+            "type": "coin"
           },
           {
-            "type": "coin"
+            "type": "question",
+            "step": "cn-10-l"
           },
           {
             "type": "question",
             "step": "cn-10-l2"
           },
           {
+            "type": "coin"
+          },
+          {
             "type": "question",
             "step": "cn-10-w"
+          },
+          {
+            "type": "mushroom"
           },
           {
             "type": "question",
             "step": "cn-10-q"
           },
           {
-            "type": "coin"
+            "type": "rest"
           }
         ]
       }
@@ -2260,26 +2293,29 @@
             "step": "cn-11-l"
           },
           {
-            "type": "question",
-            "step": "cn-11-l2"
+            "type": "coin"
           },
           {
-            "type": "coin"
+            "type": "question",
+            "step": "cn-11-l2"
           },
           {
             "type": "question",
             "step": "cn-11-w"
           },
           {
+            "type": "chest"
+          },
+          {
             "type": "question",
             "step": "cn-11-q"
           },
           {
-            "type": "question",
-            "step": "cn-11-w2"
+            "type": "rest"
           },
           {
-            "type": "coin"
+            "type": "question",
+            "step": "cn-11-w2"
           }
         ]
       }
@@ -2448,26 +2484,29 @@
             "step": "cn-12-l2"
           },
           {
-            "type": "question",
-            "step": "cn-12-w"
+            "type": "coin"
           },
           {
-            "type": "coin"
+            "type": "question",
+            "step": "cn-12-w"
           },
           {
             "type": "question",
             "step": "cn-12-q"
           },
           {
+            "type": "coin"
+          },
+          {
             "type": "question",
             "step": "cn-12-w2"
           },
           {
-            "type": "question",
-            "step": "cn-12-l3"
+            "type": "chest"
           },
           {
-            "type": "coin"
+            "type": "question",
+            "step": "cn-12-l3"
           }
         ]
       }
@@ -2636,15 +2675,18 @@
             "step": "cn-13-w"
           },
           {
-            "type": "question",
-            "step": "cn-13-q"
-          },
-          {
             "type": "coin"
           },
           {
             "type": "question",
+            "step": "cn-13-q"
+          },
+          {
+            "type": "question",
             "step": "cn-13-w2"
+          },
+          {
+            "type": "mushroom"
           },
           {
             "type": "question",
@@ -2653,9 +2695,6 @@
           {
             "type": "question",
             "step": "cn-13-l"
-          },
-          {
-            "type": "coin"
           }
         ]
       }
@@ -2808,26 +2847,29 @@
             "step": "cn-14-q"
           },
           {
-            "type": "question",
-            "step": "cn-14-q2"
+            "type": "coin"
           },
           {
-            "type": "coin"
+            "type": "question",
+            "step": "cn-14-q2"
           },
           {
             "type": "question",
             "step": "cn-14-q3"
           },
           {
+            "type": "coin"
+          },
+          {
             "type": "question",
             "step": "cn-14-m"
           },
           {
-            "type": "question",
-            "step": "cn-14-l1"
+            "type": "rest"
           },
           {
-            "type": "coin"
+            "type": "question",
+            "step": "cn-14-l1"
           }
         ]
       }

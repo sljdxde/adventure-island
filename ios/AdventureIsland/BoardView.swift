@@ -216,6 +216,7 @@ struct BoardLevelView: View {
         case roll        // 等待掷骰
         case moving      // 蹦跳中
         case question    // 题目覆盖层
+        case rest        // 休息站演出（工单03）
     }
 
     @State private var flow = BoardFlow()
@@ -226,6 +227,7 @@ struct BoardLevelView: View {
     @State private var hopTick = 0
     @State private var questionStep: Step?
     @State private var coinBurstSpace: Int?
+    @State private var restShowing = false   // 休息站：角色进小房子喝水（工单03）
 
     private var config: SubjectConfig { SubjectConfig.map[subject] ?? SubjectConfig.map["cn"]! }
     private var theme: AppTheme { config.theme }
@@ -254,6 +256,10 @@ struct BoardLevelView: View {
 
             if phase == .question, let step = questionStep {
                 questionOverlay(step)
+            }
+
+            if phase == .rest {
+                restOverlay
             }
 
             if flow.finished {
@@ -289,6 +295,11 @@ struct BoardLevelView: View {
                     .foregroundColor(.inkSoft)
             }
             Spacer()
+            if store.snapshot.mushroomBuff {
+                // 幸运蘑菇持有指示（决策 8）：答错一次不算错
+                IconView(name: "mushroom", size: 30)
+                    .modifier(NodePulse(active: true))
+            }
             Text("格子 \(min(max(flow.position + 1, 0), n)) / \(n)")
                 .font(.kidBody(15))
                 .foregroundColor(.inkSoft)
@@ -364,19 +375,28 @@ struct BoardLevelView: View {
         }
     }
 
+    /// 事件格样式（工单03）：金币=蓝、宝箱=紫、蘑菇=珊瑚、休息站=绿；题目格=黄
+    private func spaceStyle(_ type: String) -> (colors: [Color], icon: String) {
+        switch type {
+        case "coin": return ([Color(hex: 0xC9EFFB), Color(hex: 0x6FC9EE)], "coin")
+        case "chest": return ([Color(hex: 0xE3D8FF), Color(hex: 0x9B7BF5)], "gift")
+        case "mushroom": return ([Color(hex: 0xFFD9D2), Color(hex: 0xE85D4E)], "mushroom")
+        case "rest": return ([Color(hex: 0xD7F5DD), Color(hex: 0x58C96B)], "home")
+        default: return ([Color(hex: 0xFFE9AE), Color(hex: 0xF5B93B)], "question")
+        }
+    }
+
     @ViewBuilder
     private func spaceView(_ i: Int) -> some View {
         let sp = board.spaces[i]
+        let style = spaceStyle(sp.type)
         ZStack {
             Circle()
-                .fill(LinearGradient(colors: sp.type == "coin"
-                                     ? [Color(hex: 0xC9EFFB), Color(hex: 0x6FC9EE)]
-                                     : [Color(hex: 0xFFE9AE), Color(hex: 0xF5B93B)],
-                                     startPoint: .top, endPoint: .bottom))
+                .fill(LinearGradient(colors: style.colors, startPoint: .top, endPoint: .bottom))
                 .frame(width: 64, height: 64)
                 .overlay(Circle().stroke(.white, lineWidth: 4))
                 .shadow(color: .black.opacity(0.16), radius: 5, y: 4)
-            IconView(name: sp.type == "coin" ? "coin" : "question", size: 34)
+            IconView(name: style.icon, size: 34)
         }
         .opacity(i < flow.position ? 0.55 : 1)
         .scaleEffect(i == flow.position ? 1.12 : 1)
@@ -460,11 +480,47 @@ struct BoardLevelView: View {
         case "coin":
             sound.coin()
             withAnimation(.spring(response: 0.4, dampingFraction: 0.6)) { coinBurstSpace = flow.position }
-            store.recordCoin(.coinSpace, amount: 5)   // 金币格 +5 经账本（工单04）
+            store.recordCoin(.coinSpace, amount: 5)   // 金币格 +5 经账本
             toast.show("金币格 +5 金币！", seconds: 1.6)
             Task { @MainActor in
                 try? await Task.sleep(nanoseconds: 900_000_000)
                 withAnimation { coinBurstSpace = nil }
+                phase = .roll
+            }
+        case "chest":
+            let amount = store.chestAmount()
+            sound.coin()
+            confetti += 1
+            withAnimation(.spring(response: 0.4, dampingFraction: 0.6)) { coinBurstSpace = flow.position }
+            store.recordCoin(.chest, amount: amount)  // 宝箱 3-8 随机经账本（工单03）
+            toast.show("🎁 宝箱打开：+\(amount) 金币！", seconds: 1.8)
+            Task { @MainActor in
+                try? await Task.sleep(nanoseconds: 1_100_000_000)
+                withAnimation { coinBurstSpace = nil }
+                phase = .roll
+            }
+        case "mushroom":
+            if store.grantMushroom() {               // 决策 8：持有一次答错豁免，不可叠加
+                sound.correct()
+                confetti += 1
+                toast.show("🍄 幸运蘑菇到手：下次答错不算错！", seconds: 2.0)
+            } else {
+                toast.show("已经有一朵幸运蘑菇啦", seconds: 1.6)
+            }
+            Task { @MainActor in
+                try? await Task.sleep(nanoseconds: 900_000_000)
+                phase = .roll
+            }
+        case "rest":
+            // 休息站：角色进小房子喝口水（纯视觉，静音也有等价呈现）
+            phase = .rest
+            restShowing = false
+            Task { @MainActor in
+                try? await Task.sleep(nanoseconds: 500_000_000)
+                withAnimation(.easeInOut(duration: 0.8)) { restShowing = true }
+                sound.systemTap()
+                try? await Task.sleep(nanoseconds: 1_600_000_000)
+                restShowing = false
                 phase = .roll
             }
         default:
@@ -472,12 +528,43 @@ struct BoardLevelView: View {
         }
     }
 
+    /// 休息站演出：小房子 + 角色缩小进屋 + 喝水提示
+    private var restOverlay: some View {
+        ZStack {
+            Color.black.opacity(0.25).ignoresSafeArea()
+            VStack(spacing: 12) {
+                ZStack {
+                    IconView(name: "home", size: 124)
+                    IconView(name: index % 2 == 0 ? "mario" : "dino", size: 46)
+                        .offset(y: 12)
+                        .scaleEffect(restShowing ? 0.35 : 1)
+                        .opacity(restShowing ? 0.2 : 1)
+                        .animation(.easeInOut(duration: 0.7), value: restShowing)
+                }
+                Text(restShowing ? "咕咚咕咚…喝水休息一下 💧" : "走到休息站啦")
+                    .font(.kidHead(20))
+                    .foregroundColor(.ink)
+            }
+            .padding(40)
+            .background(RoundedRectangle(cornerRadius: 28, style: .continuous).fill(.white))
+            .shadow(color: .black.opacity(0.2), radius: 18)
+        }
+        .transition(.opacity)
+    }
+
     private func questionOverlay(_ step: Step) -> some View {
         ZStack {
             Color.black.opacity(0.42).ignoresSafeArea()
             StepContainerView(step: step,
                               subject: subject,
-                              onWrong: { flow.registerWrong() },
+                              onWrong: {
+                // 幸运蘑菇豁免（决策 8）：持有则消耗一朵，本次答错不计入星级
+                if store.consumeMushroomIfHeld() {
+                    toast.show("🍄 幸运蘑菇挡了一下：这次不算错！", seconds: 2.0)
+                } else {
+                    flow.registerWrong()
+                }
+                              },
                               onNext: {
                 store.recordCoin(.answer, amount: 2)   // 题目格答对 +2 经账本（工单04）
                 sound.coin()

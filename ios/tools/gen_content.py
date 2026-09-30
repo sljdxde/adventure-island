@@ -148,20 +148,24 @@ def cn_listen_pic2(i, ch, lo, lans):
             "options": opts, "answer": nlans,
             "hint": f"「{ch}」长什么样", "praise": f"又找对啦！{ch}！"}
 
-# v0.8 工单02：识字村 15 关改迷你棋盘（8 格 = 6 题目格 + 2 金币格，题目格引用 step id；
-# teach 保留为棋盘开场卡。格数区间与题目占比红线见 spec 实现决策 2 与内容完整性测试）
+# v0.8 工单02/03：识字村 15 关迷你棋盘——题目格引用 step id（teach 保留为棋盘开场卡）；
+# 组成按规格实现决策 2：题目 6 + 金币 1-2 + 事件格（宝箱/蘑菇/休息站）1-2，总数 8-10、题目占比 ≥60%（6/10 压线合规）
+EVENT_COMBOS = [["chest"], ["mushroom"], ["rest"], ["chest", "mushroom"], ["mushroom", "rest"], ["chest", "rest"]]
+
 def cn_board(i, qids):
     qq = qids[i % len(qids):] + qids[:i % len(qids)]   # 轮转题目顺序，相邻关卡体验不同
-    return {"spaces": [
-        {"type": "question", "step": qq[0]},
-        {"type": "question", "step": qq[1]},
-        {"type": "question", "step": qq[2]},
-        {"type": "coin"},
-        {"type": "question", "step": qq[3]},
-        {"type": "question", "step": qq[4]},
-        {"type": "question", "step": qq[5]},
-        {"type": "coin"},
-    ]}
+    extra = ["coin"] * (2 if i % 2 == 0 else 1) + EVENT_COMBOS[i % 6]
+    gaps = [2, 4, 5, 6][:len(extra)]                   # 非题目格插在第 2/4/5/6 题之后，散步在蛇形前后段
+    spaces, used = [], 0
+    for qn in range(6):
+        spaces.append({"type": "question", "step": qq[qn]})
+        if (qn + 1) in gaps and used < len(extra):
+            spaces.append({"type": extra[used]})
+            used += 1
+    while used < len(extra):                           # 保险：多余事件放倒数第二位
+        spaces.insert(len(spaces) - 1, {"type": extra[used]})
+        used += 1
+    return {"spaces": spaces}
 
 cn_levels = []
 for i, (ch, py, mfrom, words, lo, lans) in enumerate(CN):

@@ -68,7 +68,7 @@ def check_subject(doc, name, expect_levels):
     else: ok(f"[{name}] 关卡 id 唯一")
     for li, lv in enumerate(levels):
         if not lv["steps"]: err(f"[{name}] 第{li+1}关无步骤")
-        # v0.8 迷你棋盘（工单02）：8-10 格、题目格占比 ≥ 60%、题目引用存在且不重复（规格实现决策 2）
+        # v0.8 迷你棋盘（工单02/03）：8-10 格、题目格占比 ≥ 60%、事件格 1-2、题目引用存在且不重复（规格实现决策 2）
         bd = lv.get("board")
         if bd is not None:
             sps = bd.get("spaces") or []
@@ -78,11 +78,14 @@ def check_subject(doc, name, expect_levels):
             qs = [s for s in sps if s.get("type") == "question"]
             if sps and len(qs) / len(sps) < 0.6:
                 err(f"{tag} 题目格占比 {len(qs)}/{len(sps)} 低于 60% 红线")
+            ev = [s for s in sps if s.get("type") in ("chest", "mushroom", "rest")]
+            if not (1 <= len(ev) <= 2):
+                err(f"{tag} 事件格应 1-2 个，实际 {len(ev)}")
             sids = {s.get("id") for s in lv["steps"]}
             seen = set()
             for s in sps:
                 t = s.get("type")
-                if t not in ("question", "coin"):
+                if t not in ("question", "coin", "chest", "mushroom", "rest"):
                     err(f"{tag} 未知格子类型 {t}")
                 if t == "question":
                     ref = s.get("step")
@@ -92,8 +95,8 @@ def check_subject(doc, name, expect_levels):
                     else: seen.add(ref)
                 elif s.get("step"):
                     err(f"{tag} 非题目格不应带 step")
-            if len(seen) == len(qs) and 8 <= len(sps) <= 10 and sps and len(qs) / len(sps) >= 0.6:
-                ok(f"[{tag}] 棋盘 {len(sps)} 格（题目 {len(qs)}）合法")
+            if len(seen) == len(qs) and 8 <= len(sps) <= 10 and sps and len(qs) / len(sps) >= 0.6 and 1 <= len(ev) <= 2:
+                ok(f"[{tag}] 棋盘 {len(sps)} 格（题目 {len(qs)}·金币 {len(sps)-len(qs)-len(ev)}·事件 {len(ev)}）合法")
         for st in lv["steps"]:
             kind = st["kind"]
             sid = f"{name}/{st.get('id','?')}"

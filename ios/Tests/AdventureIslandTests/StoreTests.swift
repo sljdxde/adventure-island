@@ -223,4 +223,39 @@ final class CoinLedgerTests: XCTestCase {
         XCTAssertEqual(store.snapshot.coinLedger.count, ProgressStore.coinLedgerLimit, "账本只留最近 N 笔防膨胀")
         XCTAssertEqual(store.coinTotal(), ProgressStore.coinLedgerLimit)
     }
+
+    // MARK: 幸运蘑菇 buff（决策 8：持有 → 下次答错豁免 → 消耗；不可叠加）
+
+    func testMushroomBuffGrantConsumeNoStack() {
+        let (store, _) = makeStore()
+        XCTAssertFalse(store.snapshot.mushroomBuff)
+        XCTAssertTrue(store.grantMushroom(), "吃到蘑菇应获得 buff")
+        XCTAssertFalse(store.grantMushroom(), "已持有时不可叠加")
+        XCTAssertTrue(store.snapshot.mushroomBuff, "重复吃不影响持有状态")
+        XCTAssertTrue(store.consumeMushroomIfHeld(), "持有时空青采应豁免本次答错")
+        XCTAssertFalse(store.snapshot.mushroomBuff, "用完即消失")
+        XCTAssertFalse(store.consumeMushroomIfHeld(), "消失后不再豁免")
+    }
+
+    func testMushroomBuffPersistsAcrossLaunch() {
+        let name = "test-\(UUID().uuidString).json"
+        let holder = UnsafeMutablePointer<Date>.allocate(capacity: 1)
+        holder.initialize(to: ProgressStoreTests.date("2026-09-29")!)
+        let s1 = ProgressStore(now: { holder.pointee }, fileName: name)
+        s1.grantMushroom()
+        let s2 = ProgressStore(now: { holder.pointee }, fileName: name)
+        XCTAssertTrue(s2.snapshot.mushroomBuff, "buff 跨启动持久（关掉 App 再来蘑菇还在）")
+        XCTAssertTrue(s2.consumeMushroomIfHeld())
+    }
+
+    func testChestAmountAlwaysIn3To8() {
+        let (store, _) = makeStore()
+        var seen = Set<Int>()
+        for _ in 0..<80 {
+            let amt = store.chestAmount()
+            XCTAssertTrue((3...8).contains(amt), "宝箱金币必须落在 3-8 区间，实际 \(amt)")
+            seen.insert(amt)
+        }
+        XCTAssertGreaterThan(seen.count, 3, "80 次抽样应覆盖多个档位（随机性健全）")
+    }
 }

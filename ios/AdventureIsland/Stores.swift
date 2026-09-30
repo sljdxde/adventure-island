@@ -18,13 +18,14 @@ struct ProgressSnapshot: Codable, Equatable {
     var lastPlayDay: String?
     var coinLedger: [CoinEntry] = []             // v0.8 金币账本：每笔来源/数额/时间（决策 12）
     var brickClaims: [String] = []               // 问号砖已领日期："2026-09-30|brick-cn"（决策 13）
+    var mushroomBuff: Bool = false               // 幸运蘑菇：持有一次答错豁免（决策 8，工单03）
 
     init() {}
 
     private enum CodingKeys: String, CodingKey {
         case coins, levelStars, testedItems, collectedScience, stickers
         case learnedHanzi, learnedPinyin, learnedEnglish, learnedAstro
-        case dailyDone, streak, lastPlayDay, coinLedger, brickClaims
+        case dailyDone, streak, lastPlayDay, coinLedger, brickClaims, mushroomBuff
     }
 
     /// 字段全部 decodeIfPresent + 默认值：旧版本 progress.json（无账本/砖块字段）解码不失败，
@@ -45,6 +46,7 @@ struct ProgressSnapshot: Codable, Equatable {
         lastPlayDay = try c.decodeIfPresent(String.self, forKey: .lastPlayDay)
         coinLedger = try c.decodeIfPresent([CoinEntry].self, forKey: .coinLedger) ?? []
         brickClaims = try c.decodeIfPresent([String].self, forKey: .brickClaims) ?? []
+        mushroomBuff = try c.decodeIfPresent(Bool.self, forKey: .mushroomBuff) ?? false
     }
 }
 
@@ -56,6 +58,7 @@ enum CoinSource: String, Codable {
     case mushroomBonus = "mushroom-bonus"  // 3 星通关蘑菇
     case answer = "answer"                 // 题目格答对 +2
     case coinSpace = "coin-space"          // 金币格 +5
+    case chest = "chest"                   // 宝箱格 +3~8 随机（决策 11，工单03）
     case brick = "brick"                   // 地图问号砖（每根水管每天一次）
     case labReward = "lab-reward"          // 实验猜对
     case collection = "collection"         // 图鉴收集奖励
@@ -147,6 +150,31 @@ final class ProgressStore: ObservableObject {
         mutateCoin(source: .brick, amount: 1)
         save()
         return true
+    }
+
+    // MARK: 幸运蘑菇 buff（决策 8：吃到持有，下一次答错不计数，用完即消失；不可重复持有）
+
+    /// 吃到蘑菇格：已持有时不叠加（返回 false）
+    @discardableResult
+    func grantMushroom() -> Bool {
+        guard !snapshot.mushroomBuff else { return false }
+        snapshot.mushroomBuff = true
+        save()
+        return true
+    }
+
+    /// 答错时调用：持有则消耗一朵并豁免本次（返回 true = 不计入星级）
+    @discardableResult
+    func consumeMushroomIfHeld() -> Bool {
+        guard snapshot.mushroomBuff else { return false }
+        snapshot.mushroomBuff = false
+        save()
+        return true
+    }
+
+    /// 宝箱格金币：3~8 枚随机（决策 11）
+    func chestAmount() -> Int {
+        Int.random(in: 3...8)
     }
 
     // MARK: 关卡

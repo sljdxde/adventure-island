@@ -28,7 +28,8 @@ final class ContentIntegrityTests: XCTestCase {
             for (li, level) in file.levels.enumerated() {
                 XCTAssertFalse(level.steps.isEmpty, "\(name) 第\(li)关没有步骤")
 
-                // v0.8 迷你棋盘（工单02）：8-10 格、题目格占比 ≥ 60%、题目引用存在且不重复（规格实现决策 2）
+                // v0.8 迷你棋盘（工单02/03）：8-10 格、题目格占比 ≥ 60%、事件格 1-2 个、
+                // 题目引用存在且不重复（规格实现决策 2）
                 if let board = level.board {
                     let spaces = board.spaces
                     XCTAssertTrue((8...10).contains(spaces.count),
@@ -37,10 +38,13 @@ final class ContentIntegrityTests: XCTestCase {
                     let ratio = Double(questionCount) / Double(spaces.count)
                     XCTAssertGreaterThanOrEqual(ratio, 0.6,
                                   "\(name)/\(level.id) 题目格占比 \(ratio) 低于 60% 红线")
+                    let eventCount = spaces.filter { ["chest", "mushroom", "rest"].contains($0.type) }.count
+                    XCTAssertTrue((1...2).contains(eventCount),
+                                  "\(name)/\(level.id) 事件格应 1-2 个，实际 \(eventCount)")
                     let stepIds = Set(level.steps.map(\.id))
                     var referenced = Set<String>()
                     for sp in spaces {
-                        XCTAssertTrue(["question", "coin"].contains(sp.type),
+                        XCTAssertTrue(["question", "coin", "chest", "mushroom", "rest"].contains(sp.type),
                                       "\(name)/\(level.id) 未知格子类型 \(sp.type)")
                         if sp.type == "question" {
                             let sid = try XCTUnwrap(sp.step, "\(name)/\(level.id) 题目格缺 step 引用")
