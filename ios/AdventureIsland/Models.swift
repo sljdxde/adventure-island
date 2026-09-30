@@ -97,6 +97,37 @@ struct Level: Codable, Equatable, Identifiable {
     var steps: [Step]
 }
 
+// MARK: - 关卡流程状态机（步骤推进 / 最后一步结算置位 / 星级映射）
+
+/// 一关的推进状态（纯逻辑，测试缝在领域层；LevelView 只做渲染委托）。
+/// 语义与浏览器模拟器 nextStep 同源：非最后一步 → 前进；最后一步答完 → finished 置真进入结算卡。
+struct LevelFlow: Equatable {
+    private(set) var stepIndex = 0
+    private(set) var wrongCount = 0
+    private(set) var finished = false
+
+    /// 答错一题：不后退不惩罚（防挫败铁律），只计入星级
+    mutating func registerWrong() { wrongCount += 1 }
+
+    /// 答完当前步骤推进：还有下一步则前进，已是最后一步则置 finished 进入通关结算
+    mutating func advance(stepCount: Int) {
+        if stepIndex < stepCount - 1 {
+            stepIndex += 1
+        } else {
+            finished = true
+        }
+    }
+
+    /// 星级映射（规格 v0.8）：错 0 题 3 星、错 1 题 2 星、错 ≥2 题 1 星
+    var stars: Int {
+        switch wrongCount {
+        case 0: return 3
+        case 1: return 2
+        default: return 1
+        }
+    }
+}
+
 struct SubjectFile: Codable {
     var subject: String   // cn | math
     var title: String
