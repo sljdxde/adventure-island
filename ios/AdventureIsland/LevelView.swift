@@ -28,39 +28,37 @@ struct LevelView: View {
             // 相邻关卡轮换 白天/黄昏/星夜/地下砖块关，场景有区别
             SceneBackground(theme: theme, variant: index % 4)
 
-            VStack(spacing: 10) {
-                header
-                if let step {
-                    let registerWrong = { flow.registerWrong() }
-                    ZStack {
-                        switch step.kind {
-                        case "teach": TeachStepView(step: step, onNext: advanceStep)
-                        case "letter": LetterStepView(step: step, subject: subject, onNext: advanceStep)
-                        case "listen": ListenStepView(step: step, onWrong: registerWrong, onNext: advanceStep) { confetti += 1 }
-                        case "blend": BlendStepView(step: step, onWrong: registerWrong, onNext: advanceStep) { confetti += 1 }
-                        case "arith": ArithStepView(step: step, onWrong: registerWrong, onNext: advanceStep) { confetti += 1 }
-                        case "pattern": PatternStepView(step: step, onWrong: registerWrong, onNext: advanceStep) { confetti += 1 }
-                        case "split": SplitStepView(step: step, onWrong: registerWrong, onNext: advanceStep) { confetti += 1 }
-                        case "neighbor": NeighborStepView(step: step, onWrong: registerWrong, onNext: advanceStep) { confetti += 1 }
-                        case "order": OrderStepView(step: step, onWrong: registerWrong, onNext: advanceStep) { confetti += 1 }
-                        case "memory": MemoryStepView(step: step, onNext: advanceStep) { confetti += 1 }
-                        case "dice": DiceStepView(step: step, onWrong: registerWrong, onNext: advanceStep) { confetti += 1 }
-                        case "quiz": QuizStepView(step: step, onWrong: registerWrong, onNext: advanceStep) { confetti += 1 }
-                        case "count": CountStepView(step: step, onNext: advanceStep) { confetti += 1 }
-                        case "compare": CompareStepView(step: step, onNext: advanceStep) { confetti += 1 }
-                        default: EmptyView()
-                        }
+            if let board = level?.board {
+                // 迷你棋盘关（v0.8 工单02）：掷骰→蹦跳→落格出题→城堡结算，自带头部与结算卡
+                BoardLevelView(subject: subject,
+                               index: index,
+                               totalLevels: content?.levels.count ?? 0,
+                               title: level?.title ?? "",
+                               subtitle: level?.subtitle,
+                               board: board,
+                               steps: level?.steps ?? [],
+                               route: $route,
+                               confetti: $confetti)
+            } else {
+                VStack(spacing: 10) {
+                    header
+                    if let step {
+                        StepContainerView(step: step,
+                                          subject: subject,
+                                          onWrong: { flow.registerWrong() },
+                                          onNext: advanceStep,
+                                          onCorrectCelebrate: { confetti += 1 })
+                            .id(step.id)
+                            .transition(.asymmetric(insertion: .move(edge: .trailing).combined(with: .opacity),
+                                                    removal: .move(edge: .leading).combined(with: .opacity)))
+                            .animation(.easeInOut(duration: 0.3), value: flow.stepIndex)
                     }
-                    .id(step.id)
-                    .transition(.asymmetric(insertion: .move(edge: .trailing).combined(with: .opacity),
-                                            removal: .move(edge: .leading).combined(with: .opacity)))
-                    .animation(.easeInOut(duration: 0.3), value: flow.stepIndex)
                 }
-            }
-            .padding(.horizontal, 22)
-            .padding(.top, 8)
+                .padding(.horizontal, 22)
+                .padding(.top, 8)
 
-            if flow.finished { finishCard }
+                if flow.finished { finishCard }
+            }
         }
         .onAppear {
             if content == nil {
@@ -137,93 +135,14 @@ struct LevelView: View {
     // MARK: 结算
 
     private var finishCard: some View {
-        let stars = flow.stars
-        let total = content?.levels.count ?? 0
-        let hasNext = index + 1 < total
-        return ZStack {
-            Color.black.opacity(0.4).ignoresSafeArea()
-            VStack(spacing: 12) {
-                // 马里奥通关：小人 + 城堡 + 旗杆 + 庆典
-                ZStack(alignment: .bottom) {
-                    HStack(spacing: 14) {
-                        VStack(spacing: -4) {
-                            IconView(name: "flag", size: 30)
-                            IconView(name: "castle", size: 66)
-                        }
-                        IconView(name: index % 2 == 0 ? "mario" : "dino", size: 58)
-                            .modifier(NodePulse(active: true))
-                        Text("🎉").font(.system(size: 52))
-                        IconView(name: "mushroom", size: 52)
-                            .opacity(stars == 3 ? 1 : 0.3)
-                            .scaleEffect(stars == 3 ? 1 : 0.85)
-                    }
-                }
-                Text("本关完成！")
-                    .font(.kidTitle(30))
-                    .foregroundColor(.ink)
-                HStack(spacing: 10) {
-                    ForEach(0..<3, id: \.self) { i in
-                        IconView(name: "starface", size: 44)
-                            .opacity(i < stars ? 1 : 0.25)
-                            .scaleEffect(i < stars ? 1 : 0.8)
-                    }
-                }
-                if stars == 3 {
-                    Text("🍄 幸运蘑菇奖励 +2 金币！")
-                        .font(.kidHead(17))
-                        .foregroundColor(Color(hex: 0xC24836))
-                        .padding(.horizontal, 16)
-                        .padding(.vertical, 6)
-                        .background(Capsule().fill(Color(hex: 0xFFEFE6)))
-                }
-                Text(flow.wrongCount == 0 ? "一次没错，完美通关！" : "答错了 \(flow.wrongCount) 次也没关系，你已经学会啦")
-                    .font(.kidBody(16))
-                    .foregroundColor(.inkSoft)
-                HStack(spacing: 16) {
-                    if hasNext {
-                        Button {
-                            goNextLevel()
-                        } label: {
-                            Label("下一关", systemImage: "arrow.right")
-                                .font(.kidHead(19))
-                        }
-                        .buttonStyle(.jellyGreen)
-                    }
-                    Button {
-                        route = .map
-                    } label: {
-                        Label("返回地图", systemImage: "map")
-                            .font(.kidHead(19))
-                    }
-                    .buttonStyle(.jellyOrange)
-                    Button {
-                        // 重玩本关
-                        flow = LevelFlow()
-                    } label: {
-                        Label("再玩一次", systemImage: "arrow.counterclockwise")
-                            .font(.kidHead(19))
-                    }
-                    .buttonStyle(.jellyCream)
-                }
-            }
-            .padding(44)
-            .background(
-                RoundedRectangle(cornerRadius: 34, style: .continuous)
-                    .fill(LinearGradient(colors: [.white, .creamDk], startPoint: .top, endPoint: .bottom))
-            )
-            .overlay(RoundedRectangle(cornerRadius: 34, style: .continuous).stroke(.brandYellow, lineWidth: 5))
-            .shadow(color: .black.opacity(0.3), radius: 26)
-        }
-        .onAppear {
-            // 蘑菇 +2 只发给此前从未拿过 3 星的关：旧星级须在 completeLevel 改写前取
-            // （判据与模拟器 nextStep 的 old<3 同源，跨启动持久防重发；直改 coins 待工单04金币账本统一收口）
-            let previousStars = store.stars(for: subject, index: index)
-            store.completeLevel(subject: subject, index: index, stars: stars)
-            if stars == 3, previousStars < 3 {
-                store.snapshot.coins += 2
-                store.save()
-            }
-        }
+        FinishCardView(subject: subject,
+                       index: index,
+                       totalLevels: content?.levels.count ?? 0,
+                       stars: flow.stars,
+                       wrongCount: flow.wrongCount,
+                       onNext: goNextLevel,
+                       onReplay: { flow = LevelFlow() },
+                       route: $route)
     }
 
     /// 直接进入下一关（通关卡按钮）
@@ -1835,16 +1754,6 @@ struct DiceStepView: View {
 
     private var target: Int { step.count ?? 5 }
 
-    /// 1-6 点的骰子点位坐标（0-1 比例）
-    private static let pips: [Int: [(Double, Double)]] = [
-        1: [(0.5, 0.5)],
-        2: [(0.28, 0.28), (0.72, 0.72)],
-        3: [(0.26, 0.26), (0.5, 0.5), (0.74, 0.74)],
-        4: [(0.28, 0.28), (0.72, 0.28), (0.28, 0.72), (0.72, 0.72)],
-        5: [(0.26, 0.26), (0.74, 0.26), (0.5, 0.5), (0.26, 0.74), (0.74, 0.74)],
-        6: [(0.28, 0.22), (0.72, 0.22), (0.28, 0.5), (0.72, 0.5), (0.28, 0.78), (0.72, 0.78)],
-    ]
-
     var body: some View {
         VStack(spacing: 22) {
             Text(step.question ?? "掷骰子：掷出了几点？")
@@ -1858,21 +1767,8 @@ struct DiceStepView: View {
             Button {
                 roll()
             } label: {
-                ZStack {
-                    RoundedRectangle(cornerRadius: 24, style: .continuous)
-                        .fill(LinearGradient(colors: [.white, Color(hex: 0xF2EDDF)], startPoint: .top, endPoint: .bottom))
-                        .frame(width: 132, height: 132)
-                        .overlay(RoundedRectangle(cornerRadius: 24, style: .continuous).stroke(Color(hex: 0xD8CBAF), lineWidth: 4))
-                        .shadow(color: .ink.opacity(0.18), radius: 10, y: 6)
-                    ForEach(Self.pips[face] ?? [], id: \.0) { p in
-                        Circle()
-                            .fill(RadialGradient(colors: [Color(hex: 0xE84838), Color(hex: 0xC24836)],
-                                                 center: .center, startRadius: 0, endRadius: 7))
-                            .frame(width: 22, height: 22)
-                            .position(x: 132 * p.0, y: 132 * p.1)
-                    }
-                }
-                .rotation3DEffect(.degrees(rolled ? 0 : 12), axis: (x: 1, y: 1, z: 0))
+                DieFaceView(face: face, size: 132)
+                    .rotation3DEffect(.degrees(rolled ? 0 : 12), axis: (x: 1, y: 1, z: 0))
             }
             .buttonStyle(.plain)
             .disabled(rolled)

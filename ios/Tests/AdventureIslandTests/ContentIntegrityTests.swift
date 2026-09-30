@@ -27,6 +27,32 @@ final class ContentIntegrityTests: XCTestCase {
 
             for (li, level) in file.levels.enumerated() {
                 XCTAssertFalse(level.steps.isEmpty, "\(name) 第\(li)关没有步骤")
+
+                // v0.8 迷你棋盘（工单02）：8-10 格、题目格占比 ≥ 60%、题目引用存在且不重复（规格实现决策 2）
+                if let board = level.board {
+                    let spaces = board.spaces
+                    XCTAssertTrue((8...10).contains(spaces.count),
+                                  "\(name)/\(level.id) 棋盘应 8-10 格，实际 \(spaces.count)")
+                    let questionCount = spaces.filter { $0.type == "question" }.count
+                    let ratio = Double(questionCount) / Double(spaces.count)
+                    XCTAssertGreaterThanOrEqual(ratio, 0.6,
+                                  "\(name)/\(level.id) 题目格占比 \(ratio) 低于 60% 红线")
+                    let stepIds = Set(level.steps.map(\.id))
+                    var referenced = Set<String>()
+                    for sp in spaces {
+                        XCTAssertTrue(["question", "coin"].contains(sp.type),
+                                      "\(name)/\(level.id) 未知格子类型 \(sp.type)")
+                        if sp.type == "question" {
+                            let sid = try XCTUnwrap(sp.step, "\(name)/\(level.id) 题目格缺 step 引用")
+                            XCTAssertTrue(stepIds.contains(sid), "\(name)/\(level.id) 引用了不存在的 step \(sid)")
+                            XCTAssertFalse(referenced.contains(sid), "\(name)/\(level.id) 重复引用 step \(sid)")
+                            referenced.insert(sid)
+                        } else {
+                            XCTAssertNil(sp.step, "\(name)/\(level.id) 非题目格不应带 step")
+                        }
+                    }
+                }
+
                 for step in level.steps {
                     switch step.kind {
                     case "teach":
@@ -139,6 +165,18 @@ final class ContentIntegrityTests: XCTestCase {
                         if let icon = w.icon { XCTAssertTrue(iconNames.contains(icon), "词卡图标 \(icon) 不在资产清单") }
                     }
                 }
+            }
+        }
+    }
+
+    /// 关卡 id 全局唯一是 v0.8 进度迁移（工单05：id 平移插入新关）的前提
+    func testLevelIdsGloballyUnique() throws {
+        var seen = Set<String>()
+        for name in ["cn_levels", "math_levels", "pinyin_levels", "english_levels", "astro_levels"] {
+            let file = ContentLoader.load(SubjectFile.self, name)
+            for level in file.levels {
+                XCTAssertFalse(seen.contains(level.id), "关卡 id \(level.id) 跨文件重复（\(name)）")
+                seen.insert(level.id)
             }
         }
     }

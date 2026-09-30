@@ -55,6 +55,49 @@
           "praise": "眼睛真亮！日 找对啦！"
         },
         {
+          "id": "cn-0-l2",
+          "kind": "listen",
+          "promptIcon": "sunface",
+          "speakText": "日",
+          "question": "看一看：这张图变成的字是哪个？",
+          "options": [
+            {
+              "text": "日"
+            },
+            {
+              "text": "月"
+            },
+            {
+              "text": "水"
+            }
+          ],
+          "answer": 0,
+          "hint": "想一想它像什么字",
+          "praise": "对！这张图就是「日」"
+        },
+        {
+          "id": "cn-0-w",
+          "kind": "quiz",
+          "question": "「日」可以组成哪个词？",
+          "options": [
+            {
+              "icon": "moon",
+              "text": "月亮"
+            },
+            {
+              "icon": "sunrise",
+              "text": "日出"
+            },
+            {
+              "icon": "starface",
+              "text": "星星"
+            }
+          ],
+          "answer": 1,
+          "hint": "找一找有「日」的词",
+          "praise": "组词成功：日出！"
+        },
+        {
           "id": "cn-0-q",
           "kind": "quiz",
           "question": "练一练：哪个字是「日」？",
@@ -72,8 +115,86 @@
           "answer": 0,
           "hint": "想一想刚才的字",
           "praise": "记住啦！"
+        },
+        {
+          "id": "cn-0-w2",
+          "kind": "quiz",
+          "question": "再想一想：「日」还能组成哪个词？",
+          "options": [
+            {
+              "icon": "cake",
+              "text": "月饼"
+            },
+            {
+              "icon": "wave",
+              "text": "海浪"
+            },
+            {
+              "icon": "cake",
+              "text": "生日"
+            }
+          ],
+          "answer": 2,
+          "hint": "找一找还有「日」的词",
+          "praise": "又是组词高手：生日！"
+        },
+        {
+          "id": "cn-0-l3",
+          "kind": "listen",
+          "prompt": "日",
+          "speakText": "日",
+          "question": "再找一找：哪张图片是「日」？",
+          "options": [
+            {
+              "icon": "moon"
+            },
+            {
+              "icon": "sunrise",
+              "text": "日"
+            },
+            {
+              "icon": "cake"
+            }
+          ],
+          "answer": 1,
+          "hint": "「日」长什么样",
+          "praise": "又找对啦！日！"
         }
-      ]
+      ],
+      "board": {
+        "spaces": [
+          {
+            "type": "question",
+            "step": "cn-0-l"
+          },
+          {
+            "type": "question",
+            "step": "cn-0-l2"
+          },
+          {
+            "type": "question",
+            "step": "cn-0-w"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "cn-0-q"
+          },
+          {
+            "type": "question",
+            "step": "cn-0-w2"
+          },
+          {
+            "type": "question",
+            "step": "cn-0-l3"
+          },
+          {
+            "type": "coin"
+          }
+        ]
+      }
     },
     {
       "id": "cn-1",
@@ -103,6 +224,28 @@
               "say": "月饼"
             }
           ]
+        },
+        {
+          "id": "cn-1-l",
+          "kind": "listen",
+          "prompt": "月",
+          "speakText": "月",
+          "question": "找一找：哪张图片是「月」？",
+          "options": [
+            {
+              "icon": "star"
+            },
+            {
+              "icon": "sun"
+            },
+            {
+              "icon": "moon",
+              "text": "月"
+            }
+          ],
+          "answer": 2,
+          "hint": "想想刚才的图片：「月」",
+          "praise": "眼睛真亮！月 找对啦！"
         },
         {
           "id": "cn-1-l2",
@@ -146,8 +289,105 @@
           "answer": 2,
           "hint": "找一找有「月」的词",
           "praise": "组词成功：月亮！"
+        },
+        {
+          "id": "cn-1-q",
+          "kind": "quiz",
+          "question": "练一练：哪个字是「月」？",
+          "options": [
+            {
+              "text": "木"
+            },
+            {
+              "text": "月"
+            },
+            {
+              "text": "口"
+            }
+          ],
+          "answer": 1,
+          "hint": "想一想刚才的字",
+          "praise": "记住啦！"
+        },
+        {
+          "id": "cn-1-w2",
+          "kind": "quiz",
+          "question": "再想一想：「月」还能组成哪个词？",
+          "options": [
+            {
+              "icon": "starface",
+              "text": "星星"
+            },
+            {
+              "icon": "leaf",
+              "text": "山林"
+            },
+            {
+              "icon": "leaf",
+              "text": "树叶"
+            }
+          ],
+          "answer": 0,
+          "hint": "找一找还有「月」的词",
+          "praise": "又是组词高手：星星！"
+        },
+        {
+          "id": "cn-1-l3",
+          "kind": "listen",
+          "prompt": "月",
+          "speakText": "月",
+          "question": "再找一找：哪张图片是「月」？",
+          "options": [
+            {
+              "icon": "moon",
+              "text": "月"
+            },
+            {
+              "icon": "sun"
+            },
+            {
+              "icon": "star"
+            }
+          ],
+          "answer": 0,
+          "hint": "「月」长什么样",
+          "praise": "又找对啦！月！"
         }
-      ]
+      ],
+      "board": {
+        "spaces": [
+          {
+            "type": "question",
+            "step": "cn-1-l2"
+          },
+          {
+            "type": "question",
+            "step": "cn-1-w"
+          },
+          {
+            "type": "question",
+            "step": "cn-1-q"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "cn-1-w2"
+          },
+          {
+            "type": "question",
+            "step": "cn-1-l3"
+          },
+          {
+            "type": "question",
+            "step": "cn-1-l"
+          },
+          {
+            "type": "coin"
+          }
+        ]
+      }
     },
     {
       "id": "cn-2",
@@ -179,6 +419,49 @@
           ]
         },
         {
+          "id": "cn-2-l",
+          "kind": "listen",
+          "prompt": "水",
+          "speakText": "水",
+          "question": "找一找：哪张图片是「水」？",
+          "options": [
+            {
+              "icon": "wave",
+              "text": "水"
+            },
+            {
+              "icon": "sun"
+            },
+            {
+              "icon": "crystal"
+            }
+          ],
+          "answer": 0,
+          "hint": "想想刚才的图片：「水」",
+          "praise": "眼睛真亮！水 找对啦！"
+        },
+        {
+          "id": "cn-2-l2",
+          "kind": "listen",
+          "promptIcon": "wave",
+          "speakText": "水",
+          "question": "看一看：这张图变成的字是哪个？",
+          "options": [
+            {
+              "text": "人"
+            },
+            {
+              "text": "口"
+            },
+            {
+              "text": "水"
+            }
+          ],
+          "answer": 2,
+          "hint": "想一想它像什么字",
+          "praise": "对！这张图就是「水」"
+        },
+        {
           "id": "cn-2-w",
           "kind": "quiz",
           "question": "「水」可以组成哪个词？",
@@ -201,28 +484,103 @@
           "praise": "组词成功：海浪！"
         },
         {
-          "id": "cn-2-l",
+          "id": "cn-2-q",
+          "kind": "quiz",
+          "question": "练一练：哪个字是「水」？",
+          "options": [
+            {
+              "text": "木"
+            },
+            {
+              "text": "口"
+            },
+            {
+              "text": "水"
+            }
+          ],
+          "answer": 2,
+          "hint": "想一想刚才的字",
+          "praise": "记住啦！"
+        },
+        {
+          "id": "cn-2-w2",
+          "kind": "quiz",
+          "question": "再想一想：「水」还能组成哪个词？",
+          "options": [
+            {
+              "icon": "speaker",
+              "text": "开口"
+            },
+            {
+              "icon": "crystal",
+              "text": "泉水"
+            },
+            {
+              "icon": "heart",
+              "text": "口水"
+            }
+          ],
+          "answer": 1,
+          "hint": "找一找还有「水」的词",
+          "praise": "又是组词高手：泉水！"
+        },
+        {
+          "id": "cn-2-l3",
           "kind": "listen",
           "prompt": "水",
           "speakText": "水",
-          "question": "找一找：哪张图片是「水」？",
+          "question": "再找一找：哪张图片是「水」？",
           "options": [
+            {
+              "icon": "sun"
+            },
             {
               "icon": "wave",
               "text": "水"
             },
             {
-              "icon": "sun"
-            },
-            {
               "icon": "crystal"
             }
           ],
-          "answer": 0,
-          "hint": "想想刚才的图片：「水」",
-          "praise": "眼睛真亮！水 找对啦！"
+          "answer": 1,
+          "hint": "「水」长什么样",
+          "praise": "又找对啦！水！"
         }
-      ]
+      ],
+      "board": {
+        "spaces": [
+          {
+            "type": "question",
+            "step": "cn-2-w"
+          },
+          {
+            "type": "question",
+            "step": "cn-2-q"
+          },
+          {
+            "type": "question",
+            "step": "cn-2-w2"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "cn-2-l3"
+          },
+          {
+            "type": "question",
+            "step": "cn-2-l"
+          },
+          {
+            "type": "question",
+            "step": "cn-2-l2"
+          },
+          {
+            "type": "coin"
+          }
+        ]
+      }
     },
     {
       "id": "cn-3",
@@ -271,6 +629,49 @@
           "praise": "眼睛真亮！山 找对啦！"
         },
         {
+          "id": "cn-3-l2",
+          "kind": "listen",
+          "promptIcon": "volcano",
+          "speakText": "山",
+          "question": "看一看：这张图变成的字是哪个？",
+          "options": [
+            {
+              "text": "山"
+            },
+            {
+              "text": "天"
+            },
+            {
+              "text": "田"
+            }
+          ],
+          "answer": 0,
+          "hint": "想一想它像什么字",
+          "praise": "对！这张图就是「山」"
+        },
+        {
+          "id": "cn-3-w",
+          "kind": "quiz",
+          "question": "「山」可以组成哪个词？",
+          "options": [
+            {
+              "icon": "leaf",
+              "text": "树叶"
+            },
+            {
+              "icon": "school",
+              "text": "上山"
+            },
+            {
+              "icon": "flower",
+              "text": "花木"
+            }
+          ],
+          "answer": 1,
+          "hint": "找一找有「山」的词",
+          "praise": "组词成功：上山！"
+        },
+        {
           "id": "cn-3-q",
           "kind": "quiz",
           "question": "练一练：哪个字是「山」？",
@@ -288,8 +689,86 @@
           "answer": 0,
           "hint": "想一想刚才的字",
           "praise": "记住啦！"
+        },
+        {
+          "id": "cn-3-w2",
+          "kind": "quiz",
+          "question": "再想一想：「山」还能组成哪个词？",
+          "options": [
+            {
+              "icon": "sprout",
+              "text": "田里"
+            },
+            {
+              "icon": "flower",
+              "text": "水田"
+            },
+            {
+              "icon": "leaf",
+              "text": "山林"
+            }
+          ],
+          "answer": 2,
+          "hint": "找一找还有「山」的词",
+          "praise": "又是组词高手：山林！"
+        },
+        {
+          "id": "cn-3-l3",
+          "kind": "listen",
+          "prompt": "山",
+          "speakText": "山",
+          "question": "再找一找：哪张图片是「山」？",
+          "options": [
+            {
+              "icon": "rocket"
+            },
+            {
+              "icon": "home"
+            },
+            {
+              "icon": "volcano",
+              "text": "山"
+            }
+          ],
+          "answer": 2,
+          "hint": "「山」长什么样",
+          "praise": "又找对啦！山！"
         }
-      ]
+      ],
+      "board": {
+        "spaces": [
+          {
+            "type": "question",
+            "step": "cn-3-q"
+          },
+          {
+            "type": "question",
+            "step": "cn-3-w2"
+          },
+          {
+            "type": "question",
+            "step": "cn-3-l3"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "cn-3-l"
+          },
+          {
+            "type": "question",
+            "step": "cn-3-l2"
+          },
+          {
+            "type": "question",
+            "step": "cn-3-w"
+          },
+          {
+            "type": "coin"
+          }
+        ]
+      }
     },
     {
       "id": "cn-4",
@@ -314,6 +793,28 @@
               "say": "花木"
             }
           ]
+        },
+        {
+          "id": "cn-4-l",
+          "kind": "listen",
+          "prompt": "木",
+          "speakText": "木",
+          "question": "找一找：哪张图片是「木」？",
+          "options": [
+            {
+              "icon": "sprout",
+              "text": "木"
+            },
+            {
+              "icon": "flower"
+            },
+            {
+              "icon": "rock"
+            }
+          ],
+          "answer": 0,
+          "hint": "想想刚才的图片：「木」",
+          "praise": "眼睛真亮！木 找对啦！"
         },
         {
           "id": "cn-4-l2",
@@ -357,8 +858,105 @@
           "answer": 2,
           "hint": "找一找有「木」的词",
           "praise": "组词成功：树叶！"
+        },
+        {
+          "id": "cn-4-q",
+          "kind": "quiz",
+          "question": "练一练：哪个字是「木」？",
+          "options": [
+            {
+              "text": "水"
+            },
+            {
+              "text": "木"
+            },
+            {
+              "text": "口"
+            }
+          ],
+          "answer": 1,
+          "hint": "想一想刚才的字",
+          "praise": "记住啦！"
+        },
+        {
+          "id": "cn-4-w2",
+          "kind": "quiz",
+          "question": "再想一想：「木」还能组成哪个词？",
+          "options": [
+            {
+              "icon": "flower",
+              "text": "花木"
+            },
+            {
+              "icon": "volcano",
+              "text": "火山"
+            },
+            {
+              "icon": "starface",
+              "text": "火花"
+            }
+          ],
+          "answer": 0,
+          "hint": "找一找还有「木」的词",
+          "praise": "又是组词高手：花木！"
+        },
+        {
+          "id": "cn-4-l3",
+          "kind": "listen",
+          "prompt": "木",
+          "speakText": "木",
+          "question": "再找一找：哪张图片是「木」？",
+          "options": [
+            {
+              "icon": "flower"
+            },
+            {
+              "icon": "sprout",
+              "text": "木"
+            },
+            {
+              "icon": "rock"
+            }
+          ],
+          "answer": 1,
+          "hint": "「木」长什么样",
+          "praise": "又找对啦！木！"
         }
-      ]
+      ],
+      "board": {
+        "spaces": [
+          {
+            "type": "question",
+            "step": "cn-4-w2"
+          },
+          {
+            "type": "question",
+            "step": "cn-4-l3"
+          },
+          {
+            "type": "question",
+            "step": "cn-4-l"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "cn-4-l2"
+          },
+          {
+            "type": "question",
+            "step": "cn-4-w"
+          },
+          {
+            "type": "question",
+            "step": "cn-4-q"
+          },
+          {
+            "type": "coin"
+          }
+        ]
+      }
     },
     {
       "id": "cn-5",
@@ -385,6 +983,49 @@
           ]
         },
         {
+          "id": "cn-5-l",
+          "kind": "listen",
+          "prompt": "人",
+          "speakText": "人",
+          "question": "找一找：哪张图片是「人」？",
+          "options": [
+            {
+              "icon": "sun"
+            },
+            {
+              "icon": "duck"
+            },
+            {
+              "icon": "girl",
+              "text": "人"
+            }
+          ],
+          "answer": 2,
+          "hint": "想想刚才的图片：「人」",
+          "praise": "眼睛真亮！人 找对啦！"
+        },
+        {
+          "id": "cn-5-l2",
+          "kind": "listen",
+          "promptIcon": "girl",
+          "speakText": "人",
+          "question": "看一看：这张图变成的字是哪个？",
+          "options": [
+            {
+              "text": "花"
+            },
+            {
+              "text": "草"
+            },
+            {
+              "text": "人"
+            }
+          ],
+          "answer": 2,
+          "hint": "想一想它像什么字",
+          "praise": "对！这张图就是「人」"
+        },
+        {
           "id": "cn-5-w",
           "kind": "quiz",
           "question": "「人」可以组成哪个词？",
@@ -407,28 +1048,103 @@
           "praise": "组词成功：大人！"
         },
         {
-          "id": "cn-5-l",
+          "id": "cn-5-q",
+          "kind": "quiz",
+          "question": "练一练：哪个字是「人」？",
+          "options": [
+            {
+              "text": "木"
+            },
+            {
+              "text": "口"
+            },
+            {
+              "text": "人"
+            }
+          ],
+          "answer": 2,
+          "hint": "想一想刚才的字",
+          "praise": "记住啦！"
+        },
+        {
+          "id": "cn-5-w2",
+          "kind": "quiz",
+          "question": "再想一想：「人」还能组成哪个词？",
+          "options": [
+            {
+              "icon": "leaf",
+              "text": "小草"
+            },
+            {
+              "icon": "party",
+              "text": "人们"
+            },
+            {
+              "icon": "sprout",
+              "text": "草地"
+            }
+          ],
+          "answer": 1,
+          "hint": "找一找还有「人」的词",
+          "praise": "又是组词高手：人们！"
+        },
+        {
+          "id": "cn-5-l3",
           "kind": "listen",
           "prompt": "人",
           "speakText": "人",
-          "question": "找一找：哪张图片是「人」？",
+          "question": "再找一找：哪张图片是「人」？",
           "options": [
             {
-              "icon": "sun"
+              "icon": "girl",
+              "text": "人"
             },
             {
               "icon": "duck"
             },
             {
-              "icon": "girl",
-              "text": "人"
+              "icon": "sun"
             }
           ],
-          "answer": 2,
-          "hint": "想想刚才的图片：「人」",
-          "praise": "眼睛真亮！人 找对啦！"
+          "answer": 0,
+          "hint": "「人」长什么样",
+          "praise": "又找对啦！人！"
         }
-      ]
+      ],
+      "board": {
+        "spaces": [
+          {
+            "type": "question",
+            "step": "cn-5-l3"
+          },
+          {
+            "type": "question",
+            "step": "cn-5-l"
+          },
+          {
+            "type": "question",
+            "step": "cn-5-l2"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "cn-5-w"
+          },
+          {
+            "type": "question",
+            "step": "cn-5-q"
+          },
+          {
+            "type": "question",
+            "step": "cn-5-w2"
+          },
+          {
+            "type": "coin"
+          }
+        ]
+      }
     },
     {
       "id": "cn-6",
@@ -477,6 +1193,49 @@
           "praise": "眼睛真亮！口 找对啦！"
         },
         {
+          "id": "cn-6-l2",
+          "kind": "listen",
+          "promptIcon": "speaker",
+          "speakText": "口",
+          "question": "看一看：这张图变成的字是哪个？",
+          "options": [
+            {
+              "text": "口"
+            },
+            {
+              "text": "鸟"
+            },
+            {
+              "text": "日"
+            }
+          ],
+          "answer": 0,
+          "hint": "想一想它像什么字",
+          "praise": "对！这张图就是「口」"
+        },
+        {
+          "id": "cn-6-w",
+          "kind": "quiz",
+          "question": "「口」可以组成哪个词？",
+          "options": [
+            {
+              "icon": "flower",
+              "text": "水田"
+            },
+            {
+              "icon": "speaker",
+              "text": "开口"
+            },
+            {
+              "icon": "rock",
+              "text": "石头"
+            }
+          ],
+          "answer": 1,
+          "hint": "找一找有「口」的词",
+          "praise": "组词成功：开口！"
+        },
+        {
           "id": "cn-6-q",
           "kind": "quiz",
           "question": "练一练：哪个字是「口」？",
@@ -494,8 +1253,86 @@
           "answer": 0,
           "hint": "想一想刚才的字",
           "praise": "记住啦！"
+        },
+        {
+          "id": "cn-6-w2",
+          "kind": "quiz",
+          "question": "再想一想：「口」还能组成哪个词？",
+          "options": [
+            {
+              "icon": "cake",
+              "text": "生日"
+            },
+            {
+              "icon": "calendar",
+              "text": "日子"
+            },
+            {
+              "icon": "heart",
+              "text": "口水"
+            }
+          ],
+          "answer": 2,
+          "hint": "找一找还有「口」的词",
+          "praise": "又是组词高手：口水！"
+        },
+        {
+          "id": "cn-6-l3",
+          "kind": "listen",
+          "prompt": "口",
+          "speakText": "口",
+          "question": "再找一找：哪张图片是「口」？",
+          "options": [
+            {
+              "icon": "clock"
+            },
+            {
+              "icon": "speaker",
+              "text": "口"
+            },
+            {
+              "icon": "moon"
+            }
+          ],
+          "answer": 1,
+          "hint": "「口」长什么样",
+          "praise": "又找对啦！口！"
         }
-      ]
+      ],
+      "board": {
+        "spaces": [
+          {
+            "type": "question",
+            "step": "cn-6-l"
+          },
+          {
+            "type": "question",
+            "step": "cn-6-l2"
+          },
+          {
+            "type": "question",
+            "step": "cn-6-w"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "cn-6-q"
+          },
+          {
+            "type": "question",
+            "step": "cn-6-w2"
+          },
+          {
+            "type": "question",
+            "step": "cn-6-l3"
+          },
+          {
+            "type": "coin"
+          }
+        ]
+      }
     },
     {
       "id": "cn-7",
@@ -520,6 +1357,28 @@
               "say": "今天"
             }
           ]
+        },
+        {
+          "id": "cn-7-l",
+          "kind": "listen",
+          "prompt": "天",
+          "speakText": "天",
+          "question": "找一找：哪张图片是「天」？",
+          "options": [
+            {
+              "icon": "banana"
+            },
+            {
+              "icon": "sun",
+              "text": "天"
+            },
+            {
+              "icon": "rocket"
+            }
+          ],
+          "answer": 1,
+          "hint": "想想刚才的图片：「天」",
+          "praise": "眼睛真亮！天 找对啦！"
         },
         {
           "id": "cn-7-l2",
@@ -563,8 +1422,105 @@
           "answer": 2,
           "hint": "找一找有「天」的词",
           "praise": "组词成功：天空！"
+        },
+        {
+          "id": "cn-7-q",
+          "kind": "quiz",
+          "question": "练一练：哪个字是「天」？",
+          "options": [
+            {
+              "text": "木"
+            },
+            {
+              "text": "天"
+            },
+            {
+              "text": "口"
+            }
+          ],
+          "answer": 1,
+          "hint": "想一想刚才的字",
+          "praise": "记住啦！"
+        },
+        {
+          "id": "cn-7-w2",
+          "kind": "quiz",
+          "question": "再想一想：「天」还能组成哪个词？",
+          "options": [
+            {
+              "icon": "sunrise",
+              "text": "今天"
+            },
+            {
+              "icon": "wave",
+              "text": "海浪"
+            },
+            {
+              "icon": "crystal",
+              "text": "泉水"
+            }
+          ],
+          "answer": 0,
+          "hint": "找一找还有「天」的词",
+          "praise": "又是组词高手：今天！"
+        },
+        {
+          "id": "cn-7-l3",
+          "kind": "listen",
+          "prompt": "天",
+          "speakText": "天",
+          "question": "再找一找：哪张图片是「天」？",
+          "options": [
+            {
+              "icon": "banana"
+            },
+            {
+              "icon": "rocket"
+            },
+            {
+              "icon": "sun",
+              "text": "天"
+            }
+          ],
+          "answer": 2,
+          "hint": "「天」长什么样",
+          "praise": "又找对啦！天！"
         }
-      ]
+      ],
+      "board": {
+        "spaces": [
+          {
+            "type": "question",
+            "step": "cn-7-l2"
+          },
+          {
+            "type": "question",
+            "step": "cn-7-w"
+          },
+          {
+            "type": "question",
+            "step": "cn-7-q"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "cn-7-w2"
+          },
+          {
+            "type": "question",
+            "step": "cn-7-l3"
+          },
+          {
+            "type": "question",
+            "step": "cn-7-l"
+          },
+          {
+            "type": "coin"
+          }
+        ]
+      }
     },
     {
       "id": "cn-8",
@@ -591,6 +1547,49 @@
           ]
         },
         {
+          "id": "cn-8-l",
+          "kind": "listen",
+          "prompt": "田",
+          "speakText": "田",
+          "question": "找一找：哪张图片是「田」？",
+          "options": [
+            {
+              "icon": "star"
+            },
+            {
+              "icon": "gift"
+            },
+            {
+              "icon": "calendar",
+              "text": "田"
+            }
+          ],
+          "answer": 2,
+          "hint": "想想刚才的图片：「田」",
+          "praise": "眼睛真亮！田 找对啦！"
+        },
+        {
+          "id": "cn-8-l2",
+          "kind": "listen",
+          "promptIcon": "calendar",
+          "speakText": "田",
+          "question": "看一看：这张图变成的字是哪个？",
+          "options": [
+            {
+              "text": "山"
+            },
+            {
+              "text": "木"
+            },
+            {
+              "text": "田"
+            }
+          ],
+          "answer": 2,
+          "hint": "想一想它像什么字",
+          "praise": "对！这张图就是「田」"
+        },
+        {
           "id": "cn-8-w",
           "kind": "quiz",
           "question": "「田」可以组成哪个词？",
@@ -613,28 +1612,103 @@
           "praise": "组词成功：田里！"
         },
         {
-          "id": "cn-8-l",
+          "id": "cn-8-q",
+          "kind": "quiz",
+          "question": "练一练：哪个字是「田」？",
+          "options": [
+            {
+              "text": "木"
+            },
+            {
+              "text": "口"
+            },
+            {
+              "text": "田"
+            }
+          ],
+          "answer": 2,
+          "hint": "想一想刚才的字",
+          "praise": "记住啦！"
+        },
+        {
+          "id": "cn-8-w2",
+          "kind": "quiz",
+          "question": "再想一想：「田」还能组成哪个词？",
+          "options": [
+            {
+              "icon": "leaf",
+              "text": "树叶"
+            },
+            {
+              "icon": "flower",
+              "text": "水田"
+            },
+            {
+              "icon": "flower",
+              "text": "花木"
+            }
+          ],
+          "answer": 1,
+          "hint": "找一找还有「田」的词",
+          "praise": "又是组词高手：水田！"
+        },
+        {
+          "id": "cn-8-l3",
           "kind": "listen",
           "prompt": "田",
           "speakText": "田",
-          "question": "找一找：哪张图片是「田」？",
+          "question": "再找一找：哪张图片是「田」？",
           "options": [
             {
-              "icon": "star"
+              "icon": "calendar",
+              "text": "田"
             },
             {
               "icon": "gift"
             },
             {
-              "icon": "calendar",
-              "text": "田"
+              "icon": "star"
             }
           ],
-          "answer": 2,
-          "hint": "想想刚才的图片：「田」",
-          "praise": "眼睛真亮！田 找对啦！"
+          "answer": 0,
+          "hint": "「田」长什么样",
+          "praise": "又找对啦！田！"
         }
-      ]
+      ],
+      "board": {
+        "spaces": [
+          {
+            "type": "question",
+            "step": "cn-8-w"
+          },
+          {
+            "type": "question",
+            "step": "cn-8-q"
+          },
+          {
+            "type": "question",
+            "step": "cn-8-w2"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "cn-8-l3"
+          },
+          {
+            "type": "question",
+            "step": "cn-8-l"
+          },
+          {
+            "type": "question",
+            "step": "cn-8-l2"
+          },
+          {
+            "type": "coin"
+          }
+        ]
+      }
     },
     {
       "id": "cn-9",
@@ -683,6 +1757,49 @@
           "praise": "眼睛真亮！石 找对啦！"
         },
         {
+          "id": "cn-9-l2",
+          "kind": "listen",
+          "promptIcon": "rock",
+          "speakText": "石",
+          "question": "看一看：这张图变成的字是哪个？",
+          "options": [
+            {
+              "text": "石"
+            },
+            {
+              "text": "人"
+            },
+            {
+              "text": "口"
+            }
+          ],
+          "answer": 0,
+          "hint": "想一想它像什么字",
+          "praise": "对！这张图就是「石」"
+        },
+        {
+          "id": "cn-9-w",
+          "kind": "quiz",
+          "question": "「石」可以组成哪个词？",
+          "options": [
+            {
+              "icon": "leaf",
+              "text": "小草"
+            },
+            {
+              "icon": "rock",
+              "text": "石头"
+            },
+            {
+              "icon": "sprout",
+              "text": "草地"
+            }
+          ],
+          "answer": 1,
+          "hint": "找一找有「石」的词",
+          "praise": "组词成功：石头！"
+        },
+        {
           "id": "cn-9-q",
           "kind": "quiz",
           "question": "练一练：哪个字是「石」？",
@@ -700,8 +1817,86 @@
           "answer": 0,
           "hint": "想一想刚才的字",
           "praise": "记住啦！"
+        },
+        {
+          "id": "cn-9-w2",
+          "kind": "quiz",
+          "question": "再想一想：「石」还能组成哪个词？",
+          "options": [
+            {
+              "icon": "heart",
+              "text": "口水"
+            },
+            {
+              "icon": "sun",
+              "text": "天空"
+            },
+            {
+              "icon": "castle",
+              "text": "石桥"
+            }
+          ],
+          "answer": 2,
+          "hint": "找一找还有「石」的词",
+          "praise": "又是组词高手：石桥！"
+        },
+        {
+          "id": "cn-9-l3",
+          "kind": "listen",
+          "prompt": "石",
+          "speakText": "石",
+          "question": "再找一找：哪张图片是「石」？",
+          "options": [
+            {
+              "icon": "balloon"
+            },
+            {
+              "icon": "rock",
+              "text": "石"
+            },
+            {
+              "icon": "leaf"
+            }
+          ],
+          "answer": 1,
+          "hint": "「石」长什么样",
+          "praise": "又找对啦！石！"
         }
-      ]
+      ],
+      "board": {
+        "spaces": [
+          {
+            "type": "question",
+            "step": "cn-9-q"
+          },
+          {
+            "type": "question",
+            "step": "cn-9-w2"
+          },
+          {
+            "type": "question",
+            "step": "cn-9-l3"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "cn-9-l"
+          },
+          {
+            "type": "question",
+            "step": "cn-9-l2"
+          },
+          {
+            "type": "question",
+            "step": "cn-9-w"
+          },
+          {
+            "type": "coin"
+          }
+        ]
+      }
     },
     {
       "id": "cn-10",
@@ -731,6 +1926,28 @@
               "say": "火花"
             }
           ]
+        },
+        {
+          "id": "cn-10-l",
+          "kind": "listen",
+          "prompt": "火",
+          "speakText": "火",
+          "question": "找一找：哪张图片是「火」？",
+          "options": [
+            {
+              "icon": "flame",
+              "text": "火"
+            },
+            {
+              "icon": "crystal"
+            },
+            {
+              "icon": "key"
+            }
+          ],
+          "answer": 0,
+          "hint": "想想刚才的图片：「火」",
+          "praise": "眼睛真亮！火 找对啦！"
         },
         {
           "id": "cn-10-l2",
@@ -774,8 +1991,105 @@
           "answer": 2,
           "hint": "找一找有「火」的词",
           "praise": "组词成功：火焰！"
+        },
+        {
+          "id": "cn-10-q",
+          "kind": "quiz",
+          "question": "练一练：哪个字是「火」？",
+          "options": [
+            {
+              "text": "木"
+            },
+            {
+              "text": "火"
+            },
+            {
+              "text": "口"
+            }
+          ],
+          "answer": 1,
+          "hint": "想一想刚才的字",
+          "praise": "记住啦！"
+        },
+        {
+          "id": "cn-10-w2",
+          "kind": "quiz",
+          "question": "再想一想：「火」还能组成哪个词？",
+          "options": [
+            {
+              "icon": "volcano",
+              "text": "火山"
+            },
+            {
+              "icon": "castle",
+              "text": "石桥"
+            },
+            {
+              "icon": "flower",
+              "text": "花朵"
+            }
+          ],
+          "answer": 0,
+          "hint": "找一找还有「火」的词",
+          "praise": "又是组词高手：火山！"
+        },
+        {
+          "id": "cn-10-l3",
+          "kind": "listen",
+          "prompt": "火",
+          "speakText": "火",
+          "question": "再找一找：哪张图片是「火」？",
+          "options": [
+            {
+              "icon": "crystal"
+            },
+            {
+              "icon": "flame",
+              "text": "火"
+            },
+            {
+              "icon": "key"
+            }
+          ],
+          "answer": 1,
+          "hint": "「火」长什么样",
+          "praise": "又找对啦！火！"
         }
-      ]
+      ],
+      "board": {
+        "spaces": [
+          {
+            "type": "question",
+            "step": "cn-10-w2"
+          },
+          {
+            "type": "question",
+            "step": "cn-10-l3"
+          },
+          {
+            "type": "question",
+            "step": "cn-10-l"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "cn-10-l2"
+          },
+          {
+            "type": "question",
+            "step": "cn-10-w"
+          },
+          {
+            "type": "question",
+            "step": "cn-10-q"
+          },
+          {
+            "type": "coin"
+          }
+        ]
+      }
     },
     {
       "id": "cn-11",
@@ -807,6 +2121,49 @@
           ]
         },
         {
+          "id": "cn-11-l",
+          "kind": "listen",
+          "prompt": "花",
+          "speakText": "花",
+          "question": "找一找：哪张图片是「花」？",
+          "options": [
+            {
+              "icon": "star"
+            },
+            {
+              "icon": "flower",
+              "text": "花"
+            },
+            {
+              "icon": "train"
+            }
+          ],
+          "answer": 1,
+          "hint": "想想刚才的图片：「花」",
+          "praise": "眼睛真亮！花 找对啦！"
+        },
+        {
+          "id": "cn-11-l2",
+          "kind": "listen",
+          "promptIcon": "flower",
+          "speakText": "花",
+          "question": "看一看：这张图变成的字是哪个？",
+          "options": [
+            {
+              "text": "石"
+            },
+            {
+              "text": "火"
+            },
+            {
+              "text": "花"
+            }
+          ],
+          "answer": 2,
+          "hint": "想一想它像什么字",
+          "praise": "对！这张图就是「花」"
+        },
+        {
           "id": "cn-11-w",
           "kind": "quiz",
           "question": "「花」可以组成哪个词？",
@@ -829,28 +2186,103 @@
           "praise": "组词成功：花朵！"
         },
         {
-          "id": "cn-11-l",
+          "id": "cn-11-q",
+          "kind": "quiz",
+          "question": "练一练：哪个字是「花」？",
+          "options": [
+            {
+              "text": "木"
+            },
+            {
+              "text": "口"
+            },
+            {
+              "text": "花"
+            }
+          ],
+          "answer": 2,
+          "hint": "想一想刚才的字",
+          "praise": "记住啦！"
+        },
+        {
+          "id": "cn-11-w2",
+          "kind": "quiz",
+          "question": "再想一想：「花」还能组成哪个词？",
+          "options": [
+            {
+              "icon": "sprout",
+              "text": "草地"
+            },
+            {
+              "icon": "leaf",
+              "text": "花瓣"
+            },
+            {
+              "icon": "duck",
+              "text": "小鸟"
+            }
+          ],
+          "answer": 1,
+          "hint": "找一找还有「花」的词",
+          "praise": "又是组词高手：花瓣！"
+        },
+        {
+          "id": "cn-11-l3",
           "kind": "listen",
           "prompt": "花",
           "speakText": "花",
-          "question": "找一找：哪张图片是「花」？",
+          "question": "再找一找：哪张图片是「花」？",
           "options": [
             {
               "icon": "star"
             },
             {
-              "icon": "flower",
-              "text": "花"
+              "icon": "train"
             },
             {
-              "icon": "train"
+              "icon": "flower",
+              "text": "花"
             }
           ],
-          "answer": 1,
-          "hint": "想想刚才的图片：「花」",
-          "praise": "眼睛真亮！花 找对啦！"
+          "answer": 2,
+          "hint": "「花」长什么样",
+          "praise": "又找对啦！花！"
         }
-      ]
+      ],
+      "board": {
+        "spaces": [
+          {
+            "type": "question",
+            "step": "cn-11-l3"
+          },
+          {
+            "type": "question",
+            "step": "cn-11-l"
+          },
+          {
+            "type": "question",
+            "step": "cn-11-l2"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "cn-11-w"
+          },
+          {
+            "type": "question",
+            "step": "cn-11-q"
+          },
+          {
+            "type": "question",
+            "step": "cn-11-w2"
+          },
+          {
+            "type": "coin"
+          }
+        ]
+      }
     },
     {
       "id": "cn-12",
@@ -899,6 +2331,49 @@
           "praise": "眼睛真亮！草 找对啦！"
         },
         {
+          "id": "cn-12-l2",
+          "kind": "listen",
+          "promptIcon": "leaf",
+          "speakText": "草",
+          "question": "看一看：这张图变成的字是哪个？",
+          "options": [
+            {
+              "text": "草"
+            },
+            {
+              "text": "花"
+            },
+            {
+              "text": "鸟"
+            }
+          ],
+          "answer": 0,
+          "hint": "想一想它像什么字",
+          "praise": "对！这张图就是「草」"
+        },
+        {
+          "id": "cn-12-w",
+          "kind": "quiz",
+          "question": "「草」可以组成哪个词？",
+          "options": [
+            {
+              "icon": "cake",
+              "text": "月饼"
+            },
+            {
+              "icon": "leaf",
+              "text": "小草"
+            },
+            {
+              "icon": "wave",
+              "text": "海浪"
+            }
+          ],
+          "answer": 1,
+          "hint": "找一找有「草」的词",
+          "praise": "组词成功：小草！"
+        },
+        {
           "id": "cn-12-q",
           "kind": "quiz",
           "question": "练一练：哪个字是「草」？",
@@ -916,8 +2391,86 @@
           "answer": 0,
           "hint": "想一想刚才的字",
           "praise": "记住啦！"
+        },
+        {
+          "id": "cn-12-w2",
+          "kind": "quiz",
+          "question": "再想一想：「草」还能组成哪个词？",
+          "options": [
+            {
+              "icon": "sunrise",
+              "text": "日出"
+            },
+            {
+              "icon": "cake",
+              "text": "生日"
+            },
+            {
+              "icon": "sprout",
+              "text": "草地"
+            }
+          ],
+          "answer": 2,
+          "hint": "找一找还有「草」的词",
+          "praise": "又是组词高手：草地！"
+        },
+        {
+          "id": "cn-12-l3",
+          "kind": "listen",
+          "prompt": "草",
+          "speakText": "草",
+          "question": "再找一找：哪张图片是「草」？",
+          "options": [
+            {
+              "icon": "cake"
+            },
+            {
+              "icon": "duck"
+            },
+            {
+              "icon": "leaf",
+              "text": "草"
+            }
+          ],
+          "answer": 2,
+          "hint": "「草」长什么样",
+          "praise": "又找对啦！草！"
         }
-      ]
+      ],
+      "board": {
+        "spaces": [
+          {
+            "type": "question",
+            "step": "cn-12-l"
+          },
+          {
+            "type": "question",
+            "step": "cn-12-l2"
+          },
+          {
+            "type": "question",
+            "step": "cn-12-w"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "cn-12-q"
+          },
+          {
+            "type": "question",
+            "step": "cn-12-w2"
+          },
+          {
+            "type": "question",
+            "step": "cn-12-l3"
+          },
+          {
+            "type": "coin"
+          }
+        ]
+      }
     },
     {
       "id": "cn-13",
@@ -942,6 +2495,28 @@
               "say": "鸟窝"
             }
           ]
+        },
+        {
+          "id": "cn-13-l",
+          "kind": "listen",
+          "prompt": "鸟",
+          "speakText": "鸟",
+          "question": "找一找：哪张图片是「鸟」？",
+          "options": [
+            {
+              "icon": "duck",
+              "text": "鸟"
+            },
+            {
+              "icon": "apple"
+            },
+            {
+              "icon": "rocket"
+            }
+          ],
+          "answer": 0,
+          "hint": "想想刚才的图片：「鸟」",
+          "praise": "眼睛真亮！鸟 找对啦！"
         },
         {
           "id": "cn-13-l2",
@@ -985,8 +2560,105 @@
           "answer": 2,
           "hint": "找一找有「鸟」的词",
           "praise": "组词成功：小鸟！"
+        },
+        {
+          "id": "cn-13-q",
+          "kind": "quiz",
+          "question": "练一练：哪个字是「鸟」？",
+          "options": [
+            {
+              "text": "木"
+            },
+            {
+              "text": "鸟"
+            },
+            {
+              "text": "口"
+            }
+          ],
+          "answer": 1,
+          "hint": "想一想刚才的字",
+          "praise": "记住啦！"
+        },
+        {
+          "id": "cn-13-w2",
+          "kind": "quiz",
+          "question": "再想一想：「鸟」还能组成哪个词？",
+          "options": [
+            {
+              "icon": "leaf",
+              "text": "鸟窝"
+            },
+            {
+              "icon": "cake",
+              "text": "月饼"
+            },
+            {
+              "icon": "wave",
+              "text": "海浪"
+            }
+          ],
+          "answer": 0,
+          "hint": "找一找还有「鸟」的词",
+          "praise": "又是组词高手：鸟窝！"
+        },
+        {
+          "id": "cn-13-l3",
+          "kind": "listen",
+          "prompt": "鸟",
+          "speakText": "鸟",
+          "question": "再找一找：哪张图片是「鸟」？",
+          "options": [
+            {
+              "icon": "apple"
+            },
+            {
+              "icon": "duck",
+              "text": "鸟"
+            },
+            {
+              "icon": "rocket"
+            }
+          ],
+          "answer": 1,
+          "hint": "「鸟」长什么样",
+          "praise": "又找对啦！鸟！"
         }
-      ]
+      ],
+      "board": {
+        "spaces": [
+          {
+            "type": "question",
+            "step": "cn-13-l2"
+          },
+          {
+            "type": "question",
+            "step": "cn-13-w"
+          },
+          {
+            "type": "question",
+            "step": "cn-13-q"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "cn-13-w2"
+          },
+          {
+            "type": "question",
+            "step": "cn-13-l3"
+          },
+          {
+            "type": "question",
+            "step": "cn-13-l"
+          },
+          {
+            "type": "coin"
+          }
+        ]
+      }
     },
     {
       "id": "cn-14",
@@ -1085,8 +2757,80 @@
           "answer": 0,
           "hint": "有一点点，就是小鸟",
           "praise": "复习家！全对啦！"
+        },
+        {
+          "id": "cn-14-q2",
+          "kind": "quiz",
+          "question": "连一连：哪个是「山」？",
+          "options": [
+            {
+              "text": "出"
+            },
+            {
+              "text": "山"
+            },
+            {
+              "text": "田"
+            }
+          ],
+          "answer": 1,
+          "hint": "三个尖尖头",
+          "praise": "山找对啦！"
+        },
+        {
+          "id": "cn-14-q3",
+          "kind": "quiz",
+          "question": "猜一猜：哪个是「月」？",
+          "options": [
+            {
+              "text": "月"
+            },
+            {
+              "text": "用"
+            },
+            {
+              "text": "明"
+            }
+          ],
+          "answer": 0,
+          "hint": "弯弯的，像小船",
+          "praise": "月亮出来啦！"
         }
-      ]
+      ],
+      "board": {
+        "spaces": [
+          {
+            "type": "question",
+            "step": "cn-14-w"
+          },
+          {
+            "type": "question",
+            "step": "cn-14-q"
+          },
+          {
+            "type": "question",
+            "step": "cn-14-q2"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "cn-14-q3"
+          },
+          {
+            "type": "question",
+            "step": "cn-14-m"
+          },
+          {
+            "type": "question",
+            "step": "cn-14-l1"
+          },
+          {
+            "type": "coin"
+          }
+        ]
+      }
     }
   ]
 }

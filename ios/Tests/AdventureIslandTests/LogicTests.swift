@@ -206,6 +206,79 @@ final class LevelFlowTests: XCTestCase {
     }
 }
 
+/// 迷你棋盘推进状态机（v0.8 工单02）：掷骰前进 / 超出停城堡 / 星级共用映射
+final class BoardFlowTests: XCTestCase {
+
+    func testAdvanceMovesByRoll() {
+        var flow = BoardFlow()
+        flow.advance(roll: 3, spaceCount: 8)
+        XCTAssertEqual(flow.position, 2, "起点是 -1：掷 3 点落在第 3 格（下标 2）")
+        XCTAssertFalse(flow.finished)
+        flow.advance(roll: 2, spaceCount: 8)
+        XCTAssertEqual(flow.position, 4)
+    }
+
+    func testOvershootClampsToCastleAndFinishes() {
+        var flow = BoardFlow()
+        flow.advance(roll: 6, spaceCount: 8)
+        flow.advance(roll: 6, spaceCount: 8)   // 5 → 超出，停在城堡
+        XCTAssertEqual(flow.position, 8, "超出点数应停在城堡，不越过")
+        XCTAssertTrue(flow.finished, "到达城堡必须置 finished 进入结算")
+    }
+
+    func testExactRollReachesCastle() {
+        var flow = BoardFlow()
+        flow.advance(roll: 6, spaceCount: 8)
+        flow.advance(roll: 3, spaceCount: 8)   // 5 + 3 = 8 恰好到城堡
+        XCTAssertEqual(flow.position, 8)
+        XCTAssertTrue(flow.finished)
+    }
+
+    func testAdvanceOneDrivesHopAnimation() {
+        var flow = BoardFlow()
+        flow.advanceOne(spaceCount: 8)
+        XCTAssertEqual(flow.position, 0, "逐格蹦跳：首跳落在第 1 格")
+        XCTAssertFalse(flow.finished)
+    }
+
+    func testAdvanceAfterFinishedIsNoOp() {
+        var flow = BoardFlow()
+        flow.advance(roll: 9, spaceCount: 8)
+        XCTAssertTrue(flow.finished)
+        flow.advance(roll: 5, spaceCount: 8)
+        flow.advanceOne(spaceCount: 8)
+        XCTAssertEqual(flow.position, 8, "结算后掷骰应为无操作")
+        XCTAssertTrue(flow.finished)
+    }
+
+    func testInvalidInputsIgnored() {
+        var flow = BoardFlow()
+        flow.advance(roll: 0, spaceCount: 8)
+        flow.advance(roll: 3, spaceCount: 0)
+        XCTAssertEqual(flow.position, -1, "非正点数 / 空棋盘应忽略")
+        XCTAssertFalse(flow.finished)
+    }
+
+    func testWrongCountSharesStarRuleWithLinearLevels() {
+        var flow = BoardFlow()
+        XCTAssertEqual(flow.stars, 3)
+        flow.registerWrong()
+        XCTAssertEqual(flow.stars, 2)
+        flow.registerWrong()
+        flow.registerWrong()
+        XCTAssertEqual(flow.stars, 1, "棋盘关与线性关共用 StarRule（0/1/≥2 错 → 3/2/1 星）")
+    }
+
+    func testSpaceAtReturnsNilOutsideBoard() {
+        var flow = BoardFlow()
+        XCTAssertNil(flow.space(at: 8), "起点不落在格子上")
+        flow.advance(roll: 1, spaceCount: 8)
+        XCTAssertEqual(flow.space(at: 8), 0)
+        flow.advance(roll: 9, spaceCount: 8)
+        XCTAssertNil(flow.space(at: 8), "城堡不是格子")
+    }
+}
+
 /// 语音配置
 final class SpeechConfigTests: XCTestCase {
     func testBuilderDefaults() {

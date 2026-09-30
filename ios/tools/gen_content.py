@@ -123,19 +123,59 @@ def cn_char_quiz(i, ch):
             "options": opts, "answer": ans,
             "hint": "想一想刚才的字", "praise": "记住啦！"}
 
+def cn_word_quiz2(i, ch, words):
+    """组词选卡第二题：换正确词与干扰轮转（棋盘题目格扩产用）"""
+    correct = words[1] if len(words) > 1 else words[0]
+    dis = other_words(ch, 2, start=i * 5 + 2)
+    pos = (i + 2) % 3
+    opts, ans = rot([{"icon": correct[0], "text": correct[1]},
+                     {"icon": dis[0][0], "text": dis[0][1]},
+                     {"icon": dis[1][0], "text": dis[1][1]}], 0, pos)
+    return {"id": f"cn-{i}-w2", "kind": "quiz",
+            "question": f"再想一想：「{ch}」还能组成哪个词？",
+            "options": opts, "answer": ans,
+            "hint": f"找一找还有「{ch}」的词", "praise": f"又是组词高手：{correct[1]}！"}
+
+def cn_listen_pic2(i, ch, lo, lans):
+    """找图片第二题：换答案位与干扰顺序（棋盘题目格扩产用）"""
+    tgt, d1, d2 = lo
+    correct = {"icon": tgt, "text": ch}
+    others = [{"icon": d1}, {"icon": d2}]
+    nlans = (lans + 1) % 3
+    opts = others[:nlans] + [correct] + others[nlans:]
+    return {"id": f"cn-{i}-l3", "kind": "listen", "prompt": ch, "speakText": ch,
+            "question": f"再找一找：哪张图片是「{ch}」？",
+            "options": opts, "answer": nlans,
+            "hint": f"「{ch}」长什么样", "praise": f"又找对啦！{ch}！"}
+
+# v0.8 工单02：识字村 15 关改迷你棋盘（8 格 = 6 题目格 + 2 金币格，题目格引用 step id；
+# teach 保留为棋盘开场卡。格数区间与题目占比红线见 spec 实现决策 2 与内容完整性测试）
+def cn_board(i, qids):
+    qq = qids[i % len(qids):] + qids[:i % len(qids)]   # 轮转题目顺序，相邻关卡体验不同
+    return {"spaces": [
+        {"type": "question", "step": qq[0]},
+        {"type": "question", "step": qq[1]},
+        {"type": "question", "step": qq[2]},
+        {"type": "coin"},
+        {"type": "question", "step": qq[3]},
+        {"type": "question", "step": qq[4]},
+        {"type": "question", "step": qq[5]},
+        {"type": "coin"},
+    ]}
+
 cn_levels = []
 for i, (ch, py, mfrom, words, lo, lans) in enumerate(CN):
+    q_steps = [cn_listen_pic(i, ch, lo, lans),
+               cn_listen_pic_to_char(i, ch, mfrom),
+               cn_word_quiz(i, ch, words),
+               cn_char_quiz(i, ch),
+               cn_word_quiz2(i, ch, words),
+               cn_listen_pic2(i, ch, lo, lans)]
     steps = [{"id": f"cn-{i}-t", "kind": "teach", "morphFrom": mfrom, "char": ch, "pinyin": py,
-              "words": [{"icon": w, "text": t, "say": t} for w, t in words]}]
-    combo = i % 3
-    if combo == 0:      # A：找图片 + 找字
-        steps += [cn_listen_pic(i, ch, lo, lans), cn_char_quiz(i, ch)]
-    elif combo == 1:    # B：看图找字 + 组词
-        steps += [cn_listen_pic_to_char(i, ch, mfrom), cn_word_quiz(i, ch, words)]
-    else:               # C：组词 + 找图片
-        steps += [cn_word_quiz(i, ch, words), cn_listen_pic(i, ch, lo, lans)]
-    cn_levels.append({"id": f"cn-{i}", "title": f"第 {i+1} 关 象形字", "subtitle": f"认识「{ch}」", "steps": steps})
-# 第15关 复习挑战：翻牌配对 + 三种题型混合
+              "words": [{"icon": w, "text": t, "say": t} for w, t in words]}] + q_steps
+    cn_levels.append({"id": f"cn-{i}", "title": f"第 {i+1} 关 象形字", "subtitle": f"认识「{ch}」",
+                      "steps": steps, "board": cn_board(i, [s["id"] for s in q_steps])})
+# 第15关 复习挑战：翻牌配对 + 题型混合（同样上棋盘，无开场卡）
 cn_levels.append({"id": "cn-14", "title": "第 15 关 复习挑战", "subtitle": "汉字小达人", "steps": [
     memory_step("cn-14-m", "翻翻牌：把字和它的图片配成对", [
         ("日", "sunface", None, None, "日"),
@@ -149,7 +189,11 @@ cn_levels.append({"id": "cn-14", "title": "第 15 关 复习挑战", "subtitle":
     cn_word_quiz(14, "花", [("flower","花朵"),("leaf","花瓣")]),
     {"id": "cn-14-q", "kind": "quiz", "question": "大挑战：哪个是「鸟」？",
      "options": [{"text": t} for t in ["鸟","乌","鸣"]], "answer": 0, "hint": "有一点点，就是小鸟", "praise": "复习家！全对啦！"},
-]})
+    {"id": "cn-14-q2", "kind": "quiz", "question": "连一连：哪个是「山」？",
+     "options": [{"text": t} for t in ["出","山","田"]], "answer": 1, "hint": "三个尖尖头", "praise": "山找对啦！"},
+    {"id": "cn-14-q3", "kind": "quiz", "question": "猜一猜：哪个是「月」？",
+     "options": [{"text": t} for t in ["月","用","明"]], "answer": 0, "hint": "弯弯的，像小船", "praise": "月亮出来啦！"},
+], "board": cn_board(14, ["cn-14-m", "cn-14-l1", "cn-14-w", "cn-14-q", "cn-14-q2", "cn-14-q3"])})
 W("cn_levels.json", {"subject": "cn", "title": "识字村", "guide": "panda", "levels": cn_levels})
 
 # ================= 数学 15 关（8 种题型，v0.4） =================

@@ -68,6 +68,32 @@ def check_subject(doc, name, expect_levels):
     else: ok(f"[{name}] 关卡 id 唯一")
     for li, lv in enumerate(levels):
         if not lv["steps"]: err(f"[{name}] 第{li+1}关无步骤")
+        # v0.8 迷你棋盘（工单02）：8-10 格、题目格占比 ≥ 60%、题目引用存在且不重复（规格实现决策 2）
+        bd = lv.get("board")
+        if bd is not None:
+            sps = bd.get("spaces") or []
+            tag = f"{name}/{lv['id']}"
+            if not (8 <= len(sps) <= 10):
+                err(f"{tag} 棋盘应 8-10 格，实际 {len(sps)}")
+            qs = [s for s in sps if s.get("type") == "question"]
+            if sps and len(qs) / len(sps) < 0.6:
+                err(f"{tag} 题目格占比 {len(qs)}/{len(sps)} 低于 60% 红线")
+            sids = {s.get("id") for s in lv["steps"]}
+            seen = set()
+            for s in sps:
+                t = s.get("type")
+                if t not in ("question", "coin"):
+                    err(f"{tag} 未知格子类型 {t}")
+                if t == "question":
+                    ref = s.get("step")
+                    if not ref: err(f"{tag} 题目格缺 step 引用")
+                    elif ref not in sids: err(f"{tag} 引用了不存在的 step {ref}")
+                    elif ref in seen: err(f"{tag} 重复引用 step {ref}")
+                    else: seen.add(ref)
+                elif s.get("step"):
+                    err(f"{tag} 非题目格不应带 step")
+            if len(seen) == len(qs) and 8 <= len(sps) <= 10 and sps and len(qs) / len(sps) >= 0.6:
+                ok(f"[{tag}] 棋盘 {len(sps)} 格（题目 {len(qs)}）合法")
         for st in lv["steps"]:
             kind = st["kind"]
             sid = f"{name}/{st.get('id','?')}"
@@ -175,6 +201,14 @@ def check_subject(doc, name, expect_levels):
 
 for name, cnt in SUBJECTS:
     check_subject(subject_docs[name], name, cnt)
+
+# v0.8 工单02：关卡 id 全局唯一（工单05 进度迁移「id 平移插入新关」的前提）
+all_level_ids = [l["id"] for d in subject_docs.values() for l in d["levels"]]
+dup_ids = {i for i in all_level_ids if all_level_ids.count(i) > 1}
+if dup_ids:
+    err(f"关卡 id 跨文件重复: {sorted(dup_ids)}")
+else:
+    ok(f"关卡 id 全局唯一（{len(all_level_ids)} 关）")
 
 for exp in exps["experiments"]:
     if len(exp["items"]) < 3: err(f"[实验 {exp['id']}] 物品少于 3")

@@ -95,6 +95,65 @@ struct Level: Codable, Equatable, Identifiable {
     var title: String
     var subtitle: String?
     var steps: [Step]
+    var board: Board?          // v0.8 迷你棋盘；nil = 线性步骤关
+}
+
+// MARK: - 迷你棋盘（v0.8 工单02：识字村试点）
+
+/// 棋盘格子：question 引用本关 step id；coin 为金币格（宝箱/蘑菇/休息站由工单03扩充）
+struct BoardSpace: Codable, Equatable {
+    var type: String           // question | coin
+    var step: String?
+}
+
+struct Board: Codable, Equatable {
+    var spaces: [BoardSpace]
+}
+
+/// 星级映射（规格 v0.8）：错 0 题 3 星、错 1 题 2 星、错 ≥2 题 1 星。线性关与棋盘关共用
+enum StarRule {
+    static func stars(wrongCount: Int) -> Int {
+        switch wrongCount {
+        case 0: return 3
+        case 1: return 2
+        default: return 1
+        }
+    }
+}
+
+/// 棋盘推进状态（纯逻辑，测试缝在领域层）：掷骰逐格前进，超出停在城堡；
+/// 语义与浏览器模拟器 hopBoard/arriveBoard 同源
+struct BoardFlow: Equatable {
+    /// -1 起点；0..<spaceCount 落在格上；spaceCount 到达城堡
+    private(set) var position: Int = -1
+    private(set) var wrongCount: Int = 0
+    private(set) var finished: Bool = false
+
+    var stars: Int { StarRule.stars(wrongCount: wrongCount) }
+
+    /// 答错一题：不后退不惩罚（防挫败铁律），只计入星级
+    mutating func registerWrong() { wrongCount += 1 }
+
+    /// 掷得 roll 点前进，超出部分停在城堡（min 钳制）；返回落点。已结算/非正点数/空棋盘为非法输入，忽略
+    @discardableResult
+    mutating func advance(roll: Int, spaceCount: Int) -> Int {
+        guard !finished, roll > 0, spaceCount > 0 else { return position }
+        position = min(position + roll, spaceCount)
+        if position == spaceCount { finished = true }
+        return position
+    }
+
+    /// 前进一格（蹦跳动画逐格驱动）；到达城堡置 finished
+    mutating func advanceOne(spaceCount: Int) {
+        guard !finished, spaceCount > 0 else { return }
+        position = min(position + 1, spaceCount)
+        if position == spaceCount { finished = true }
+    }
+
+    /// 落点对应格子（城堡返回 nil）
+    func space(at spaceCount: Int) -> Int? {
+        position >= 0 && position < spaceCount ? position : nil
+    }
 }
 
 // MARK: - 关卡流程状态机（步骤推进 / 最后一步结算置位 / 星级映射）
@@ -122,11 +181,7 @@ struct LevelFlow: Equatable {
 
     /// 星级映射（规格 v0.8）：错 0 题 3 星、错 1 题 2 星、错 ≥2 题 1 星
     var stars: Int {
-        switch wrongCount {
-        case 0: return 3
-        case 1: return 2
-        default: return 1
-        }
+        StarRule.stars(wrongCount: wrongCount)
     }
 }
 
