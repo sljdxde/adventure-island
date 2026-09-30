@@ -16,6 +16,56 @@ struct ProgressSnapshot: Codable, Equatable {
     var dailyDone: [String: Int] = [:]           // "2026-09-29|cn": 2
     var streak: Int = 0
     var lastPlayDay: String?
+    var coinLedger: [CoinEntry] = []             // v0.8 金币账本：每笔来源/数额/时间（决策 12）
+    var brickClaims: [String] = []               // 问号砖已领日期："2026-09-30|brick-cn"（决策 13）
+
+    init() {}
+
+    private enum CodingKeys: String, CodingKey {
+        case coins, levelStars, testedItems, collectedScience, stickers
+        case learnedHanzi, learnedPinyin, learnedEnglish, learnedAstro
+        case dailyDone, streak, lastPlayDay, coinLedger, brickClaims
+    }
+
+    /// 字段全部 decodeIfPresent + 默认值：旧版本 progress.json（无账本/砖块字段）解码不失败，
+    /// 否则 load() 的 try? 会静默清空孩子全部进度（规格 US26 升级不丢进度）
+    init(from decoder: Decoder) throws {
+        let c = try decoder.container(keyedBy: CodingKeys.self)
+        coins = try c.decodeIfPresent(Int.self, forKey: .coins) ?? 0
+        levelStars = try c.decodeIfPresent([String: Int].self, forKey: .levelStars) ?? [:]
+        testedItems = try c.decodeIfPresent([String].self, forKey: .testedItems) ?? []
+        collectedScience = try c.decodeIfPresent([String].self, forKey: .collectedScience) ?? []
+        stickers = try c.decodeIfPresent([String].self, forKey: .stickers) ?? []
+        learnedHanzi = try c.decodeIfPresent([String].self, forKey: .learnedHanzi) ?? []
+        learnedPinyin = try c.decodeIfPresent([String].self, forKey: .learnedPinyin) ?? []
+        learnedEnglish = try c.decodeIfPresent([String].self, forKey: .learnedEnglish) ?? []
+        learnedAstro = try c.decodeIfPresent([String].self, forKey: .learnedAstro) ?? []
+        dailyDone = try c.decodeIfPresent([String: Int].self, forKey: .dailyDone) ?? [:]
+        streak = try c.decodeIfPresent(Int.self, forKey: .streak) ?? 0
+        lastPlayDay = try c.decodeIfPresent(String.self, forKey: .lastPlayDay)
+        coinLedger = try c.decodeIfPresent([CoinEntry].self, forKey: .coinLedger) ?? []
+        brickClaims = try c.decodeIfPresent([String].self, forKey: .brickClaims) ?? []
+    }
+}
+
+// MARK: - 金币账本（v0.8 决策 12：金币只经账本变动，HUD 余额读账本口径）
+
+/// 记账来源（口径见规格决策 11；商店消费在工单08 增加 .shop）
+enum CoinSource: String, Codable {
+    case levelStars = "level-stars"        // 通关星级奖励
+    case mushroomBonus = "mushroom-bonus"  // 3 星通关蘑菇
+    case answer = "answer"                 // 题目格答对 +2
+    case coinSpace = "coin-space"          // 金币格 +5
+    case brick = "brick"                   // 地图问号砖（每根水管每天一次）
+    case labReward = "lab-reward"          // 实验猜对
+    case collection = "collection"         // 图鉴收集奖励
+}
+
+struct CoinEntry: Codable, Equatable, Identifiable {
+    var id = UUID()
+    var source: String
+    var amount: Int        // 正入负出
+    var at: Date
 }
 
 final class ProgressStore: ObservableObject {
@@ -59,6 +109,46 @@ final class ProgressStore: ObservableObject {
         save()
     }
 
+    // MARK: 金币账本（只经此路变动；余额永不为负）
+
+    /// 账本条目上限：只留最近 N 笔，防止进度文件无限膨胀（家长统计只看近期口径）
+    static let coinLedgerLimit = 1000
+
+    /// 入账/扣款 + 记账 + 落盘。视图层所有金币变动走这里
+    func recordCoin(_ source: CoinSource, amount: Int) {
+        guard amount != 0 else { return }
+        mutateCoin(source: source, amount: amount)
+        save()
+    }
+
+    /// 记账 + 更新余额（不落盘，供 completeLevel 等已统一 save 的存储方法复用）
+    private func mutateCoin(source: CoinSource, amount: Int) {
+        snapshot.coins = max(0, snapshot.coins + amount)
+        snapshot.coinLedger.append(CoinEntry(source: source.rawValue, amount: amount, at: now()))
+        if snapshot.coinLedger.count > Self.coinLedgerLimit {
+            snapshot.coinLedger.removeFirst(snapshot.coinLedger.count - Self.coinLedgerLimit)
+        }
+    }
+
+    /// 账本回放：按来源汇总（家长中心「金币哪来的」统计口径，工单09 消费侧接入）
+    func coinTotal(source: CoinSource? = nil) -> Int {
+        let target = source?.rawValue
+        return snapshot.coinLedger
+            .filter { target == nil || $0.source == target }
+            .reduce(0) { $0 + $1.amount }
+    }
+
+    /// 问号砖：每根水管每天限领一次（决策 13）；当日已领返回 false 不入账
+    @discardableResult
+    func claimBrick(subject: String) -> Bool {
+        let key = "\(todayKey)|brick-\(subject)"
+        guard !snapshot.brickClaims.contains(key) else { return false }
+        snapshot.brickClaims.append(key)
+        mutateCoin(source: .brick, amount: 1)
+        save()
+        return true
+    }
+
     // MARK: 关卡
 
     func stars(for subject: String, index: Int) -> Int {
@@ -70,7 +160,7 @@ final class ProgressStore: ObservableObject {
         let key = "\(subject)-\(index)"
         let old = snapshot.levelStars[key] ?? 0
         if stars > old { snapshot.levelStars[key] = stars }
-        if stars > old || old == 0 { snapshot.coins += stars }
+        if stars > old || old == 0 { mutateCoin(source: .levelStars, amount: stars) }
         bumpDaily(subject: subject)
         updateStreak()
         save()
@@ -112,6 +202,13 @@ final class ProgressStore: ObservableObject {
                     > (dayFormatter.date(from: String(dayPart))?.timeIntervalSince1970 ?? 0)
         }
         keys.forEach { snapshot.dailyDone.removeValue(forKey: $0) }
+        // 问号砖已领记录同款剪枝（保留最近 7 天）
+        snapshot.brickClaims.removeAll { key in
+            guard let dayPart = key.split(separator: "|").first else { return true }
+            return todayKey > String(dayPart) &&
+                calendar.date(byAdding: .day, value: -7, to: now())!.timeIntervalSince1970
+                    > (dayFormatter.date(from: String(dayPart))?.timeIntervalSince1970 ?? 0)
+        }
     }
 
     func updateStreak() {
@@ -146,7 +243,7 @@ final class ProgressStore: ObservableObject {
     func collectScience(id: String) {
         if !snapshot.collectedScience.contains(id) {
             snapshot.collectedScience.append(id)
-            snapshot.coins += 1
+            mutateCoin(source: .collection, amount: 1)
             save()
         }
     }
@@ -200,7 +297,6 @@ struct AppSettings: Codable, Equatable {
     var dailyMinutes: Int = 45       // 30/45/60
     var restIntervalMinutes: Int = 15 // 15/30/0(关)
     var difficulty: String = "auto"  // easy | auto | normal
-    var unlockAll: Bool = false
     var muted: Bool = false
 }
 

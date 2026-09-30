@@ -175,11 +175,13 @@ struct MapView: View {
                     }
                     VStack {
                         QuestionBlock(onTap: {
-                            // 顶砖块出金币（马里奥手感彩蛋）
+                            // 顶砖块出金币（马里奥手感彩蛋）：每根水管每天限领一次（决策 13）
                             sound.systemTap()
-                            store.snapshot.coins += 1
-                            store.save()
-                            toast.show("🪙 +1", seconds: 1.0)
+                            if store.claimBrick(subject: zone.subject) {
+                                toast.show("🪙 +1", seconds: 1.0)
+                            } else {
+                                toast.show("今天的金币领过啦，明天再来～", seconds: 1.6)
+                            }
                         })
                             .offset(y: -42)
                     }

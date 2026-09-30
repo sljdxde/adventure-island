@@ -533,7 +533,7 @@ struct LabView: View {
             if guessedFloat == isFloat {
                 confetti += 1
                 toast.show("🔮 猜对啦！加一颗智慧星 ⭐")
-                store.snapshot.coins += 1
+                store.recordCoin(.labReward, amount: 1)
             } else {
                 toast.show("没关系～科学家就是靠不断试错发现规律的 🔬")
             }

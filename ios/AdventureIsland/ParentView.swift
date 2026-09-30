@@ -288,15 +288,6 @@ struct ParentView: View {
             } label: { v in ["简单", "自动适配", "标准"][v] }
             HStack(spacing: 10) {
                 Button {
-                    settings.settings.unlockAll = true
-                    settings.save()
-                    toast.show("已解锁全部章节试玩")
-                } label: {
-                    Label("解锁全部", systemImage: "lock.open")
-                        .font(.kidBody(14))
-                }
-                .buttonStyle(.jellyCream)
-                Button {
                     toast.show("跳过知识点功能将在二期提供")
                 } label: {
                     Label("跳过知识点", systemImage: "forward.end")

@@ -128,3 +128,99 @@ final class SettingsAndGateTests: XCTestCase {
         XCTAssertFalse(ParentGate.check("abc", answer: 15))
     }
 }
+
+/// 金币账本（v0.8 工单04）：只经账本变动 / 余额永不透支 / 问号砖每日限次 / 旧进度无损迁移
+final class CoinLedgerTests: XCTestCase {
+
+    private func makeStore(start: String = "2026-09-29") -> (ProgressStore, UnsafeMutablePointer<Date>) {
+        let holder = UnsafeMutablePointer<Date>.allocate(capacity: 1)
+        holder.initialize(to: ProgressStoreTests.date(start)!)
+        let store = ProgressStore(now: { holder.pointee }, fileName: "test-\(UUID().uuidString).json")
+        return (store, holder)
+    }
+
+    func testRecordCoinUpdatesBalanceAndLedger() {
+        let (store, _) = makeStore()
+        store.recordCoin(.answer, amount: 2)
+        store.recordCoin(.answer, amount: 2)
+        store.recordCoin(.coinSpace, amount: 5)
+        store.recordCoin(.mushroomBonus, amount: 2)
+        XCTAssertEqual(store.snapshot.coins, 11)
+        XCTAssertEqual(store.coinTotal(), 11, "账本合计必须等于余额")
+        XCTAssertEqual(store.coinTotal(source: .answer), 4, "按来源回放：答对收入")
+        XCTAssertEqual(store.coinTotal(source: .coinSpace), 5)
+        let entries = store.snapshot.coinLedger
+        XCTAssertEqual(entries.count, 4)
+        XCTAssertEqual(entries.last?.source, CoinSource.mushroomBonus.rawValue)
+        XCTAssertEqual(entries.last?.amount, 2)
+    }
+
+    func testBalanceNeverGoesNegative() {
+        let (store, _) = makeStore()
+        store.recordCoin(.answer, amount: 2)
+        // 消费侧口径（工单08 商店接入）：扣款超出余额也不透支
+        store.recordCoin(.coinSpace, amount: -10)
+        XCTAssertEqual(store.snapshot.coins, 0, "余额永不为负")
+        XCTAssertEqual(store.coinTotal(), -8, "账本如实记录净额，余额为钳制后的口径")
+    }
+
+    func testZeroAmountNotRecorded() {
+        let (store, _) = makeStore()
+        store.recordCoin(.answer, amount: 0)
+        XCTAssertTrue(store.snapshot.coinLedger.isEmpty)
+        XCTAssertEqual(store.snapshot.coins, 0)
+    }
+
+    func testCompleteLevelAndCollectRecordLedger() {
+        let (store, _) = makeStore()
+        store.completeLevel(subject: "cn", index: 0, stars: 3)
+        store.collectScience(id: "sci-apple")
+        XCTAssertEqual(store.coinTotal(source: .levelStars), 3, "通关星级奖励入账本")
+        XCTAssertEqual(store.coinTotal(source: .collection), 1, "图鉴收集奖励入账本")
+        XCTAssertEqual(store.coinTotal(), store.snapshot.coins)
+    }
+
+    func testBrickDailyLimitAndCrossDayReset() {
+        let (store, clock) = makeStore(start: "2026-09-29")
+        XCTAssertTrue(store.claimBrick(subject: "cn"), "当日首次领取应成功")
+        XCTAssertFalse(store.claimBrick(subject: "cn"), "同一根水管当日第二次无金币")
+        XCTAssertTrue(store.claimBrick(subject: "math"), "不同水管互不影响")
+        XCTAssertEqual(store.coinTotal(source: .brick), 2)
+
+        clock.pointee = ProgressStoreTests.date("2026-09-30")!   // 跨天重置
+        XCTAssertTrue(store.claimBrick(subject: "cn"), "跨天后可再领")
+        XCTAssertEqual(store.coinTotal(source: .brick), 3)
+    }
+
+    func testLegacyProgressDecodesWithoutLedgerFields() throws {
+        // v0.7 及以前的 progress.json 没有账本/砖块字段：解码不能失败（否则 load() 会静默清进度）
+        let legacy = """
+        {"coins":21,"levelStars":{"cn-0":3},"testedItems":["rock"],"collectedScience":[],
+         "stickers":[],"learnedHanzi":["日"],"learnedPinyin":[],"learnedEnglish":[],
+         "learnedAstro":[],"dailyDone":{"2026-09-29|cn":2},"streak":3,"lastPlayDay":"2026-09-29"}
+        """
+        let snap = try JSONDecoder().decode(ProgressSnapshot.self, from: Data(legacy.utf8))
+        XCTAssertEqual(snap.coins, 21, "旧金币存量无损保留")
+        XCTAssertEqual(snap.levelStars["cn-0"], 3)
+        XCTAssertTrue(snap.coinLedger.isEmpty)
+        XCTAssertTrue(snap.brickClaims.isEmpty)
+
+        // 迁移后正常记账
+        let holder = UnsafeMutablePointer<Date>.allocate(capacity: 1)
+        holder.initialize(to: ProgressStoreTests.date("2026-09-30")!)
+        let store = ProgressStore(now: { holder.pointee }, fileName: "test-\(UUID().uuidString).json")
+        store.snapshot = snap
+        store.recordCoin(.answer, amount: 2)
+        XCTAssertEqual(store.snapshot.coins, 23)
+        XCTAssertEqual(store.coinTotal(), 2, "旧余额不计入账本回放，新收入从迁移后起记")
+    }
+
+    func testLedgerCappedAtLimit() {
+        let (store, _) = makeStore()
+        for _ in 0..<(ProgressStore.coinLedgerLimit + 5) {
+            store.recordCoin(.answer, amount: 1)
+        }
+        XCTAssertEqual(store.snapshot.coinLedger.count, ProgressStore.coinLedgerLimit, "账本只留最近 N 笔防膨胀")
+        XCTAssertEqual(store.coinTotal(), ProgressStore.coinLedgerLimit)
+    }
+}

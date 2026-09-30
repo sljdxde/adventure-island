@@ -153,12 +153,11 @@ struct FinishCardView: View {
         }
         .onAppear {
             // 蘑菇 +2 只发给此前从未拿过 3 星的关：旧星级须在 completeLevel 改写前取
-            // （判据与模拟器 old<3 同源，跨启动持久防重发；直改 coins 待工单04金币账本统一收口）
+            // （判据与模拟器 old<3 同源，跨启动持久防重发；经金币账本入账——工单04）
             let previousStars = store.stars(for: subject, index: index)
             store.completeLevel(subject: subject, index: index, stars: stars)
             if stars == 3, previousStars < 3 {
-                store.snapshot.coins += 2
-                store.save()
+                store.recordCoin(.mushroomBonus, amount: 2)
             }
         }
     }
@@ -461,8 +460,7 @@ struct BoardLevelView: View {
         case "coin":
             sound.coin()
             withAnimation(.spring(response: 0.4, dampingFraction: 0.6)) { coinBurstSpace = flow.position }
-            store.snapshot.coins += 5          // 金币格 +5（直改待工单04金币账本收口）
-            store.save()
+            store.recordCoin(.coinSpace, amount: 5)   // 金币格 +5 经账本（工单04）
             toast.show("金币格 +5 金币！", seconds: 1.6)
             Task { @MainActor in
                 try? await Task.sleep(nanoseconds: 900_000_000)
@@ -481,8 +479,7 @@ struct BoardLevelView: View {
                               subject: subject,
                               onWrong: { flow.registerWrong() },
                               onNext: {
-                store.snapshot.coins += 2          // 题目格答对 +2（账本口径待工单04收口）
-                store.save()
+                store.recordCoin(.answer, amount: 2)   // 题目格答对 +2 经账本（工单04）
                 sound.coin()
                 toast.show("答对啦 +2 金币！", seconds: 1.4)
                 questionStep = nil

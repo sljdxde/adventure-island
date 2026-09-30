@@ -386,6 +386,7 @@ const COLLECTION = CONTENT.collection.groups;
 /* ================= 状态（模拟 ProgressStore / SettingsStore） ================= */
 const S = {
   route:"map", coins:12,
+  ledger:[], brick:{},               /* v0.8 工单04：金币账本 + 问号砖每日已领 */
   stars:{}, tested:[], science:[], stickers:[], hanzi:[], learnedPinyin:[], learnedEnglish:[], learnedAstro:[],
   daily:{cn:0, math:0, lab:0},
   settings:{once:15, daily:45, rest:15, diff:"auto", name:"糖糖"},
@@ -394,9 +395,28 @@ const S = {
   collTab:"science",
   timers:[]
 };
-function save(){ try{ localStorage.setItem("adventure-sim", JSON.stringify({coins:S.coins,stars:S.stars,tested:S.tested,science:S.science,stickers:S.stickers,hanzi:S.hanzi,learnedPinyin:S.learnedPinyin,learnedEnglish:S.learnedEnglish,learnedAstro:S.learnedAstro,daily:S.daily,settings:S.settings})); }catch(e){} }
+function save(){ try{ localStorage.setItem("adventure-sim", JSON.stringify({coins:S.coins,ledger:S.ledger,brick:S.brick,stars:S.stars,tested:S.tested,science:S.science,stickers:S.stickers,hanzi:S.hanzi,learnedPinyin:S.learnedPinyin,learnedEnglish:S.learnedEnglish,learnedAstro:S.learnedAstro,daily:S.daily,settings:S.settings})); }catch(e){} }
 function load(){ try{ const d=JSON.parse(localStorage.getItem("adventure-sim")); if(d) Object.assign(S,d); }catch(e){} }
 load();
+
+/* ================= 金币账本（v0.8 工单04，与 Swift recordCoin 同源） ================= */
+function dayKey(){ const d=new Date(); return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0"); }
+/* 金币只经 earn 变动：余额永不为负 + 记账（来源/数额/时间）+ 落盘 */
+function earn(src,amt){
+  if(!amt) return;
+  S.coins=Math.max(0,S.coins+amt);
+  S.ledger.push({s:src,a:amt,t:Date.now()});
+  if(S.ledger.length>1000) S.ledger.splice(0,S.ledger.length-1000);
+  save();
+}
+/* 问号砖：每根水管每天限领一次（决策 13）；当日已领返回 false 不入账 */
+function claimBrick(sub){
+  const k=dayKey()+"|brick-"+sub;
+  if(S.brick[k]) return false;
+  S.brick[k]=1;
+  earn("brick",1);
+  return true;
+}
 
 /* ================= 工具 ================= */
 const stage = document.getElementById('stage');
@@ -405,10 +425,14 @@ function ic(name,size,cls){ return `<img class="ic ${cls||''}" src="${ICON_DIR}$
 let toastT=null;
 function toast(msg,sec){ const t=$('#toast'); t.textContent=msg; t.classList.add('show'); clearTimeout(toastT); toastT=setTimeout(()=>t.classList.remove('show'), (sec||1.8)*1000); }
 function confetti(){ const icons=["⭐","🎉","✨","🌟","🎊","💛","🪙"]; for(let i=0;i<26;i++){ const c=document.createElement('span'); c.className='confetti'; c.textContent=icons[i%icons.length]; c.style.left=(60+Math.random()*900)+'px'; c.style.top=(60+Math.random()*120)+'px'; c.style.animationDelay=(Math.random()*.35)+'s'; stage.appendChild(c); setTimeout(()=>c.remove(),2100);} }
-/* 顶问号方块出金币（马里奥手感）：方块弹跳 + 金币飞向计数器 */
-function blockTap(ev,el){
+/* 顶问号方块出金币（马里奥手感）：方块弹跳 + 金币飞向计数器；每根水管每天限领一次 */
+function blockTap(ev,el,sub){
   ev.stopPropagation();
   el.classList.remove("bump"); void el.offsetWidth; el.classList.add("bump");
+  if(!sub || !claimBrick(sub)){
+    toast("今天的金币领过啦，明天再来～",1.6);
+    return;
+  }
   const r=el.getBoundingClientRect(), sr=stage.getBoundingClientRect();
   const c=document.createElement('div'); c.className='flycoin';
   c.innerHTML=ic("coin",32);
@@ -420,7 +444,6 @@ function blockTap(ev,el){
     c.style.opacity='0';
   });});
   setTimeout(()=>c.remove(),800);
-  S.coins++; save();
   const chip=document.getElementById("mapcoin");
   if(chip){ chip.innerHTML=`<span class="ico">${ic("coin",18)}</span>${S.coins}`;
     chip.classList.remove("bumped"); void chip.offsetWidth; chip.classList.add("bumped"); }
@@ -504,7 +527,7 @@ function collectTotal(){ const sci=COLLECTION.find(g=>g.id==="science"); const s
 function pipeZone(z){
   const cfg=SUBJECTS[z.sub], done=z.done(), total=cfg.total;
   return `<div class="pipe-zone" onclick="enterZone('${z.sub}')">
-    <div class="pipe-wrap">${ic(cfg.pipe,88)}<span class="blk" onclick="blockTap(event,this)">?</span><span class="guide">${ic(cfg.guide,30)}</span>
+    <div class="pipe-wrap">${ic(cfg.pipe,88)}<span class="blk" onclick="blockTap(event,this,'${z.sub}')">?</span><span class="guide">${ic(cfg.guide,30)}</span>
       ${z.isNew?'<span class="badge-new">NEW ✦</span>':''}</div>
     <div class="zone-label">${cfg.title}</div>
     <div class="zone-meta">${cfg.meta} ｜ ${done}/${total} ${z.sub==="lab"?"项已点亮":"关"}<div class="track"><i style="width:${Math.round(done/total*100)}%"></i></div></div>
@@ -635,9 +658,9 @@ function settleLevel(){
   const stars=L.wrong===0?3:(L.wrong===1?2:1);
   const key=L.subject+"-"+L.index;
   const old=S.stars[key]||0;
-  if(stars>old||old===0){ S.stars[key]=stars; S.coins+=stars; }
+  if(stars>old||old===0){ S.stars[key]=stars; earn("level-stars",stars); }
   // 3 星通关的幸运蘑菇奖励（重复通关不重复给）
-  if(stars===3 && old<3){ S.coins+=2; }
+  if(stars===3 && old<3){ earn("mushroom-bonus",2); }
   S.daily[L.subject]=(S.daily[L.subject]||0)+1;
   save();
 }
@@ -764,7 +787,7 @@ function arriveBoard(p){
   if(sp.type==="coin"){
     const pt=bdPoint(p,n);
     flyCoins(pt.x,pt.y,3);
-    S.coins+=5; save();
+    earn("coin-space",5);                    // 金币格 +5 经账本（工单04）
     toast("金币格 +5 金币！",1.6);
     setTimeout(()=>{ if(S.route!=="level") return; L.bd.mode="roll"; renderLevel(); },900);
   }
@@ -787,7 +810,7 @@ function boardStepDone(){
   const L=S.lv;
   if(L.bd.mode==="intro"){ L.bd.mode="roll"; renderLevel(); return; }
   if(L.bd.mode==="question"){
-    S.coins+=2; save();                       // 题目格答对 +2 金币（入账口径待工单04账本收口）
+    earn("answer",2);                        // 题目格答对 +2 经账本（工单04）
     toast("答对啦 +2 金币！",1.6);
     L.bd.mode="roll"; renderLevel(); return;
   }
@@ -1418,7 +1441,7 @@ function onSettled(item,isFloat){
   list.appendChild(c);
   $("#tested").textContent=`已测试 ${S.tested.length} / ${EXP.items.length}`;
   if(item.id===EXP.guessItem){
-    if((S.lab.guess==="float")===isFloat){ confetti(); toast("🔮 猜对啦！加一颗智慧星 ⭐"); S.coins++; }
+    if((S.lab.guess==="float")===isFloat){ confetti(); toast("🔮 猜对啦！加一颗智慧星 ⭐"); earn("lab-reward",1); }
     else toast("没关系～科学家就是靠不断试错发现规律的 🔬",2.6);
   }
   updateFlow(); save();
@@ -1427,7 +1450,7 @@ function onSettled(item,isFloat){
 function collect(){
   confetti();
   if(!S.stickers.includes("st-fuchen")){ S.stickers.push("st-fuchen"); toast("📓 图鉴 +1 · 获得「浮沉小侦探」贴纸 🏅",2.2); }
-  if(!S.science.includes(EXP.guessItem)){ S.science.push(EXP.guessItem); S.coins++; }
+  if(!S.science.includes(EXP.guessItem)){ S.science.push(EXP.guessItem); earn("collection",1); }
   S.daily.lab=(S.daily.lab||0)+1;
   save();
   setTimeout(()=>route("collection"),1400);
@@ -1555,7 +1578,6 @@ function renderParent(){
       <div class="panel"><h3><span class="icw">${ic("slider",18)}</span>难度与内容管理</h3>
         ${seg2("难度模式",["简单","自动适配","标准"],["easy","auto","normal"],S.settings.diff,v=>{S.settings.diff=v;save()})}
         <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:6px">
-          <button class="jbtn j-cream" style="font-size:14px;padding:10px 16px" onclick="toast('已解锁全部章节试玩')">🔓 解锁全部章节</button>
           <button class="jbtn j-cream" style="font-size:14px;padding:10px 16px" onclick="toast('跳过知识点功能将在二期提供')">⏭ 跳过某个知识点</button>
           <button class="jbtn" style="font-size:14px;padding:10px 16px;background:linear-gradient(180deg,#FFE3E0,#FFCFC9);color:#C0392B;box-shadow:0 4px 0 #E8B7B0" onclick="resetAll()">重置全部进度</button>
         </div>
