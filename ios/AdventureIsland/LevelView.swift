@@ -15,14 +15,12 @@ struct LevelView: View {
     let index: Int
 
     @State private var content: SubjectFile?
-    @State private var stepIndex = 0
-    @State private var wrongCount = 0
-    @State private var finished = false
+    @State private var flow = LevelFlow()
     @State private var earnedCoins = 0
     @State private var mushroomGiven = false
 
     private var level: Level? { content?.levels[safe: index] }
-    private var step: Step? { level?.steps[safe: stepIndex] }
+    private var step: Step? { level?.steps[safe: flow.stepIndex] }
     private var config: SubjectConfig { SubjectConfig.map[subject] ?? SubjectConfig.map["cn"]! }
     private var theme: AppTheme { config.theme }
     private var subjectTitle: String { config.title }
@@ -39,16 +37,16 @@ struct LevelView: View {
                         switch step.kind {
                         case "teach": TeachStepView(step: step, onNext: advanceStep)
                         case "letter": LetterStepView(step: step, subject: subject, onNext: advanceStep)
-                        case "listen": ListenStepView(step: step, onWrong: { wrongCount += 1 }, onNext: advanceStep) { confetti += 1 }
-                        case "blend": BlendStepView(step: step, onWrong: { wrongCount += 1 }, onNext: advanceStep) { confetti += 1 }
-                        case "arith": ArithStepView(step: step, onWrong: { wrongCount += 1 }, onNext: advanceStep) { confetti += 1 }
-                        case "pattern": PatternStepView(step: step, onWrong: { wrongCount += 1 }, onNext: advanceStep) { confetti += 1 }
-                        case "split": SplitStepView(step: step, onWrong: { wrongCount += 1 }, onNext: advanceStep) { confetti += 1 }
-                        case "neighbor": NeighborStepView(step: step, onWrong: { wrongCount += 1 }, onNext: advanceStep) { confetti += 1 }
-                        case "order": OrderStepView(step: step, onWrong: { wrongCount += 1 }, onNext: advanceStep) { confetti += 1 }
+                        case "listen": ListenStepView(step: step, onWrong: { flow.registerWrong() }, onNext: advanceStep) { confetti += 1 }
+                        case "blend": BlendStepView(step: step, onWrong: { flow.registerWrong() }, onNext: advanceStep) { confetti += 1 }
+                        case "arith": ArithStepView(step: step, onWrong: { flow.registerWrong() }, onNext: advanceStep) { confetti += 1 }
+                        case "pattern": PatternStepView(step: step, onWrong: { flow.registerWrong() }, onNext: advanceStep) { confetti += 1 }
+                        case "split": SplitStepView(step: step, onWrong: { flow.registerWrong() }, onNext: advanceStep) { confetti += 1 }
+                        case "neighbor": NeighborStepView(step: step, onWrong: { flow.registerWrong() }, onNext: advanceStep) { confetti += 1 }
+                        case "order": OrderStepView(step: step, onWrong: { flow.registerWrong() }, onNext: advanceStep) { confetti += 1 }
                         case "memory": MemoryStepView(step: step, onNext: advanceStep) { confetti += 1 }
-                        case "dice": DiceStepView(step: step, onWrong: { wrongCount += 1 }, onNext: advanceStep) { confetti += 1 }
-                        case "quiz": QuizStepView(step: step, onWrong: { wrongCount += 1 }, onNext: advanceStep) { confetti += 1 }
+                        case "dice": DiceStepView(step: step, onWrong: { flow.registerWrong() }, onNext: advanceStep) { confetti += 1 }
+                        case "quiz": QuizStepView(step: step, onWrong: { flow.registerWrong() }, onNext: advanceStep) { confetti += 1 }
                         case "count": CountStepView(step: step, onNext: advanceStep) { confetti += 1 }
                         case "compare": CompareStepView(step: step, onNext: advanceStep) { confetti += 1 }
                         default: EmptyView()
@@ -57,13 +55,13 @@ struct LevelView: View {
                     .id(step.id)
                     .transition(.asymmetric(insertion: .move(edge: .trailing).combined(with: .opacity),
                                             removal: .move(edge: .leading).combined(with: .opacity)))
-                    .animation(.easeInOut(duration: 0.3), value: stepIndex)
+                    .animation(.easeInOut(duration: 0.3), value: flow.stepIndex)
                 }
             }
             .padding(.horizontal, 22)
             .padding(.top, 8)
 
-            if finished { finishCard }
+            if flow.finished { finishCard }
         }
         .onAppear {
             if content == nil {
@@ -123,27 +121,23 @@ struct LevelView: View {
             case "dice": name = "掷骰子"
             default: name = "比一比"
             }
-            return StepChipState(title: name, state: i < stepIndex ? .done : (i == stepIndex ? .now : .todo))
+            return StepChipState(title: name, state: i < flow.stepIndex ? .done : (i == flow.stepIndex ? .now : .todo))
         }
     }
 
     // MARK: 步骤推进（认一认完成后手动进入下一步）
 
     private func advanceStep() {
-        guard let total = level?.steps.count, stepIndex < total - 1 else { return }
-        withAnimation(.easeInOut(duration: 0.3)) { stepIndex += 1 }
+        // 最后一步答完 → advance() 置 finished 进入通关结算（对齐模拟器 nextStep 的 else 分支）
+        withAnimation(.easeInOut(duration: 0.3)) {
+            flow.advance(stepCount: level?.steps.count ?? 0)
+        }
         Haptics.tap()
     }
 
     // MARK: 结算
 
-    private var stars: Int {
-        switch wrongCount {
-        case 0: return 3
-        case 1: return 2
-        default: return 1
-        }
-    }
+    private var stars: Int { flow.stars }
 
     private var finishCard: some View {
         let total = content?.levels.count ?? 0
@@ -184,7 +178,7 @@ struct LevelView: View {
                         .padding(.vertical, 6)
                         .background(Capsule().fill(Color(hex: 0xFFEFE6)))
                 }
-                Text(wrongCount == 0 ? "一次没错，完美通关！" : "答错了 \(wrongCount) 次也没关系，你已经学会啦")
+                Text(flow.wrongCount == 0 ? "一次没错，完美通关！" : "答错了 \(flow.wrongCount) 次也没关系，你已经学会啦")
                     .font(.kidBody(16))
                     .foregroundColor(.inkSoft)
                 HStack(spacing: 16) {
@@ -206,9 +200,7 @@ struct LevelView: View {
                     .buttonStyle(.jellyOrange)
                     Button {
                         // 重玩本关
-                        stepIndex = 0
-                        wrongCount = 0
-                        finished = false
+                        flow = LevelFlow()
                     } label: {
                         Label("再玩一次", systemImage: "arrow.counterclockwise")
                             .font(.kidHead(19))
@@ -238,9 +230,9 @@ struct LevelView: View {
 
     /// 直接进入下一关（通关卡按钮）
     private func goNextLevel() {
-        stepIndex = 0
-        wrongCount = 0
-        finished = false
+        // 同分支路由切换不销毁视图身份，@State 会残留 → 逐关复位（mushroomGiven 为单关守卫，跨关须重置）
+        flow = LevelFlow()
+        mushroomGiven = false
         route = .level(subject: subject, index: index + 1)
     }
 }
