@@ -109,8 +109,10 @@ struct LevelFlow: Equatable {
     /// 答错一题：不后退不惩罚（防挫败铁律），只计入星级
     mutating func registerWrong() { wrongCount += 1 }
 
-    /// 答完当前步骤推进：还有下一步则前进，已是最后一步则置 finished 进入通关结算
+    /// 答完当前步骤推进：还有下一步则前进，已是最后一步则置 finished 进入通关结算；
+    /// 已结算或空关卡（stepCount ≤ 0）为非法输入，忽略不改变状态
     mutating func advance(stepCount: Int) {
+        guard !finished, stepCount > 0 else { return }
         if stepIndex < stepCount - 1 {
             stepIndex += 1
         } else {

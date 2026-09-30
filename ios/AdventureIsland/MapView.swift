@@ -255,9 +255,9 @@ struct MapView: View {
             }
             ZStack {
                 path
-                    .stroke(.white.opacity(0.95), style: StrokeStyle(lineWidth: 9, dash: [1, 26], lineCap: .round))
+                    .stroke(.white.opacity(0.95), style: StrokeStyle(lineWidth: 9, lineCap: .round, dash: [1, 26]))
                 path
-                    .stroke(.black.opacity(0.08), style: StrokeStyle(lineWidth: 9, dash: [1, 26], lineCap: .round))
+                    .stroke(.black.opacity(0.08), style: StrokeStyle(lineWidth: 9, lineCap: .round, dash: [1, 26]))
                     .offset(y: 3)
                     .blendMode(.multiply)
 

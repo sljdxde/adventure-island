@@ -227,7 +227,7 @@ final class SoundService {
     func wrong() { playTones([(240, 0, 0.2)]) }
     func coin() { playTones([(988, 0, 0.08), (1319, 0.07, 0.18)]) }
 
-    static func systemTap() {
+    func systemTap() {
         AudioServicesPlaySystemSound(1104)
     }
 }

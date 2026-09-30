@@ -74,7 +74,7 @@ struct RootView: View {
             case .map:
                 MapView(route: $route, confetti: $confettiTrigger)
             case .level(let subject, let index):
-                LevelView(subject: subject, index: index, route: $route, confetti: $confettiTrigger)
+                LevelView(route: $route, confetti: $confettiTrigger, subject: subject, index: index)
             case .lab:
                 LabView(route: $route, confetti: $confettiTrigger)
             case .collection:

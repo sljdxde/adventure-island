@@ -16,8 +16,6 @@ struct LevelView: View {
 
     @State private var content: SubjectFile?
     @State private var flow = LevelFlow()
-    @State private var earnedCoins = 0
-    @State private var mushroomGiven = false
 
     private var level: Level? { content?.levels[safe: index] }
     private var step: Step? { level?.steps[safe: flow.stepIndex] }
@@ -33,20 +31,21 @@ struct LevelView: View {
             VStack(spacing: 10) {
                 header
                 if let step {
+                    let registerWrong = { flow.registerWrong() }
                     ZStack {
                         switch step.kind {
                         case "teach": TeachStepView(step: step, onNext: advanceStep)
                         case "letter": LetterStepView(step: step, subject: subject, onNext: advanceStep)
-                        case "listen": ListenStepView(step: step, onWrong: { flow.registerWrong() }, onNext: advanceStep) { confetti += 1 }
-                        case "blend": BlendStepView(step: step, onWrong: { flow.registerWrong() }, onNext: advanceStep) { confetti += 1 }
-                        case "arith": ArithStepView(step: step, onWrong: { flow.registerWrong() }, onNext: advanceStep) { confetti += 1 }
-                        case "pattern": PatternStepView(step: step, onWrong: { flow.registerWrong() }, onNext: advanceStep) { confetti += 1 }
-                        case "split": SplitStepView(step: step, onWrong: { flow.registerWrong() }, onNext: advanceStep) { confetti += 1 }
-                        case "neighbor": NeighborStepView(step: step, onWrong: { flow.registerWrong() }, onNext: advanceStep) { confetti += 1 }
-                        case "order": OrderStepView(step: step, onWrong: { flow.registerWrong() }, onNext: advanceStep) { confetti += 1 }
+                        case "listen": ListenStepView(step: step, onWrong: registerWrong, onNext: advanceStep) { confetti += 1 }
+                        case "blend": BlendStepView(step: step, onWrong: registerWrong, onNext: advanceStep) { confetti += 1 }
+                        case "arith": ArithStepView(step: step, onWrong: registerWrong, onNext: advanceStep) { confetti += 1 }
+                        case "pattern": PatternStepView(step: step, onWrong: registerWrong, onNext: advanceStep) { confetti += 1 }
+                        case "split": SplitStepView(step: step, onWrong: registerWrong, onNext: advanceStep) { confetti += 1 }
+                        case "neighbor": NeighborStepView(step: step, onWrong: registerWrong, onNext: advanceStep) { confetti += 1 }
+                        case "order": OrderStepView(step: step, onWrong: registerWrong, onNext: advanceStep) { confetti += 1 }
                         case "memory": MemoryStepView(step: step, onNext: advanceStep) { confetti += 1 }
-                        case "dice": DiceStepView(step: step, onWrong: { flow.registerWrong() }, onNext: advanceStep) { confetti += 1 }
-                        case "quiz": QuizStepView(step: step, onWrong: { flow.registerWrong() }, onNext: advanceStep) { confetti += 1 }
+                        case "dice": DiceStepView(step: step, onWrong: registerWrong, onNext: advanceStep) { confetti += 1 }
+                        case "quiz": QuizStepView(step: step, onWrong: registerWrong, onNext: advanceStep) { confetti += 1 }
                         case "count": CountStepView(step: step, onNext: advanceStep) { confetti += 1 }
                         case "compare": CompareStepView(step: step, onNext: advanceStep) { confetti += 1 }
                         default: EmptyView()
@@ -137,9 +136,8 @@ struct LevelView: View {
 
     // MARK: 结算
 
-    private var stars: Int { flow.stars }
-
     private var finishCard: some View {
+        let stars = flow.stars
         let total = content?.levels.count ?? 0
         let hasNext = index + 1 < total
         return ZStack {
@@ -217,11 +215,11 @@ struct LevelView: View {
             .shadow(color: .black.opacity(0.3), radius: 26)
         }
         .onAppear {
+            // 蘑菇 +2 只发给此前从未拿过 3 星的关：旧星级须在 completeLevel 改写前取
+            // （判据与模拟器 nextStep 的 old<3 同源，跨启动持久防重发；直改 coins 待工单04金币账本统一收口）
+            let previousStars = store.stars(for: subject, index: index)
             store.completeLevel(subject: subject, index: index, stars: stars)
-            earnedCoins = stars
-            // 3 星通关的幸运蘑菇奖励（马里奥蘑菇 = 额外金币），守卫防止重复发放
-            if stars == 3, !mushroomGiven {
-                mushroomGiven = true
+            if stars == 3, previousStars < 3 {
                 store.snapshot.coins += 2
                 store.save()
             }
@@ -230,9 +228,8 @@ struct LevelView: View {
 
     /// 直接进入下一关（通关卡按钮）
     private func goNextLevel() {
-        // 同分支路由切换不销毁视图身份，@State 会残留 → 逐关复位（mushroomGiven 为单关守卫，跨关须重置）
+        // 同分支路由切换不销毁视图身份，@State 会残留 → 逐关复位
         flow = LevelFlow()
-        mushroomGiven = false
         route = .level(subject: subject, index: index + 1)
     }
 }

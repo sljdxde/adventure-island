@@ -42,6 +42,39 @@ extension Color {
     static let waterBlue = Color(hex: 0x7FD4F8)
 }
 
+/// 桥接：让自定义色在 ShapeStyle 位置也能用点语法（如 .fill(.brandGreen)），与系统色 .orange 同源
+extension ShapeStyle where Self == Color {
+    static var brandOrange: Color { Color.brandOrange }
+    static var brandOrangeDk: Color { Color.brandOrangeDk }
+    static var brandOrangeDdk: Color { Color.brandOrangeDdk }
+    static var brandYellow: Color { Color.brandYellow }
+    static var brandYellowDk: Color { Color.brandYellowDk }
+    static var brandYellowDdk: Color { Color.brandYellowDdk }
+    static var brandCoral: Color { Color.brandCoral }
+    static var brandCoralDk: Color { Color.brandCoralDk }
+    static var brandCoralDdk: Color { Color.brandCoralDdk }
+    static var brandBlue: Color { Color.brandBlue }
+    static var brandBlueDk: Color { Color.brandBlueDk }
+    static var brandBlueDdk: Color { Color.brandBlueDdk }
+    static var brandPurple: Color { Color.brandPurple }
+    static var brandPurpleDk: Color { Color.brandPurpleDk }
+    static var brandPurpleDdk: Color { Color.brandPurpleDdk }
+    static var brandGreen: Color { Color.brandGreen }
+    static var brandGreenDk: Color { Color.brandGreenDk }
+    static var brandGreenDdk: Color { Color.brandGreenDdk }
+    static var brandPink: Color { Color.brandPink }
+    static var brandPinkDk: Color { Color.brandPinkDk }
+    static var cream: Color { Color.cream }
+    static var creamDk: Color { Color.creamDk }
+    static var ink: Color { Color.ink }
+    static var inkSoft: Color { Color.inkSoft }
+    static var line: Color { Color.line }
+    static var gold: Color { Color.gold }
+    static var goldDk: Color { Color.goldDk }
+    static var goldDdk: Color { Color.goldDdk }
+    static var waterBlue: Color { Color.waterBlue }
+}
+
 /// 页面主题：天空配色 + 面板描边色（对应 CSS data-theme）
 enum AppTheme {
     case home, cn, math, lab, coll, parent, pinyin, english, astro

@@ -161,7 +161,7 @@ struct GoldChip: View {
                 Circle().fill(
                     RadialGradient(
                         colors: [Color(hex: 0xFFE68A), .gold, .goldDk],
-                        center: UnitPoint(x: 0.35, y: 0.3), radius: 0.9
+                        center: UnitPoint(x: 0.35, y: 0.3), startRadius: 0, endRadius: 0.9
                     )
                 )
                 IconView(name: icon, size: 19)

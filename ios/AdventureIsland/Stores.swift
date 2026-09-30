@@ -81,7 +81,7 @@ final class ProgressStore: ObservableObject {
     }
 
     func doneCount(subject: String, total: Int) -> Int {
-        (0..<total).filter { stars(for: subject, index: $1) > 0 }.count
+        (0..<total).filter { stars(for: subject, index: $0) > 0 }.count
     }
 
     /// 地图节点状态：done / current(第一个未完成的) / locked
@@ -230,10 +230,15 @@ final class SettingsStore: ObservableObject {
 
 enum ParentGate {
     static func makeQuestion(seed: UInt64? = nil) -> (text: String, answer: Int) {
-        var gen = SystemRandomNumberGenerator()
-        if let s = seed { gen = SeededGenerator(seed: s) }
-        let a = Int.random(in: 6...9, using: &gen)
-        let b = Int.random(in: 6...9, using: &gen)
+        let a: Int, b: Int
+        if let s = seed {
+            var gen = SeededGenerator(seed: s)
+            a = Int.random(in: 6...9, using: &gen)
+            b = Int.random(in: 6...9, using: &gen)
+        } else {
+            a = Int.random(in: 6...9)
+            b = Int.random(in: 6...9)
+        }
         return ("\(a) + \(b) = ?", a + b)
     }
 

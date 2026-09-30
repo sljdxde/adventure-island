@@ -4,6 +4,14 @@ import XCTest
 /// 护眼时长管理：单次限制 / 休息 / 每日上限 / 跨天重置
 final class TimeManagerTests: XCTestCase {
 
+    // TimeManager 的 usage.json 固定写在 Documents 下，用例间共享会互相污染 → 每个用例前清掉重来
+    override func setUp() {
+        super.setUp()
+        let url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+            .appendingPathComponent("usage.json")
+        try? FileManager.default.removeItem(at: url)
+    }
+
     private func makeManager(once: Int = 15, daily: Int = 45, rest: Int = 15) -> (TimeManager, UnsafeMutablePointer<Date>, SettingsStore) {
         let settings = SettingsStore(fileName: "test-\(UUID().uuidString).json")
         settings.settings.onceMinutes = once
@@ -35,17 +43,19 @@ final class TimeManagerTests: XCTestCase {
         } else {
             XCTFail("达到单次时长后应进入休息")
         }
-        // 休息 20 秒后恢复，且计时段清零
+        // 休息 20 秒后恢复，且计时段清零（恢复当下尚未使用，须再 tick 才会 +1）
         for _ in 0..<TimeManager.restDurationSeconds {
             manager.tick(); holder.pointee += 1
         }
         XCTAssertEqual(manager.phase, .playing)
-        XCTAssertEqual(manager.segmentSeconds, 1)
+        XCTAssertEqual(manager.segmentSeconds, 0)
     }
 
     func testDayOverAtDailyLimit() {
         let (manager, holder, _) = makeManager(daily: 45)
-        for _ in 0..<(45 * 60) {
+        // 休息不占当日额度但消耗推进次数 → 在 45 分钟之外多留几次 20s 休息的余量
+        let budget = 45 * 60 + 10 * TimeManager.restDurationSeconds
+        for _ in 0..<budget {
             manager.tick()
             holder.pointee += 1
             if case .dayOver = manager.phase { return }
@@ -165,6 +175,25 @@ final class LevelFlowTests: XCTestCase {
         var flow = LevelFlow()
         flow.advance(stepCount: 1)
         XCTAssertTrue(flow.finished, "单步关第一步答完即结算")
+    }
+
+    // MARK: 非法输入设防（结算后重复推进 / 空关卡）
+
+    func testAdvanceAfterFinishedIsNoOp() {
+        var flow = LevelFlow()
+        flow.advance(stepCount: 2)
+        flow.advance(stepCount: 2)
+        XCTAssertTrue(flow.finished)
+        flow.advance(stepCount: 2)
+        XCTAssertEqual(flow.stepIndex, 1, "结算后重复 advance 应为无操作")
+        XCTAssertTrue(flow.finished)
+    }
+
+    func testAdvanceWithEmptyLevelDoesNotFinish() {
+        var flow = LevelFlow()
+        flow.advance(stepCount: 0)
+        XCTAssertFalse(flow.finished, "空关卡（无步骤）不应直接进入结算")
+        XCTAssertEqual(flow.stepIndex, 0)
     }
 
     func testWrongCountAccumulatesAcrossSteps() {
