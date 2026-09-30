@@ -1,5 +1,6 @@
 import SwiftUI
 import SpriteKit
+import Combine
 
 @main
 struct AdventureIslandApp: App {

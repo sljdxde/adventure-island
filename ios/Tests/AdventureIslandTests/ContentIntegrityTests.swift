@@ -17,9 +17,9 @@ final class ContentIntegrityTests: XCTestCase {
     struct Fixture: Codable { let icons: [String] }
 
     func testSubjectFilesDecodeAndValid() throws {
-        for (name, subject, expected) in [("cn_levels", "cn", 15), ("math_levels", "math", 15),
-                                          ("pinyin_levels", "pinyin", 12), ("english_levels", "english", 12),
-                                          ("astro_levels", "astro", 10)] {
+        for (name, subject, expected) in [("cn_levels", "cn", 17), ("math_levels", "math", 17),
+                                          ("pinyin_levels", "pinyin", 14), ("english_levels", "english", 14),
+                                          ("astro_levels", "astro", 12)] {
             let file = ContentLoader.load(SubjectFile.self, name)
             XCTAssertEqual(file.subject, subject)
             XCTAssertEqual(file.levels.count, expected, "\(name) 应有 \(expected) 关")
@@ -28,19 +28,20 @@ final class ContentIntegrityTests: XCTestCase {
             for (li, level) in file.levels.enumerated() {
                 XCTAssertFalse(level.steps.isEmpty, "\(name) 第\(li)关没有步骤")
 
-                // v0.8 迷你棋盘（工单02/03）：8-10 格、题目格占比 ≥ 60%、事件格 1-2 个、
-                // 题目引用存在且不重复（规格实现决策 2）
+                // v0.8 迷你棋盘（工单02/03/05）：题目格占比 ≥ 60%、题目引用存在且不重复（规格实现决策 2）；
+                // 普通关 8-10 格、事件格 1-2；复习关 10-12 格、事件格加倍 ≥2 且标记 review
                 if let board = level.board {
                     let spaces = board.spaces
-                    XCTAssertTrue((8...10).contains(spaces.count),
-                                  "\(name)/\(level.id) 棋盘应 8-10 格，实际 \(spaces.count)")
+                    let isReview = level.review == true
+                    XCTAssertTrue(isReview ? (10...12).contains(spaces.count) : (8...10).contains(spaces.count),
+                                  "\(name)/\(level.id) 棋盘格数 \(spaces.count) 与\(isReview ? "复习关" : "普通关")规格不符")
                     let questionCount = spaces.filter { $0.type == "question" }.count
                     let ratio = Double(questionCount) / Double(spaces.count)
                     XCTAssertGreaterThanOrEqual(ratio, 0.6,
                                   "\(name)/\(level.id) 题目格占比 \(ratio) 低于 60% 红线")
                     let eventCount = spaces.filter { ["chest", "mushroom", "rest"].contains($0.type) }.count
-                    XCTAssertTrue((1...2).contains(eventCount),
-                                  "\(name)/\(level.id) 事件格应 1-2 个，实际 \(eventCount)")
+                    XCTAssertTrue(isReview ? (2...4).contains(eventCount) : (1...2).contains(eventCount),
+                                  "\(name)/\(level.id) 事件格 \(eventCount) 个与\(isReview ? "复习关(加倍)" : "普通关")规格不符")
                     let stepIds = Set(level.steps.map(\.id))
                     var referenced = Set<String>()
                     for sp in spaces {

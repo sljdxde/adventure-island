@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 96"><defs>
+<linearGradient id="g-br" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#C68A52"/><stop offset="1" stop-color="#9C6230"/></linearGradient>
+</defs>
+  <!-- 鞋 -->
+  <ellipse cx="26" cy="91" rx="10" ry="5" fill="#6E4420"/>
+  <ellipse cx="46" cy="91" rx="10" ry="5" fill="#6E4420"/>
+  <!-- 腿 -->
+  <rect x="22" y="68" width="9" height="18" rx="4.5" fill="url(#g-br)"/>
+  <rect x="41" y="68" width="9" height="18" rx="4.5" fill="url(#g-br)"/>
+  <!-- 身体 -->
+  <path d="M22 50 Q22 44 36 44 Q50 44 50 50 L51 70 Q51 74 46 74 L26 74 Q21 74 21 70 Z" fill="url(#g-br)"/>
+  <ellipse cx="36" cy="62" rx="11" ry="12" fill="#E8C79E"/>
+  <!-- 手臂 -->
+  <ellipse cx="15" cy="56" rx="7.5" ry="6.5" fill="url(#g-br)"/>
+  <ellipse cx="57" cy="56" rx="7.5" ry="6.5" fill="url(#g-br)"/>
+  <!-- 圆耳朵（在头后） -->
+  <circle cx="18" cy="14" r="7" fill="url(#g-br)"/>
+  <circle cx="18" cy="14" r="3.6" fill="#E8C79E"/>
+  <circle cx="54" cy="14" r="7" fill="url(#g-br)"/>
+  <circle cx="54" cy="14" r="3.6" fill="#E8C79E"/>
+  <!-- 头 -->
+  <circle cx="36" cy="30" r="21" fill="url(#g-br)"/>
+  <!-- 吻部 -->
+  <ellipse cx="36" cy="37" rx="9.5" ry="7.5" fill="#E8C79E"/>
+  <!-- 眼睛 -->
+  <circle cx="27" cy="28" r="2.6" fill="#3A2416"/>
+  <circle cx="45" cy="28" r="2.6" fill="#3A2416"/>
+  <circle cx="27.8" cy="27" r=".9" fill="#fff"/>
+  <circle cx="45.8" cy="27" r=".9" fill="#fff"/>
+  <!-- 鼻子 + 嘴 -->
+  <ellipse cx="36" cy="34.5" rx="3.4" ry="2.7" fill="#3A2416"/>
+  <path d="M36 37.2 L36 40 M36 40 Q33 42 31 40.5 M36 40 Q39 42 41 40.5" stroke="#5A3A20" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+  <!-- 腮红 -->
+  <ellipse cx="20" cy="34" rx="3.2" ry="2.3" fill="#D98A6A" opacity=".55"/>
+  <ellipse cx="52" cy="34" rx="3.2" ry="2.3" fill="#D98A6A" opacity=".55"/>
+</svg>

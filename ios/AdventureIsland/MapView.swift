@@ -15,12 +15,12 @@ struct MapView: View {
     @State private var mathContent: SubjectFile?
 
     private let zones: [(icon: String, label: String, meta: String, pipe: String, subject: String, unit: String, total: Int)] = [
-        ("panda", "识字村", "象形字 · 认读", "pipe-red", "cn", "关", 15),
-        ("fox", "思维镇", "数感 · 加减法", "pipe-blue", "math", "关", 15),
+        ("panda", "识字村", "象形字 · 认读", "pipe-red", "cn", "关", 17),
+        ("fox", "思维镇", "数感 · 加减法", "pipe-blue", "math", "关", 17),
         ("robot", "科学岛", "动手做实验", "pipe-purple", "lab", "项已点亮", 12),
-        ("panda", "拼音谷", "声母 · 韵母 · 拼读", "pipe-orange", "pinyin", "关", 12),
-        ("robot", "英语王国", "ABC · 单词", "pipe-green", "english", "关", 12),
-        ("robot", "天文台", "太阳 · 月亮 · 星星", "pipe-indigo", "astro", "关", 10)
+        ("panda", "拼音谷", "声母 · 韵母 · 拼读", "pipe-orange", "pinyin", "关", 14),
+        ("robot", "英语王国", "ABC · 单词", "pipe-green", "english", "关", 14),
+        ("robot", "天文台", "太阳 · 月亮 · 星星", "pipe-indigo", "astro", "关", 12)
     ]
 
     var body: some View {
@@ -113,7 +113,8 @@ struct MapView: View {
     }
 
     private var level: Int {
-        let done = store.doneCount(subject: "cn", total: 15) + store.doneCount(subject: "math", total: 15)
+        let done = store.doneCount(subject: "cn", ids: LevelCatalog.ids("cn"))
+            + store.doneCount(subject: "math", ids: LevelCatalog.ids("math"))
         return max(1, done / 4 + 1)
     }
 
@@ -156,12 +157,12 @@ struct MapView: View {
 
     private var pipesRow: some View {
         HStack(alignment: .bottom, spacing: 2) {
-            zonePipe(zones[0], done: store.doneCount(subject: "cn", total: zones[0].total), total: zones[0].total, isNew: false)
-            zonePipe(zones[1], done: store.doneCount(subject: "math", total: zones[1].total), total: zones[1].total, isNew: false)
+            zonePipe(zones[0], done: store.doneCount(subject: "cn", ids: LevelCatalog.ids("cn")), total: zones[0].total, isNew: false)
+            zonePipe(zones[1], done: store.doneCount(subject: "math", ids: LevelCatalog.ids("math")), total: zones[1].total, isNew: false)
             zonePipe(zones[2], done: store.snapshot.collectedScience.count, total: zones[2].total, isNew: false)
-            zonePipe(zones[3], done: store.doneCount(subject: "pinyin", total: zones[3].total), total: zones[3].total, isNew: false)
-            zonePipe(zones[4], done: store.doneCount(subject: "english", total: zones[4].total), total: zones[4].total, isNew: false)
-            zonePipe(zones[5], done: store.doneCount(subject: "astro", total: zones[5].total), total: zones[5].total, isNew: true)
+            zonePipe(zones[3], done: store.doneCount(subject: "pinyin", ids: LevelCatalog.ids("pinyin")), total: zones[3].total, isNew: false)
+            zonePipe(zones[4], done: store.doneCount(subject: "english", ids: LevelCatalog.ids("english")), total: zones[4].total, isNew: false)
+            zonePipe(zones[5], done: store.doneCount(subject: "astro", ids: LevelCatalog.ids("astro")), total: zones[5].total, isNew: true)
         }
     }
 
@@ -231,12 +232,16 @@ struct MapView: View {
                 if zone.subject == "lab" {
                     route = .lab
                 } else {
-                    // 进入该学科当前关卡
+                    // 进入该学科当前关卡（复习关不挡正式关：沿 done 前进的落点必为已解锁节点）
                     var index = 0
-                    while index < total, store.nodeState(subject: zone.subject, index: index, total: total) == .done {
+                    let ids = LevelCatalog.ids(zone.subject)
+                    while index < ids.count,
+                          store.nodeState(subject: zone.subject, index: index, ids: ids,
+                                          reviews: LevelCatalog.reviews(zone.subject),
+                                          bosses: LevelCatalog.bosses(zone.subject)) == .done {
                         index += 1
                     }
-                    route = .level(subject: zone.subject, index: min(index, total - 1))
+                    route = .level(subject: zone.subject, index: min(index, ids.count - 1))
                 }
             }
             .frame(maxWidth: .infinity)
@@ -365,12 +370,15 @@ struct MapView: View {
     private func rollDice() {
         let subjects = ["cn", "math", "pinyin", "english", "astro"]
         let subject = subjects.randomElement()!
-        let total = zones.first(where: { $0.subject == subject })?.total ?? 10
+        let ids = LevelCatalog.ids(subject)
         var index = 0
-        while index < total, store.nodeState(subject: subject, index: index, total: total) == .done {
+        while index < ids.count,
+              store.nodeState(subject: subject, index: index, ids: ids,
+                              reviews: LevelCatalog.reviews(subject),
+                              bosses: LevelCatalog.bosses(subject)) == .done {
             index += 1
         }
-        route = .level(subject: subject, index: min(index, total - 1))
+        route = .level(subject: subject, index: min(index, ids.count - 1))
         toast.show("🎲 命运骰子：出发！")
     }
 }
@@ -400,9 +408,12 @@ private struct PathLevelNodes: View {
     @EnvironmentObject var store: ProgressStore
 
     var body: some View {
-        let total = 15   // 识字村 v0.2 起为 15 关，节点随内容数自适应
+        let ids = LevelCatalog.ids("cn")
+        let total = max(ids.count, 1)   // 节点随内容数自适应（含 v0.8 复习关）
         ForEach(0..<total, id: \.self) { i in
-            let state = store.nodeState(subject: "cn", index: i, total: total)
+            let state = store.nodeState(subject: "cn", index: i, ids: ids,
+                                       reviews: LevelCatalog.reviews("cn"),
+                                       bosses: LevelCatalog.bosses("cn"))
             let x = width * 0.07 + CGFloat(i) * (width * 0.88) / CGFloat(total - 1)
             let y = height * 0.58 + sin(Double(i) * 0.85) * height * 0.14
             ZStack(alignment: .bottom) {
@@ -468,6 +479,27 @@ struct NodePulse: ViewModifier {
                 withAnimation(.easeInOut(duration: 1.2).repeatForever(autoreverses: true)) { up = true }
             }
     }
+}
+
+/// 学科关卡目录（v0.8 工单05）：提供 id / 复习标记清单，地图与家长中心按关卡 id 对齐进度
+enum LevelCatalog {
+    private static var cache: [String: (ids: [String], reviews: [Bool], bosses: [Bool])] = [:]
+
+    static func info(_ subject: String) -> (ids: [String], reviews: [Bool], bosses: [Bool]) {
+        if let cached = cache[subject] { return cached }
+        let file = SubjectConfig.map[subject].map { ContentLoader.load(SubjectFile.self, $0.file) }
+        let levels = file?.levels ?? []
+        let info = (ids: levels.map(\.id),
+                    reviews: levels.map { $0.review ?? false },
+                    bosses: levels.map { $0.boss ?? false })
+        cache[subject] = info
+        return info
+    }
+
+    static func ids(_ subject: String) -> [String] { info(subject).ids }
+    static func reviews(_ subject: String) -> [Bool] { info(subject).reviews }
+    static func bosses(_ subject: String) -> [Bool] { info(subject).bosses }
+    static func total(_ subject: String) -> Int { info(subject).ids.count }
 }
 
 // 问号方块（水管顶，可顶出金币）

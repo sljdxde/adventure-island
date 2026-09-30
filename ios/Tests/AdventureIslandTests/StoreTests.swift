@@ -15,24 +15,25 @@ final class ProgressStoreTests: XCTestCase {
 
     func testCompleteLevelAddsStarsAndCoins() {
         let (store, _) = makeStore(day: "2026-09-29")
-        store.completeLevel(subject: "cn", index: 0, stars: 3)
-        XCTAssertEqual(store.stars(for: "cn", index: 0), 3)
+        store.completeLevel(subject: "cn", levelId: "cn-0", stars: 3)
+        XCTAssertEqual(store.stars(for: "cn", levelId: "cn-0"), 3)
         XCTAssertEqual(store.snapshot.coins, 3)
 
         // 重玩低星不倒扣
-        store.completeLevel(subject: "cn", index: 0, stars: 1)
-        XCTAssertEqual(store.stars(for: "cn", index: 0), 3)
+        store.completeLevel(subject: "cn", levelId: "cn-0", stars: 1)
+        XCTAssertEqual(store.stars(for: "cn", levelId: "cn-0"), 3)
         XCTAssertEqual(store.snapshot.coins, 3, "重玩不重复加金币")
     }
 
     func testNodeStates() {
         let (store, _) = makeStore(day: "2026-09-29")
-        XCTAssertEqual(store.nodeState(subject: "cn", index: 0, total: 10), .current)
-        XCTAssertEqual(store.nodeState(subject: "cn", index: 1, total: 10), .locked)
-        store.completeLevel(subject: "cn", index: 0, stars: 2)
-        XCTAssertEqual(store.nodeState(subject: "cn", index: 0, total: 10), .done)
-        XCTAssertEqual(store.nodeState(subject: "cn", index: 1, total: 10), .current)
-        XCTAssertEqual(store.nodeState(subject: "cn", index: 2, total: 10), .locked)
+        let ids = (0..<10).map { "cn-\($0)" }
+        XCTAssertEqual(store.nodeState(subject: "cn", index: 0, ids: ids), .current)
+        XCTAssertEqual(store.nodeState(subject: "cn", index: 1, ids: ids), .locked)
+        store.completeLevel(subject: "cn", levelId: "cn-0", stars: 2)
+        XCTAssertEqual(store.nodeState(subject: "cn", index: 0, ids: ids), .done)
+        XCTAssertEqual(store.nodeState(subject: "cn", index: 1, ids: ids), .current)
+        XCTAssertEqual(store.nodeState(subject: "cn", index: 2, ids: ids), .locked)
     }
 
     func testDailyTasksPerDay() {
@@ -65,13 +66,13 @@ final class ProgressStoreTests: XCTestCase {
     func testPersistenceRoundTrip() {
         let name = "test-\(UUID().uuidString).json"
         let store1 = ProgressStore(now: { Self.date("2026-09-29")! }, fileName: name)
-        store1.completeLevel(subject: "math", index: 3, stars: 2)
+        store1.completeLevel(subject: "math", levelId: "math-3", stars: 2)
         store1.collectScience(id: "sci-apple")
         store1.addSticker("st-fuchen")
         store1.learnHanzi("日")
 
         let store2 = ProgressStore(now: { Self.date("2026-09-29")! }, fileName: name)
-        XCTAssertEqual(store2.stars(for: "math", index: 3), 2)
+        XCTAssertEqual(store2.stars(for: "math", levelId: "math-3"), 2)
         XCTAssertEqual(store2.snapshot.coins, 3)   // 2 星 + 1 图鉴
         XCTAssertTrue(store2.snapshot.collectedScience.contains("sci-apple"))
         XCTAssertTrue(store2.snapshot.stickers.contains("st-fuchen"))
@@ -173,7 +174,7 @@ final class CoinLedgerTests: XCTestCase {
 
     func testCompleteLevelAndCollectRecordLedger() {
         let (store, _) = makeStore()
-        store.completeLevel(subject: "cn", index: 0, stars: 3)
+        store.completeLevel(subject: "cn", levelId: "cn-0", stars: 3)
         store.collectScience(id: "sci-apple")
         XCTAssertEqual(store.coinTotal(source: .levelStars), 3, "通关星级奖励入账本")
         XCTAssertEqual(store.coinTotal(source: .collection), 1, "图鉴收集奖励入账本")
@@ -257,5 +258,63 @@ final class CoinLedgerTests: XCTestCase {
             seen.insert(amt)
         }
         XCTAssertGreaterThan(seen.count, 3, "80 次抽样应覆盖多个档位（随机性健全）")
+    }
+}
+
+/// 复习关插入与进度平移迁移（v0.8 工单05）：星级按关卡 id 对齐，复习关默认解锁且不挡正式关
+final class ReviewMigrationTests: XCTestCase {
+
+    private func makeStore() -> ProgressStore {
+        ProgressStore(now: { ProgressStoreTests.date("2026-09-29")! },
+                      fileName: "test-\(UUID().uuidString).json")
+    }
+
+    /// v0.8 后识字村 17 关序列：复习关插在位置 5、11，原 id 一律不变
+    private let cnIds: [String] = (0..<5).map { "cn-\($0)" } + ["cn-r0"]
+        + (5..<10).map { "cn-\($0)" } + ["cn-r1"]
+        + (10..<15).map { "cn-\($0)" }
+    private lazy var cnReviews: [Bool] = cnIds.map { $0.hasPrefix("cn-r") }
+
+    func testV07SnapshotMigratesWithoutMisalignment() throws {
+        // v0.7 快照：通关前 6 关（键 "cn-5" 本就与 id 同形），金币 18
+        let legacy = """
+        {"coins":18,"levelStars":{"cn-0":3,"cn-1":2,"cn-2":3,"cn-3":1,"cn-4":3,"cn-5":2},
+         "testedItems":[],"collectedScience":[],"stickers":[],"learnedHanzi":[],
+         "learnedPinyin":[],"learnedEnglish":[],"learnedAstro":[],"dailyDone":{},"streak":2,"lastPlayDay":"2026-09-29"}
+        """
+        let snap = try JSONDecoder().decode(ProgressSnapshot.self, from: Data(legacy.utf8))
+        let store = makeStore()
+        store.snapshot = snap
+
+        // 星星不错位：cn-5 的星仍挂在 id=cn-5（现位置 6），不会滑给插进来的复习关
+        XCTAssertEqual(store.stars(for: "cn", levelId: "cn-4"), 3)
+        XCTAssertEqual(store.stars(for: "cn", levelId: "cn-5"), 2)
+        XCTAssertEqual(store.stars(for: "cn", levelId: "cn-r0"), 0, "新复习关无旧星")
+        // 复习关（位置 5）已解锁；正式关 cn-5（位置 6）不被复习关挡住
+        XCTAssertEqual(store.nodeState(subject: "cn", index: 5, ids: cnIds, reviews: cnReviews), .current)
+        XCTAssertEqual(store.nodeState(subject: "cn", index: 6, ids: cnIds, reviews: cnReviews), .current)
+        XCTAssertEqual(store.nodeState(subject: "cn", index: 7, ids: cnIds, reviews: cnReviews), .locked)
+        // 后段复习关（位置 11）：前一个正式关 cn-9 未通关 → 锁定，cn-10 同样不解锁
+        XCTAssertEqual(store.nodeState(subject: "cn", index: 11, ids: cnIds, reviews: cnReviews), .locked)
+        XCTAssertEqual(store.nodeState(subject: "cn", index: 12, ids: cnIds, reviews: cnReviews), .locked)
+        XCTAssertEqual(store.snapshot.coins, 18, "金币无损")
+    }
+
+    func testReviewUnlockedButNeverBlocks() {
+        let store = makeStore()
+        // 通关 cn-4：复习关解锁，正式关 cn-5 也解锁（解锁链跳过复习关）
+        store.completeLevel(subject: "cn", levelId: "cn-4", stars: 3)
+        XCTAssertEqual(store.nodeState(subject: "cn", index: 5, ids: cnIds, reviews: cnReviews), .current)
+        XCTAssertEqual(store.nodeState(subject: "cn", index: 6, ids: cnIds, reviews: cnReviews), .current)
+
+        // 未通关 cn-4：复习关锁着，正式关 cn-5 也锁
+        let fresh = makeStore()
+        XCTAssertEqual(fresh.nodeState(subject: "cn", index: 5, ids: cnIds, reviews: cnReviews), .locked)
+        XCTAssertEqual(fresh.nodeState(subject: "cn", index: 6, ids: cnIds, reviews: cnReviews), .locked)
+
+        // 复习关通关不改变后续正式关的解锁链（正式关只看正式关）
+        store.completeLevel(subject: "cn", levelId: "cn-r0", stars: 3)
+        XCTAssertEqual(store.nodeState(subject: "cn", index: 6, ids: cnIds, reviews: cnReviews), .current)
+        XCTAssertEqual(store.nodeState(subject: "cn", index: 7, ids: cnIds, reviews: cnReviews), .locked)
     }
 }

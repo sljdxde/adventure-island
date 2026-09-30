@@ -62,6 +62,7 @@ enum CoinSource: String, Codable {
     case brick = "brick"                   // 地图问号砖（每根水管每天一次）
     case labReward = "lab-reward"          // 实验猜对
     case collection = "collection"         // 图鉴收集奖励
+    case boss = "boss"                     // 工单06：击败 boss +15
 }
 
 struct CoinEntry: Codable, Equatable, Identifiable {
@@ -177,36 +178,62 @@ final class ProgressStore: ObservableObject {
         Int.random(in: 3...8)
     }
 
-    // MARK: 关卡
+    // MARK: 关卡（星级按关卡 id 记账——工单05 平移迁移：新关只插位置不改 id，
+    // 旧快照键 "cn-5" 本就与 id 同形，语义从下标改为 id 后存量进度零迁移自然对齐）
 
-    func stars(for subject: String, index: Int) -> Int {
-        snapshot.levelStars["\(subject)-\(index)"] ?? 0
+    func stars(for subject: String, levelId: String) -> Int {
+        snapshot.levelStars[levelId] ?? 0
     }
 
     /// 完成关卡：累计最高星级、加金币、连击天数、每日任务
-    func completeLevel(subject: String, index: Int, stars: Int) {
-        let key = "\(subject)-\(index)"
-        let old = snapshot.levelStars[key] ?? 0
-        if stars > old { snapshot.levelStars[key] = stars }
+    func completeLevel(subject: String, levelId: String, stars: Int) {
+        let old = snapshot.levelStars[levelId] ?? 0
+        if stars > old { snapshot.levelStars[levelId] = stars }
         if stars > old || old == 0 { mutateCoin(source: .levelStars, amount: stars) }
         bumpDaily(subject: subject)
         updateStreak()
         save()
     }
 
-    func totalStars(subject: String, total: Int) -> Int {
-        (0..<total).reduce(0) { $0 + stars(for: subject, index: $1) }
+    func totalStars(subject: String, ids: [String]) -> Int {
+        ids.reduce(0) { $0 + stars(for: subject, levelId: $1) }
     }
 
-    func doneCount(subject: String, total: Int) -> Int {
-        (0..<total).filter { stars(for: subject, index: $0) > 0 }.count
+    func doneCount(subject: String, ids: [String]) -> Int {
+        ids.filter { stars(for: subject, levelId: $0) > 0 }.count
     }
 
-    /// 地图节点状态：done / current(第一个未完成的) / locked
-    func nodeState(subject: String, index: Int, total: Int) -> MapNodeState {
-        if stars(for: subject, index: index) > 0 { return .done }
+    /// 地图节点状态：done / current / locked。
+    /// 复习关（reviews[i]）跟随前一个正式关解锁，且不挡后续正式关——解锁链只看正式关（工单05）；
+    /// boss 关（bosses[i]，工单06）需全部正式关通关才解锁。
+    func nodeState(subject: String, index: Int, ids: [String], reviews: [Bool] = [], bosses: [Bool] = []) -> MapNodeState {
+        func isReview(_ i: Int) -> Bool { reviews[safe: i] ?? false }
+        func isBoss(_ i: Int) -> Bool { bosses[safe: i] ?? false }
+        func id(_ i: Int) -> String { ids[safe: i] ?? "\(subject)-\(i)" }
+        func prevRegular(before i: Int) -> Int? {
+            var k = i - 1
+            while k >= 0 {
+                if !isReview(k), !isBoss(k) { return k }
+                k -= 1
+            }
+            return nil
+        }
+
+        if stars(for: subject, levelId: id(index)) > 0 { return .done }
+        if isBoss(index) {
+            // 工单06：每一个正式关（非复习非 boss）都有星 → 解锁；复习关不做要求
+            for k in ids.indices where !isReview(k) && !isBoss(k) {
+                if stars(for: subject, levelId: id(k)) == 0 { return .locked }
+            }
+            return .current
+        }
+        if isReview(index) {
+            guard let p = prevRegular(before: index) else { return .current }
+            return stars(for: subject, levelId: id(p)) > 0 ? .current : .locked
+        }
         if index == 0 { return .current }
-        return stars(for: subject, index: index - 1) > 0 ? .current : .locked
+        guard let p = prevRegular(before: index) else { return .current }
+        return stars(for: subject, levelId: id(p)) > 0 ? .current : .locked
     }
 
     // MARK: 每日任务与连击

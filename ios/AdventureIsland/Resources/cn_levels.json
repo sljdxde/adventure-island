@@ -974,6 +974,185 @@
       }
     },
     {
+      "id": "cn-r0",
+      "title": "复习关 一",
+      "subtitle": "旧题开盲盒 · 混排复习",
+      "steps": [
+        {
+          "id": "cn-r0-0",
+          "kind": "listen",
+          "prompt": "日",
+          "speakText": "日",
+          "question": "找一找：哪张图片是「日」？",
+          "options": [
+            {
+              "icon": "sunrise",
+              "text": "日"
+            },
+            {
+              "icon": "moon"
+            },
+            {
+              "icon": "cake"
+            }
+          ],
+          "answer": 0,
+          "hint": "想想刚才的图片：「日」",
+          "praise": "眼睛真亮！日 找对啦！"
+        },
+        {
+          "id": "cn-r0-1",
+          "kind": "listen",
+          "prompt": "月",
+          "speakText": "月",
+          "question": "找一找：哪张图片是「月」？",
+          "options": [
+            {
+              "icon": "star"
+            },
+            {
+              "icon": "sun"
+            },
+            {
+              "icon": "moon",
+              "text": "月"
+            }
+          ],
+          "answer": 2,
+          "hint": "想想刚才的图片：「月」",
+          "praise": "眼睛真亮！月 找对啦！"
+        },
+        {
+          "id": "cn-r0-2",
+          "kind": "listen",
+          "prompt": "水",
+          "speakText": "水",
+          "question": "找一找：哪张图片是「水」？",
+          "options": [
+            {
+              "icon": "wave",
+              "text": "水"
+            },
+            {
+              "icon": "sun"
+            },
+            {
+              "icon": "crystal"
+            }
+          ],
+          "answer": 0,
+          "hint": "想想刚才的图片：「水」",
+          "praise": "眼睛真亮！水 找对啦！"
+        },
+        {
+          "id": "cn-r0-3",
+          "kind": "listen",
+          "prompt": "山",
+          "speakText": "山",
+          "question": "找一找：哪张图片是「山」？",
+          "options": [
+            {
+              "icon": "rocket"
+            },
+            {
+              "icon": "volcano",
+              "text": "山"
+            },
+            {
+              "icon": "home"
+            }
+          ],
+          "answer": 1,
+          "hint": "想想刚才的图片：「山」",
+          "praise": "眼睛真亮！山 找对啦！"
+        },
+        {
+          "id": "cn-r0-4",
+          "kind": "listen",
+          "prompt": "木",
+          "speakText": "木",
+          "question": "找一找：哪张图片是「木」？",
+          "options": [
+            {
+              "icon": "sprout",
+              "text": "木"
+            },
+            {
+              "icon": "flower"
+            },
+            {
+              "icon": "rock"
+            }
+          ],
+          "answer": 0,
+          "hint": "想想刚才的图片：「木」",
+          "praise": "眼睛真亮！木 找对啦！"
+        },
+        {
+          "id": "cn-r0-5",
+          "kind": "listen",
+          "promptIcon": "sunface",
+          "speakText": "日",
+          "question": "看一看：这张图变成的字是哪个？",
+          "options": [
+            {
+              "text": "日"
+            },
+            {
+              "text": "月"
+            },
+            {
+              "text": "水"
+            }
+          ],
+          "answer": 0,
+          "hint": "想一想它像什么字",
+          "praise": "对！这张图就是「日」"
+        }
+      ],
+      "board": {
+        "spaces": [
+          {
+            "type": "question",
+            "step": "cn-r0-0"
+          },
+          {
+            "type": "question",
+            "step": "cn-r0-1"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "cn-r0-2"
+          },
+          {
+            "type": "question",
+            "step": "cn-r0-3"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "cn-r0-4"
+          },
+          {
+            "type": "chest"
+          },
+          {
+            "type": "question",
+            "step": "cn-r0-5"
+          },
+          {
+            "type": "mushroom"
+          }
+        ]
+      },
+      "review": true
+    },
+    {
       "id": "cn-5",
       "title": "第 6 关 象形字",
       "subtitle": "认识「人」",
@@ -1926,6 +2105,186 @@
       }
     },
     {
+      "id": "cn-r1",
+      "title": "复习关 二",
+      "subtitle": "旧题开盲盒 · 混排复习",
+      "steps": [
+        {
+          "id": "cn-r1-0",
+          "kind": "listen",
+          "prompt": "日",
+          "speakText": "日",
+          "question": "找一找：哪张图片是「日」？",
+          "options": [
+            {
+              "icon": "sunrise",
+              "text": "日"
+            },
+            {
+              "icon": "moon"
+            },
+            {
+              "icon": "cake"
+            }
+          ],
+          "answer": 0,
+          "hint": "想想刚才的图片：「日」",
+          "praise": "眼睛真亮！日 找对啦！"
+        },
+        {
+          "id": "cn-r1-1",
+          "kind": "listen",
+          "prompt": "月",
+          "speakText": "月",
+          "question": "找一找：哪张图片是「月」？",
+          "options": [
+            {
+              "icon": "star"
+            },
+            {
+              "icon": "sun"
+            },
+            {
+              "icon": "moon",
+              "text": "月"
+            }
+          ],
+          "answer": 2,
+          "hint": "想想刚才的图片：「月」",
+          "praise": "眼睛真亮！月 找对啦！"
+        },
+        {
+          "id": "cn-r1-2",
+          "kind": "listen",
+          "prompt": "水",
+          "speakText": "水",
+          "question": "找一找：哪张图片是「水」？",
+          "options": [
+            {
+              "icon": "wave",
+              "text": "水"
+            },
+            {
+              "icon": "sun"
+            },
+            {
+              "icon": "crystal"
+            }
+          ],
+          "answer": 0,
+          "hint": "想想刚才的图片：「水」",
+          "praise": "眼睛真亮！水 找对啦！"
+        },
+        {
+          "id": "cn-r1-3",
+          "kind": "listen",
+          "prompt": "山",
+          "speakText": "山",
+          "question": "找一找：哪张图片是「山」？",
+          "options": [
+            {
+              "icon": "rocket"
+            },
+            {
+              "icon": "volcano",
+              "text": "山"
+            },
+            {
+              "icon": "home"
+            }
+          ],
+          "answer": 1,
+          "hint": "想想刚才的图片：「山」",
+          "praise": "眼睛真亮！山 找对啦！"
+        },
+        {
+          "id": "cn-r1-4",
+          "kind": "listen",
+          "prompt": "木",
+          "speakText": "木",
+          "question": "找一找：哪张图片是「木」？",
+          "options": [
+            {
+              "icon": "sprout",
+              "text": "木"
+            },
+            {
+              "icon": "flower"
+            },
+            {
+              "icon": "rock"
+            }
+          ],
+          "answer": 0,
+          "hint": "想想刚才的图片：「木」",
+          "praise": "眼睛真亮！木 找对啦！"
+        },
+        {
+          "id": "cn-r1-5",
+          "kind": "listen",
+          "prompt": "人",
+          "speakText": "人",
+          "question": "找一找：哪张图片是「人」？",
+          "options": [
+            {
+              "icon": "sun"
+            },
+            {
+              "icon": "duck"
+            },
+            {
+              "icon": "girl",
+              "text": "人"
+            }
+          ],
+          "answer": 2,
+          "hint": "想想刚才的图片：「人」",
+          "praise": "眼睛真亮！人 找对啦！"
+        }
+      ],
+      "board": {
+        "spaces": [
+          {
+            "type": "question",
+            "step": "cn-r1-1"
+          },
+          {
+            "type": "question",
+            "step": "cn-r1-2"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "cn-r1-3"
+          },
+          {
+            "type": "question",
+            "step": "cn-r1-4"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "cn-r1-5"
+          },
+          {
+            "type": "chest"
+          },
+          {
+            "type": "question",
+            "step": "cn-r1-0"
+          },
+          {
+            "type": "rest"
+          }
+        ]
+      },
+      "review": true
+    },
+    {
       "id": "cn-10",
       "title": "第 11 关 象形字",
       "subtitle": "认识「火」",
@@ -2873,6 +3232,226 @@
           }
         ]
       }
+    },
+    {
+      "id": "cn-boss",
+      "title": "Boss 大挑战",
+      "subtitle": "大壳壳兽 · 三颗心大决战",
+      "steps": [
+        {
+          "id": "cn-boss-0",
+          "kind": "listen",
+          "prompt": "日",
+          "speakText": "日",
+          "question": "找一找：哪张图片是「日」？",
+          "options": [
+            {
+              "icon": "sunrise",
+              "text": "日"
+            },
+            {
+              "icon": "moon"
+            },
+            {
+              "icon": "cake"
+            }
+          ],
+          "answer": 0,
+          "hint": "想想刚才的图片：「日」",
+          "praise": "眼睛真亮！日 找对啦！"
+        },
+        {
+          "id": "cn-boss-1",
+          "kind": "listen",
+          "prompt": "月",
+          "speakText": "月",
+          "question": "找一找：哪张图片是「月」？",
+          "options": [
+            {
+              "icon": "star"
+            },
+            {
+              "icon": "sun"
+            },
+            {
+              "icon": "moon",
+              "text": "月"
+            }
+          ],
+          "answer": 2,
+          "hint": "想想刚才的图片：「月」",
+          "praise": "眼睛真亮！月 找对啦！"
+        },
+        {
+          "id": "cn-boss-2",
+          "kind": "listen",
+          "prompt": "水",
+          "speakText": "水",
+          "question": "找一找：哪张图片是「水」？",
+          "options": [
+            {
+              "icon": "wave",
+              "text": "水"
+            },
+            {
+              "icon": "sun"
+            },
+            {
+              "icon": "crystal"
+            }
+          ],
+          "answer": 0,
+          "hint": "想想刚才的图片：「水」",
+          "praise": "眼睛真亮！水 找对啦！"
+        },
+        {
+          "id": "cn-boss-3",
+          "kind": "listen",
+          "prompt": "山",
+          "speakText": "山",
+          "question": "找一找：哪张图片是「山」？",
+          "options": [
+            {
+              "icon": "rocket"
+            },
+            {
+              "icon": "volcano",
+              "text": "山"
+            },
+            {
+              "icon": "home"
+            }
+          ],
+          "answer": 1,
+          "hint": "想想刚才的图片：「山」",
+          "praise": "眼睛真亮！山 找对啦！"
+        },
+        {
+          "id": "cn-boss-4",
+          "kind": "listen",
+          "prompt": "木",
+          "speakText": "木",
+          "question": "找一找：哪张图片是「木」？",
+          "options": [
+            {
+              "icon": "sprout",
+              "text": "木"
+            },
+            {
+              "icon": "flower"
+            },
+            {
+              "icon": "rock"
+            }
+          ],
+          "answer": 0,
+          "hint": "想想刚才的图片：「木」",
+          "praise": "眼睛真亮！木 找对啦！"
+        },
+        {
+          "id": "cn-boss-5",
+          "kind": "listen",
+          "prompt": "日",
+          "speakText": "日",
+          "question": "找一找：哪张图片是「日」？",
+          "options": [
+            {
+              "icon": "sunrise",
+              "text": "日"
+            },
+            {
+              "icon": "moon"
+            },
+            {
+              "icon": "cake"
+            }
+          ],
+          "answer": 0,
+          "hint": "想想刚才的图片：「日」",
+          "praise": "眼睛真亮！日 找对啦！"
+        },
+        {
+          "id": "cn-boss-6",
+          "kind": "listen",
+          "prompt": "人",
+          "speakText": "人",
+          "question": "找一找：哪张图片是「人」？",
+          "options": [
+            {
+              "icon": "sun"
+            },
+            {
+              "icon": "duck"
+            },
+            {
+              "icon": "girl",
+              "text": "人"
+            }
+          ],
+          "answer": 2,
+          "hint": "想想刚才的图片：「人」",
+          "praise": "眼睛真亮！人 找对啦！"
+        },
+        {
+          "id": "cn-boss-7",
+          "kind": "listen",
+          "prompt": "口",
+          "speakText": "口",
+          "question": "找一找：哪张图片是「口」？",
+          "options": [
+            {
+              "icon": "speaker",
+              "text": "口"
+            },
+            {
+              "icon": "clock"
+            },
+            {
+              "icon": "moon"
+            }
+          ],
+          "answer": 0,
+          "hint": "想想刚才的图片：「口」",
+          "praise": "眼睛真亮！口 找对啦！"
+        }
+      ],
+      "board": {
+        "spaces": [
+          {
+            "type": "question",
+            "step": "cn-boss-0"
+          },
+          {
+            "type": "question",
+            "step": "cn-boss-1"
+          },
+          {
+            "type": "question",
+            "step": "cn-boss-2"
+          },
+          {
+            "type": "question",
+            "step": "cn-boss-3"
+          },
+          {
+            "type": "question",
+            "step": "cn-boss-4"
+          },
+          {
+            "type": "question",
+            "step": "cn-boss-5"
+          },
+          {
+            "type": "question",
+            "step": "cn-boss-6"
+          },
+          {
+            "type": "question",
+            "step": "cn-boss-7"
+          }
+        ]
+      },
+      "boss": true
     }
   ]
 }

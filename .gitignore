@@ -16,3 +16,4 @@ build/
 # ===== 系统与工具 =====
 .zcode/
 .zcodeignore
+.video_agent/

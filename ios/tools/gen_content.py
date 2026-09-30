@@ -148,24 +148,79 @@ def cn_listen_pic2(i, ch, lo, lans):
             "options": opts, "answer": nlans,
             "hint": f"「{ch}」长什么样", "praise": f"又找对啦！{ch}！"}
 
-# v0.8 工单02/03：识字村 15 关迷你棋盘——题目格引用 step id（teach 保留为棋盘开场卡）；
-# 组成按规格实现决策 2：题目 6 + 金币 1-2 + 事件格（宝箱/蘑菇/休息站）1-2，总数 8-10、题目占比 ≥60%（6/10 压线合规）
+# v0.8 工单02/03/05：迷你棋盘组成——题目格引用 step id（teach/letter 保留为开场卡，不入盘）；
+# 普通关 = 题 6 + 金币 1-2 + 事件 1-2（规格决策 2），总数 8-10、题目占比 ≥60%（6/10 压线合规）
 EVENT_COMBOS = [["chest"], ["mushroom"], ["rest"], ["chest", "mushroom"], ["mushroom", "rest"], ["chest", "rest"]]
+REVIEW_EVENTS = [["chest", "mushroom"], ["chest", "rest"]]   # 复习关事件格加倍（2 个）
 
-def cn_board(i, qids):
-    qq = qids[i % len(qids):] + qids[:i % len(qids)]   # 轮转题目顺序，相邻关卡体验不同
-    extra = ["coin"] * (2 if i % 2 == 0 else 1) + EVENT_COMBOS[i % 6]
-    gaps = [2, 4, 5, 6][:len(extra)]                   # 非题目格插在第 2/4/5/6 题之后，散步在蛇形前后段
+def build_board(qids, extra, rotate_by):
+    """棋盘组装：题目引用轮转起步（相邻关卡体验不同），金币/事件格插在第 2/4/5/6 题之后"""
+    qq = qids[rotate_by % len(qids):] + qids[:rotate_by % len(qids)]
+    gaps = [2, 4, 5, 6][:len(extra)]
     spaces, used = [], 0
-    for qn in range(6):
+    for qn in range(len(qq)):
         spaces.append({"type": "question", "step": qq[qn]})
         if (qn + 1) in gaps and used < len(extra):
             spaces.append({"type": extra[used]})
             used += 1
-    while used < len(extra):                           # 保险：多余事件放倒数第二位
+    while used < len(extra):                     # 保险：多余事件放倒数第二位
         spaces.insert(len(spaces) - 1, {"type": extra[used]})
         used += 1
     return {"spaces": spaces}
+
+def cn_board(i, qids):
+    extra = ["coin"] * (2 if i % 2 == 0 else 1) + EVENT_COMBOS[i % 6]
+    return build_board(qids, extra, i)
+
+def sample_questions(level_steps, count, tag):
+    """复习关旧题抽取（工单05）：轮转各关的问题序列交错混排（开盲盒），重编 id 防与原关冲突"""
+    pool, take = [], [0] * len(level_steps)
+    while len(pool) < count:
+        moved = False
+        for li, sts in enumerate(level_steps):
+            qs = [s for s in sts if s["kind"] not in ("teach", "letter")]
+            if take[li] < len(qs) and len(pool) < count:
+                st = dict(qs[take[li]])
+                st["id"] = f"{tag}-{len(pool)}"
+                take[li] += 1
+                pool.append(st)
+                moved = True
+        if not moved:
+            break
+    return pool
+
+def add_review_levels(levels, sub, positions, priors=(5, 10)):
+    """每学科插 2 个复习关（约第 5、10 关之后）：旧题混排棋盘 + 事件格加倍，
+    标记 review=True（默认解锁不挡路）；现有 id 一律不动，只做位置插入（平移迁移）"""
+    q_by_level = [[s for s in lv["steps"] if s["kind"] not in ("teach", "letter")] for lv in levels]
+    for k in (0, 1):
+        p = priors[k]
+        # 天文台等单题学科前 5 关可能凑不满 6 题：采样范围自适应扩到够用（仍是"以前学过的"）
+        while p < len(q_by_level) and sum(len(s) for s in q_by_level[:p]) < 6:
+            p += 1
+        qs = sample_questions(q_by_level[:p], 6, f"{sub}-r{k}")
+        levels.insert(positions[k], {
+            "id": f"{sub}-r{k}",
+            "title": "复习关 一" if k == 0 else "复习关 二",
+            "subtitle": "旧题开盲盒 · 混排复习",
+            "steps": qs,
+            "board": build_board([q["id"] for q in qs], ["coin", "coin"] + REVIEW_EVENTS[k], k),
+            "review": True,
+        })
+
+def add_boss_level(levels, sub):
+    """工单06：boss 关（每学科 1 个，追加末尾，boss=True）——8 道旧题连续作答，
+    血条玩法在客户端状态机；解锁规则（正式关全通）在 nodeState/node_state"""
+    q_by_level = [[s for s in lv["steps"] if s["kind"] not in ("teach", "letter")] for lv in levels]
+    qs = sample_questions(q_by_level, 8, f"{sub}-boss")
+    levels.append({
+        "id": f"{sub}-boss",
+        "title": "Boss 大挑战",
+        "subtitle": "大壳壳兽 · 三颗心大决战",
+        "steps": qs,
+        "board": {"spaces": [{"type": "question", "step": q["id"]} for q in qs]},
+        "boss": True,
+    })
 
 cn_levels = []
 for i, (ch, py, mfrom, words, lo, lans) in enumerate(CN):
@@ -198,6 +253,8 @@ cn_levels.append({"id": "cn-14", "title": "第 15 关 复习挑战", "subtitle":
     {"id": "cn-14-q3", "kind": "quiz", "question": "猜一猜：哪个是「月」？",
      "options": [{"text": t} for t in ["月","用","明"]], "answer": 0, "hint": "弯弯的，像小船", "praise": "月亮出来啦！"},
 ], "board": cn_board(14, ["cn-14-m", "cn-14-l1", "cn-14-w", "cn-14-q", "cn-14-q2", "cn-14-q3"])})
+add_review_levels(cn_levels, "cn", (5, 11))
+add_boss_level(cn_levels, "cn")
 W("cn_levels.json", {"subject": "cn", "title": "识字村", "guide": "panda", "levels": cn_levels})
 
 # ================= 数学 15 关（8 种题型，v0.4） =================
@@ -325,6 +382,8 @@ specs = [
 ]
 for idx, (lid, title, sub, build) in enumerate(specs):
     math_levels.append({"id": lid, "title": title, "subtitle": sub, "steps": build(idx)})
+add_review_levels(math_levels, "math", (5, 11))
+add_boss_level(math_levels, "math")
 W("math_levels.json", {"subject": "math", "title": "思维镇", "guide": "fox", "levels": math_levels})
 
 # ================= 拼音 12 关（letter + 题型组合轮换） =================
@@ -430,6 +489,8 @@ pinyin_levels.append({"id": "py-11", "title": "第 12 关 复习", "subtitle": "
      "options": [{"icon": "girl", "text": "妈妈"}, {"icon": "moon"}, {"icon": "train"}], "answer": 0,
      "hint": "m 碰 a", "praise": "拼读小达人！"},
 ]})
+add_review_levels(pinyin_levels, "pinyin", (5, 11))
+add_boss_level(pinyin_levels, "pinyin")
 W("pinyin_levels.json", {"subject": "pinyin", "title": "拼音谷", "guide": "panda", "levels": pinyin_levels})
 
 # ================= 英语 12 关（letter + 题型组合轮换） =================
@@ -529,6 +590,8 @@ english_levels.append({"id": "en-11", "title": "Level 12 Review", "subtitle": "�
     word_quiz("en-11-q2", "Which one is the flower? 花是哪一个？", [("leaf","leaf"),("flower","flower"),("tree","tree")], 1, "Flower 花", "Yes! Flower!"),
     word_quiz("en-11-q3", "Which one is the cake? 蛋糕是哪一个？", [("gift","gift"),("key","key"),("cake","cake")], 2, "Cake 蛋糕", "Super star! 全部通关!"),
 ]})
+add_review_levels(english_levels, "english", (5, 11))
+add_boss_level(english_levels, "english")
 W("english_levels.json", {"subject": "english", "title": "英语王国", "guide": "robot", "levels": english_levels})
 
 # ================= 天文台 10 关（letter + 题型组合轮换） =================
@@ -596,6 +659,8 @@ astro_levels.append({"id": "astro-9", "title": "第 10 关 星空大挑战", "su
      "options": [{"icon": "star"}, {"icon": "moon"}, {"icon": "rocket"}], "answer": 1,
      "hint": "谁和太阳在轮流出现？", "praise": "全部通关，小天文学家！"},
 ]})
+add_review_levels(astro_levels, "astro", (5, 10))
+add_boss_level(astro_levels, "astro")
 W("astro_levels.json", {"subject": "astro", "title": "天文台", "guide": "robot", "levels": astro_levels})
 
 # ================= 收集册 7 组 =================
@@ -663,4 +728,31 @@ collection = {"groups": [
     ]},
 ]}
 W("collection.json", collection)
+
+# ================= 金币商店（v0.8 工单08） =================
+# 角色 6 款（mario/dino 默认拥有 + 4 款原创小伙伴），骰子皮肤 5 款，定价 40-120。
+# 纯个性化，不含任何学习内容（解锁只看星星，ADR-0002 双轨制）。
+def shop_item(id, name, icon, price, default=False):
+    d = {"id": id, "name": name, "icon": icon, "price": price}
+    if default: d["default"] = True
+    return d
+
+shop = {
+    "characters": [
+        shop_item("mario", "红帽小勇士", "mario", 0, True),
+        shop_item("dino", "绿恐龙", "dino", 0, True),
+        shop_item("cat", "橘小猫", "cat", 40),
+        shop_item("rabbit", "小白兔", "rabbit", 60),
+        shop_item("bear", "棕小熊", "bear", 80),
+        shop_item("penguin", "小企鹅", "penguin", 120),
+    ],
+    "dice": [
+        shop_item("std", "经典红点", "dot", 0, True),
+        shop_item("fruit", "水果骰", "apple", 50),
+        shop_item("star", "星星骰", "starface", 70),
+        shop_item("paw", "脚印骰", "paw", 90),
+        shop_item("heart", "爱心骰", "heart", 100),
+    ],
+}
+W("shop.json", shop)
 print("ALL DONE")

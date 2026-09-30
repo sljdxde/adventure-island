@@ -1,0 +1,75 @@
+{
+  "characters": [
+    {
+      "id": "mario",
+      "name": "红帽小勇士",
+      "icon": "mario",
+      "price": 0,
+      "default": true
+    },
+    {
+      "id": "dino",
+      "name": "绿恐龙",
+      "icon": "dino",
+      "price": 0,
+      "default": true
+    },
+    {
+      "id": "cat",
+      "name": "橘小猫",
+      "icon": "cat",
+      "price": 40
+    },
+    {
+      "id": "rabbit",
+      "name": "小白兔",
+      "icon": "rabbit",
+      "price": 60
+    },
+    {
+      "id": "bear",
+      "name": "棕小熊",
+      "icon": "bear",
+      "price": 80
+    },
+    {
+      "id": "penguin",
+      "name": "小企鹅",
+      "icon": "penguin",
+      "price": 120
+    }
+  ],
+  "dice": [
+    {
+      "id": "std",
+      "name": "经典红点",
+      "icon": "dot",
+      "price": 0,
+      "default": true
+    },
+    {
+      "id": "fruit",
+      "name": "水果骰",
+      "icon": "apple",
+      "price": 50
+    },
+    {
+      "id": "star",
+      "name": "星星骰",
+      "icon": "starface",
+      "price": 70
+    },
+    {
+      "id": "paw",
+      "name": "脚印骰",
+      "icon": "paw",
+      "price": 90
+    },
+    {
+      "id": "heart",
+      "name": "爱心骰",
+      "icon": "heart",
+      "price": 100
+    }
+  ]
+}

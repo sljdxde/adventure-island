@@ -322,6 +322,174 @@
       ]
     },
     {
+      "id": "english-r0",
+      "title": "复习关 一",
+      "subtitle": "旧题开盲盒 · 混排复习",
+      "steps": [
+        {
+          "id": "english-r0-0",
+          "kind": "listen",
+          "prompt": "Aa",
+          "speakText": "A",
+          "question": "Find: which one is Aa ?",
+          "options": [
+            {
+              "text": "Bb"
+            },
+            {
+              "text": "Cc"
+            },
+            {
+              "text": "Aa"
+            }
+          ],
+          "answer": 2,
+          "hint": "A for Aa",
+          "praise": "Yes! Aa!"
+        },
+        {
+          "id": "english-r0-1",
+          "kind": "quiz",
+          "question": "小写 b 对应哪个大写字母？",
+          "options": [
+            {
+              "text": "D"
+            },
+            {
+              "text": "S"
+            },
+            {
+              "text": "B"
+            }
+          ],
+          "answer": 2,
+          "hint": "Bb = Bb",
+          "praise": "Bb 配对成功！"
+        },
+        {
+          "id": "english-r0-2",
+          "kind": "listen",
+          "prompt": "Cc",
+          "speakText": "C",
+          "question": "Find: which one is Cc ?",
+          "options": [
+            {
+              "text": "Dd"
+            },
+            {
+              "text": "Ss"
+            },
+            {
+              "text": "Cc"
+            }
+          ],
+          "answer": 2,
+          "hint": "C for Cc",
+          "praise": "Yes! Cc!"
+        },
+        {
+          "id": "english-r0-3",
+          "kind": "quiz",
+          "question": "Which picture starts with Dd?",
+          "options": [
+            {
+              "icon": "flower"
+            },
+            {
+              "icon": "duck"
+            },
+            {
+              "icon": "leaf"
+            }
+          ],
+          "answer": 1,
+          "hint": "Duck 小鸭",
+          "praise": "Great job!"
+        },
+        {
+          "id": "english-r0-4",
+          "kind": "listen",
+          "prompt": "Ss",
+          "speakText": "S",
+          "question": "Find: which one is Ss ?",
+          "options": [
+            {
+              "text": "Aa"
+            },
+            {
+              "text": "Bb"
+            },
+            {
+              "text": "Ss"
+            }
+          ],
+          "answer": 2,
+          "hint": "S for Ss",
+          "praise": "Yes! Ss!"
+        },
+        {
+          "id": "english-r0-5",
+          "kind": "quiz",
+          "question": "Which picture starts with Aa?",
+          "options": [
+            {
+              "icon": "duck"
+            },
+            {
+              "icon": "apple"
+            },
+            {
+              "icon": "sun"
+            }
+          ],
+          "answer": 1,
+          "hint": "Apple 苹果",
+          "praise": "Great job!"
+        }
+      ],
+      "board": {
+        "spaces": [
+          {
+            "type": "question",
+            "step": "english-r0-0"
+          },
+          {
+            "type": "question",
+            "step": "english-r0-1"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "english-r0-2"
+          },
+          {
+            "type": "question",
+            "step": "english-r0-3"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "english-r0-4"
+          },
+          {
+            "type": "chest"
+          },
+          {
+            "type": "question",
+            "step": "english-r0-5"
+          },
+          {
+            "type": "mushroom"
+          }
+        ]
+      },
+      "review": true
+    },
+    {
       "id": "en-5",
       "title": "Level 6 Letters",
       "subtitle": "Mm",
@@ -636,6 +804,174 @@
       ]
     },
     {
+      "id": "english-r1",
+      "title": "复习关 二",
+      "subtitle": "旧题开盲盒 · 混排复习",
+      "steps": [
+        {
+          "id": "english-r1-0",
+          "kind": "listen",
+          "prompt": "Aa",
+          "speakText": "A",
+          "question": "Find: which one is Aa ?",
+          "options": [
+            {
+              "text": "Bb"
+            },
+            {
+              "text": "Cc"
+            },
+            {
+              "text": "Aa"
+            }
+          ],
+          "answer": 2,
+          "hint": "A for Aa",
+          "praise": "Yes! Aa!"
+        },
+        {
+          "id": "english-r1-1",
+          "kind": "quiz",
+          "question": "小写 b 对应哪个大写字母？",
+          "options": [
+            {
+              "text": "D"
+            },
+            {
+              "text": "S"
+            },
+            {
+              "text": "B"
+            }
+          ],
+          "answer": 2,
+          "hint": "Bb = Bb",
+          "praise": "Bb 配对成功！"
+        },
+        {
+          "id": "english-r1-2",
+          "kind": "listen",
+          "prompt": "Cc",
+          "speakText": "C",
+          "question": "Find: which one is Cc ?",
+          "options": [
+            {
+              "text": "Dd"
+            },
+            {
+              "text": "Ss"
+            },
+            {
+              "text": "Cc"
+            }
+          ],
+          "answer": 2,
+          "hint": "C for Cc",
+          "praise": "Yes! Cc!"
+        },
+        {
+          "id": "english-r1-3",
+          "kind": "quiz",
+          "question": "Which picture starts with Dd?",
+          "options": [
+            {
+              "icon": "flower"
+            },
+            {
+              "icon": "duck"
+            },
+            {
+              "icon": "leaf"
+            }
+          ],
+          "answer": 1,
+          "hint": "Duck 小鸭",
+          "praise": "Great job!"
+        },
+        {
+          "id": "english-r1-4",
+          "kind": "listen",
+          "prompt": "Ss",
+          "speakText": "S",
+          "question": "Find: which one is Ss ?",
+          "options": [
+            {
+              "text": "Aa"
+            },
+            {
+              "text": "Bb"
+            },
+            {
+              "text": "Ss"
+            }
+          ],
+          "answer": 2,
+          "hint": "S for Ss",
+          "praise": "Yes! Ss!"
+        },
+        {
+          "id": "english-r1-5",
+          "kind": "quiz",
+          "question": "小写 m 对应哪个大写字母？",
+          "options": [
+            {
+              "text": "M"
+            },
+            {
+              "text": "G"
+            },
+            {
+              "text": "A"
+            }
+          ],
+          "answer": 0,
+          "hint": "Mm = Mm",
+          "praise": "Mm 配对成功！"
+        }
+      ],
+      "board": {
+        "spaces": [
+          {
+            "type": "question",
+            "step": "english-r1-1"
+          },
+          {
+            "type": "question",
+            "step": "english-r1-2"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "english-r1-3"
+          },
+          {
+            "type": "question",
+            "step": "english-r1-4"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "english-r1-5"
+          },
+          {
+            "type": "chest"
+          },
+          {
+            "type": "question",
+            "step": "english-r1-0"
+          },
+          {
+            "type": "rest"
+          }
+        ]
+      },
+      "review": true
+    },
+    {
       "id": "en-10",
       "title": "Level 11 Words",
       "subtitle": "图词配对",
@@ -811,6 +1147,212 @@
           "praise": "Super star! 全部通关!"
         }
       ]
+    },
+    {
+      "id": "english-boss",
+      "title": "Boss 大挑战",
+      "subtitle": "大壳壳兽 · 三颗心大决战",
+      "steps": [
+        {
+          "id": "english-boss-0",
+          "kind": "listen",
+          "prompt": "Aa",
+          "speakText": "A",
+          "question": "Find: which one is Aa ?",
+          "options": [
+            {
+              "text": "Bb"
+            },
+            {
+              "text": "Cc"
+            },
+            {
+              "text": "Aa"
+            }
+          ],
+          "answer": 2,
+          "hint": "A for Aa",
+          "praise": "Yes! Aa!"
+        },
+        {
+          "id": "english-boss-1",
+          "kind": "quiz",
+          "question": "小写 b 对应哪个大写字母？",
+          "options": [
+            {
+              "text": "D"
+            },
+            {
+              "text": "S"
+            },
+            {
+              "text": "B"
+            }
+          ],
+          "answer": 2,
+          "hint": "Bb = Bb",
+          "praise": "Bb 配对成功！"
+        },
+        {
+          "id": "english-boss-2",
+          "kind": "listen",
+          "prompt": "Cc",
+          "speakText": "C",
+          "question": "Find: which one is Cc ?",
+          "options": [
+            {
+              "text": "Dd"
+            },
+            {
+              "text": "Ss"
+            },
+            {
+              "text": "Cc"
+            }
+          ],
+          "answer": 2,
+          "hint": "C for Cc",
+          "praise": "Yes! Cc!"
+        },
+        {
+          "id": "english-boss-3",
+          "kind": "quiz",
+          "question": "Which picture starts with Dd?",
+          "options": [
+            {
+              "icon": "flower"
+            },
+            {
+              "icon": "duck"
+            },
+            {
+              "icon": "leaf"
+            }
+          ],
+          "answer": 1,
+          "hint": "Duck 小鸭",
+          "praise": "Great job!"
+        },
+        {
+          "id": "english-boss-4",
+          "kind": "listen",
+          "prompt": "Ss",
+          "speakText": "S",
+          "question": "Find: which one is Ss ?",
+          "options": [
+            {
+              "text": "Aa"
+            },
+            {
+              "text": "Bb"
+            },
+            {
+              "text": "Ss"
+            }
+          ],
+          "answer": 2,
+          "hint": "S for Ss",
+          "praise": "Yes! Ss!"
+        },
+        {
+          "id": "english-boss-5",
+          "kind": "listen",
+          "prompt": "Aa",
+          "speakText": "A",
+          "question": "Find: which one is Aa ?",
+          "options": [
+            {
+              "text": "Bb"
+            },
+            {
+              "text": "Cc"
+            },
+            {
+              "text": "Aa"
+            }
+          ],
+          "answer": 2,
+          "hint": "A for Aa",
+          "praise": "Yes! Aa!"
+        },
+        {
+          "id": "english-boss-6",
+          "kind": "quiz",
+          "question": "小写 m 对应哪个大写字母？",
+          "options": [
+            {
+              "text": "M"
+            },
+            {
+              "text": "G"
+            },
+            {
+              "text": "A"
+            }
+          ],
+          "answer": 0,
+          "hint": "Mm = Mm",
+          "praise": "Mm 配对成功！"
+        },
+        {
+          "id": "english-boss-7",
+          "kind": "listen",
+          "prompt": "Ff",
+          "speakText": "F",
+          "question": "Find: which one is Ff ?",
+          "options": [
+            {
+              "text": "Cc"
+            },
+            {
+              "text": "Dd"
+            },
+            {
+              "text": "Ff"
+            }
+          ],
+          "answer": 2,
+          "hint": "F for Ff",
+          "praise": "Yes! Ff!"
+        }
+      ],
+      "board": {
+        "spaces": [
+          {
+            "type": "question",
+            "step": "english-boss-0"
+          },
+          {
+            "type": "question",
+            "step": "english-boss-1"
+          },
+          {
+            "type": "question",
+            "step": "english-boss-2"
+          },
+          {
+            "type": "question",
+            "step": "english-boss-3"
+          },
+          {
+            "type": "question",
+            "step": "english-boss-4"
+          },
+          {
+            "type": "question",
+            "step": "english-boss-5"
+          },
+          {
+            "type": "question",
+            "step": "english-boss-6"
+          },
+          {
+            "type": "question",
+            "step": "english-boss-7"
+          }
+        ]
+      },
+      "boss": true
     }
   ]
 }

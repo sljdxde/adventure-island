@@ -4,7 +4,7 @@
 
 **Blocked by:** 02（迷你棋盘试点）
 
-**Status:** ready-for-agent
+**Status:** done（HTML 计时/断点已验证；Swift TimeManager 改造与测试按用户要求暂缓）
 
 - [ ] 棋盘进行中到时不弹休息遮罩；结算完成后进入休息倒计时
 - [ ] 每日总量限制行为不变，超量仍全屏收束

@@ -360,6 +360,183 @@
       ]
     },
     {
+      "id": "pinyin-r0",
+      "title": "复习关 一",
+      "subtitle": "旧题开盲盒 · 混排复习",
+      "steps": [
+        {
+          "id": "pinyin-r0-0",
+          "kind": "listen",
+          "prompt": "b",
+          "speakText": "b",
+          "question": "找一找：哪个是「b」？",
+          "options": [
+            {
+              "text": "d"
+            },
+            {
+              "text": "p"
+            },
+            {
+              "text": "b"
+            }
+          ],
+          "answer": 2,
+          "hint": "想一想它的样子",
+          "praise": "「b」找对啦！"
+        },
+        {
+          "id": "pinyin-r0-1",
+          "kind": "listen",
+          "promptIcon": "volcano",
+          "speakText": "p",
+          "question": "看一看：「山坡」的开头是哪个声母？",
+          "options": [
+            {
+              "text": "f"
+            },
+            {
+              "text": "p"
+            },
+            {
+              "text": "t"
+            }
+          ],
+          "answer": 1,
+          "hint": "山坡 的第一个音",
+          "praise": "对！山坡 开头是 p"
+        },
+        {
+          "id": "pinyin-r0-2",
+          "kind": "quiz",
+          "question": "拼一拼 m — a：哪张图是「妈妈」？",
+          "options": [
+            {
+              "icon": "girl",
+              "text": "妈妈"
+            },
+            {
+              "icon": "candy"
+            },
+            {
+              "icon": "heart"
+            }
+          ],
+          "answer": 0,
+          "hint": "m 碰 a",
+          "praise": "拼读小能手：妈妈！"
+        },
+        {
+          "id": "pinyin-r0-3",
+          "kind": "blend",
+          "parts": [
+            "f",
+            "a"
+          ],
+          "question": "拼一拼：f — a = ?",
+          "options": [
+            {
+              "text": "fa"
+            },
+            {
+              "text": "fo"
+            },
+            {
+              "text": "fu"
+            }
+          ],
+          "answer": 0,
+          "hint": "f 碰上 a",
+          "praise": "拼对了，fa！"
+        },
+        {
+          "id": "pinyin-r0-4",
+          "kind": "listen",
+          "prompt": "d",
+          "speakText": "d",
+          "question": "找一找：哪个是「d」？",
+          "options": [
+            {
+              "text": "p"
+            },
+            {
+              "text": "m"
+            },
+            {
+              "text": "d"
+            }
+          ],
+          "answer": 2,
+          "hint": "想一想它的样子",
+          "praise": "「d」找对啦！"
+        },
+        {
+          "id": "pinyin-r0-5",
+          "kind": "blend",
+          "parts": [
+            "b",
+            "a"
+          ],
+          "question": "拼一拼：b — a = ?",
+          "options": [
+            {
+              "text": "ba"
+            },
+            {
+              "text": "bo"
+            },
+            {
+              "text": "bu"
+            }
+          ],
+          "answer": 0,
+          "hint": "b 碰上 a",
+          "praise": "拼对了，ba！"
+        }
+      ],
+      "board": {
+        "spaces": [
+          {
+            "type": "question",
+            "step": "pinyin-r0-0"
+          },
+          {
+            "type": "question",
+            "step": "pinyin-r0-1"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "pinyin-r0-2"
+          },
+          {
+            "type": "question",
+            "step": "pinyin-r0-3"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "pinyin-r0-4"
+          },
+          {
+            "type": "chest"
+          },
+          {
+            "type": "question",
+            "step": "pinyin-r0-5"
+          },
+          {
+            "type": "mushroom"
+          }
+        ]
+      },
+      "review": true
+    },
+    {
       "id": "py-5",
       "title": "第 6 关 声母",
       "subtitle": "认识「t」",
@@ -716,6 +893,181 @@
       ]
     },
     {
+      "id": "pinyin-r1",
+      "title": "复习关 二",
+      "subtitle": "旧题开盲盒 · 混排复习",
+      "steps": [
+        {
+          "id": "pinyin-r1-0",
+          "kind": "listen",
+          "prompt": "b",
+          "speakText": "b",
+          "question": "找一找：哪个是「b」？",
+          "options": [
+            {
+              "text": "d"
+            },
+            {
+              "text": "p"
+            },
+            {
+              "text": "b"
+            }
+          ],
+          "answer": 2,
+          "hint": "想一想它的样子",
+          "praise": "「b」找对啦！"
+        },
+        {
+          "id": "pinyin-r1-1",
+          "kind": "listen",
+          "promptIcon": "volcano",
+          "speakText": "p",
+          "question": "看一看：「山坡」的开头是哪个声母？",
+          "options": [
+            {
+              "text": "f"
+            },
+            {
+              "text": "p"
+            },
+            {
+              "text": "t"
+            }
+          ],
+          "answer": 1,
+          "hint": "山坡 的第一个音",
+          "praise": "对！山坡 开头是 p"
+        },
+        {
+          "id": "pinyin-r1-2",
+          "kind": "quiz",
+          "question": "拼一拼 m — a：哪张图是「妈妈」？",
+          "options": [
+            {
+              "icon": "girl",
+              "text": "妈妈"
+            },
+            {
+              "icon": "candy"
+            },
+            {
+              "icon": "heart"
+            }
+          ],
+          "answer": 0,
+          "hint": "m 碰 a",
+          "praise": "拼读小能手：妈妈！"
+        },
+        {
+          "id": "pinyin-r1-3",
+          "kind": "blend",
+          "parts": [
+            "f",
+            "a"
+          ],
+          "question": "拼一拼：f — a = ?",
+          "options": [
+            {
+              "text": "fa"
+            },
+            {
+              "text": "fo"
+            },
+            {
+              "text": "fu"
+            }
+          ],
+          "answer": 0,
+          "hint": "f 碰上 a",
+          "praise": "拼对了，fa！"
+        },
+        {
+          "id": "pinyin-r1-4",
+          "kind": "listen",
+          "prompt": "d",
+          "speakText": "d",
+          "question": "找一找：哪个是「d」？",
+          "options": [
+            {
+              "text": "p"
+            },
+            {
+              "text": "m"
+            },
+            {
+              "text": "d"
+            }
+          ],
+          "answer": 2,
+          "hint": "想一想它的样子",
+          "praise": "「d」找对啦！"
+        },
+        {
+          "id": "pinyin-r1-5",
+          "kind": "listen",
+          "promptIcon": "train",
+          "speakText": "t",
+          "question": "看一看：「太阳」的开头是哪个声母？",
+          "options": [
+            {
+              "text": "p"
+            },
+            {
+              "text": "m"
+            },
+            {
+              "text": "t"
+            }
+          ],
+          "answer": 2,
+          "hint": "太阳 的第一个音",
+          "praise": "对！太阳 开头是 t"
+        }
+      ],
+      "board": {
+        "spaces": [
+          {
+            "type": "question",
+            "step": "pinyin-r1-1"
+          },
+          {
+            "type": "question",
+            "step": "pinyin-r1-2"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "pinyin-r1-3"
+          },
+          {
+            "type": "question",
+            "step": "pinyin-r1-4"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "pinyin-r1-5"
+          },
+          {
+            "type": "chest"
+          },
+          {
+            "type": "question",
+            "step": "pinyin-r1-0"
+          },
+          {
+            "type": "rest"
+          }
+        ]
+      },
+      "review": true
+    },
+    {
       "id": "py-10",
       "title": "第 11 关 韵母",
       "subtitle": "a o e i u ü",
@@ -870,6 +1222,218 @@
           "praise": "拼读小达人！"
         }
       ]
+    },
+    {
+      "id": "pinyin-boss",
+      "title": "Boss 大挑战",
+      "subtitle": "大壳壳兽 · 三颗心大决战",
+      "steps": [
+        {
+          "id": "pinyin-boss-0",
+          "kind": "listen",
+          "prompt": "b",
+          "speakText": "b",
+          "question": "找一找：哪个是「b」？",
+          "options": [
+            {
+              "text": "d"
+            },
+            {
+              "text": "p"
+            },
+            {
+              "text": "b"
+            }
+          ],
+          "answer": 2,
+          "hint": "想一想它的样子",
+          "praise": "「b」找对啦！"
+        },
+        {
+          "id": "pinyin-boss-1",
+          "kind": "listen",
+          "promptIcon": "volcano",
+          "speakText": "p",
+          "question": "看一看：「山坡」的开头是哪个声母？",
+          "options": [
+            {
+              "text": "f"
+            },
+            {
+              "text": "p"
+            },
+            {
+              "text": "t"
+            }
+          ],
+          "answer": 1,
+          "hint": "山坡 的第一个音",
+          "praise": "对！山坡 开头是 p"
+        },
+        {
+          "id": "pinyin-boss-2",
+          "kind": "quiz",
+          "question": "拼一拼 m — a：哪张图是「妈妈」？",
+          "options": [
+            {
+              "icon": "girl",
+              "text": "妈妈"
+            },
+            {
+              "icon": "candy"
+            },
+            {
+              "icon": "heart"
+            }
+          ],
+          "answer": 0,
+          "hint": "m 碰 a",
+          "praise": "拼读小能手：妈妈！"
+        },
+        {
+          "id": "pinyin-boss-3",
+          "kind": "blend",
+          "parts": [
+            "f",
+            "a"
+          ],
+          "question": "拼一拼：f — a = ?",
+          "options": [
+            {
+              "text": "fa"
+            },
+            {
+              "text": "fo"
+            },
+            {
+              "text": "fu"
+            }
+          ],
+          "answer": 0,
+          "hint": "f 碰上 a",
+          "praise": "拼对了，fa！"
+        },
+        {
+          "id": "pinyin-boss-4",
+          "kind": "listen",
+          "prompt": "d",
+          "speakText": "d",
+          "question": "找一找：哪个是「d」？",
+          "options": [
+            {
+              "text": "p"
+            },
+            {
+              "text": "m"
+            },
+            {
+              "text": "d"
+            }
+          ],
+          "answer": 2,
+          "hint": "想一想它的样子",
+          "praise": "「d」找对啦！"
+        },
+        {
+          "id": "pinyin-boss-5",
+          "kind": "listen",
+          "prompt": "b",
+          "speakText": "b",
+          "question": "找一找：哪个是「b」？",
+          "options": [
+            {
+              "text": "d"
+            },
+            {
+              "text": "p"
+            },
+            {
+              "text": "b"
+            }
+          ],
+          "answer": 2,
+          "hint": "想一想它的样子",
+          "praise": "「b」找对啦！"
+        },
+        {
+          "id": "pinyin-boss-6",
+          "kind": "listen",
+          "promptIcon": "train",
+          "speakText": "t",
+          "question": "看一看：「太阳」的开头是哪个声母？",
+          "options": [
+            {
+              "text": "p"
+            },
+            {
+              "text": "m"
+            },
+            {
+              "text": "t"
+            }
+          ],
+          "answer": 2,
+          "hint": "太阳 的第一个音",
+          "praise": "对！太阳 开头是 t"
+        },
+        {
+          "id": "pinyin-boss-7",
+          "kind": "quiz",
+          "question": "拼一拼 n — i：哪张图是「拿苹果」？",
+          "options": [
+            {
+              "icon": "heart"
+            },
+            {
+              "icon": "girl",
+              "text": "拿苹果"
+            },
+            {
+              "icon": "duck"
+            }
+          ],
+          "answer": 1,
+          "hint": "n 碰 i",
+          "praise": "拼读小能手：拿苹果！"
+        }
+      ],
+      "board": {
+        "spaces": [
+          {
+            "type": "question",
+            "step": "pinyin-boss-0"
+          },
+          {
+            "type": "question",
+            "step": "pinyin-boss-1"
+          },
+          {
+            "type": "question",
+            "step": "pinyin-boss-2"
+          },
+          {
+            "type": "question",
+            "step": "pinyin-boss-3"
+          },
+          {
+            "type": "question",
+            "step": "pinyin-boss-4"
+          },
+          {
+            "type": "question",
+            "step": "pinyin-boss-5"
+          },
+          {
+            "type": "question",
+            "step": "pinyin-boss-6"
+          },
+          {
+            "type": "question",
+            "step": "pinyin-boss-7"
+          }
+        ]
+      },
+      "boss": true
     }
   ]
 }

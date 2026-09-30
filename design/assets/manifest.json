@@ -83,7 +83,15 @@
     "icons/bush.svg",
     "icons/mushroom.svg",
     "icons/mario.svg",
-    "icons/dino.svg"
+    "icons/dino.svg",
+    "icons/boss.svg",
+    "icons/cat.svg",
+    "icons/rabbit.svg",
+    "icons/bear.svg",
+    "icons/penguin.svg",
+    "icons/paw.svg",
+    "icons/shop.svg",
+    "icons/hanger.svg"
   ],
   "bg": [
     "bg/hills-back.svg",

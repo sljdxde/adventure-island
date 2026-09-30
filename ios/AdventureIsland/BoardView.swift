@@ -71,6 +71,7 @@ struct StepContainerView: View {
 struct FinishCardView: View {
     let subject: String
     let index: Int
+    let levelId: String
     let totalLevels: Int
     let stars: Int
     let wrongCount: Int
@@ -153,9 +154,9 @@ struct FinishCardView: View {
         }
         .onAppear {
             // 蘑菇 +2 只发给此前从未拿过 3 星的关：旧星级须在 completeLevel 改写前取
-            // （判据与模拟器 old<3 同源，跨启动持久防重发；经金币账本入账——工单04）
-            let previousStars = store.stars(for: subject, index: index)
-            store.completeLevel(subject: subject, index: index, stars: stars)
+            // （星级按关卡 id 记账——工单05 平移迁移；判据与模拟器 old<3 同源）
+            let previousStars = store.stars(for: subject, levelId: levelId)
+            store.completeLevel(subject: subject, levelId: levelId, stars: stars)
             if stars == 3, previousStars < 3 {
                 store.recordCoin(.mushroomBonus, amount: 2)
             }
@@ -199,6 +200,7 @@ private struct CoinBurstView: View {
 struct BoardLevelView: View {
     let subject: String
     let index: Int
+    let levelId: String
     let totalLevels: Int
     let title: String
     let subtitle: String?
@@ -263,14 +265,15 @@ struct BoardLevelView: View {
             }
 
             if flow.finished {
-                FinishCardView(subject: subject,
-                               index: index,
-                               totalLevels: totalLevels,
-                               stars: flow.stars,
-                               wrongCount: flow.wrongCount,
-                               onNext: goNext,
-                               onReplay: replay,
-                               route: $route)
+                CeremonyView(subject: subject,
+                             index: index,
+                             levelId: levelId,
+                             totalLevels: totalLevels,
+                             stars: flow.stars,
+                             wrongCount: flow.wrongCount,
+                             onNext: goNext,
+                             onReplay: replay,
+                             route: $route)
             }
         }
         .onAppear {

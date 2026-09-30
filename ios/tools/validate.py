@@ -34,7 +34,7 @@ manifest = load_json(os.path.join(DESIGN, "design/assets/manifest.json"))
 manifest_icons = {p.split("/")[1].replace(".svg", "") for p in manifest["icons"]} | \
                  {p.split("/")[1].replace(".svg", "") for p in manifest["bg"]}
 
-SUBJECTS = [("cn_levels", 15), ("math_levels", 15), ("pinyin_levels", 12), ("english_levels", 12), ("astro_levels", 10)]
+SUBJECTS = [("cn_levels", 18), ("math_levels", 18), ("pinyin_levels", 15), ("english_levels", 15), ("astro_levels", 13)]
 subject_docs = {name: load_json(os.path.join(RES, name + ".json")) for name, _ in SUBJECTS}
 exps = load_json(os.path.join(RES, "experiments.json"))
 coll = load_json(os.path.join(RES, "collection.json"))
@@ -68,19 +68,29 @@ def check_subject(doc, name, expect_levels):
     else: ok(f"[{name}] 关卡 id 唯一")
     for li, lv in enumerate(levels):
         if not lv["steps"]: err(f"[{name}] 第{li+1}关无步骤")
-        # v0.8 迷你棋盘（工单02/03）：8-10 格、题目格占比 ≥ 60%、事件格 1-2、题目引用存在且不重复（规格实现决策 2）
+        # v0.8 迷你棋盘（工单02/03/05）：题目格占比 ≥ 60%、题目引用存在且不重复（规格实现决策 2）；
+        # 普通关 8-10 格 + 事件 1-2；复习关(review 标记)10-12 格 + 事件加倍 ≥2
         bd = lv.get("board")
         if bd is not None:
             sps = bd.get("spaces") or []
             tag = f"{name}/{lv['id']}"
-            if not (8 <= len(sps) <= 10):
-                err(f"{tag} 棋盘应 8-10 格，实际 {len(sps)}")
+            is_boss = lv.get("boss") is True
+            is_review = lv.get("review") is True
+            # 工单06 boss：8 格全题目；工单05 复习：10-12 格；普通：8-10 格
+            if is_boss:
+                if len(sps) != 8:
+                    err(f"{tag} boss 棋盘应 8 格，实际 {len(sps)}")
+            elif not (10 <= len(sps) <= 12 if is_review else 8 <= len(sps) <= 10):
+                err(f"{tag} {'复习关' if is_review else '普通关'}棋盘格数 {len(sps)} 不符规格")
             qs = [s for s in sps if s.get("type") == "question"]
-            if sps and len(qs) / len(sps) < 0.6:
+            if not is_boss and sps and len(qs) / len(sps) < 0.6:
                 err(f"{tag} 题目格占比 {len(qs)}/{len(sps)} 低于 60% 红线")
             ev = [s for s in sps if s.get("type") in ("chest", "mushroom", "rest")]
-            if not (1 <= len(ev) <= 2):
-                err(f"{tag} 事件格应 1-2 个，实际 {len(ev)}")
+            if is_boss:
+                if len(ev) != 0 or len(qs) != 8:
+                    err(f"{tag} boss 关应 8 个题目格、0 事件格（题目 {len(qs)}·事件 {len(ev)}）")
+            elif not (2 <= len(ev) <= 4 if is_review else 1 <= len(ev) <= 2):
+                err(f"{tag} {'复习关(加倍)' if is_review else '普通关'}事件格 {len(ev)} 个不符规格")
             sids = {s.get("id") for s in lv["steps"]}
             seen = set()
             for s in sps:
@@ -95,8 +105,10 @@ def check_subject(doc, name, expect_levels):
                     else: seen.add(ref)
                 elif s.get("step"):
                     err(f"{tag} 非题目格不应带 step")
-            if len(seen) == len(qs) and 8 <= len(sps) <= 10 and sps and len(qs) / len(sps) >= 0.6 and 1 <= len(ev) <= 2:
-                ok(f"[{tag}] 棋盘 {len(sps)} 格（题目 {len(qs)}·金币 {len(sps)-len(qs)-len(ev)}·事件 {len(ev)}）合法")
+            board_ok = len(seen) == len(qs) and (is_boss or (sps and len(qs) / len(sps) >= 0.6))
+            if board_ok:
+                if is_boss: ok(f"[{tag}] boss 棋盘 8 格（全题目）合法")
+                else: ok(f"[{tag}] {'复习关' if is_review else '棋盘'} {len(sps)} 格（题目 {len(qs)}·事件 {len(ev)}）合法")
         for st in lv["steps"]:
             kind = st["kind"]
             sid = f"{name}/{st.get('id','?')}"

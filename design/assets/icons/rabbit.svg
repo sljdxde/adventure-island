@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 96"><defs>
+<linearGradient id="g-rb" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#ECE4D8"/></linearGradient>
+</defs>
+  <!-- 圆尾巴 -->
+  <circle cx="57" cy="64" r="7" fill="#fff"/>
+  <!-- 鞋 -->
+  <ellipse cx="26" cy="91" rx="10" ry="5" fill="#C9A9E0"/>
+  <ellipse cx="46" cy="91" rx="10" ry="5" fill="#C9A9E0"/>
+  <!-- 腿 -->
+  <rect x="22" y="68" width="9" height="18" rx="4.5" fill="url(#g-rb)"/>
+  <rect x="41" y="68" width="9" height="18" rx="4.5" fill="url(#g-rb)"/>
+  <!-- 身体 -->
+  <path d="M22 50 Q22 44 36 44 Q50 44 50 50 L51 70 Q51 74 46 74 L26 74 Q21 74 21 70 Z" fill="url(#g-rb)"/>
+  <!-- 手臂 -->
+  <ellipse cx="15" cy="56" rx="7" ry="6" fill="url(#g-rb)"/>
+  <ellipse cx="57" cy="56" rx="7" ry="6" fill="url(#g-rb)"/>
+  <!-- 长耳朵（在头后） -->
+  <ellipse cx="27" cy="12" rx="6" ry="15" fill="url(#g-rb)" transform="rotate(-8 27 12)"/>
+  <ellipse cx="27" cy="12" rx="3" ry="10" fill="#FFB7C6" transform="rotate(-8 27 12)"/>
+  <ellipse cx="45" cy="12" rx="6" ry="15" fill="url(#g-rb)" transform="rotate(8 45 12)"/>
+  <ellipse cx="45" cy="12" rx="3" ry="10" fill="#FFB7C6" transform="rotate(8 45 12)"/>
+  <!-- 头 -->
+  <circle cx="36" cy="32" r="20" fill="url(#g-rb)"/>
+  <!-- 眼睛 -->
+  <ellipse cx="28" cy="31" rx="4" ry="5.4" fill="#fff"/>
+  <ellipse cx="44" cy="31" rx="4" ry="5.4" fill="#fff"/>
+  <circle cx="29" cy="32" r="2.3" fill="#B85E9E"/>
+  <circle cx="45" cy="32" r="2.3" fill="#B85E9E"/>
+  <circle cx="29.8" cy="31" r=".8" fill="#fff"/>
+  <circle cx="45.8" cy="31" r=".8" fill="#fff"/>
+  <!-- 鼻子 + 嘴（Y 形） -->
+  <path d="M33.5 38 L38.5 38 L36 40.6 Z" fill="#FF8FA6"/>
+  <path d="M36 40.6 L36 42.6 M36 42.6 Q33 44.6 31 43 M36 42.6 Q39 44.6 41 43" stroke="#9A8A78" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+  <!-- 门牙 -->
+  <rect x="34.4" y="43" width="3.2" height="4.4" rx="1" fill="#fff" stroke="#D8CDBC" stroke-width=".6"/>
+  <!-- 腮红 -->
+  <ellipse cx="21" cy="37" rx="3.4" ry="2.4" fill="#FFB7C6" opacity=".7"/>
+  <ellipse cx="51" cy="37" rx="3.4" ry="2.4" fill="#FFB7C6" opacity=".7"/>
+</svg>

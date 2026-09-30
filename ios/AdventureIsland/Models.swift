@@ -96,6 +96,8 @@ struct Level: Codable, Equatable, Identifiable {
     var subtitle: String?
     var steps: [Step]
     var board: Board?          // v0.8 迷你棋盘；nil = 线性步骤关
+    var review: Bool?          // v0.8 工单05：复习关标记（默认解锁、不挡正式关进度）
+    var boss: Bool?            // v0.8 工单06：boss 关标记（正式关全通后解锁，血条玩法）
 }
 
 // MARK: - 迷你棋盘（v0.8 工单02：识字村试点）
@@ -153,6 +155,55 @@ struct BoardFlow: Equatable {
     /// 落点对应格子（城堡返回 nil）
     func space(at spaceCount: Int) -> Int? {
         position >= 0 && position < spaceCount ? position : nil
+    }
+}
+
+// MARK: - boss 血条玩法（v0.8 工单06：纯逻辑，语义与浏览器模拟器 boss 状态机同源）
+
+/// 双方各 3 心：答对打 boss 掉一心，答错（蘑菇豁免在视图层先判）被撞掉一心；
+/// boss 先空 → 胜利，玩家先空 → 失败。失败重试走 retry()，金币/星星不经过本状态机（零损失）。
+struct BossFlow: Equatable {
+    enum Outcome: Equatable { case fighting, won, lost }
+
+    private(set) var bossHearts = 3
+    private(set) var playerHearts = 3
+    private(set) var questionIndex = 0
+    private(set) var wrongCount = 0
+    private(set) var outcome: Outcome = .fighting
+
+    static let maxHearts = 3
+    var isOver: Bool { outcome != .fighting }
+    var currentStep: Int { questionIndex }
+
+    /// 答对：boss 掉一心，boss 心空即胜利（结算先判 boss 侧）
+    mutating func answerCorrect(questionCount: Int) {
+        guard outcome == .fighting, questionCount > 0 else { return }
+        bossHearts -= 1
+        questionIndex = min(questionIndex + 1, questionCount - 1)
+        if bossHearts == 0 { outcome = .won }
+    }
+
+    /// 答错（调用前先判蘑菇豁免）：玩家掉一心，玩家心空即失败
+    mutating func answerWrong(questionCount: Int) {
+        guard outcome == .fighting, questionCount > 0 else { return }
+        playerHearts -= 1
+        wrongCount += 1
+        questionIndex = min(questionIndex + 1, questionCount - 1)
+        if playerHearts == 0 { outcome = .lost }
+    }
+
+    /// 失败后重试：心/题号/错误全部复位；账本不动即零损失
+    mutating func retry() {
+        self = BossFlow()
+    }
+
+    /// 胜利后地图展示星级：玩家未掉心 3 星、掉 1 心 2 星、掉 2 心 1 星
+    var stars: Int {
+        switch playerHearts {
+        case 3: return 3
+        case 2: return 2
+        default: return 1
+        }
     }
 }
 

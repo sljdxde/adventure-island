@@ -28,10 +28,22 @@ struct LevelView: View {
             // 相邻关卡轮换 白天/黄昏/星夜/地下砖块关，场景有区别
             SceneBackground(theme: theme, variant: index % 4)
 
-            if let board = level?.board {
+            if level?.boss == true {
+                // boss 关（v0.8 工单06）：三颗心大决战，自带头部与胜负结算
+                BossLevelView(subject: subject,
+                              index: index,
+                              levelId: level?.id ?? "\(subject)-\(index)",
+                              totalLevels: content?.levels.count ?? 0,
+                              title: level?.title ?? "",
+                              subtitle: level?.subtitle,
+                              steps: level?.steps ?? [],
+                              route: $route,
+                              confetti: $confetti)
+            } else if let board = level?.board {
                 // 迷你棋盘关（v0.8 工单02）：掷骰→蹦跳→落格出题→城堡结算，自带头部与结算卡
                 BoardLevelView(subject: subject,
                                index: index,
+                               levelId: level?.id ?? "\(subject)-\(index)",
                                totalLevels: content?.levels.count ?? 0,
                                title: level?.title ?? "",
                                subtitle: level?.subtitle,
@@ -135,14 +147,15 @@ struct LevelView: View {
     // MARK: 结算
 
     private var finishCard: some View {
-        FinishCardView(subject: subject,
-                       index: index,
-                       totalLevels: content?.levels.count ?? 0,
-                       stars: flow.stars,
-                       wrongCount: flow.wrongCount,
-                       onNext: goNextLevel,
-                       onReplay: { flow = LevelFlow() },
-                       route: $route)
+        CeremonyView(subject: subject,
+                     index: index,
+                     levelId: level?.id ?? "\(subject)-\(index)",
+                     totalLevels: content?.levels.count ?? 0,
+                     stars: flow.stars,
+                     wrongCount: flow.wrongCount,
+                     onNext: goNextLevel,
+                     onReplay: { flow = LevelFlow() },
+                     route: $route)
     }
 
     /// 直接进入下一关（通关卡按钮）

@@ -26,6 +26,9 @@ enum IconEmoji {
         "sugar": "🍚", "train": "🚂", "tree": "🌳",
         "earth": "🌍", "planet": "🪐", "comet": "☄️",
         "bush": "🌿", "mushroom": "🍄", "mario": "🧢", "dino": "🦖",
+        "boss": "🐢",
+        "cat": "🐱", "rabbit": "🐰", "bear": "🐻", "penguin": "🐧",
+        "paw": "🐾", "shop": "🏪", "hanger": "🪝",
         "hills-back": "⛰", "hills-front": "🏞"
     ]
 }

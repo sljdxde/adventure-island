@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- 挂钩 -->
+  <path d="M32 8 Q32 3 37 3 Q42 3 42 8 Q42 12 38 13" fill="none" stroke="#8A6A4A" stroke-width="3.4" stroke-linecap="round"/>
+  <!-- 衣架三角 -->
+  <path d="M32 16 L10 38 Q7 41 11 41 L53 41 Q57 41 54 38 Z" fill="none" stroke="#B8906A" stroke-width="3.6" stroke-linejoin="round" stroke-linecap="round"/>
+  <!-- 底边横杆 -->
+  <path d="M14 41 H50" stroke="#8A6A4A" stroke-width="3.6" stroke-linecap="round"/>
+</svg>

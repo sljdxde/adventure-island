@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96">
+  <!-- 招牌杆 -->
+  <!-- 建筑主体 -->
+  <rect x="18" y="46" width="60" height="42" rx="4" fill="#FFF3DF"/>
+  <rect x="18" y="46" width="60" height="42" rx="4" fill="none" stroke="#E8D2AE" stroke-width="2"/>
+  <!-- 门 -->
+  <rect x="42" y="62" width="14" height="26" rx="2" fill="#C98A52"/>
+  <circle cx="53" cy="76" r="1.6" fill="#FFD34D"/>
+  <!-- 橱窗 -->
+  <rect x="24" y="58" width="13" height="13" rx="2" fill="#BFE6FA"/>
+  <rect x="61" y="58" width="13" height="13" rx="2" fill="#BFE6FA"/>
+  <path d="M24 64 H37 M30.5 58 V71 M61 64 H74 M67.5 58 V71" stroke="#8FC6E8" stroke-width="1.4"/>
+  <!-- 雨棚（红白条纹） -->
+  <path d="M12 40 L84 40 L78 50 L18 50 Z" fill="#E84838"/>
+  <path d="M26 40 L22 50 H30 L32 40 Z M42 40 L40 50 H48 L50 40 Z M58 40 L56 50 H64 L66 40 Z M74 40 L70 50 H78 L84 40 Z" fill="#fff"/>
+  <!-- 雨棚边的圆 scallop -->
+  <circle cx="18" cy="50" r="3" fill="#E84838"/>
+  <circle cx="30" cy="50" r="3" fill="#fff"/>
+  <circle cx="42" cy="50" r="3" fill="#E84838"/>
+  <circle cx="54" cy="50" r="3" fill="#fff"/>
+  <circle cx="66" cy="50" r="3" fill="#E84838"/>
+  <circle cx="78" cy="50" r="3" fill="#fff"/>
+  <!-- 招牌 -->
+  <rect x="30" y="26" width="36" height="12" rx="6" fill="#FFD34D" stroke="#E8A92B" stroke-width="2"/>
+  <!-- 屋顶小旗 -->
+  <rect x="47" y="12" width="2" height="14" fill="#8A6A4A"/>
+  <path d="M49 12 L58 15 L49 18 Z" fill="#E84838"/>
+</svg>

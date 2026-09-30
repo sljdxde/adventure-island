@@ -243,11 +243,14 @@ struct ParentView: View {
 
     private var progressPanel: some View {
         panel("chart", "学习进度") {
-            progressRow(icon: "book", name: "识字村", ratio: Double(store.doneCount(subject: "cn", total: 15)) / 15, val: "\(store.doneCount(subject: "cn", total: 15))/15 关")
-            progressRow(icon: "equal", name: "思维镇", ratio: Double(store.doneCount(subject: "math", total: 15)) / 15, val: "\(store.doneCount(subject: "math", total: 15))/15 关")
-            progressRow(icon: "speaker", name: "拼音谷", ratio: Double(store.doneCount(subject: "pinyin", total: 12)) / 12, val: "\(store.doneCount(subject: "pinyin", total: 12))/12 关")
-            progressRow(icon: "castle", name: "英语王国", ratio: Double(store.doneCount(subject: "english", total: 12)) / 12, val: "\(store.doneCount(subject: "english", total: 12))/12 关")
-            progressRow(icon: "moon", name: "天文台", ratio: Double(store.doneCount(subject: "astro", total: 10)) / 10, val: "\(store.doneCount(subject: "astro", total: 10))/10 关")
+            ForEach([("book", "识字村", "cn"), ("equal", "思维镇", "math"), ("speaker", "拼音谷", "pinyin"),
+                     ("castle", "英语王国", "english"), ("moon", "天文台", "astro")], id: \.1) { icon, name, sub in
+                let ids = LevelCatalog.ids(sub)
+                let done = store.doneCount(subject: sub, ids: ids)
+                progressRow(icon: icon, name: name,
+                            ratio: Double(done) / Double(max(ids.count, 1)),
+                            val: "\(done)/\(ids.count) 关")
+            }
             progressRow(icon: "flask", name: "科学岛", ratio: Double(store.snapshot.collectedScience.count) / 6, val: "实验 \(store.snapshot.testedItems.count) 项")
             HStack(spacing: 8) {
                 statChip("累计金币 \(store.snapshot.coins)")

@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 96"><defs>
+<linearGradient id="g-pg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4A5A78"/><stop offset="1" stop-color="#2C3850"/></linearGradient>
+</defs>
+  <!-- 身体（深色，上窄下圆） -->
+  <path d="M36 6 Q16 6 15 40 Q14 72 24 84 Q30 90 36 90 Q42 90 48 84 Q58 72 57 40 Q56 6 36 6 Z" fill="url(#g-pg)"/>
+  <!-- 白肚皮 -->
+  <path d="M36 22 Q24 22 23 44 Q22 68 30 78 Q33 82 36 82 Q39 82 42 78 Q50 68 49 44 Q48 22 36 22 Z" fill="#FBF7EF"/>
+  <!-- 翅膀 -->
+  <path d="M16 40 Q10 52 15 64 Q19 58 20 48 Z" fill="#243046"/>
+  <path d="M56 40 Q62 52 57 64 Q53 58 52 48 Z" fill="#243046"/>
+  <!-- 脚（橙色蹼） -->
+  <ellipse cx="28" cy="89" rx="8" ry="4" fill="#FF9F2E"/>
+  <ellipse cx="44" cy="89" rx="8" ry="4" fill="#FF9F2E"/>
+  <!-- 头面（深色头区） -->
+  <ellipse cx="36" cy="26" rx="18" ry="16" fill="url(#g-pg)"/>
+  <!-- 眼白 -->
+  <ellipse cx="29" cy="25" rx="4.4" ry="5.4" fill="#fff"/>
+  <ellipse cx="43" cy="25" rx="4.4" ry="5.4" fill="#fff"/>
+  <circle cx="30" cy="26" r="2.4" fill="#243046"/>
+  <circle cx="42" cy="26" r="2.4" fill="#243046"/>
+  <circle cx="30.8" cy="25" r=".8" fill="#fff"/>
+  <circle cx="42.8" cy="25" r=".8" fill="#fff"/>
+  <!-- 喙（橙色，上下两片） -->
+  <path d="M30 31 L42 31 L36 35 Z" fill="#FFB02E"/>
+  <path d="M31 33.6 L41 33.6 L36 38 Z" fill="#F59020"/>
+  <!-- 腮红 -->
+  <ellipse cx="23" cy="31" rx="3" ry="2.2" fill="#7A94C0" opacity=".5"/>
+  <ellipse cx="49" cy="31" rx="3" ry="2.2" fill="#7A94C0" opacity=".5"/>
+</svg>

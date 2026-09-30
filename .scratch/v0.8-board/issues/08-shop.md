@@ -4,7 +4,7 @@
 
 **Blocked by:** 04（金币账本与消费扣款）
 
-**Status:** ready-for-agent
+**Status:** done（HTML 已验证；Swift 原生 ShopView 按用户要求暂缓）
 
 - [ ] 商店建筑出现在地图，入口可进商店界面（HTML 先定稿货架视觉）
 - [ ] 两品类货架：6 角色 + 4-6 骰子皮肤，定价 40-120，美术入库

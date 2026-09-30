@@ -220,6 +220,162 @@
       ]
     },
     {
+      "id": "math-r0",
+      "title": "复习关 一",
+      "subtitle": "旧题开盲盒 · 混排复习",
+      "steps": [
+        {
+          "id": "math-r0-0",
+          "kind": "count",
+          "question": "池塘里有几只小鸭（点一点，数数看）",
+          "duckIcon": "duck",
+          "count": 3,
+          "countOptions": [
+            2,
+            3,
+            4
+          ],
+          "backdrop": "pond",
+          "unit": "只"
+        },
+        {
+          "id": "math-r0-1",
+          "kind": "count",
+          "question": "盘子里有几颗糖（点一点，数数看）",
+          "duckIcon": "candy",
+          "count": 4,
+          "countOptions": [
+            3,
+            4,
+            5
+          ],
+          "backdrop": "grass",
+          "unit": "颗"
+        },
+        {
+          "id": "math-r0-2",
+          "kind": "count",
+          "question": "果园里摘了几个苹果（点一点，数数看）",
+          "duckIcon": "apple",
+          "count": 5,
+          "countOptions": [
+            4,
+            5,
+            6
+          ],
+          "backdrop": "grass",
+          "unit": "个"
+        },
+        {
+          "id": "math-r0-3",
+          "kind": "compare",
+          "question": "两边气球哪边多？",
+          "leftIcon": "balloon",
+          "leftCount": 4,
+          "rightIcon": "balloon",
+          "rightCount": 4,
+          "compareOptions": [
+            {
+              "key": "left",
+              "label": "左边多"
+            },
+            {
+              "key": "right",
+              "label": "右边多"
+            },
+            {
+              "key": "same",
+              "label": "一样多"
+            }
+          ],
+          "answerKey": "same",
+          "hint": "一个对着一个，比一比",
+          "praise": "火眼金睛！一样多！"
+        },
+        {
+          "id": "math-r0-4",
+          "kind": "count",
+          "question": "夜空里有几颗星星（点一点，数数看）",
+          "duckIcon": "star",
+          "count": 6,
+          "countOptions": [
+            5,
+            6,
+            7
+          ],
+          "backdrop": "night",
+          "unit": "颗"
+        },
+        {
+          "id": "math-r0-5",
+          "kind": "compare",
+          "question": "哪边的水果更多？",
+          "leftIcon": "apple",
+          "leftCount": 3,
+          "rightIcon": "banana",
+          "rightCount": 1,
+          "compareOptions": [
+            {
+              "key": "left",
+              "label": "苹果多"
+            },
+            {
+              "key": "right",
+              "label": "香蕉多"
+            },
+            {
+              "key": "same",
+              "label": "一样多"
+            }
+          ],
+          "answerKey": "left",
+          "hint": "一个对着一个，比一比",
+          "praise": "苹果多，答对啦！"
+        }
+      ],
+      "board": {
+        "spaces": [
+          {
+            "type": "question",
+            "step": "math-r0-0"
+          },
+          {
+            "type": "question",
+            "step": "math-r0-1"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "math-r0-2"
+          },
+          {
+            "type": "question",
+            "step": "math-r0-3"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "math-r0-4"
+          },
+          {
+            "type": "chest"
+          },
+          {
+            "type": "question",
+            "step": "math-r0-5"
+          },
+          {
+            "type": "mushroom"
+          }
+        ]
+      },
+      "review": true
+    },
+    {
       "id": "math-5",
       "title": "第 6 关 小火车",
       "subtitle": "7 以内 · 排一排 · 掷骰子",
@@ -458,6 +614,150 @@
           "praise": "分类小能手！"
         }
       ]
+    },
+    {
+      "id": "math-r1",
+      "title": "复习关 二",
+      "subtitle": "旧题开盲盒 · 混排复习",
+      "steps": [
+        {
+          "id": "math-r1-0",
+          "kind": "count",
+          "question": "池塘里有几只小鸭（点一点，数数看）",
+          "duckIcon": "duck",
+          "count": 3,
+          "countOptions": [
+            2,
+            3,
+            4
+          ],
+          "backdrop": "pond",
+          "unit": "只"
+        },
+        {
+          "id": "math-r1-1",
+          "kind": "count",
+          "question": "盘子里有几颗糖（点一点，数数看）",
+          "duckIcon": "candy",
+          "count": 4,
+          "countOptions": [
+            3,
+            4,
+            5
+          ],
+          "backdrop": "grass",
+          "unit": "颗"
+        },
+        {
+          "id": "math-r1-2",
+          "kind": "count",
+          "question": "果园里摘了几个苹果（点一点，数数看）",
+          "duckIcon": "apple",
+          "count": 5,
+          "countOptions": [
+            4,
+            5,
+            6
+          ],
+          "backdrop": "grass",
+          "unit": "个"
+        },
+        {
+          "id": "math-r1-3",
+          "kind": "compare",
+          "question": "两边气球哪边多？",
+          "leftIcon": "balloon",
+          "leftCount": 4,
+          "rightIcon": "balloon",
+          "rightCount": 4,
+          "compareOptions": [
+            {
+              "key": "left",
+              "label": "左边多"
+            },
+            {
+              "key": "right",
+              "label": "右边多"
+            },
+            {
+              "key": "same",
+              "label": "一样多"
+            }
+          ],
+          "answerKey": "same",
+          "hint": "一个对着一个，比一比",
+          "praise": "火眼金睛！一样多！"
+        },
+        {
+          "id": "math-r1-4",
+          "kind": "count",
+          "question": "夜空里有几颗星星（点一点，数数看）",
+          "duckIcon": "star",
+          "count": 6,
+          "countOptions": [
+            5,
+            6,
+            7
+          ],
+          "backdrop": "night",
+          "unit": "颗"
+        },
+        {
+          "id": "math-r1-5",
+          "kind": "count",
+          "question": "轨道上有几辆小火车（点一点，数数看）",
+          "duckIcon": "train",
+          "count": 7,
+          "countOptions": [
+            6,
+            7,
+            8
+          ],
+          "backdrop": "grass",
+          "unit": "辆"
+        }
+      ],
+      "board": {
+        "spaces": [
+          {
+            "type": "question",
+            "step": "math-r1-1"
+          },
+          {
+            "type": "question",
+            "step": "math-r1-2"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "math-r1-3"
+          },
+          {
+            "type": "question",
+            "step": "math-r1-4"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "math-r1-5"
+          },
+          {
+            "type": "chest"
+          },
+          {
+            "type": "question",
+            "step": "math-r1-0"
+          },
+          {
+            "type": "rest"
+          }
+        ]
+      },
+      "review": true
     },
     {
       "id": "math-10",
@@ -702,6 +1002,174 @@
           "praise": "规律找对啦，小侦探！"
         }
       ]
+    },
+    {
+      "id": "math-boss",
+      "title": "Boss 大挑战",
+      "subtitle": "大壳壳兽 · 三颗心大决战",
+      "steps": [
+        {
+          "id": "math-boss-0",
+          "kind": "count",
+          "question": "池塘里有几只小鸭（点一点，数数看）",
+          "duckIcon": "duck",
+          "count": 3,
+          "countOptions": [
+            2,
+            3,
+            4
+          ],
+          "backdrop": "pond",
+          "unit": "只"
+        },
+        {
+          "id": "math-boss-1",
+          "kind": "count",
+          "question": "盘子里有几颗糖（点一点，数数看）",
+          "duckIcon": "candy",
+          "count": 4,
+          "countOptions": [
+            3,
+            4,
+            5
+          ],
+          "backdrop": "grass",
+          "unit": "颗"
+        },
+        {
+          "id": "math-boss-2",
+          "kind": "count",
+          "question": "果园里摘了几个苹果（点一点，数数看）",
+          "duckIcon": "apple",
+          "count": 5,
+          "countOptions": [
+            4,
+            5,
+            6
+          ],
+          "backdrop": "grass",
+          "unit": "个"
+        },
+        {
+          "id": "math-boss-3",
+          "kind": "compare",
+          "question": "两边气球哪边多？",
+          "leftIcon": "balloon",
+          "leftCount": 4,
+          "rightIcon": "balloon",
+          "rightCount": 4,
+          "compareOptions": [
+            {
+              "key": "left",
+              "label": "左边多"
+            },
+            {
+              "key": "right",
+              "label": "右边多"
+            },
+            {
+              "key": "same",
+              "label": "一样多"
+            }
+          ],
+          "answerKey": "same",
+          "hint": "一个对着一个，比一比",
+          "praise": "火眼金睛！一样多！"
+        },
+        {
+          "id": "math-boss-4",
+          "kind": "count",
+          "question": "夜空里有几颗星星（点一点，数数看）",
+          "duckIcon": "star",
+          "count": 6,
+          "countOptions": [
+            5,
+            6,
+            7
+          ],
+          "backdrop": "night",
+          "unit": "颗"
+        },
+        {
+          "id": "math-boss-5",
+          "kind": "count",
+          "question": "池塘里有几只小鸭（点一点，数数看）",
+          "duckIcon": "duck",
+          "count": 3,
+          "countOptions": [
+            2,
+            3,
+            4
+          ],
+          "backdrop": "pond",
+          "unit": "只"
+        },
+        {
+          "id": "math-boss-6",
+          "kind": "count",
+          "question": "轨道上有几辆小火车（点一点，数数看）",
+          "duckIcon": "train",
+          "count": 7,
+          "countOptions": [
+            6,
+            7,
+            8
+          ],
+          "backdrop": "grass",
+          "unit": "辆"
+        },
+        {
+          "id": "math-boss-7",
+          "kind": "count",
+          "question": "花园里开了几朵花（点一点，数数看）",
+          "duckIcon": "flower",
+          "count": 8,
+          "countOptions": [
+            7,
+            8,
+            9
+          ],
+          "backdrop": "grass",
+          "unit": "朵"
+        }
+      ],
+      "board": {
+        "spaces": [
+          {
+            "type": "question",
+            "step": "math-boss-0"
+          },
+          {
+            "type": "question",
+            "step": "math-boss-1"
+          },
+          {
+            "type": "question",
+            "step": "math-boss-2"
+          },
+          {
+            "type": "question",
+            "step": "math-boss-3"
+          },
+          {
+            "type": "question",
+            "step": "math-boss-4"
+          },
+          {
+            "type": "question",
+            "step": "math-boss-5"
+          },
+          {
+            "type": "question",
+            "step": "math-boss-6"
+          },
+          {
+            "type": "question",
+            "step": "math-boss-7"
+          }
+        ]
+      },
+      "boss": true
     }
   ]
 }

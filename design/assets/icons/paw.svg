@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- 四个脚趾 -->
+  <ellipse cx="17" cy="20" rx="6.5" ry="8.5" fill="#C98A52" transform="rotate(-14 17 20)"/>
+  <ellipse cx="30" cy="14" rx="6.5" ry="9" fill="#C98A52"/>
+  <ellipse cx="43" cy="16" rx="6.5" ry="9" fill="#C98A52" transform="rotate(12 43 16)"/>
+  <ellipse cx="52" cy="26" rx="6" ry="8" fill="#C98A52" transform="rotate(26 52 26)"/>
+  <!-- 大掌垫（不规则圆） -->
+  <path d="M32 28 Q14 28 13 42 Q12 54 24 54 L40 54 Q52 54 51 42 Q50 28 32 28 Z" fill="#E0A86E"/>
+</svg>
