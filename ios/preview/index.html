@@ -142,8 +142,8 @@ img.ic{display:inline-block;vertical-align:middle}
 /* ---------- 通用组件 ---------- */
 .screen{position:absolute;inset:0;z-index:2;animation:screenIn .28s ease}
 @keyframes screenIn{from{opacity:0;transform:translateX(30px)}to{opacity:1;transform:none}}
-.hud{position:absolute;top:0;left:0;right:0;height:92px;display:flex;align-items:center;justify-content:space-between;padding:16px 22px 0;z-index:40}
-.hud-l,.hud-r{display:flex;align-items:center;gap:12px}
+.hud{position:absolute;top:0;left:0;right:0;height:92px;display:flex;align-items:center;justify-content:space-between;padding:16px 22px 0;z-index:40;pointer-events:none}
+.hud-l,.hud-r{display:flex;align-items:center;gap:12px;pointer-events:auto}
 .sqbtn{width:62px;height:62px;border:none;cursor:pointer;border-radius:21px;background:linear-gradient(180deg,#FFFDF6,#FFF3DC);box-shadow:0 4px 0 #E8D5AE,0 8px 14px rgba(84,66,58,.12);display:grid;place-items:center;transition:transform .08s}
 .sqbtn:active{transform:translateY(3px);box-shadow:0 1px 0 #E8D5AE}
 .goldchip{display:flex;align-items:center;gap:8px;background:linear-gradient(180deg,#FFFDF4,#FFF2CE);border-radius:999px;padding:8px 18px 8px 10px;box-shadow:0 4px 0 #EBD9A8,0 6px 12px rgba(84,66,58,.1);font-size:21px;font-weight:900;color:#8A5B00}
@@ -210,7 +210,9 @@ img.ic{display:inline-block;vertical-align:middle}
 .zone-label{display:inline-block;margin-top:-14px;position:relative;z-index:3;background:linear-gradient(180deg,#FFE58A,var(--yellow-dk));border:2.5px solid #B8770A;border-radius:999px;padding:5px 13px;font-size:15.5px;font-weight:900;color:#8A5B00;box-shadow:0 4px 0 rgba(0,0,0,.14);white-space:nowrap}
 .zone-meta{margin-top:5px;font-size:12px;font-weight:900;color:var(--green-ddk);text-shadow:0 1px 0 rgba(255,255,255,.55);white-space:nowrap}
 .zone-meta .track{width:132px;margin:6px auto 0}
-.badge-new{position:absolute;top:-6px;right:-12px;background:linear-gradient(180deg,#FF9068,var(--coral-dk));color:#fff;font-size:12.5px;font-weight:900;border-radius:999px;padding:4px 11px;transform:rotate(8deg);box-shadow:0 3px 0 rgba(0,0,0,.15);z-index:4}
+.badge-new{position:absolute;top:3px;right:-46px;background:linear-gradient(180deg,#FF9068,var(--coral-dk));color:#fff;font-size:12.5px;font-weight:900;border-radius:999px;padding:4px 11px;transform:rotate(8deg);box-shadow:0 3px 0 rgba(0,0,0,.15);z-index:4;white-space:nowrap;pointer-events:none}
+/* 最后一根水管靠右边缘：NEW 角标换到左侧，避免出画 */
+.pipes .pipe-zone:last-child .badge-new{right:auto;left:-46px;transform:rotate(-8deg)}
 .banner{position:absolute;top:104px;left:50%;transform:translateX(-50%);z-index:20;text-align:center;background:linear-gradient(180deg,#FF8A70,var(--coral-dk));border:4px solid #B8493A;border-radius:22px;padding:12px 58px 14px;box-shadow:0 12px 20px rgba(0,0,0,.22)}
 .banner h1{font-size:38px;font-weight:900;color:#fff;letter-spacing:10px;text-shadow:0 3px 0 rgba(0,0,0,.25)}
 .banner p{font-size:14px;color:#fff;opacity:.95;font-weight:800;letter-spacing:2px}
@@ -228,7 +230,7 @@ img.ic{display:inline-block;vertical-align:middle}
 .lnode.lock{background:#c9cfd6;border:3.5px solid #fff;box-shadow:0 4px 0 #9aa1a9;cursor:default}
 .arcpanel{position:absolute;left:-20px;right:-20px;bottom:-24px;height:112px;background:linear-gradient(180deg,#FFFBF0,var(--cream-dk));border-radius:50% 50% 0 0/70px 70px 0 0;box-shadow:0 -6px 20px rgba(84,66,58,.12);z-index:14}
 .arc-notch{position:absolute;top:-30px;left:30px;width:62px;height:62px;border-radius:50%;background:linear-gradient(180deg,#FFDD7A,var(--yellow-dk));box-shadow:0 4px 0 var(--yellow-ddk);display:grid;place-items:center;z-index:16}
-.dock{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);display:flex;gap:56px;z-index:20}
+.dock{position:absolute;left:50%;bottom:30px;transform:translateX(-50%);display:flex;gap:56px;z-index:20}
 .dock-item{display:flex;flex-direction:column;align-items:center;gap:3px;cursor:pointer;width:120px}
 .dock-item .icw{position:relative;width:56px;height:56px;border-radius:19px;background:linear-gradient(180deg,#FFFDF6,#FFF0D2);box-shadow:0 4px 0 #E8D5AE;display:grid;place-items:center}
 .dock-item .cnt{position:absolute;top:-9px;right:-16px;background:linear-gradient(180deg,#FF9068,var(--coral-dk));color:#fff;font-size:12px;font-weight:900;border-radius:999px;padding:2px 8px}
@@ -249,7 +251,11 @@ img.ic{display:inline-block;vertical-align:middle}
 .opt .slabel{font-size:15px;font-weight:900;color:var(--ink-soft)}
 .tcard{min-width:168px;height:112px;padding:0 30px;border-radius:24px;background:linear-gradient(180deg,#FFE58A,#F7B32B);border:4px solid #fff;box-shadow:0 6px 0 #B8770A88;display:grid;place-items:center;font-weight:900;color:#fff;text-shadow:1px 3px 0 #B8770A}
 .optrow{display:flex;gap:26px}
-.speakopt{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.9);border:2.5px solid #F2E2C4;border-radius:999px;padding:8px 18px;font-size:15px;font-weight:800;color:var(--ink-soft);cursor:pointer;font-family:inherit}
+.speakopt{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.9);border:2.5px solid #F2E2C4;border-radius:999px;padding:11px 20px;font-size:15px;font-weight:800;color:var(--ink-soft);cursor:pointer;font-family:inherit}
+/* 熊猫引导气泡（还原 design/02 答题卡底部的 mascot-row） */
+.mascot-row{display:flex;align-items:center;gap:10px;background:linear-gradient(180deg,#FFF7E4,#FFEDC9);border-radius:18px;padding:7px 14px;max-width:660px}
+.mascot-row .m{line-height:1;filter:drop-shadow(0 3px 4px rgba(84,66,58,.18))}
+.mascot-row .say{background:#fff;border-radius:13px;padding:7px 14px;font-size:14.5px;font-weight:800;color:var(--ink-soft);line-height:1.45;text-align:left}
 .morph{position:relative;width:300px;height:265px;display:grid;place-items:center}
 .morph .char{position:absolute;font-size:165px;font-weight:900;color:#E2582A;text-shadow:0 5px 0 #FFD9A0;opacity:0;transform:scale(.4);transition:all .5s cubic-bezier(.22,1.2,.36,1)}
 .morph.play .char{opacity:1;transform:scale(1)}
@@ -290,7 +296,8 @@ img.ic{display:inline-block;vertical-align:middle}
 .finish .card{text-align:center;padding:38px 50px;border-radius:32px;border:5px solid var(--yellow);background:linear-gradient(180deg,#fff,var(--cream-dk));box-shadow:0 20px 40px rgba(0,0,0,.3);animation:pop .45s}
 
 /* ---------- 马里奥式结算仪式（工单07：滑旗杆→开门→金币雨计数→星星点亮→按钮） ---------- */
-.ceremony{position:absolute;inset:0;z-index:60;background:linear-gradient(180deg,rgba(90,140,210,.18),rgba(40,30,20,.42));overflow:hidden}
+.ceremony{position:absolute;inset:0;z-index:60;background:linear-gradient(180deg,#6FB9EF,#9FD4F6 48%,#CFEAFD);overflow:hidden}
+.ceremony .cloud{opacity:.9}
 .cer-title{position:absolute;top:26px;left:0;right:0;text-align:center;font-size:30px;font-weight:900;color:#fff;text-shadow:0 3px 0 rgba(120,70,10,.55);opacity:0;transition:opacity .4s}
 .cer-title.show{opacity:1}
 .cer-ground{position:absolute;left:0;right:0;bottom:148px;height:24px;background:linear-gradient(180deg,#86C856,#57A23E);border-top:6px solid #478C36;box-shadow:0 4px 0 rgba(0,0,0,.12)}
@@ -320,7 +327,7 @@ img.ic{display:inline-block;vertical-align:middle}
 .cer-summary.show{opacity:1}
 .cer-buttons{position:absolute;left:0;right:0;bottom:12px;display:flex;justify-content:center;gap:14px;opacity:0;transform:translateY(18px);transition:all .45s cubic-bezier(.3,1.5,.5,1)}
 .cer-buttons.show{opacity:1;transform:translateY(0)}
-.cer-skip{position:absolute;top:20px;right:24px;background:rgba(255,255,255,.9);border:none;border-radius:999px;padding:9px 20px;font-size:15px;font-weight:900;color:var(--ink-soft);box-shadow:0 3px 0 rgba(0,0,0,.18);cursor:pointer;z-index:9}
+.cer-skip{position:absolute;top:20px;right:24px;background:rgba(255,255,255,.9);border:none;border-radius:999px;padding:13px 24px;font-size:16px;font-weight:900;color:var(--ink-soft);box-shadow:0 3px 0 rgba(0,0,0,.18);cursor:pointer;z-index:9}
 .stepchips{display:flex;align-items:center;gap:5px}
 .schip{display:flex;align-items:center;gap:6px;padding:7px 13px;background:rgba(255,255,255,.94);color:var(--ink-soft);font-size:15px;font-weight:800;border-radius:999px;box-shadow:0 3px 0 rgba(84,66,58,.1);white-space:nowrap}
 .schip .dot{width:19px;height:19px;border-radius:50%;display:grid;place-items:center;font-size:11px;font-weight:900;background:#EFE6D2;color:#B7A88F}
@@ -445,19 +452,25 @@ img.ic{display:inline-block;vertical-align:middle}
 .df-pip.df-dot{border-radius:50%;background:#E84838}
 .df-pip img{display:block}
 .shop-name{font-size:15px;font-weight:900;color:#5A4632;margin:7px 0 8px;text-align:center;line-height:1.15;min-height:34px;display:flex;align-items:center}
-.shop-btn{width:100%;border:none;border-radius:12px;padding:9px 4px;font-size:15px;font-weight:900;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:5px;font-family:inherit}
+.shop-btn{width:100%;border:none;border-radius:12px;padding:12px 4px;font-size:15px;font-weight:900;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:5px;font-family:inherit}
 .shop-btn.buy{background:linear-gradient(#FFD76B,#F5B32E);color:#7A4A10;box-shadow:0 3px 0 #C98A1E}
 .shop-btn.buy.poor{background:#E7DFD0;color:#9A8E78;box-shadow:0 3px 0 #C9BFA8}
 .shop-btn.use{background:linear-gradient(#5BD47A,#2FB855);color:#fff;box-shadow:0 3px 0 #1E9242}
-.shop-btn.using{background:#E7F7EC;color:#2A9E50;border:2px solid #8FDCA4;box-shadow:none;padding:7px 4px}
+.shop-btn.using{background:#E7F7EC;color:#2A9E50;border:2px solid #8FDCA4;box-shadow:none;padding:10px 4px}
 .shop-btn .coin{width:17px;height:17px}
 /* 衣橱（工单09，收集册内） */
-.ward-tip{background:#EAF6FF;border:2px solid #BBDDF2;border-radius:14px;padding:10px 16px;font-size:15px;font-weight:800;color:#2F6E94;margin-bottom:16px}
-.ward-sec{margin-bottom:20px}
+.ward-tip{background:#EAF6FF;border:2px solid #BBDDF2;border-radius:14px;padding:10px 16px;font-size:15px;font-weight:800;color:#2F6E94;margin-bottom:12px}
+.ward-sec{margin-bottom:12px}
 .ward-sec .shop-grid{height:auto;grid-auto-rows:auto}
-.ward-sec .shop-grid .shop-card{height:auto;min-height:200px}
-.ward-sec .shop-grid.gdice .shop-card{min-height:188px}
-.ward-h{font-size:18px;font-weight:900;color:var(--ink-soft);margin:0 0 10px 4px}
+.ward-sec .shop-grid .shop-card{height:auto;min-height:186px}
+.ward-sec .shop-grid.gdice .shop-card{min-height:176px}
+/* 收集册面板高度有限：衣橱卡收紧，保证两行完整放下不滚动 */
+.ward-sec .shop-ic{width:58px;height:72px}
+.ward-sec .shop-dice{width:62px;height:62px}
+.ward-sec .shop-name{margin:4px 0 6px;min-height:30px}
+.ward-sec .shop-btn{padding:10px 4px}
+.ward-sec .shop-btn.using{padding:8px 4px}
+.ward-h{font-size:18px;font-weight:900;color:var(--ink-soft);margin:0 0 8px 4px}
 .ward-vis{flex:1;display:grid;place-items:center;align-self:stretch}
 .ward-vis.locked{opacity:.18;filter:grayscale(1)}
 .shop-card.unowned{background:#F4F1EA;border-color:#E0D9CA;box-shadow:0 5px 0 rgba(150,140,120,.2)}
@@ -685,9 +698,9 @@ function renderMap(){
     <div class="banner"><span class="stud" style="left:-7px;top:-7px"></span><span class="stud" style="right:-7px;top:-7px"></span><span class="stud" style="left:-7px;bottom:-7px"></span><span class="stud" style="right:-7px;bottom:-7px"></span>
       <h1>探 险 岛</h1><p>每天玩一小会儿 · 养成好习惯</p></div>
 
-    <div class="deco bob" style="left:472px;top:18px;z-index:12;cursor:pointer;text-align:center" onclick="route('shop')">
-      ${ic("shop",92)}
-      <div style="font-size:13px;font-weight:900;color:#7A4A10;background:#FFF3C4;border:2px solid #E8A92B;border-radius:999px;padding:1px 10px;margin-top:-4px">商店</div>
+    <div class="deco bob" style="left:472px;top:6px;z-index:25;cursor:pointer;text-align:center;pointer-events:auto" onclick="route('shop')">
+      ${ic("shop",72)}
+      <div style="font-size:13px;font-weight:900;color:#7A4A10;background:#FFF3C4;border:2px solid #E8A92B;border-radius:999px;padding:1px 10px;margin-top:-2px">商店</div>
     </div>
 
     <div class="pipes" style="position:absolute;left:0;right:0;bottom:208px;z-index:15">
@@ -802,13 +815,14 @@ function pipeZone(z){
 function pathNodes(){
   let html="";
   const NT=SUBJECTS.cn.total;
-  /* 节点只铺到 x≈889，给右侧「终点」城堡留出独立空间，避免压住末节点 */
-  const gap=Math.min(86,(889-68)/(NT-1));
+  /* 节点只铺到 x≈946，给右侧「终点」城堡留出独立空间；18 关后拉开间距避免圆点相连 */
+  const gap=Math.min(88,(946-62)/(NT-1));
   for(let i=0;i<NT;i++){
     const st=nodeState("cn",i);
-    const x=68+i*gap, y=60+Math.sin(i*0.85)*13;
+    const x=62+i*gap, y=60+Math.sin(i*0.9)*15;
     const cls = st==="done" ? (i%2? "done2":"done") : st;
-    const label = st==="done" ? `识字 ${i+1}` : (st==="cur" ? "下一关▶" : "");
+    /* 标签只保留当前关，避免多关卡名互相压盖 */
+    const label = st==="cur" ? "下一关▶" : "";
     html+=`<div class="lnode ${cls}" style="left:${x}px;top:${y}px" onclick="enterLevel('cn',${i})">
       ${st==="done"?'<span style="color:#fff;font-size:20px;font-weight:900">✓</span>':(st==="cur"?ic("starface",26):"")}
       <span class="lab">${label}</span></div>`;
@@ -953,6 +967,7 @@ function finishHTML(){
   // 旗杆起始抓位按星级（3 星最高）；滑下后统一到旗杆底
   const grip=stars===3?404:(stars===2?350:296);
   return `<div class="ceremony" id="ceremony">
+    <div class="cloud c1" style="top:70px"></div><div class="cloud c2" style="top:150px"></div>
     <div class="cer-title show">本关完成！</div>
     <button class="cer-skip" onclick="skipCeremony()">跳过 ▶</button>
     <div class="cer-ground"></div>
@@ -1379,6 +1394,7 @@ function listenHTML(st){
     <div id="lfb" style="min-height:40px;display:flex;align-items:center">
       <button class="speakopt" onclick="speak(window._listen.say);toast('🔊 朗读：'+window._listen.say)">${ic("speaker",18)} 想听点这里</button>
     </div>
+    <div class="mascot-row"><span class="m">${ic((SUBJECTS[S.lv.subject]||{}).guide||"panda",40)}</span><div class="say">点一点图片答题，答对有 <b style="color:var(--gold-ddk)">星星</b> 哦！答错了也没关系～</div></div>
   </div>`;
 }
 function pickListen(i){
@@ -1409,6 +1425,7 @@ function quizHTML(st){
       ${window._quiz.opts.map((o,i)=>`<div class="opt" id="opt${i}" onclick="pickOpt(${i})">${card(o)}</div>`).join("")}
     </div>
     <div id="fb" style="height:34px;font-size:22px;font-weight:900;color:var(--green-dk)"></div>
+    <div class="mascot-row"><span class="m">${ic((SUBJECTS[S.lv.subject]||{}).guide||"panda",40)}</span><div class="say">点一点图片答题，答对有 <b style="color:var(--gold-ddk)">星星</b> 哦！答错了也没关系～</div></div>
   </div>`;
 }
 function pickOpt(i){
