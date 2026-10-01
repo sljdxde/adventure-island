@@ -34,9 +34,9 @@ manifest = load_json(os.path.join(DESIGN, "design/assets/manifest.json"))
 manifest_icons = {p.split("/")[1].replace(".svg", "") for p in manifest["icons"]} | \
                  {p.split("/")[1].replace(".svg", "") for p in manifest["bg"]}
 
-SUBJECTS = [("cn_levels", 18), ("math_levels", 18), ("pinyin_levels", 15), ("english_levels", 15), ("astro_levels", 13)]
+SUBJECTS = [("cn_levels", 18), ("math_levels", 18), ("pinyin_levels", 15), ("english_levels", 15), ("astro_levels", 15)]
 # 可作答题型（teach/letter 是开场卡不算题库）
-QUESTION_KINDS = {"listen", "quiz", "count", "compare", "blend", "arith",
+QUESTION_KINDS = {"listen", "quiz", "count", "compare", "cmp", "blend", "arith",
                   "pattern", "split", "order", "neighbor", "memory", "dice"}
 subject_docs = {name: load_json(os.path.join(RES, name + ".json")) for name, _ in SUBJECTS}
 exps = load_json(os.path.join(RES, "experiments.json"))
@@ -59,6 +59,10 @@ def collect_icons(node):
         for v in node: collect_icons(v)
 
 for doc in list(subject_docs.values()) + [exps, coll]: collect_icons(doc)
+
+def has_art(o):
+    """选项/卡片有没有可视内容：图标、文字，或天文台用 CSS 画出来的天体（body/phase）"""
+    return bool(o.get("icon") or o.get("text") or o.get("body")) or o.get("phase") is not None
 
 def check_subject(doc, name, expect_levels):
     levels = doc["levels"]
@@ -130,7 +134,7 @@ def check_subject(doc, name, expect_levels):
                 if not isinstance(ans, int) or not (0 <= ans < len(opts)):
                     err(f"{sid} answer 非法")
                 for o in opts:
-                    if not (o.get("icon") or o.get("text")): err(f"{sid} 选项为空")
+                    if not has_art(o): err(f"{sid} 选项为空")
             elif kind == "count":
                 n = st.get("count"); opts = st.get("countOptions") or []
                 if not (3 <= (n or 0) <= 10): err(f"{sid} 数量 {n} 超范围")
@@ -143,8 +147,8 @@ def check_subject(doc, name, expect_levels):
                     err(f"{sid} letter 缺 letters/display/examples")
             elif kind == "listen":
                 # 视觉化找一找：目标大卡为 prompt 文字或 promptIcon 图片（不依赖声音可作答）
-                if not (st.get("prompt") or st.get("promptIcon")):
-                    err(f"{sid} listen 缺视觉目标 prompt/promptIcon")
+                if not (st.get("prompt") or st.get("promptIcon") or st.get("promptBody")):
+                    err(f"{sid} listen 缺视觉目标 prompt/promptIcon/promptBody")
                 if not st.get("speakText"): err(f"{sid} listen 缺 speakText（可选朗读）")
                 opts = st.get("options") or []
                 if len(opts) != 3 or not isinstance(st.get("answer"), int) or not (0 <= st["answer"] < 3):
@@ -157,7 +161,10 @@ def check_subject(doc, name, expect_levels):
                 if len(opts) != 3 or not isinstance(ans, int) or not (0 <= ans < 3):
                     err(f"{sid} pattern 选项/答案非法")
                 for o in opts:
-                    if not o.get("icon"): err(f"{sid} pattern 选项缺 icon")
+                    if not has_art(o): err(f"{sid} pattern 选项缺可视内容")
+                if isinstance(seq[0], dict):
+                    for x in seq:
+                        if not has_art(x): err(f"{sid} pattern 序列项缺可视内容")
             elif kind == "split":
                 t, p = st.get("total"), st.get("part")
                 if not isinstance(t, int) or not isinstance(p, int) or not (1 <= p < t <= 10):
@@ -167,8 +174,16 @@ def check_subject(doc, name, expect_levels):
                     if rest not in (st.get("arithOptions") or []):
                         err(f"{sid} split 选项不含正确答案 {rest}")
             elif kind == "order":
+                its = st.get("items")
+                if its:      # 天体/卡片排序：按 v 排，显示 name（天文台「离太阳由近到远」）
+                    if not (3 <= len(its) <= 5): err(f"{sid} order items 应 3-5 个，实际 {len(its)}")
+                    if len({x.get("v") for x in its}) != len(its):
+                        err(f"{sid} order items 的 v 值必须互不相同（排不出唯一顺序）")
+                    for x in its:
+                        if not (x.get("name") and has_art(x)): err(f"{sid} order items 项缺 name 或可视内容")
+                        if not isinstance(x.get("v"), (int, float)): err(f"{sid} order items 项缺数值 v")
                 nums = st.get("nums") or []
-                if len(nums) != 3 or len(set(nums)) != 3:
+                if not its and (len(nums) != 3 or len(set(nums)) != 3):
                     err(f"{sid} order nums 应为 3 个不同数字 {nums}")
                 if st.get("dir") not in ("up", "down"):
                     err(f"{sid} order dir 非法 {st.get('dir')}")
@@ -190,8 +205,8 @@ def check_subject(doc, name, expect_levels):
                 if sorted(keys) != sorted(list(set(keys)) * 2):
                     err(f"{sid} memory 牌必须两两同 key：{keys}")
                 for c in cards:
-                    if not (c.get("icon") or c.get("text")):
-                        err(f"{sid} memory 牌缺少内容（icon/text 至少一项）")
+                    if not has_art(c):
+                        err(f"{sid} memory 牌缺少内容（icon/text/body 至少一项）")
             elif kind == "dice":
                 n = st.get("count"); opts = st.get("countOptions") or []
                 if not (1 <= (n or 0) <= 6): err(f"{sid} dice 点数 {n} 超范围")
@@ -219,6 +234,21 @@ def check_subject(doc, name, expect_levels):
                 expect = "same" if l == r else ("left" if l > r else "right")
                 if st.get("answerKey") != expect:
                     err(f"{sid} 答案 {st.get('answerKey')} 与数量不符（应为 {expect}）")
+            elif kind == "cmp":
+                # 数据比一比（天文台）：一行一个天体，条形/圆盘按 value 走，点一行即作答
+                rows = st.get("rows") or []
+                if not (3 <= len(rows) <= 5): err(f"{sid} cmp 行数应 3-5，实际 {len(rows)}")
+                if st.get("viz") not in ("bar", "disc"): err(f"{sid} cmp viz 非法 {st.get('viz')}")
+                ans = st.get("answer")
+                if not isinstance(ans, int) or not (0 <= ans < len(rows)): err(f"{sid} cmp answer 非法")
+                for r in rows:
+                    if not (r.get("name") and isinstance(r.get("value"), (int, float)) and has_art(r)):
+                        err(f"{sid} cmp 行缺 name/value/可视内容: {r}")
+                vals = [abs(r["value"]) for r in rows]
+                if len(set(vals)) != len(vals): err(f"{sid} cmp 数值重复，比不出结果: {vals}")
+                want = max(vals) if st.get("ext") == "max" else (min(vals) if st.get("ext") == "min" else None)
+                if want is not None and abs(rows[ans]["value"]) != want:
+                    err(f"{sid} cmp 答案与 ext={st['ext']} 不符（应为 {want}）")
             else:
                 err(f"{sid} 未知步骤类型 {kind}")
         # 修订（试玩反馈轮）：每关题库扩产至 ≥5 道可作答变体——不再靠生成器碰巧达标
@@ -244,6 +274,37 @@ for exp in exps["experiments"]:
     for it in exp["items"]:
         if not it.get("fact"): err(f"[实验] 物品 {it['id']} 缺 fact")
 ok(f"[experiments] {len(exps['experiments'])} 个实验校验完成")
+
+# 科学卡获得路径闸门（2026-10-01 科学岛修复）：collection 的 science 组每张卡必须能通过
+# 实验物品（sci-<物品id>）或小课堂问答（quiz[].card）获得——防「白送位 / 永远点不亮的卡 /
+# collect 与图鉴 id 错位」复发
+sci_items = next(g["items"] for g in coll["groups"] if g["id"] == "science")
+sci_ids = {it["id"] for it in sci_items}
+earnable = set()
+for exp in exps["experiments"]:
+    earnable |= {f"sci-{it['id']}" for it in exp["items"]}
+    for q in exp.get("quiz") or []:
+        tag = f"[experiment/{exp['id']}/quiz/{q.get('id','?')}]"
+        card = q.get("card")
+        if card not in sci_ids:
+            err(f"{tag} card {card} 不在科学图鉴")
+        elif card in earnable:
+            err(f"{tag} card {card} 有重复获得路径")
+        else:
+            earnable.add(card)
+        opts = q.get("options") or []
+        if len(opts) != 3: err(f"{tag} 选项数 {len(opts)} != 3")
+        ans = q.get("answer")
+        if not isinstance(ans, int) or isinstance(ans, bool) or not (0 <= ans < len(opts)):
+            err(f"{tag} answer 非法")
+        if not q.get("question") or not q.get("fact"): err(f"{tag} 缺 question/fact")
+lost = sci_ids - earnable
+if lost:
+    err(f"[science] 以下现象卡没有任何获得路径（实验物品/小课堂问答）：{sorted(lost)}")
+else:
+    n_item = sum(len(e["items"]) for e in exps["experiments"])
+    n_quiz = sum(len(e.get("quiz") or []) for e in exps["experiments"])
+    ok(f"[science] {len(sci_ids)} 张现象卡全部有获得路径（实验 {n_item} + 小课堂 {n_quiz}）")
 
 group_ids = [g["id"] for g in coll["groups"]]
 if group_ids != ["science", "sticker", "hanzi", "pinyin", "english", "astro", "badge"]: err(f"[collection] 分组顺序异常 {group_ids}")

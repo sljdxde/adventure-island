@@ -11,7 +11,7 @@
         {
           "id": "math-0-c",
           "kind": "count",
-          "question": "池塘里有几只小鸭（点一点，数数看）",
+          "question": "池塘里有几只小鸭？点一点",
           "duckIcon": "duck",
           "count": 3,
           "countRange": [
@@ -55,8 +55,8 @@
         {
           "id": "math-0-c2",
           "kind": "count",
-          "question": "池塘里有几只小鸭（点一点，数数看）",
-          "duckIcon": "duck",
+          "question": "天上有几个气球？点一点",
+          "duckIcon": "balloon",
           "count": 3,
           "countRange": [
             2,
@@ -67,13 +67,13 @@
             2,
             3
           ],
-          "backdrop": "pond",
-          "unit": "只"
+          "backdrop": "sky",
+          "unit": "个"
         },
         {
           "id": "math-0-cmp2",
           "kind": "compare",
-          "question": "哪边的水果更多？",
+          "question": "哪一边更多？",
           "leftIcon": "banana",
           "leftCount": 1,
           "rightIcon": "apple",
@@ -81,11 +81,11 @@
           "compareOptions": [
             {
               "key": "left",
-              "label": "苹果多"
+              "label": "香蕉多"
             },
             {
               "key": "right",
-              "label": "香蕉多"
+              "label": "苹果多"
             },
             {
               "key": "same",
@@ -94,25 +94,31 @@
           ],
           "answerKey": "right",
           "hint": "一个对着一个，比一比",
-          "praise": "香蕉多，答对啦！"
+          "praise": "苹果多，答对啦！"
         },
         {
-          "id": "math-0-c3",
-          "kind": "count",
-          "question": "池塘里有几只小鸭（点一点，数数看）",
-          "duckIcon": "duck",
-          "count": 4,
-          "countRange": [
-            2,
-            4
+          "id": "math-0-f0-pat",
+          "kind": "pattern",
+          "seq": [
+            "star",
+            "moon",
+            "star"
           ],
-          "countOptions": [
-            3,
-            4,
-            5
+          "question": "找规律：下一个是哪个？",
+          "options": [
+            {
+              "icon": "star"
+            },
+            {
+              "icon": "moon"
+            },
+            {
+              "icon": "candy"
+            }
           ],
-          "backdrop": "pond",
-          "unit": "只"
+          "answer": 1,
+          "hint": "先读一读前面几个，找一找谁在轮流出现",
+          "praise": "规律找对啦，小侦探！"
         }
       ],
       "board": {
@@ -140,11 +146,11 @@
             "type": "coin"
           },
           {
-            "type": "question",
-            "step": "math-0-c3"
+            "type": "chest"
           },
           {
-            "type": "chest"
+            "type": "question",
+            "step": "math-0-f0-pat"
           }
         ]
       }
@@ -157,7 +163,7 @@
         {
           "id": "math-1-c",
           "kind": "count",
-          "question": "盘子里有几颗糖（点一点，数数看）",
+          "question": "盘子里有几颗糖？点一点",
           "duckIcon": "candy",
           "count": 4,
           "countRange": [
@@ -188,8 +194,8 @@
         {
           "id": "math-1-c2",
           "kind": "count",
-          "question": "盘子里有几颗糖（点一点，数数看）",
-          "duckIcon": "candy",
+          "question": "夜空里有几颗星星？点一点",
+          "duckIcon": "star",
           "count": 3,
           "countRange": [
             2,
@@ -200,7 +206,7 @@
             2,
             3
           ],
-          "backdrop": "grass",
+          "backdrop": "night",
           "unit": "颗"
         },
         {
@@ -217,22 +223,28 @@
           "praise": "排队排好啦！"
         },
         {
-          "id": "math-1-c3",
-          "kind": "count",
-          "question": "盘子里有几颗糖（点一点，数数看）",
-          "duckIcon": "candy",
-          "count": 5,
-          "countRange": [
-            3,
-            5
+          "id": "math-1-f0-pat",
+          "kind": "pattern",
+          "seq": [
+            "candy",
+            "apple",
+            "candy"
           ],
-          "countOptions": [
-            4,
-            5,
-            6
+          "question": "谁在轮流出现？点下一个",
+          "options": [
+            {
+              "icon": "candy"
+            },
+            {
+              "icon": "apple"
+            },
+            {
+              "icon": "star"
+            }
           ],
-          "backdrop": "grass",
-          "unit": "颗"
+          "answer": 1,
+          "hint": "先读一读前面几个，找一找谁在轮流出现",
+          "praise": "规律找对啦，小侦探！"
         }
       ],
       "board": {
@@ -242,22 +254,22 @@
             "step": "math-1-o1"
           },
           {
-            "type": "question",
-            "step": "math-1-c2"
+            "type": "coin"
           },
           {
-            "type": "coin"
+            "type": "question",
+            "step": "math-1-c2"
           },
           {
             "type": "question",
             "step": "math-1-x1-o"
           },
           {
-            "type": "question",
-            "step": "math-1-c3"
+            "type": "coin"
           },
           {
-            "type": "coin"
+            "type": "question",
+            "step": "math-1-f0-pat"
           },
           {
             "type": "question",
@@ -277,7 +289,7 @@
         {
           "id": "math-2-c",
           "kind": "count",
-          "question": "果园里摘了几个苹果（点一点，数数看）",
+          "question": "果园里摘了几个苹果？点一点",
           "duckIcon": "apple",
           "count": 5,
           "countRange": [
@@ -311,8 +323,8 @@
         {
           "id": "math-2-c2",
           "kind": "count",
-          "question": "果园里摘了几个苹果（点一点，数数看）",
-          "duckIcon": "apple",
+          "question": "轨道上有几辆小火车？点一点",
+          "duckIcon": "train",
           "count": 4,
           "countRange": [
             2,
@@ -324,7 +336,7 @@
             4
           ],
           "backdrop": "grass",
-          "unit": "个"
+          "unit": "辆"
         },
         {
           "id": "math-2-x1-s",
@@ -343,22 +355,28 @@
           "praise": "分对啦，6 可以分成 2 和 4！"
         },
         {
-          "id": "math-2-c3",
-          "kind": "count",
-          "question": "果园里摘了几个苹果（点一点，数数看）",
-          "duckIcon": "apple",
-          "count": 6,
-          "countRange": [
-            4,
-            6
+          "id": "math-2-f0-pat",
+          "kind": "pattern",
+          "seq": [
+            "sun",
+            "moon",
+            "sun"
           ],
-          "countOptions": [
-            5,
-            6,
-            7
+          "question": "读一读前面几个，接下来是谁？",
+          "options": [
+            {
+              "icon": "sun"
+            },
+            {
+              "icon": "moon"
+            },
+            {
+              "icon": "candy"
+            }
           ],
-          "backdrop": "grass",
-          "unit": "个"
+          "answer": 1,
+          "hint": "先读一读前面几个，找一找谁在轮流出现",
+          "praise": "规律找对啦，小侦探！"
         }
       ],
       "board": {
@@ -372,18 +390,15 @@
             "step": "math-2-x1-s"
           },
           {
-            "type": "coin"
+            "type": "question",
+            "step": "math-2-f0-pat"
           },
           {
-            "type": "question",
-            "step": "math-2-c3"
+            "type": "coin"
           },
           {
             "type": "question",
             "step": "math-2-c"
-          },
-          {
-            "type": "coin"
           },
           {
             "type": "question",
@@ -391,6 +406,9 @@
           },
           {
             "type": "rest"
+          },
+          {
+            "type": "coin"
           }
         ]
       }
@@ -447,8 +465,8 @@
         {
           "id": "math-3-c2",
           "kind": "count",
-          "question": "天上有几个气球（点一点，数数看）",
-          "duckIcon": "balloon",
+          "question": "花园里开了几朵花？点一点",
+          "duckIcon": "flower",
           "count": 3,
           "countRange": [
             2,
@@ -459,13 +477,13 @@
             2,
             3
           ],
-          "backdrop": "sky",
-          "unit": "个"
+          "backdrop": "grass",
+          "unit": "朵"
         },
         {
           "id": "math-3-cmp2",
           "kind": "compare",
-          "question": "两边气球哪边多？",
+          "question": "哪一边更多？",
           "leftIcon": "balloon",
           "leftCount": 5,
           "rightIcon": "balloon",
@@ -496,7 +514,7 @@
             0,
             6
           ],
-          "question": "想一想：藏起来的数字是几？",
+          "question": "两个数中间，躲着谁？",
           "arithOptions": [
             4,
             5,
@@ -514,11 +532,11 @@
             "step": "math-3-cmp2"
           },
           {
-            "type": "question",
-            "step": "math-3-x2-n"
+            "type": "coin"
           },
           {
-            "type": "coin"
+            "type": "question",
+            "step": "math-3-x2-n"
           },
           {
             "type": "question",
@@ -532,11 +550,11 @@
             "type": "chest"
           },
           {
-            "type": "question",
-            "step": "math-3-c2"
+            "type": "mushroom"
           },
           {
-            "type": "mushroom"
+            "type": "question",
+            "step": "math-3-c2"
           }
         ]
       }
@@ -549,7 +567,7 @@
         {
           "id": "math-4-c",
           "kind": "count",
-          "question": "夜空里有几颗星星（点一点，数数看）",
+          "question": "夜空里有几颗星星？点一点",
           "duckIcon": "star",
           "count": 6,
           "countRange": [
@@ -593,8 +611,8 @@
         {
           "id": "math-4-c2",
           "kind": "count",
-          "question": "夜空里有几颗星星（点一点，数数看）",
-          "duckIcon": "star",
+          "question": "礼盒里有几颗爱心糖？点一点",
+          "duckIcon": "heart",
           "count": 5,
           "countRange": [
             3,
@@ -605,13 +623,13 @@
             4,
             5
           ],
-          "backdrop": "night",
+          "backdrop": "grass",
           "unit": "颗"
         },
         {
           "id": "math-4-cmp2",
           "kind": "compare",
-          "question": "星星和月亮哪边多？",
+          "question": "哪一边更多？",
           "leftIcon": "moon",
           "leftCount": 4,
           "rightIcon": "star",
@@ -619,11 +637,11 @@
           "compareOptions": [
             {
               "key": "left",
-              "label": "星星多"
+              "label": "月亮多"
             },
             {
               "key": "right",
-              "label": "月亮多"
+              "label": "星星多"
             },
             {
               "key": "same",
@@ -632,32 +650,38 @@
           ],
           "answerKey": "right",
           "hint": "一个对着一个，比一比",
-          "praise": "月亮多，答对啦！"
+          "praise": "星星多，答对啦！"
         },
         {
-          "id": "math-4-c3",
-          "kind": "count",
-          "question": "夜空里有几颗星星（点一点，数数看）",
-          "duckIcon": "star",
-          "count": 7,
-          "countRange": [
-            5,
-            7
+          "id": "math-4-f0-pat",
+          "kind": "pattern",
+          "seq": [
+            "duck",
+            "panda",
+            "duck"
           ],
-          "countOptions": [
-            6,
-            7,
-            8
+          "question": "找规律：下一个是哪个？",
+          "options": [
+            {
+              "icon": "duck"
+            },
+            {
+              "icon": "panda"
+            },
+            {
+              "icon": "candy"
+            }
           ],
-          "backdrop": "night",
-          "unit": "颗"
+          "answer": 1,
+          "hint": "先读一读前面几个，找一找谁在轮流出现",
+          "praise": "规律找对啦，小侦探！"
         }
       ],
       "board": {
         "spaces": [
           {
             "type": "question",
-            "step": "math-4-c3"
+            "step": "math-4-f0-pat"
           },
           {
             "type": "question",
@@ -675,14 +699,14 @@
             "step": "math-4-c2"
           },
           {
-            "type": "mushroom"
-          },
-          {
             "type": "question",
             "step": "math-4-cmp2"
           },
           {
             "type": "rest"
+          },
+          {
+            "type": "mushroom"
           }
         ]
       }
@@ -695,7 +719,7 @@
         {
           "id": "math-r0-0",
           "kind": "count",
-          "question": "池塘里有几只小鸭（点一点，数数看）",
+          "question": "池塘里有几只小鸭？点一点",
           "duckIcon": "duck",
           "count": 3,
           "countRange": [
@@ -713,7 +737,7 @@
         {
           "id": "math-r0-1",
           "kind": "count",
-          "question": "盘子里有几颗糖（点一点，数数看）",
+          "question": "盘子里有几颗糖？点一点",
           "duckIcon": "candy",
           "count": 4,
           "countRange": [
@@ -731,7 +755,7 @@
         {
           "id": "math-r0-2",
           "kind": "count",
-          "question": "果园里摘了几个苹果（点一点，数数看）",
+          "question": "果园里摘了几个苹果？点一点",
           "duckIcon": "apple",
           "count": 5,
           "countRange": [
@@ -775,7 +799,7 @@
         {
           "id": "math-r0-4",
           "kind": "count",
-          "question": "夜空里有几颗星星（点一点，数数看）",
+          "question": "夜空里有几颗星星？点一点",
           "duckIcon": "star",
           "count": 6,
           "countRange": [
@@ -846,14 +870,14 @@
             "step": "math-r0-4"
           },
           {
-            "type": "chest"
-          },
-          {
             "type": "question",
             "step": "math-r0-5"
           },
           {
             "type": "mushroom"
+          },
+          {
+            "type": "chest"
           }
         ]
       },
@@ -867,7 +891,7 @@
         {
           "id": "math-5-c",
           "kind": "count",
-          "question": "轨道上有几辆小火车（点一点，数数看）",
+          "question": "轨道上有几辆小火车？点一点",
           "duckIcon": "train",
           "count": 7,
           "countRange": [
@@ -911,8 +935,8 @@
         {
           "id": "math-5-c2",
           "kind": "count",
-          "question": "轨道上有几辆小火车（点一点，数数看）",
-          "duckIcon": "train",
+          "question": "宝箱里有几枚金币？点一点",
+          "duckIcon": "coin",
           "count": 6,
           "countRange": [
             4,
@@ -923,8 +947,8 @@
             5,
             6
           ],
-          "backdrop": "grass",
-          "unit": "辆"
+          "backdrop": "night",
+          "unit": "枚"
         },
         {
           "id": "math-5-x1-o",
@@ -948,7 +972,7 @@
             4,
             5
           ],
-          "question": "掷骰子：掷出了几点？",
+          "question": "骰子停下来是几点？",
           "hint": "一个一个数红点点",
           "praise": "对，是 4 点！"
         }
@@ -958,6 +982,9 @@
           {
             "type": "question",
             "step": "math-5-x2-d"
+          },
+          {
+            "type": "coin"
           },
           {
             "type": "question",
@@ -975,11 +1002,11 @@
             "step": "math-5-d1"
           },
           {
-            "type": "chest"
-          },
-          {
             "type": "question",
             "step": "math-5-c2"
+          },
+          {
+            "type": "chest"
           },
           {
             "type": "rest"
@@ -999,7 +1026,7 @@
         {
           "id": "math-6-c",
           "kind": "count",
-          "question": "花园里开了几朵花（点一点，数数看）",
+          "question": "花园里开了几朵花？点一点",
           "duckIcon": "flower",
           "count": 8,
           "countRange": [
@@ -1033,8 +1060,8 @@
         {
           "id": "math-6-c2",
           "kind": "count",
-          "question": "花园里开了几朵花（点一点，数数看）",
-          "duckIcon": "flower",
+          "question": "池塘里有几只小鸭？点一点",
+          "duckIcon": "duck",
           "count": 7,
           "countRange": [
             5,
@@ -1045,8 +1072,8 @@
             6,
             7
           ],
-          "backdrop": "grass",
-          "unit": "朵"
+          "backdrop": "pond",
+          "unit": "只"
         },
         {
           "id": "math-6-x1-s",
@@ -1065,22 +1092,28 @@
           "praise": "分对啦，9 可以分成 3 和 6！"
         },
         {
-          "id": "math-6-c3",
-          "kind": "count",
-          "question": "花园里开了几朵花（点一点，数数看）",
-          "duckIcon": "flower",
-          "count": 9,
-          "countRange": [
-            7,
-            9
+          "id": "math-6-f0-pat",
+          "kind": "pattern",
+          "seq": [
+            "star",
+            "moon",
+            "star"
           ],
-          "countOptions": [
-            8,
-            9,
-            10
+          "question": "读一读前面几个，接下来是谁？",
+          "options": [
+            {
+              "icon": "star"
+            },
+            {
+              "icon": "moon"
+            },
+            {
+              "icon": "candy"
+            }
           ],
-          "backdrop": "grass",
-          "unit": "朵"
+          "answer": 1,
+          "hint": "先读一读前面几个，找一找谁在轮流出现",
+          "praise": "规律找对啦，小侦探！"
         }
       ],
       "board": {
@@ -1102,17 +1135,17 @@
           },
           {
             "type": "question",
-            "step": "math-6-c3"
+            "step": "math-6-f0-pat"
           },
           {
             "type": "coin"
           },
           {
-            "type": "question",
-            "step": "math-6-c"
+            "type": "chest"
           },
           {
-            "type": "chest"
+            "type": "question",
+            "step": "math-6-c"
           }
         ]
       }
@@ -1125,7 +1158,7 @@
         {
           "id": "math-7-c",
           "kind": "count",
-          "question": "礼盒里有几颗爱心糖（点一点，数数看）",
+          "question": "礼盒里有几颗爱心糖？点一点",
           "duckIcon": "heart",
           "count": 9,
           "countRange": [
@@ -1169,8 +1202,8 @@
         {
           "id": "math-7-c2",
           "kind": "count",
-          "question": "礼盒里有几颗爱心糖（点一点，数数看）",
-          "duckIcon": "heart",
+          "question": "盘子里有几颗糖？点一点",
+          "duckIcon": "candy",
           "count": 8,
           "countRange": [
             6,
@@ -1206,7 +1239,7 @@
             5,
             6
           ],
-          "question": "掷骰子：掷出了几点？",
+          "question": "骰子停下来是几点？",
           "hint": "一个一个数红点点",
           "praise": "对，是 5 点！"
         }
@@ -1218,26 +1251,29 @@
             "step": "math-7-o3"
           },
           {
-            "type": "question",
-            "step": "math-7-d2"
+            "type": "coin"
           },
           {
-            "type": "coin"
+            "type": "question",
+            "step": "math-7-d2"
           },
           {
             "type": "question",
             "step": "math-7-c2"
           },
           {
+            "type": "coin"
+          },
+          {
             "type": "question",
             "step": "math-7-x1-o"
           },
           {
-            "type": "mushroom"
-          },
-          {
             "type": "question",
             "step": "math-7-x2-d"
+          },
+          {
+            "type": "mushroom"
           },
           {
             "type": "question",
@@ -1254,7 +1290,7 @@
         {
           "id": "math-8-c",
           "kind": "count",
-          "question": "宝箱里有几枚金币（点一点，数数看）",
+          "question": "宝箱里有几枚金币？点一点",
           "duckIcon": "coin",
           "count": 10,
           "countRange": [
@@ -1296,8 +1332,8 @@
         {
           "id": "math-8-c2",
           "kind": "count",
-          "question": "宝箱里有几枚金币（点一点，数数看）",
-          "duckIcon": "coin",
+          "question": "果园里摘了几个苹果？点一点",
+          "duckIcon": "apple",
           "count": 9,
           "countRange": [
             7,
@@ -1308,8 +1344,8 @@
             8,
             9
           ],
-          "backdrop": "night",
-          "unit": "枚"
+          "backdrop": "grass",
+          "unit": "个"
         },
         {
           "id": "math-8-x1-p",
@@ -1317,10 +1353,9 @@
           "seq": [
             "star",
             "moon",
-            "star",
             "star"
           ],
-          "question": "找规律：下一个是哪个？",
+          "question": "谁在轮流出现？点下一个",
           "options": [
             {
               "icon": "star"
@@ -1332,26 +1367,25 @@
               "icon": "candy"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "先读一读前面几个，找一找谁在轮流出现",
           "praise": "规律找对啦，小侦探！"
         },
         {
-          "id": "math-8-c3",
-          "kind": "count",
-          "question": "宝箱里有几枚金币（点一点，数数看）",
-          "duckIcon": "coin",
-          "count": 10,
-          "countRange": [
-            8,
-            10
+          "id": "math-8-f0-spl",
+          "kind": "split",
+          "total": 7,
+          "part": 4,
+          "leftIcon": "candy",
+          "unit": "颗",
+          "question": "7 颗糖分两盘，这边 4 颗，那边几颗？",
+          "arithOptions": [
+            2,
+            3,
+            4
           ],
-          "countOptions": [
-            9,
-            10
-          ],
-          "backdrop": "night",
-          "unit": "枚"
+          "hint": "一共 7 颗，左边有 4 颗",
+          "praise": "分对啦，7 可以分成 4 和 3！"
         }
       ],
       "board": {
@@ -1362,21 +1396,18 @@
           },
           {
             "type": "question",
-            "step": "math-8-c3"
-          },
-          {
-            "type": "coin"
+            "step": "math-8-f0-spl"
           },
           {
             "type": "question",
             "step": "math-8-c"
           },
           {
-            "type": "question",
-            "step": "math-8-p1"
+            "type": "coin"
           },
           {
-            "type": "coin"
+            "type": "question",
+            "step": "math-8-p1"
           },
           {
             "type": "question",
@@ -1384,6 +1415,9 @@
           },
           {
             "type": "rest"
+          },
+          {
+            "type": "coin"
           }
         ]
       }
@@ -1453,7 +1487,7 @@
         {
           "id": "math-9-x0-q",
           "kind": "quiz",
-          "question": "哪个数字最小？",
+          "question": "这几个数里谁最小？",
           "options": [
             {
               "text": "4"
@@ -1472,7 +1506,7 @@
         {
           "id": "math-9-x1-q",
           "kind": "quiz",
-          "question": "哪个数字最大？",
+          "question": "这几个数里谁最大？",
           "options": [
             {
               "text": "6"
@@ -1515,11 +1549,11 @@
             "step": "math-9-x0-q"
           },
           {
-            "type": "question",
-            "step": "math-9-x1-q"
+            "type": "coin"
           },
           {
-            "type": "coin"
+            "type": "question",
+            "step": "math-9-x1-q"
           },
           {
             "type": "question",
@@ -1537,11 +1571,11 @@
             "step": "math-9-q2"
           },
           {
-            "type": "mushroom"
-          },
-          {
             "type": "question",
             "step": "math-9-q3"
+          },
+          {
+            "type": "mushroom"
           }
         ]
       }
@@ -1554,7 +1588,7 @@
         {
           "id": "math-r1-0",
           "kind": "count",
-          "question": "池塘里有几只小鸭（点一点，数数看）",
+          "question": "池塘里有几只小鸭？点一点",
           "duckIcon": "duck",
           "count": 3,
           "countRange": [
@@ -1572,7 +1606,7 @@
         {
           "id": "math-r1-1",
           "kind": "count",
-          "question": "盘子里有几颗糖（点一点，数数看）",
+          "question": "盘子里有几颗糖？点一点",
           "duckIcon": "candy",
           "count": 4,
           "countRange": [
@@ -1590,7 +1624,7 @@
         {
           "id": "math-r1-2",
           "kind": "count",
-          "question": "果园里摘了几个苹果（点一点，数数看）",
+          "question": "果园里摘了几个苹果？点一点",
           "duckIcon": "apple",
           "count": 5,
           "countRange": [
@@ -1634,7 +1668,7 @@
         {
           "id": "math-r1-4",
           "kind": "count",
-          "question": "夜空里有几颗星星（点一点，数数看）",
+          "question": "夜空里有几颗星星？点一点",
           "duckIcon": "star",
           "count": 6,
           "countRange": [
@@ -1652,7 +1686,7 @@
         {
           "id": "math-r1-5",
           "kind": "count",
-          "question": "轨道上有几辆小火车（点一点，数数看）",
+          "question": "轨道上有几辆小火车？点一点",
           "duckIcon": "train",
           "count": 7,
           "countRange": [
@@ -1675,22 +1709,22 @@
             "step": "math-r1-1"
           },
           {
-            "type": "question",
-            "step": "math-r1-2"
+            "type": "coin"
           },
           {
-            "type": "coin"
+            "type": "question",
+            "step": "math-r1-2"
           },
           {
             "type": "question",
             "step": "math-r1-3"
           },
           {
-            "type": "question",
-            "step": "math-r1-4"
+            "type": "coin"
           },
           {
-            "type": "coin"
+            "type": "question",
+            "step": "math-r1-4"
           },
           {
             "type": "question",
@@ -1700,11 +1734,11 @@
             "type": "chest"
           },
           {
-            "type": "question",
-            "step": "math-r1-0"
+            "type": "rest"
           },
           {
-            "type": "rest"
+            "type": "question",
+            "step": "math-r1-0"
           }
         ]
       },
@@ -1784,17 +1818,28 @@
           "praise": "算对啦，等于 4！"
         },
         {
-          "id": "math-10-x90-o",
-          "kind": "order",
-          "nums": [
-            2,
-            5,
-            3
+          "id": "math-10-f0-pat",
+          "kind": "pattern",
+          "seq": [
+            "duck",
+            "panda",
+            "duck"
           ],
-          "dir": "up",
-          "question": "从小到大，依次点一点",
-          "hint": "从小到大：小的排前面",
-          "praise": "排队排好啦！"
+          "question": "读一读前面几个，接下来是谁？",
+          "options": [
+            {
+              "icon": "duck"
+            },
+            {
+              "icon": "panda"
+            },
+            {
+              "icon": "candy"
+            }
+          ],
+          "answer": 1,
+          "hint": "先读一读前面几个，找一找谁在轮流出现",
+          "praise": "规律找对啦，小侦探！"
         }
       ],
       "board": {
@@ -1819,14 +1864,14 @@
             "step": "math-10-x1-a"
           },
           {
-            "type": "mushroom"
-          },
-          {
             "type": "question",
-            "step": "math-10-x90-o"
+            "step": "math-10-f0-pat"
           },
           {
             "type": "rest"
+          },
+          {
+            "type": "mushroom"
           }
         ]
       }
@@ -1903,17 +1948,28 @@
           "praise": "分对啦，7 可以分成 2 和 5！"
         },
         {
-          "id": "math-11-x90-o",
-          "kind": "order",
-          "nums": [
-            2,
-            5,
-            3
+          "id": "math-11-f0-pat",
+          "kind": "pattern",
+          "seq": [
+            "balloon",
+            "gift",
+            "balloon"
           ],
-          "dir": "up",
-          "question": "从小到大，依次点一点",
-          "hint": "从小到大：小的排前面",
-          "praise": "排队排好啦！"
+          "question": "排列里藏着小秘密，下一个是？",
+          "options": [
+            {
+              "icon": "balloon"
+            },
+            {
+              "icon": "gift"
+            },
+            {
+              "icon": "candy"
+            }
+          ],
+          "answer": 1,
+          "hint": "先读一读前面几个，找一找谁在轮流出现",
+          "praise": "规律找对啦，小侦探！"
         }
       ],
       "board": {
@@ -1923,11 +1979,14 @@
             "step": "math-11-s3"
           },
           {
+            "type": "coin"
+          },
+          {
             "type": "question",
             "step": "math-11-x0-a"
           },
           {
-            "type": "coin"
+            "type": "chest"
           },
           {
             "type": "question",
@@ -1935,10 +1994,7 @@
           },
           {
             "type": "question",
-            "step": "math-11-x90-o"
-          },
-          {
-            "type": "chest"
+            "step": "math-11-f0-pat"
           },
           {
             "type": "question",
@@ -2024,17 +2080,28 @@
           "praise": "算对啦，等于 3！"
         },
         {
-          "id": "math-12-x90-o",
-          "kind": "order",
-          "nums": [
-            2,
-            5,
-            3
+          "id": "math-12-f0-pat",
+          "kind": "pattern",
+          "seq": [
+            "star",
+            "moon",
+            "star"
           ],
-          "dir": "up",
-          "question": "从小到大，依次点一点",
-          "hint": "从小到大：小的排前面",
-          "praise": "排队排好啦！"
+          "question": "找规律：下一个是哪个？",
+          "options": [
+            {
+              "icon": "star"
+            },
+            {
+              "icon": "moon"
+            },
+            {
+              "icon": "candy"
+            }
+          ],
+          "answer": 1,
+          "hint": "先读一读前面几个，找一找谁在轮流出现",
+          "praise": "规律找对啦，小侦探！"
         }
       ],
       "board": {
@@ -2052,7 +2119,7 @@
           },
           {
             "type": "question",
-            "step": "math-12-x90-o"
+            "step": "math-12-f0-pat"
           },
           {
             "type": "question",
@@ -2062,11 +2129,11 @@
             "type": "coin"
           },
           {
-            "type": "question",
-            "step": "math-12-a-42"
+            "type": "chest"
           },
           {
-            "type": "chest"
+            "type": "question",
+            "step": "math-12-a-42"
           }
         ]
       }
@@ -2136,7 +2203,7 @@
             0,
             9
           ],
-          "question": "想一想：藏起来的数字是几？",
+          "question": "两个数中间，躲着谁？",
           "arithOptions": [
             7,
             8,
@@ -2147,17 +2214,28 @@
           "praise": "是 8！7 和 9 的中间是 8！"
         },
         {
-          "id": "math-13-x90-o",
-          "kind": "order",
-          "nums": [
-            2,
-            5,
-            3
+          "id": "math-13-f0-pat",
+          "kind": "pattern",
+          "seq": [
+            "candy",
+            "apple",
+            "candy"
           ],
-          "dir": "up",
-          "question": "从小到大，依次点一点",
-          "hint": "从小到大：小的排前面",
-          "praise": "排队排好啦！"
+          "question": "谁在轮流出现？点下一个",
+          "options": [
+            {
+              "icon": "candy"
+            },
+            {
+              "icon": "apple"
+            },
+            {
+              "icon": "star"
+            }
+          ],
+          "answer": 1,
+          "hint": "先读一读前面几个，找一找谁在轮流出现",
+          "praise": "规律找对啦，小侦探！"
         }
       ],
       "board": {
@@ -2167,22 +2245,22 @@
             "step": "math-13-x1-n"
           },
           {
-            "type": "question",
-            "step": "math-13-x90-o"
+            "type": "coin"
           },
           {
-            "type": "coin"
+            "type": "question",
+            "step": "math-13-f0-pat"
           },
           {
             "type": "question",
             "step": "math-13-a-52"
           },
           {
-            "type": "question",
-            "step": "math-13-n2"
+            "type": "coin"
           },
           {
-            "type": "coin"
+            "type": "question",
+            "step": "math-13-n2"
           },
           {
             "type": "question",
@@ -2331,22 +2409,22 @@
             "step": "math-14-a-93"
           },
           {
-            "type": "coin"
-          },
-          {
             "type": "question",
             "step": "math-14-o4"
+          },
+          {
+            "type": "coin"
           },
           {
             "type": "question",
             "step": "math-14-p2"
           },
           {
-            "type": "rest"
-          },
-          {
             "type": "question",
             "step": "math-14-x0-a"
+          },
+          {
+            "type": "coin"
           },
           {
             "type": "question",
@@ -2355,6 +2433,9 @@
           {
             "type": "question",
             "step": "math-14-x2-o"
+          },
+          {
+            "type": "rest"
           }
         ]
       }
@@ -2367,7 +2448,7 @@
         {
           "id": "math-boss-0",
           "kind": "count",
-          "question": "池塘里有几只小鸭（点一点，数数看）",
+          "question": "池塘里有几只小鸭？点一点",
           "duckIcon": "duck",
           "count": 3,
           "countRange": [
@@ -2385,7 +2466,7 @@
         {
           "id": "math-boss-1",
           "kind": "count",
-          "question": "盘子里有几颗糖（点一点，数数看）",
+          "question": "盘子里有几颗糖？点一点",
           "duckIcon": "candy",
           "count": 4,
           "countRange": [
@@ -2403,7 +2484,7 @@
         {
           "id": "math-boss-2",
           "kind": "count",
-          "question": "果园里摘了几个苹果（点一点，数数看）",
+          "question": "果园里摘了几个苹果？点一点",
           "duckIcon": "apple",
           "count": 5,
           "countRange": [
@@ -2447,7 +2528,7 @@
         {
           "id": "math-boss-4",
           "kind": "count",
-          "question": "夜空里有几颗星星（点一点，数数看）",
+          "question": "夜空里有几颗星星？点一点",
           "duckIcon": "star",
           "count": 6,
           "countRange": [
@@ -2464,26 +2545,34 @@
         },
         {
           "id": "math-boss-5",
-          "kind": "count",
-          "question": "池塘里有几只小鸭（点一点，数数看）",
-          "duckIcon": "duck",
-          "count": 3,
-          "countRange": [
-            2,
-            3
+          "kind": "compare",
+          "question": "哪边的水果更多？",
+          "leftIcon": "apple",
+          "leftCount": 3,
+          "rightIcon": "banana",
+          "rightCount": 1,
+          "compareOptions": [
+            {
+              "key": "left",
+              "label": "苹果多"
+            },
+            {
+              "key": "right",
+              "label": "香蕉多"
+            },
+            {
+              "key": "same",
+              "label": "一样多"
+            }
           ],
-          "countOptions": [
-            2,
-            3,
-            4
-          ],
-          "backdrop": "pond",
-          "unit": "只"
+          "answerKey": "left",
+          "hint": "一个对着一个，比一比",
+          "praise": "苹果多，答对啦！"
         },
         {
           "id": "math-boss-6",
           "kind": "count",
-          "question": "轨道上有几辆小火车（点一点，数数看）",
+          "question": "轨道上有几辆小火车？点一点",
           "duckIcon": "train",
           "count": 7,
           "countRange": [
@@ -2501,7 +2590,7 @@
         {
           "id": "math-boss-7",
           "kind": "count",
-          "question": "花园里开了几朵花（点一点，数数看）",
+          "question": "花园里开了几朵花？点一点",
           "duckIcon": "flower",
           "count": 8,
           "countRange": [

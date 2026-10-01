@@ -399,52 +399,74 @@
         {
           "id": "as-sun",
           "name": "太阳 Sun",
-          "icon": "sun"
+          "body": "sun",
+          "fact": "太阳系 99.8% 的物质都集中在太阳身上。"
         },
         {
-          "id": "as-moon",
-          "name": "月亮 Moon",
-          "icon": "moon"
+          "id": "as-mercury",
+          "name": "水星 Mercury",
+          "body": "mercury",
+          "fact": "离太阳最近，88 天就跑完一圈。"
         },
         {
-          "id": "as-star",
-          "name": "星星 Star",
-          "icon": "star"
+          "id": "as-venus",
+          "name": "金星 Venus",
+          "body": "venus",
+          "fact": "厚云捂住热量，464℃ 是全家最热的。"
         },
         {
           "id": "as-earth",
           "name": "地球 Earth",
-          "icon": "earth"
+          "body": "earth",
+          "fact": "目前唯一找到生命的行星，表面七成是海洋。"
+        },
+        {
+          "id": "as-mars",
+          "name": "火星 Mars",
+          "body": "mars",
+          "fact": "有太阳系最高的火山，比珠穆朗玛峰还高两倍。"
+        },
+        {
+          "id": "as-jupiter",
+          "name": "木星 Jupiter",
+          "body": "jupiter",
+          "fact": "能装下 1300 个地球，大红斑刮了三百多年。"
+        },
+        {
+          "id": "as-saturn",
+          "name": "土星 Saturn",
+          "body": "saturn",
+          "fact": "光环是冰块和石子；它轻得能浮在水上。"
+        },
+        {
+          "id": "as-uranus",
+          "name": "天王星 Uranus",
+          "body": "uranus",
+          "fact": "躺着打滚绕太阳，自转轴歪了 98 度。"
+        },
+        {
+          "id": "as-neptune",
+          "name": "海王星 Neptune",
+          "body": "neptune",
+          "fact": "风最大，一秒能吹两公里。"
+        },
+        {
+          "id": "as-moon",
+          "name": "月球 Moon",
+          "body": "moon",
+          "fact": "自己不发光，你看到的是反射的太阳光。"
+        },
+        {
+          "id": "as-pluto",
+          "name": "冥王星 Pluto",
+          "body": "pluto",
+          "fact": "2006 年被降成矮行星，因为它没清空轨道上的碎石。"
         },
         {
           "id": "as-rocket",
           "name": "火箭 Rocket",
-          "icon": "rocket"
-        },
-        {
-          "id": "as-planet",
-          "name": "行星 Planet",
-          "icon": "planet"
-        },
-        {
-          "id": "as-comet",
-          "name": "彗星 Comet",
-          "icon": "comet"
-        },
-        {
-          "id": "as-meteor",
-          "name": "流星 Meteor",
-          "icon": "sparkle"
-        },
-        {
-          "id": "as-rover",
-          "name": "火星车 Rover",
-          "icon": "robot"
-        },
-        {
-          "id": "as-sky",
-          "name": "星晶夜空",
-          "icon": "crystal"
+          "icon": "rocket",
+          "fact": "先上天、再上人、最后去火星——中国航天的三步。"
         }
       ]
     },

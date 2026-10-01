@@ -5,7 +5,7 @@
   "levels": [
     {
       "id": "py-0",
-      "title": "第 1 关 声母",
+      "title": "第 1 关 声母 b",
       "subtitle": "认识「b」",
       "steps": [
         {
@@ -17,14 +17,14 @@
           "display": "b",
           "examples": [
             {
-              "icon": "girl",
-              "text": "爸爸 bà",
-              "say": "爸爸"
+              "icon": "rabbit",
+              "text": "白兔 bái",
+              "say": "白兔"
             },
             {
-              "icon": "banana",
-              "text": "白菜 bái",
-              "say": "白菜"
+              "icon": "ice",
+              "text": "冰块 bīng",
+              "say": "冰块"
             }
           ],
           "question": "学一学声母 b"
@@ -57,7 +57,7 @@
             "b",
             "a"
           ],
-          "question": "拼一拼：b — a = ?",
+          "question": "拼一拼：b 和 a 手拉手，变成哪个音？",
           "options": [
             {
               "text": "ba"
@@ -101,7 +101,7 @@
             "b",
             "o"
           ],
-          "question": "拼一拼：b — o = ?",
+          "question": "再来一拼：b 和 o 合起来读什么？",
           "options": [
             {
               "text": "bo"
@@ -120,11 +120,11 @@
         {
           "id": "py-0-pq2",
           "kind": "quiz",
-          "question": "再拼一拼 b — a：哪张图是「爸爸」？",
+          "question": "看图拼一拼：b 和 a 合起来是哪张图？",
           "options": [
             {
-              "icon": "girl",
-              "text": "爸爸"
+              "icon": "rabbit",
+              "text": "白兔"
             },
             {
               "icon": "sun"
@@ -135,7 +135,7 @@
           ],
           "answer": 0,
           "hint": "b 碰 a",
-          "praise": "拼读小能手：爸爸！"
+          "praise": "拼读小能手：白兔！"
         }
       ],
       "board": {
@@ -163,18 +163,18 @@
             "type": "coin"
           },
           {
-            "type": "question",
-            "step": "py-0-pq2"
+            "type": "chest"
           },
           {
-            "type": "chest"
+            "type": "question",
+            "step": "py-0-pq2"
           }
         ]
       }
     },
     {
       "id": "py-1",
-      "title": "第 2 关 声母",
+      "title": "第 2 关 声母 p",
       "subtitle": "认识「p」",
       "steps": [
         {
@@ -186,14 +186,14 @@
           "display": "p",
           "examples": [
             {
-              "icon": "volcano",
-              "text": "山坡 pō",
-              "say": "山坡"
+              "icon": "apple",
+              "text": "苹果 píng",
+              "say": "苹果"
             },
             {
-              "icon": "rocket",
-              "text": "跑步 pǎo",
-              "say": "跑步"
+              "icon": "jar",
+              "text": "瓶子 píng",
+              "say": "瓶子"
             }
           ],
           "question": "学一学声母 p"
@@ -201,9 +201,9 @@
         {
           "id": "py-1-l2",
           "kind": "listen",
-          "promptIcon": "volcano",
+          "promptIcon": "apple",
           "speakText": "p",
-          "question": "看一看：「山坡」的开头是哪个声母？",
+          "question": "看一看：「苹果」的开头是哪个声母？",
           "options": [
             {
               "text": "f"
@@ -216,8 +216,8 @@
             }
           ],
           "answer": 1,
-          "hint": "山坡 的第一个音",
-          "praise": "对！山坡 开头是 p"
+          "hint": "苹果 的第一个音",
+          "praise": "对！苹果 开头是 p"
         },
         {
           "id": "py-1-b",
@@ -226,7 +226,7 @@
             "p",
             "o"
           ],
-          "question": "拼一拼：p — o = ?",
+          "question": "拼一拼：p 和 o 手拉手，变成哪个音？",
           "options": [
             {
               "text": "po"
@@ -270,7 +270,7 @@
             "p",
             "a"
           ],
-          "question": "拼一拼：p — a = ?",
+          "question": "再来一拼：p 和 a 合起来读什么？",
           "options": [
             {
               "text": "pa"
@@ -289,22 +289,22 @@
         {
           "id": "py-1-pq2",
           "kind": "quiz",
-          "question": "再拼一拼 p — o：哪张图是「山坡」？",
+          "question": "看图拼一拼：p 和 o 合起来是哪张图？",
           "options": [
             {
               "icon": "star"
             },
             {
-              "icon": "volcano",
-              "text": "山坡"
+              "icon": "apple",
+              "text": "苹果"
             },
             {
-              "icon": "apple"
+              "icon": "heart"
             }
           ],
           "answer": 1,
           "hint": "p 碰 o",
-          "praise": "拼读小能手：山坡！"
+          "praise": "拼读小能手：苹果！"
         }
       ],
       "board": {
@@ -314,22 +314,22 @@
             "step": "py-1-b"
           },
           {
-            "type": "question",
-            "step": "py-1-lb"
+            "type": "coin"
           },
           {
-            "type": "coin"
+            "type": "question",
+            "step": "py-1-lb"
           },
           {
             "type": "question",
             "step": "py-1-b2"
           },
           {
-            "type": "question",
-            "step": "py-1-pq2"
+            "type": "coin"
           },
           {
-            "type": "coin"
+            "type": "question",
+            "step": "py-1-pq2"
           },
           {
             "type": "question",
@@ -343,7 +343,7 @@
     },
     {
       "id": "py-2",
-      "title": "第 3 关 声母",
+      "title": "第 3 关 声母 m",
       "subtitle": "认识「m」",
       "steps": [
         {
@@ -355,14 +355,14 @@
           "display": "m",
           "examples": [
             {
-              "icon": "girl",
-              "text": "妈妈 mā",
-              "say": "妈妈"
+              "icon": "mushroom",
+              "text": "蘑菇 mó",
+              "say": "蘑菇"
             },
             {
-              "icon": "moon",
-              "text": "米粒 mǐ",
-              "say": "米粒"
+              "icon": "cat",
+              "text": "小猫 māo",
+              "say": "小猫"
             }
           ],
           "question": "学一学声母 m"
@@ -370,11 +370,11 @@
         {
           "id": "py-2-pq",
           "kind": "quiz",
-          "question": "拼一拼 m — a：哪张图是「妈妈」？",
+          "question": "拼一拼：m 碰上 a，哪张图是这个音？",
           "options": [
             {
-              "icon": "girl",
-              "text": "妈妈"
+              "icon": "mushroom",
+              "text": "蘑菇"
             },
             {
               "icon": "candy"
@@ -385,7 +385,7 @@
           ],
           "answer": 0,
           "hint": "m 碰 a",
-          "praise": "拼读小能手：妈妈！"
+          "praise": "拼读小能手：蘑菇！"
         },
         {
           "id": "py-2-l",
@@ -436,7 +436,7 @@
             "m",
             "o"
           ],
-          "question": "拼一拼：m — o = ?",
+          "question": "再来一拼：m 和 o 合起来读什么？",
           "options": [
             {
               "text": "mo"
@@ -455,7 +455,7 @@
         {
           "id": "py-2-pq2",
           "kind": "quiz",
-          "question": "再拼一拼 m — a：哪张图是「妈妈」？",
+          "question": "看图拼一拼：m 和 a 合起来是哪张图？",
           "options": [
             {
               "icon": "apple"
@@ -464,13 +464,13 @@
               "icon": "duck"
             },
             {
-              "icon": "girl",
-              "text": "妈妈"
+              "icon": "mushroom",
+              "text": "蘑菇"
             }
           ],
           "answer": 2,
           "hint": "m 碰 a",
-          "praise": "拼读小能手：妈妈！"
+          "praise": "拼读小能手：蘑菇！"
         }
       ],
       "board": {
@@ -484,18 +484,15 @@
             "step": "py-2-b2"
           },
           {
-            "type": "coin"
-          },
-          {
             "type": "question",
             "step": "py-2-pq2"
           },
           {
-            "type": "question",
-            "step": "py-2-pq"
+            "type": "coin"
           },
           {
-            "type": "coin"
+            "type": "question",
+            "step": "py-2-pq"
           },
           {
             "type": "question",
@@ -503,13 +500,16 @@
           },
           {
             "type": "rest"
+          },
+          {
+            "type": "coin"
           }
         ]
       }
     },
     {
       "id": "py-3",
-      "title": "第 4 关 声母",
+      "title": "第 4 关 声母 f",
       "subtitle": "认识「f」",
       "steps": [
         {
@@ -521,14 +521,14 @@
           "display": "f",
           "examples": [
             {
+              "icon": "home",
+              "text": "房子 fáng",
+              "say": "房子"
+            },
+            {
               "icon": "flame",
               "text": "发烧 fā",
               "say": "发烧"
-            },
-            {
-              "icon": "leaf",
-              "text": "飞机 fēi",
-              "say": "飞机"
             }
           ],
           "question": "学一学声母 f"
@@ -540,7 +540,7 @@
             "f",
             "a"
           ],
-          "question": "拼一拼：f — a = ?",
+          "question": "拼一拼：f 和 a 手拉手，变成哪个音？",
           "options": [
             {
               "text": "fa"
@@ -559,14 +559,14 @@
         {
           "id": "py-3-pq",
           "kind": "quiz",
-          "question": "拼一拼 f — a：哪张图是「发烧」？",
+          "question": "拼一拼：f 碰上 a，哪张图是这个音？",
           "options": [
             {
               "icon": "clock"
             },
             {
-              "icon": "flame",
-              "text": "发烧"
+              "icon": "home",
+              "text": "房子"
             },
             {
               "icon": "sun"
@@ -574,7 +574,7 @@
           ],
           "answer": 1,
           "hint": "f 碰 a",
-          "praise": "拼读小能手：发烧！"
+          "praise": "拼读小能手：房子！"
         },
         {
           "id": "py-3-lb",
@@ -604,7 +604,7 @@
             "f",
             "o"
           ],
-          "question": "拼一拼：f — o = ?",
+          "question": "再来一拼：f 和 o 合起来读什么？",
           "options": [
             {
               "text": "fo"
@@ -623,11 +623,11 @@
         {
           "id": "py-3-pq2",
           "kind": "quiz",
-          "question": "再拼一拼 f — a：哪张图是「发烧」？",
+          "question": "看图拼一拼：f 和 a 合起来是哪张图？",
           "options": [
             {
-              "icon": "flame",
-              "text": "发烧"
+              "icon": "home",
+              "text": "房子"
             },
             {
               "icon": "duck"
@@ -638,7 +638,7 @@
           ],
           "answer": 0,
           "hint": "f 碰 a",
-          "praise": "拼读小能手：发烧！"
+          "praise": "拼读小能手：房子！"
         }
       ],
       "board": {
@@ -648,11 +648,11 @@
             "step": "py-3-b2"
           },
           {
-            "type": "question",
-            "step": "py-3-pq2"
+            "type": "coin"
           },
           {
-            "type": "coin"
+            "type": "question",
+            "step": "py-3-pq2"
           },
           {
             "type": "question",
@@ -666,18 +666,18 @@
             "type": "chest"
           },
           {
-            "type": "question",
-            "step": "py-3-lb"
+            "type": "mushroom"
           },
           {
-            "type": "mushroom"
+            "type": "question",
+            "step": "py-3-lb"
           }
         ]
       }
     },
     {
       "id": "py-4",
-      "title": "第 5 关 声母",
+      "title": "第 5 关 声母 d",
       "subtitle": "认识「d」",
       "steps": [
         {
@@ -689,14 +689,14 @@
           "display": "d",
           "examples": [
             {
-              "icon": "sun",
+              "icon": "earth",
               "text": "大地 dì",
               "say": "大地"
             },
             {
-              "icon": "duck",
-              "text": "大刀 dāo",
-              "say": "大刀"
+              "icon": "cake",
+              "text": "蛋糕 dàn",
+              "say": "蛋糕"
             }
           ],
           "question": "学一学声母 d"
@@ -729,7 +729,7 @@
             "d",
             "e"
           ],
-          "question": "拼一拼：d — e = ?",
+          "question": "拼一拼：d 和 e 手拉手，变成哪个音？",
           "options": [
             {
               "text": "de"
@@ -773,7 +773,7 @@
             "d",
             "a"
           ],
-          "question": "拼一拼：d — a = ?",
+          "question": "再来一拼：d 和 a 合起来读什么？",
           "options": [
             {
               "text": "da"
@@ -792,17 +792,17 @@
         {
           "id": "py-4-pq2",
           "kind": "quiz",
-          "question": "再拼一拼 d — e：哪张图是「大地」？",
+          "question": "看图拼一拼：d 和 e 合起来是哪张图？",
           "options": [
             {
-              "icon": "train"
+              "icon": "cake"
             },
             {
-              "icon": "sun",
+              "icon": "earth",
               "text": "大地"
             },
             {
-              "icon": "heart"
+              "icon": "candy"
             }
           ],
           "answer": 1,
@@ -832,14 +832,14 @@
             "step": "py-4-lb"
           },
           {
-            "type": "mushroom"
-          },
-          {
             "type": "question",
             "step": "py-4-b2"
           },
           {
             "type": "rest"
+          },
+          {
+            "type": "mushroom"
           }
         ]
       }
@@ -873,9 +873,9 @@
         {
           "id": "pinyin-r0-1",
           "kind": "listen",
-          "promptIcon": "volcano",
+          "promptIcon": "apple",
           "speakText": "p",
-          "question": "看一看：「山坡」的开头是哪个声母？",
+          "question": "看一看：「苹果」的开头是哪个声母？",
           "options": [
             {
               "text": "f"
@@ -888,17 +888,17 @@
             }
           ],
           "answer": 1,
-          "hint": "山坡 的第一个音",
-          "praise": "对！山坡 开头是 p"
+          "hint": "苹果 的第一个音",
+          "praise": "对！苹果 开头是 p"
         },
         {
           "id": "pinyin-r0-2",
           "kind": "quiz",
-          "question": "拼一拼 m — a：哪张图是「妈妈」？",
+          "question": "拼一拼：m 碰上 a，哪张图是这个音？",
           "options": [
             {
-              "icon": "girl",
-              "text": "妈妈"
+              "icon": "mushroom",
+              "text": "蘑菇"
             },
             {
               "icon": "candy"
@@ -909,7 +909,7 @@
           ],
           "answer": 0,
           "hint": "m 碰 a",
-          "praise": "拼读小能手：妈妈！"
+          "praise": "拼读小能手：蘑菇！"
         },
         {
           "id": "pinyin-r0-3",
@@ -918,7 +918,7 @@
             "f",
             "a"
           ],
-          "question": "拼一拼：f — a = ?",
+          "question": "拼一拼：f 和 a 手拉手，变成哪个音？",
           "options": [
             {
               "text": "fa"
@@ -962,7 +962,7 @@
             "b",
             "a"
           ],
-          "question": "拼一拼：b — a = ?",
+          "question": "拼一拼：b 和 a 手拉手，变成哪个音？",
           "options": [
             {
               "text": "ba"
@@ -1008,14 +1008,14 @@
             "step": "pinyin-r0-4"
           },
           {
-            "type": "chest"
-          },
-          {
             "type": "question",
             "step": "pinyin-r0-5"
           },
           {
             "type": "mushroom"
+          },
+          {
+            "type": "chest"
           }
         ]
       },
@@ -1023,7 +1023,7 @@
     },
     {
       "id": "py-5",
-      "title": "第 6 关 声母",
+      "title": "第 6 关 声母 t",
       "subtitle": "认识「t」",
       "steps": [
         {
@@ -1035,14 +1035,14 @@
           "display": "t",
           "examples": [
             {
-              "icon": "train",
+              "icon": "sun",
               "text": "太阳 tài",
               "say": "太阳"
             },
             {
-              "icon": "tree",
-              "text": "跳高 tiào",
-              "say": "跳高"
+              "icon": "candy",
+              "text": "糖果 táng",
+              "say": "糖果"
             }
           ],
           "question": "学一学声母 t"
@@ -1050,7 +1050,7 @@
         {
           "id": "py-5-l2",
           "kind": "listen",
-          "promptIcon": "train",
+          "promptIcon": "sun",
           "speakText": "t",
           "question": "看一看：「太阳」的开头是哪个声母？",
           "options": [
@@ -1075,7 +1075,7 @@
             "t",
             "a"
           ],
-          "question": "拼一拼：t — a = ?",
+          "question": "拼一拼：t 和 a 手拉手，变成哪个音？",
           "options": [
             {
               "text": "ta"
@@ -1119,7 +1119,7 @@
             "t",
             "e"
           ],
-          "question": "拼一拼：t — e = ?",
+          "question": "再来一拼：t 和 e 合起来读什么？",
           "options": [
             {
               "text": "te"
@@ -1138,16 +1138,16 @@
         {
           "id": "py-5-pq2",
           "kind": "quiz",
-          "question": "再拼一拼 t — a：哪张图是「太阳」？",
+          "question": "看图拼一拼：t 和 a 合起来是哪张图？",
           "options": [
             {
               "icon": "heart"
             },
             {
-              "icon": "sun"
+              "icon": "moon"
             },
             {
-              "icon": "train",
+              "icon": "sun",
               "text": "太阳"
             }
           ],
@@ -1163,11 +1163,14 @@
             "step": "py-5-l2"
           },
           {
+            "type": "coin"
+          },
+          {
             "type": "question",
             "step": "py-5-b"
           },
           {
-            "type": "coin"
+            "type": "chest"
           },
           {
             "type": "question",
@@ -1176,9 +1179,6 @@
           {
             "type": "question",
             "step": "py-5-b2"
-          },
-          {
-            "type": "chest"
           },
           {
             "type": "question",
@@ -1192,7 +1192,7 @@
     },
     {
       "id": "py-6",
-      "title": "第 7 关 声母",
+      "title": "第 7 关 声母 n",
       "subtitle": "认识「n」",
       "steps": [
         {
@@ -1204,12 +1204,12 @@
           "display": "n",
           "examples": [
             {
-              "icon": "girl",
-              "text": "拿苹果 ná",
-              "say": "拿苹果"
+              "icon": "duck",
+              "text": "小鸟 niǎo",
+              "say": "小鸟"
             },
             {
-              "icon": "heart",
+              "icon": "girl",
               "text": "你好 nǐ",
               "say": "你好"
             }
@@ -1219,22 +1219,22 @@
         {
           "id": "py-6-pq",
           "kind": "quiz",
-          "question": "拼一拼 n — i：哪张图是「拿苹果」？",
+          "question": "拼一拼：n 碰上 i，哪张图是这个音？",
           "options": [
             {
-              "icon": "heart"
+              "icon": "sun"
             },
             {
-              "icon": "girl",
-              "text": "拿苹果"
+              "icon": "duck",
+              "text": "小鸟"
             },
             {
-              "icon": "duck"
+              "icon": "cake"
             }
           ],
           "answer": 1,
           "hint": "n 碰 i",
-          "praise": "拼读小能手：拿苹果！"
+          "praise": "拼读小能手：小鸟！"
         },
         {
           "id": "py-6-l",
@@ -1285,7 +1285,7 @@
             "n",
             "a"
           ],
-          "question": "拼一拼：n — a = ?",
+          "question": "再来一拼：n 和 a 合起来读什么？",
           "options": [
             {
               "text": "na"
@@ -1304,22 +1304,22 @@
         {
           "id": "py-6-pq2",
           "kind": "quiz",
-          "question": "再拼一拼 n — i：哪张图是「拿苹果」？",
+          "question": "看图拼一拼：n 和 i 合起来是哪张图？",
           "options": [
             {
-              "icon": "girl",
-              "text": "拿苹果"
-            },
-            {
-              "icon": "clock"
+              "icon": "duck",
+              "text": "小鸟"
             },
             {
               "icon": "moon"
+            },
+            {
+              "icon": "train"
             }
           ],
           "answer": 0,
           "hint": "n 碰 i",
-          "praise": "拼读小能手：拿苹果！"
+          "praise": "拼读小能手：小鸟！"
         }
       ],
       "board": {
@@ -1347,18 +1347,18 @@
             "type": "coin"
           },
           {
-            "type": "question",
-            "step": "py-6-pq"
+            "type": "chest"
           },
           {
-            "type": "chest"
+            "type": "question",
+            "step": "py-6-pq"
           }
         ]
       }
     },
     {
       "id": "py-7",
-      "title": "第 8 关 声母",
+      "title": "第 8 关 声母 l",
       "subtitle": "认识「l」",
       "steps": [
         {
@@ -1371,13 +1371,13 @@
           "examples": [
             {
               "icon": "leaf",
-              "text": "拉手 lā",
-              "say": "拉手"
+              "text": "绿叶 lǜ",
+              "say": "绿叶"
             },
             {
-              "icon": "gift",
-              "text": "老虎 lǎo",
-              "say": "老虎"
+              "icon": "speaker",
+              "text": "喇叭 lǎ",
+              "say": "喇叭"
             }
           ],
           "question": "学一学声母 l"
@@ -1389,7 +1389,7 @@
             "l",
             "a"
           ],
-          "question": "拼一拼：l — a = ?",
+          "question": "拼一拼：l 和 a 手拉手，变成哪个音？",
           "options": [
             {
               "text": "la"
@@ -1408,7 +1408,7 @@
         {
           "id": "py-7-pq",
           "kind": "quiz",
-          "question": "拼一拼 l — a：哪张图是「拉手」？",
+          "question": "拼一拼：l 碰上 a，哪张图是这个音？",
           "options": [
             {
               "icon": "sun"
@@ -1418,12 +1418,12 @@
             },
             {
               "icon": "leaf",
-              "text": "拉手"
+              "text": "绿叶"
             }
           ],
           "answer": 2,
           "hint": "l 碰 a",
-          "praise": "拼读小能手：拉手！"
+          "praise": "拼读小能手：绿叶！"
         },
         {
           "id": "py-7-lb",
@@ -1453,7 +1453,7 @@
             "l",
             "e"
           ],
-          "question": "拼一拼：l — e = ?",
+          "question": "再来一拼：l 和 e 合起来读什么？",
           "options": [
             {
               "text": "le"
@@ -1472,14 +1472,14 @@
         {
           "id": "py-7-pq2",
           "kind": "quiz",
-          "question": "再拼一拼 l — a：哪张图是「拉手」？",
+          "question": "看图拼一拼：l 和 a 合起来是哪张图？",
           "options": [
             {
               "icon": "moon"
             },
             {
               "icon": "leaf",
-              "text": "拉手"
+              "text": "绿叶"
             },
             {
               "icon": "train"
@@ -1487,7 +1487,7 @@
           ],
           "answer": 1,
           "hint": "l 碰 a",
-          "praise": "拼读小能手：拉手！"
+          "praise": "拼读小能手：绿叶！"
         }
       ],
       "board": {
@@ -1497,22 +1497,22 @@
             "step": "py-7-lb"
           },
           {
-            "type": "question",
-            "step": "py-7-b2"
+            "type": "coin"
           },
           {
-            "type": "coin"
+            "type": "question",
+            "step": "py-7-b2"
           },
           {
             "type": "question",
             "step": "py-7-pq2"
           },
           {
-            "type": "question",
-            "step": "py-7-b"
+            "type": "coin"
           },
           {
-            "type": "coin"
+            "type": "question",
+            "step": "py-7-b"
           },
           {
             "type": "question",
@@ -1526,7 +1526,7 @@
     },
     {
       "id": "py-8",
-      "title": "第 9 关 声母",
+      "title": "第 9 关 声母 g",
       "subtitle": "认识「g」",
       "steps": [
         {
@@ -1538,14 +1538,14 @@
           "display": "g",
           "examples": [
             {
-              "icon": "tree",
-              "text": "哥哥 gē",
-              "say": "哥哥"
+              "icon": "apple",
+              "text": "果子 guǒ",
+              "say": "果子"
             },
             {
-              "icon": "moon",
-              "text": "故事 gù",
-              "say": "故事"
+              "icon": "bush",
+              "text": "灌木 guàn",
+              "say": "灌木"
             }
           ],
           "question": "学一学声母 g"
@@ -1578,7 +1578,7 @@
             "g",
             "e"
           ],
-          "question": "拼一拼：g — e = ?",
+          "question": "拼一拼：g 和 e 手拉手，变成哪个音？",
           "options": [
             {
               "text": "ge"
@@ -1622,7 +1622,7 @@
             "g",
             "a"
           ],
-          "question": "拼一拼：g — a = ?",
+          "question": "再来一拼：g 和 a 合起来读什么？",
           "options": [
             {
               "text": "ga"
@@ -1641,22 +1641,22 @@
         {
           "id": "py-8-pq2",
           "kind": "quiz",
-          "question": "再拼一拼 g — e：哪张图是「哥哥」？",
+          "question": "看图拼一拼：g 和 e 合起来是哪张图？",
           "options": [
-            {
-              "icon": "train"
-            },
             {
               "icon": "heart"
             },
             {
-              "icon": "tree",
-              "text": "哥哥"
+              "icon": "sun"
+            },
+            {
+              "icon": "apple",
+              "text": "果子"
             }
           ],
           "answer": 2,
           "hint": "g 碰 e",
-          "praise": "拼读小能手：哥哥！"
+          "praise": "拼读小能手：果子！"
         }
       ],
       "board": {
@@ -1670,18 +1670,15 @@
             "step": "py-8-pq2"
           },
           {
-            "type": "coin"
-          },
-          {
             "type": "question",
             "step": "py-8-l"
           },
           {
-            "type": "question",
-            "step": "py-8-b"
+            "type": "coin"
           },
           {
-            "type": "coin"
+            "type": "question",
+            "step": "py-8-b"
           },
           {
             "type": "question",
@@ -1689,13 +1686,16 @@
           },
           {
             "type": "rest"
+          },
+          {
+            "type": "coin"
           }
         ]
       }
     },
     {
       "id": "py-9",
-      "title": "第 10 关 声母",
+      "title": "第 10 关 声母 k",
       "subtitle": "认识「k」",
       "steps": [
         {
@@ -1707,14 +1707,14 @@
           "display": "k",
           "examples": [
             {
-              "icon": "heart",
-              "text": "开心 kāi",
-              "say": "开心"
-            },
-            {
               "icon": "book",
               "text": "看书 kàn",
               "say": "看书"
+            },
+            {
+              "icon": "dino",
+              "text": "恐龙 kǒng",
+              "say": "恐龙"
             }
           ],
           "question": "学一学声母 k"
@@ -1722,9 +1722,9 @@
         {
           "id": "py-9-l2",
           "kind": "listen",
-          "promptIcon": "heart",
+          "promptIcon": "book",
           "speakText": "k",
-          "question": "看一看：「开心」的开头是哪个声母？",
+          "question": "看一看：「看书」的开头是哪个声母？",
           "options": [
             {
               "text": "k"
@@ -1737,8 +1737,8 @@
             }
           ],
           "answer": 0,
-          "hint": "开心 的第一个音",
-          "praise": "对！开心 开头是 k"
+          "hint": "看书 的第一个音",
+          "praise": "对！看书 开头是 k"
         },
         {
           "id": "py-9-b",
@@ -1747,7 +1747,7 @@
             "k",
             "e"
           ],
-          "question": "拼一拼：k — e = ?",
+          "question": "拼一拼：k 和 e 手拉手，变成哪个音？",
           "options": [
             {
               "text": "ke"
@@ -1791,7 +1791,7 @@
             "k",
             "a"
           ],
-          "question": "拼一拼：k — a = ?",
+          "question": "再来一拼：k 和 a 合起来读什么？",
           "options": [
             {
               "text": "ka"
@@ -1810,22 +1810,22 @@
         {
           "id": "py-9-pq2",
           "kind": "quiz",
-          "question": "再拼一拼 k — e：哪张图是「开心」？",
+          "question": "看图拼一拼：k 和 e 合起来是哪张图？",
           "options": [
             {
-              "icon": "heart",
-              "text": "开心"
+              "icon": "book",
+              "text": "看书"
+            },
+            {
+              "icon": "heart"
             },
             {
               "icon": "sun"
-            },
-            {
-              "icon": "star"
             }
           ],
           "answer": 0,
           "hint": "k 碰 e",
-          "praise": "拼读小能手：开心！"
+          "praise": "拼读小能手：看书！"
         }
       ],
       "board": {
@@ -1835,11 +1835,11 @@
             "step": "py-9-pq2"
           },
           {
-            "type": "question",
-            "step": "py-9-l2"
+            "type": "coin"
           },
           {
-            "type": "coin"
+            "type": "question",
+            "step": "py-9-l2"
           },
           {
             "type": "question",
@@ -1853,11 +1853,11 @@
             "type": "chest"
           },
           {
-            "type": "question",
-            "step": "py-9-b2"
+            "type": "mushroom"
           },
           {
-            "type": "mushroom"
+            "type": "question",
+            "step": "py-9-b2"
           }
         ]
       }
@@ -1891,9 +1891,9 @@
         {
           "id": "pinyin-r1-1",
           "kind": "listen",
-          "promptIcon": "volcano",
+          "promptIcon": "apple",
           "speakText": "p",
-          "question": "看一看：「山坡」的开头是哪个声母？",
+          "question": "看一看：「苹果」的开头是哪个声母？",
           "options": [
             {
               "text": "f"
@@ -1906,17 +1906,17 @@
             }
           ],
           "answer": 1,
-          "hint": "山坡 的第一个音",
-          "praise": "对！山坡 开头是 p"
+          "hint": "苹果 的第一个音",
+          "praise": "对！苹果 开头是 p"
         },
         {
           "id": "pinyin-r1-2",
           "kind": "quiz",
-          "question": "拼一拼 m — a：哪张图是「妈妈」？",
+          "question": "拼一拼：m 碰上 a，哪张图是这个音？",
           "options": [
             {
-              "icon": "girl",
-              "text": "妈妈"
+              "icon": "mushroom",
+              "text": "蘑菇"
             },
             {
               "icon": "candy"
@@ -1927,7 +1927,7 @@
           ],
           "answer": 0,
           "hint": "m 碰 a",
-          "praise": "拼读小能手：妈妈！"
+          "praise": "拼读小能手：蘑菇！"
         },
         {
           "id": "pinyin-r1-3",
@@ -1936,7 +1936,7 @@
             "f",
             "a"
           ],
-          "question": "拼一拼：f — a = ?",
+          "question": "拼一拼：f 和 a 手拉手，变成哪个音？",
           "options": [
             {
               "text": "fa"
@@ -1976,7 +1976,7 @@
         {
           "id": "pinyin-r1-5",
           "kind": "listen",
-          "promptIcon": "train",
+          "promptIcon": "sun",
           "speakText": "t",
           "question": "看一看：「太阳」的开头是哪个声母？",
           "options": [
@@ -2002,22 +2002,22 @@
             "step": "pinyin-r1-1"
           },
           {
-            "type": "question",
-            "step": "pinyin-r1-2"
+            "type": "coin"
           },
           {
-            "type": "coin"
+            "type": "question",
+            "step": "pinyin-r1-2"
           },
           {
             "type": "question",
             "step": "pinyin-r1-3"
           },
           {
-            "type": "question",
-            "step": "pinyin-r1-4"
+            "type": "coin"
           },
           {
-            "type": "coin"
+            "type": "question",
+            "step": "pinyin-r1-4"
           },
           {
             "type": "question",
@@ -2027,11 +2027,11 @@
             "type": "chest"
           },
           {
-            "type": "question",
-            "step": "pinyin-r1-0"
+            "type": "rest"
           },
           {
-            "type": "rest"
+            "type": "question",
+            "step": "pinyin-r1-0"
           }
         ]
       },
@@ -2061,8 +2061,8 @@
               "say": "ā"
             },
             {
-              "icon": "flame",
-              "text": "哦 ó",
+              "icon": "speaker",
+              "text": "哦 ó 圆口形",
               "say": "ó"
             }
           ],
@@ -2117,7 +2117,7 @@
             "m",
             "a"
           ],
-          "question": "拼一拼：m — a = ?",
+          "question": "再来一拼：m 和 a 合起来读什么？",
           "options": [
             {
               "text": "ma"
@@ -2140,7 +2140,7 @@
             "l",
             "a"
           ],
-          "question": "拼一拼：l — a = ?",
+          "question": "再来一拼：l 和 a 合起来读什么？",
           "options": [
             {
               "text": "la"
@@ -2200,14 +2200,14 @@
             "step": "py-10-b3"
           },
           {
-            "type": "mushroom"
-          },
-          {
             "type": "question",
             "step": "py-10-l3"
           },
           {
             "type": "rest"
+          },
+          {
+            "type": "mushroom"
           }
         ]
       }
@@ -2276,7 +2276,7 @@
             "b",
             "a"
           ],
-          "question": "拼一拼：b — a = ?",
+          "question": "拼一拼：b 和 a 合起来是？",
           "options": [
             {
               "text": "ba"
@@ -2295,7 +2295,7 @@
         {
           "id": "py-11-pq",
           "kind": "quiz",
-          "question": "拼一拼 m — a：哪张图是「妈妈」？",
+          "question": "拼一拼：m 碰上 a，哪张图是「妈妈」？",
           "options": [
             {
               "icon": "girl",
@@ -2319,7 +2319,7 @@
             "m",
             "a"
           ],
-          "question": "拼一拼：m — a = ?",
+          "question": "拼一拼：m 和 a 手拉手是？",
           "options": [
             {
               "text": "ma"
@@ -2364,6 +2364,9 @@
             "step": "py-11-l2"
           },
           {
+            "type": "coin"
+          },
+          {
             "type": "question",
             "step": "py-11-m"
           },
@@ -2379,11 +2382,11 @@
             "step": "py-11-b"
           },
           {
-            "type": "chest"
-          },
-          {
             "type": "question",
             "step": "py-11-pq"
+          },
+          {
+            "type": "chest"
           },
           {
             "type": "rest"
@@ -2424,9 +2427,9 @@
         {
           "id": "pinyin-boss-1",
           "kind": "listen",
-          "promptIcon": "volcano",
+          "promptIcon": "apple",
           "speakText": "p",
-          "question": "看一看：「山坡」的开头是哪个声母？",
+          "question": "看一看：「苹果」的开头是哪个声母？",
           "options": [
             {
               "text": "f"
@@ -2439,17 +2442,17 @@
             }
           ],
           "answer": 1,
-          "hint": "山坡 的第一个音",
-          "praise": "对！山坡 开头是 p"
+          "hint": "苹果 的第一个音",
+          "praise": "对！苹果 开头是 p"
         },
         {
           "id": "pinyin-boss-2",
           "kind": "quiz",
-          "question": "拼一拼 m — a：哪张图是「妈妈」？",
+          "question": "拼一拼：m 碰上 a，哪张图是这个音？",
           "options": [
             {
-              "icon": "girl",
-              "text": "妈妈"
+              "icon": "mushroom",
+              "text": "蘑菇"
             },
             {
               "icon": "candy"
@@ -2460,7 +2463,7 @@
           ],
           "answer": 0,
           "hint": "m 碰 a",
-          "praise": "拼读小能手：妈妈！"
+          "praise": "拼读小能手：蘑菇！"
         },
         {
           "id": "pinyin-boss-3",
@@ -2469,7 +2472,7 @@
             "f",
             "a"
           ],
-          "question": "拼一拼：f — a = ?",
+          "question": "拼一拼：f 和 a 手拉手，变成哪个音？",
           "options": [
             {
               "text": "fa"
@@ -2508,29 +2511,31 @@
         },
         {
           "id": "pinyin-boss-5",
-          "kind": "listen",
-          "prompt": "b",
-          "speakText": "b",
-          "question": "找一找：哪个是「b」？",
+          "kind": "blend",
+          "parts": [
+            "b",
+            "a"
+          ],
+          "question": "拼一拼：b 和 a 手拉手，变成哪个音？",
           "options": [
             {
-              "text": "d"
+              "text": "ba"
             },
             {
-              "text": "p"
+              "text": "bo"
             },
             {
-              "text": "b"
+              "text": "bu"
             }
           ],
-          "answer": 2,
-          "hint": "想一想它的样子",
-          "praise": "「b」找对啦！"
+          "answer": 0,
+          "hint": "b 碰上 a",
+          "praise": "拼对了，ba！"
         },
         {
           "id": "pinyin-boss-6",
           "kind": "listen",
-          "promptIcon": "train",
+          "promptIcon": "sun",
           "speakText": "t",
           "question": "看一看：「太阳」的开头是哪个声母？",
           "options": [
@@ -2551,22 +2556,22 @@
         {
           "id": "pinyin-boss-7",
           "kind": "quiz",
-          "question": "拼一拼 n — i：哪张图是「拿苹果」？",
+          "question": "拼一拼：n 碰上 i，哪张图是这个音？",
           "options": [
             {
-              "icon": "heart"
+              "icon": "sun"
             },
             {
-              "icon": "girl",
-              "text": "拿苹果"
+              "icon": "duck",
+              "text": "小鸟"
             },
             {
-              "icon": "duck"
+              "icon": "cake"
             }
           ],
           "answer": 1,
           "hint": "n 碰 i",
-          "praise": "拼读小能手：拿苹果！"
+          "praise": "拼读小能手：小鸟！"
         }
       ],
       "board": {

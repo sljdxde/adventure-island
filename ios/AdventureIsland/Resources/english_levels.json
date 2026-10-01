@@ -5,7 +5,7 @@
   "levels": [
     {
       "id": "en-0",
-      "title": "Level 1 Letters",
+      "title": "Level 1 Aa",
       "subtitle": "Aa",
       "steps": [
         {
@@ -46,44 +46,40 @@
           "praise": "Yes! Aa!"
         },
         {
-          "id": "en-0-q",
-          "kind": "quiz",
-          "question": "Which picture starts with Aa?",
-          "options": [
-            {
-              "icon": "duck"
-            },
-            {
-              "icon": "apple"
-            },
-            {
-              "icon": "sun"
-            }
+          "id": "en-0-ct0",
+          "kind": "count",
+          "question": "How many apples? 数一数有几个？",
+          "duckIcon": "apple",
+          "count": 3,
+          "countRange": [
+            2,
+            3
           ],
-          "answer": 1,
-          "hint": "Apple 苹果",
-          "praise": "Great job!"
+          "countOptions": [
+            2,
+            3,
+            4
+          ],
+          "backdrop": "grass",
+          "unit": "个"
         },
         {
-          "id": "en-0-l2",
-          "kind": "listen",
-          "prompt": "Aa",
-          "speakText": "A",
-          "question": "Find again: which one is Aa ?",
-          "options": [
-            {
-              "text": "Aa"
-            },
-            {
-              "text": "Dd"
-            },
-            {
-              "text": "Ss"
-            }
+          "id": "en-0-ct2",
+          "kind": "count",
+          "question": "How many stars? 数一数有几个？",
+          "duckIcon": "star",
+          "count": 5,
+          "countRange": [
+            3,
+            5
           ],
-          "answer": 0,
-          "hint": "A for Aa",
-          "praise": "Yes! Aa!"
+          "countOptions": [
+            4,
+            5,
+            6
+          ],
+          "backdrop": "night",
+          "unit": "颗"
         },
         {
           "id": "en-0-c2",
@@ -132,14 +128,14 @@
           },
           {
             "type": "question",
-            "step": "en-0-q"
+            "step": "en-0-ct0"
           },
           {
             "type": "coin"
           },
           {
             "type": "question",
-            "step": "en-0-l2"
+            "step": "en-0-ct2"
           },
           {
             "type": "question",
@@ -149,18 +145,18 @@
             "type": "coin"
           },
           {
-            "type": "question",
-            "step": "en-0-q2"
+            "type": "chest"
           },
           {
-            "type": "chest"
+            "type": "question",
+            "step": "en-0-q2"
           }
         ]
       }
     },
     {
       "id": "en-1",
-      "title": "Level 2 Letters",
+      "title": "Level 2 Bb",
       "subtitle": "Bb",
       "steps": [
         {
@@ -199,25 +195,23 @@
           "praise": "Bb 配对成功！"
         },
         {
-          "id": "en-1-l",
-          "kind": "listen",
-          "prompt": "Bb",
-          "speakText": "B",
-          "question": "Find: which one is Bb ?",
+          "id": "en-1-q",
+          "kind": "quiz",
+          "question": "找一找：哪个图的开头是 B ？",
           "options": [
             {
-              "text": "Cc"
+              "icon": "sun"
             },
             {
-              "text": "Dd"
+              "icon": "banana"
             },
             {
-              "text": "Bb"
+              "icon": "moon"
             }
           ],
-          "answer": 2,
-          "hint": "B for Bb",
-          "praise": "Yes! Bb!"
+          "answer": 1,
+          "hint": "Banana 香蕉",
+          "praise": "Great job!"
         },
         {
           "id": "en-1-l2",
@@ -241,23 +235,27 @@
           "praise": "Yes! Bb!"
         },
         {
-          "id": "en-1-c2",
-          "kind": "quiz",
-          "question": "大写 B 的小写是哪个？",
+          "id": "en-1-bl0",
+          "kind": "blend",
+          "parts": [
+            "b",
+            "anana"
+          ],
+          "question": "拼一拼：b 和 anana 手拉手，是哪个单词？",
           "options": [
             {
-              "text": "F"
+              "text": "banana"
             },
             {
-              "text": "B"
+              "text": "duck"
             },
             {
-              "text": "K"
+              "text": "key"
             }
           ],
-          "answer": 1,
-          "hint": "Bb = Bb",
-          "praise": "Bb 又配对成功！"
+          "answer": 0,
+          "hint": "Bb for banana",
+          "praise": "拼对了，banana！"
         },
         {
           "id": "en-1-q2",
@@ -283,25 +281,25 @@
         "spaces": [
           {
             "type": "question",
-            "step": "en-1-l"
+            "step": "en-1-q"
+          },
+          {
+            "type": "coin"
           },
           {
             "type": "question",
             "step": "en-1-l2"
           },
           {
-            "type": "coin"
+            "type": "question",
+            "step": "en-1-bl0"
           },
           {
-            "type": "question",
-            "step": "en-1-c2"
+            "type": "coin"
           },
           {
             "type": "question",
             "step": "en-1-q2"
-          },
-          {
-            "type": "coin"
           },
           {
             "type": "question",
@@ -315,7 +313,7 @@
     },
     {
       "id": "en-2",
-      "title": "Level 3 Letters",
+      "title": "Level 3 Cc",
       "subtitle": "Cc",
       "steps": [
         {
@@ -335,11 +333,34 @@
           "question": "Learn letter Cc"
         },
         {
+          "id": "en-2-bl0",
+          "kind": "blend",
+          "parts": [
+            "c",
+            "ake"
+          ],
+          "question": "拼一拼：c 和 ake 手拉手，是哪个单词？",
+          "options": [
+            {
+              "text": "cake"
+            },
+            {
+              "text": "flower"
+            },
+            {
+              "text": "gift"
+            }
+          ],
+          "answer": 0,
+          "hint": "Cc for cake",
+          "praise": "拼对了，cake！"
+        },
+        {
           "id": "en-2-l",
           "kind": "listen",
           "prompt": "Cc",
           "speakText": "C",
-          "question": "Find: which one is Cc ?",
+          "question": "哪一张卡片上写着 Cc ？",
           "options": [
             {
               "text": "Dd"
@@ -354,30 +375,6 @@
           "answer": 2,
           "hint": "C for Cc",
           "praise": "Yes! Cc!"
-        },
-        {
-          "id": "en-2-p",
-          "kind": "pattern",
-          "seq": [
-            "cake",
-            "moon",
-            "cake"
-          ],
-          "question": "Pattern: 下一个是谁？",
-          "options": [
-            {
-              "icon": "flower"
-            },
-            {
-              "icon": "cake"
-            },
-            {
-              "icon": "moon"
-            }
-          ],
-          "answer": 2,
-          "hint": "Who comes next?",
-          "praise": "Pattern star!"
         },
         {
           "id": "en-2-l2",
@@ -420,23 +417,22 @@
           "praise": "Cc 又配对成功！"
         },
         {
-          "id": "en-2-q2",
-          "kind": "quiz",
-          "question": "Which picture starts with Cc?（再找一找）",
-          "options": [
-            {
-              "icon": "leaf"
-            },
-            {
-              "icon": "key"
-            },
-            {
-              "icon": "cake"
-            }
+          "id": "en-2-ct2",
+          "kind": "count",
+          "question": "Count: 这里一共有几样东西？",
+          "duckIcon": "candy",
+          "count": 7,
+          "countRange": [
+            5,
+            7
           ],
-          "answer": 2,
-          "hint": "Cake 蛋糕",
-          "praise": "Great job!"
+          "countOptions": [
+            6,
+            7,
+            8
+          ],
+          "backdrop": "grass",
+          "unit": "颗"
         }
       ],
       "board": {
@@ -450,32 +446,32 @@
             "step": "en-2-c2"
           },
           {
+            "type": "question",
+            "step": "en-2-ct2"
+          },
+          {
             "type": "coin"
           },
           {
             "type": "question",
-            "step": "en-2-q2"
+            "step": "en-2-bl0"
           },
           {
             "type": "question",
             "step": "en-2-l"
           },
           {
-            "type": "coin"
-          },
-          {
-            "type": "question",
-            "step": "en-2-p"
-          },
-          {
             "type": "rest"
+          },
+          {
+            "type": "coin"
           }
         ]
       }
     },
     {
       "id": "en-3",
-      "title": "Level 4 Letters",
+      "title": "Level 4 Dd",
       "subtitle": "Dd",
       "steps": [
         {
@@ -495,9 +491,33 @@
           "question": "Learn letter Dd"
         },
         {
+          "id": "en-3-p",
+          "kind": "pattern",
+          "seq": [
+            "duck",
+            "leaf",
+            "duck"
+          ],
+          "question": "Pattern: 下一个是谁？",
+          "options": [
+            {
+              "icon": "leaf"
+            },
+            {
+              "icon": "key"
+            },
+            {
+              "icon": "duck"
+            }
+          ],
+          "answer": 0,
+          "hint": "Who comes next?",
+          "praise": "Pattern star!"
+        },
+        {
           "id": "en-3-q",
           "kind": "quiz",
-          "question": "Which picture starts with Dd?",
+          "question": "Which picture starts with D?",
           "options": [
             {
               "icon": "flower"
@@ -514,44 +534,27 @@
           "praise": "Great job!"
         },
         {
-          "id": "en-3-c",
-          "kind": "quiz",
-          "question": "小写 d 对应哪个大写字母？",
-          "options": [
-            {
-              "text": "L"
-            },
-            {
-              "text": "D"
-            },
-            {
-              "text": "K"
-            }
+          "id": "en-3-bl0",
+          "kind": "blend",
+          "parts": [
+            "d",
+            "uck"
           ],
-          "answer": 1,
-          "hint": "Dd = Dd",
-          "praise": "Dd 配对成功！"
-        },
-        {
-          "id": "en-3-l2",
-          "kind": "listen",
-          "prompt": "Dd",
-          "speakText": "D",
-          "question": "Find again: which one is Dd ?",
+          "question": "拼一拼：d 和 uck 手拉手，是哪个单词？",
           "options": [
             {
-              "text": "Dd"
+              "text": "duck"
             },
             {
-              "text": "Ff"
+              "text": "heart"
             },
             {
-              "text": "Ll"
+              "text": "cake"
             }
           ],
           "answer": 0,
-          "hint": "D for Dd",
-          "praise": "Yes! Dd!"
+          "hint": "Dd for duck",
+          "praise": "拼对了，duck！"
         },
         {
           "id": "en-3-c2",
@@ -599,36 +602,36 @@
             "step": "en-3-c2"
           },
           {
+            "type": "coin"
+          },
+          {
             "type": "question",
             "step": "en-3-q2"
           },
           {
-            "type": "coin"
+            "type": "question",
+            "step": "en-3-p"
           },
           {
             "type": "question",
             "step": "en-3-q"
           },
           {
-            "type": "question",
-            "step": "en-3-c"
-          },
-          {
             "type": "chest"
           },
           {
-            "type": "question",
-            "step": "en-3-l2"
+            "type": "mushroom"
           },
           {
-            "type": "mushroom"
+            "type": "question",
+            "step": "en-3-bl0"
           }
         ]
       }
     },
     {
       "id": "en-4",
-      "title": "Level 5 Letters",
+      "title": "Level 5 Ss",
       "subtitle": "Ss",
       "steps": [
         {
@@ -648,44 +651,45 @@
           "question": "Learn letter Ss"
         },
         {
-          "id": "en-4-l",
-          "kind": "listen",
-          "prompt": "Ss",
-          "speakText": "S",
-          "question": "Find: which one is Ss ?",
-          "options": [
-            {
-              "text": "Aa"
-            },
-            {
-              "text": "Bb"
-            },
-            {
-              "text": "Ss"
-            }
+          "id": "en-4-ct1",
+          "kind": "count",
+          "question": "数数看：有几个 trains？",
+          "duckIcon": "train",
+          "count": 8,
+          "countRange": [
+            6,
+            8
           ],
-          "answer": 2,
-          "hint": "S for Ss",
-          "praise": "Yes! Ss!"
+          "countOptions": [
+            7,
+            8,
+            9
+          ],
+          "backdrop": "grass",
+          "unit": "辆"
         },
         {
-          "id": "en-4-q",
-          "kind": "quiz",
-          "question": "Which picture starts with Ss?",
+          "id": "en-4-bl0",
+          "kind": "blend",
+          "parts": [
+            "s",
+            "un"
+          ],
+          "question": "拼一拼：s 和 un 手拉手，是哪个单词？",
           "options": [
             {
-              "icon": "leaf"
+              "text": "sun"
             },
             {
-              "icon": "sun"
+              "text": "apple"
             },
             {
-              "icon": "key"
+              "text": "moon"
             }
           ],
-          "answer": 1,
-          "hint": "Sun 太阳",
-          "praise": "Great job!"
+          "answer": 0,
+          "hint": "Ss for sun",
+          "praise": "拼对了，sun！"
         },
         {
           "id": "en-4-l2",
@@ -709,23 +713,22 @@
           "praise": "Yes! Ss!"
         },
         {
-          "id": "en-4-c2",
-          "kind": "quiz",
-          "question": "大写 S 的小写是哪个？",
-          "options": [
-            {
-              "text": "A"
-            },
-            {
-              "text": "S"
-            },
-            {
-              "text": "C"
-            }
+          "id": "en-4-ct2",
+          "kind": "count",
+          "question": "数数看：有几个 apples？",
+          "duckIcon": "apple",
+          "count": 3,
+          "countRange": [
+            2,
+            3
           ],
-          "answer": 1,
-          "hint": "Ss = Ss",
-          "praise": "Ss 又配对成功！"
+          "countOptions": [
+            2,
+            3,
+            4
+          ],
+          "backdrop": "grass",
+          "unit": "个"
         },
         {
           "id": "en-4-q2",
@@ -755,28 +758,28 @@
           },
           {
             "type": "question",
-            "step": "en-4-l"
+            "step": "en-4-ct1"
           },
           {
             "type": "coin"
           },
           {
             "type": "question",
-            "step": "en-4-q"
+            "step": "en-4-bl0"
           },
           {
             "type": "question",
             "step": "en-4-l2"
           },
           {
-            "type": "mushroom"
-          },
-          {
             "type": "question",
-            "step": "en-4-c2"
+            "step": "en-4-ct2"
           },
           {
             "type": "rest"
+          },
+          {
+            "type": "mushroom"
           }
         ]
       }
@@ -828,83 +831,86 @@
         },
         {
           "id": "english-r0-2",
-          "kind": "listen",
-          "prompt": "Cc",
-          "speakText": "C",
-          "question": "Find: which one is Cc ?",
+          "kind": "blend",
+          "parts": [
+            "c",
+            "ake"
+          ],
+          "question": "拼一拼：c 和 ake 手拉手，是哪个单词？",
           "options": [
             {
-              "text": "Dd"
+              "text": "cake"
             },
             {
-              "text": "Ss"
+              "text": "flower"
             },
             {
-              "text": "Cc"
+              "text": "gift"
             }
           ],
-          "answer": 2,
-          "hint": "C for Cc",
-          "praise": "Yes! Cc!"
+          "answer": 0,
+          "hint": "Cc for cake",
+          "praise": "拼对了，cake！"
         },
         {
           "id": "english-r0-3",
-          "kind": "quiz",
-          "question": "Which picture starts with Dd?",
+          "kind": "pattern",
+          "seq": [
+            "duck",
+            "leaf",
+            "duck"
+          ],
+          "question": "Pattern: 下一个是谁？",
           "options": [
             {
-              "icon": "flower"
+              "icon": "leaf"
+            },
+            {
+              "icon": "key"
             },
             {
               "icon": "duck"
-            },
-            {
-              "icon": "leaf"
             }
           ],
-          "answer": 1,
-          "hint": "Duck 小鸭",
-          "praise": "Great job!"
+          "answer": 0,
+          "hint": "Who comes next?",
+          "praise": "Pattern star!"
         },
         {
           "id": "english-r0-4",
-          "kind": "listen",
-          "prompt": "Ss",
-          "speakText": "S",
-          "question": "Find: which one is Ss ?",
-          "options": [
-            {
-              "text": "Aa"
-            },
-            {
-              "text": "Bb"
-            },
-            {
-              "text": "Ss"
-            }
+          "kind": "count",
+          "question": "数数看：有几个 trains？",
+          "duckIcon": "train",
+          "count": 8,
+          "countRange": [
+            6,
+            8
           ],
-          "answer": 2,
-          "hint": "S for Ss",
-          "praise": "Yes! Ss!"
+          "countOptions": [
+            7,
+            8,
+            9
+          ],
+          "backdrop": "grass",
+          "unit": "辆"
         },
         {
           "id": "english-r0-5",
-          "kind": "quiz",
-          "question": "Which picture starts with Aa?",
-          "options": [
-            {
-              "icon": "duck"
-            },
-            {
-              "icon": "apple"
-            },
-            {
-              "icon": "sun"
-            }
+          "kind": "count",
+          "question": "How many apples? 数一数有几个？",
+          "duckIcon": "apple",
+          "count": 3,
+          "countRange": [
+            2,
+            3
           ],
-          "answer": 1,
-          "hint": "Apple 苹果",
-          "praise": "Great job!"
+          "countOptions": [
+            2,
+            3,
+            4
+          ],
+          "backdrop": "grass",
+          "unit": "个"
         }
       ],
       "board": {
@@ -936,14 +942,14 @@
             "step": "english-r0-4"
           },
           {
-            "type": "chest"
-          },
-          {
             "type": "question",
             "step": "english-r0-5"
           },
           {
             "type": "mushroom"
+          },
+          {
+            "type": "chest"
           }
         ]
       },
@@ -951,7 +957,7 @@
     },
     {
       "id": "en-5",
-      "title": "Level 6 Letters",
+      "title": "Level 6 Mm",
       "subtitle": "Mm",
       "steps": [
         {
@@ -990,25 +996,28 @@
           "praise": "Mm 配对成功！"
         },
         {
-          "id": "en-5-l",
-          "kind": "listen",
-          "prompt": "Mm",
-          "speakText": "M",
-          "question": "Find: which one is Mm ?",
+          "id": "en-5-p",
+          "kind": "pattern",
+          "seq": [
+            "moon",
+            "gift",
+            "moon"
+          ],
+          "question": "Pattern: 下一个是谁？",
           "options": [
             {
-              "text": "Bb"
+              "icon": "apple"
             },
             {
-              "text": "Cc"
+              "icon": "moon"
             },
             {
-              "text": "Mm"
+              "icon": "gift"
             }
           ],
           "answer": 2,
-          "hint": "M for Mm",
-          "praise": "Yes! Mm!"
+          "hint": "Who comes next?",
+          "praise": "Pattern star!"
         },
         {
           "id": "en-5-l2",
@@ -1051,23 +1060,27 @@
           "praise": "Mm 又配对成功！"
         },
         {
-          "id": "en-5-q2",
-          "kind": "quiz",
-          "question": "Which picture starts with Mm?（再找一找）",
+          "id": "en-5-bl0",
+          "kind": "blend",
+          "parts": [
+            "m",
+            "oon"
+          ],
+          "question": "拼一拼：m 和 oon 手拉手，是哪个单词？",
           "options": [
             {
-              "icon": "banana"
+              "text": "moon"
             },
             {
-              "icon": "cake"
+              "text": "duck"
             },
             {
-              "icon": "moon"
+              "text": "key"
             }
           ],
-          "answer": 2,
-          "hint": "Moon 月亮",
-          "praise": "Great job!"
+          "answer": 0,
+          "hint": "Mm for moon",
+          "praise": "拼对了，moon！"
         }
       ],
       "board": {
@@ -1077,11 +1090,14 @@
             "step": "en-5-c"
           },
           {
-            "type": "question",
-            "step": "en-5-l"
+            "type": "coin"
           },
           {
-            "type": "coin"
+            "type": "question",
+            "step": "en-5-p"
+          },
+          {
+            "type": "chest"
           },
           {
             "type": "question",
@@ -1092,11 +1108,8 @@
             "step": "en-5-c2"
           },
           {
-            "type": "chest"
-          },
-          {
             "type": "question",
-            "step": "en-5-q2"
+            "step": "en-5-bl0"
           },
           {
             "type": "rest"
@@ -1106,7 +1119,7 @@
     },
     {
       "id": "en-6",
-      "title": "Level 7 Letters",
+      "title": "Level 7 Ff",
       "subtitle": "Ff",
       "steps": [
         {
@@ -1130,7 +1143,7 @@
           "kind": "listen",
           "prompt": "Ff",
           "speakText": "F",
-          "question": "Find: which one is Ff ?",
+          "question": "Look again：找出 Ff 这两个字母",
           "options": [
             {
               "text": "Cc"
@@ -1147,49 +1160,40 @@
           "praise": "Yes! Ff!"
         },
         {
-          "id": "en-6-p",
-          "kind": "pattern",
-          "seq": [
-            "flower",
-            "banana",
-            "flower"
+          "id": "en-6-ct0",
+          "kind": "count",
+          "question": "How many apples? 数一数有几个？",
+          "duckIcon": "apple",
+          "count": 3,
+          "countRange": [
+            2,
+            3
           ],
-          "question": "Pattern: 下一个是谁？",
-          "options": [
-            {
-              "icon": "banana"
-            },
-            {
-              "icon": "cake"
-            },
-            {
-              "icon": "flower"
-            }
+          "countOptions": [
+            2,
+            3,
+            4
           ],
-          "answer": 0,
-          "hint": "Who comes next?",
-          "praise": "Pattern star!"
+          "backdrop": "grass",
+          "unit": "个"
         },
         {
-          "id": "en-6-l2",
-          "kind": "listen",
-          "prompt": "Ff",
-          "speakText": "F",
-          "question": "Find again: which one is Ff ?",
-          "options": [
-            {
-              "text": "Ff"
-            },
-            {
-              "text": "Aa"
-            },
-            {
-              "text": "Bb"
-            }
+          "id": "en-6-ct2",
+          "kind": "count",
+          "question": "How many stars? 数一数有几个？",
+          "duckIcon": "star",
+          "count": 5,
+          "countRange": [
+            3,
+            5
           ],
-          "answer": 0,
-          "hint": "F for Ff",
-          "praise": "Yes! Ff!"
+          "countOptions": [
+            4,
+            5,
+            6
+          ],
+          "backdrop": "night",
+          "unit": "颗"
         },
         {
           "id": "en-6-c2",
@@ -1234,11 +1238,11 @@
         "spaces": [
           {
             "type": "question",
-            "step": "en-6-p"
+            "step": "en-6-ct0"
           },
           {
             "type": "question",
-            "step": "en-6-l2"
+            "step": "en-6-ct2"
           },
           {
             "type": "coin"
@@ -1255,18 +1259,18 @@
             "type": "coin"
           },
           {
-            "type": "question",
-            "step": "en-6-l"
+            "type": "chest"
           },
           {
-            "type": "chest"
+            "type": "question",
+            "step": "en-6-l"
           }
         ]
       }
     },
     {
       "id": "en-7",
-      "title": "Level 8 Letters",
+      "title": "Level 8 Ll",
       "subtitle": "Ll",
       "steps": [
         {
@@ -1286,25 +1290,6 @@
           "question": "Learn letter Ll"
         },
         {
-          "id": "en-7-q",
-          "kind": "quiz",
-          "question": "Which picture starts with Ll?",
-          "options": [
-            {
-              "icon": "banana"
-            },
-            {
-              "icon": "leaf"
-            },
-            {
-              "icon": "cake"
-            }
-          ],
-          "answer": 1,
-          "hint": "Leaf 叶子",
-          "praise": "Great job!"
-        },
-        {
           "id": "en-7-c",
           "kind": "quiz",
           "question": "小写 l 对应哪个大写字母？",
@@ -1322,6 +1307,25 @@
           "answer": 2,
           "hint": "Ll = Ll",
           "praise": "Ll 配对成功！"
+        },
+        {
+          "id": "en-7-q",
+          "kind": "quiz",
+          "question": "这个字母开头的是哪张图？",
+          "options": [
+            {
+              "icon": "banana"
+            },
+            {
+              "icon": "leaf"
+            },
+            {
+              "icon": "cake"
+            }
+          ],
+          "answer": 1,
+          "hint": "Leaf 叶子",
+          "praise": "Great job!"
         },
         {
           "id": "en-7-l2",
@@ -1345,23 +1349,27 @@
           "praise": "Yes! Ll!"
         },
         {
-          "id": "en-7-c2",
-          "kind": "quiz",
-          "question": "大写 L 的小写是哪个？",
+          "id": "en-7-bl0",
+          "kind": "blend",
+          "parts": [
+            "l",
+            "eaf"
+          ],
+          "question": "拼一拼：l 和 eaf 手拉手，是哪个单词？",
           "options": [
             {
-              "text": "F"
+              "text": "leaf"
             },
             {
-              "text": "L"
+              "text": "heart"
             },
             {
-              "text": "H"
+              "text": "cake"
             }
           ],
-          "answer": 1,
-          "hint": "Ll = Ll",
-          "praise": "Ll 又配对成功！"
+          "answer": 0,
+          "hint": "Ll for leaf",
+          "praise": "拼对了，leaf！"
         },
         {
           "id": "en-7-q2",
@@ -1390,19 +1398,15 @@
             "step": "en-7-l2"
           },
           {
-            "type": "question",
-            "step": "en-7-c2"
-          },
-          {
             "type": "coin"
           },
           {
             "type": "question",
-            "step": "en-7-q2"
+            "step": "en-7-bl0"
           },
           {
             "type": "question",
-            "step": "en-7-q"
+            "step": "en-7-q2"
           },
           {
             "type": "coin"
@@ -1412,6 +1416,10 @@
             "step": "en-7-c"
           },
           {
+            "type": "question",
+            "step": "en-7-q"
+          },
+          {
             "type": "mushroom"
           }
         ]
@@ -1419,7 +1427,7 @@
     },
     {
       "id": "en-8",
-      "title": "Level 9 Letters",
+      "title": "Level 9 Rr",
       "subtitle": "Rr",
       "steps": [
         {
@@ -1460,7 +1468,7 @@
         {
           "id": "en-8-q",
           "kind": "quiz",
-          "question": "Which picture starts with Rr?",
+          "question": "Which picture starts with R?",
           "options": [
             {
               "icon": "cake"
@@ -1517,23 +1525,22 @@
           "praise": "Rr 又配对成功！"
         },
         {
-          "id": "en-8-q2",
-          "kind": "quiz",
-          "question": "Which picture starts with Rr?（再找一找）",
-          "options": [
-            {
-              "icon": "sun"
-            },
-            {
-              "icon": "moon"
-            },
-            {
-              "icon": "rainbow"
-            }
+          "id": "en-8-ct2",
+          "kind": "count",
+          "question": "Count: 这里一共有几样东西？",
+          "duckIcon": "candy",
+          "count": 7,
+          "countRange": [
+            5,
+            7
           ],
-          "answer": 2,
-          "hint": "Rainbow 彩虹",
-          "praise": "Great job!"
+          "countOptions": [
+            6,
+            7,
+            8
+          ],
+          "backdrop": "grass",
+          "unit": "颗"
         }
       ],
       "board": {
@@ -1544,21 +1551,18 @@
           },
           {
             "type": "question",
-            "step": "en-8-q2"
-          },
-          {
-            "type": "coin"
+            "step": "en-8-ct2"
           },
           {
             "type": "question",
             "step": "en-8-c"
           },
           {
-            "type": "question",
-            "step": "en-8-q"
+            "type": "coin"
           },
           {
-            "type": "coin"
+            "type": "question",
+            "step": "en-8-q"
           },
           {
             "type": "question",
@@ -1566,13 +1570,16 @@
           },
           {
             "type": "rest"
+          },
+          {
+            "type": "coin"
           }
         ]
       }
     },
     {
       "id": "en-9",
-      "title": "Level 10 Letters",
+      "title": "Level 10 Gg",
       "subtitle": "Gg",
       "steps": [
         {
@@ -1613,7 +1620,7 @@
         {
           "id": "en-9-q",
           "kind": "quiz",
-          "question": "Which picture starts with Gg?",
+          "question": "找一找：哪个图的开头是 G ？",
           "options": [
             {
               "icon": "duck"
@@ -1630,25 +1637,27 @@
           "praise": "Great job!"
         },
         {
-          "id": "en-9-l2",
-          "kind": "listen",
-          "prompt": "Gg",
-          "speakText": "G",
-          "question": "Find again: which one is Gg ?",
+          "id": "en-9-bl0",
+          "kind": "blend",
+          "parts": [
+            "g",
+            "ift"
+          ],
+          "question": "拼一拼：g 和 ift 手拉手，是哪个单词？",
           "options": [
             {
-              "text": "Gg"
+              "text": "gift"
             },
             {
-              "text": "Dd"
+              "text": "duck"
             },
             {
-              "text": "Ss"
+              "text": "key"
             }
           ],
           "answer": 0,
-          "hint": "G for Gg",
-          "praise": "Yes! Gg!"
+          "hint": "Gg for gift",
+          "praise": "拼对了，gift！"
         },
         {
           "id": "en-9-c2",
@@ -1696,11 +1705,11 @@
             "step": "en-9-q2"
           },
           {
-            "type": "question",
-            "step": "en-9-c"
+            "type": "coin"
           },
           {
-            "type": "coin"
+            "type": "question",
+            "step": "en-9-c"
           },
           {
             "type": "question",
@@ -1708,17 +1717,17 @@
           },
           {
             "type": "question",
-            "step": "en-9-l2"
+            "step": "en-9-bl0"
           },
           {
             "type": "chest"
           },
           {
-            "type": "question",
-            "step": "en-9-c2"
+            "type": "mushroom"
           },
           {
-            "type": "mushroom"
+            "type": "question",
+            "step": "en-9-c2"
           }
         ]
       }
@@ -1770,64 +1779,68 @@
         },
         {
           "id": "english-r1-2",
-          "kind": "listen",
-          "prompt": "Cc",
-          "speakText": "C",
-          "question": "Find: which one is Cc ?",
+          "kind": "blend",
+          "parts": [
+            "c",
+            "ake"
+          ],
+          "question": "拼一拼：c 和 ake 手拉手，是哪个单词？",
           "options": [
             {
-              "text": "Dd"
+              "text": "cake"
             },
             {
-              "text": "Ss"
+              "text": "flower"
             },
             {
-              "text": "Cc"
+              "text": "gift"
             }
           ],
-          "answer": 2,
-          "hint": "C for Cc",
-          "praise": "Yes! Cc!"
+          "answer": 0,
+          "hint": "Cc for cake",
+          "praise": "拼对了，cake！"
         },
         {
           "id": "english-r1-3",
-          "kind": "quiz",
-          "question": "Which picture starts with Dd?",
+          "kind": "pattern",
+          "seq": [
+            "duck",
+            "leaf",
+            "duck"
+          ],
+          "question": "Pattern: 下一个是谁？",
           "options": [
             {
-              "icon": "flower"
+              "icon": "leaf"
+            },
+            {
+              "icon": "key"
             },
             {
               "icon": "duck"
-            },
-            {
-              "icon": "leaf"
             }
           ],
-          "answer": 1,
-          "hint": "Duck 小鸭",
-          "praise": "Great job!"
+          "answer": 0,
+          "hint": "Who comes next?",
+          "praise": "Pattern star!"
         },
         {
           "id": "english-r1-4",
-          "kind": "listen",
-          "prompt": "Ss",
-          "speakText": "S",
-          "question": "Find: which one is Ss ?",
-          "options": [
-            {
-              "text": "Aa"
-            },
-            {
-              "text": "Bb"
-            },
-            {
-              "text": "Ss"
-            }
+          "kind": "count",
+          "question": "数数看：有几个 trains？",
+          "duckIcon": "train",
+          "count": 8,
+          "countRange": [
+            6,
+            8
           ],
-          "answer": 2,
-          "hint": "S for Ss",
-          "praise": "Yes! Ss!"
+          "countOptions": [
+            7,
+            8,
+            9
+          ],
+          "backdrop": "grass",
+          "unit": "辆"
         },
         {
           "id": "english-r1-5",
@@ -1856,22 +1869,22 @@
             "step": "english-r1-1"
           },
           {
-            "type": "question",
-            "step": "english-r1-2"
+            "type": "coin"
           },
           {
-            "type": "coin"
+            "type": "question",
+            "step": "english-r1-2"
           },
           {
             "type": "question",
             "step": "english-r1-3"
           },
           {
-            "type": "question",
-            "step": "english-r1-4"
+            "type": "coin"
           },
           {
-            "type": "coin"
+            "type": "question",
+            "step": "english-r1-4"
           },
           {
             "type": "question",
@@ -1881,11 +1894,11 @@
             "type": "chest"
           },
           {
-            "type": "question",
-            "step": "english-r1-0"
+            "type": "rest"
           },
           {
-            "type": "rest"
+            "type": "question",
+            "step": "english-r1-0"
           }
         ]
       },
@@ -1963,48 +1976,48 @@
           "praise": "Yes! Apple!"
         },
         {
-          "id": "en-x0",
+          "id": "en-x10-0",
           "kind": "quiz",
-          "question": "Which one is the flower? 花是哪一个？",
+          "question": "Which one is the star? 星星是哪一个？",
           "options": [
             {
-              "icon": "tree",
-              "text": "tree"
+              "icon": "star",
+              "text": "星星"
             },
             {
-              "icon": "flower",
-              "text": "flower"
+              "icon": "moon",
+              "text": "月亮"
             },
             {
-              "icon": "leaf",
-              "text": "leaf"
+              "icon": "sun",
+              "text": "太阳"
             }
           ],
-          "answer": 1,
-          "hint": "Flower 花",
-          "praise": "Yes! Flower!"
+          "answer": 0,
+          "hint": "Star 星星",
+          "praise": "Yes! Star!"
         },
         {
-          "id": "en-x1",
+          "id": "en-x10-1",
           "kind": "quiz",
-          "question": "Which one is the cake? 蛋糕是哪一个？",
+          "question": "Which one is the rainbow? 彩虹是哪一个？",
           "options": [
             {
               "icon": "gift",
-              "text": "gift"
+              "text": "礼物"
             },
             {
-              "icon": "key",
-              "text": "key"
+              "icon": "rainbow",
+              "text": "彩虹"
             },
             {
-              "icon": "cake",
-              "text": "cake"
+              "icon": "heart",
+              "text": "爱心"
             }
           ],
-          "answer": 2,
-          "hint": "Cake 蛋糕",
-          "praise": "Yes! Cake!"
+          "answer": 1,
+          "hint": "Rainbow 彩虹",
+          "praise": "Yes! Rainbow!"
         }
       ],
       "board": {
@@ -2026,17 +2039,17 @@
           },
           {
             "type": "question",
-            "step": "en-x0"
-          },
-          {
-            "type": "mushroom"
+            "step": "en-x10-0"
           },
           {
             "type": "question",
-            "step": "en-x1"
+            "step": "en-x10-1"
           },
           {
             "type": "rest"
+          },
+          {
+            "type": "mushroom"
           }
         ]
       }
@@ -2144,55 +2157,58 @@
           "praise": "Super star! 全部通关!"
         },
         {
-          "id": "en-x0",
+          "id": "en-x11-0",
           "kind": "quiz",
-          "question": "Which one is the flower? 花是哪一个？",
+          "question": "Which one is the banana? 香蕉是哪一个？",
           "options": [
             {
-              "icon": "tree",
-              "text": "tree"
+              "icon": "apple",
+              "text": "苹果"
             },
             {
-              "icon": "flower",
-              "text": "flower"
-            },
-            {
-              "icon": "leaf",
-              "text": "leaf"
-            }
-          ],
-          "answer": 1,
-          "hint": "Flower 花",
-          "praise": "Yes! Flower!"
-        },
-        {
-          "id": "en-x1",
-          "kind": "quiz",
-          "question": "Which one is the cake? 蛋糕是哪一个？",
-          "options": [
-            {
-              "icon": "gift",
-              "text": "gift"
-            },
-            {
-              "icon": "key",
-              "text": "key"
+              "icon": "banana",
+              "text": "香蕉"
             },
             {
               "icon": "cake",
-              "text": "cake"
+              "text": "蛋糕"
             }
           ],
-          "answer": 2,
-          "hint": "Cake 蛋糕",
-          "praise": "Yes! Cake!"
+          "answer": 1,
+          "hint": "Banana 香蕉",
+          "praise": "Yes! Banana!"
+        },
+        {
+          "id": "en-x11-1",
+          "kind": "quiz",
+          "question": "Which one is the gift? 礼物是哪一个？",
+          "options": [
+            {
+              "icon": "gift",
+              "text": "礼物"
+            },
+            {
+              "icon": "key",
+              "text": "钥匙"
+            },
+            {
+              "icon": "duck",
+              "text": "小鸭"
+            }
+          ],
+          "answer": 0,
+          "hint": "Gift 礼物",
+          "praise": "Yes! Gift!"
         }
       ],
       "board": {
         "spaces": [
           {
             "type": "question",
-            "step": "en-x1"
+            "step": "en-x11-1"
+          },
+          {
+            "type": "coin"
           },
           {
             "type": "question",
@@ -2210,18 +2226,18 @@
             "step": "en-11-q2"
           },
           {
-            "type": "chest"
-          },
-          {
             "type": "question",
             "step": "en-11-q3"
+          },
+          {
+            "type": "chest"
           },
           {
             "type": "rest"
           },
           {
             "type": "question",
-            "step": "en-x0"
+            "step": "en-x11-0"
           }
         ]
       }
@@ -2273,85 +2289,86 @@
         },
         {
           "id": "english-boss-2",
-          "kind": "listen",
-          "prompt": "Cc",
-          "speakText": "C",
-          "question": "Find: which one is Cc ?",
+          "kind": "blend",
+          "parts": [
+            "c",
+            "ake"
+          ],
+          "question": "拼一拼：c 和 ake 手拉手，是哪个单词？",
           "options": [
             {
-              "text": "Dd"
+              "text": "cake"
             },
             {
-              "text": "Ss"
+              "text": "flower"
             },
             {
-              "text": "Cc"
+              "text": "gift"
             }
           ],
-          "answer": 2,
-          "hint": "C for Cc",
-          "praise": "Yes! Cc!"
+          "answer": 0,
+          "hint": "Cc for cake",
+          "praise": "拼对了，cake！"
         },
         {
           "id": "english-boss-3",
-          "kind": "quiz",
-          "question": "Which picture starts with Dd?",
+          "kind": "pattern",
+          "seq": [
+            "duck",
+            "leaf",
+            "duck"
+          ],
+          "question": "Pattern: 下一个是谁？",
           "options": [
             {
-              "icon": "flower"
+              "icon": "leaf"
+            },
+            {
+              "icon": "key"
             },
             {
               "icon": "duck"
-            },
-            {
-              "icon": "leaf"
             }
           ],
-          "answer": 1,
-          "hint": "Duck 小鸭",
-          "praise": "Great job!"
+          "answer": 0,
+          "hint": "Who comes next?",
+          "praise": "Pattern star!"
         },
         {
           "id": "english-boss-4",
-          "kind": "listen",
-          "prompt": "Ss",
-          "speakText": "S",
-          "question": "Find: which one is Ss ?",
-          "options": [
-            {
-              "text": "Aa"
-            },
-            {
-              "text": "Bb"
-            },
-            {
-              "text": "Ss"
-            }
+          "kind": "count",
+          "question": "数数看：有几个 trains？",
+          "duckIcon": "train",
+          "count": 8,
+          "countRange": [
+            6,
+            8
           ],
-          "answer": 2,
-          "hint": "S for Ss",
-          "praise": "Yes! Ss!"
+          "countOptions": [
+            7,
+            8,
+            9
+          ],
+          "backdrop": "grass",
+          "unit": "辆"
         },
         {
           "id": "english-boss-5",
-          "kind": "listen",
-          "prompt": "Aa",
-          "speakText": "A",
-          "question": "Find: which one is Aa ?",
-          "options": [
-            {
-              "text": "Bb"
-            },
-            {
-              "text": "Cc"
-            },
-            {
-              "text": "Aa"
-            }
+          "kind": "count",
+          "question": "How many apples? 数一数有几个？",
+          "duckIcon": "apple",
+          "count": 3,
+          "countRange": [
+            2,
+            3
           ],
-          "answer": 2,
-          "hint": "A for Aa",
-          "praise": "Yes! Aa!"
+          "countOptions": [
+            2,
+            3,
+            4
+          ],
+          "backdrop": "grass",
+          "unit": "个"
         },
         {
           "id": "english-boss-6",
@@ -2377,7 +2394,7 @@
           "kind": "listen",
           "prompt": "Ff",
           "speakText": "F",
-          "question": "Find: which one is Ff ?",
+          "question": "Look again：找出 Ff 这两个字母",
           "options": [
             {
               "text": "Cc"

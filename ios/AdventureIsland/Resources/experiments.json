@@ -20,6 +20,26 @@
           "fact": "干海绵会浮，吸满水会慢慢沉下去" },
         { "id": "balloon", "name": "气球", "icon": "balloon", "isFloat": true,
           "fact": "气球里是空气，最轻，漂在最上面" }
+      ],
+      "quiz": [
+        { "id": "q-ice", "card": "sci-ice", "question": "冰块放进饮料里，会怎么样？",
+          "options": ["浮在上面", "沉到杯底", "马上化成水不见啦"], "answer": 0,
+          "fact": "冰比水轻一点点，所以冰块会浮在饮料上。" },
+        { "id": "q-magnet", "card": "sci-magnet", "question": "磁铁能吸住哪一个？",
+          "options": ["橡皮", "回形针", "纸片"], "answer": 1,
+          "fact": "磁铁能吸住铁做的东西，比如回形针和钥匙。" },
+        { "id": "q-rainbow", "card": "sci-rainbow", "question": "彩虹是阳光穿过什么变出来的？",
+          "options": ["小水滴", "大石头", "黑黑的夜"], "answer": 0,
+          "fact": "阳光穿过小水滴，会折出七种颜色。" },
+        { "id": "q-volcano", "card": "sci-volcano", "question": "火山喷发时，从山口出来的是？",
+          "options": ["冰淇淋", "滚烫的岩浆", "海水"], "answer": 1,
+          "fact": "岩浆压力太大时，就会从火山口喷出来。" },
+        { "id": "q-sprout", "card": "sci-sprout", "question": "种子想发芽，最需要什么？",
+          "options": ["糖果", "小鞋子", "水和阳光"], "answer": 2,
+          "fact": "种子喝饱水、晒到太阳，就会发芽长大。" },
+        { "id": "q-heart", "card": "sci-heart", "question": "什么时候心跳得最快？",
+          "options": ["呼呼大睡时", "跑完步的时候", "安静发呆时"], "answer": 1,
+          "fact": "你的心脏一直在跳，跑完步会跳得更快哦。" }
       ]
     }
   ]

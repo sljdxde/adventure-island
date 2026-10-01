@@ -5,8 +5,8 @@
   "levels": [
     {
       "id": "astro-0",
-      "title": "第 1 关 Sun",
-      "subtitle": "太阳",
+      "title": "第 1 关 太阳系是一家",
+      "subtitle": "1 颗恒星 + 8 颗行星",
       "steps": [
         {
           "id": "astro-0-t",
@@ -17,315 +17,363 @@
           "display": "太阳",
           "examples": [
             {
-              "icon": "sun",
+              "body": "sun",
               "text": "太阳 Sun",
               "say": "太阳"
-            },
-            {
-              "icon": "sunrise",
-              "text": "日出 Sunrise",
-              "say": "日出"
             }
           ],
-          "question": "学一学：太阳 Sun"
+          "stats": [
+            {
+              "label": "直径",
+              "value": "109 个地球"
+            },
+            {
+              "label": "表面",
+              "value": "5505℃"
+            },
+            {
+              "label": "占全家重量",
+              "value": "99.8%"
+            }
+          ],
+          "fact": "太阳系 99.8% 的物质都集中在太阳身上",
+          "question": "学一学：太阳，太阳系唯一会发光的恒星",
+          "body": "sun",
+          "bodySize": 150
         },
         {
-          "id": "astro-0-q",
+          "id": "astro-0-c1",
+          "kind": "count",
+          "question": "数一数：太阳系一共有几颗大行星？",
+          "duckIcon": "planet",
+          "count": 8,
+          "countOptions": [
+            6,
+            7,
+            8
+          ],
+          "backdrop": "night",
+          "unit": "颗",
+          "praise": "数对啦！"
+        },
+        {
+          "id": "astro-0-q1",
           "kind": "quiz",
-          "question": "找一找：哪个是太阳？",
+          "question": "太阳会自己发光发热，它在太阳系里是什么身份？",
           "options": [
             {
-              "icon": "moon"
+              "text": "恒星"
             },
             {
-              "icon": "sun",
-              "text": "太阳"
+              "text": "行星"
             },
             {
-              "icon": "star"
+              "text": "卫星"
             }
           ],
-          "answer": 1,
-          "hint": "太阳会发光发热，白天照亮大地",
-          "praise": "对啦！太阳会发光发热，白天照亮大地"
+          "answer": 0,
+          "hint": "只有它自己会发光",
+          "praise": "太阳是离我们最近的一颗恒星！"
         },
         {
-          "id": "astro-0-q2",
-          "kind": "quiz",
-          "question": "再找一找：哪个是太阳？",
-          "options": [
+          "id": "astro-0-m1",
+          "kind": "cmp",
+          "viz": "disc",
+          "question": "比一比：谁是行星里的巨无霸？",
+          "rows": [
             {
-              "icon": "moon"
+              "body": "jupiter",
+              "name": "木星",
+              "value": 11.2,
+              "label": "11.2 个地球"
             },
             {
-              "icon": "sun",
-              "text": "太阳"
+              "body": "saturn",
+              "name": "土星",
+              "value": 9.45,
+              "label": "9.45 个地球"
             },
             {
-              "icon": "star"
+              "body": "earth",
+              "name": "地球",
+              "value": 1.0,
+              "label": "1 个地球"
             }
           ],
-          "answer": 1,
-          "hint": "太阳会发光发热，白天照亮大地",
-          "praise": "对啦！太阳会发光发热，白天照亮大地"
+          "answer": 0,
+          "ext": "max",
+          "hint": "看哪个圆盘最大",
+          "praise": "木星最大！",
+          "note": "11 个地球排成一排，才和木星一样宽",
+          "base": 34
         },
         {
-          "id": "astro-0-f2",
-          "kind": "quiz",
-          "question": "白天照亮大地、发光发热的是谁？",
+          "id": "astro-0-l1",
+          "kind": "listen",
+          "promptBody": "earth",
+          "speakText": "地球",
+          "question": "找一找：哪颗是我们住的地球？",
           "options": [
             {
-              "icon": "star"
+              "body": "mars",
+              "text": "火星"
             },
             {
-              "icon": "sun",
-              "text": "太阳"
+              "body": "earth",
+              "text": "地球"
             },
             {
-              "icon": "moon"
+              "body": "mercury",
+              "text": "水星"
             }
           ],
           "answer": 1,
-          "hint": "太阳会发光发热，白天照亮大地",
-          "praise": "对啦！太阳会发光发热，白天照亮大地"
+          "hint": "蓝蓝的、上面有海洋",
+          "praise": "就是这颗蓝色弹珠！"
         },
         {
-          "id": "astro-0-p2",
-          "kind": "pattern",
-          "seq": [
-            "sun",
-            "moon",
-            "sun"
-          ],
-          "question": "星空规律：下一个是谁？",
-          "options": [
+          "id": "astro-0-o1",
+          "kind": "order",
+          "dir": "up",
+          "question": "离太阳从近到远，把这三颗排一排",
+          "items": [
             {
-              "icon": "moon"
+              "body": "mercury",
+              "name": "水星",
+              "v": 1
             },
             {
-              "icon": "sun"
+              "body": "earth",
+              "name": "地球",
+              "v": 3
             },
             {
-              "icon": "star"
+              "body": "venus",
+              "name": "金星",
+              "v": 2
             }
           ],
-          "answer": 1,
-          "hint": "谁在轮流出现？",
-          "praise": "规律找对啦！"
-        },
-        {
-          "id": "astro-0-q3",
-          "kind": "quiz",
-          "question": "「太阳会发光发热，白天照亮大地」说的是谁？",
-          "options": [
-            {
-              "icon": "moon"
-            },
-            {
-              "icon": "sun",
-              "text": "太阳"
-            },
-            {
-              "icon": "star"
-            }
-          ],
-          "answer": 1,
-          "hint": "想一想刚才学的话",
-          "praise": "对，就是太阳！"
+          "hint": "想一想谁排在前面",
+          "praise": "排好啦！"
         }
       ],
       "board": {
         "spaces": [
           {
             "type": "question",
-            "step": "astro-0-q"
+            "step": "astro-0-c1"
           },
           {
             "type": "question",
-            "step": "astro-0-q2"
+            "step": "astro-0-q1"
           },
           {
             "type": "coin"
           },
           {
             "type": "question",
-            "step": "astro-0-f2"
+            "step": "astro-0-m1"
           },
           {
             "type": "question",
-            "step": "astro-0-p2"
+            "step": "astro-0-l1"
           },
           {
             "type": "coin"
-          },
-          {
-            "type": "question",
-            "step": "astro-0-q3"
           },
           {
             "type": "chest"
+          },
+          {
+            "type": "question",
+            "step": "astro-0-o1"
           }
         ]
       }
     },
     {
       "id": "astro-1",
-      "title": "第 2 关 Moon",
-      "subtitle": "月亮",
+      "title": "第 2 关 行星的座位表",
+      "subtitle": "离太阳由近到远",
       "steps": [
         {
           "id": "astro-1-t",
           "kind": "letter",
           "letters": [
-            "Moon"
+            "Mercury"
           ],
-          "display": "月亮",
+          "display": "水星",
           "examples": [
             {
-              "icon": "moon",
-              "text": "月亮 Moon",
-              "say": "月亮"
-            },
-            {
-              "icon": "starface",
-              "text": "星夜 Night",
-              "say": "星夜"
+              "body": "mercury",
+              "text": "水星 Mercury",
+              "say": "水星"
             }
           ],
-          "question": "学一学：月亮 Moon"
+          "stats": [
+            {
+              "label": "离太阳",
+              "value": "58 百万千米"
+            },
+            {
+              "label": "直径",
+              "value": "0.38 个地球"
+            },
+            {
+              "label": "一年",
+              "value": "88 天"
+            }
+          ],
+          "fact": "离太阳最近，88 天就跑完一圈，是太阳系的短跑冠军",
+          "question": "学一学：水星，离太阳最近的行星",
+          "body": "mercury",
+          "bodySize": 118
         },
         {
-          "id": "astro-1-f",
-          "kind": "quiz",
-          "question": "晚上有时圆有时弯的是谁？",
-          "options": [
+          "id": "astro-1-d1",
+          "kind": "cmp",
+          "viz": "bar",
+          "question": "谁离太阳最近？",
+          "rows": [
             {
-              "icon": "moon",
-              "text": "月亮"
+              "body": "mercury",
+              "name": "水星",
+              "value": 58,
+              "label": "58 百万千米"
             },
             {
-              "icon": "sun"
+              "body": "earth",
+              "name": "地球",
+              "value": 150,
+              "label": "150 百万千米"
             },
             {
-              "icon": "crystal"
+              "body": "neptune",
+              "name": "海王星",
+              "value": 4515,
+              "label": "4515 百万千米"
             }
           ],
           "answer": 0,
-          "hint": "月亮晚上出来，有时圆圆、有时弯弯",
-          "praise": "对啦！月亮晚上出来，有时圆圆、有时弯弯"
+          "ext": "min",
+          "hint": "比一比哪一条最短",
+          "praise": "水星最靠太阳！",
+          "note": "阳光跑到地球要 8 分钟，跑到海王星要 4 个小时"
         },
         {
-          "id": "astro-1-q2",
-          "kind": "quiz",
-          "question": "再找一找：哪个是月亮？",
-          "options": [
+          "id": "astro-1-o1",
+          "kind": "order",
+          "dir": "up",
+          "question": "从离太阳近的排到远的",
+          "items": [
             {
-              "icon": "sun"
+              "body": "mars",
+              "name": "火星",
+              "v": 4
             },
             {
-              "icon": "crystal"
+              "body": "jupiter",
+              "name": "木星",
+              "v": 5
             },
             {
-              "icon": "moon",
-              "text": "月亮"
+              "body": "saturn",
+              "name": "土星",
+              "v": 6
             }
           ],
-          "answer": 2,
-          "hint": "月亮晚上出来，有时圆圆、有时弯弯",
-          "praise": "对啦！月亮晚上出来，有时圆圆、有时弯弯"
+          "hint": "想一想谁排在前面",
+          "praise": "排好啦！"
         },
         {
-          "id": "astro-1-f2",
+          "id": "astro-1-n1",
+          "kind": "neighbor",
+          "nums": [
+            3,
+            0,
+            5
+          ],
+          "question": "行星排队：第 3 颗和第 5 颗之间，藏着第几颗？",
+          "arithOptions": [
+            4,
+            2,
+            6
+          ],
+          "answer": 0,
+          "hint": "3 的后面是 4，4 的后面是 5",
+          "praise": "第 4 颗，就是火星！"
+        },
+        {
+          "id": "astro-1-q1",
           "kind": "quiz",
-          "question": "晚上有时圆有时弯的是谁？",
+          "question": "太阳路边第八个座位，坐的是哪颗行星？",
           "options": [
             {
-              "icon": "crystal"
+              "text": "海王星"
             },
             {
-              "icon": "sun"
+              "text": "天王星"
             },
             {
-              "icon": "moon",
-              "text": "月亮"
+              "text": "土星"
             }
           ],
-          "answer": 2,
-          "hint": "月亮晚上出来，有时圆圆、有时弯弯",
-          "praise": "对啦！月亮晚上出来，有时圆圆、有时弯弯"
+          "answer": 0,
+          "hint": "从水星开始一颗一颗数到八",
+          "praise": "海王星离太阳最远！"
         },
         {
-          "id": "astro-1-p2",
-          "kind": "pattern",
-          "seq": [
-            "moon",
-            "sun",
-            "moon"
-          ],
-          "question": "星空规律：下一个是谁？",
+          "id": "astro-1-l1",
+          "kind": "listen",
+          "promptBody": "mars",
+          "speakText": "火星",
+          "question": "找一找：离太阳第四近的那颗红色行星",
           "options": [
             {
-              "icon": "sun"
+              "body": "venus",
+              "text": "金星"
             },
             {
-              "icon": "moon"
+              "body": "mars",
+              "text": "火星"
             },
             {
-              "icon": "crystal"
+              "body": "mercury",
+              "text": "水星"
             }
           ],
           "answer": 1,
-          "hint": "谁在轮流出现？",
-          "praise": "规律找对啦！"
-        },
-        {
-          "id": "astro-1-q3",
-          "kind": "quiz",
-          "question": "「月亮晚上出来，有时圆圆、有时弯弯」说的是谁？",
-          "options": [
-            {
-              "icon": "sun"
-            },
-            {
-              "icon": "moon",
-              "text": "月亮"
-            },
-            {
-              "icon": "crystal"
-            }
-          ],
-          "answer": 1,
-          "hint": "想一想刚才学的话",
-          "praise": "对，就是月亮！"
+          "hint": "第 1 水、第 2 金、第 3 地、第 4 火",
+          "praise": "火星，红色的那颗！"
         }
       ],
       "board": {
         "spaces": [
           {
             "type": "question",
-            "step": "astro-1-q2"
-          },
-          {
-            "type": "question",
-            "step": "astro-1-f2"
+            "step": "astro-1-o1"
           },
           {
             "type": "coin"
           },
           {
             "type": "question",
-            "step": "astro-1-p2"
+            "step": "astro-1-n1"
           },
           {
             "type": "question",
-            "step": "astro-1-q3"
+            "step": "astro-1-q1"
           },
           {
             "type": "coin"
           },
           {
             "type": "question",
-            "step": "astro-1-f"
+            "step": "astro-1-l1"
+          },
+          {
+            "type": "question",
+            "step": "astro-1-d1"
           },
           {
             "type": "mushroom"
@@ -335,180 +383,443 @@
     },
     {
       "id": "astro-2",
-      "title": "第 3 关 Star",
-      "subtitle": "星星",
+      "title": "第 3 关 谁是巨无霸",
+      "subtitle": "行星比大小",
       "steps": [
         {
           "id": "astro-2-t",
           "kind": "letter",
           "letters": [
-            "Star"
+            "Jupiter"
           ],
-          "display": "星星",
+          "display": "木星",
           "examples": [
             {
-              "icon": "star",
-              "text": "星星 Star",
-              "say": "星星"
-            },
-            {
-              "icon": "starface",
-              "text": "小星星 Shine",
-              "say": "小星星"
+              "body": "jupiter",
+              "text": "木星 Jupiter",
+              "say": "木星"
             }
           ],
-          "question": "学一学：星星 Star"
+          "stats": [
+            {
+              "label": "直径",
+              "value": "11.2 个地球"
+            },
+            {
+              "label": "能装下",
+              "value": "1300 个地球"
+            },
+            {
+              "label": "卫星",
+              "value": "95 颗"
+            }
+          ],
+          "fact": "大红斑是一场刮了 300 多年的超级风暴，能塞下整个地球",
+          "question": "学一学：木星，行星里的大哥",
+          "body": "jupiter",
+          "bodySize": 150
         },
         {
-          "id": "astro-2-p",
-          "kind": "pattern",
-          "seq": [
-            "moon",
-            "star",
-            "moon"
-          ],
-          "question": "星空规律：下一个是谁？",
-          "options": [
+          "id": "astro-2-s1",
+          "kind": "cmp",
+          "viz": "disc",
+          "question": "按真实大小比一比：谁的圆盘最大？",
+          "rows": [
             {
-              "icon": "star"
+              "body": "jupiter",
+              "name": "木星",
+              "value": 11.2,
+              "label": "11.2 个地球"
             },
             {
-              "icon": "sun"
+              "body": "uranus",
+              "name": "天王星",
+              "value": 4.0,
+              "label": "4 个地球"
             },
             {
-              "icon": "comet"
+              "body": "earth",
+              "name": "地球",
+              "value": 1.0,
+              "label": "1 个地球"
+            },
+            {
+              "body": "mercury",
+              "name": "水星",
+              "value": 0.38,
+              "label": "0.38 个地球"
             }
           ],
           "answer": 0,
-          "hint": "读一读前面几个，谁在轮流出现",
-          "praise": "规律找对啦，小天文学家！"
+          "ext": "max",
+          "hint": "看圆盘，不看名字",
+          "praise": "木星最大！",
+          "note": "其他七颗行星加起来，都没有木星一个胖",
+          "base": 30
         },
         {
-          "id": "astro-2-q2",
+          "id": "astro-2-q1",
           "kind": "quiz",
-          "question": "再找一找：哪个是星星？",
+          "question": "木星肚子里能装下多少个地球？",
           "options": [
             {
-              "icon": "star",
-              "text": "星星"
+              "text": "11 个"
             },
             {
-              "icon": "balloon"
+              "text": "318 个"
             },
             {
-              "icon": "moon"
+              "text": "1300 个"
+            }
+          ],
+          "answer": 2,
+          "hint": "11 是排成一排的个数，装进肚子里要多得多",
+          "praise": "1300 个地球才填满木星！"
+        },
+        {
+          "id": "astro-2-o1",
+          "kind": "order",
+          "dir": "down",
+          "question": "从大到小排一排",
+          "items": [
+            {
+              "body": "saturn",
+              "name": "土星",
+              "v": 9.45
+            },
+            {
+              "body": "mars",
+              "name": "火星",
+              "v": 0.53
+            },
+            {
+              "body": "uranus",
+              "name": "天王星",
+              "v": 4.0
+            }
+          ],
+          "hint": "想一想谁排在前面",
+          "praise": "排好啦！"
+        },
+        {
+          "id": "astro-2-m1",
+          "kind": "memory",
+          "question": "翻翻牌：行星和它的绰号配成对",
+          "cards": [
+            {
+              "key": "jupiter",
+              "body": "jupiter"
+            },
+            {
+              "key": "jupiter",
+              "text": "巨无霸"
+            },
+            {
+              "key": "saturn",
+              "body": "saturn"
+            },
+            {
+              "key": "saturn",
+              "text": "光环王"
+            },
+            {
+              "key": "earth",
+              "body": "earth"
+            },
+            {
+              "key": "earth",
+              "text": "蓝色弹珠"
+            }
+          ]
+        },
+        {
+          "id": "astro-2-s2",
+          "kind": "cmp",
+          "viz": "bar",
+          "question": "卫星最多的行星是谁？",
+          "rows": [
+            {
+              "body": "saturn",
+              "name": "土星",
+              "value": 146,
+              "label": "146 颗"
+            },
+            {
+              "body": "jupiter",
+              "name": "木星",
+              "value": 95,
+              "label": "95 颗"
+            },
+            {
+              "body": "earth",
+              "name": "地球",
+              "value": 1,
+              "label": "1 颗"
             }
           ],
           "answer": 0,
-          "hint": "星星在夜空里一闪一闪",
-          "praise": "对啦！星星在夜空里一闪一闪"
-        },
-        {
-          "id": "astro-2-f2",
-          "kind": "quiz",
-          "question": "夜空里一闪一闪的是谁？",
-          "options": [
-            {
-              "icon": "star",
-              "text": "星星"
-            },
-            {
-              "icon": "moon"
-            },
-            {
-              "icon": "balloon"
-            }
-          ],
-          "answer": 0,
-          "hint": "星星在夜空里一闪一闪",
-          "praise": "对啦！星星在夜空里一闪一闪"
-        },
-        {
-          "id": "astro-2-p2",
-          "kind": "pattern",
-          "seq": [
-            "star",
-            "balloon",
-            "star"
-          ],
-          "question": "星空规律：下一个是谁？",
-          "options": [
-            {
-              "icon": "balloon"
-            },
-            {
-              "icon": "star"
-            },
-            {
-              "icon": "moon"
-            }
-          ],
-          "answer": 1,
-          "hint": "谁在轮流出现？",
-          "praise": "规律找对啦！"
-        },
-        {
-          "id": "astro-2-q3",
-          "kind": "quiz",
-          "question": "「星星在夜空里一闪一闪」说的是谁？",
-          "options": [
-            {
-              "icon": "balloon"
-            },
-            {
-              "icon": "star",
-              "text": "星星"
-            },
-            {
-              "icon": "moon"
-            }
-          ],
-          "answer": 1,
-          "hint": "想一想刚才学的话",
-          "praise": "对，就是星星！"
+          "ext": "max",
+          "hint": "数一数哪一条最长",
+          "praise": "土星是卫星之王！",
+          "note": "土星身边围着 146 颗卫星，是全家孩子最多的"
         }
       ],
       "board": {
         "spaces": [
           {
             "type": "question",
-            "step": "astro-2-f2"
+            "step": "astro-2-o1"
           },
           {
             "type": "question",
-            "step": "astro-2-p2"
+            "step": "astro-2-m1"
+          },
+          {
+            "type": "question",
+            "step": "astro-2-s2"
           },
           {
             "type": "coin"
           },
           {
             "type": "question",
-            "step": "astro-2-q3"
+            "step": "astro-2-s1"
           },
           {
             "type": "question",
-            "step": "astro-2-p"
-          },
-          {
-            "type": "coin"
-          },
-          {
-            "type": "question",
-            "step": "astro-2-q2"
+            "step": "astro-2-q1"
           },
           {
             "type": "rest"
+          },
+          {
+            "type": "coin"
           }
         ]
       }
     },
     {
       "id": "astro-3",
-      "title": "第 4 关 Earth",
-      "subtitle": "地球",
+      "title": "第 4 关 比一比轻重",
+      "subtitle": "行星的质量",
       "steps": [
         {
           "id": "astro-3-t",
+          "kind": "letter",
+          "letters": [
+            "Saturn"
+          ],
+          "display": "土星",
+          "examples": [
+            {
+              "body": "saturn",
+              "text": "土星 Saturn",
+              "say": "土星"
+            }
+          ],
+          "stats": [
+            {
+              "label": "质量",
+              "value": "95 个地球"
+            },
+            {
+              "label": "直径",
+              "value": "9.45 个地球"
+            },
+            {
+              "label": "一天",
+              "value": "11 小时"
+            }
+          ],
+          "fact": "光环由无数冰块和石子组成；它轻得能浮在大水上",
+          "question": "学一学：土星，戴着光环的轻行星",
+          "body": "saturn",
+          "bodySize": 150
+        },
+        {
+          "id": "astro-3-w1",
+          "kind": "cmp",
+          "viz": "bar",
+          "question": "比一比谁最重（1 表示一个地球那么重）",
+          "rows": [
+            {
+              "body": "jupiter",
+              "name": "木星",
+              "value": 318,
+              "label": "318 个地球"
+            },
+            {
+              "body": "saturn",
+              "name": "土星",
+              "value": 95,
+              "label": "95 个地球"
+            },
+            {
+              "body": "earth",
+              "name": "地球",
+              "value": 1.0,
+              "label": "1 个地球"
+            },
+            {
+              "body": "mercury",
+              "name": "水星",
+              "value": 0.06,
+              "label": "0.06 个地球"
+            }
+          ],
+          "answer": 0,
+          "ext": "max",
+          "hint": "条最长的那个最重",
+          "praise": "木星最重！",
+          "note": "木星一个就顶 318 个地球，其他七颗加起来都不到它的一半"
+        },
+        {
+          "id": "astro-3-q1",
+          "kind": "quiz",
+          "question": "把土星放进一个超大的浴缸里，它会怎么样？",
+          "options": [
+            {
+              "text": "浮在水面上"
+            },
+            {
+              "text": "沉到缸底"
+            },
+            {
+              "text": "化成一片云"
+            }
+          ],
+          "answer": 0,
+          "hint": "土星平均密度比水还小",
+          "praise": "土星轻得能浮在水上！"
+        },
+        {
+          "id": "astro-3-o1",
+          "kind": "order",
+          "dir": "up",
+          "question": "从轻的排到重的",
+          "items": [
+            {
+              "body": "neptune",
+              "name": "海王星",
+              "v": 17.1
+            },
+            {
+              "body": "uranus",
+              "name": "天王星",
+              "v": 14.5
+            },
+            {
+              "body": "mars",
+              "name": "火星",
+              "v": 0.11
+            }
+          ],
+          "hint": "想一想谁排在前面",
+          "praise": "排好啦！"
+        },
+        {
+          "id": "astro-3-w2",
+          "kind": "cmp",
+          "viz": "bar",
+          "question": "谁比地球还轻？",
+          "rows": [
+            {
+              "body": "mars",
+              "name": "火星",
+              "value": 0.11,
+              "label": "0.11 个地球"
+            },
+            {
+              "body": "earth",
+              "name": "地球",
+              "value": 1.0,
+              "label": "1 个地球"
+            },
+            {
+              "body": "venus",
+              "name": "金星",
+              "value": 0.82,
+              "label": "0.82 个地球"
+            }
+          ],
+          "answer": 0,
+          "ext": "min",
+          "hint": "找条最短的那一条",
+          "praise": "火星最轻！",
+          "note": "火星只有地球的十分之一重"
+        },
+        {
+          "id": "astro-3-p1",
+          "kind": "pattern",
+          "seq": [
+            {
+              "body": "earth"
+            },
+            {
+              "body": "jupiter"
+            },
+            {
+              "body": "earth"
+            }
+          ],
+          "question": "小行星、大行星轮流排队，下一个是谁？",
+          "options": [
+            {
+              "body": "earth"
+            },
+            {
+              "body": "jupiter"
+            },
+            {
+              "body": "mars"
+            }
+          ],
+          "answer": 1,
+          "hint": "读一读：地球、木星、地球……",
+          "praise": "轮到木星啦！"
+        }
+      ],
+      "board": {
+        "spaces": [
+          {
+            "type": "question",
+            "step": "astro-3-w2"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "astro-3-p1"
+          },
+          {
+            "type": "question",
+            "step": "astro-3-w1"
+          },
+          {
+            "type": "question",
+            "step": "astro-3-q1"
+          },
+          {
+            "type": "chest"
+          },
+          {
+            "type": "mushroom"
+          },
+          {
+            "type": "question",
+            "step": "astro-3-o1"
+          }
+        ]
+      }
+    },
+    {
+      "id": "astro-4",
+      "title": "第 5 关 称一称",
+      "subtitle": "引力与体重",
+      "steps": [
+        {
+          "id": "astro-4-t",
           "kind": "letter",
           "letters": [
             "Earth"
@@ -516,318 +827,192 @@
           "display": "地球",
           "examples": [
             {
-              "icon": "earth",
+              "body": "earth",
               "text": "地球 Earth",
               "say": "地球"
-            },
-            {
-              "icon": "rocket",
-              "text": "坐火箭 Fly",
-              "say": "坐火箭"
             }
           ],
-          "question": "学一学：地球 Earth"
+          "stats": [
+            {
+              "label": "引力",
+              "value": "1（标准）"
+            },
+            {
+              "label": "直径",
+              "value": "12756 千米"
+            },
+            {
+              "label": "卫星",
+              "value": "1 颗"
+            }
+          ],
+          "fact": "目前唯一找到生命的行星，表面七成以上是海洋",
+          "question": "学一学：地球，引力的标准秤",
+          "body": "earth",
+          "bodySize": 110
         },
         {
-          "id": "astro-3-q",
-          "kind": "quiz",
-          "question": "找一找：哪个是地球？",
-          "options": [
+          "id": "astro-4-g1",
+          "kind": "cmp",
+          "viz": "bar",
+          "question": "在地球上称 10 斤，去哪个行星称出来最重？",
+          "rows": [
             {
-              "icon": "sun"
+              "body": "jupiter",
+              "name": "木星",
+              "value": 2.53,
+              "label": "称出 25 斤"
             },
             {
-              "icon": "earth",
-              "text": "地球"
+              "body": "neptune",
+              "name": "海王星",
+              "value": 1.14,
+              "label": "称出 11 斤"
             },
             {
-              "icon": "moon"
-            }
-          ],
-          "answer": 1,
-          "hint": "地球是我们的家，蓝蓝的、圆圆的",
-          "praise": "对啦！地球是我们的家，蓝蓝的、圆圆的"
-        },
-        {
-          "id": "astro-3-q2",
-          "kind": "quiz",
-          "question": "再找一找：哪个是地球？",
-          "options": [
-            {
-              "icon": "sun"
-            },
-            {
-              "icon": "earth",
-              "text": "地球"
-            },
-            {
-              "icon": "moon"
-            }
-          ],
-          "answer": 1,
-          "hint": "地球是我们的家，蓝蓝的、圆圆的",
-          "praise": "对啦！地球是我们的家，蓝蓝的、圆圆的"
-        },
-        {
-          "id": "astro-3-f2",
-          "kind": "quiz",
-          "question": "蓝蓝圆圆、我们的家是哪个星球？",
-          "options": [
-            {
-              "icon": "moon"
-            },
-            {
-              "icon": "earth",
-              "text": "地球"
-            },
-            {
-              "icon": "sun"
-            }
-          ],
-          "answer": 1,
-          "hint": "地球是我们的家，蓝蓝的、圆圆的",
-          "praise": "对啦！地球是我们的家，蓝蓝的、圆圆的"
-        },
-        {
-          "id": "astro-3-p2",
-          "kind": "pattern",
-          "seq": [
-            "earth",
-            "sun",
-            "earth"
-          ],
-          "question": "星空规律：下一个是谁？",
-          "options": [
-            {
-              "icon": "sun"
-            },
-            {
-              "icon": "earth"
-            },
-            {
-              "icon": "moon"
-            }
-          ],
-          "answer": 1,
-          "hint": "谁在轮流出现？",
-          "praise": "规律找对啦！"
-        },
-        {
-          "id": "astro-3-q3",
-          "kind": "quiz",
-          "question": "「地球是我们的家，蓝蓝的、圆圆的」说的是谁？",
-          "options": [
-            {
-              "icon": "sun"
-            },
-            {
-              "icon": "earth",
-              "text": "地球"
-            },
-            {
-              "icon": "moon"
-            }
-          ],
-          "answer": 1,
-          "hint": "想一想刚才学的话",
-          "praise": "对，就是地球！"
-        }
-      ],
-      "board": {
-        "spaces": [
-          {
-            "type": "question",
-            "step": "astro-3-p2"
-          },
-          {
-            "type": "question",
-            "step": "astro-3-q3"
-          },
-          {
-            "type": "coin"
-          },
-          {
-            "type": "question",
-            "step": "astro-3-q"
-          },
-          {
-            "type": "question",
-            "step": "astro-3-q2"
-          },
-          {
-            "type": "chest"
-          },
-          {
-            "type": "question",
-            "step": "astro-3-f2"
-          },
-          {
-            "type": "mushroom"
-          }
-        ]
-      }
-    },
-    {
-      "id": "astro-4",
-      "title": "第 5 关 Rocket",
-      "subtitle": "火箭",
-      "steps": [
-        {
-          "id": "astro-4-t",
-          "kind": "letter",
-          "letters": [
-            "Rocket"
-          ],
-          "display": "火箭",
-          "examples": [
-            {
-              "icon": "rocket",
-              "text": "火箭 Rocket",
-              "say": "火箭"
-            },
-            {
-              "icon": "flame",
-              "text": "点火 Go",
-              "say": "点火"
-            }
-          ],
-          "question": "学一学：火箭 Rocket"
-        },
-        {
-          "id": "astro-4-f",
-          "kind": "quiz",
-          "question": "轰隆一声飞向太空的是谁？",
-          "options": [
-            {
-              "icon": "rocket",
-              "text": "火箭"
-            },
-            {
-              "icon": "train"
-            },
-            {
-              "icon": "balloon"
+              "body": "mars",
+              "name": "火星",
+              "value": 0.38,
+              "label": "称出 4 斤"
             }
           ],
           "answer": 0,
-          "hint": "火箭轰隆一声，飞向太空",
-          "praise": "对啦！火箭轰隆一声，飞向太空"
+          "ext": "max",
+          "hint": "哪一条最长，就称得最重",
+          "praise": "木星上最沉！",
+          "note": "木星引力是地球的 2.5 倍：10 斤的东西到那儿称出 25 斤"
         },
         {
-          "id": "astro-4-q2",
+          "id": "astro-4-q1",
           "kind": "quiz",
-          "question": "再找一找：哪个是火箭？",
+          "question": "你在地球上重 20 斤，到木星上称会是多少斤？",
           "options": [
             {
-              "icon": "train"
+              "text": "8 斤"
             },
             {
-              "icon": "balloon"
+              "text": "20 斤"
             },
             {
-              "icon": "rocket",
-              "text": "火箭"
+              "text": "50 斤"
             }
           ],
           "answer": 2,
-          "hint": "火箭轰隆一声，飞向太空",
-          "praise": "对啦！火箭轰隆一声，飞向太空"
+          "hint": "木星的引力是地球的 2.5 倍",
+          "praise": "20 斤变 50 斤！"
         },
         {
-          "id": "astro-4-f2",
-          "kind": "quiz",
-          "question": "轰隆一声飞向太空的是谁？",
-          "options": [
+          "id": "astro-4-g2",
+          "kind": "cmp",
+          "viz": "bar",
+          "question": "去哪颗星球称重最轻？",
+          "rows": [
             {
-              "icon": "balloon"
+              "body": "moon",
+              "name": "月球",
+              "value": 0.16,
+              "label": "称出 2 斤"
             },
             {
-              "icon": "train"
+              "body": "mars",
+              "name": "火星",
+              "value": 0.38,
+              "label": "称出 4 斤"
             },
             {
-              "icon": "rocket",
-              "text": "火箭"
+              "body": "earth",
+              "name": "地球",
+              "value": 1.0,
+              "label": "称出 10 斤"
             }
           ],
-          "answer": 2,
-          "hint": "火箭轰隆一声，飞向太空",
-          "praise": "对啦！火箭轰隆一声，飞向太空"
+          "answer": 0,
+          "ext": "min",
+          "hint": "找称得最轻的那一条",
+          "praise": "月球上轻得像羽毛！",
+          "note": "月球引力只有地球的六分之一，宇航员一蹦就老高"
         },
         {
-          "id": "astro-4-p2",
-          "kind": "pattern",
-          "seq": [
-            "rocket",
-            "train",
-            "rocket"
+          "id": "math-4-cmp",
+          "kind": "compare",
+          "question": "太阳系 8 颗行星：离太阳近的 4 颗和远的 4 颗，哪边多？",
+          "leftIcon": "planet",
+          "leftCount": 4,
+          "rightIcon": "planet",
+          "rightCount": 4,
+          "compareOptions": [
+            {
+              "key": "left",
+              "label": "左边多"
+            },
+            {
+              "key": "right",
+              "label": "右边多"
+            },
+            {
+              "key": "same",
+              "label": "一样多"
+            }
           ],
-          "question": "星空规律：下一个是谁？",
+          "answerKey": "same",
+          "hint": "一个对着一个，比一比",
+          "praise": "火眼金睛！一样多！"
+        },
+        {
+          "id": "astro-4-l1",
+          "kind": "listen",
+          "promptBody": "moon",
+          "speakText": "月球",
+          "question": "找一找：哪颗卫星一直围着地球转？",
           "options": [
             {
-              "icon": "train"
+              "body": "pluto",
+              "text": "冥王星"
             },
             {
-              "icon": "rocket"
+              "body": "moon",
+              "text": "月球"
             },
             {
-              "icon": "balloon"
+              "body": "venus",
+              "text": "金星"
             }
           ],
           "answer": 1,
-          "hint": "谁在轮流出现？",
-          "praise": "规律找对啦！"
-        },
-        {
-          "id": "astro-4-q3",
-          "kind": "quiz",
-          "question": "「火箭轰隆一声，飞向太空」说的是谁？",
-          "options": [
-            {
-              "icon": "train"
-            },
-            {
-              "icon": "rocket",
-              "text": "火箭"
-            },
-            {
-              "icon": "balloon"
-            }
-          ],
-          "answer": 1,
-          "hint": "想一想刚才学的话",
-          "praise": "对，就是火箭！"
+          "hint": "晚上天上那个会变圆变弯的",
+          "praise": "月球是地球唯一的卫星！"
         }
       ],
       "board": {
         "spaces": [
           {
             "type": "question",
-            "step": "astro-4-q3"
+            "step": "astro-4-l1"
           },
           {
             "type": "question",
-            "step": "astro-4-f"
+            "step": "astro-4-g1"
           },
           {
             "type": "coin"
           },
           {
             "type": "question",
-            "step": "astro-4-q2"
+            "step": "astro-4-q1"
           },
           {
             "type": "question",
-            "step": "astro-4-f2"
-          },
-          {
-            "type": "mushroom"
+            "step": "astro-4-g2"
           },
           {
             "type": "question",
-            "step": "astro-4-p2"
+            "step": "math-4-cmp"
           },
           {
             "type": "rest"
+          },
+          {
+            "type": "mushroom"
           }
         ]
       }
@@ -839,127 +1024,174 @@
       "steps": [
         {
           "id": "astro-r0-0",
-          "kind": "quiz",
-          "question": "找一找：哪个是太阳？",
-          "options": [
-            {
-              "icon": "moon"
-            },
-            {
-              "icon": "sun",
-              "text": "太阳"
-            },
-            {
-              "icon": "star"
-            }
+          "kind": "count",
+          "question": "数一数：太阳系一共有几颗大行星？",
+          "duckIcon": "planet",
+          "count": 8,
+          "countOptions": [
+            6,
+            7,
+            8
           ],
-          "answer": 1,
-          "hint": "太阳会发光发热，白天照亮大地",
-          "praise": "对啦！太阳会发光发热，白天照亮大地"
+          "backdrop": "night",
+          "unit": "颗",
+          "praise": "数对啦！"
         },
         {
           "id": "astro-r0-1",
-          "kind": "quiz",
-          "question": "晚上有时圆有时弯的是谁？",
-          "options": [
+          "kind": "cmp",
+          "viz": "bar",
+          "question": "谁离太阳最近？",
+          "rows": [
             {
-              "icon": "moon",
-              "text": "月亮"
+              "body": "mercury",
+              "name": "水星",
+              "value": 58,
+              "label": "58 百万千米"
             },
             {
-              "icon": "sun"
+              "body": "earth",
+              "name": "地球",
+              "value": 150,
+              "label": "150 百万千米"
             },
             {
-              "icon": "crystal"
+              "body": "neptune",
+              "name": "海王星",
+              "value": 4515,
+              "label": "4515 百万千米"
             }
           ],
           "answer": 0,
-          "hint": "月亮晚上出来，有时圆圆、有时弯弯",
-          "praise": "对啦！月亮晚上出来，有时圆圆、有时弯弯"
+          "ext": "min",
+          "hint": "比一比哪一条最短",
+          "praise": "水星最靠太阳！",
+          "note": "阳光跑到地球要 8 分钟，跑到海王星要 4 个小时"
         },
         {
           "id": "astro-r0-2",
-          "kind": "pattern",
-          "seq": [
-            "moon",
-            "star",
-            "moon"
-          ],
-          "question": "星空规律：下一个是谁？",
-          "options": [
+          "kind": "cmp",
+          "viz": "disc",
+          "question": "按真实大小比一比：谁的圆盘最大？",
+          "rows": [
             {
-              "icon": "star"
+              "body": "jupiter",
+              "name": "木星",
+              "value": 11.2,
+              "label": "11.2 个地球"
             },
             {
-              "icon": "sun"
+              "body": "uranus",
+              "name": "天王星",
+              "value": 4.0,
+              "label": "4 个地球"
             },
             {
-              "icon": "comet"
+              "body": "earth",
+              "name": "地球",
+              "value": 1.0,
+              "label": "1 个地球"
+            },
+            {
+              "body": "mercury",
+              "name": "水星",
+              "value": 0.38,
+              "label": "0.38 个地球"
             }
           ],
           "answer": 0,
-          "hint": "读一读前面几个，谁在轮流出现",
-          "praise": "规律找对啦，小天文学家！"
+          "ext": "max",
+          "hint": "看圆盘，不看名字",
+          "praise": "木星最大！",
+          "note": "其他七颗行星加起来，都没有木星一个胖",
+          "base": 30
         },
         {
           "id": "astro-r0-3",
-          "kind": "quiz",
-          "question": "找一找：哪个是地球？",
-          "options": [
+          "kind": "cmp",
+          "viz": "bar",
+          "question": "比一比谁最重（1 表示一个地球那么重）",
+          "rows": [
             {
-              "icon": "sun"
+              "body": "jupiter",
+              "name": "木星",
+              "value": 318,
+              "label": "318 个地球"
             },
             {
-              "icon": "earth",
-              "text": "地球"
+              "body": "saturn",
+              "name": "土星",
+              "value": 95,
+              "label": "95 个地球"
             },
             {
-              "icon": "moon"
-            }
-          ],
-          "answer": 1,
-          "hint": "地球是我们的家，蓝蓝的、圆圆的",
-          "praise": "对啦！地球是我们的家，蓝蓝的、圆圆的"
-        },
-        {
-          "id": "astro-r0-4",
-          "kind": "quiz",
-          "question": "轰隆一声飞向太空的是谁？",
-          "options": [
-            {
-              "icon": "rocket",
-              "text": "火箭"
+              "body": "earth",
+              "name": "地球",
+              "value": 1.0,
+              "label": "1 个地球"
             },
             {
-              "icon": "train"
-            },
-            {
-              "icon": "balloon"
+              "body": "mercury",
+              "name": "水星",
+              "value": 0.06,
+              "label": "0.06 个地球"
             }
           ],
           "answer": 0,
-          "hint": "火箭轰隆一声，飞向太空",
-          "praise": "对啦！火箭轰隆一声，飞向太空"
+          "ext": "max",
+          "hint": "条最长的那个最重",
+          "praise": "木星最重！",
+          "note": "木星一个就顶 318 个地球，其他七颗加起来都不到它的一半"
+        },
+        {
+          "id": "astro-r0-4",
+          "kind": "cmp",
+          "viz": "bar",
+          "question": "在地球上称 10 斤，去哪个行星称出来最重？",
+          "rows": [
+            {
+              "body": "jupiter",
+              "name": "木星",
+              "value": 2.53,
+              "label": "称出 25 斤"
+            },
+            {
+              "body": "neptune",
+              "name": "海王星",
+              "value": 1.14,
+              "label": "称出 11 斤"
+            },
+            {
+              "body": "mars",
+              "name": "火星",
+              "value": 0.38,
+              "label": "称出 4 斤"
+            }
+          ],
+          "answer": 0,
+          "ext": "max",
+          "hint": "哪一条最长，就称得最重",
+          "praise": "木星上最沉！",
+          "note": "木星引力是地球的 2.5 倍：10 斤的东西到那儿称出 25 斤"
         },
         {
           "id": "astro-r0-5",
           "kind": "quiz",
-          "question": "再找一找：哪个是太阳？",
+          "question": "太阳会自己发光发热，它在太阳系里是什么身份？",
           "options": [
             {
-              "icon": "moon"
+              "text": "恒星"
             },
             {
-              "icon": "sun",
-              "text": "太阳"
+              "text": "行星"
             },
             {
-              "icon": "star"
+              "text": "卫星"
             }
           ],
-          "answer": 1,
-          "hint": "太阳会发光发热，白天照亮大地",
-          "praise": "对啦！太阳会发光发热，白天照亮大地"
+          "answer": 0,
+          "hint": "只有它自己会发光",
+          "praise": "太阳是离我们最近的一颗恒星！"
         }
       ],
       "board": {
@@ -991,14 +1223,14 @@
             "step": "astro-r0-4"
           },
           {
-            "type": "chest"
-          },
-          {
             "type": "question",
             "step": "astro-r0-5"
           },
           {
             "type": "mushroom"
+          },
+          {
+            "type": "chest"
           }
         ]
       },
@@ -1006,166 +1238,194 @@
     },
     {
       "id": "astro-5",
-      "title": "第 6 关 Planet",
-      "subtitle": "行星",
+      "title": "第 6 关 一天有多长",
+      "subtitle": "行星的自转",
       "steps": [
         {
           "id": "astro-5-t",
           "kind": "letter",
           "letters": [
-            "Planet"
+            "Venus"
           ],
-          "display": "行星",
+          "display": "金星",
           "examples": [
             {
-              "icon": "planet",
-              "text": "行星 Planet",
-              "say": "行星"
-            },
-            {
-              "icon": "crystal",
-              "text": "光环 Ring",
-              "say": "光环"
+              "body": "venus",
+              "text": "金星 Venus",
+              "say": "金星"
             }
           ],
-          "question": "学一学：行星 Planet"
-        },
-        {
-          "id": "astro-5-p",
-          "kind": "pattern",
-          "seq": [
-            "earth",
-            "star",
-            "earth"
-          ],
-          "question": "星空规律：下一个是谁？",
-          "options": [
+          "stats": [
             {
-              "icon": "rocket"
+              "label": "一天",
+              "value": "5832 小时"
             },
             {
-              "icon": "star"
+              "label": "自转",
+              "value": "倒着转"
             },
             {
-              "icon": "earth"
+              "label": "一年",
+              "value": "225 天"
             }
           ],
-          "answer": 1,
-          "hint": "读一读前面几个，谁在轮流出现",
-          "praise": "规律找对啦，小天文学家！"
+          "fact": "厚云把热量捂住，464℃ 比离太阳更近的水星还热，而且它倒着转",
+          "question": "学一学：金星，一天比一年还长",
+          "body": "venus",
+          "bodySize": 130
         },
         {
-          "id": "astro-5-q2",
-          "kind": "quiz",
-          "question": "再找一找：哪个是行星？",
-          "options": [
+          "id": "astro-5-r1",
+          "kind": "cmp",
+          "viz": "bar",
+          "question": "比谁的一天最短（自转一圈要多久）",
+          "rows": [
             {
-              "icon": "planet",
-              "text": "行星"
+              "body": "jupiter",
+              "name": "木星",
+              "value": 10,
+              "label": "10 小时"
             },
             {
-              "icon": "earth"
+              "body": "earth",
+              "name": "地球",
+              "value": 24,
+              "label": "24 小时"
             },
             {
-              "icon": "star"
+              "body": "venus",
+              "name": "金星",
+              "value": 5832,
+              "label": "5832 小时"
             }
           ],
           "answer": 0,
-          "hint": "有的行星戴着光环，像大草帽",
-          "praise": "对啦！有的行星戴着光环，像大草帽"
+          "ext": "min",
+          "hint": "条越短，一天越短",
+          "praise": "木星的一天最短！",
+          "note": "木星 10 小时就自己转完一圈，是太阳系的陀螺冠军"
         },
         {
-          "id": "astro-5-f2",
+          "id": "astro-5-q1",
           "kind": "quiz",
-          "question": "戴着光环像大草帽的是谁？",
+          "question": "金星的一天比它的一年还长，为什么？",
           "options": [
             {
-              "icon": "planet",
-              "text": "行星"
+              "text": "它转得太慢了"
             },
             {
-              "icon": "star"
+              "text": "它离太阳太远"
             },
             {
-              "icon": "earth"
+              "text": "它根本没有自转"
             }
           ],
           "answer": 0,
-          "hint": "有的行星戴着光环，像大草帽",
-          "praise": "对啦！有的行星戴着光环，像大草帽"
+          "hint": "金星自转一圈要 243 个地球日",
+          "praise": "金星慢得一天比一年还长！"
         },
         {
-          "id": "astro-5-p2",
-          "kind": "pattern",
-          "seq": [
-            "planet",
-            "earth",
-            "planet"
-          ],
-          "question": "星空规律：下一个是谁？",
-          "options": [
+          "id": "astro-5-o1",
+          "kind": "order",
+          "dir": "up",
+          "question": "按一天从短到长排一排",
+          "items": [
             {
-              "icon": "earth"
+              "body": "saturn",
+              "name": "土星",
+              "v": 11
             },
             {
-              "icon": "planet"
+              "body": "uranus",
+              "name": "天王星",
+              "v": 17
             },
             {
-              "icon": "star"
+              "body": "mars",
+              "name": "火星",
+              "v": 25
             }
           ],
-          "answer": 1,
-          "hint": "谁在轮流出现？",
-          "praise": "规律找对啦！"
+          "hint": "想一想谁排在前面",
+          "praise": "排好啦！"
         },
         {
-          "id": "astro-5-q3",
-          "kind": "quiz",
-          "question": "「有的行星戴着光环，像大草帽」说的是谁？",
-          "options": [
+          "id": "astro-5-r2",
+          "kind": "cmp",
+          "viz": "bar",
+          "question": "谁的一天最长？",
+          "rows": [
             {
-              "icon": "earth"
+              "body": "mercury",
+              "name": "水星",
+              "value": 1408,
+              "label": "1408 小时"
             },
             {
-              "icon": "planet",
-              "text": "行星"
+              "body": "earth",
+              "name": "地球",
+              "value": 24,
+              "label": "24 小时"
             },
             {
-              "icon": "star"
+              "body": "jupiter",
+              "name": "木星",
+              "value": 10,
+              "label": "10 小时"
             }
           ],
-          "answer": 1,
-          "hint": "想一想刚才学的话",
-          "praise": "对，就是行星！"
+          "answer": 0,
+          "ext": "max",
+          "hint": "找最长的那一条",
+          "praise": "水星的一天最漫长！",
+          "note": "水星要 1408 小时才转一圈，等于地球上的 59 天"
+        },
+        {
+          "id": "astro-5-n1",
+          "kind": "neighbor",
+          "nums": [
+            5,
+            0,
+            7
+          ],
+          "question": "木星是第 5 颗、天王星是第 7 颗，中间的土星排第几？",
+          "arithOptions": [
+            6,
+            8,
+            4
+          ],
+          "answer": 0,
+          "hint": "5、？、7，中间那个数",
+          "praise": "土星排第 6！"
         }
       ],
       "board": {
         "spaces": [
           {
             "type": "question",
-            "step": "astro-5-p"
-          },
-          {
-            "type": "question",
-            "step": "astro-5-q2"
+            "step": "astro-5-r1"
           },
           {
             "type": "coin"
           },
           {
             "type": "question",
-            "step": "astro-5-f2"
-          },
-          {
-            "type": "question",
-            "step": "astro-5-p2"
+            "step": "astro-5-q1"
           },
           {
             "type": "chest"
           },
           {
             "type": "question",
-            "step": "astro-5-q3"
+            "step": "astro-5-o1"
+          },
+          {
+            "type": "question",
+            "step": "astro-5-r2"
+          },
+          {
+            "type": "question",
+            "step": "astro-5-n1"
           },
           {
             "type": "rest"
@@ -1175,327 +1435,394 @@
     },
     {
       "id": "astro-6",
-      "title": "第 7 关 Comet",
-      "subtitle": "彗星",
+      "title": "第 7 关 一年有多长",
+      "subtitle": "行星的公转",
       "steps": [
         {
           "id": "astro-6-t",
           "kind": "letter",
           "letters": [
-            "Comet"
+            "Neptune"
           ],
-          "display": "彗星",
+          "display": "海王星",
           "examples": [
             {
-              "icon": "comet",
-              "text": "彗星 Comet",
-              "say": "彗星"
-            },
-            {
-              "icon": "sparkle",
-              "text": "亮尾巴 Tail",
-              "say": "亮尾巴"
+              "body": "neptune",
+              "text": "海王星 Neptune",
+              "say": "海王星"
             }
           ],
-          "question": "学一学：彗星 Comet"
+          "stats": [
+            {
+              "label": "离太阳",
+              "value": "4515 百万千米"
+            },
+            {
+              "label": "一年",
+              "value": "165 地球年"
+            },
+            {
+              "label": "风速",
+              "value": "2 千米/秒"
+            }
+          ],
+          "fact": "太阳系风最大的地方，一秒能吹两公里",
+          "question": "学一学：海王星，最远的那一颗",
+          "body": "neptune",
+          "bodySize": 130
         },
         {
-          "id": "astro-6-q",
+          "id": "astro-6-y1",
+          "kind": "cmp",
+          "viz": "bar",
+          "question": "谁过一岁生日要等最久？",
+          "rows": [
+            {
+              "body": "neptune",
+              "name": "海王星",
+              "value": 60190,
+              "label": "165 年"
+            },
+            {
+              "body": "earth",
+              "name": "地球",
+              "value": 365,
+              "label": "365 天"
+            },
+            {
+              "body": "mercury",
+              "name": "水星",
+              "value": 88,
+              "label": "88 天"
+            }
+          ],
+          "answer": 0,
+          "ext": "max",
+          "hint": "条越长，年越长",
+          "praise": "海王星的一年最长！",
+          "note": "海王星绕一圈要 165 个地球年——从清朝嘉庆年间转到今天"
+        },
+        {
+          "id": "astro-6-o1",
+          "kind": "order",
+          "dir": "up",
+          "question": "按一年从短到长排一排",
+          "items": [
+            {
+              "body": "mars",
+              "name": "火星",
+              "v": 687
+            },
+            {
+              "body": "jupiter",
+              "name": "木星",
+              "v": 4333
+            },
+            {
+              "body": "venus",
+              "name": "金星",
+              "v": 225
+            }
+          ],
+          "hint": "想一想谁排在前面",
+          "praise": "排好啦！"
+        },
+        {
+          "id": "astro-6-q1",
           "kind": "quiz",
-          "question": "找一找：哪个是彗星？",
+          "question": "水星上过了 4 个生日，地球上大概过了几年？",
           "options": [
             {
-              "icon": "rocket"
+              "text": "1 年"
             },
             {
-              "icon": "comet",
-              "text": "彗星"
+              "text": "4 年"
             },
             {
-              "icon": "star"
+              "text": "16 年"
             }
           ],
-          "answer": 1,
-          "hint": "彗星拖着长长的大尾巴，扫过夜空",
-          "praise": "对啦！彗星拖着长长的大尾巴，扫过夜空"
+          "answer": 0,
+          "hint": "水星一年只有 88 天，比地球短得多",
+          "praise": "水星 4 年 = 地球 1 年！"
         },
         {
-          "id": "astro-6-q2",
-          "kind": "quiz",
-          "question": "再找一找：哪个是彗星？",
-          "options": [
+          "id": "astro-6-y2",
+          "kind": "cmp",
+          "viz": "bar",
+          "question": "谁绕太阳跑得最快？",
+          "rows": [
             {
-              "icon": "rocket"
+              "body": "mercury",
+              "name": "水星",
+              "value": 88,
+              "label": "88 天"
             },
             {
-              "icon": "comet",
-              "text": "彗星"
+              "body": "mars",
+              "name": "火星",
+              "value": 687,
+              "label": "687 天"
             },
             {
-              "icon": "star"
+              "body": "saturn",
+              "name": "土星",
+              "value": 10759,
+              "label": "29 年"
             }
           ],
-          "answer": 1,
-          "hint": "彗星拖着长长的大尾巴，扫过夜空",
-          "praise": "对啦！彗星拖着长长的大尾巴，扫过夜空"
+          "answer": 0,
+          "ext": "min",
+          "hint": "一年最短的就是跑得最快的",
+          "praise": "水星是短跑冠军！",
+          "note": "离太阳越近跑得越快，水星 88 天就绕完一圈"
         },
         {
-          "id": "astro-6-f2",
-          "kind": "quiz",
-          "question": "拖着长长尾巴扫过夜空的是谁？",
-          "options": [
-            {
-              "icon": "star"
-            },
-            {
-              "icon": "comet",
-              "text": "彗星"
-            },
-            {
-              "icon": "rocket"
-            }
+          "id": "astro-6-c1",
+          "kind": "count",
+          "question": "数一数：有几颗行星的一年超过 10 个地球年？",
+          "duckIcon": "planet",
+          "count": 4,
+          "countOptions": [
+            3,
+            4,
+            5
           ],
-          "answer": 1,
-          "hint": "彗星拖着长长的大尾巴，扫过夜空",
-          "praise": "对啦！彗星拖着长长的大尾巴，扫过夜空"
-        },
-        {
-          "id": "astro-6-p2",
-          "kind": "pattern",
-          "seq": [
-            "comet",
-            "rocket",
-            "comet"
-          ],
-          "question": "星空规律：下一个是谁？",
-          "options": [
-            {
-              "icon": "rocket"
-            },
-            {
-              "icon": "comet"
-            },
-            {
-              "icon": "star"
-            }
-          ],
-          "answer": 1,
-          "hint": "谁在轮流出现？",
-          "praise": "规律找对啦！"
-        },
-        {
-          "id": "astro-6-q3",
-          "kind": "quiz",
-          "question": "「彗星拖着长长的大尾巴，扫过夜空」说的是谁？",
-          "options": [
-            {
-              "icon": "rocket"
-            },
-            {
-              "icon": "comet",
-              "text": "彗星"
-            },
-            {
-              "icon": "star"
-            }
-          ],
-          "answer": 1,
-          "hint": "想一想刚才学的话",
-          "praise": "对，就是彗星！"
+          "backdrop": "night",
+          "unit": "颗",
+          "praise": "木星、土星、天王星、海王星，四颗都要等十年以上！"
         }
       ],
       "board": {
         "spaces": [
           {
             "type": "question",
-            "step": "astro-6-q2"
+            "step": "astro-6-o1"
           },
           {
             "type": "question",
-            "step": "astro-6-f2"
+            "step": "astro-6-q1"
           },
           {
             "type": "coin"
           },
           {
             "type": "question",
-            "step": "astro-6-p2"
+            "step": "astro-6-y2"
           },
           {
             "type": "question",
-            "step": "astro-6-q3"
+            "step": "astro-6-c1"
           },
           {
             "type": "coin"
-          },
-          {
-            "type": "question",
-            "step": "astro-6-q"
           },
           {
             "type": "chest"
+          },
+          {
+            "type": "question",
+            "step": "astro-6-y1"
           }
         ]
       }
     },
     {
       "id": "astro-7",
-      "title": "第 8 关 Meteor",
-      "subtitle": "流星",
+      "title": "第 8 关 冷与热",
+      "subtitle": "表面温度",
       "steps": [
         {
           "id": "astro-7-t",
           "kind": "letter",
           "letters": [
-            "Meteor"
+            "Mars"
           ],
-          "display": "流星",
+          "display": "火星",
           "examples": [
             {
-              "icon": "sparkle",
-              "text": "流星 Meteor",
-              "say": "流星"
-            },
-            {
-              "icon": "star",
-              "text": "许个愿 Wish",
-              "say": "许个愿"
+              "body": "mars",
+              "text": "火星 Mars",
+              "say": "火星"
             }
           ],
-          "question": "学一学：流星 Meteor"
+          "stats": [
+            {
+              "label": "平均温度",
+              "value": "-65℃"
+            },
+            {
+              "label": "直径",
+              "value": "0.53 个地球"
+            },
+            {
+              "label": "一天",
+              "value": "25 小时"
+            }
+          ],
+          "fact": "有一座火山比珠穆朗玛峰还高两倍，是太阳系最高的山",
+          "question": "学一学：火星，红色的沙尘世界",
+          "body": "mars",
+          "bodySize": 110
         },
         {
-          "id": "astro-7-f",
-          "kind": "quiz",
-          "question": "噌地划过夜空、可以许愿的是谁？",
-          "options": [
+          "id": "astro-7-t1",
+          "kind": "cmp",
+          "viz": "bar",
+          "question": "谁的表面最热？",
+          "rows": [
             {
-              "icon": "sparkle",
-              "text": "流星"
+              "body": "venus",
+              "name": "金星",
+              "value": 737,
+              "label": "464℃"
             },
             {
-              "icon": "star"
+              "body": "earth",
+              "name": "地球",
+              "value": 288,
+              "label": "15℃"
             },
             {
-              "icon": "comet"
+              "body": "neptune",
+              "name": "海王星",
+              "value": 73,
+              "label": "-200℃"
             }
           ],
           "answer": 0,
-          "hint": "流星噌——地划过夜空，可以许个愿",
-          "praise": "对啦！流星噌——地划过夜空，可以许个愿"
+          "ext": "max",
+          "hint": "条最长的那一颗最热",
+          "praise": "金星最热！",
+          "note": "金星 464℃，铅扔进去都会化——它不是离太阳最近的，却是最热的"
         },
         {
-          "id": "astro-7-q2",
+          "id": "astro-7-q1",
           "kind": "quiz",
-          "question": "再找一找：哪个是流星？",
+          "question": "离太阳最近的水星，为什么不是最热的？",
           "options": [
             {
-              "icon": "star"
+              "text": "它没有厚云保温"
             },
             {
-              "icon": "comet"
+              "text": "它转得太慢"
             },
             {
-              "icon": "sparkle",
-              "text": "流星"
+              "text": "它太小了存不住热"
             }
           ],
-          "answer": 2,
-          "hint": "流星噌——地划过夜空，可以许个愿",
-          "praise": "对啦！流星噌——地划过夜空，可以许个愿"
+          "answer": 0,
+          "hint": "金星那层厚云像锅盖，热量跑不掉",
+          "praise": "没有厚云，热量全跑啦！"
         },
         {
-          "id": "astro-7-f2",
-          "kind": "quiz",
-          "question": "噌地划过夜空、可以许愿的是谁？",
-          "options": [
+          "id": "astro-7-t2",
+          "kind": "cmp",
+          "viz": "bar",
+          "question": "谁最冷？",
+          "rows": [
             {
-              "icon": "comet"
+              "body": "uranus",
+              "name": "天王星",
+              "value": 78,
+              "label": "-195℃"
             },
             {
-              "icon": "star"
+              "body": "mars",
+              "name": "火星",
+              "value": 208,
+              "label": "-65℃"
             },
             {
-              "icon": "sparkle",
-              "text": "流星"
+              "body": "mercury",
+              "name": "水星",
+              "value": 440,
+              "label": "167℃"
             }
           ],
-          "answer": 2,
-          "hint": "流星噌——地划过夜空，可以许个愿",
-          "praise": "对啦！流星噌——地划过夜空，可以许个愿"
+          "answer": 0,
+          "ext": "min",
+          "hint": "条最短的那一颗最冷",
+          "praise": "天王星最冷！",
+          "note": "天王星常年 -195℃，水在那儿比石头还硬"
         },
         {
-          "id": "astro-7-p2",
-          "kind": "pattern",
-          "seq": [
-            "sparkle",
-            "star",
-            "sparkle"
+          "id": "astro-7-o1",
+          "kind": "order",
+          "dir": "down",
+          "question": "按温度从高到低排一排",
+          "items": [
+            {
+              "body": "earth",
+              "name": "地球",
+              "v": 15
+            },
+            {
+              "body": "mars",
+              "name": "火星",
+              "v": -65
+            },
+            {
+              "body": "venus",
+              "name": "金星",
+              "v": 464
+            }
           ],
-          "question": "星空规律：下一个是谁？",
+          "hint": "想一想谁排在前面",
+          "praise": "排好啦！"
+        },
+        {
+          "id": "astro-7-l1",
+          "kind": "listen",
+          "promptBody": "earth",
+          "speakText": "地球",
+          "question": "找一找：温度刚好让水能喝的那颗行星",
           "options": [
             {
-              "icon": "star"
+              "body": "venus",
+              "text": "金星"
             },
             {
-              "icon": "sparkle"
+              "body": "earth",
+              "text": "地球"
             },
             {
-              "icon": "comet"
+              "body": "neptune",
+              "text": "海王星"
             }
           ],
           "answer": 1,
-          "hint": "谁在轮流出现？",
-          "praise": "规律找对啦！"
-        },
-        {
-          "id": "astro-7-q3",
-          "kind": "quiz",
-          "question": "「流星噌——地划过夜空，可以许个愿」说的是谁？",
-          "options": [
-            {
-              "icon": "star"
-            },
-            {
-              "icon": "sparkle",
-              "text": "流星"
-            },
-            {
-              "icon": "comet"
-            }
-          ],
-          "answer": 1,
-          "hint": "想一想刚才学的话",
-          "praise": "对，就是流星！"
+          "hint": "不冷不热，刚好有海洋",
+          "praise": "只有地球不冷不热！"
         }
       ],
       "board": {
         "spaces": [
           {
             "type": "question",
-            "step": "astro-7-f2"
-          },
-          {
-            "type": "question",
-            "step": "astro-7-p2"
+            "step": "astro-7-t2"
           },
           {
             "type": "coin"
           },
           {
             "type": "question",
-            "step": "astro-7-q3"
+            "step": "astro-7-o1"
           },
           {
             "type": "question",
-            "step": "astro-7-f"
+            "step": "astro-7-l1"
           },
           {
             "type": "coin"
           },
           {
             "type": "question",
-            "step": "astro-7-q2"
+            "step": "astro-7-t1"
+          },
+          {
+            "type": "question",
+            "step": "astro-7-q1"
           },
           {
             "type": "mushroom"
@@ -1505,169 +1832,198 @@
     },
     {
       "id": "astro-8",
-      "title": "第 9 关 Rover",
-      "subtitle": "火星车",
+      "title": "第 9 关 谁戴光环",
+      "subtitle": "行星的本事",
       "steps": [
         {
           "id": "astro-8-t",
           "kind": "letter",
           "letters": [
-            "Rover"
+            "Uranus"
           ],
-          "display": "火星车",
+          "display": "天王星",
           "examples": [
             {
-              "icon": "robot",
-              "text": "火星车 Rover",
-              "say": "火星车"
-            },
-            {
-              "icon": "volcano",
-              "text": "红色火星 Mars",
-              "say": "红色火星"
+              "body": "uranus",
+              "text": "天王星 Uranus",
+              "say": "天王星"
             }
           ],
-          "question": "学一学：火星车 Rover"
+          "stats": [
+            {
+              "label": "自转轴歪",
+              "value": "98 度"
+            },
+            {
+              "label": "直径",
+              "value": "4 个地球"
+            },
+            {
+              "label": "一年",
+              "value": "84 地球年"
+            }
+          ],
+          "fact": "它是躺着打滚绕太阳的，身子歪了 98 度",
+          "question": "学一学：天王星，躺着打滚的行星",
+          "body": "uranus",
+          "bodySize": 130
         },
         {
-          "id": "astro-8-p",
-          "kind": "pattern",
-          "seq": [
-            "rocket",
-            "comet",
-            "rocket"
-          ],
-          "question": "星空规律：下一个是谁？",
+          "id": "astro-8-q1",
+          "kind": "quiz",
+          "question": "哪颗行星戴着一顶大草帽似的光环？",
           "options": [
             {
-              "icon": "earth"
+              "body": "saturn",
+              "text": "土星"
             },
             {
-              "icon": "comet"
+              "body": "jupiter",
+              "text": "木星"
             },
             {
-              "icon": "rocket"
+              "body": "mars",
+              "text": "火星"
             }
           ],
-          "answer": 1,
-          "hint": "读一读前面几个，谁在轮流出现",
-          "praise": "规律找对啦，小天文学家！"
+          "answer": 0,
+          "hint": "光环是冰块和石子组成的",
+          "praise": "土星的光环最漂亮！"
         },
         {
           "id": "astro-8-q2",
           "kind": "quiz",
-          "question": "再找一找：哪个是火星车？",
+          "question": "哪颗行星是躺着打滚绕太阳的？",
           "options": [
             {
-              "icon": "robot",
-              "text": "火星车"
+              "text": "天王星"
             },
             {
-              "icon": "rocket"
+              "text": "金星"
             },
             {
-              "icon": "earth"
+              "text": "水星"
             }
           ],
           "answer": 0,
-          "hint": "机器人火星车，在火星上慢慢探险",
-          "praise": "对啦！机器人火星车，在火星上慢慢探险"
+          "hint": "它的自转轴歪了 98 度",
+          "praise": "天王星躺着转！"
         },
         {
-          "id": "astro-8-f2",
-          "kind": "quiz",
-          "question": "在火星上慢慢探险的机器人是谁？",
-          "options": [
+          "id": "astro-8-m1",
+          "kind": "memory",
+          "question": "翻翻牌：行星和它的样子配成对",
+          "cards": [
             {
-              "icon": "robot",
-              "text": "火星车"
+              "key": "mars",
+              "body": "mars"
             },
             {
-              "icon": "earth"
+              "key": "mars",
+              "text": "锈红色的沙"
             },
             {
-              "icon": "rocket"
+              "key": "neptune",
+              "body": "neptune"
+            },
+            {
+              "key": "neptune",
+              "text": "深深的海军蓝"
+            },
+            {
+              "key": "jupiter",
+              "body": "jupiter"
+            },
+            {
+              "key": "jupiter",
+              "text": "条纹大衣"
             }
-          ],
-          "answer": 0,
-          "hint": "机器人火星车，在火星上慢慢探险",
-          "praise": "对啦！机器人火星车，在火星上慢慢探险"
-        },
-        {
-          "id": "astro-8-p2",
-          "kind": "pattern",
-          "seq": [
-            "robot",
-            "rocket",
-            "robot"
-          ],
-          "question": "星空规律：下一个是谁？",
-          "options": [
-            {
-              "icon": "rocket"
-            },
-            {
-              "icon": "robot"
-            },
-            {
-              "icon": "earth"
-            }
-          ],
-          "answer": 1,
-          "hint": "谁在轮流出现？",
-          "praise": "规律找对啦！"
+          ]
         },
         {
           "id": "astro-8-q3",
           "kind": "quiz",
-          "question": "「机器人火星车，在火星上慢慢探险」说的是谁？",
+          "question": "大红斑在谁的脸上？",
           "options": [
             {
-              "icon": "rocket"
+              "body": "jupiter",
+              "text": "木星"
             },
             {
-              "icon": "robot",
-              "text": "火星车"
+              "body": "saturn",
+              "text": "土星"
             },
             {
-              "icon": "earth"
+              "body": "venus",
+              "text": "金星"
             }
           ],
-          "answer": 1,
-          "hint": "想一想刚才学的话",
-          "praise": "对，就是火星车！"
+          "answer": 0,
+          "hint": "那是一个刮了 300 多年的大风暴",
+          "praise": "木星的大红斑！"
+        },
+        {
+          "id": "astro-8-w1",
+          "kind": "cmp",
+          "viz": "bar",
+          "question": "谁的卫星最多？",
+          "rows": [
+            {
+              "body": "saturn",
+              "name": "土星",
+              "value": 146,
+              "label": "146 颗"
+            },
+            {
+              "body": "uranus",
+              "name": "天王星",
+              "value": 28,
+              "label": "28 颗"
+            },
+            {
+              "body": "mars",
+              "name": "火星",
+              "value": 2,
+              "label": "2 颗"
+            }
+          ],
+          "answer": 0,
+          "ext": "max",
+          "hint": "比一比条的长短",
+          "praise": "土星 146 颗！",
+          "note": "土星有 146 颗已确认的卫星"
         }
       ],
       "board": {
         "spaces": [
           {
             "type": "question",
-            "step": "astro-8-p2"
-          },
-          {
-            "type": "question",
             "step": "astro-8-q3"
           },
           {
-            "type": "coin"
+            "type": "question",
+            "step": "astro-8-w1"
           },
           {
             "type": "question",
-            "step": "astro-8-p"
+            "step": "astro-8-q1"
+          },
+          {
+            "type": "coin"
           },
           {
             "type": "question",
             "step": "astro-8-q2"
           },
           {
-            "type": "coin"
-          },
-          {
             "type": "question",
-            "step": "astro-8-f2"
+            "step": "astro-8-m1"
           },
           {
             "type": "rest"
+          },
+          {
+            "type": "coin"
           }
         ]
       }
@@ -1679,131 +2035,186 @@
       "steps": [
         {
           "id": "astro-r1-0",
-          "kind": "quiz",
-          "question": "找一找：哪个是太阳？",
-          "options": [
-            {
-              "icon": "moon"
-            },
-            {
-              "icon": "sun",
-              "text": "太阳"
-            },
-            {
-              "icon": "star"
-            }
+          "kind": "count",
+          "question": "数一数：太阳系一共有几颗大行星？",
+          "duckIcon": "planet",
+          "count": 8,
+          "countOptions": [
+            6,
+            7,
+            8
           ],
-          "answer": 1,
-          "hint": "太阳会发光发热，白天照亮大地",
-          "praise": "对啦！太阳会发光发热，白天照亮大地"
+          "backdrop": "night",
+          "unit": "颗",
+          "praise": "数对啦！"
         },
         {
           "id": "astro-r1-1",
-          "kind": "quiz",
-          "question": "晚上有时圆有时弯的是谁？",
-          "options": [
+          "kind": "cmp",
+          "viz": "bar",
+          "question": "谁离太阳最近？",
+          "rows": [
             {
-              "icon": "moon",
-              "text": "月亮"
+              "body": "mercury",
+              "name": "水星",
+              "value": 58,
+              "label": "58 百万千米"
             },
             {
-              "icon": "sun"
+              "body": "earth",
+              "name": "地球",
+              "value": 150,
+              "label": "150 百万千米"
             },
             {
-              "icon": "crystal"
+              "body": "neptune",
+              "name": "海王星",
+              "value": 4515,
+              "label": "4515 百万千米"
             }
           ],
           "answer": 0,
-          "hint": "月亮晚上出来，有时圆圆、有时弯弯",
-          "praise": "对啦！月亮晚上出来，有时圆圆、有时弯弯"
+          "ext": "min",
+          "hint": "比一比哪一条最短",
+          "praise": "水星最靠太阳！",
+          "note": "阳光跑到地球要 8 分钟，跑到海王星要 4 个小时"
         },
         {
           "id": "astro-r1-2",
-          "kind": "pattern",
-          "seq": [
-            "moon",
-            "star",
-            "moon"
-          ],
-          "question": "星空规律：下一个是谁？",
-          "options": [
+          "kind": "cmp",
+          "viz": "disc",
+          "question": "按真实大小比一比：谁的圆盘最大？",
+          "rows": [
             {
-              "icon": "star"
+              "body": "jupiter",
+              "name": "木星",
+              "value": 11.2,
+              "label": "11.2 个地球"
             },
             {
-              "icon": "sun"
+              "body": "uranus",
+              "name": "天王星",
+              "value": 4.0,
+              "label": "4 个地球"
             },
             {
-              "icon": "comet"
+              "body": "earth",
+              "name": "地球",
+              "value": 1.0,
+              "label": "1 个地球"
+            },
+            {
+              "body": "mercury",
+              "name": "水星",
+              "value": 0.38,
+              "label": "0.38 个地球"
             }
           ],
           "answer": 0,
-          "hint": "读一读前面几个，谁在轮流出现",
-          "praise": "规律找对啦，小天文学家！"
+          "ext": "max",
+          "hint": "看圆盘，不看名字",
+          "praise": "木星最大！",
+          "note": "其他七颗行星加起来，都没有木星一个胖",
+          "base": 30
         },
         {
           "id": "astro-r1-3",
-          "kind": "quiz",
-          "question": "找一找：哪个是地球？",
-          "options": [
+          "kind": "cmp",
+          "viz": "bar",
+          "question": "比一比谁最重（1 表示一个地球那么重）",
+          "rows": [
             {
-              "icon": "sun"
+              "body": "jupiter",
+              "name": "木星",
+              "value": 318,
+              "label": "318 个地球"
             },
             {
-              "icon": "earth",
-              "text": "地球"
+              "body": "saturn",
+              "name": "土星",
+              "value": 95,
+              "label": "95 个地球"
             },
             {
-              "icon": "moon"
-            }
-          ],
-          "answer": 1,
-          "hint": "地球是我们的家，蓝蓝的、圆圆的",
-          "praise": "对啦！地球是我们的家，蓝蓝的、圆圆的"
-        },
-        {
-          "id": "astro-r1-4",
-          "kind": "quiz",
-          "question": "轰隆一声飞向太空的是谁？",
-          "options": [
-            {
-              "icon": "rocket",
-              "text": "火箭"
+              "body": "earth",
+              "name": "地球",
+              "value": 1.0,
+              "label": "1 个地球"
             },
             {
-              "icon": "train"
-            },
-            {
-              "icon": "balloon"
+              "body": "mercury",
+              "name": "水星",
+              "value": 0.06,
+              "label": "0.06 个地球"
             }
           ],
           "answer": 0,
-          "hint": "火箭轰隆一声，飞向太空",
-          "praise": "对啦！火箭轰隆一声，飞向太空"
+          "ext": "max",
+          "hint": "条最长的那个最重",
+          "praise": "木星最重！",
+          "note": "木星一个就顶 318 个地球，其他七颗加起来都不到它的一半"
+        },
+        {
+          "id": "astro-r1-4",
+          "kind": "cmp",
+          "viz": "bar",
+          "question": "在地球上称 10 斤，去哪个行星称出来最重？",
+          "rows": [
+            {
+              "body": "jupiter",
+              "name": "木星",
+              "value": 2.53,
+              "label": "称出 25 斤"
+            },
+            {
+              "body": "neptune",
+              "name": "海王星",
+              "value": 1.14,
+              "label": "称出 11 斤"
+            },
+            {
+              "body": "mars",
+              "name": "火星",
+              "value": 0.38,
+              "label": "称出 4 斤"
+            }
+          ],
+          "answer": 0,
+          "ext": "max",
+          "hint": "哪一条最长，就称得最重",
+          "praise": "木星上最沉！",
+          "note": "木星引力是地球的 2.5 倍：10 斤的东西到那儿称出 25 斤"
         },
         {
           "id": "astro-r1-5",
-          "kind": "pattern",
-          "seq": [
-            "earth",
-            "star",
-            "earth"
-          ],
-          "question": "星空规律：下一个是谁？",
-          "options": [
+          "kind": "cmp",
+          "viz": "bar",
+          "question": "比谁的一天最短（自转一圈要多久）",
+          "rows": [
             {
-              "icon": "rocket"
+              "body": "jupiter",
+              "name": "木星",
+              "value": 10,
+              "label": "10 小时"
             },
             {
-              "icon": "star"
+              "body": "earth",
+              "name": "地球",
+              "value": 24,
+              "label": "24 小时"
             },
             {
-              "icon": "earth"
+              "body": "venus",
+              "name": "金星",
+              "value": 5832,
+              "label": "5832 小时"
             }
           ],
-          "answer": 1,
-          "hint": "读一读前面几个，谁在轮流出现",
-          "praise": "规律找对啦，小天文学家！"
+          "answer": 0,
+          "ext": "min",
+          "hint": "条越短，一天越短",
+          "praise": "木星的一天最短！",
+          "note": "木星 10 小时就自己转完一圈，是太阳系的陀螺冠军"
         }
       ],
       "board": {
@@ -1813,22 +2224,22 @@
             "step": "astro-r1-1"
           },
           {
-            "type": "question",
-            "step": "astro-r1-2"
+            "type": "coin"
           },
           {
-            "type": "coin"
+            "type": "question",
+            "step": "astro-r1-2"
           },
           {
             "type": "question",
             "step": "astro-r1-3"
           },
           {
-            "type": "question",
-            "step": "astro-r1-4"
+            "type": "coin"
           },
           {
-            "type": "coin"
+            "type": "question",
+            "step": "astro-r1-4"
           },
           {
             "type": "question",
@@ -1838,11 +2249,11 @@
             "type": "chest"
           },
           {
-            "type": "question",
-            "step": "astro-r1-0"
+            "type": "rest"
           },
           {
-            "type": "rest"
+            "type": "question",
+            "step": "astro-r1-0"
           }
         ]
       },
@@ -1850,134 +2261,157 @@
     },
     {
       "id": "astro-9",
-      "title": "第 10 关 星空大挑战",
-      "subtitle": "复习",
+      "title": "第 10 关 矮行星与彗星",
+      "subtitle": "太阳系的其他住户",
       "steps": [
         {
-          "id": "astro-9-m",
-          "kind": "memory",
-          "question": "翻翻牌：星空朋友和名字配成对",
-          "cards": [
+          "id": "astro-9-t",
+          "kind": "letter",
+          "letters": [
+            "Pluto"
+          ],
+          "display": "冥王星",
+          "examples": [
             {
-              "key": "sun",
-              "icon": "sun"
-            },
-            {
-              "key": "sun",
-              "text": "太阳"
-            },
-            {
-              "key": "earth",
-              "icon": "earth"
-            },
-            {
-              "key": "earth",
-              "text": "地球"
-            },
-            {
-              "key": "rocket",
-              "icon": "rocket"
-            },
-            {
-              "key": "rocket",
-              "text": "火箭"
+              "body": "pluto",
+              "text": "冥王星 Pluto",
+              "say": "冥王星"
             }
-          ]
+          ],
+          "stats": [
+            {
+              "label": "直径",
+              "value": "0.19 个地球"
+            },
+            {
+              "label": "一年",
+              "value": "248 地球年"
+            },
+            {
+              "label": "身份",
+              "value": "矮行星"
+            }
+          ],
+          "fact": "2006 年被降成矮行星，因为它没能清空自己轨道上的碎石",
+          "question": "学一学：冥王星，被请下牌的矮行星",
+          "body": "pluto",
+          "bodySize": 96
         },
         {
           "id": "astro-9-q1",
           "kind": "quiz",
-          "question": "我们的家是哪个星球？",
+          "question": "2006 年，冥王星为什么被请出了大行星的队伍？",
           "options": [
             {
-              "icon": "sun"
+              "text": "它没能清空自己轨道上的碎石"
             },
             {
-              "icon": "earth",
-              "text": "地球"
+              "text": "它太小，望远镜看不见"
             },
             {
-              "icon": "moon"
+              "text": "它跑出了太阳系"
             }
           ],
-          "answer": 1,
-          "hint": "蓝蓝的、圆圆的",
-          "praise": "地球是我们的家！"
+          "answer": 0,
+          "hint": "行星得能打扫干净自己的轨道",
+          "praise": "冥王星成了矮行星！"
+        },
+        {
+          "id": "astro-9-s1",
+          "kind": "cmp",
+          "viz": "disc",
+          "question": "比大小：谁最大？",
+          "rows": [
+            {
+              "body": "earth",
+              "name": "地球",
+              "value": 1.0,
+              "label": "1 个地球"
+            },
+            {
+              "body": "pluto",
+              "name": "冥王星",
+              "value": 0.19,
+              "label": "0.19 个地球"
+            },
+            {
+              "body": "moon",
+              "name": "月球",
+              "value": 0.27,
+              "label": "0.27 个地球"
+            }
+          ],
+          "answer": 0,
+          "ext": "max",
+          "hint": "看圆盘大小",
+          "praise": "地球最大！",
+          "note": "冥王星比月球还小一圈",
+          "base": 70
+        },
+        {
+          "id": "astro-9-l1",
+          "kind": "listen",
+          "promptBody": "comet",
+          "speakText": "彗星",
+          "question": "找一找：拖着长尾巴扫过夜空的是谁？",
+          "options": [
+            {
+              "body": "comet",
+              "text": "彗星"
+            },
+            {
+              "body": "moon",
+              "text": "月球"
+            },
+            {
+              "body": "saturn",
+              "text": "土星"
+            }
+          ],
+          "answer": 0,
+          "hint": "冰做的脏雪球，靠近太阳时甩出长尾巴",
+          "praise": "彗星的尾巴永远背着太阳！"
         },
         {
           "id": "astro-9-q2",
           "kind": "quiz",
-          "question": "谁拖着长长的尾巴扫过夜空？",
+          "question": "流星是怎么来的？",
           "options": [
             {
-              "icon": "moon"
+              "text": "小石头掉进大气层烧起来了"
             },
             {
-              "icon": "rocket"
+              "text": "星星掉下来了"
             },
             {
-              "icon": "comet",
-              "text": "彗星"
+              "text": "云里开了灯"
             }
           ],
-          "answer": 2,
-          "hint": "像一把大扫帚",
-          "praise": "彗星答对啦！"
+          "answer": 0,
+          "hint": "大气层把小石头烧成一道光",
+          "praise": "那是小石头在发光！"
         },
         {
-          "id": "astro-9-q3",
-          "kind": "pattern",
-          "seq": [
-            "sun",
-            "moon",
-            "sun"
+          "id": "astro-9-c1",
+          "kind": "count",
+          "question": "数一数：火星和木星之间的小行星带，画出了几颗小石头？",
+          "duckIcon": "rock",
+          "count": 6,
+          "countOptions": [
+            5,
+            6,
+            7
           ],
-          "question": "星空规律：下一个是谁？",
-          "options": [
-            {
-              "icon": "star"
-            },
-            {
-              "icon": "moon"
-            },
-            {
-              "icon": "rocket"
-            }
-          ],
-          "answer": 1,
-          "hint": "谁和太阳在轮流出现？",
-          "praise": "全部通关，小天文学家！"
-        },
-        {
-          "id": "astro-9-q4",
-          "kind": "quiz",
-          "question": "谁晚上出来，有时圆有时弯？",
-          "options": [
-            {
-              "icon": "sun"
-            },
-            {
-              "icon": "moon",
-              "text": "月亮"
-            },
-            {
-              "icon": "rocket"
-            }
-          ],
-          "answer": 1,
-          "hint": "弯弯的像小船",
-          "praise": "月亮答对啦！"
+          "backdrop": "grass",
+          "unit": "颗",
+          "praise": "真正的小行星多到数不清！"
         }
       ],
       "board": {
         "spaces": [
           {
             "type": "question",
-            "step": "astro-9-q4"
-          },
-          {
-            "type": "question",
-            "step": "astro-9-m"
+            "step": "astro-9-c1"
           },
           {
             "type": "coin"
@@ -1988,17 +2422,383 @@
           },
           {
             "type": "question",
+            "step": "astro-9-s1"
+          },
+          {
+            "type": "question",
+            "step": "astro-9-l1"
+          },
+          {
+            "type": "chest"
+          },
+          {
+            "type": "mushroom"
+          },
+          {
+            "type": "question",
             "step": "astro-9-q2"
+          }
+        ]
+      }
+    },
+    {
+      "id": "astro-10",
+      "title": "第 11 关 月亮变胖变瘦",
+      "subtitle": "月相与潮汐",
+      "steps": [
+        {
+          "id": "astro-10-t",
+          "kind": "letter",
+          "letters": [
+            "Moon"
+          ],
+          "display": "月球",
+          "examples": [
+            {
+              "body": "moon",
+              "text": "月球 Moon",
+              "say": "月球"
+            }
+          ],
+          "stats": [
+            {
+              "label": "月相",
+              "value": "8 种模样"
+            },
+            {
+              "label": "离地球",
+              "value": "38 万千米"
+            },
+            {
+              "label": "引力",
+              "value": "地球的 1/6"
+            }
+          ],
+          "fact": "月球自己不发光，你看到的是它反射的太阳光",
+          "question": "学一学：月球和它的阴晴圆缺",
+          "body": "moon",
+          "bodySize": 118
+        },
+        {
+          "id": "astro-10-o1",
+          "kind": "order",
+          "dir": "up",
+          "question": "月亮从新月长到满月，按顺序排一排",
+          "items": [
+            {
+              "phase": 0.25,
+              "name": "上弦月",
+              "v": 0.25
+            },
+            {
+              "phase": 0.0,
+              "name": "新月",
+              "v": 0.0
+            },
+            {
+              "phase": 0.5,
+              "name": "满月",
+              "v": 0.5
+            }
+          ],
+          "hint": "先剩一条边，再亮一半，最后整个圆",
+          "praise": "月相排对啦！"
+        },
+        {
+          "id": "astro-10-q1",
+          "kind": "quiz",
+          "question": "月亮自己会发光吗？",
+          "options": [
+            {
+              "text": "不会，它反射太阳的光"
+            },
+            {
+              "text": "会，它是个小太阳"
+            },
+            {
+              "text": "只有满月时才发光"
+            }
+          ],
+          "answer": 0,
+          "hint": "月亮像一面不太亮的镜子",
+          "praise": "月亮是借太阳的光！"
+        },
+        {
+          "id": "astro-10-p1",
+          "kind": "pattern",
+          "seq": [
+            {
+              "phase": 0.5
+            },
+            {
+              "phase": 0.0
+            },
+            {
+              "phase": 0.5
+            }
+          ],
+          "question": "满月、新月轮流出现，下一个是哪一轮？",
+          "options": [
+            {
+              "phase": 0.5
+            },
+            {
+              "phase": 0.0
+            },
+            {
+              "phase": 0.25
+            }
+          ],
+          "answer": 1,
+          "hint": "圆、缺、圆、下一个是……",
+          "praise": "该新月啦！"
+        },
+        {
+          "id": "astro-10-q2",
+          "kind": "quiz",
+          "question": "从这次满月到下次满月，大约要隔多久？",
+          "options": [
+            {
+              "text": "一个月"
+            },
+            {
+              "text": "一星期"
+            },
+            {
+              "text": "一整天"
+            }
+          ],
+          "answer": 0,
+          "hint": "月亮绕地球一圈要 27 天多",
+          "praise": "差不多一个月，圆一次！"
+        },
+        {
+          "id": "astro-10-q3",
+          "kind": "quiz",
+          "question": "海边的涨潮和退潮，是谁在拉海水？",
+          "options": [
+            {
+              "text": "月亮的引力"
+            },
+            {
+              "text": "海风"
+            },
+            {
+              "text": "太阳照的"
+            }
+          ],
+          "answer": 0,
+          "hint": "月亮一拉，海水就鼓起来",
+          "praise": "是月亮在拉海水！"
+        }
+      ],
+      "board": {
+        "spaces": [
+          {
+            "type": "question",
+            "step": "astro-10-o1"
+          },
+          {
+            "type": "question",
+            "step": "astro-10-q1"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "astro-10-p1"
+          },
+          {
+            "type": "question",
+            "step": "astro-10-q2"
+          },
+          {
+            "type": "question",
+            "step": "astro-10-q3"
+          },
+          {
+            "type": "rest"
+          },
+          {
+            "type": "mushroom"
+          }
+        ]
+      }
+    },
+    {
+      "id": "astro-11",
+      "title": "第 12 关 离开地球",
+      "subtitle": "恒星、银河与中国航天",
+      "steps": [
+        {
+          "id": "astro-11-t",
+          "kind": "letter",
+          "letters": [
+            "Rocket"
+          ],
+          "display": "火箭",
+          "examples": [
+            {
+              "icon": "rocket",
+              "text": "火箭 Rocket",
+              "say": "火箭"
+            }
+          ],
+          "stats": [
+            {
+              "label": "第一颗卫星",
+              "value": "东方红 1 号"
+            },
+            {
+              "label": "飞天第一人",
+              "value": "杨利伟"
+            },
+            {
+              "label": "火星车",
+              "value": "祝融号"
+            }
+          ],
+          "fact": "",
+          "question": "学一学：火箭，离开地球的车"
+        },
+        {
+          "id": "astro-11-q1",
+          "kind": "quiz",
+          "question": "天上的星星和太阳其实是一家人，靠什么分开？",
+          "options": [
+            {
+              "text": "远近不同"
+            },
+            {
+              "text": "颜色不同"
+            },
+            {
+              "text": "会不会眨眼睛"
+            }
+          ],
+          "answer": 0,
+          "hint": "太阳是离我们最近的恒星",
+          "praise": "太阳就是一颗恒星！"
+        },
+        {
+          "id": "astro-11-q2",
+          "kind": "quiz",
+          "question": "夜里最亮的那颗星就是北极星吗？",
+          "options": [
+            {
+              "text": "不是，北极星只负责指正北"
+            },
+            {
+              "text": "是，它最亮"
+            },
+            {
+              "text": "它有时候才亮"
+            }
+          ],
+          "answer": 0,
+          "hint": "找方向靠它，比亮度它排不进前十",
+          "praise": "北极星是用来认方向的！"
+        },
+        {
+          "id": "astro-11-o1",
+          "kind": "order",
+          "dir": "up",
+          "question": "按先后排一排：哪件事先发生？",
+          "items": [
+            {
+              "icon": "rocket",
+              "name": "东方红 1 号",
+              "v": 1970
+            },
+            {
+              "icon": "rocket",
+              "name": "神舟飞天",
+              "v": 2003
+            },
+            {
+              "icon": "rocket",
+              "name": "祝融上火星",
+              "v": 2021
+            }
+          ],
+          "hint": "先上天，再上人，最后去火星",
+          "praise": "中国航天的三步排对了！"
+        },
+        {
+          "id": "astro-11-q3",
+          "kind": "quiz",
+          "question": "中国的火星车叫什么名字？",
+          "options": [
+            {
+              "text": "祝融号"
+            },
+            {
+              "text": "嫦娥号"
+            },
+            {
+              "text": "天问号"
+            }
+          ],
+          "answer": 0,
+          "hint": "祝融是神话里的火神",
+          "praise": "祝融号在火星上散步！"
+        },
+        {
+          "id": "astro-11-l1",
+          "kind": "listen",
+          "promptBody": "earth",
+          "speakText": "地球",
+          "question": "找一找：我们是从哪颗行星上发射火箭的？",
+          "options": [
+            {
+              "body": "mars",
+              "text": "火星"
+            },
+            {
+              "body": "earth",
+              "text": "地球"
+            },
+            {
+              "body": "venus",
+              "text": "金星"
+            }
+          ],
+          "answer": 1,
+          "hint": "我们住的那颗蓝色行星",
+          "praise": "从地球上起飞！"
+        }
+      ],
+      "board": {
+        "spaces": [
+          {
+            "type": "question",
+            "step": "astro-11-q2"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "astro-11-o1"
           },
           {
             "type": "chest"
           },
           {
             "type": "question",
-            "step": "astro-9-q3"
+            "step": "astro-11-q3"
           },
           {
-            "type": "mushroom"
+            "type": "question",
+            "step": "astro-11-l1"
+          },
+          {
+            "type": "question",
+            "step": "astro-11-q1"
+          },
+          {
+            "type": "rest"
           }
         ]
       }
@@ -2010,171 +2810,236 @@
       "steps": [
         {
           "id": "astro-boss-0",
-          "kind": "quiz",
-          "question": "找一找：哪个是太阳？",
-          "options": [
-            {
-              "icon": "moon"
-            },
-            {
-              "icon": "sun",
-              "text": "太阳"
-            },
-            {
-              "icon": "star"
-            }
+          "kind": "count",
+          "question": "数一数：太阳系一共有几颗大行星？",
+          "duckIcon": "planet",
+          "count": 8,
+          "countOptions": [
+            6,
+            7,
+            8
           ],
-          "answer": 1,
-          "hint": "太阳会发光发热，白天照亮大地",
-          "praise": "对啦！太阳会发光发热，白天照亮大地"
+          "backdrop": "night",
+          "unit": "颗",
+          "praise": "数对啦！"
         },
         {
           "id": "astro-boss-1",
-          "kind": "quiz",
-          "question": "晚上有时圆有时弯的是谁？",
-          "options": [
+          "kind": "cmp",
+          "viz": "bar",
+          "question": "谁离太阳最近？",
+          "rows": [
             {
-              "icon": "moon",
-              "text": "月亮"
+              "body": "mercury",
+              "name": "水星",
+              "value": 58,
+              "label": "58 百万千米"
             },
             {
-              "icon": "sun"
+              "body": "earth",
+              "name": "地球",
+              "value": 150,
+              "label": "150 百万千米"
             },
             {
-              "icon": "crystal"
+              "body": "neptune",
+              "name": "海王星",
+              "value": 4515,
+              "label": "4515 百万千米"
             }
           ],
           "answer": 0,
-          "hint": "月亮晚上出来，有时圆圆、有时弯弯",
-          "praise": "对啦！月亮晚上出来，有时圆圆、有时弯弯"
+          "ext": "min",
+          "hint": "比一比哪一条最短",
+          "praise": "水星最靠太阳！",
+          "note": "阳光跑到地球要 8 分钟，跑到海王星要 4 个小时"
         },
         {
           "id": "astro-boss-2",
-          "kind": "pattern",
-          "seq": [
-            "moon",
-            "star",
-            "moon"
-          ],
-          "question": "星空规律：下一个是谁？",
-          "options": [
+          "kind": "cmp",
+          "viz": "disc",
+          "question": "按真实大小比一比：谁的圆盘最大？",
+          "rows": [
             {
-              "icon": "star"
+              "body": "jupiter",
+              "name": "木星",
+              "value": 11.2,
+              "label": "11.2 个地球"
             },
             {
-              "icon": "sun"
+              "body": "uranus",
+              "name": "天王星",
+              "value": 4.0,
+              "label": "4 个地球"
             },
             {
-              "icon": "comet"
+              "body": "earth",
+              "name": "地球",
+              "value": 1.0,
+              "label": "1 个地球"
+            },
+            {
+              "body": "mercury",
+              "name": "水星",
+              "value": 0.38,
+              "label": "0.38 个地球"
             }
           ],
           "answer": 0,
-          "hint": "读一读前面几个，谁在轮流出现",
-          "praise": "规律找对啦，小天文学家！"
+          "ext": "max",
+          "hint": "看圆盘，不看名字",
+          "praise": "木星最大！",
+          "note": "其他七颗行星加起来，都没有木星一个胖",
+          "base": 30
         },
         {
           "id": "astro-boss-3",
-          "kind": "quiz",
-          "question": "找一找：哪个是地球？",
-          "options": [
+          "kind": "cmp",
+          "viz": "bar",
+          "question": "比一比谁最重（1 表示一个地球那么重）",
+          "rows": [
             {
-              "icon": "sun"
+              "body": "jupiter",
+              "name": "木星",
+              "value": 318,
+              "label": "318 个地球"
             },
             {
-              "icon": "earth",
-              "text": "地球"
+              "body": "saturn",
+              "name": "土星",
+              "value": 95,
+              "label": "95 个地球"
             },
             {
-              "icon": "moon"
-            }
-          ],
-          "answer": 1,
-          "hint": "地球是我们的家，蓝蓝的、圆圆的",
-          "praise": "对啦！地球是我们的家，蓝蓝的、圆圆的"
-        },
-        {
-          "id": "astro-boss-4",
-          "kind": "quiz",
-          "question": "轰隆一声飞向太空的是谁？",
-          "options": [
-            {
-              "icon": "rocket",
-              "text": "火箭"
+              "body": "earth",
+              "name": "地球",
+              "value": 1.0,
+              "label": "1 个地球"
             },
             {
-              "icon": "train"
-            },
-            {
-              "icon": "balloon"
+              "body": "mercury",
+              "name": "水星",
+              "value": 0.06,
+              "label": "0.06 个地球"
             }
           ],
           "answer": 0,
-          "hint": "火箭轰隆一声，飞向太空",
-          "praise": "对啦！火箭轰隆一声，飞向太空"
+          "ext": "max",
+          "hint": "条最长的那个最重",
+          "praise": "木星最重！",
+          "note": "木星一个就顶 318 个地球，其他七颗加起来都不到它的一半"
+        },
+        {
+          "id": "astro-boss-4",
+          "kind": "cmp",
+          "viz": "bar",
+          "question": "在地球上称 10 斤，去哪个行星称出来最重？",
+          "rows": [
+            {
+              "body": "jupiter",
+              "name": "木星",
+              "value": 2.53,
+              "label": "称出 25 斤"
+            },
+            {
+              "body": "neptune",
+              "name": "海王星",
+              "value": 1.14,
+              "label": "称出 11 斤"
+            },
+            {
+              "body": "mars",
+              "name": "火星",
+              "value": 0.38,
+              "label": "称出 4 斤"
+            }
+          ],
+          "answer": 0,
+          "ext": "max",
+          "hint": "哪一条最长，就称得最重",
+          "praise": "木星上最沉！",
+          "note": "木星引力是地球的 2.5 倍：10 斤的东西到那儿称出 25 斤"
         },
         {
           "id": "astro-boss-5",
           "kind": "quiz",
-          "question": "找一找：哪个是太阳？",
+          "question": "太阳会自己发光发热，它在太阳系里是什么身份？",
           "options": [
             {
-              "icon": "moon"
+              "text": "恒星"
             },
             {
-              "icon": "sun",
-              "text": "太阳"
+              "text": "行星"
             },
             {
-              "icon": "star"
+              "text": "卫星"
             }
           ],
-          "answer": 1,
-          "hint": "太阳会发光发热，白天照亮大地",
-          "praise": "对啦！太阳会发光发热，白天照亮大地"
+          "answer": 0,
+          "hint": "只有它自己会发光",
+          "praise": "太阳是离我们最近的一颗恒星！"
         },
         {
           "id": "astro-boss-6",
-          "kind": "pattern",
-          "seq": [
-            "earth",
-            "star",
-            "earth"
-          ],
-          "question": "星空规律：下一个是谁？",
-          "options": [
+          "kind": "cmp",
+          "viz": "bar",
+          "question": "比谁的一天最短（自转一圈要多久）",
+          "rows": [
             {
-              "icon": "rocket"
+              "body": "jupiter",
+              "name": "木星",
+              "value": 10,
+              "label": "10 小时"
             },
             {
-              "icon": "star"
+              "body": "earth",
+              "name": "地球",
+              "value": 24,
+              "label": "24 小时"
             },
             {
-              "icon": "earth"
+              "body": "venus",
+              "name": "金星",
+              "value": 5832,
+              "label": "5832 小时"
             }
           ],
-          "answer": 1,
-          "hint": "读一读前面几个，谁在轮流出现",
-          "praise": "规律找对啦，小天文学家！"
+          "answer": 0,
+          "ext": "min",
+          "hint": "条越短，一天越短",
+          "praise": "木星的一天最短！",
+          "note": "木星 10 小时就自己转完一圈，是太阳系的陀螺冠军"
         },
         {
           "id": "astro-boss-7",
-          "kind": "quiz",
-          "question": "找一找：哪个是彗星？",
-          "options": [
+          "kind": "cmp",
+          "viz": "bar",
+          "question": "谁过一岁生日要等最久？",
+          "rows": [
             {
-              "icon": "rocket"
+              "body": "neptune",
+              "name": "海王星",
+              "value": 60190,
+              "label": "165 年"
             },
             {
-              "icon": "comet",
-              "text": "彗星"
+              "body": "earth",
+              "name": "地球",
+              "value": 365,
+              "label": "365 天"
             },
             {
-              "icon": "star"
+              "body": "mercury",
+              "name": "水星",
+              "value": 88,
+              "label": "88 天"
             }
           ],
-          "answer": 1,
-          "hint": "彗星拖着长长的大尾巴，扫过夜空",
-          "praise": "对啦！彗星拖着长长的大尾巴，扫过夜空"
+          "answer": 0,
+          "ext": "max",
+          "hint": "条越长，年越长",
+          "praise": "海王星的一年最长！",
+          "note": "海王星绕一圈要 165 个地球年——从清朝嘉庆年间转到今天"
         }
       ],
       "board": {

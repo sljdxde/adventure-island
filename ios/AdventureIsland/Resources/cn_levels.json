@@ -5,7 +5,7 @@
   "levels": [
     {
       "id": "cn-0",
-      "title": "第 1 关 象形字",
+      "title": "第 1 关 日",
       "subtitle": "认识「日」",
       "steps": [
         {
@@ -89,8 +89,8 @@
               "text": "日出"
             },
             {
-              "icon": "starface",
-              "text": "星星"
+              "icon": "calendar",
+              "text": "一月"
             }
           ],
           "answer": 1,
@@ -127,7 +127,7 @@
             },
             {
               "icon": "wave",
-              "text": "海浪"
+              "text": "海水"
             },
             {
               "icon": "cake",
@@ -183,14 +183,11 @@
             "step": "cn-0-q"
           },
           {
-            "type": "coin"
+            "type": "chest"
           },
           {
             "type": "question",
             "step": "cn-0-w2"
-          },
-          {
-            "type": "chest"
           },
           {
             "type": "question",
@@ -201,7 +198,7 @@
     },
     {
       "id": "cn-1",
-      "title": "第 2 关 象形字",
+      "title": "第 2 关 月",
       "subtitle": "认识「月」",
       "steps": [
         {
@@ -217,9 +214,9 @@
               "say": "月亮"
             },
             {
-              "icon": "starface",
-              "text": "星星",
-              "say": "星星"
+              "icon": "calendar",
+              "text": "一月",
+              "say": "一月"
             },
             {
               "icon": "cake",
@@ -255,7 +252,7 @@
           "kind": "listen",
           "promptIcon": "moon",
           "speakText": "月",
-          "question": "看一看：这张图变成的字是哪个？",
+          "question": "想一想：这幅画是哪个字？",
           "options": [
             {
               "text": "山"
@@ -278,7 +275,7 @@
           "options": [
             {
               "icon": "wave",
-              "text": "海浪"
+              "text": "海水"
             },
             {
               "icon": "crystal",
@@ -318,21 +315,21 @@
           "question": "再想一想：「月」还能组成哪个词？",
           "options": [
             {
-              "icon": "starface",
-              "text": "星星"
+              "icon": "calendar",
+              "text": "一月"
             },
             {
-              "icon": "leaf",
+              "icon": "tree",
               "text": "山林"
             },
             {
-              "icon": "leaf",
-              "text": "树叶"
+              "icon": "tree",
+              "text": "树木"
             }
           ],
           "answer": 0,
           "hint": "找一找还有「月」的词",
-          "praise": "又是组词高手：星星！"
+          "praise": "又是组词高手：一月！"
         },
         {
           "id": "cn-1-l3",
@@ -364,26 +361,29 @@
             "step": "cn-1-l2"
           },
           {
-            "type": "question",
-            "step": "cn-1-w"
+            "type": "coin"
           },
           {
-            "type": "coin"
+            "type": "question",
+            "step": "cn-1-w"
           },
           {
             "type": "question",
             "step": "cn-1-q"
           },
           {
+            "type": "coin"
+          },
+          {
             "type": "question",
             "step": "cn-1-w2"
           },
           {
-            "type": "mushroom"
-          },
-          {
             "type": "question",
             "step": "cn-1-l3"
+          },
+          {
+            "type": "mushroom"
           },
           {
             "type": "question",
@@ -394,7 +394,7 @@
     },
     {
       "id": "cn-2",
-      "title": "第 3 关 象形字",
+      "title": "第 3 关 水",
       "subtitle": "认识「水」",
       "steps": [
         {
@@ -406,8 +406,8 @@
           "words": [
             {
               "icon": "wave",
-              "text": "海浪",
-              "say": "海浪"
+              "text": "海水",
+              "say": "海水"
             },
             {
               "icon": "crystal",
@@ -415,9 +415,9 @@
               "say": "泉水"
             },
             {
-              "icon": "leaf",
-              "text": "露珠",
-              "say": "露珠"
+              "icon": "apple",
+              "text": "水果",
+              "say": "水果"
             }
           ]
         },
@@ -448,7 +448,7 @@
           "kind": "listen",
           "promptIcon": "wave",
           "speakText": "水",
-          "question": "看一看：这张图变成的字是哪个？",
+          "question": "象形字猜一猜：图里藏着哪个字？",
           "options": [
             {
               "text": "人"
@@ -471,20 +471,20 @@
           "options": [
             {
               "icon": "wave",
-              "text": "海浪"
+              "text": "海水"
             },
             {
-              "icon": "school",
+              "icon": "volcano",
               "text": "上山"
             },
             {
-              "icon": "leaf",
+              "icon": "tree",
               "text": "山林"
             }
           ],
           "answer": 0,
           "hint": "找一找有「水」的词",
-          "praise": "组词成功：海浪！"
+          "praise": "组词成功：海水！"
         },
         {
           "id": "cn-2-q",
@@ -519,8 +519,8 @@
               "text": "泉水"
             },
             {
-              "icon": "heart",
-              "text": "口水"
+              "icon": "girl",
+              "text": "人口"
             }
           ],
           "answer": 1,
@@ -561,22 +561,22 @@
             "step": "cn-2-q"
           },
           {
-            "type": "coin"
-          },
-          {
             "type": "question",
             "step": "cn-2-w2"
+          },
+          {
+            "type": "coin"
           },
           {
             "type": "question",
             "step": "cn-2-l3"
           },
           {
-            "type": "coin"
-          },
-          {
             "type": "question",
             "step": "cn-2-l"
+          },
+          {
+            "type": "coin"
           },
           {
             "type": "rest"
@@ -590,7 +590,7 @@
     },
     {
       "id": "cn-3",
-      "title": "第 4 关 象形字",
+      "title": "第 4 关 山",
       "subtitle": "认识「山」",
       "steps": [
         {
@@ -601,12 +601,12 @@
           "pinyin": "shān",
           "words": [
             {
-              "icon": "school",
+              "icon": "volcano",
               "text": "上山",
               "say": "上山"
             },
             {
-              "icon": "leaf",
+              "icon": "tree",
               "text": "山林",
               "say": "山林"
             }
@@ -639,7 +639,7 @@
           "kind": "listen",
           "promptIcon": "volcano",
           "speakText": "山",
-          "question": "看一看：这张图变成的字是哪个？",
+          "question": "这张图画的是哪个字？点一点",
           "options": [
             {
               "text": "山"
@@ -661,11 +661,11 @@
           "question": "「山」可以组成哪个词？",
           "options": [
             {
-              "icon": "leaf",
-              "text": "树叶"
+              "icon": "tree",
+              "text": "树木"
             },
             {
-              "icon": "school",
+              "icon": "volcano",
               "text": "上山"
             },
             {
@@ -706,11 +706,11 @@
               "text": "田里"
             },
             {
-              "icon": "flower",
+              "icon": "wave",
               "text": "水田"
             },
             {
-              "icon": "leaf",
+              "icon": "tree",
               "text": "山林"
             }
           ],
@@ -748,11 +748,11 @@
             "step": "cn-3-q"
           },
           {
-            "type": "question",
-            "step": "cn-3-w2"
+            "type": "coin"
           },
           {
-            "type": "coin"
+            "type": "question",
+            "step": "cn-3-w2"
           },
           {
             "type": "question",
@@ -770,31 +770,31 @@
             "step": "cn-3-l2"
           },
           {
-            "type": "mushroom"
-          },
-          {
             "type": "question",
             "step": "cn-3-w"
+          },
+          {
+            "type": "mushroom"
           }
         ]
       }
     },
     {
       "id": "cn-4",
-      "title": "第 5 关 象形字",
+      "title": "第 5 关 木",
       "subtitle": "认识「木」",
       "steps": [
         {
           "id": "cn-4-t",
           "kind": "teach",
-          "morphFrom": "sprout",
+          "morphFrom": "tree",
           "char": "木",
           "pinyin": "mù",
           "words": [
             {
-              "icon": "leaf",
-              "text": "树叶",
-              "say": "树叶"
+              "icon": "tree",
+              "text": "树木",
+              "say": "树木"
             },
             {
               "icon": "flower",
@@ -811,7 +811,7 @@
           "question": "找一找：哪张图片是「木」？",
           "options": [
             {
-              "icon": "sprout",
+              "icon": "tree",
               "text": "木"
             },
             {
@@ -828,7 +828,7 @@
         {
           "id": "cn-4-l2",
           "kind": "listen",
-          "promptIcon": "sprout",
+          "promptIcon": "tree",
           "speakText": "木",
           "question": "看一看：这张图变成的字是哪个？",
           "options": [
@@ -860,13 +860,13 @@
               "text": "开口"
             },
             {
-              "icon": "leaf",
-              "text": "树叶"
+              "icon": "tree",
+              "text": "树木"
             }
           ],
           "answer": 2,
           "hint": "找一找有「木」的词",
-          "praise": "组词成功：树叶！"
+          "praise": "组词成功：树木！"
         },
         {
           "id": "cn-4-q",
@@ -920,7 +920,7 @@
               "icon": "flower"
             },
             {
-              "icon": "sprout",
+              "icon": "tree",
               "text": "木"
             },
             {
@@ -954,9 +954,6 @@
             "step": "cn-4-l2"
           },
           {
-            "type": "coin"
-          },
-          {
             "type": "question",
             "step": "cn-4-w"
           },
@@ -964,11 +961,11 @@
             "type": "mushroom"
           },
           {
-            "type": "question",
-            "step": "cn-4-q"
+            "type": "rest"
           },
           {
-            "type": "rest"
+            "type": "question",
+            "step": "cn-4-q"
           }
         ]
       }
@@ -1074,7 +1071,7 @@
           "question": "找一找：哪张图片是「木」？",
           "options": [
             {
-              "icon": "sprout",
+              "icon": "tree",
               "text": "木"
             },
             {
@@ -1139,14 +1136,14 @@
             "step": "cn-r0-4"
           },
           {
-            "type": "chest"
-          },
-          {
             "type": "question",
             "step": "cn-r0-5"
           },
           {
             "type": "mushroom"
+          },
+          {
+            "type": "chest"
           }
         ]
       },
@@ -1154,7 +1151,7 @@
     },
     {
       "id": "cn-5",
-      "title": "第 6 关 象形字",
+      "title": "第 6 关 人",
       "subtitle": "认识「人」",
       "steps": [
         {
@@ -1165,7 +1162,7 @@
           "pinyin": "rén",
           "words": [
             {
-              "icon": "heart",
+              "icon": "girl",
               "text": "大人",
               "say": "大人"
             },
@@ -1203,7 +1200,7 @@
           "kind": "listen",
           "promptIcon": "girl",
           "speakText": "人",
-          "question": "看一看：这张图变成的字是哪个？",
+          "question": "想一想：这幅画是哪个字？",
           "options": [
             {
               "text": "花"
@@ -1225,7 +1222,7 @@
           "question": "「人」可以组成哪个词？",
           "options": [
             {
-              "icon": "heart",
+              "icon": "girl",
               "text": "大人"
             },
             {
@@ -1312,6 +1309,9 @@
             "step": "cn-5-l3"
           },
           {
+            "type": "coin"
+          },
+          {
             "type": "question",
             "step": "cn-5-l"
           },
@@ -1327,11 +1327,11 @@
             "step": "cn-5-w"
           },
           {
-            "type": "chest"
-          },
-          {
             "type": "question",
             "step": "cn-5-q"
+          },
+          {
+            "type": "chest"
           },
           {
             "type": "rest"
@@ -1345,7 +1345,7 @@
     },
     {
       "id": "cn-6",
-      "title": "第 7 关 象形字",
+      "title": "第 7 关 口",
       "subtitle": "认识「口」",
       "steps": [
         {
@@ -1361,9 +1361,9 @@
               "say": "开口"
             },
             {
-              "icon": "heart",
-              "text": "口水",
-              "say": "口水"
+              "icon": "girl",
+              "text": "人口",
+              "say": "人口"
             }
           ]
         },
@@ -1394,7 +1394,7 @@
           "kind": "listen",
           "promptIcon": "speaker",
           "speakText": "口",
-          "question": "看一看：这张图变成的字是哪个？",
+          "question": "象形字猜一猜：图里藏着哪个字？",
           "options": [
             {
               "text": "口"
@@ -1416,7 +1416,7 @@
           "question": "「口」可以组成哪个词？",
           "options": [
             {
-              "icon": "flower",
+              "icon": "wave",
               "text": "水田"
             },
             {
@@ -1465,13 +1465,13 @@
               "text": "日子"
             },
             {
-              "icon": "heart",
-              "text": "口水"
+              "icon": "girl",
+              "text": "人口"
             }
           ],
           "answer": 2,
           "hint": "找一找还有「口」的词",
-          "praise": "又是组词高手：口水！"
+          "praise": "又是组词高手：人口！"
         },
         {
           "id": "cn-6-l3",
@@ -1518,14 +1518,11 @@
             "step": "cn-6-q"
           },
           {
-            "type": "coin"
+            "type": "chest"
           },
           {
             "type": "question",
             "step": "cn-6-w2"
-          },
-          {
-            "type": "chest"
           },
           {
             "type": "question",
@@ -1536,7 +1533,7 @@
     },
     {
       "id": "cn-7",
-      "title": "第 8 关 象形字",
+      "title": "第 8 关 天",
       "subtitle": "认识「天」",
       "steps": [
         {
@@ -1585,7 +1582,7 @@
           "kind": "listen",
           "promptIcon": "sunrays",
           "speakText": "天",
-          "question": "看一看：这张图变成的字是哪个？",
+          "question": "这张图画的是哪个字？点一点",
           "options": [
             {
               "text": "月"
@@ -1653,7 +1650,7 @@
             },
             {
               "icon": "wave",
-              "text": "海浪"
+              "text": "海水"
             },
             {
               "icon": "crystal",
@@ -1694,26 +1691,29 @@
             "step": "cn-7-l2"
           },
           {
-            "type": "question",
-            "step": "cn-7-w"
+            "type": "coin"
           },
           {
-            "type": "coin"
+            "type": "question",
+            "step": "cn-7-w"
           },
           {
             "type": "question",
             "step": "cn-7-q"
           },
           {
+            "type": "coin"
+          },
+          {
             "type": "question",
             "step": "cn-7-w2"
           },
           {
-            "type": "mushroom"
-          },
-          {
             "type": "question",
             "step": "cn-7-l3"
+          },
+          {
+            "type": "mushroom"
           },
           {
             "type": "question",
@@ -1724,7 +1724,7 @@
     },
     {
       "id": "cn-8",
-      "title": "第 9 关 象形字",
+      "title": "第 9 关 田",
       "subtitle": "认识「田」",
       "steps": [
         {
@@ -1740,7 +1740,7 @@
               "say": "田里"
             },
             {
-              "icon": "flower",
+              "icon": "wave",
               "text": "水田",
               "say": "水田"
             }
@@ -1804,7 +1804,7 @@
             },
             {
               "icon": "leaf",
-              "text": "花瓣"
+              "text": "花草"
             }
           ],
           "answer": 0,
@@ -1836,11 +1836,11 @@
           "question": "再想一想：「田」还能组成哪个词？",
           "options": [
             {
-              "icon": "leaf",
-              "text": "树叶"
+              "icon": "tree",
+              "text": "树木"
             },
             {
-              "icon": "flower",
+              "icon": "wave",
               "text": "水田"
             },
             {
@@ -1886,22 +1886,22 @@
             "step": "cn-8-q"
           },
           {
-            "type": "coin"
-          },
-          {
             "type": "question",
             "step": "cn-8-w2"
+          },
+          {
+            "type": "coin"
           },
           {
             "type": "question",
             "step": "cn-8-l3"
           },
           {
-            "type": "coin"
-          },
-          {
             "type": "question",
             "step": "cn-8-l"
+          },
+          {
+            "type": "coin"
           },
           {
             "type": "rest"
@@ -1915,7 +1915,7 @@
     },
     {
       "id": "cn-9",
-      "title": "第 10 关 象形字",
+      "title": "第 10 关 石",
       "subtitle": "认识「石」",
       "steps": [
         {
@@ -1931,9 +1931,9 @@
               "say": "石头"
             },
             {
-              "icon": "castle",
-              "text": "石桥",
-              "say": "石桥"
+              "icon": "volcano",
+              "text": "山石",
+              "say": "山石"
             }
           ]
         },
@@ -1964,7 +1964,7 @@
           "kind": "listen",
           "promptIcon": "rock",
           "speakText": "石",
-          "question": "看一看：这张图变成的字是哪个？",
+          "question": "想一想：这幅画是哪个字？",
           "options": [
             {
               "text": "石"
@@ -2027,21 +2027,21 @@
           "question": "再想一想：「石」还能组成哪个词？",
           "options": [
             {
-              "icon": "heart",
-              "text": "口水"
+              "icon": "girl",
+              "text": "人口"
             },
             {
               "icon": "sun",
               "text": "天空"
             },
             {
-              "icon": "castle",
-              "text": "石桥"
+              "icon": "volcano",
+              "text": "山石"
             }
           ],
           "answer": 2,
           "hint": "找一找还有「石」的词",
-          "praise": "又是组词高手：石桥！"
+          "praise": "又是组词高手：山石！"
         },
         {
           "id": "cn-9-l3",
@@ -2073,11 +2073,11 @@
             "step": "cn-9-q"
           },
           {
-            "type": "question",
-            "step": "cn-9-w2"
+            "type": "coin"
           },
           {
-            "type": "coin"
+            "type": "question",
+            "step": "cn-9-w2"
           },
           {
             "type": "question",
@@ -2095,11 +2095,11 @@
             "step": "cn-9-l2"
           },
           {
-            "type": "mushroom"
-          },
-          {
             "type": "question",
             "step": "cn-9-w"
+          },
+          {
+            "type": "mushroom"
           }
         ]
       }
@@ -2205,7 +2205,7 @@
           "question": "找一找：哪张图片是「木」？",
           "options": [
             {
-              "icon": "sprout",
+              "icon": "tree",
               "text": "木"
             },
             {
@@ -2249,22 +2249,22 @@
             "step": "cn-r1-1"
           },
           {
-            "type": "question",
-            "step": "cn-r1-2"
+            "type": "coin"
           },
           {
-            "type": "coin"
+            "type": "question",
+            "step": "cn-r1-2"
           },
           {
             "type": "question",
             "step": "cn-r1-3"
           },
           {
-            "type": "question",
-            "step": "cn-r1-4"
+            "type": "coin"
           },
           {
-            "type": "coin"
+            "type": "question",
+            "step": "cn-r1-4"
           },
           {
             "type": "question",
@@ -2274,11 +2274,11 @@
             "type": "chest"
           },
           {
-            "type": "question",
-            "step": "cn-r1-0"
+            "type": "rest"
           },
           {
-            "type": "rest"
+            "type": "question",
+            "step": "cn-r1-0"
           }
         ]
       },
@@ -2286,7 +2286,7 @@
     },
     {
       "id": "cn-10",
-      "title": "第 11 关 象形字",
+      "title": "第 11 关 火",
       "subtitle": "认识「火」",
       "steps": [
         {
@@ -2340,7 +2340,7 @@
           "kind": "listen",
           "promptIcon": "flame",
           "speakText": "火",
-          "question": "看一看：这张图变成的字是哪个？",
+          "question": "象形字猜一猜：图里藏着哪个字？",
           "options": [
             {
               "text": "天"
@@ -2407,8 +2407,8 @@
               "text": "火山"
             },
             {
-              "icon": "castle",
-              "text": "石桥"
+              "icon": "volcano",
+              "text": "山石"
             },
             {
               "icon": "flower",
@@ -2464,9 +2464,6 @@
             "step": "cn-10-l2"
           },
           {
-            "type": "coin"
-          },
-          {
             "type": "question",
             "step": "cn-10-w"
           },
@@ -2474,18 +2471,18 @@
             "type": "mushroom"
           },
           {
-            "type": "question",
-            "step": "cn-10-q"
+            "type": "rest"
           },
           {
-            "type": "rest"
+            "type": "question",
+            "step": "cn-10-q"
           }
         ]
       }
     },
     {
       "id": "cn-11",
-      "title": "第 12 关 象形字",
+      "title": "第 12 关 花",
       "subtitle": "认识「花」",
       "steps": [
         {
@@ -2502,13 +2499,13 @@
             },
             {
               "icon": "leaf",
-              "text": "花瓣",
-              "say": "花瓣"
+              "text": "花草",
+              "say": "花草"
             },
             {
-              "icon": "heart",
-              "text": "花园",
-              "say": "花园"
+              "icon": "sprout",
+              "text": "花苗",
+              "say": "花苗"
             }
           ]
         },
@@ -2539,7 +2536,7 @@
           "kind": "listen",
           "promptIcon": "flower",
           "speakText": "花",
-          "question": "看一看：这张图变成的字是哪个？",
+          "question": "这张图画的是哪个字？点一点",
           "options": [
             {
               "text": "石"
@@ -2569,8 +2566,8 @@
               "text": "月亮"
             },
             {
-              "icon": "starface",
-              "text": "星星"
+              "icon": "calendar",
+              "text": "一月"
             }
           ],
           "answer": 0,
@@ -2607,7 +2604,7 @@
             },
             {
               "icon": "leaf",
-              "text": "花瓣"
+              "text": "花草"
             },
             {
               "icon": "duck",
@@ -2616,7 +2613,7 @@
           ],
           "answer": 1,
           "hint": "找一找还有「花」的词",
-          "praise": "又是组词高手：花瓣！"
+          "praise": "又是组词高手：花草！"
         },
         {
           "id": "cn-11-l3",
@@ -2648,6 +2645,9 @@
             "step": "cn-11-l3"
           },
           {
+            "type": "coin"
+          },
+          {
             "type": "question",
             "step": "cn-11-l"
           },
@@ -2663,11 +2663,11 @@
             "step": "cn-11-w"
           },
           {
-            "type": "chest"
-          },
-          {
             "type": "question",
             "step": "cn-11-q"
+          },
+          {
+            "type": "chest"
           },
           {
             "type": "rest"
@@ -2681,7 +2681,7 @@
     },
     {
       "id": "cn-12",
-      "title": "第 13 关 象形字",
+      "title": "第 13 关 草",
       "subtitle": "认识「草」",
       "steps": [
         {
@@ -2761,7 +2761,7 @@
             },
             {
               "icon": "wave",
-              "text": "海浪"
+              "text": "海水"
             }
           ],
           "answer": 1,
@@ -2854,14 +2854,11 @@
             "step": "cn-12-q"
           },
           {
-            "type": "coin"
+            "type": "chest"
           },
           {
             "type": "question",
             "step": "cn-12-w2"
-          },
-          {
-            "type": "chest"
           },
           {
             "type": "question",
@@ -2872,7 +2869,7 @@
     },
     {
       "id": "cn-13",
-      "title": "第 14 关 象形字",
+      "title": "第 14 关 鸟",
       "subtitle": "认识「鸟」",
       "steps": [
         {
@@ -2888,9 +2885,9 @@
               "say": "小鸟"
             },
             {
-              "icon": "leaf",
-              "text": "鸟窝",
-              "say": "鸟窝"
+              "icon": "tree",
+              "text": "鸟巢",
+              "say": "鸟巢"
             }
           ]
         },
@@ -2921,7 +2918,7 @@
           "kind": "listen",
           "promptIcon": "duck",
           "speakText": "鸟",
-          "question": "看一看：这张图变成的字是哪个？",
+          "question": "想一想：这幅画是哪个字？",
           "options": [
             {
               "text": "日"
@@ -2943,11 +2940,11 @@
           "question": "「鸟」可以组成哪个词？",
           "options": [
             {
-              "icon": "leaf",
-              "text": "露珠"
+              "icon": "apple",
+              "text": "水果"
             },
             {
-              "icon": "school",
+              "icon": "volcano",
               "text": "上山"
             },
             {
@@ -2984,8 +2981,8 @@
           "question": "再想一想：「鸟」还能组成哪个词？",
           "options": [
             {
-              "icon": "leaf",
-              "text": "鸟窝"
+              "icon": "tree",
+              "text": "鸟巢"
             },
             {
               "icon": "cake",
@@ -2993,12 +2990,12 @@
             },
             {
               "icon": "wave",
-              "text": "海浪"
+              "text": "海水"
             }
           ],
           "answer": 0,
           "hint": "找一找还有「鸟」的词",
-          "praise": "又是组词高手：鸟窝！"
+          "praise": "又是组词高手：鸟巢！"
         },
         {
           "id": "cn-13-l3",
@@ -3030,26 +3027,29 @@
             "step": "cn-13-l2"
           },
           {
-            "type": "question",
-            "step": "cn-13-w"
+            "type": "coin"
           },
           {
-            "type": "coin"
+            "type": "question",
+            "step": "cn-13-w"
           },
           {
             "type": "question",
             "step": "cn-13-q"
           },
           {
+            "type": "coin"
+          },
+          {
             "type": "question",
             "step": "cn-13-w2"
           },
           {
-            "type": "mushroom"
-          },
-          {
             "type": "question",
             "step": "cn-13-l3"
+          },
+          {
+            "type": "mushroom"
           },
           {
             "type": "question",
@@ -3129,7 +3129,7 @@
               "text": "花木"
             },
             {
-              "icon": "heart",
+              "icon": "girl",
               "text": "大人"
             }
           ],
@@ -3206,22 +3206,22 @@
             "step": "cn-14-q"
           },
           {
-            "type": "coin"
-          },
-          {
             "type": "question",
             "step": "cn-14-q2"
+          },
+          {
+            "type": "coin"
           },
           {
             "type": "question",
             "step": "cn-14-q3"
           },
           {
-            "type": "coin"
-          },
-          {
             "type": "question",
             "step": "cn-14-m"
+          },
+          {
+            "type": "coin"
           },
           {
             "type": "rest"
@@ -3334,7 +3334,7 @@
           "question": "找一找：哪张图片是「木」？",
           "options": [
             {
-              "icon": "sprout",
+              "icon": "tree",
               "text": "木"
             },
             {
@@ -3351,24 +3351,23 @@
         {
           "id": "cn-boss-5",
           "kind": "listen",
-          "prompt": "日",
+          "promptIcon": "sunface",
           "speakText": "日",
-          "question": "找一找：哪张图片是「日」？",
+          "question": "看一看：这张图变成的字是哪个？",
           "options": [
             {
-              "icon": "sunrise",
               "text": "日"
             },
             {
-              "icon": "moon"
+              "text": "月"
             },
             {
-              "icon": "cake"
+              "text": "水"
             }
           ],
           "answer": 0,
-          "hint": "想想刚才的图片：「日」",
-          "praise": "眼睛真亮！日 找对啦！"
+          "hint": "想一想它像什么字",
+          "praise": "对！这张图就是「日」"
         },
         {
           "id": "cn-boss-6",

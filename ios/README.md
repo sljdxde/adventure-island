@@ -103,7 +103,7 @@ open AdventureIsland.xcodeproj
 
 - `cn_levels / math_levels / pinyin_levels / english_levels / astro_levels .json`：关卡（普通/复习/boss）与棋盘格序列
 - `shop.json`：角色与称号两品类（非默认件定价 40-120，validate 闸门把关）
-- `experiments.json`：科学岛实验（浮沉物理引擎通用，磁性/光影需新场景）
+- `experiments.json`：科学岛实验（浮沉物理引擎通用，磁性/光影需新场景）；`quiz` 数组是「闪闪小课堂」科学问答，与实验物品共同覆盖 science 图鉴的全部获得路径（validate 闸门把关）
 - `collection.json`：图鉴/贴纸/汉字卡/拼音卡/单词卡/星空卡/徽章 + 衣橱分区
 
 图标在 `design/assets/icons/`（94 个 SVG；加新图 = 拷入 `Assets.xcassets` 仿照现有 imageset 结构，并在 `Common.swift` 的 IconEmoji.map 加 Emoji 兜底——后者涉及冻结中的 Swift，建议攒到解冻一起做）。
