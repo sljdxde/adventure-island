@@ -6,6 +6,10 @@ design/ref/
 __pycache__/
 Thumbs.db
 .DS_Store
+# UI 参考用的第三方仓库克隆（55MB，仅留本地不入库）
+.scratch/ui-research/
+# 工具标记
+.v2c/
 
 # ===== Xcode（Mac 上生成后无需入库） =====
 *.xcodeproj
