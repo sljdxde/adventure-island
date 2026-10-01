@@ -172,6 +172,104 @@ def cn_board(i, qids):
     extra = ["coin"] * (2 if i % 2 == 0 else 1) + EVENT_COMBOS[i % 6]
     return build_board(qids, extra, i)
 
+# ================= 试玩反馈②：全学科棋盘化 + 题库扩产 =================
+# 病根：非识字学科每关只有 2-4 道静态题且未棋盘化，重玩全是同一道题。
+# 药方：每关补 2-4 道同题型不同参数的变体（≥5 道），全部普通关挂 8 格棋盘；
+#       count 题加 countRange，客户端每次进题在区间内随机取数。
+
+def target_extras(n_q, idx):
+    """普通关补足到 8 格：事件 1-2（EVENT_COMBOS 轮换）+ 金币格补齐（题目格占比天然 ≥60%）"""
+    combo = EVENT_COMBOS[idx % 6]
+    n_coin = max(0, min(2, 8 - n_q - len(combo)))
+    return ["coin"] * n_coin + list(combo)
+
+def boardify(levels, extras_fn):
+    """普通关全部棋盘化：先扩产题目，再挂棋盘；已有棋盘的（识字村/复习/boss）不动"""
+    for idx, lv in enumerate(levels):
+        if "board" in lv:
+            continue
+        lv["steps"].extend(extras_fn(idx, lv))
+        qids = [s["id"] for s in lv["steps"] if s["kind"] not in ("teach", "letter")]
+        lv["board"] = build_board(qids, target_extras(len(qids), idx), idx)
+
+def math_extra_steps(i, steps, scene):
+    """思维镇变体：count2 + 按本关已有题型各出一道不同参数的变体，不足再从通用池补"""
+    out = []
+    if scene is not None:
+        cs = next((s for s in steps if s["kind"] == "count"), None)
+        n1 = cs["count"] if cs else 3
+        n2 = max(3, n1 - 1)                      # validate 口径：count 静态数量下限 3
+        out.append(dict(count_step(i, n2, sorted({max(1, n2 - 2), n2 - 1, n2}), scene),
+                        id=f"math-{i}-c2"))
+    for s in steps:
+        if len(out) >= 3:
+            break
+        k = s["kind"]
+        if k == "compare":
+            l2, r2 = s["leftCount"], s["rightCount"]
+            if l2 == r2:
+                r2 += 1
+            out.append(compare_step(i, s["rightIcon"], r2, s["leftIcon"], l2,
+                                    [o["label"] for o in s["compareOptions"]], s["question"], sid="cmp2"))
+        elif k == "order":
+            base = s["nums"]
+            up2 = [n + 2 for n in base]
+            dn2 = [max(1, n - 2) for n in base]
+            nums2 = up2 if max(up2) <= 10 and len(set(up2)) == 3 else (dn2 if len(set(dn2)) == 3
+                                                                       else ([3, 7, 5] if s["dir"] == "up" else [8, 2, 5]))
+            out.append(order_step(f"math-{i}-x{len(out)}-o", nums2, "down" if s["dir"] == "up" else "up"))
+        elif k == "arith":
+            a2, b2 = s["leftCount"] + 1, s["rightCount"]
+            correct = a2 + b2 if s["op"] == "+" else a2 - b2
+            opts = sorted({correct - 1, correct, correct + 1})
+            joiner, tail = ("再加", "一共有几") if s["op"] == "+" else ("拿走", "还剩几")
+            out.append(dict(arith_step(i, s["op"], a2, b2, opts, s["leftIcon"], s["unit"],
+                                       f"{a2} {s['unit']}{joiner} {b2} {s['unit']}，{tail}{s['unit']}？"),
+                            id=f"math-{i}-x{len(out)}-a"))
+        elif k == "split":
+            t2 = s["total"] + 1
+            out.append(split_step(f"math-{i}-x{len(out)}-s", t2, s["part"], s["leftIcon"], s["unit"],
+                                  f"{t2} {s['unit']}分两堆，左边 {s['part']} {s['unit']}，右边几{s['unit']}？"))
+        elif k == "neighbor":
+            a2 = s["nums"][0] + 1
+            out.append(neighbor_step(f"math-{i}-x{len(out)}-n", a2, a2 + 2))
+        elif k == "pattern":
+            seq2 = list(reversed(s["seq"][:3]))
+            uniq = list(dict.fromkeys(seq2))
+            fill = "candy" if uniq[-1] != "candy" else "star"
+            out.append(pattern_step(f"math-{i}-x{len(out)}-p", seq2 + [seq2[0]], (uniq + [fill])[:3], 0))
+        elif k == "dice":
+            n2 = s["count"] - 1 if s["count"] > 2 else s["count"] + 1
+            out.append(dice_step(f"math-{i}-x{len(out)}-d", n2, sorted({max(1, n2 - 1), n2, n2 + 1})))
+        elif k == "quiz" and "最大" in s["question"]:
+            out.append({"id": f"math-{i}-x{len(out)}-q", "kind": "quiz", "question": "哪个数字最小？",
+                        "options": [{"text": t} for t in ["4", "8", "1"]], "answer": 2,
+                        "hint": "越早数到的越小哦", "praise": "思维小达人！"})
+        elif k == "quiz" and "最小" in s["question"]:
+            out.append({"id": f"math-{i}-x{len(out)}-q", "kind": "quiz", "question": "哪个数字最大？",
+                        "options": [{"text": t} for t in ["6", "2", "9"]], "answer": 2,
+                        "hint": "从 1 数到 10，谁排在最后？", "praise": "9 最大，答对啦！"})
+        elif k == "quiz":
+            out.append(classify_step(f"math-{i}-x{len(out)}-c", "火眼金睛：哪个能吃？", ["duck", "cake", "train"], 1))
+    # 通用补位：凑不满 3 道变体时（题型单一的关）——有场景的关补第三道 count（n 递增），否则补 order
+    cs = next((s for s in steps if s["kind"] == "count"), None)
+    j = 0
+    while len(out) < 3:
+        if scene is not None:
+            n3 = min(10, ((cs["count"] if cs else 3) + 1 + j))
+            out.append(dict(count_step(i, n3, sorted({max(1, n3 - 1), n3, min(10, n3 + 1)}), scene),
+                            id=f"math-{i}-c{3 + j}"))
+            j += 1
+        else:
+            out.append(order_step(f"math-{i}-x9{j}-o", [2, 5, 3] if j % 2 == 0 else [7, 3, 5], "up"))
+            j += 1
+    return out
+
+def boardify_math(levels):
+    MATH_SCENES = [SC_duck, SC_candy, SC_apple, SC_balloon, SC_star, SC_train,
+                   SC_flower, SC_heart, SC_coin, None, None, None, None, None, None]
+    boardify(levels, lambda idx, lv: math_extra_steps(idx, lv["steps"], MATH_SCENES[idx]))
+
 def sample_questions(level_steps, count, tag):
     """复习关旧题抽取（工单05）：轮转各关的问题序列交错混排（开盲盒），重编 id 防与原关冲突"""
     pool, take = [], [0] * len(level_steps)
@@ -261,14 +359,16 @@ W("cn_levels.json", {"subject": "cn", "title": "识字村", "guide": "panda", "l
 math_levels = []
 
 def count_step(i, n, opts, scene):
+    """countRange（试玩反馈②）：客户端每次进题在区间内随机取数+重组选项，重玩不再总是同一道"""
     return {"id": f"math-{i}-c", "kind": "count",
             "question": f"{scene['q']}（点一点，数数看）",
-            "duckIcon": scene["icon"], "count": n, "countOptions": opts,
+            "duckIcon": scene["icon"], "count": n, "countRange": [max(2, n - 2), n],
+            "countOptions": opts,
             "backdrop": scene["backdrop"], "unit": scene["unit"]}
 
-def compare_step(i, li, l, ri, r, labels, q="哪一边更多？"):
+def compare_step(i, li, l, ri, r, labels, q="哪一边更多？", sid=None):
     key = "same" if l == r else ("left" if l > r else "right")
-    return {"id": f"math-{i}-cmp", "kind": "compare", "question": q,
+    return {"id": f"math-{i}-{sid or 'cmp'}", "kind": "compare", "question": q,
             "leftIcon": li, "leftCount": l, "rightIcon": ri, "rightCount": r,
             "compareOptions": [{"key": k, "label": lb} for k, lb in
                                zip(("left","right","same"), labels)],
@@ -382,6 +482,7 @@ specs = [
 ]
 for idx, (lid, title, sub, build) in enumerate(specs):
     math_levels.append({"id": lid, "title": title, "subtitle": sub, "steps": build(idx)})
+boardify_math(math_levels)
 add_review_levels(math_levels, "math", (5, 11))
 add_boss_level(math_levels, "math")
 W("math_levels.json", {"subject": "math", "title": "思维镇", "guide": "fox", "levels": math_levels})
@@ -489,6 +590,63 @@ pinyin_levels.append({"id": "py-11", "title": "第 12 关 复习", "subtitle": "
      "options": [{"icon": "girl", "text": "妈妈"}, {"icon": "moon"}, {"icon": "train"}], "answer": 0,
      "hint": "m 碰 a", "praise": "拼读小达人！"},
 ]})
+# 试玩反馈②：拼音谷题库扩产（每关 ≥5 道不同变体）+ 全部普通关棋盘化
+def py_listen_letter2(i, letter):
+    others = ["d","p","m","f","t","n","l","g","k","b"]
+    dis = [x for x in others if x != letter]
+    opts = [letter, dis[(i * 2) % len(dis)], dis[(i * 2 + 1) % len(dis)]]
+    return {"id": f"py-{i}-lb", "kind": "listen", "prompt": letter, "speakText": letter,
+            "question": f"再找一找：哪个是「{letter}」？",
+            "options": [{"text": t} for t in opts], "answer": 0,
+            "hint": "想一想它的样子", "praise": f"「{letter}」又找对啦！"}
+
+def py_blend2(i, b0, v, blends, tag):
+    target = b0 + v
+    opts = [target] + [x for x in blends if x != target][:2]
+    return {"id": f"py-{i}-{tag}", "kind": "blend", "parts": [b0, v],
+            "question": f"拼一拼：{b0} — {v} = ?",
+            "options": [{"text": t} for t in opts], "answer": 0,
+            "hint": f"{b0} 碰上 {v}", "praise": f"拼对了，{target}！"}
+
+def py_pic_quiz2(i, ex0, b0, b1):
+    icon, text = ex0
+    word = text.split(" ")[0]
+    dis = [x for x in ICON_POOL if x != icon]
+    d1, d2 = dis[(i * 3 + 1) % len(dis)], dis[(i * 3 + 4) % len(dis)]
+    pos = i % 3
+    opts, ans = rot([{"icon": icon, "text": word}, {"icon": d1}, {"icon": d2}], 0, pos)
+    return {"id": f"py-{i}-pq2", "kind": "quiz",
+            "question": f"再拼一拼 {b0} — {b1}：哪张图是「{word}」？",
+            "options": opts, "answer": ans,
+            "hint": f"{b0} 碰 {b1}", "praise": f"拼读小能手：{word}！"}
+
+def py_extras(i, lv):
+    first = lv["steps"][0]
+    if first["kind"] != "letter":          # 复习关（py-11）：补拼读与整体认读变体
+        return [
+            {"id": "py-11-lb", "kind": "blend", "parts": ["m", "a"],
+             "question": "拼一拼：m — a = ?", "options": [{"text": t} for t in ["ma", "mo", "ba"]], "answer": 0,
+             "hint": "m 碰 a", "praise": "拼对啦，ma！"},
+            {"id": "py-11-l2", "kind": "listen", "prompt": "chi", "speakText": "chi",
+             "question": "找一找：哪个是「chi」？", "options": [{"text": t} for t in ["zhi", "chi", "shi"]], "answer": 1,
+             "hint": "吃东西的 chi", "praise": "整体认读 chi！"},
+        ]
+    letter = first["letters"][0]
+    if i < 10:
+        _, examples, b0, b1, blends = PY[i]
+        return [py_listen_letter2(i, letter),
+                py_blend2(i, b0, blends[1][1], blends, "b2"),
+                py_pic_quiz2(i, examples[0], b0, b1)]
+    # 韵母关（py-10）：单题关多补一道，凑满 5 题
+    return [py_listen_letter2(i, letter),
+            py_blend2(i, "m", "a", ["ma", "mo", "mi"], "b2"),
+            py_blend2(i, "l", "a", ["la", "le", "lo"], "b3"),
+            {"id": "py-10-l3", "kind": "listen", "prompt": "o", "speakText": "o",
+             "question": "找一找：哪个是韵母「o」？",
+             "options": [{"text": t} for t in ["e", "o", "a"]], "answer": 1,
+             "hint": "圆圆嘴巴 óóó", "praise": "韵母 o 找对啦！"}]
+
+boardify(pinyin_levels, py_extras)
 add_review_levels(pinyin_levels, "pinyin", (5, 11))
 add_boss_level(pinyin_levels, "pinyin")
 W("pinyin_levels.json", {"subject": "pinyin", "title": "拼音谷", "guide": "panda", "levels": pinyin_levels})
@@ -590,6 +748,48 @@ english_levels.append({"id": "en-11", "title": "Level 12 Review", "subtitle": "�
     word_quiz("en-11-q2", "Which one is the flower? 花是哪一个？", [("leaf","leaf"),("flower","flower"),("tree","tree")], 1, "Flower 花", "Yes! Flower!"),
     word_quiz("en-11-q3", "Which one is the cake? 蛋糕是哪一个？", [("gift","gift"),("key","key"),("cake","cake")], 2, "Cake 蛋糕", "Super star! 全部通关!"),
 ]})
+# 试玩反馈②：英语王国题库扩产 + 全部普通关棋盘化
+def en_listen_letter2(li, disp):
+    others = [d for d, _, _ in EN_LETTERS if d != disp]
+    opts = [disp, others[(li + 2) % 8], others[(li + 3) % 8]]
+    return {"id": f"en-{li}-l2", "kind": "listen", "prompt": disp, "speakText": disp[0],
+            "question": f"Find again: which one is {disp} ?",
+            "options": [{"text": t} for t in opts], "answer": 0,
+            "hint": f"{disp[0]} for {disp}", "praise": f"Yes! {disp}!"}
+
+def en_case_quiz2(li, disp):
+    upper, lower = disp[0], disp[1]
+    others = [d[0] for d, _, _ in EN_LETTERS if d[0] != upper]
+    d1, d2 = others[(li * 2 + 3) % len(others)], others[(li * 2 + 5) % len(others)]
+    pos = li % 3
+    opts, ans = rot([{"text": upper}, {"text": d1}, {"text": d2}], 0, pos)
+    return {"id": f"en-{li}-c2", "kind": "quiz",
+            "question": f"大写 {upper} 的小写是哪个？",
+            "options": opts, "answer": ans,
+            "hint": f"{disp} = {upper}{lower}", "praise": f"{upper}{lower} 又配对成功！"}
+
+def en_pic_quiz2(li, disp, icon, word):
+    others = [d for d, _, _ in EN_LETTERS if d != disp]
+    d1, d2 = others[(li + 4) % 8], others[(li + 5) % 8]
+    d1i = next(x for x in EN_LETTERS if x[0] == d1)[1]
+    d2i = next(x for x in EN_LETTERS if x[0] == d2)[1]
+    opts, ans = rot([{"icon": icon}, {"icon": d1i}, {"icon": d2i}], 0, li % 3)
+    return {"id": f"en-{li}-q2", "kind": "quiz",
+            "question": f"Which picture starts with {disp}?（再找一找）",
+            "options": opts, "answer": ans, "hint": word, "praise": "Great job!"}
+
+def en_extras(i, lv):
+    first = lv["steps"][0]
+    if first["kind"] != "letter":          # en-10 / en-11 单词复习关
+        return [word_quiz("en-x0", "Which one is the flower? 花是哪一个？",
+                          [("tree","tree"),("flower","flower"),("leaf","leaf")], 1, "Flower 花", "Yes! Flower!"),
+                word_quiz("en-x1", "Which one is the cake? 蛋糕是哪一个？",
+                          [("gift","gift"),("key","key"),("cake","cake")], 2, "Cake 蛋糕", "Yes! Cake!")]
+    idx = 10 if i == 8 else (11 if i == 9 else i)
+    disp, icon, word = EN_LETTERS[idx]
+    return [en_listen_letter2(i, disp), en_case_quiz2(i, disp), en_pic_quiz2(i, disp, icon, word)]
+
+boardify(english_levels, en_extras)
 add_review_levels(english_levels, "english", (5, 11))
 add_boss_level(english_levels, "english")
 W("english_levels.json", {"subject": "english", "title": "英语王国", "guide": "robot", "levels": english_levels})
@@ -659,6 +859,34 @@ astro_levels.append({"id": "astro-9", "title": "第 10 关 星空大挑战", "su
      "options": [{"icon": "star"}, {"icon": "moon"}, {"icon": "rocket"}], "answer": 1,
      "hint": "谁和太阳在轮流出现？", "praise": "全部通关，小天文学家！"},
 ]})
+# 试玩反馈②：天文台题库扩产（单题关 → 5 题）+ 全部普通关棋盘化
+def astro_quiz2(i, name, icon, d1, d2, q, tag, fact):
+    opts = [{"icon": d2}, {"icon": d1}]
+    ans = (i + 1) % 3
+    opts.insert(ans, {"icon": icon, "text": name})
+    return {"id": f"astro-{i}-{tag}", "kind": "quiz", "question": q,
+            "options": opts, "answer": ans, "hint": fact, "praise": f"对啦！{fact}"}
+
+def astro_extras(i, lv):
+    first = lv["steps"][0]
+    if first["kind"] != "letter":          # astro-9 星空大挑战
+        return [{"id": "astro-9-q4", "kind": "quiz", "question": "谁晚上出来，有时圆有时弯？",
+                 "options": [{"icon": "sun"}, {"icon": "moon", "text": "月亮"}, {"icon": "rocket"}], "answer": 1,
+                 "hint": "弯弯的像小船", "praise": "月亮答对啦！"}]
+    name, en, icon, chips, fact, d1, d2, feat_q = ASTRO_FULL[i]
+    return [
+        astro_quiz2(i, name, icon, d2, d1, f"再找一找：哪个是{name}？", "q2", fact),
+        astro_quiz2(i, name, icon, d1, d2, feat_q, "f2", fact),
+        {"id": f"astro-{i}-p2", "kind": "pattern",
+         "seq": [icon, d1, icon], "question": "星空规律：下一个是谁？",
+         "options": [{"icon": d1}, {"icon": icon}, {"icon": d2}], "answer": 1,
+         "hint": "谁在轮流出现？", "praise": "规律找对啦！"},
+        {"id": f"astro-{i}-q3", "kind": "quiz", "question": f"「{fact}」说的是谁？",
+         "options": [{"icon": d1}, {"icon": icon, "text": name}, {"icon": d2}], "answer": 1,
+         "hint": "想一想刚才学的话", "praise": f"对，就是{name}！"},
+    ]
+
+boardify(astro_levels, astro_extras)
 add_review_levels(astro_levels, "astro", (5, 10))
 add_boss_level(astro_levels, "astro")
 W("astro_levels.json", {"subject": "astro", "title": "天文台", "guide": "robot", "levels": astro_levels})
@@ -746,12 +974,14 @@ shop = {
         shop_item("bear", "棕小熊", "bear", 80),
         shop_item("penguin", "小企鹅", "penguin", 120),
     ],
-    "dice": [
-        shop_item("std", "经典红点", "dot", 0, True),
-        shop_item("fruit", "水果骰", "apple", 50),
-        shop_item("star", "星星骰", "starface", 70),
-        shop_item("paw", "脚印骰", "paw", 90),
-        shop_item("heart", "爱心骰", "heart", 100),
+    # 试玩反馈①：骰子皮肤下架，金币改换称号（图标全部复用现有资产，展示在地图铭牌旁）
+    "titles": [
+        shop_item("xiaoxian", "小小探险家", "flag", 0, True),
+        shop_item("shizi", "识字小达人", "book", 40),
+        shop_item("pinyin", "拼音小能手", "speaker", 50),
+        shop_item("shuxue", "数字小天才", "equal", 60),
+        shop_item("tansuo", "勇敢探险家", "rocket", 80),
+        shop_item("mingxing", "岛屿大明星", "starface", 120),
     ],
 }
 W("shop.json", shop)

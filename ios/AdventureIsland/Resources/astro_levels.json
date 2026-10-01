@@ -48,8 +48,125 @@
           "answer": 1,
           "hint": "太阳会发光发热，白天照亮大地",
           "praise": "对啦！太阳会发光发热，白天照亮大地"
+        },
+        {
+          "id": "astro-0-q2",
+          "kind": "quiz",
+          "question": "再找一找：哪个是太阳？",
+          "options": [
+            {
+              "icon": "moon"
+            },
+            {
+              "icon": "sun",
+              "text": "太阳"
+            },
+            {
+              "icon": "star"
+            }
+          ],
+          "answer": 1,
+          "hint": "太阳会发光发热，白天照亮大地",
+          "praise": "对啦！太阳会发光发热，白天照亮大地"
+        },
+        {
+          "id": "astro-0-f2",
+          "kind": "quiz",
+          "question": "白天照亮大地、发光发热的是谁？",
+          "options": [
+            {
+              "icon": "star"
+            },
+            {
+              "icon": "sun",
+              "text": "太阳"
+            },
+            {
+              "icon": "moon"
+            }
+          ],
+          "answer": 1,
+          "hint": "太阳会发光发热，白天照亮大地",
+          "praise": "对啦！太阳会发光发热，白天照亮大地"
+        },
+        {
+          "id": "astro-0-p2",
+          "kind": "pattern",
+          "seq": [
+            "sun",
+            "moon",
+            "sun"
+          ],
+          "question": "星空规律：下一个是谁？",
+          "options": [
+            {
+              "icon": "moon"
+            },
+            {
+              "icon": "sun"
+            },
+            {
+              "icon": "star"
+            }
+          ],
+          "answer": 1,
+          "hint": "谁在轮流出现？",
+          "praise": "规律找对啦！"
+        },
+        {
+          "id": "astro-0-q3",
+          "kind": "quiz",
+          "question": "「太阳会发光发热，白天照亮大地」说的是谁？",
+          "options": [
+            {
+              "icon": "moon"
+            },
+            {
+              "icon": "sun",
+              "text": "太阳"
+            },
+            {
+              "icon": "star"
+            }
+          ],
+          "answer": 1,
+          "hint": "想一想刚才学的话",
+          "praise": "对，就是太阳！"
         }
-      ]
+      ],
+      "board": {
+        "spaces": [
+          {
+            "type": "question",
+            "step": "astro-0-q"
+          },
+          {
+            "type": "question",
+            "step": "astro-0-q2"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "astro-0-f2"
+          },
+          {
+            "type": "question",
+            "step": "astro-0-p2"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "astro-0-q3"
+          },
+          {
+            "type": "chest"
+          }
+        ]
+      }
     },
     {
       "id": "astro-1",
@@ -96,8 +213,125 @@
           "answer": 0,
           "hint": "月亮晚上出来，有时圆圆、有时弯弯",
           "praise": "对啦！月亮晚上出来，有时圆圆、有时弯弯"
+        },
+        {
+          "id": "astro-1-q2",
+          "kind": "quiz",
+          "question": "再找一找：哪个是月亮？",
+          "options": [
+            {
+              "icon": "sun"
+            },
+            {
+              "icon": "crystal"
+            },
+            {
+              "icon": "moon",
+              "text": "月亮"
+            }
+          ],
+          "answer": 2,
+          "hint": "月亮晚上出来，有时圆圆、有时弯弯",
+          "praise": "对啦！月亮晚上出来，有时圆圆、有时弯弯"
+        },
+        {
+          "id": "astro-1-f2",
+          "kind": "quiz",
+          "question": "晚上有时圆有时弯的是谁？",
+          "options": [
+            {
+              "icon": "crystal"
+            },
+            {
+              "icon": "sun"
+            },
+            {
+              "icon": "moon",
+              "text": "月亮"
+            }
+          ],
+          "answer": 2,
+          "hint": "月亮晚上出来，有时圆圆、有时弯弯",
+          "praise": "对啦！月亮晚上出来，有时圆圆、有时弯弯"
+        },
+        {
+          "id": "astro-1-p2",
+          "kind": "pattern",
+          "seq": [
+            "moon",
+            "sun",
+            "moon"
+          ],
+          "question": "星空规律：下一个是谁？",
+          "options": [
+            {
+              "icon": "sun"
+            },
+            {
+              "icon": "moon"
+            },
+            {
+              "icon": "crystal"
+            }
+          ],
+          "answer": 1,
+          "hint": "谁在轮流出现？",
+          "praise": "规律找对啦！"
+        },
+        {
+          "id": "astro-1-q3",
+          "kind": "quiz",
+          "question": "「月亮晚上出来，有时圆圆、有时弯弯」说的是谁？",
+          "options": [
+            {
+              "icon": "sun"
+            },
+            {
+              "icon": "moon",
+              "text": "月亮"
+            },
+            {
+              "icon": "crystal"
+            }
+          ],
+          "answer": 1,
+          "hint": "想一想刚才学的话",
+          "praise": "对，就是月亮！"
         }
-      ]
+      ],
+      "board": {
+        "spaces": [
+          {
+            "type": "question",
+            "step": "astro-1-q2"
+          },
+          {
+            "type": "question",
+            "step": "astro-1-f2"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "astro-1-p2"
+          },
+          {
+            "type": "question",
+            "step": "astro-1-q3"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "astro-1-f"
+          },
+          {
+            "type": "mushroom"
+          }
+        ]
+      }
     },
     {
       "id": "astro-2",
@@ -148,8 +382,125 @@
           "answer": 0,
           "hint": "读一读前面几个，谁在轮流出现",
           "praise": "规律找对啦，小天文学家！"
+        },
+        {
+          "id": "astro-2-q2",
+          "kind": "quiz",
+          "question": "再找一找：哪个是星星？",
+          "options": [
+            {
+              "icon": "star",
+              "text": "星星"
+            },
+            {
+              "icon": "balloon"
+            },
+            {
+              "icon": "moon"
+            }
+          ],
+          "answer": 0,
+          "hint": "星星在夜空里一闪一闪",
+          "praise": "对啦！星星在夜空里一闪一闪"
+        },
+        {
+          "id": "astro-2-f2",
+          "kind": "quiz",
+          "question": "夜空里一闪一闪的是谁？",
+          "options": [
+            {
+              "icon": "star",
+              "text": "星星"
+            },
+            {
+              "icon": "moon"
+            },
+            {
+              "icon": "balloon"
+            }
+          ],
+          "answer": 0,
+          "hint": "星星在夜空里一闪一闪",
+          "praise": "对啦！星星在夜空里一闪一闪"
+        },
+        {
+          "id": "astro-2-p2",
+          "kind": "pattern",
+          "seq": [
+            "star",
+            "balloon",
+            "star"
+          ],
+          "question": "星空规律：下一个是谁？",
+          "options": [
+            {
+              "icon": "balloon"
+            },
+            {
+              "icon": "star"
+            },
+            {
+              "icon": "moon"
+            }
+          ],
+          "answer": 1,
+          "hint": "谁在轮流出现？",
+          "praise": "规律找对啦！"
+        },
+        {
+          "id": "astro-2-q3",
+          "kind": "quiz",
+          "question": "「星星在夜空里一闪一闪」说的是谁？",
+          "options": [
+            {
+              "icon": "balloon"
+            },
+            {
+              "icon": "star",
+              "text": "星星"
+            },
+            {
+              "icon": "moon"
+            }
+          ],
+          "answer": 1,
+          "hint": "想一想刚才学的话",
+          "praise": "对，就是星星！"
         }
-      ]
+      ],
+      "board": {
+        "spaces": [
+          {
+            "type": "question",
+            "step": "astro-2-f2"
+          },
+          {
+            "type": "question",
+            "step": "astro-2-p2"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "astro-2-q3"
+          },
+          {
+            "type": "question",
+            "step": "astro-2-p"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "astro-2-q2"
+          },
+          {
+            "type": "rest"
+          }
+        ]
+      }
     },
     {
       "id": "astro-3",
@@ -196,8 +547,125 @@
           "answer": 1,
           "hint": "地球是我们的家，蓝蓝的、圆圆的",
           "praise": "对啦！地球是我们的家，蓝蓝的、圆圆的"
+        },
+        {
+          "id": "astro-3-q2",
+          "kind": "quiz",
+          "question": "再找一找：哪个是地球？",
+          "options": [
+            {
+              "icon": "sun"
+            },
+            {
+              "icon": "earth",
+              "text": "地球"
+            },
+            {
+              "icon": "moon"
+            }
+          ],
+          "answer": 1,
+          "hint": "地球是我们的家，蓝蓝的、圆圆的",
+          "praise": "对啦！地球是我们的家，蓝蓝的、圆圆的"
+        },
+        {
+          "id": "astro-3-f2",
+          "kind": "quiz",
+          "question": "蓝蓝圆圆、我们的家是哪个星球？",
+          "options": [
+            {
+              "icon": "moon"
+            },
+            {
+              "icon": "earth",
+              "text": "地球"
+            },
+            {
+              "icon": "sun"
+            }
+          ],
+          "answer": 1,
+          "hint": "地球是我们的家，蓝蓝的、圆圆的",
+          "praise": "对啦！地球是我们的家，蓝蓝的、圆圆的"
+        },
+        {
+          "id": "astro-3-p2",
+          "kind": "pattern",
+          "seq": [
+            "earth",
+            "sun",
+            "earth"
+          ],
+          "question": "星空规律：下一个是谁？",
+          "options": [
+            {
+              "icon": "sun"
+            },
+            {
+              "icon": "earth"
+            },
+            {
+              "icon": "moon"
+            }
+          ],
+          "answer": 1,
+          "hint": "谁在轮流出现？",
+          "praise": "规律找对啦！"
+        },
+        {
+          "id": "astro-3-q3",
+          "kind": "quiz",
+          "question": "「地球是我们的家，蓝蓝的、圆圆的」说的是谁？",
+          "options": [
+            {
+              "icon": "sun"
+            },
+            {
+              "icon": "earth",
+              "text": "地球"
+            },
+            {
+              "icon": "moon"
+            }
+          ],
+          "answer": 1,
+          "hint": "想一想刚才学的话",
+          "praise": "对，就是地球！"
         }
-      ]
+      ],
+      "board": {
+        "spaces": [
+          {
+            "type": "question",
+            "step": "astro-3-p2"
+          },
+          {
+            "type": "question",
+            "step": "astro-3-q3"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "astro-3-q"
+          },
+          {
+            "type": "question",
+            "step": "astro-3-q2"
+          },
+          {
+            "type": "chest"
+          },
+          {
+            "type": "question",
+            "step": "astro-3-f2"
+          },
+          {
+            "type": "mushroom"
+          }
+        ]
+      }
     },
     {
       "id": "astro-4",
@@ -244,8 +712,125 @@
           "answer": 0,
           "hint": "火箭轰隆一声，飞向太空",
           "praise": "对啦！火箭轰隆一声，飞向太空"
+        },
+        {
+          "id": "astro-4-q2",
+          "kind": "quiz",
+          "question": "再找一找：哪个是火箭？",
+          "options": [
+            {
+              "icon": "train"
+            },
+            {
+              "icon": "balloon"
+            },
+            {
+              "icon": "rocket",
+              "text": "火箭"
+            }
+          ],
+          "answer": 2,
+          "hint": "火箭轰隆一声，飞向太空",
+          "praise": "对啦！火箭轰隆一声，飞向太空"
+        },
+        {
+          "id": "astro-4-f2",
+          "kind": "quiz",
+          "question": "轰隆一声飞向太空的是谁？",
+          "options": [
+            {
+              "icon": "balloon"
+            },
+            {
+              "icon": "train"
+            },
+            {
+              "icon": "rocket",
+              "text": "火箭"
+            }
+          ],
+          "answer": 2,
+          "hint": "火箭轰隆一声，飞向太空",
+          "praise": "对啦！火箭轰隆一声，飞向太空"
+        },
+        {
+          "id": "astro-4-p2",
+          "kind": "pattern",
+          "seq": [
+            "rocket",
+            "train",
+            "rocket"
+          ],
+          "question": "星空规律：下一个是谁？",
+          "options": [
+            {
+              "icon": "train"
+            },
+            {
+              "icon": "rocket"
+            },
+            {
+              "icon": "balloon"
+            }
+          ],
+          "answer": 1,
+          "hint": "谁在轮流出现？",
+          "praise": "规律找对啦！"
+        },
+        {
+          "id": "astro-4-q3",
+          "kind": "quiz",
+          "question": "「火箭轰隆一声，飞向太空」说的是谁？",
+          "options": [
+            {
+              "icon": "train"
+            },
+            {
+              "icon": "rocket",
+              "text": "火箭"
+            },
+            {
+              "icon": "balloon"
+            }
+          ],
+          "answer": 1,
+          "hint": "想一想刚才学的话",
+          "praise": "对，就是火箭！"
         }
-      ]
+      ],
+      "board": {
+        "spaces": [
+          {
+            "type": "question",
+            "step": "astro-4-q3"
+          },
+          {
+            "type": "question",
+            "step": "astro-4-f"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "astro-4-q2"
+          },
+          {
+            "type": "question",
+            "step": "astro-4-f2"
+          },
+          {
+            "type": "mushroom"
+          },
+          {
+            "type": "question",
+            "step": "astro-4-p2"
+          },
+          {
+            "type": "rest"
+          }
+        ]
+      }
     },
     {
       "id": "astro-r0",
@@ -358,27 +943,23 @@
         },
         {
           "id": "astro-r0-5",
-          "kind": "pattern",
-          "seq": [
-            "earth",
-            "star",
-            "earth"
-          ],
-          "question": "星空规律：下一个是谁？",
+          "kind": "quiz",
+          "question": "再找一找：哪个是太阳？",
           "options": [
             {
-              "icon": "rocket"
+              "icon": "moon"
+            },
+            {
+              "icon": "sun",
+              "text": "太阳"
             },
             {
               "icon": "star"
-            },
-            {
-              "icon": "earth"
             }
           ],
           "answer": 1,
-          "hint": "读一读前面几个，谁在轮流出现",
-          "praise": "规律找对啦，小天文学家！"
+          "hint": "太阳会发光发热，白天照亮大地",
+          "praise": "对啦！太阳会发光发热，白天照亮大地"
         }
       ],
       "board": {
@@ -472,8 +1053,125 @@
           "answer": 1,
           "hint": "读一读前面几个，谁在轮流出现",
           "praise": "规律找对啦，小天文学家！"
+        },
+        {
+          "id": "astro-5-q2",
+          "kind": "quiz",
+          "question": "再找一找：哪个是行星？",
+          "options": [
+            {
+              "icon": "planet",
+              "text": "行星"
+            },
+            {
+              "icon": "earth"
+            },
+            {
+              "icon": "star"
+            }
+          ],
+          "answer": 0,
+          "hint": "有的行星戴着光环，像大草帽",
+          "praise": "对啦！有的行星戴着光环，像大草帽"
+        },
+        {
+          "id": "astro-5-f2",
+          "kind": "quiz",
+          "question": "戴着光环像大草帽的是谁？",
+          "options": [
+            {
+              "icon": "planet",
+              "text": "行星"
+            },
+            {
+              "icon": "star"
+            },
+            {
+              "icon": "earth"
+            }
+          ],
+          "answer": 0,
+          "hint": "有的行星戴着光环，像大草帽",
+          "praise": "对啦！有的行星戴着光环，像大草帽"
+        },
+        {
+          "id": "astro-5-p2",
+          "kind": "pattern",
+          "seq": [
+            "planet",
+            "earth",
+            "planet"
+          ],
+          "question": "星空规律：下一个是谁？",
+          "options": [
+            {
+              "icon": "earth"
+            },
+            {
+              "icon": "planet"
+            },
+            {
+              "icon": "star"
+            }
+          ],
+          "answer": 1,
+          "hint": "谁在轮流出现？",
+          "praise": "规律找对啦！"
+        },
+        {
+          "id": "astro-5-q3",
+          "kind": "quiz",
+          "question": "「有的行星戴着光环，像大草帽」说的是谁？",
+          "options": [
+            {
+              "icon": "earth"
+            },
+            {
+              "icon": "planet",
+              "text": "行星"
+            },
+            {
+              "icon": "star"
+            }
+          ],
+          "answer": 1,
+          "hint": "想一想刚才学的话",
+          "praise": "对，就是行星！"
         }
-      ]
+      ],
+      "board": {
+        "spaces": [
+          {
+            "type": "question",
+            "step": "astro-5-p"
+          },
+          {
+            "type": "question",
+            "step": "astro-5-q2"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "astro-5-f2"
+          },
+          {
+            "type": "question",
+            "step": "astro-5-p2"
+          },
+          {
+            "type": "chest"
+          },
+          {
+            "type": "question",
+            "step": "astro-5-q3"
+          },
+          {
+            "type": "rest"
+          }
+        ]
+      }
     },
     {
       "id": "astro-6",
@@ -520,8 +1218,125 @@
           "answer": 1,
           "hint": "彗星拖着长长的大尾巴，扫过夜空",
           "praise": "对啦！彗星拖着长长的大尾巴，扫过夜空"
+        },
+        {
+          "id": "astro-6-q2",
+          "kind": "quiz",
+          "question": "再找一找：哪个是彗星？",
+          "options": [
+            {
+              "icon": "rocket"
+            },
+            {
+              "icon": "comet",
+              "text": "彗星"
+            },
+            {
+              "icon": "star"
+            }
+          ],
+          "answer": 1,
+          "hint": "彗星拖着长长的大尾巴，扫过夜空",
+          "praise": "对啦！彗星拖着长长的大尾巴，扫过夜空"
+        },
+        {
+          "id": "astro-6-f2",
+          "kind": "quiz",
+          "question": "拖着长长尾巴扫过夜空的是谁？",
+          "options": [
+            {
+              "icon": "star"
+            },
+            {
+              "icon": "comet",
+              "text": "彗星"
+            },
+            {
+              "icon": "rocket"
+            }
+          ],
+          "answer": 1,
+          "hint": "彗星拖着长长的大尾巴，扫过夜空",
+          "praise": "对啦！彗星拖着长长的大尾巴，扫过夜空"
+        },
+        {
+          "id": "astro-6-p2",
+          "kind": "pattern",
+          "seq": [
+            "comet",
+            "rocket",
+            "comet"
+          ],
+          "question": "星空规律：下一个是谁？",
+          "options": [
+            {
+              "icon": "rocket"
+            },
+            {
+              "icon": "comet"
+            },
+            {
+              "icon": "star"
+            }
+          ],
+          "answer": 1,
+          "hint": "谁在轮流出现？",
+          "praise": "规律找对啦！"
+        },
+        {
+          "id": "astro-6-q3",
+          "kind": "quiz",
+          "question": "「彗星拖着长长的大尾巴，扫过夜空」说的是谁？",
+          "options": [
+            {
+              "icon": "rocket"
+            },
+            {
+              "icon": "comet",
+              "text": "彗星"
+            },
+            {
+              "icon": "star"
+            }
+          ],
+          "answer": 1,
+          "hint": "想一想刚才学的话",
+          "praise": "对，就是彗星！"
         }
-      ]
+      ],
+      "board": {
+        "spaces": [
+          {
+            "type": "question",
+            "step": "astro-6-q2"
+          },
+          {
+            "type": "question",
+            "step": "astro-6-f2"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "astro-6-p2"
+          },
+          {
+            "type": "question",
+            "step": "astro-6-q3"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "astro-6-q"
+          },
+          {
+            "type": "chest"
+          }
+        ]
+      }
     },
     {
       "id": "astro-7",
@@ -568,8 +1383,125 @@
           "answer": 0,
           "hint": "流星噌——地划过夜空，可以许个愿",
           "praise": "对啦！流星噌——地划过夜空，可以许个愿"
+        },
+        {
+          "id": "astro-7-q2",
+          "kind": "quiz",
+          "question": "再找一找：哪个是流星？",
+          "options": [
+            {
+              "icon": "star"
+            },
+            {
+              "icon": "comet"
+            },
+            {
+              "icon": "sparkle",
+              "text": "流星"
+            }
+          ],
+          "answer": 2,
+          "hint": "流星噌——地划过夜空，可以许个愿",
+          "praise": "对啦！流星噌——地划过夜空，可以许个愿"
+        },
+        {
+          "id": "astro-7-f2",
+          "kind": "quiz",
+          "question": "噌地划过夜空、可以许愿的是谁？",
+          "options": [
+            {
+              "icon": "comet"
+            },
+            {
+              "icon": "star"
+            },
+            {
+              "icon": "sparkle",
+              "text": "流星"
+            }
+          ],
+          "answer": 2,
+          "hint": "流星噌——地划过夜空，可以许个愿",
+          "praise": "对啦！流星噌——地划过夜空，可以许个愿"
+        },
+        {
+          "id": "astro-7-p2",
+          "kind": "pattern",
+          "seq": [
+            "sparkle",
+            "star",
+            "sparkle"
+          ],
+          "question": "星空规律：下一个是谁？",
+          "options": [
+            {
+              "icon": "star"
+            },
+            {
+              "icon": "sparkle"
+            },
+            {
+              "icon": "comet"
+            }
+          ],
+          "answer": 1,
+          "hint": "谁在轮流出现？",
+          "praise": "规律找对啦！"
+        },
+        {
+          "id": "astro-7-q3",
+          "kind": "quiz",
+          "question": "「流星噌——地划过夜空，可以许个愿」说的是谁？",
+          "options": [
+            {
+              "icon": "star"
+            },
+            {
+              "icon": "sparkle",
+              "text": "流星"
+            },
+            {
+              "icon": "comet"
+            }
+          ],
+          "answer": 1,
+          "hint": "想一想刚才学的话",
+          "praise": "对，就是流星！"
         }
-      ]
+      ],
+      "board": {
+        "spaces": [
+          {
+            "type": "question",
+            "step": "astro-7-f2"
+          },
+          {
+            "type": "question",
+            "step": "astro-7-p2"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "astro-7-q3"
+          },
+          {
+            "type": "question",
+            "step": "astro-7-f"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "astro-7-q2"
+          },
+          {
+            "type": "mushroom"
+          }
+        ]
+      }
     },
     {
       "id": "astro-8",
@@ -620,8 +1552,125 @@
           "answer": 1,
           "hint": "读一读前面几个，谁在轮流出现",
           "praise": "规律找对啦，小天文学家！"
+        },
+        {
+          "id": "astro-8-q2",
+          "kind": "quiz",
+          "question": "再找一找：哪个是火星车？",
+          "options": [
+            {
+              "icon": "robot",
+              "text": "火星车"
+            },
+            {
+              "icon": "rocket"
+            },
+            {
+              "icon": "earth"
+            }
+          ],
+          "answer": 0,
+          "hint": "机器人火星车，在火星上慢慢探险",
+          "praise": "对啦！机器人火星车，在火星上慢慢探险"
+        },
+        {
+          "id": "astro-8-f2",
+          "kind": "quiz",
+          "question": "在火星上慢慢探险的机器人是谁？",
+          "options": [
+            {
+              "icon": "robot",
+              "text": "火星车"
+            },
+            {
+              "icon": "earth"
+            },
+            {
+              "icon": "rocket"
+            }
+          ],
+          "answer": 0,
+          "hint": "机器人火星车，在火星上慢慢探险",
+          "praise": "对啦！机器人火星车，在火星上慢慢探险"
+        },
+        {
+          "id": "astro-8-p2",
+          "kind": "pattern",
+          "seq": [
+            "robot",
+            "rocket",
+            "robot"
+          ],
+          "question": "星空规律：下一个是谁？",
+          "options": [
+            {
+              "icon": "rocket"
+            },
+            {
+              "icon": "robot"
+            },
+            {
+              "icon": "earth"
+            }
+          ],
+          "answer": 1,
+          "hint": "谁在轮流出现？",
+          "praise": "规律找对啦！"
+        },
+        {
+          "id": "astro-8-q3",
+          "kind": "quiz",
+          "question": "「机器人火星车，在火星上慢慢探险」说的是谁？",
+          "options": [
+            {
+              "icon": "rocket"
+            },
+            {
+              "icon": "robot",
+              "text": "火星车"
+            },
+            {
+              "icon": "earth"
+            }
+          ],
+          "answer": 1,
+          "hint": "想一想刚才学的话",
+          "praise": "对，就是火星车！"
         }
-      ]
+      ],
+      "board": {
+        "spaces": [
+          {
+            "type": "question",
+            "step": "astro-8-p2"
+          },
+          {
+            "type": "question",
+            "step": "astro-8-q3"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "astro-8-p"
+          },
+          {
+            "type": "question",
+            "step": "astro-8-q2"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "astro-8-f2"
+          },
+          {
+            "type": "rest"
+          }
+        ]
+      }
     },
     {
       "id": "astro-r1",
@@ -898,8 +1947,61 @@
           "answer": 1,
           "hint": "谁和太阳在轮流出现？",
           "praise": "全部通关，小天文学家！"
+        },
+        {
+          "id": "astro-9-q4",
+          "kind": "quiz",
+          "question": "谁晚上出来，有时圆有时弯？",
+          "options": [
+            {
+              "icon": "sun"
+            },
+            {
+              "icon": "moon",
+              "text": "月亮"
+            },
+            {
+              "icon": "rocket"
+            }
+          ],
+          "answer": 1,
+          "hint": "弯弯的像小船",
+          "praise": "月亮答对啦！"
         }
-      ]
+      ],
+      "board": {
+        "spaces": [
+          {
+            "type": "question",
+            "step": "astro-9-q4"
+          },
+          {
+            "type": "question",
+            "step": "astro-9-m"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "astro-9-q1"
+          },
+          {
+            "type": "question",
+            "step": "astro-9-q2"
+          },
+          {
+            "type": "chest"
+          },
+          {
+            "type": "question",
+            "step": "astro-9-q3"
+          },
+          {
+            "type": "mushroom"
+          }
+        ]
+      }
     },
     {
       "id": "astro-boss",

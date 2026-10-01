@@ -63,8 +63,100 @@
           "answer": 1,
           "hint": "Apple 苹果",
           "praise": "Great job!"
+        },
+        {
+          "id": "en-0-l2",
+          "kind": "listen",
+          "prompt": "Aa",
+          "speakText": "A",
+          "question": "Find again: which one is Aa ?",
+          "options": [
+            {
+              "text": "Aa"
+            },
+            {
+              "text": "Dd"
+            },
+            {
+              "text": "Ss"
+            }
+          ],
+          "answer": 0,
+          "hint": "A for Aa",
+          "praise": "Yes! Aa!"
+        },
+        {
+          "id": "en-0-c2",
+          "kind": "quiz",
+          "question": "大写 A 的小写是哪个？",
+          "options": [
+            {
+              "text": "A"
+            },
+            {
+              "text": "S"
+            },
+            {
+              "text": "F"
+            }
+          ],
+          "answer": 0,
+          "hint": "Aa = Aa",
+          "praise": "Aa 又配对成功！"
+        },
+        {
+          "id": "en-0-q2",
+          "kind": "quiz",
+          "question": "Which picture starts with Aa?（再找一找）",
+          "options": [
+            {
+              "icon": "apple"
+            },
+            {
+              "icon": "moon"
+            },
+            {
+              "icon": "flower"
+            }
+          ],
+          "answer": 0,
+          "hint": "Apple 苹果",
+          "praise": "Great job!"
         }
-      ]
+      ],
+      "board": {
+        "spaces": [
+          {
+            "type": "question",
+            "step": "en-0-l"
+          },
+          {
+            "type": "question",
+            "step": "en-0-q"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "en-0-l2"
+          },
+          {
+            "type": "question",
+            "step": "en-0-c2"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "en-0-q2"
+          },
+          {
+            "type": "chest"
+          }
+        ]
+      }
     },
     {
       "id": "en-1",
@@ -126,8 +218,100 @@
           "answer": 2,
           "hint": "B for Bb",
           "praise": "Yes! Bb!"
+        },
+        {
+          "id": "en-1-l2",
+          "kind": "listen",
+          "prompt": "Bb",
+          "speakText": "B",
+          "question": "Find again: which one is Bb ?",
+          "options": [
+            {
+              "text": "Bb"
+            },
+            {
+              "text": "Ss"
+            },
+            {
+              "text": "Mm"
+            }
+          ],
+          "answer": 0,
+          "hint": "B for Bb",
+          "praise": "Yes! Bb!"
+        },
+        {
+          "id": "en-1-c2",
+          "kind": "quiz",
+          "question": "大写 B 的小写是哪个？",
+          "options": [
+            {
+              "text": "F"
+            },
+            {
+              "text": "B"
+            },
+            {
+              "text": "K"
+            }
+          ],
+          "answer": 1,
+          "hint": "Bb = Bb",
+          "praise": "Bb 又配对成功！"
+        },
+        {
+          "id": "en-1-q2",
+          "kind": "quiz",
+          "question": "Which picture starts with Bb?（再找一找）",
+          "options": [
+            {
+              "icon": "flower"
+            },
+            {
+              "icon": "banana"
+            },
+            {
+              "icon": "leaf"
+            }
+          ],
+          "answer": 1,
+          "hint": "Banana 香蕉",
+          "praise": "Great job!"
         }
-      ]
+      ],
+      "board": {
+        "spaces": [
+          {
+            "type": "question",
+            "step": "en-1-l"
+          },
+          {
+            "type": "question",
+            "step": "en-1-l2"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "en-1-c2"
+          },
+          {
+            "type": "question",
+            "step": "en-1-q2"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "en-1-c"
+          },
+          {
+            "type": "mushroom"
+          }
+        ]
+      }
     },
     {
       "id": "en-2",
@@ -194,8 +378,100 @@
           "answer": 2,
           "hint": "Who comes next?",
           "praise": "Pattern star!"
+        },
+        {
+          "id": "en-2-l2",
+          "kind": "listen",
+          "prompt": "Cc",
+          "speakText": "C",
+          "question": "Find again: which one is Cc ?",
+          "options": [
+            {
+              "text": "Cc"
+            },
+            {
+              "text": "Mm"
+            },
+            {
+              "text": "Ff"
+            }
+          ],
+          "answer": 0,
+          "hint": "C for Cc",
+          "praise": "Yes! Cc!"
+        },
+        {
+          "id": "en-2-c2",
+          "kind": "quiz",
+          "question": "大写 C 的小写是哪个？",
+          "options": [
+            {
+              "text": "K"
+            },
+            {
+              "text": "R"
+            },
+            {
+              "text": "C"
+            }
+          ],
+          "answer": 2,
+          "hint": "Cc = Cc",
+          "praise": "Cc 又配对成功！"
+        },
+        {
+          "id": "en-2-q2",
+          "kind": "quiz",
+          "question": "Which picture starts with Cc?（再找一找）",
+          "options": [
+            {
+              "icon": "leaf"
+            },
+            {
+              "icon": "key"
+            },
+            {
+              "icon": "cake"
+            }
+          ],
+          "answer": 2,
+          "hint": "Cake 蛋糕",
+          "praise": "Great job!"
         }
-      ]
+      ],
+      "board": {
+        "spaces": [
+          {
+            "type": "question",
+            "step": "en-2-l2"
+          },
+          {
+            "type": "question",
+            "step": "en-2-c2"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "en-2-q2"
+          },
+          {
+            "type": "question",
+            "step": "en-2-l"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "en-2-p"
+          },
+          {
+            "type": "rest"
+          }
+        ]
+      }
     },
     {
       "id": "en-3",
@@ -255,8 +531,100 @@
           "answer": 1,
           "hint": "Dd = Dd",
           "praise": "Dd 配对成功！"
+        },
+        {
+          "id": "en-3-l2",
+          "kind": "listen",
+          "prompt": "Dd",
+          "speakText": "D",
+          "question": "Find again: which one is Dd ?",
+          "options": [
+            {
+              "text": "Dd"
+            },
+            {
+              "text": "Ff"
+            },
+            {
+              "text": "Ll"
+            }
+          ],
+          "answer": 0,
+          "hint": "D for Dd",
+          "praise": "Yes! Dd!"
+        },
+        {
+          "id": "en-3-c2",
+          "kind": "quiz",
+          "question": "大写 D 的小写是哪个？",
+          "options": [
+            {
+              "text": "D"
+            },
+            {
+              "text": "R"
+            },
+            {
+              "text": "A"
+            }
+          ],
+          "answer": 0,
+          "hint": "Dd = Dd",
+          "praise": "Dd 又配对成功！"
+        },
+        {
+          "id": "en-3-q2",
+          "kind": "quiz",
+          "question": "Which picture starts with Dd?（再找一找）",
+          "options": [
+            {
+              "icon": "duck"
+            },
+            {
+              "icon": "key"
+            },
+            {
+              "icon": "apple"
+            }
+          ],
+          "answer": 0,
+          "hint": "Duck 小鸭",
+          "praise": "Great job!"
         }
-      ]
+      ],
+      "board": {
+        "spaces": [
+          {
+            "type": "question",
+            "step": "en-3-c2"
+          },
+          {
+            "type": "question",
+            "step": "en-3-q2"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "en-3-q"
+          },
+          {
+            "type": "question",
+            "step": "en-3-c"
+          },
+          {
+            "type": "chest"
+          },
+          {
+            "type": "question",
+            "step": "en-3-l2"
+          },
+          {
+            "type": "mushroom"
+          }
+        ]
+      }
     },
     {
       "id": "en-4",
@@ -318,8 +686,100 @@
           "answer": 1,
           "hint": "Sun 太阳",
           "praise": "Great job!"
+        },
+        {
+          "id": "en-4-l2",
+          "kind": "listen",
+          "prompt": "Ss",
+          "speakText": "S",
+          "question": "Find again: which one is Ss ?",
+          "options": [
+            {
+              "text": "Ss"
+            },
+            {
+              "text": "Ll"
+            },
+            {
+              "text": "Kk"
+            }
+          ],
+          "answer": 0,
+          "hint": "S for Ss",
+          "praise": "Yes! Ss!"
+        },
+        {
+          "id": "en-4-c2",
+          "kind": "quiz",
+          "question": "大写 S 的小写是哪个？",
+          "options": [
+            {
+              "text": "A"
+            },
+            {
+              "text": "S"
+            },
+            {
+              "text": "C"
+            }
+          ],
+          "answer": 1,
+          "hint": "Ss = Ss",
+          "praise": "Ss 又配对成功！"
+        },
+        {
+          "id": "en-4-q2",
+          "kind": "quiz",
+          "question": "Which picture starts with Ss?（再找一找）",
+          "options": [
+            {
+              "icon": "apple"
+            },
+            {
+              "icon": "sun"
+            },
+            {
+              "icon": "banana"
+            }
+          ],
+          "answer": 1,
+          "hint": "Sun 太阳",
+          "praise": "Great job!"
         }
-      ]
+      ],
+      "board": {
+        "spaces": [
+          {
+            "type": "question",
+            "step": "en-4-q2"
+          },
+          {
+            "type": "question",
+            "step": "en-4-l"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "en-4-q"
+          },
+          {
+            "type": "question",
+            "step": "en-4-l2"
+          },
+          {
+            "type": "mushroom"
+          },
+          {
+            "type": "question",
+            "step": "en-4-c2"
+          },
+          {
+            "type": "rest"
+          }
+        ]
+      }
     },
     {
       "id": "english-r0",
@@ -549,8 +1009,100 @@
           "answer": 2,
           "hint": "M for Mm",
           "praise": "Yes! Mm!"
+        },
+        {
+          "id": "en-5-l2",
+          "kind": "listen",
+          "prompt": "Mm",
+          "speakText": "M",
+          "question": "Find again: which one is Mm ?",
+          "options": [
+            {
+              "text": "Mm"
+            },
+            {
+              "text": "Kk"
+            },
+            {
+              "text": "Aa"
+            }
+          ],
+          "answer": 0,
+          "hint": "M for Mm",
+          "praise": "Yes! Mm!"
+        },
+        {
+          "id": "en-5-c2",
+          "kind": "quiz",
+          "question": "大写 M 的小写是哪个？",
+          "options": [
+            {
+              "text": "C"
+            },
+            {
+              "text": "S"
+            },
+            {
+              "text": "M"
+            }
+          ],
+          "answer": 2,
+          "hint": "Mm = Mm",
+          "praise": "Mm 又配对成功！"
+        },
+        {
+          "id": "en-5-q2",
+          "kind": "quiz",
+          "question": "Which picture starts with Mm?（再找一找）",
+          "options": [
+            {
+              "icon": "banana"
+            },
+            {
+              "icon": "cake"
+            },
+            {
+              "icon": "moon"
+            }
+          ],
+          "answer": 2,
+          "hint": "Moon 月亮",
+          "praise": "Great job!"
         }
-      ]
+      ],
+      "board": {
+        "spaces": [
+          {
+            "type": "question",
+            "step": "en-5-c"
+          },
+          {
+            "type": "question",
+            "step": "en-5-l"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "en-5-l2"
+          },
+          {
+            "type": "question",
+            "step": "en-5-c2"
+          },
+          {
+            "type": "chest"
+          },
+          {
+            "type": "question",
+            "step": "en-5-q2"
+          },
+          {
+            "type": "rest"
+          }
+        ]
+      }
     },
     {
       "id": "en-6",
@@ -617,8 +1169,100 @@
           "answer": 0,
           "hint": "Who comes next?",
           "praise": "Pattern star!"
+        },
+        {
+          "id": "en-6-l2",
+          "kind": "listen",
+          "prompt": "Ff",
+          "speakText": "F",
+          "question": "Find again: which one is Ff ?",
+          "options": [
+            {
+              "text": "Ff"
+            },
+            {
+              "text": "Aa"
+            },
+            {
+              "text": "Bb"
+            }
+          ],
+          "answer": 0,
+          "hint": "F for Ff",
+          "praise": "Yes! Ff!"
+        },
+        {
+          "id": "en-6-c2",
+          "kind": "quiz",
+          "question": "大写 F 的小写是哪个？",
+          "options": [
+            {
+              "text": "F"
+            },
+            {
+              "text": "S"
+            },
+            {
+              "text": "L"
+            }
+          ],
+          "answer": 0,
+          "hint": "Ff = Ff",
+          "praise": "Ff 又配对成功！"
+        },
+        {
+          "id": "en-6-q2",
+          "kind": "quiz",
+          "question": "Which picture starts with Ff?（再找一找）",
+          "options": [
+            {
+              "icon": "flower"
+            },
+            {
+              "icon": "cake"
+            },
+            {
+              "icon": "duck"
+            }
+          ],
+          "answer": 0,
+          "hint": "Flower 花",
+          "praise": "Great job!"
         }
-      ]
+      ],
+      "board": {
+        "spaces": [
+          {
+            "type": "question",
+            "step": "en-6-p"
+          },
+          {
+            "type": "question",
+            "step": "en-6-l2"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "en-6-c2"
+          },
+          {
+            "type": "question",
+            "step": "en-6-q2"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "en-6-l"
+          },
+          {
+            "type": "chest"
+          }
+        ]
+      }
     },
     {
       "id": "en-7",
@@ -678,8 +1322,100 @@
           "answer": 2,
           "hint": "Ll = Ll",
           "praise": "Ll 配对成功！"
+        },
+        {
+          "id": "en-7-l2",
+          "kind": "listen",
+          "prompt": "Ll",
+          "speakText": "L",
+          "question": "Find again: which one is Ll ?",
+          "options": [
+            {
+              "text": "Ll"
+            },
+            {
+              "text": "Bb"
+            },
+            {
+              "text": "Cc"
+            }
+          ],
+          "answer": 0,
+          "hint": "L for Ll",
+          "praise": "Yes! Ll!"
+        },
+        {
+          "id": "en-7-c2",
+          "kind": "quiz",
+          "question": "大写 L 的小写是哪个？",
+          "options": [
+            {
+              "text": "F"
+            },
+            {
+              "text": "L"
+            },
+            {
+              "text": "H"
+            }
+          ],
+          "answer": 1,
+          "hint": "Ll = Ll",
+          "praise": "Ll 又配对成功！"
+        },
+        {
+          "id": "en-7-q2",
+          "kind": "quiz",
+          "question": "Which picture starts with Ll?（再找一找）",
+          "options": [
+            {
+              "icon": "duck"
+            },
+            {
+              "icon": "leaf"
+            },
+            {
+              "icon": "sun"
+            }
+          ],
+          "answer": 1,
+          "hint": "Leaf 叶子",
+          "praise": "Great job!"
         }
-      ]
+      ],
+      "board": {
+        "spaces": [
+          {
+            "type": "question",
+            "step": "en-7-l2"
+          },
+          {
+            "type": "question",
+            "step": "en-7-c2"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "en-7-q2"
+          },
+          {
+            "type": "question",
+            "step": "en-7-q"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "en-7-c"
+          },
+          {
+            "type": "mushroom"
+          }
+        ]
+      }
     },
     {
       "id": "en-8",
@@ -739,8 +1475,100 @@
           "answer": 1,
           "hint": "Rainbow 彩虹",
           "praise": "Great job!"
+        },
+        {
+          "id": "en-8-l2",
+          "kind": "listen",
+          "prompt": "Rr",
+          "speakText": "R",
+          "question": "Find again: which one is Rr ?",
+          "options": [
+            {
+              "text": "Rr"
+            },
+            {
+              "text": "Cc"
+            },
+            {
+              "text": "Dd"
+            }
+          ],
+          "answer": 0,
+          "hint": "R for Rr",
+          "praise": "Yes! Rr!"
+        },
+        {
+          "id": "en-8-c2",
+          "kind": "quiz",
+          "question": "大写 R 的小写是哪个？",
+          "options": [
+            {
+              "text": "K"
+            },
+            {
+              "text": "G"
+            },
+            {
+              "text": "R"
+            }
+          ],
+          "answer": 2,
+          "hint": "Rr = Rr",
+          "praise": "Rr 又配对成功！"
+        },
+        {
+          "id": "en-8-q2",
+          "kind": "quiz",
+          "question": "Which picture starts with Rr?（再找一找）",
+          "options": [
+            {
+              "icon": "sun"
+            },
+            {
+              "icon": "moon"
+            },
+            {
+              "icon": "rainbow"
+            }
+          ],
+          "answer": 2,
+          "hint": "Rainbow 彩虹",
+          "praise": "Great job!"
         }
-      ]
+      ],
+      "board": {
+        "spaces": [
+          {
+            "type": "question",
+            "step": "en-8-c2"
+          },
+          {
+            "type": "question",
+            "step": "en-8-q2"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "en-8-c"
+          },
+          {
+            "type": "question",
+            "step": "en-8-q"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "en-8-l2"
+          },
+          {
+            "type": "rest"
+          }
+        ]
+      }
     },
     {
       "id": "en-9",
@@ -800,8 +1628,100 @@
           "answer": 1,
           "hint": "Gift 礼物",
           "praise": "Great job!"
+        },
+        {
+          "id": "en-9-l2",
+          "kind": "listen",
+          "prompt": "Gg",
+          "speakText": "G",
+          "question": "Find again: which one is Gg ?",
+          "options": [
+            {
+              "text": "Gg"
+            },
+            {
+              "text": "Dd"
+            },
+            {
+              "text": "Ss"
+            }
+          ],
+          "answer": 0,
+          "hint": "G for Gg",
+          "praise": "Yes! Gg!"
+        },
+        {
+          "id": "en-9-c2",
+          "kind": "quiz",
+          "question": "大写 G 的小写是哪个？",
+          "options": [
+            {
+              "text": "G"
+            },
+            {
+              "text": "R"
+            },
+            {
+              "text": "B"
+            }
+          ],
+          "answer": 0,
+          "hint": "Gg = Gg",
+          "praise": "Gg 又配对成功！"
+        },
+        {
+          "id": "en-9-q2",
+          "kind": "quiz",
+          "question": "Which picture starts with Gg?（再找一找）",
+          "options": [
+            {
+              "icon": "gift"
+            },
+            {
+              "icon": "moon"
+            },
+            {
+              "icon": "flower"
+            }
+          ],
+          "answer": 0,
+          "hint": "Gift 礼物",
+          "praise": "Great job!"
         }
-      ]
+      ],
+      "board": {
+        "spaces": [
+          {
+            "type": "question",
+            "step": "en-9-q2"
+          },
+          {
+            "type": "question",
+            "step": "en-9-c"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "en-9-q"
+          },
+          {
+            "type": "question",
+            "step": "en-9-l2"
+          },
+          {
+            "type": "chest"
+          },
+          {
+            "type": "question",
+            "step": "en-9-c2"
+          },
+          {
+            "type": "mushroom"
+          }
+        ]
+      }
     },
     {
       "id": "english-r1",
@@ -1041,8 +1961,85 @@
           "answer": 2,
           "hint": "Apple 苹果",
           "praise": "Yes! Apple!"
+        },
+        {
+          "id": "en-x0",
+          "kind": "quiz",
+          "question": "Which one is the flower? 花是哪一个？",
+          "options": [
+            {
+              "icon": "tree",
+              "text": "tree"
+            },
+            {
+              "icon": "flower",
+              "text": "flower"
+            },
+            {
+              "icon": "leaf",
+              "text": "leaf"
+            }
+          ],
+          "answer": 1,
+          "hint": "Flower 花",
+          "praise": "Yes! Flower!"
+        },
+        {
+          "id": "en-x1",
+          "kind": "quiz",
+          "question": "Which one is the cake? 蛋糕是哪一个？",
+          "options": [
+            {
+              "icon": "gift",
+              "text": "gift"
+            },
+            {
+              "icon": "key",
+              "text": "key"
+            },
+            {
+              "icon": "cake",
+              "text": "cake"
+            }
+          ],
+          "answer": 2,
+          "hint": "Cake 蛋糕",
+          "praise": "Yes! Cake!"
         }
-      ]
+      ],
+      "board": {
+        "spaces": [
+          {
+            "type": "question",
+            "step": "en-10-q1"
+          },
+          {
+            "type": "question",
+            "step": "en-10-q2"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "en-10-q3"
+          },
+          {
+            "type": "question",
+            "step": "en-x0"
+          },
+          {
+            "type": "mushroom"
+          },
+          {
+            "type": "question",
+            "step": "en-x1"
+          },
+          {
+            "type": "rest"
+          }
+        ]
+      }
     },
     {
       "id": "en-11",
@@ -1145,8 +2142,86 @@
           "answer": 2,
           "hint": "Cake 蛋糕",
           "praise": "Super star! 全部通关!"
+        },
+        {
+          "id": "en-x0",
+          "kind": "quiz",
+          "question": "Which one is the flower? 花是哪一个？",
+          "options": [
+            {
+              "icon": "tree",
+              "text": "tree"
+            },
+            {
+              "icon": "flower",
+              "text": "flower"
+            },
+            {
+              "icon": "leaf",
+              "text": "leaf"
+            }
+          ],
+          "answer": 1,
+          "hint": "Flower 花",
+          "praise": "Yes! Flower!"
+        },
+        {
+          "id": "en-x1",
+          "kind": "quiz",
+          "question": "Which one is the cake? 蛋糕是哪一个？",
+          "options": [
+            {
+              "icon": "gift",
+              "text": "gift"
+            },
+            {
+              "icon": "key",
+              "text": "key"
+            },
+            {
+              "icon": "cake",
+              "text": "cake"
+            }
+          ],
+          "answer": 2,
+          "hint": "Cake 蛋糕",
+          "praise": "Yes! Cake!"
         }
-      ]
+      ],
+      "board": {
+        "spaces": [
+          {
+            "type": "question",
+            "step": "en-x1"
+          },
+          {
+            "type": "question",
+            "step": "en-11-m"
+          },
+          {
+            "type": "chest"
+          },
+          {
+            "type": "question",
+            "step": "en-11-q1"
+          },
+          {
+            "type": "question",
+            "step": "en-11-q2"
+          },
+          {
+            "type": "rest"
+          },
+          {
+            "type": "question",
+            "step": "en-11-q3"
+          },
+          {
+            "type": "question",
+            "step": "en-x0"
+          }
+        ]
+      }
     },
     {
       "id": "english-boss",

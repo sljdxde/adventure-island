@@ -72,8 +72,105 @@
           "answer": 0,
           "hint": "b 碰上 a",
           "praise": "拼对了，ba！"
+        },
+        {
+          "id": "py-0-lb",
+          "kind": "listen",
+          "prompt": "b",
+          "speakText": "b",
+          "question": "再找一找：哪个是「b」？",
+          "options": [
+            {
+              "text": "b"
+            },
+            {
+              "text": "d"
+            },
+            {
+              "text": "p"
+            }
+          ],
+          "answer": 0,
+          "hint": "想一想它的样子",
+          "praise": "「b」又找对啦！"
+        },
+        {
+          "id": "py-0-b2",
+          "kind": "blend",
+          "parts": [
+            "b",
+            "o"
+          ],
+          "question": "拼一拼：b — o = ?",
+          "options": [
+            {
+              "text": "bo"
+            },
+            {
+              "text": "ba"
+            },
+            {
+              "text": "bu"
+            }
+          ],
+          "answer": 0,
+          "hint": "b 碰上 o",
+          "praise": "拼对了，bo！"
+        },
+        {
+          "id": "py-0-pq2",
+          "kind": "quiz",
+          "question": "再拼一拼 b — a：哪张图是「爸爸」？",
+          "options": [
+            {
+              "icon": "girl",
+              "text": "爸爸"
+            },
+            {
+              "icon": "sun"
+            },
+            {
+              "icon": "star"
+            }
+          ],
+          "answer": 0,
+          "hint": "b 碰 a",
+          "praise": "拼读小能手：爸爸！"
         }
-      ]
+      ],
+      "board": {
+        "spaces": [
+          {
+            "type": "question",
+            "step": "py-0-l"
+          },
+          {
+            "type": "question",
+            "step": "py-0-b"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "py-0-lb"
+          },
+          {
+            "type": "question",
+            "step": "py-0-b2"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "py-0-pq2"
+          },
+          {
+            "type": "chest"
+          }
+        ]
+      }
     },
     {
       "id": "py-1",
@@ -144,8 +241,105 @@
           "answer": 0,
           "hint": "p 碰上 o",
           "praise": "拼对了，po！"
+        },
+        {
+          "id": "py-1-lb",
+          "kind": "listen",
+          "prompt": "p",
+          "speakText": "p",
+          "question": "再找一找：哪个是「p」？",
+          "options": [
+            {
+              "text": "p"
+            },
+            {
+              "text": "f"
+            },
+            {
+              "text": "t"
+            }
+          ],
+          "answer": 0,
+          "hint": "想一想它的样子",
+          "praise": "「p」又找对啦！"
+        },
+        {
+          "id": "py-1-b2",
+          "kind": "blend",
+          "parts": [
+            "p",
+            "a"
+          ],
+          "question": "拼一拼：p — a = ?",
+          "options": [
+            {
+              "text": "pa"
+            },
+            {
+              "text": "po"
+            },
+            {
+              "text": "pi"
+            }
+          ],
+          "answer": 0,
+          "hint": "p 碰上 a",
+          "praise": "拼对了，pa！"
+        },
+        {
+          "id": "py-1-pq2",
+          "kind": "quiz",
+          "question": "再拼一拼 p — o：哪张图是「山坡」？",
+          "options": [
+            {
+              "icon": "star"
+            },
+            {
+              "icon": "volcano",
+              "text": "山坡"
+            },
+            {
+              "icon": "apple"
+            }
+          ],
+          "answer": 1,
+          "hint": "p 碰 o",
+          "praise": "拼读小能手：山坡！"
         }
-      ]
+      ],
+      "board": {
+        "spaces": [
+          {
+            "type": "question",
+            "step": "py-1-b"
+          },
+          {
+            "type": "question",
+            "step": "py-1-lb"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "py-1-b2"
+          },
+          {
+            "type": "question",
+            "step": "py-1-pq2"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "py-1-l2"
+          },
+          {
+            "type": "mushroom"
+          }
+        ]
+      }
     },
     {
       "id": "py-2",
@@ -213,8 +407,105 @@
           "answer": 2,
           "hint": "想一想它的样子",
           "praise": "「m」找对啦！"
+        },
+        {
+          "id": "py-2-lb",
+          "kind": "listen",
+          "prompt": "m",
+          "speakText": "m",
+          "question": "再找一找：哪个是「m」？",
+          "options": [
+            {
+              "text": "m"
+            },
+            {
+              "text": "n"
+            },
+            {
+              "text": "l"
+            }
+          ],
+          "answer": 0,
+          "hint": "想一想它的样子",
+          "praise": "「m」又找对啦！"
+        },
+        {
+          "id": "py-2-b2",
+          "kind": "blend",
+          "parts": [
+            "m",
+            "o"
+          ],
+          "question": "拼一拼：m — o = ?",
+          "options": [
+            {
+              "text": "mo"
+            },
+            {
+              "text": "ma"
+            },
+            {
+              "text": "mu"
+            }
+          ],
+          "answer": 0,
+          "hint": "m 碰上 o",
+          "praise": "拼对了，mo！"
+        },
+        {
+          "id": "py-2-pq2",
+          "kind": "quiz",
+          "question": "再拼一拼 m — a：哪张图是「妈妈」？",
+          "options": [
+            {
+              "icon": "apple"
+            },
+            {
+              "icon": "duck"
+            },
+            {
+              "icon": "girl",
+              "text": "妈妈"
+            }
+          ],
+          "answer": 2,
+          "hint": "m 碰 a",
+          "praise": "拼读小能手：妈妈！"
         }
-      ]
+      ],
+      "board": {
+        "spaces": [
+          {
+            "type": "question",
+            "step": "py-2-lb"
+          },
+          {
+            "type": "question",
+            "step": "py-2-b2"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "py-2-pq2"
+          },
+          {
+            "type": "question",
+            "step": "py-2-pq"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "py-2-l"
+          },
+          {
+            "type": "rest"
+          }
+        ]
+      }
     },
     {
       "id": "py-3",
@@ -284,8 +575,105 @@
           "answer": 1,
           "hint": "f 碰 a",
           "praise": "拼读小能手：发烧！"
+        },
+        {
+          "id": "py-3-lb",
+          "kind": "listen",
+          "prompt": "f",
+          "speakText": "f",
+          "question": "再找一找：哪个是「f」？",
+          "options": [
+            {
+              "text": "f"
+            },
+            {
+              "text": "g"
+            },
+            {
+              "text": "k"
+            }
+          ],
+          "answer": 0,
+          "hint": "想一想它的样子",
+          "praise": "「f」又找对啦！"
+        },
+        {
+          "id": "py-3-b2",
+          "kind": "blend",
+          "parts": [
+            "f",
+            "o"
+          ],
+          "question": "拼一拼：f — o = ?",
+          "options": [
+            {
+              "text": "fo"
+            },
+            {
+              "text": "fa"
+            },
+            {
+              "text": "fu"
+            }
+          ],
+          "answer": 0,
+          "hint": "f 碰上 o",
+          "praise": "拼对了，fo！"
+        },
+        {
+          "id": "py-3-pq2",
+          "kind": "quiz",
+          "question": "再拼一拼 f — a：哪张图是「发烧」？",
+          "options": [
+            {
+              "icon": "flame",
+              "text": "发烧"
+            },
+            {
+              "icon": "duck"
+            },
+            {
+              "icon": "cake"
+            }
+          ],
+          "answer": 0,
+          "hint": "f 碰 a",
+          "praise": "拼读小能手：发烧！"
         }
-      ]
+      ],
+      "board": {
+        "spaces": [
+          {
+            "type": "question",
+            "step": "py-3-b2"
+          },
+          {
+            "type": "question",
+            "step": "py-3-pq2"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "py-3-b"
+          },
+          {
+            "type": "question",
+            "step": "py-3-pq"
+          },
+          {
+            "type": "chest"
+          },
+          {
+            "type": "question",
+            "step": "py-3-lb"
+          },
+          {
+            "type": "mushroom"
+          }
+        ]
+      }
     },
     {
       "id": "py-4",
@@ -356,8 +744,105 @@
           "answer": 0,
           "hint": "d 碰上 e",
           "praise": "拼对了，de！"
+        },
+        {
+          "id": "py-4-lb",
+          "kind": "listen",
+          "prompt": "d",
+          "speakText": "d",
+          "question": "再找一找：哪个是「d」？",
+          "options": [
+            {
+              "text": "d"
+            },
+            {
+              "text": "b"
+            },
+            {
+              "text": "p"
+            }
+          ],
+          "answer": 0,
+          "hint": "想一想它的样子",
+          "praise": "「d」又找对啦！"
+        },
+        {
+          "id": "py-4-b2",
+          "kind": "blend",
+          "parts": [
+            "d",
+            "a"
+          ],
+          "question": "拼一拼：d — a = ?",
+          "options": [
+            {
+              "text": "da"
+            },
+            {
+              "text": "de"
+            },
+            {
+              "text": "du"
+            }
+          ],
+          "answer": 0,
+          "hint": "d 碰上 a",
+          "praise": "拼对了，da！"
+        },
+        {
+          "id": "py-4-pq2",
+          "kind": "quiz",
+          "question": "再拼一拼 d — e：哪张图是「大地」？",
+          "options": [
+            {
+              "icon": "train"
+            },
+            {
+              "icon": "sun",
+              "text": "大地"
+            },
+            {
+              "icon": "heart"
+            }
+          ],
+          "answer": 1,
+          "hint": "d 碰 e",
+          "praise": "拼读小能手：大地！"
         }
-      ]
+      ],
+      "board": {
+        "spaces": [
+          {
+            "type": "question",
+            "step": "py-4-pq2"
+          },
+          {
+            "type": "question",
+            "step": "py-4-l"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "py-4-b"
+          },
+          {
+            "type": "question",
+            "step": "py-4-lb"
+          },
+          {
+            "type": "mushroom"
+          },
+          {
+            "type": "question",
+            "step": "py-4-b2"
+          },
+          {
+            "type": "rest"
+          }
+        ]
+      }
     },
     {
       "id": "pinyin-r0",
@@ -605,8 +1090,105 @@
           "answer": 0,
           "hint": "t 碰上 a",
           "praise": "拼对了，ta！"
+        },
+        {
+          "id": "py-5-lb",
+          "kind": "listen",
+          "prompt": "t",
+          "speakText": "t",
+          "question": "再找一找：哪个是「t」？",
+          "options": [
+            {
+              "text": "t"
+            },
+            {
+              "text": "p"
+            },
+            {
+              "text": "m"
+            }
+          ],
+          "answer": 0,
+          "hint": "想一想它的样子",
+          "praise": "「t」又找对啦！"
+        },
+        {
+          "id": "py-5-b2",
+          "kind": "blend",
+          "parts": [
+            "t",
+            "e"
+          ],
+          "question": "拼一拼：t — e = ?",
+          "options": [
+            {
+              "text": "te"
+            },
+            {
+              "text": "ta"
+            },
+            {
+              "text": "tu"
+            }
+          ],
+          "answer": 0,
+          "hint": "t 碰上 e",
+          "praise": "拼对了，te！"
+        },
+        {
+          "id": "py-5-pq2",
+          "kind": "quiz",
+          "question": "再拼一拼 t — a：哪张图是「太阳」？",
+          "options": [
+            {
+              "icon": "heart"
+            },
+            {
+              "icon": "sun"
+            },
+            {
+              "icon": "train",
+              "text": "太阳"
+            }
+          ],
+          "answer": 2,
+          "hint": "t 碰 a",
+          "praise": "拼读小能手：太阳！"
         }
-      ]
+      ],
+      "board": {
+        "spaces": [
+          {
+            "type": "question",
+            "step": "py-5-l2"
+          },
+          {
+            "type": "question",
+            "step": "py-5-b"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "py-5-lb"
+          },
+          {
+            "type": "question",
+            "step": "py-5-b2"
+          },
+          {
+            "type": "chest"
+          },
+          {
+            "type": "question",
+            "step": "py-5-pq2"
+          },
+          {
+            "type": "rest"
+          }
+        ]
+      }
     },
     {
       "id": "py-6",
@@ -674,8 +1256,105 @@
           "answer": 2,
           "hint": "想一想它的样子",
           "praise": "「n」找对啦！"
+        },
+        {
+          "id": "py-6-lb",
+          "kind": "listen",
+          "prompt": "n",
+          "speakText": "n",
+          "question": "再找一找：哪个是「n」？",
+          "options": [
+            {
+              "text": "n"
+            },
+            {
+              "text": "f"
+            },
+            {
+              "text": "t"
+            }
+          ],
+          "answer": 0,
+          "hint": "想一想它的样子",
+          "praise": "「n」又找对啦！"
+        },
+        {
+          "id": "py-6-b2",
+          "kind": "blend",
+          "parts": [
+            "n",
+            "a"
+          ],
+          "question": "拼一拼：n — a = ?",
+          "options": [
+            {
+              "text": "na"
+            },
+            {
+              "text": "ni"
+            },
+            {
+              "text": "nu"
+            }
+          ],
+          "answer": 0,
+          "hint": "n 碰上 a",
+          "praise": "拼对了，na！"
+        },
+        {
+          "id": "py-6-pq2",
+          "kind": "quiz",
+          "question": "再拼一拼 n — i：哪张图是「拿苹果」？",
+          "options": [
+            {
+              "icon": "girl",
+              "text": "拿苹果"
+            },
+            {
+              "icon": "clock"
+            },
+            {
+              "icon": "moon"
+            }
+          ],
+          "answer": 0,
+          "hint": "n 碰 i",
+          "praise": "拼读小能手：拿苹果！"
         }
-      ]
+      ],
+      "board": {
+        "spaces": [
+          {
+            "type": "question",
+            "step": "py-6-l"
+          },
+          {
+            "type": "question",
+            "step": "py-6-lb"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "py-6-b2"
+          },
+          {
+            "type": "question",
+            "step": "py-6-pq2"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "py-6-pq"
+          },
+          {
+            "type": "chest"
+          }
+        ]
+      }
     },
     {
       "id": "py-7",
@@ -745,8 +1424,105 @@
           "answer": 2,
           "hint": "l 碰 a",
           "praise": "拼读小能手：拉手！"
+        },
+        {
+          "id": "py-7-lb",
+          "kind": "listen",
+          "prompt": "l",
+          "speakText": "l",
+          "question": "再找一找：哪个是「l」？",
+          "options": [
+            {
+              "text": "l"
+            },
+            {
+              "text": "n"
+            },
+            {
+              "text": "g"
+            }
+          ],
+          "answer": 0,
+          "hint": "想一想它的样子",
+          "praise": "「l」又找对啦！"
+        },
+        {
+          "id": "py-7-b2",
+          "kind": "blend",
+          "parts": [
+            "l",
+            "e"
+          ],
+          "question": "拼一拼：l — e = ?",
+          "options": [
+            {
+              "text": "le"
+            },
+            {
+              "text": "la"
+            },
+            {
+              "text": "lu"
+            }
+          ],
+          "answer": 0,
+          "hint": "l 碰上 e",
+          "praise": "拼对了，le！"
+        },
+        {
+          "id": "py-7-pq2",
+          "kind": "quiz",
+          "question": "再拼一拼 l — a：哪张图是「拉手」？",
+          "options": [
+            {
+              "icon": "moon"
+            },
+            {
+              "icon": "leaf",
+              "text": "拉手"
+            },
+            {
+              "icon": "train"
+            }
+          ],
+          "answer": 1,
+          "hint": "l 碰 a",
+          "praise": "拼读小能手：拉手！"
         }
-      ]
+      ],
+      "board": {
+        "spaces": [
+          {
+            "type": "question",
+            "step": "py-7-lb"
+          },
+          {
+            "type": "question",
+            "step": "py-7-b2"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "py-7-pq2"
+          },
+          {
+            "type": "question",
+            "step": "py-7-b"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "py-7-pq"
+          },
+          {
+            "type": "mushroom"
+          }
+        ]
+      }
     },
     {
       "id": "py-8",
@@ -817,8 +1593,105 @@
           "answer": 0,
           "hint": "g 碰上 e",
           "praise": "拼对了，ge！"
+        },
+        {
+          "id": "py-8-lb",
+          "kind": "listen",
+          "prompt": "g",
+          "speakText": "g",
+          "question": "再找一找：哪个是「g」？",
+          "options": [
+            {
+              "text": "g"
+            },
+            {
+              "text": "k"
+            },
+            {
+              "text": "b"
+            }
+          ],
+          "answer": 0,
+          "hint": "想一想它的样子",
+          "praise": "「g」又找对啦！"
+        },
+        {
+          "id": "py-8-b2",
+          "kind": "blend",
+          "parts": [
+            "g",
+            "a"
+          ],
+          "question": "拼一拼：g — a = ?",
+          "options": [
+            {
+              "text": "ga"
+            },
+            {
+              "text": "ge"
+            },
+            {
+              "text": "gu"
+            }
+          ],
+          "answer": 0,
+          "hint": "g 碰上 a",
+          "praise": "拼对了，ga！"
+        },
+        {
+          "id": "py-8-pq2",
+          "kind": "quiz",
+          "question": "再拼一拼 g — e：哪张图是「哥哥」？",
+          "options": [
+            {
+              "icon": "train"
+            },
+            {
+              "icon": "heart"
+            },
+            {
+              "icon": "tree",
+              "text": "哥哥"
+            }
+          ],
+          "answer": 2,
+          "hint": "g 碰 e",
+          "praise": "拼读小能手：哥哥！"
         }
-      ]
+      ],
+      "board": {
+        "spaces": [
+          {
+            "type": "question",
+            "step": "py-8-b2"
+          },
+          {
+            "type": "question",
+            "step": "py-8-pq2"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "py-8-l"
+          },
+          {
+            "type": "question",
+            "step": "py-8-b"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "py-8-lb"
+          },
+          {
+            "type": "rest"
+          }
+        ]
+      }
     },
     {
       "id": "py-9",
@@ -889,8 +1762,105 @@
           "answer": 0,
           "hint": "k 碰上 e",
           "praise": "拼对了，ke！"
+        },
+        {
+          "id": "py-9-lb",
+          "kind": "listen",
+          "prompt": "k",
+          "speakText": "k",
+          "question": "再找一找：哪个是「k」？",
+          "options": [
+            {
+              "text": "k"
+            },
+            {
+              "text": "d"
+            },
+            {
+              "text": "p"
+            }
+          ],
+          "answer": 0,
+          "hint": "想一想它的样子",
+          "praise": "「k」又找对啦！"
+        },
+        {
+          "id": "py-9-b2",
+          "kind": "blend",
+          "parts": [
+            "k",
+            "a"
+          ],
+          "question": "拼一拼：k — a = ?",
+          "options": [
+            {
+              "text": "ka"
+            },
+            {
+              "text": "ke"
+            },
+            {
+              "text": "ku"
+            }
+          ],
+          "answer": 0,
+          "hint": "k 碰上 a",
+          "praise": "拼对了，ka！"
+        },
+        {
+          "id": "py-9-pq2",
+          "kind": "quiz",
+          "question": "再拼一拼 k — e：哪张图是「开心」？",
+          "options": [
+            {
+              "icon": "heart",
+              "text": "开心"
+            },
+            {
+              "icon": "sun"
+            },
+            {
+              "icon": "star"
+            }
+          ],
+          "answer": 0,
+          "hint": "k 碰 e",
+          "praise": "拼读小能手：开心！"
         }
-      ]
+      ],
+      "board": {
+        "spaces": [
+          {
+            "type": "question",
+            "step": "py-9-pq2"
+          },
+          {
+            "type": "question",
+            "step": "py-9-l2"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "py-9-b"
+          },
+          {
+            "type": "question",
+            "step": "py-9-lb"
+          },
+          {
+            "type": "chest"
+          },
+          {
+            "type": "question",
+            "step": "py-9-b2"
+          },
+          {
+            "type": "mushroom"
+          }
+        ]
+      }
     },
     {
       "id": "pinyin-r1",
@@ -1118,8 +2088,129 @@
           "answer": 1,
           "hint": "张大嘴巴 āāā",
           "praise": "韵母 a 找对啦！"
+        },
+        {
+          "id": "py-10-lb",
+          "kind": "listen",
+          "prompt": "a",
+          "speakText": "a",
+          "question": "再找一找：哪个是「a」？",
+          "options": [
+            {
+              "text": "a"
+            },
+            {
+              "text": "d"
+            },
+            {
+              "text": "p"
+            }
+          ],
+          "answer": 0,
+          "hint": "想一想它的样子",
+          "praise": "「a」又找对啦！"
+        },
+        {
+          "id": "py-10-b2",
+          "kind": "blend",
+          "parts": [
+            "m",
+            "a"
+          ],
+          "question": "拼一拼：m — a = ?",
+          "options": [
+            {
+              "text": "ma"
+            },
+            {
+              "text": "mo"
+            },
+            {
+              "text": "mi"
+            }
+          ],
+          "answer": 0,
+          "hint": "m 碰上 a",
+          "praise": "拼对了，ma！"
+        },
+        {
+          "id": "py-10-b3",
+          "kind": "blend",
+          "parts": [
+            "l",
+            "a"
+          ],
+          "question": "拼一拼：l — a = ?",
+          "options": [
+            {
+              "text": "la"
+            },
+            {
+              "text": "le"
+            },
+            {
+              "text": "lo"
+            }
+          ],
+          "answer": 0,
+          "hint": "l 碰上 a",
+          "praise": "拼对了，la！"
+        },
+        {
+          "id": "py-10-l3",
+          "kind": "listen",
+          "prompt": "o",
+          "speakText": "o",
+          "question": "找一找：哪个是韵母「o」？",
+          "options": [
+            {
+              "text": "e"
+            },
+            {
+              "text": "o"
+            },
+            {
+              "text": "a"
+            }
+          ],
+          "answer": 1,
+          "hint": "圆圆嘴巴 óóó",
+          "praise": "韵母 o 找对啦！"
         }
-      ]
+      ],
+      "board": {
+        "spaces": [
+          {
+            "type": "question",
+            "step": "py-10-l"
+          },
+          {
+            "type": "question",
+            "step": "py-10-lb"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "py-10-b2"
+          },
+          {
+            "type": "question",
+            "step": "py-10-b3"
+          },
+          {
+            "type": "mushroom"
+          },
+          {
+            "type": "question",
+            "step": "py-10-l3"
+          },
+          {
+            "type": "rest"
+          }
+        ]
+      }
     },
     {
       "id": "py-11",
@@ -1220,8 +2311,86 @@
           "answer": 0,
           "hint": "m 碰 a",
           "praise": "拼读小达人！"
+        },
+        {
+          "id": "py-11-lb",
+          "kind": "blend",
+          "parts": [
+            "m",
+            "a"
+          ],
+          "question": "拼一拼：m — a = ?",
+          "options": [
+            {
+              "text": "ma"
+            },
+            {
+              "text": "mo"
+            },
+            {
+              "text": "ba"
+            }
+          ],
+          "answer": 0,
+          "hint": "m 碰 a",
+          "praise": "拼对啦，ma！"
+        },
+        {
+          "id": "py-11-l2",
+          "kind": "listen",
+          "prompt": "chi",
+          "speakText": "chi",
+          "question": "找一找：哪个是「chi」？",
+          "options": [
+            {
+              "text": "zhi"
+            },
+            {
+              "text": "chi"
+            },
+            {
+              "text": "shi"
+            }
+          ],
+          "answer": 1,
+          "hint": "吃东西的 chi",
+          "praise": "整体认读 chi！"
         }
-      ]
+      ],
+      "board": {
+        "spaces": [
+          {
+            "type": "question",
+            "step": "py-11-l2"
+          },
+          {
+            "type": "question",
+            "step": "py-11-m"
+          },
+          {
+            "type": "chest"
+          },
+          {
+            "type": "question",
+            "step": "py-11-l1"
+          },
+          {
+            "type": "question",
+            "step": "py-11-b"
+          },
+          {
+            "type": "rest"
+          },
+          {
+            "type": "question",
+            "step": "py-11-pq"
+          },
+          {
+            "type": "question",
+            "step": "py-11-lb"
+          }
+        ]
+      }
     },
     {
       "id": "pinyin-boss",
