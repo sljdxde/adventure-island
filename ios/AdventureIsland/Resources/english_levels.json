@@ -2199,7 +2199,7 @@
             "step": "en-11-m"
           },
           {
-            "type": "chest"
+            "type": "coin"
           },
           {
             "type": "question",
@@ -2210,11 +2210,14 @@
             "step": "en-11-q2"
           },
           {
-            "type": "rest"
+            "type": "chest"
           },
           {
             "type": "question",
             "step": "en-11-q3"
+          },
+          {
+            "type": "rest"
           },
           {
             "type": "question",

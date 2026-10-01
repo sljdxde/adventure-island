@@ -964,7 +964,7 @@
             "step": "math-5-c"
           },
           {
-            "type": "chest"
+            "type": "coin"
           },
           {
             "type": "question",
@@ -975,11 +975,14 @@
             "step": "math-5-d1"
           },
           {
-            "type": "rest"
+            "type": "chest"
           },
           {
             "type": "question",
             "step": "math-5-c2"
+          },
+          {
+            "type": "rest"
           },
           {
             "type": "question",
@@ -1516,7 +1519,7 @@
             "step": "math-9-x1-q"
           },
           {
-            "type": "chest"
+            "type": "coin"
           },
           {
             "type": "question",
@@ -1527,11 +1530,14 @@
             "step": "math-9-q1"
           },
           {
-            "type": "mushroom"
+            "type": "chest"
           },
           {
             "type": "question",
             "step": "math-9-q2"
+          },
+          {
+            "type": "mushroom"
           },
           {
             "type": "question",
@@ -2325,7 +2331,7 @@
             "step": "math-14-a-93"
           },
           {
-            "type": "rest"
+            "type": "coin"
           },
           {
             "type": "question",
@@ -2334,6 +2340,9 @@
           {
             "type": "question",
             "step": "math-14-p2"
+          },
+          {
+            "type": "rest"
           },
           {
             "type": "question",

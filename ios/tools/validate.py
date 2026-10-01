@@ -35,6 +35,9 @@ manifest_icons = {p.split("/")[1].replace(".svg", "") for p in manifest["icons"]
                  {p.split("/")[1].replace(".svg", "") for p in manifest["bg"]}
 
 SUBJECTS = [("cn_levels", 18), ("math_levels", 18), ("pinyin_levels", 15), ("english_levels", 15), ("astro_levels", 13)]
+# 可作答题型（teach/letter 是开场卡不算题库）
+QUESTION_KINDS = {"listen", "quiz", "count", "compare", "blend", "arith",
+                  "pattern", "split", "order", "neighbor", "memory", "dice"}
 subject_docs = {name: load_json(os.path.join(RES, name + ".json")) for name, _ in SUBJECTS}
 exps = load_json(os.path.join(RES, "experiments.json"))
 coll = load_json(os.path.join(RES, "collection.json"))
@@ -85,6 +88,11 @@ def check_subject(doc, name, expect_levels):
             qs = [s for s in sps if s.get("type") == "question"]
             if not is_boss and sps and len(qs) / len(sps) < 0.6:
                 err(f"{tag} 题目格占比 {len(qs)}/{len(sps)} 低于 60% 红线")
+            cs = [s for s in sps if s.get("type") == "coin"]
+            if is_boss:
+                if cs: err(f"{tag} boss 关不应有金币格（{len(cs)} 个）")
+            elif not is_review and not (1 <= len(cs) <= 2):
+                err(f"{tag} 普通关金币格 {len(cs)} 个不符规格（决策 2：1-2）")
             ev = [s for s in sps if s.get("type") in ("chest", "mushroom", "rest")]
             if is_boss:
                 if len(ev) != 0 or len(qs) != 8:
@@ -213,6 +221,10 @@ def check_subject(doc, name, expect_levels):
                     err(f"{sid} 答案 {st.get('answerKey')} 与数量不符（应为 {expect}）")
             else:
                 err(f"{sid} 未知步骤类型 {kind}")
+        # 修订（试玩反馈轮）：每关题库扩产至 ≥5 道可作答变体——不再靠生成器碰巧达标
+        nq = sum(1 for st in lv["steps"] if st["kind"] in QUESTION_KINDS)
+        if nq < 5:
+            err(f"{name}/{lv['id']} 题库可作答题 {nq} 道 < 5（修订：每关扩产至 ≥5 道变体）")
 
 for name, cnt in SUBJECTS:
     check_subject(subject_docs[name], name, cnt)
@@ -238,6 +250,32 @@ if group_ids != ["science", "sticker", "hanzi", "pinyin", "english", "astro", "b
 for g in coll["groups"]:
     if len(g["items"]) < 10: warn(f"[collection/{g['id']}] 条目 {len(g['items'])} 偏少")
 ok("[collection] 7 个分组校验完成")
+
+# ---------- 1.x 商店闸门（Testing Decisions：定价区间与 id 唯一；决策 14：非默认件 40-120） ----------
+shop = load_json(os.path.join(RES, "shop.json"))
+collect_icons(shop)
+shop_ids = []
+for cat in ("characters", "titles"):
+    items = shop.get(cat) or []
+    if not items:
+        err(f"[shop/{cat}] 无商品"); continue
+    if not any(i.get("default") for i in items):
+        err(f"[shop/{cat}] 缺少 default 件（初始拥有集合会为空）")
+    for it in items:
+        iid = f"{cat}/{it.get('id','?')}"
+        shop_ids.append(it.get("id"))
+        if not it.get("id") or not it.get("name"): err(f"[shop] {iid} 缺 id/name")
+        if it.get("icon") not in manifest_icons: err(f"[shop] {iid} 图标 {it.get('icon')} 不在资产清单")
+        p = it.get("price")
+        if not isinstance(p, int) or isinstance(p, bool) or not (0 <= p <= 120):
+            err(f"[shop] {iid} 定价 {p!r} 越界（0-120）")
+        elif bool(it.get("default")) != (p == 0):
+            err(f"[shop] {iid} default 标记与 price=0 不一致（price={p}）")
+        elif not it.get("default") and p < 40:
+            err(f"[shop] {iid} 非默认件定价 {p} 低于下限（决策 14：40-120）")
+dup_shop = {i for i in shop_ids if shop_ids.count(i) > 1}
+if dup_shop: err(f"[shop] 商品 id 重复: {sorted(dup_shop)}")
+else: ok(f"[shop] {len(shop_ids)} 件商品：id 唯一、定价与 default 标记合法")
 
 # ---------- 2. 资产一致性 ----------
 missing = json_icons - manifest_icons

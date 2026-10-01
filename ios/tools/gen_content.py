@@ -178,9 +178,10 @@ def cn_board(i, qids):
 #       count 题加 countRange，客户端每次进题在区间内随机取数。
 
 def target_extras(n_q, idx):
-    """普通关补足到 8 格：事件 1-2（EVENT_COMBOS 轮换）+ 金币格补齐（题目格占比天然 ≥60%）"""
+    """普通关补足到 8-10 格：事件 1-2（EVENT_COMBOS 轮换）+ 金币格 1-2（决策 2，至少 1——
+    题多的关宁可多一格也不许金币格清零；格数区间与占比由 validate.py 闸门兜底）"""
     combo = EVENT_COMBOS[idx % 6]
-    n_coin = max(0, min(2, 8 - n_q - len(combo)))
+    n_coin = max(1, min(2, 8 - n_q - len(combo)))
     return ["coin"] * n_coin + list(combo)
 
 def boardify(levels, extras_fn):

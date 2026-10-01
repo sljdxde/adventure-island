@@ -2368,7 +2368,7 @@
             "step": "py-11-m"
           },
           {
-            "type": "chest"
+            "type": "coin"
           },
           {
             "type": "question",
@@ -2379,11 +2379,14 @@
             "step": "py-11-b"
           },
           {
-            "type": "rest"
+            "type": "chest"
           },
           {
             "type": "question",
             "step": "py-11-pq"
+          },
+          {
+            "type": "rest"
           },
           {
             "type": "question",
