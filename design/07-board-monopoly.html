@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>设计稿 07 · 棋盘重设计（大富翁式环形赛道）· 现状 vs 新方案</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=ZCOOL+QingKe+HuangYou&family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ==========================================================
+   探险岛 v0.10 视觉专项 · 棋盘重设计对照 demo
+   新方案参考真实大富翁棋盘的四条骨架：
+     ① 棋盘 = 环形赛道本身（格子铺在环上，环就是路）
+     ② 格子 = 地契砖（外侧色带 + 内侧米白身体 + 小标签）
+     ③ 四角是锚点格（起点/转角/转角/转角），给节奏
+     ④ 中央是主题场景（大富翁把 logo 放中间，我们放城堡终点）
+   刻意偏离：所有格子保持正立不旋转——大富翁四面朝内是为 4 人对坐，
+             5 岁孩子单独玩，左侧格子倒过来只会读不出。
+   画布：iPad 1024 × 768
+   ========================================================== */
+:root{
+  --orange:#FF9F43;--orange-dk:#F08C1F;--orange-ddk:#D97706;
+  --yellow:#FFC53D;--yellow-dk:#F5A623;--yellow-ddk:#D98A0F;
+  --coral:#FF7B6B;--coral-dk:#E85D4E;--coral-ddk:#C24836;
+  --blue:#4FA9E8;--blue-dk:#2F86C9;--blue-ddk:#20629E;
+  --purple:#9B7BF5;--purple-dk:#7C5CE0;--purple-ddk:#5E3FBE;
+  --green:#58C96B;--green-dk:#3BA851;--green-ddk:#2E8A40;
+  --cream:#FFF9EE;--cream-dk:#FFF1D8;--ink:#57433A;--ink-soft:#A08A76;
+  --gold:#FFD34D;--gold-dk:#E5A916;--gold-ddk:#C08A0C;
+  --font-title:"ZCOOL QingKe HuangYou","Fredoka","PingFang SC","Microsoft YaHei",sans-serif;
+  --font-body:"Fredoka","PingFang SC","Microsoft YaHei",sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#221A12;font-family:var(--font-body);color:var(--ink);padding-bottom:60px}
+
+/* ---------- 外壳 ---------- */
+.bar{position:sticky;top:0;z-index:99;background:rgba(34,26,18,.94);backdrop-filter:blur(8px);
+  padding:14px 28px;display:flex;align-items:center;gap:18px;flex-wrap:wrap;border-bottom:1px solid rgba(255,243,216,.12)}
+.bar h1{font-family:var(--font-title);font-size:22px;color:#FFF3D8;letter-spacing:2px;font-weight:400}
+.bar .sub{font-size:12.5px;color:#B9A88F;font-weight:600}
+.tabs{display:flex;gap:8px;margin-left:auto}
+.tabs button{font-family:var(--font-title);font-size:16px;letter-spacing:1px;color:#C9BBA0;background:#2E251C;
+  border:2px solid rgba(255,243,216,.14);border-radius:14px;padding:8px 20px;cursor:pointer;transition:.15s}
+.tabs button.on{background:linear-gradient(180deg,#FFDD7A,var(--yellow-dk));color:#6B4300;border-color:#fff;
+  box-shadow:inset 0 2px 0 rgba(255,255,255,.5),0 4px 0 var(--yellow-ddk)}
+.hint{width:100%;font-size:12.5px;color:#8A7A63;font-weight:600}
+.hint b{color:#FFD34D}
+
+.stage-wrap{display:grid;place-items:center;padding:26px 20px}
+.ipad{width:1024px;height:768px;border-radius:38px;background:#15110D;position:relative;overflow:hidden;
+  box-shadow:0 26px 60px rgba(0,0,0,.6),inset 0 0 0 3px #3A2E22;display:none}
+.ipad.on{display:block}
+.screen{position:absolute;inset:16px;border-radius:26px;overflow:hidden}
+
+/* ---------- 场景（四层景深） ---------- */
+.sky{position:absolute;inset:0;background:linear-gradient(180deg,#FFDE9E,#FFCF87 42%,#FFE9BE)}
+.sun{position:absolute;left:60px;top:52px;width:74px;height:74px;border-radius:50%;
+  background:radial-gradient(circle,#FFF6C8,#FFD84D 62%,rgba(255,216,77,0) 66%);
+  box-shadow:0 0 60px 26px rgba(255,236,150,.55)}
+.cloud{position:absolute;background:#fff;border-radius:999px;opacity:.9}
+.cloud::before,.cloud::after{content:"";position:absolute;background:#fff;border-radius:50%}
+.c1{width:110px;height:34px;right:150px;top:70px}
+.c1::before{width:46px;height:46px;left:16px;top:-20px}
+.c1::after{width:34px;height:34px;left:56px;top:-14px}
+.c2{width:80px;height:26px;left:250px;top:126px;opacity:.7}
+.c2::before{width:34px;height:34px;left:12px;top:-15px}
+.c2::after{width:24px;height:24px;left:42px;top:-10px}
+.hill{position:absolute;border-radius:50% 50% 0 0/50% 50% 0 0}
+.hill-far{bottom:150px;left:-60px;width:520px;height:190px;background:#8FD86B;opacity:.55}
+.hill-far2{bottom:150px;right:-80px;width:560px;height:210px;background:#7BCF5C;opacity:.5}
+.grass{position:absolute;bottom:0;left:0;right:0;height:172px;background:linear-gradient(180deg,#7ED95C,#58C96B)}
+.grass::before{content:"";position:absolute;top:-16px;left:0;right:0;height:32px;border-radius:50%;background:#7ED95C}
+
+/* ---------- 顶栏 ---------- */
+.hud{position:absolute;left:0;right:0;top:0;height:84px;z-index:40;display:flex;align-items:center;gap:14px;padding:0 22px}
+.back{width:56px;height:56px;border-radius:18px;background:linear-gradient(180deg,#FFFDF6,#FFEFCF);border:4px solid #fff;
+  box-shadow:inset 0 3px 0 rgba(255,255,255,.7),0 5px 0 #E7D3A8;display:grid;place-items:center;font-size:26px;color:#C98A12;font-weight:700}
+.hud .ttl{font-family:var(--font-title);font-size:30px;color:#fff;letter-spacing:2px;font-weight:400;
+  -webkit-text-stroke:5px var(--orange-ddk);paint-order:stroke fill;filter:drop-shadow(0 3px 0 rgba(120,60,0,.35))}
+.hud .coins{margin-left:auto;display:flex;align-items:center;gap:9px;background:rgba(255,253,246,.94);
+  border:4px solid #fff;border-radius:999px;padding:7px 18px 7px 10px;box-shadow:0 5px 0 rgba(150,110,40,.2)}
+.hud .coins i{width:30px;height:30px;border-radius:50%;background:radial-gradient(circle at 34% 30%,#FFF0A8,#F7B32B);
+  border:3px solid #B8770A;display:block}
+.hud .coins b{font-family:var(--font-title);font-size:24px;color:#7A4A00;font-weight:400}
+
+/* ==========================================================
+   新方案 · 环形棋盘
+   ========================================================== */
+.board{position:absolute;left:26px;right:26px;top:92px;bottom:22px;z-index:20;
+  border-radius:36px;border:7px solid #fff;
+  background:linear-gradient(180deg,#FFFBF0,#FFF0D2);
+  box-shadow:0 6px 0 rgba(150,110,40,.22),0 20px 38px rgba(84,66,58,.24),inset 0 0 0 5px #F3DFB2;
+  overflow:hidden}
+/* 环带：这条带子就是"路"，格子铺在它上面 */
+.road{position:absolute;border:56px solid #E9C983;border-radius:120px;
+  box-shadow:inset 0 0 0 5px #D6AF63,0 0 0 5px #D6AF63, inset 0 6px 14px rgba(150,110,40,.18)}
+.road-dash{position:absolute;border:3px dashed rgba(255,255,255,.75);border-radius:100px}
+
+/* 地契砖 */
+.cell{position:absolute;transform:translate(-50%,-50%);width:126px;border-radius:15px;overflow:hidden;
+  background:linear-gradient(180deg,#fff,#FFF7E6);border:4px solid #fff;
+  box-shadow:0 4px 0 var(--edge-c,#D6AF63),0 7px 12px rgba(84,66,58,.22);cursor:pointer;transition:transform .14s,box-shadow .14s}
+.cell:hover{transform:translate(-50%,-50%) translateY(-4px)}
+.cell .band{height:26px;background:linear-gradient(180deg,var(--c1,#FFE9AE),var(--c2,#F5B93B));
+  border-bottom:3px solid rgba(255,255,255,.7);box-shadow:inset 0 3px 0 rgba(255,255,255,.45)}
+.cell .body{padding:6px 4px 5px;text-align:center}
+.cell .ico{width:38px;height:38px;margin:0 auto;display:grid;place-items:center}
+.cell .ico svg{width:100%;height:100%}
+.cell .nm{font-family:var(--font-title);font-size:15px;letter-spacing:.5px;color:#6B4A20;font-weight:400;line-height:1.15}
+.cell .no{position:absolute;right:6px;top:4px;font-family:var(--font-title);font-size:13px;color:rgba(255,255,255,.95);
+  text-shadow:0 1px 0 rgba(0,0,0,.25);font-weight:400}
+.cell.done{--edge-c:#B9A88F;filter:saturate(.85)}
+.cell.done .band{background:linear-gradient(180deg,#CFC2AC,#A8977C)}
+.cell.now{transform:translate(-50%,-50%) scale(1.1);z-index:12;
+  box-shadow:0 5px 0 var(--edge-c),0 0 0 5px rgba(255,255,255,.9),0 0 26px 10px rgba(255,214,110,.85)}
+.cell.lock{opacity:.55;filter:grayscale(.55)}
+
+/* 四角锚点格 */
+.cell.corner{width:132px}
+.cell.corner .band{height:32px}
+.cell.corner .ico{width:46px;height:46px}
+.cell.corner .nm{font-size:17px}
+.cell.go{--c1:#8FE39E;--c2:#3BA851;--edge-c:#2E8A40}
+.cell.castle{--c1:#FFD9D2;--c2:#E85D4E;--edge-c:#C24836}
+
+/* 中央主题区（大富翁放 logo，我们放村庄 + 城堡终点） */
+.hub{position:absolute;display:flex;flex-direction:column;align-items:center;justify-content:space-between;
+  text-align:center;padding:6px 0 2px}
+.goal{text-align:center;position:relative}
+.goal svg{width:118px;height:100px;filter:drop-shadow(0 7px 0 rgba(150,110,40,.28))}
+.goal .cap{margin-top:-2px;font-family:var(--font-title);font-size:16px;color:#8A5A00;letter-spacing:1px;font-weight:400}
+.goal.reached svg{animation:cheer .6s ease-out}
+@keyframes cheer{0%{transform:scale(1)}35%{transform:scale(1.18) rotate(-4deg)}70%{transform:scale(.96) rotate(3deg)}100%{transform:scale(1)}}
+
+/* 星轨（大富翁内圈"金额带"的对应物：这里显示本关已获得星星） */
+.stars{display:flex;gap:9px;background:rgba(255,253,246,.92);border:3px solid #fff;border-radius:999px;padding:4px 13px;
+  box-shadow:0 3px 8px rgba(84,66,58,.16)}
+.stars i{width:26px;height:26px;display:block;background:#E7DAC0;
+  clip-path:polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%)}
+.stars i.on{background:radial-gradient(circle at 40% 30%,#FFF0A8,#F7B32B);
+  filter:drop-shadow(0 0 6px rgba(255,200,60,.85))}
+
+/* 骰子托盘（放在环内空地，不压赛道） */
+.tray{display:flex;align-items:center;gap:14px}
+.dietray{position:relative;width:150px;height:88px;border-radius:20px;
+  background:linear-gradient(180deg,#C98A4B,#9C6229);border:4px solid #fff;
+  box-shadow:inset 0 5px 0 rgba(255,255,255,.28),inset 0 -8px 14px rgba(0,0,0,.28),0 6px 0 #6E421A,0 12px 20px rgba(84,66,58,.35)}
+.dietray::after{content:"";position:absolute;inset:8px;border-radius:13px;background:linear-gradient(180deg,#7E4E1F,#A5713C);
+  box-shadow:inset 0 5px 12px rgba(0,0,0,.4)}
+.die-holder{position:absolute;left:50%;top:44%;transform:translate(-50%,-50%);width:64px;height:64px;z-index:3;perspective:520px}
+.die-lift{width:64px;height:64px;transition:transform .12s ease-out}
+.die-tilt{width:64px;height:64px;transform-style:preserve-3d;transform:rotateX(-14deg) rotateY(-9deg)}
+.die-cube{position:relative;width:64px;height:64px;transform-style:preserve-3d;
+  transition:transform .48s cubic-bezier(.16,.72,.3,1)}
+.die-cube .f{position:absolute;inset:0;border-radius:13px;border:2px solid rgba(0,0,0,.14);
+  background:linear-gradient(160deg,#fff,#F0E7D2);box-shadow:inset 0 4px 0 rgba(255,255,255,.9),inset 0 -6px 10px rgba(160,130,90,.28)}
+.die-cube .f span{position:absolute;width:13px;height:13px;border-radius:50%;
+  background:radial-gradient(circle at 34% 30%,#FF9A8A,#C24836);box-shadow:inset 0 -2px 3px rgba(0,0,0,.35),0 1px 0 rgba(255,255,255,.5)}
+.f1{transform:rotateY(0deg) translateZ(32px)}
+.f2{transform:rotateY(180deg) translateZ(32px)}
+.f3{transform:rotateY(90deg) translateZ(32px)}
+.f4{transform:rotateY(-90deg) translateZ(32px)}
+.f5{transform:rotateX(90deg) translateZ(32px)}
+.f6{transform:rotateX(-90deg) translateZ(32px)}
+.die-shadow{position:absolute;left:50%;top:66px;transform:translateX(-50%);width:52px;height:13px;border-radius:50%;
+  background:rgba(0,0,0,.42);filter:blur(3px);transition:transform .12s ease-out,opacity .12s}
+.rollbtn{font-family:var(--font-title);font-size:22px;letter-spacing:2px;color:#7A4A00;font-weight:400;
+  border:4px solid #fff;cursor:pointer;border-radius:999px;padding:10px 24px;
+  background:linear-gradient(180deg,#FFDD7A,var(--yellow) 45%,var(--yellow-dk));
+  border:4px solid #fff;
+  box-shadow:inset 0 3px 0 rgba(255,255,255,.55),0 5px 0 var(--yellow-ddk),0 9px 15px rgba(84,66,58,.22);
+  transition:transform .1s,box-shadow .1s}
+.rollbtn:active{transform:translateY(4px);box-shadow:inset 0 3px 0 rgba(255,255,255,.55),0 1px 0 var(--yellow-ddk)}
+.rollbtn:disabled{filter:grayscale(.65) opacity(.6);cursor:default}
+
+/* 角色棋子 */
+.token{position:absolute;z-index:26;transform:translate(-50%,-50%);transition:left .3s ease-in-out,top .3s ease-in-out;pointer-events:none}
+.token-hop{width:46px;height:46px;animation:none}
+.token-hop svg{width:100%;height:100%;filter:drop-shadow(0 4px 4px rgba(84,66,58,.3))}
+.token.hop .token-hop{animation:bhop .3s cubic-bezier(.3,-.4,.5,1.5)}
+@keyframes bhop{0%{transform:translateY(0) scale(1.14,.86)}30%{transform:translateY(-30px) scale(.9,1.14)}
+  62%{transform:translateY(0) scale(1.16,.84)}82%{transform:translateY(-7px) scale(.97,1.03)}100%{transform:translateY(0) scale(1)}}
+.token-shadow{position:absolute;left:50%;top:48px;transform:translateX(-50%);width:36px;height:10px;border-radius:50%;
+  background:rgba(84,66,58,.3);filter:blur(2px)}
+.token.hop .token-shadow{animation:bsh .3s ease-out}
+@keyframes bsh{0%{transform:translateX(-50%) scale(1);opacity:.34}30%{transform:translateX(-50%) scale(.55);opacity:.16}100%{transform:translateX(-50%) scale(1);opacity:.3}}
+
+/* 脚印 */
+.print{position:absolute;width:9px;height:12px;border-radius:50% 50% 45% 45%;background:rgba(150,110,40,.28);
+  transform:translate(-50%,-50%) rotate(var(--r,0deg));z-index:5}
+
+/* 屏震 */
+.shake{animation:shk .22s}
+@keyframes shk{0%,100%{transform:translate(0,0)}20%{transform:translate(-3px,2px)}40%{transform:translate(3px,-2px)}60%{transform:translate(-2px,-2px)}80%{transform:translate(2px,2px)}}
+
+/* toast */
+.toast{position:absolute;left:50%;top:100px;transform:translateX(-50%) scale(.8);z-index:60;opacity:0;
+  font-family:var(--font-title);font-size:28px;letter-spacing:2px;color:#fff;font-weight:400;
+  -webkit-text-stroke:5px var(--green-ddk);paint-order:stroke fill;filter:drop-shadow(0 4px 0 rgba(60,100,40,.35));
+  transition:opacity .2s,transform .2s}
+.toast.show{opacity:1;transform:translateX(-50%) scale(1)}
+
+/* ==========================================================
+   现状版（如实还原 ios/preview/index.html 的棋盘）
+   ========================================================== */
+.old .board{background:linear-gradient(180deg,#FFFBF0,var(--cream-dk));border:5px solid #fff;border-radius:40px;box-shadow:0 14px 28px rgba(84,66,58,.15)}
+.old .bspace{position:absolute;width:64px;height:64px;border-radius:50%;transform:translate(-50%,-50%);display:grid;place-items:center;
+  border:4px solid #fff;box-shadow:0 5px 0 rgba(84,66,58,.18),0 8px 14px rgba(84,66,58,.14)}
+.old .bspace.q{background:linear-gradient(180deg,#FFE9AE,#F5B93B)}
+.old .bspace.c{background:linear-gradient(180deg,#C9EFFB,#6FC9EE)}
+.old .bspace.ch{background:linear-gradient(180deg,#E3D8FF,#9B7BF5)}
+.old .bspace.mu{background:linear-gradient(180deg,#FFD9D2,#E85D4E)}
+.old .bspace.re{background:linear-gradient(180deg,#D7F5DD,#58C96B)}
+.old .bspace.passed{opacity:.5;filter:saturate(.5)}
+.old .bspace svg{width:34px;height:34px}
+.old .broll-wrap{position:absolute;left:50%;bottom:26px;transform:translateX(-50%);z-index:20;display:flex;flex-direction:column;align-items:center;gap:8px}
+.old .broll{display:flex;align-items:center;gap:14px;border:none;cursor:pointer;border-radius:999px;padding:12px 34px 12px 16px;
+  font-family:var(--font-title);font-size:23px;font-weight:400;letter-spacing:2px;color:#7A4A00;
+  background:linear-gradient(180deg,#FFDD7A,var(--yellow) 45%,var(--yellow-dk));
+  box-shadow:inset 0 3px 0 rgba(255,255,255,.5),0 5px 0 var(--yellow-ddk),0 8px 14px rgba(84,66,58,.18)}
+.old .bdie{width:64px;height:64px;border-radius:14px;background:linear-gradient(180deg,#fff,#F2EDDF);border:3px solid #D8CBAF;
+  box-shadow:0 4px 8px rgba(84,66,58,.2);position:relative}
+.old .bdie span{position:absolute;width:12px;height:12px;border-radius:50%;background:#C24836}
+.old .bmascot{position:absolute;transform:translate(-50%,-86%);z-index:14;filter:drop-shadow(0 6px 6px rgba(84,66,58,.3))}
+.old .bmascot.hop{animation:ohop .34s ease-in-out}
+@keyframes ohop{0%,100%{margin-top:0}45%{margin-top:-30px}}
+.old .castle-float{position:absolute;transform:translate(-50%,-50%)}
+.old .castle-float svg{width:62px;height:54px}
+.old .flag-float{position:absolute;transform:translate(-50%,-50%)}
+.old .flag-float svg{width:30px;height:30px}
+.old .empty-note{position:absolute;left:50%;top:44%;transform:translate(-50%,-50%);text-align:center;
+  font-size:14px;font-weight:700;color:#D6C4A2;letter-spacing:1px}
+
+/* ---------- 注解 ---------- */
+.notes{max-width:1024px;margin:0 auto;padding:8px 20px 40px;display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.note{background:#2E251C;border:1px solid rgba(255,243,216,.12);border-radius:20px;padding:18px 22px}
+.note h3{font-family:var(--font-title);font-size:19px;color:#FFD34D;letter-spacing:1px;font-weight:400;margin-bottom:10px}
+.note ul{list-style:none}
+.note li{font-size:13.5px;color:#C9BBA0;font-weight:600;line-height:1.75;padding-left:18px;position:relative;margin-bottom:5px}
+.note li::before{content:"▸";position:absolute;left:0;color:#FF9F43}
+.note li b{color:#FFF3D8}
+.note.warn{border-color:rgba(255,123,107,.4)}
+.note.warn h3{color:#FF8FB5}
+</style>
+</head>
+<body>
+
+<div class="bar">
+  <h1>棋盘重设计 · 大富翁式环形赛道</h1>
+  <span class="sub">探险岛 v0.10 视觉专项 ｜ 1024×768 ｜ 点「掷骰子」可玩</span>
+  <div class="tabs">
+    <button id="tOld" onclick="showTab('old')">现状</button>
+    <button id="tNew" class="on" onclick="showTab('new')">新方案</button>
+  </div>
+  <div class="hint">新方案借大富翁棋盘四条骨架：<b>①环带即赛道</b> <b>②格子=地契砖（色带+米白身体+标签）</b> <b>③四角是锚点格</b> <b>④中央放主题场景与终点城堡</b>；骰子改 CSS 3D 立方体 + 五段节拍。</div>
+</div>
+
+<!-- ============ 新方案 ============ -->
+<div class="stage-wrap">
+<div class="ipad on" id="stageNew">
+  <div class="screen" id="scrNew">
+    <div class="sky"></div><div class="sun"></div>
+    <div class="cloud c1"></div><div class="cloud c2"></div>
+    <div class="hill hill-far"></div><div class="hill hill-far2"></div>
+    <div class="grass"></div>
+    <div class="hud">
+      <div class="back">‹</div>
+      <div><div class="ttl">识字村 · 第 3 关</div></div>
+      <div class="coins"><i></i><b>128</b></div>
+    </div>
+    <div class="board" id="boardNew">
+      <div class="road" id="road"></div>
+      <div class="road-dash" id="roadDash"></div>
+      <div class="hub" id="hub">
+        <div class="goal" id="goal"></div>
+        <div class="stars" id="starRow"><i></i><i></i><i></i></div>
+        <div class="tray">
+          <div class="dietray">
+            <div class="die-shadow" id="dieShadow"></div>
+            <div class="die-holder">
+              <div class="die-lift" id="dieLift">
+                <div class="die-tilt">
+                  <div class="die-cube" id="dieCube">
+                    <div class="f f1"></div><div class="f f2"></div><div class="f f3"></div>
+                    <div class="f f4"></div><div class="f f5"></div><div class="f f6"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button class="rollbtn" id="rollbtn" onclick="doRoll()">掷骰子</button>
+        </div>
+      </div>
+      <div id="cells"></div>
+      <div id="prints"></div>
+      <div class="token" id="token"><div class="token-hop" id="tokenHop"></div><div class="token-shadow"></div></div>
+      <div class="toast" id="toast"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ 现状 ============ -->
+<div class="ipad old" id="stageOld">
+  <div class="screen">
+    <div class="sky"></div><div class="sun"></div>
+    <div class="cloud c1"></div><div class="cloud c2"></div>
+    <div class="hill hill-far"></div><div class="hill hill-far2"></div>
+    <div class="grass"></div>
+    <div class="hud">
+      <div class="back">‹</div>
+      <div><div class="ttl" style="-webkit-text-stroke-color:#2F86C9">识字村 · 第 3 关</div></div>
+      <div class="coins"><i></i><b>128</b></div>
+    </div>
+    <div class="board">
+      <div class="empty-note">棋盘 = 一块米色面板<br>格与格之间没有路</div>
+      <svg id="oldPath" style="position:absolute;inset:0;width:100%;height:100%" viewBox="0 0 1024 768" fill="none"></svg>
+      <div id="oldCells"></div>
+      <div class="castle-float" id="oldCastle"></div>
+      <div class="flag-float" id="oldFlag"></div>
+      <div class="bmascot" id="oldMascot"></div>
+      <div class="broll-wrap">
+        <button class="broll" onclick="oldRoll()"><div class="bdie" id="oldDie"></div>掷骰子，前进！</button>
+        <div style="font-size:14px;font-weight:700;color:#57433A;background:rgba(255,253,246,.86);border-radius:999px;padding:5px 16px;box-shadow:0 2px 6px rgba(84,66,58,.18)">掷到几就走几格，答对题目 +2 金币</div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="notes">
+  <div class="note">
+    <h3>从大富翁棋盘借了什么</h3>
+    <ul>
+      <li><b>环带即赛道</b>：真实大富翁的 40 格不是"点"，是一条连续的路。我们原来是 8-10 个悬空圆片，孩子读不出"走"。现在格子铺在一条沙石环带上，路本身就是棋盘。</li>
+      <li><b>地契砖格</b>：大富翁每格 = 外侧色带（社区色）+ 内侧米白身体（图 + 名 + 价）。我们改成 类型色带 + 图标 + 名称，一眼分得清题目格/金币格/宝箱格。</li>
+      <li><b>四角锚点</b>：大富翁四角是 GO / 监狱 / 免费停车 / 进监狱，尺寸略大。我们把起点放左下角、转角给事件格，节奏感就出来了。</li>
+      <li><b>中央主题区</b>：大富翁中间是 logo + 机会/公益金两叠卡。我们中间放村庄场景 + <b>终点城堡</b>（原来是浮在左下角的一个小图标）+ 星轨进度。</li>
+      <li><b>内圈细带</b>：大富翁环内侧有一条金额带做"设计感收边"。我们用星轨 + 木牌标题承担同一职责。</li>
+    </ul>
+  </div>
+  <div class="note warn">
+    <h3>刻意偏离大富翁的地方</h3>
+    <ul>
+      <li><b>格子全部正立不旋转。</b>大富翁四面朝内是为四人围坐，我们这里左侧格子倒过来对 5 岁孩子是纯噪音。</li>
+      <li><b>不做 40 格。</b>单关 8-10 格、2-4 分钟是注意力红线，环带按格数自适应铺满。</li>
+      <li><b>走过的格不降饱和。</b>原来 <code>.passed{opacity:.5;filter:saturate(.5)}</code> 很廉价，改成色带转灰 + <b>路上留脚印</b>，格子本体保持可读。</li>
+      <li><b>骰子在中央木盘里，不在按钮上。</b>原来骰子贴在胶囊按钮左边，是个"图标"；现在是托盘里的实物，掷完留在盘里。</li>
+    </ul>
+  </div>
+  <div class="note">
+    <h3>骰子五段节拍（1.04s）</h3>
+    <ul>
+      <li>① 蓄力 120ms：骰子 scale 1→1.15、上移 18px，<b>影子同步缩小变淡</b>（没有这条就完全没有重量）</li>
+      <li>② 抛出 260ms：绕 X 转 720°、绕 Y 转 1080°——<b>两轴不同速才像翻滚</b>，同速只会像转盘</li>
+      <li>③ 落地 180ms：squash（scaleY .86 / scaleX 1.12），影子瞬间变大变实</li>
+      <li>④ 回弹 220ms：±8° 一次过冲收尾</li>
+      <li>⑤ 定格 260ms：目标面朝上 → 数字气泡 + 屏震 2px×3</li>
+      <li><b>结果先定后演</b>：掷的瞬间就出 r，动画只把 r 那面转到正面。所以永远不会卡在"立着"，也不需要物理引擎兜底。</li>
+    </ul>
+  </div>
+  <div class="note">
+    <h3>这一屏还顺带做了</h3>
+    <ul>
+      <li><b>品牌字</b>：标题/数字换站酷庆科黄油体（OFL-1.1）+ Fredoka，标题加 5px 白描边 + 硬阴影厚字处理。落地时中文子集化，全量 4MB 不上线。</li>
+      <li><b>四层景深</b>：天空 / 远丘 / 草带 / 棋盘，UI 浮在场景上而不是白卡浮在纯色上。</li>
+      <li><b>删掉的元信息</b>：关卡进度 3/10、环节序号条、底部重复提示条——3-6 岁一条都不需要，指令只留一处。</li>
+      <li><b>走格动效</b>：从 <code>margin-top</code> 改 <code>transform</code>，起跳压扁→空中拉长→落地压扁→小回弹，影子随高度缩放。</li>
+    </ul>
+  </div>
+</div>
+
+<script>
+/* ---------- 内联 SVG 插画（复用 design/assets/icons 的造型语言） ---------- */
+const SVG={
+  question:`<svg viewBox="0 0 64 64"><path d="M22 22c0-6 5-10 10-10s10 4 10 9c0 5-4 7-7 9-2 1-3 3-3 5" fill="none" stroke="#8A5A00" stroke-width="7" stroke-linecap="round"/><circle cx="32" cy="50" r="4.5" fill="#8A5A00"/></svg>`,
+  coin:`<svg viewBox="0 0 64 64"><ellipse cx="32" cy="32" rx="20" ry="24" fill="#F7B32B"/><ellipse cx="32" cy="30" rx="20" ry="24" fill="#FFD34D"/><ellipse cx="32" cy="30" rx="20" ry="24" fill="none" stroke="#B8770A" stroke-width="3.5"/><ellipse cx="32" cy="30" rx="11" ry="15" fill="none" stroke="#D98A0F" stroke-width="3.5"/></svg>`,
+  gift:`<svg viewBox="0 0 64 64"><rect x="10" y="26" width="44" height="30" rx="6" fill="#9B7BF5"/><rect x="10" y="26" width="44" height="30" rx="6" fill="none" stroke="#5E3FBE" stroke-width="3.5"/><rect x="6" y="18" width="52" height="13" rx="5" fill="#B79BFF" stroke="#5E3FBE" stroke-width="3.5"/><rect x="27" y="18" width="10" height="38" fill="#FFD34D" stroke="#C08A0C" stroke-width="2.5"/><path d="M32 18c-6-10-16-4-10 0M32 18c6-10 16-4 10 0" fill="none" stroke="#FFD34D" stroke-width="5" stroke-linecap="round"/></svg>`,
+  mushroom:`<svg viewBox="0 0 64 64"><path d="M14 34c0-12 8-20 18-20s18 8 18 20z" fill="#E85D4E" stroke="#A8301F" stroke-width="3.5"/><circle cx="24" cy="24" r="4" fill="#FFF3D8"/><circle cx="38" cy="21" r="3.4" fill="#FFF3D8"/><circle cx="44" cy="29" r="3" fill="#FFF3D8"/><path d="M24 34h16v12c0 4-3 6-8 6s-8-2-8-6z" fill="#FFE9BE" stroke="#C99A4A" stroke-width="3"/></svg>`,
+  home:`<svg viewBox="0 0 64 64"><path d="M8 30 32 10l24 20" fill="none" stroke="#2E8A40" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><rect x="15" y="28" width="34" height="26" rx="5" fill="#D7F5DD" stroke="#2E8A40" stroke-width="3.5"/><rect x="27" y="38" width="10" height="16" rx="3" fill="#8FD86B" stroke="#2E8A40" stroke-width="3"/></svg>`,
+  castle:`<svg viewBox="0 0 132 112"><rect x="18" y="44" width="96" height="60" rx="8" fill="#FFD9D2" stroke="#C24836" stroke-width="4"/><rect x="10" y="30" width="22" height="74" rx="6" fill="#FFB3A6" stroke="#C24836" stroke-width="4"/><rect x="100" y="30" width="22" height="74" rx="6" fill="#FFB3A6" stroke="#C24836" stroke-width="4"/><rect x="52" y="20" width="28" height="84" rx="6" fill="#FFE9E4" stroke="#C24836" stroke-width="4"/><path d="M52 20 66 4l14 16z" fill="#E85D4E" stroke="#C24836" stroke-width="4" stroke-linejoin="round"/><rect x="57" y="72" width="18" height="32" rx="9" fill="#8A4038"/><path d="M66 4v-2" stroke="#C24836" stroke-width="3"/><path d="M66 2l14 6-14 5z" fill="#FFD34D" stroke="#C08A0C" stroke-width="2.5"/></svg>`,
+  go:`<svg viewBox="0 0 64 64"><path d="M14 46c8-4 12-14 12-24" fill="none" stroke="#2E8A40" stroke-width="6" stroke-linecap="round"/><path d="M18 30 26 18l8 12z" fill="#58C96B" stroke="#2E8A40" stroke-width="4" stroke-linejoin="round"/><path d="M36 46h14M42 40l8 6-8 6" fill="none" stroke="#2E8A40" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+  flag:`<svg viewBox="0 0 64 64"><rect x="16" y="8" width="6" height="48" rx="3" fill="#C99A4A"/><path d="M24 10h28l-8 10 8 10H24z" fill="#E85D4E" stroke="#A8301F" stroke-width="3"/></svg>`,
+  panda:`<svg viewBox="0 0 64 64"><ellipse cx="18" cy="18" rx="9" ry="9" fill="#3A3A3A"/><ellipse cx="46" cy="18" rx="9" ry="9" fill="#3A3A3A"/><circle cx="32" cy="34" r="24" fill="#fff" stroke="#3A3A3A" stroke-width="3.5"/><ellipse cx="23" cy="30" rx="6.5" ry="8" fill="#3A3A3A"/><ellipse cx="41" cy="30" rx="6.5" ry="8" fill="#3A3A3A"/><circle cx="23" cy="30" r="3" fill="#fff"/><circle cx="41" cy="30" r="3" fill="#fff"/><ellipse cx="32" cy="42" rx="5" ry="3.6" fill="#3A3A3A"/><path d="M27 47q5 5 10 0" fill="none" stroke="#3A3A3A" stroke-width="3" stroke-linecap="round"/></svg>`,
+  tree:`<svg viewBox="0 0 64 64"><rect x="28" y="38" width="8" height="20" rx="4" fill="#A5713C"/><circle cx="32" cy="28" r="18" fill="#58C96B"/><circle cx="20" cy="34" r="11" fill="#4CB85F"/><circle cx="44" cy="34" r="11" fill="#6BD47D"/></svg>`,
+  house:`<svg viewBox="0 0 64 64"><rect x="14" y="30" width="36" height="28" rx="4" fill="#FFF3D8" stroke="#C99A4A" stroke-width="3"/><path d="M10 32 32 12l22 20z" fill="#E85D4E" stroke="#A8301F" stroke-width="3" stroke-linejoin="round"/><rect x="27" y="40" width="10" height="18" rx="3" fill="#A5713C"/></svg>`
+};
+const TYPE={
+  question:{cls:"q",c1:"#FFE9AE",c2:"#F5B93B",edge:"#C9922A",ico:"question",nm:"题目"},
+  coin:    {cls:"c",c1:"#C9EFFB",c2:"#6FC9EE",edge:"#3A8FB0",ico:"coin",nm:"金币"},
+  chest:   {cls:"ch",c1:"#E3D8FF",c2:"#9B7BF5",edge:"#6A4BC0",ico:"gift",nm:"宝箱"},
+  mushroom:{cls:"mu",c1:"#FFD9D2",c2:"#E85D4E",edge:"#A8301F",ico:"mushroom",nm:"蘑菇"},
+  rest:    {cls:"re",c1:"#D7F5DD",c2:"#58C96B",edge:"#2E8A40",ico:"home",nm:"休息"}
+};
+/* 本关 10 格：与 ios/preview/index.html 里 cn-2 关卡的 board.spaces 同构 */
+const SPACES=["question","coin","question","mushroom","question","coin","rest","question","chest","question"];
+
+/* ---------- 环形布局：n 格顺时针铺在圆角矩形环上，四角为锚点 ---------- */
+const RING={x0:112,y0:104,x1:844,y1:548};   // 环带中心线矩形（board 净尺寸 956×622）
+function ringLayout(n){
+  const corners=[{x:RING.x0,y:RING.y1},{x:RING.x1,y:RING.y1},{x:RING.x1,y:RING.y0},{x:RING.x0,y:RING.y0}]; // BL BR TR TL
+  const edges=Math.max(0,n-4), per=[0,0,0,0];
+  for(let i=0;i<edges;i++) per[i%4]++;                       // 底→右→顶→左
+  const out=[];
+  out.push(corners[0]);
+  for(let s=0;s<4;s++){
+    const a=corners[s], b=corners[(s+1)%4];
+    for(let j=1;j<=per[s];j++){const t=j/(per[s]+1); out.push({x:a.x+(b.x-a.x)*t, y:a.y+(b.y-a.y)*t});}
+    if(s<3) out.push(b);
+  }
+  return out;
+}
+
+/* ---------- 渲染新棋盘 ---------- */
+const pts=ringLayout(SPACES.length);
+let pos=0, stars=0, busy=false, turnsX=0, turnsY=0;
+
+function renderBoard(){
+  const bd=document.getElementById("boardNew");
+  const w=RING.x1-RING.x0, h=RING.y1-RING.y0;
+  const road=document.getElementById("road");
+  road.style.left=(RING.x0-28)+"px"; road.style.top=(RING.y0-28)+"px";
+  road.style.width=(w+56)+"px";      road.style.height=(h+56)+"px";
+  const dash=document.getElementById("roadDash");
+  dash.style.left=(RING.x0+12)+"px"; dash.style.top=(RING.y0+12)+"px";
+  dash.style.width=(w-24)+"px";      dash.style.height=(h-24)+"px";
+
+  const hub=document.getElementById("hub");
+  hub.style.left=(RING.x0+52)+"px"; hub.style.top=(RING.y0+52)+"px";
+  hub.style.width=(w-104)+"px";      hub.style.height=(h-104)+"px";
+  document.getElementById("goal").innerHTML=
+    `<div style="position:relative;display:inline-block">
+       <div style="position:absolute;left:50%;bottom:-4px;transform:translateX(-50%);width:190px;height:26px;
+            border-radius:50%;background:radial-gradient(ellipse at center,#8FD86B 0%,#8FD86B 58%,rgba(143,216,107,0) 62%);opacity:.85"></div>
+       <div style="position:relative;display:flex;align-items:flex-end;justify-content:center">
+         <span style="width:30px;height:30px;opacity:.95;margin-right:6px;margin-bottom:4px;display:inline-block">${SVG.tree}</span>
+         <span style="display:inline-block">${SVG.castle}</span>
+         <span style="width:26px;height:26px;opacity:.95;margin-left:6px;margin-bottom:4px;display:inline-block">${SVG.house}</span>
+       </div>
+     </div><div class="cap">终点 · 城堡</div>`;
+
+  document.getElementById("cells").innerHTML=SPACES.map((t,i)=>{
+    const p=pts[i], isGo=(i===0), isEnd=(i===SPACES.length-1);
+    const ty=TYPE[t];
+    const band = isGo ? {c1:"#8FE39E",c2:"#3BA851",edge:"#2E8A40",ico:"go",nm:"起点"}
+             : isEnd ? {c1:"#FFD9D2",c2:"#E85D4E",edge:"#C24836",ico:"flag",nm:"回城堡"}
+             : ty;
+    const corner=(isGo||isEnd)?" corner":"";
+    return `<div class="cell${isGo?" go":""}${isEnd?" castle":""}${corner}" id="cell${i}"
+      style="left:${p.x}px;top:${p.y}px;--c1:${band.c1};--c2:${band.c2};--edge-c:${band.edge}">
+      <div class="band"></div>
+      ${(isGo||isEnd)?`<div class="no">${isGo?"GO":"END"}</div>`:""}
+      <div class="body"><div class="ico">${SVG[band.ico]}</div><div class="nm">${band.nm}</div></div>
+    </div>`;
+  }).join("");
+  paintState();
+}
+function paintState(){
+  SPACES.forEach((_,i)=>{
+    const el=document.getElementById("cell"+i); if(!el) return;
+    el.classList.toggle("done", i<pos);
+    el.classList.toggle("now", i===pos);
+  });
+  const p=pts[pos];
+  const tk=document.getElementById("token");
+  tk.style.left=p.x+"px"; tk.style.top=(p.y-42)+"px";
+  document.getElementById("tokenHop").innerHTML=SVG.panda;
+}
+function drawPrints(){
+  let h="";
+  for(let i=0;i<pos;i++){
+    const a=pts[i], b=pts[Math.min(i+1,pts.length-1)];
+    const ang=Math.atan2(b.y-a.y,b.x-a.x)*180/Math.PI;
+    for(let k=1;k<=2;k++){
+      const t=k/3;
+      h+=`<div class="print" style="left:${a.x+(b.x-a.x)*t}px;top:${a.y+(b.y-a.y)*t+((k%2)?7:-7)}px;--r:${ang}deg"></div>`;
+    }
+  }
+  document.getElementById("prints").innerHTML=h;
+}
+function setStars(n){stars=n;document.querySelectorAll("#starRow i").forEach((el,i)=>el.classList.toggle("on",i<n));}
+
+/* ---------- 骰子：六面点位 ---------- */
+const PIPS={1:[[.5,.5]],2:[[.28,.28],[.72,.72]],3:[[.25,.25],[.5,.5],[.75,.75]],
+  4:[[.28,.28],[.72,.28],[.28,.72],[.72,.72]],5:[[.26,.26],[.74,.26],[.5,.5],[.26,.74],[.74,.74]],
+  6:[[.28,.24],[.72,.24],[.28,.5],[.72,.5],[.28,.76],[.72,.76]]};
+(function buildDie(){
+  const faces=document.querySelectorAll("#dieCube .f");
+  faces.forEach((f,idx)=>{ const v=idx+1;
+    f.innerHTML=PIPS[v].map(p=>`<span style="left:calc(${p[0]*100}% - 5.5px);top:calc(${p[1]*100}% - 5.5px)"></span>`).join("");
+  });
+})();
+const POSE={1:[0,0],2:[0,180],3:[0,-90],4:[0,90],5:[-90,0],6:[90,0]};
+const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+function toast(t){const el=document.getElementById("toast");el.textContent=t;el.classList.add("show");setTimeout(()=>el.classList.remove("show"),1100);}
+
+async function doRoll(){
+  if(busy) return; busy=true;
+  const btn=document.getElementById("rollbtn"); btn.disabled=true;
+  const cube=document.getElementById("dieCube"), lift=document.getElementById("dieLift"), sh=document.getElementById("dieShadow");
+  const r=1+Math.floor(Math.random()*6);           // ← 结果先定，动画只负责把它转到正面
+  turnsX+=1; turnsY+=2;                            // 两轴累计不同速 → 看起来是翻滚不是转盘
+  const target=`rotateX(${POSE[r][0]+turnsX*360}deg) rotateY(${POSE[r][1]+turnsY*360}deg)`;
+
+  /* ① 蓄力 */
+  lift.style.transition="transform .12s ease-out";
+  lift.style.transform="translateY(-18px) scale(1.15)";
+  sh.style.transform="translateX(-50%) scale(.6)"; sh.style.opacity=".14";
+  await sleep(120);
+  /* ② 抛出 + ③ 落地 */
+  cube.style.transition="transform .48s cubic-bezier(.16,.72,.3,1)";
+  cube.style.transform=target;
+  lift.style.transform="translateY(0) scale(1)";
+  sh.style.transform="translateX(-50%) scale(1)"; sh.style.opacity=".34";
+  await sleep(470);
+  lift.style.transition="transform .09s ease-in";
+  lift.style.transform="translateY(0) scale(1.14,.84)";
+  sh.style.transform="translateX(-50%) scale(1.25)"; sh.style.opacity=".44";
+  await sleep(90);
+  /* ④ 回弹 */
+  lift.style.transition="transform .22s cubic-bezier(.3,-1.4,.6,1)";
+  lift.style.transform="translateY(0) scale(1)";
+  sh.style.transform="translateX(-50%) scale(1)"; sh.style.opacity=".3";
+  await sleep(220);
+  /* ⑤ 定格 */
+  document.getElementById("scrNew").classList.add("shake");
+  setTimeout(()=>document.getElementById("scrNew").classList.remove("shake"),230);
+  toast("掷出 "+r+" 点！");
+  await sleep(260);
+
+  /* 走格：最后一跳前留 120ms anticipation */
+  const n=SPACES.length;
+  for(let k=0;k<r;k++){
+    if(pos>=n-1) break;
+    if(k===r-1) await sleep(120);
+    pos=Math.min(pos+1,n-1);
+    const tk=document.getElementById("token");
+    tk.classList.remove("hop"); void tk.offsetWidth; tk.classList.add("hop");
+    paintState(); drawPrints();
+    await sleep(330);
+  }
+  const t=SPACES[pos];
+  if(pos===n-1){
+    /* 最后一格：角色跳进中央城堡——大富翁的中间空地在这里有了用途 */
+    const g=document.getElementById("goal").getBoundingClientRect();
+    const b=document.getElementById("boardNew").getBoundingClientRect();
+    const tk=document.getElementById("token");
+    tk.style.transition="left .42s ease-in-out,top .42s ease-in-out";
+    tk.style.left=(g.left-b.left+g.width/2)+"px";
+    tk.style.top =(g.top-b.top+g.height-14)+"px";
+    const hop=document.getElementById("tokenHop");
+    hop.style.transition="transform .42s cubic-bezier(.3,-.6,.5,1.4)";
+    hop.style.transform="translateY(-46px) scale(1.1)";
+    setTimeout(()=>{hop.style.transform="translateY(0) scale(1)";},400);
+    await sleep(560);
+    document.getElementById("goal").classList.add("reached");
+    toast("到城堡啦！");
+  }
+  else if(t==="coin"){ setStars(Math.min(3,stars+1)); toast("+5 金币"); }
+  else if(t==="mushroom"){ toast("+2 步 · 幸运蘑菇"); }
+  else if(t==="chest"){ toast("开宝箱！"); }
+  else if(t==="rest"){ toast("休息一下～"); }
+  else { toast("答对 +2 金币"); setStars(Math.min(3,stars+1)); }
+  await sleep(500);
+  document.getElementById("token").style.transition="left .3s ease-in-out,top .3s ease-in-out";
+  btn.disabled=false; busy=false;
+}
+
+/* ---------- 现状版：如实还原 ---------- */
+function oldPoint(i,n){
+  const x0=150,x1=880,yT=196,yB=380, top=Math.ceil(n/2);
+  if(i<top){const t=top===1?0:i/(top-1);return{x:x0+(x1-x0)*t,y:yT+Math.sin(t*4.4)*24};}
+  const bot=n-top,t=bot===1?0:(i-top)/(bot-1);
+  return{x:x1-(x1-x0)*t,y:yB+Math.sin(t*4.4)*24};
+}
+(function renderOld(){
+  const n=SPACES.length, P=[];
+  for(let i=0;i<n;i++) P.push(oldPoint(i,n));
+  const svg=document.getElementById("oldPath");
+  const start={x:150,y:100}, end={x:92,y:452};
+  svg.innerHTML=`<path d="M ${[start,...P,end].map(p=>Math.round(p.x)+" "+Math.round(p.y)).join(" L ")}"
+    stroke="#fff" stroke-width="8" stroke-linecap="round" stroke-dasharray="1 20" opacity=".92"/>`;
+  document.getElementById("oldCells").innerHTML=SPACES.map((t,i)=>
+    `<div class="bspace ${TYPE[t].cls}" style="left:${P[i].x}px;top:${P[i].y}px">${SVG[TYPE[t].ico]}</div>`).join("");
+  document.getElementById("oldCastle").innerHTML=SVG.castle;
+  document.getElementById("oldCastle").style.left=end.x+"px"; document.getElementById("oldCastle").style.top=end.y+"px";
+  document.getElementById("oldFlag").innerHTML=SVG.flag;
+  document.getElementById("oldFlag").style.left=(start.x-56)+"px"; document.getElementById("oldFlag").style.top=(start.y-8)+"px";
+  const m=document.getElementById("oldMascot"); m.innerHTML=SVG.panda.replace('viewBox="0 0 64 64"','viewBox="0 0 64 64" width="54" height="54"');
+  m.style.left=P[0].x+"px"; m.style.top=P[0].y+"px";
+  const d=document.getElementById("oldDie");
+  d.innerHTML=PIPS[6].map(p=>`<span style="left:calc(${p[0]*100}% - 6px);top:calc(${p[1]*100}% - 6px)"></span>`).join("");
+})();
+let oldBusy=false;
+async function oldRoll(){
+  if(oldBusy) return; oldBusy=true;
+  const d=document.getElementById("oldDie"), m=document.getElementById("oldMascot");
+  for(let k=0;k<10;k++){ const v=1+Math.floor(Math.random()*6);
+    d.innerHTML=PIPS[v].map(p=>`<span style="left:calc(${p[0]*100}% - 6px);top:calc(${p[1]*100}% - 6px)"></span>`).join("");
+    d.style.transform="rotate(10deg)";
+    await sleep(80);
+  }
+  const r=1+Math.floor(Math.random()*6);
+  d.innerHTML=PIPS[r].map(p=>`<span style="left:calc(${p[0]*100}% - 6px);top:calc(${p[1]*100}% - 6px)"></span>`).join("");
+  d.style.transform="rotate(0deg)";
+  const n=SPACES.length;
+  for(let k=0;k<r;k++){
+    pos=Math.min(pos+1,n-1);
+    const p=oldPoint(pos,n);
+    m.style.left=p.x+"px"; m.style.top=p.y+"px";
+    m.classList.remove("hop"); void m.offsetWidth; m.classList.add("hop");
+    await sleep(340);
+  }
+  oldBusy=false;
+}
+
+function showTab(w){
+  document.getElementById("stageNew").classList.toggle("on",w==="new");
+  document.getElementById("stageOld").classList.toggle("on",w==="old");
+  document.getElementById("tNew").classList.toggle("on",w==="new");
+  document.getElementById("tOld").classList.toggle("on",w==="old");
+}
+renderBoard();
+</script>
+</body>
+</html>
