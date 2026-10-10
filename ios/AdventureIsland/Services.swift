@@ -151,6 +151,16 @@ final class SpeechService: NSObject, ObservableObject, AVSpeechSynthesizerDelega
         speak(PinyinSpeech.convert(text), lang: .chinese)
     }
 
+    /// 学科→语音路由唯一入口：英语按中英混排分段，拼音转中文同音字，
+    /// 其余学科（识字/数学/思维/天文/科学等）中文朗读。新增学科默认中文，无需改调用点。
+    func speak(_ text: String, subject: String) {
+        switch subject {
+        case "english": speakEnglish(text)
+        case "pinyin": speakPinyin(text)
+        default: speak(text)
+        }
+    }
+
     func speak(_ text: String, lang: SpeechLang) {
         guard !text.isEmpty else { return }
         stop()

@@ -706,12 +706,10 @@ struct LetterStepView: View {
     }
     private var guideIcon: String { isEnglish || isAstro ? "robot" : "panda" }
 
-    /// 按学科选择朗读语音：英语用 en-US，拼音转中文同音字，其余中文朗读
+    /// 朗读统一走 SpeechService 学科路由（英语混排分段 / 拼音同音字 / 其余中文）
     private func sayLetter(_ text: String?) {
         guard let text else { return }
-        if isEnglish { speech.speakEnglish(text) }
-        else if subject == "pinyin" { speech.speakPinyin(text) }
-        else { speech.speak(text) }
+        speech.speak(text, subject: subject)
     }
 
     var body: some View {
@@ -837,12 +835,10 @@ struct ListenStepView: View {
     @State private var solved = false
     @State private var wrongIndex: Int?
 
-    /// 按学科选择朗读语音（拼音转中文同音字，英语用 en-US）
+    /// 朗读统一走 SpeechService 学科路由（拼音同音字 / 英语混排分段 / 其余中文）
     private func say(_ text: String?) {
         guard let text, !text.isEmpty else { return }
-        if subject == "pinyin" { speech.speakPinyin(text) }
-        else if subject == "english" { speech.speakEnglish(text) }
-        else { speech.speak(text) }
+        speech.speak(text, subject: subject)
     }
 
     var body: some View {

@@ -219,9 +219,7 @@ struct CollectionView: View {
         Button {
             guard collected else { return }
             if let fact = item.fact {
-                if group.id == "english" || group.id == "astro" { speech.speakEnglish(fact) }
-                else if group.id == "pinyin" { speech.speakPinyin(fact) }
-                else { speech.speak(fact) }
+                speech.speak(fact, subject: group.id)
                 toast.show(fact, seconds: 3.2)
             } else if group.id == "english" {
                 speech.speakEnglish(item.name)

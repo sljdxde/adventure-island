@@ -122,11 +122,14 @@ final class ProgressStore: ObservableObject {
         save()
     }
 
-    /// 该学科是否已全部通关（所有关卡都有星；含复习关与 boss 关）
+    /// 该学科是否已全部通关：正式关与 boss 关全部有星即算。
+    /// 复习关不做要求（与 nodeState 解锁链同口径，工单06）——
+    /// 否则跳过复习关打通 boss 后，水管不会弹「从头再玩」。
     func isSubjectComplete(_ subject: String) -> Bool {
-        let ids = LevelCatalog.ids(subject)
-        guard !ids.isEmpty else { return false }
-        return ids.allSatisfy { stars(for: subject, levelId: $0) > 0 }
+        let info = LevelCatalog.info(subject)
+        let required = zip(info.ids, info.reviews).filter { !$1 }.map(\.0)
+        guard !required.isEmpty else { return false }
+        return required.allSatisfy { stars(for: subject, levelId: $0) > 0 }
     }
 
     // MARK: 金币账本（只经此路变动；余额永不为负）

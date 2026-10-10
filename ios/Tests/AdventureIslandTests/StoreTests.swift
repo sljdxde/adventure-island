@@ -36,6 +36,24 @@ final class ProgressStoreTests: XCTestCase {
         XCTAssertEqual(store.nodeState(subject: "cn", index: 2, ids: ids), .locked)
     }
 
+    /// 学科通关口径与 nodeState 解锁链对齐：复习关不做要求（工单06），
+    /// 否则跳过复习关打通 boss 后，地图水管不弹「从头再玩」
+    func testSubjectCompleteIgnoresReviewLevels() throws {
+        let (store, _) = makeStore(day: "2026-09-29")
+        let info = LevelCatalog.info("astro")
+        XCTAssertTrue(info.reviews.contains(true), "夹具前提：astro 应含复习关")
+        let boss = try XCTUnwrap(info.ids.indices.first { info.bosses[$0] }, "夹具前提：astro 应含 boss 关")
+        let regulars = info.ids.indices.filter { !info.reviews[$0] && !info.bosses[$0] }
+
+        // 打通全部正式关但没打 boss → 未通关
+        for i in regulars { store.completeLevel(subject: "astro", levelId: info.ids[i], stars: 3) }
+        XCTAssertFalse(store.isSubjectComplete("astro"))
+
+        // 跳过全部复习关、打通 boss → 算通关
+        store.completeLevel(subject: "astro", levelId: info.ids[boss], stars: 3)
+        XCTAssertTrue(store.isSubjectComplete("astro"), "复习关不做要求，跳过复习关也应视为全通关")
+    }
+
     func testDailyTasksPerDay() {
         let (store, _) = makeStore(day: "2026-09-29")
         store.bumpDaily(subject: "cn")
