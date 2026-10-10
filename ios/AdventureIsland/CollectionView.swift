@@ -33,6 +33,9 @@ struct CollectionView: View {
         }
         .onAppear {
             if file == nil { file = ContentLoader.load(CollectionFile.self, "collection") }
+            #if DEBUG
+            if let tab = DebugLaunch.arg("-AITab") { activeTab = tab }
+            #endif
         }
     }
 
@@ -216,17 +219,19 @@ struct CollectionView: View {
         Button {
             guard collected else { return }
             if let fact = item.fact {
-                speech.speak(fact)
+                if group.id == "english" || group.id == "astro" { speech.speakEnglish(fact) }
+                else if group.id == "pinyin" { speech.speakPinyin(fact) }
+                else { speech.speak(fact) }
                 toast.show(fact, seconds: 3.2)
             } else if group.id == "english" {
-                speech.speak(item.name)
+                speech.speakEnglish(item.name)
                 toast.show(item.name)
             } else if group.id == "astro" {
                 let parts = item.name.components(separatedBy: " ")
-                speech.speak(parts.joined(separator: "，"))
+                speech.speakEnglish(parts.joined(separator: "，"))
                 toast.show(item.name)
             } else if let text = item.text, let pinyin = item.pinyin {
-                speech.speak("\(text)，\(pinyin)")
+                speech.speakPinyin("\(text)，\(pinyin)")
                 toast.show("\(text) · \(pinyin)")
             } else if let text = item.text {
                 speech.speak(text)
@@ -300,6 +305,8 @@ struct CollectionView: View {
         case "science": hint = "💡 去科学岛做实验，就能点亮更多现象图鉴"
         case "sticker": hint = "💡 完成每日任务、闯关成功都能掉落贴纸"
         case "hanzi": hint = "💡 在识字村闯关，就能点亮更多汉字卡"
+        case "pinyin": hint = "💡 在拼音谷闯关，就能点亮更多拼音卡"
+        case "english": hint = "💡 在英语王国闯关，学会更多单词"
         case "astro": hint = "💡 去天文台闯关，认识更多星空朋友"
         default: hint = "💡 徽章记录每一次了不起的坚持"
         }

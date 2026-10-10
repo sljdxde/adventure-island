@@ -50,7 +50,7 @@ struct StepContainerView: View {
         switch step.kind {
         case "teach": TeachStepView(step: step, onNext: onNext)
         case "letter": LetterStepView(step: step, subject: subject, onNext: onNext)
-        case "listen": ListenStepView(step: step, onWrong: onWrong, onNext: onNext, onCorrectCelebrate: onCorrectCelebrate)
+        case "listen": ListenStepView(step: step, subject: subject, onWrong: onWrong, onNext: onNext, onCorrectCelebrate: onCorrectCelebrate)
         case "blend": BlendStepView(step: step, onWrong: onWrong, onNext: onNext, onCorrectCelebrate: onCorrectCelebrate)
         case "arith": ArithStepView(step: step, onWrong: onWrong, onNext: onNext, onCorrectCelebrate: onCorrectCelebrate)
         case "pattern": PatternStepView(step: step, onWrong: onWrong, onNext: onNext, onCorrectCelebrate: onCorrectCelebrate)
@@ -371,8 +371,9 @@ struct BoardLevelView: View {
                 }
 
                 if phase == .roll {
+                    // 上移避开地下关（variant 3）底部 52pt 砖块排，防止提示气泡被砖块压住
                     diceDock
-                        .position(x: size.width / 2, y: size.height - 56)
+                        .position(x: size.width / 2, y: size.height - 132)
                 }
             }
         }

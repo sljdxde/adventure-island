@@ -59,11 +59,12 @@ final class BossFlowTests: XCTestCase {
 
     func testQuestionIndexAdvancesAndClamps() {
         var flow = BossFlow()
+        // boss 只有 3 心：第 3 次答对即败，题号在 3 处冻结（题库共 8 题也不再前进）
         for k in 1...7 {
             flow.answerCorrect(questionCount: qCount)
-            XCTAssertEqual(flow.questionIndex, min(k, qCount - 1))
+            XCTAssertEqual(flow.questionIndex, min(k, 3), "第 \(k) 次答对后的题号")
         }
-        // boss 在第 3 次答对时已败；结束后继续调用不再推进
+        // 结束后继续调用不再推进
         let idx = flow.questionIndex
         flow.answerCorrect(questionCount: qCount)
         XCTAssertEqual(flow.questionIndex, idx, "战斗结束后状态冻结")

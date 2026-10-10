@@ -17,9 +17,10 @@ final class ContentIntegrityTests: XCTestCase {
     struct Fixture: Codable { let icons: [String] }
 
     func testSubjectFilesDecodeAndValid() throws {
-        for (name, subject, expected) in [("cn_levels", "cn", 17), ("math_levels", "math", 17),
-                                          ("pinyin_levels", "pinyin", 14), ("english_levels", "english", 14),
-                                          ("astro_levels", "astro", 12)] {
+        // v0.8：每学科末尾新增 boss 关（cn/math 18、pinyin/english 15、astro 13）
+        for (name, subject, expected) in [("cn_levels", "cn", 18), ("math_levels", "math", 18),
+                                          ("pinyin_levels", "pinyin", 15), ("english_levels", "english", 15),
+                                          ("astro_levels", "astro", 13)] {
             let file = ContentLoader.load(SubjectFile.self, name)
             XCTAssertEqual(file.subject, subject)
             XCTAssertEqual(file.levels.count, expected, "\(name) 应有 \(expected) 关")
@@ -33,15 +34,25 @@ final class ContentIntegrityTests: XCTestCase {
                 if let board = level.board {
                     let spaces = board.spaces
                     let isReview = level.review == true
-                    XCTAssertTrue(isReview ? (10...12).contains(spaces.count) : (8...10).contains(spaces.count),
-                                  "\(name)/\(level.id) 棋盘格数 \(spaces.count) 与\(isReview ? "复习关" : "普通关")规格不符")
+                    let isBoss = level.boss == true
+                    if isBoss {
+                        // boss 战斗棋盘：8 格全题目，无宝箱/蘑菇/休息事件格
+                        XCTAssertEqual(spaces.count, 8, "\(name)/\(level.id) boss 棋盘应为 8 格")
+                        XCTAssertTrue(spaces.allSatisfy { $0.type == "question" },
+                                      "\(name)/\(level.id) boss 棋盘必须全部为题目格")
+                    } else {
+                        XCTAssertTrue(isReview ? (10...12).contains(spaces.count) : (8...10).contains(spaces.count),
+                                      "\(name)/\(level.id) 棋盘格数 \(spaces.count) 与\(isReview ? "复习关" : "普通关")规格不符")
+                    }
                     let questionCount = spaces.filter { $0.type == "question" }.count
                     let ratio = Double(questionCount) / Double(spaces.count)
                     XCTAssertGreaterThanOrEqual(ratio, 0.6,
                                   "\(name)/\(level.id) 题目格占比 \(ratio) 低于 60% 红线")
                     let eventCount = spaces.filter { ["chest", "mushroom", "rest"].contains($0.type) }.count
-                    XCTAssertTrue(isReview ? (2...4).contains(eventCount) : (1...2).contains(eventCount),
-                                  "\(name)/\(level.id) 事件格 \(eventCount) 个与\(isReview ? "复习关(加倍)" : "普通关")规格不符")
+                    if !isBoss {
+                        XCTAssertTrue(isReview ? (2...4).contains(eventCount) : (1...2).contains(eventCount),
+                                      "\(name)/\(level.id) 事件格 \(eventCount) 个与\(isReview ? "复习关(加倍)" : "普通关")规格不符")
+                    }
                     let stepIds = Set(level.steps.map(\.id))
                     var referenced = Set<String>()
                     for sp in spaces {

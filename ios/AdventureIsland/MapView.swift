@@ -13,6 +13,8 @@ struct MapView: View {
 
     @State private var cnContent: SubjectFile?
     @State private var mathContent: SubjectFile?
+    /// 已全部通关、点击水管后弹出「从头再玩 / 再战 Boss」选择的学科
+    @State private var finishedSubject: String?
 
     private let zones: [(icon: String, label: String, meta: String, pipe: String, subject: String, unit: String, total: Int)] = [
         ("panda", "识字村", "象形字 · 认读", "pipe-red", "cn", "关", 17),
@@ -36,7 +38,7 @@ struct MapView: View {
                     .padding(.top, 2)
 
                 pipesRow
-                    .padding(.top, 6)
+                    .padding(.top, 38)
 
                 Spacer(minLength: 4)
 
@@ -157,12 +159,12 @@ struct MapView: View {
 
     private var pipesRow: some View {
         HStack(alignment: .bottom, spacing: 2) {
-            zonePipe(zones[0], done: store.doneCount(subject: "cn", ids: LevelCatalog.ids("cn")), total: zones[0].total, isNew: false)
-            zonePipe(zones[1], done: store.doneCount(subject: "math", ids: LevelCatalog.ids("math")), total: zones[1].total, isNew: false)
+            zonePipe(zones[0], done: store.doneCount(subject: "cn", ids: LevelCatalog.ids("cn")), total: LevelCatalog.ids("cn").count, isNew: false)
+            zonePipe(zones[1], done: store.doneCount(subject: "math", ids: LevelCatalog.ids("math")), total: LevelCatalog.ids("math").count, isNew: false)
             zonePipe(zones[2], done: store.snapshot.collectedScience.count, total: zones[2].total, isNew: false)
-            zonePipe(zones[3], done: store.doneCount(subject: "pinyin", ids: LevelCatalog.ids("pinyin")), total: zones[3].total, isNew: false)
-            zonePipe(zones[4], done: store.doneCount(subject: "english", ids: LevelCatalog.ids("english")), total: zones[4].total, isNew: false)
-            zonePipe(zones[5], done: store.doneCount(subject: "astro", ids: LevelCatalog.ids("astro")), total: zones[5].total, isNew: true)
+            zonePipe(zones[3], done: store.doneCount(subject: "pinyin", ids: LevelCatalog.ids("pinyin")), total: LevelCatalog.ids("pinyin").count, isNew: false)
+            zonePipe(zones[4], done: store.doneCount(subject: "english", ids: LevelCatalog.ids("english")), total: LevelCatalog.ids("english").count, isNew: false)
+            zonePipe(zones[5], done: store.doneCount(subject: "astro", ids: LevelCatalog.ids("astro")), total: LevelCatalog.ids("astro").count, isNew: true)
         }
     }
 
@@ -184,7 +186,7 @@ struct MapView: View {
                                 toast.show("今天的金币领过啦，明天再来～", seconds: 1.6)
                             }
                         })
-                            .offset(y: -42)
+                            .offset(y: -58)
                     }
                     IconView(name: zone.icon, size: 30)
                         .offset(x: 36, y: 24)
@@ -231,6 +233,9 @@ struct MapView: View {
                 sound.systemTap()
                 if zone.subject == "lab" {
                     route = .lab
+                } else if store.isSubjectComplete(zone.subject) {
+                    // 全部通关：让孩子选择从头再玩，还是再战最后一关（Boss）
+                    finishedSubject = zone.subject
                 } else {
                     // 进入该学科当前关卡（复习关不挡正式关：沿 done 前进的落点必为已解锁节点）
                     var index = 0
@@ -245,6 +250,28 @@ struct MapView: View {
                 }
             }
             .frame(maxWidth: .infinity)
+            .confirmationDialog("全部通关啦！接下来想怎么玩？",
+                                isPresented: Binding(get: { finishedSubject != nil },
+                                                    set: { if !$0 { finishedSubject = nil } }),
+                                titleVisibility: .visible) {
+                if let s = finishedSubject {
+                    Button("🔄 从头再玩一次") {
+                        store.resetSubject(s)
+                        route = .level(subject: s, index: 0)
+                        finishedSubject = nil
+                    }
+                    Button("👾 再战最后一关（Boss）") {
+                        let ids = LevelCatalog.ids(s)
+                        route = .level(subject: s, index: max(0, ids.count - 1))
+                        finishedSubject = nil
+                    }
+                    Button("取消", role: .cancel) { finishedSubject = nil }
+                }
+            } message: {
+                if let s = finishedSubject, let title = SubjectConfig.map[s]?.title {
+                    Text("「\(title)」的 \(LevelCatalog.ids(s).count) 关已经全部通关。从头再玩会清空本学科的关卡星星（金币和收集册保留）。")
+                }
+            }
     }
 
     // MARK: 关卡路径（圆点 + 关卡节点 + 终点旗）

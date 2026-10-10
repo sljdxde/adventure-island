@@ -54,9 +54,10 @@ struct CeremonyView: View {
             VStack {
                 HStack {
                     Spacer()
-                    Text("本关完成！")
-                        .font(.kidTitle(34))
+                    Text(hasNext ? "本关完成！" : "🎉 \(SubjectConfig.map[subject]?.title ?? "本学科")全部通关啦！")
+                        .font(.kidTitle(hasNext ? 34 : 30))
                         .foregroundColor(.white)
+                        .multilineTextAlignment(.center)
                         .shadow(color: .black.opacity(0.35), radius: 4, y: 3)
                     Spacer()
                     Button {
@@ -124,38 +125,34 @@ struct CeremonyView: View {
 
                 Spacer().frame(width: 180)
 
-                // 城堡 + 开门 + 金币
+                // 城堡 + 开门 + 金币（双扇门贴合 castle.svg 自带的紫色拱门，
+                // 开门后露出城堡自身门洞，不再用大矩形遮挡城堡主楼）
                 ZStack(alignment: .bottom) {
                     IconView(name: "castle", size: 128)
-                    // 门洞（门打开后露出）
-                    RoundedRectangle(cornerRadius: 8)
-                        .fill(Color(hex: 0x5B4A8C))
-                        .frame(width: 44, height: 62)
-                        .offset(y: -8)
-                    // 双扇门
-                    Group {
+                    // 双扇门：与 SVG 门廊位置对齐（居中、宽 18、高 28、底边距底 15）
+                    HStack(spacing: 0) {
                         Rectangle().fill(Color(hex: 0xF7B7C4))
-                            .frame(width: 22, height: 62)
-                            .overlay(Rectangle().fill(Color(hex: 0xE892A6)).frame(width: 4),
+                            .frame(width: 9, height: 28)
+                            .overlay(Rectangle().fill(Color(hex: 0xE892A6)).frame(width: 2),
                                      alignment: .trailing)
                             .rotation3DEffect(.degrees(doorOpen ? -78 : 0),
                                               axis: (x: 0, y: 1, z: 0),
                                               anchor: .leading, perspective: 0.4)
-                            .offset(x: -22, y: -8)
                         Rectangle().fill(Color(hex: 0xF7B7C4))
-                            .frame(width: 22, height: 62)
-                            .overlay(Rectangle().fill(Color(hex: 0xE892A6)).frame(width: 4),
+                            .frame(width: 9, height: 28)
+                            .overlay(Rectangle().fill(Color(hex: 0xE892A6)).frame(width: 2),
                                      alignment: .leading)
                             .rotation3DEffect(.degrees(doorOpen ? 78 : 0),
                                               axis: (x: 0, y: 1, z: 0),
                                               anchor: .trailing, perspective: 0.4)
-                            .offset(x: 22, y: -8)
                     }
-                    // 金币（逐枚出现，向上弹后落）
+                    .clipShape(RoundedRectangle(cornerRadius: 6, style: .continuous))
+                    .padding(.bottom, 15)
+                    // 金币（逐枚出现，在城堡塔顶上方成弧，避免压住双塔与旗帜）
                     ForEach(coinIds, id: \.self) { i in
                         IconView(name: "coin", size: 30)
-                            .offset(x: CGFloat(-60 + (i % 3) * 52),
-                                    y: CGFloat(-78 - (i % 2) * 18))
+                            .offset(x: CGFloat(-56 + (i % 3) * 56),
+                                    y: CGFloat(-146 - (i % 2) * 16))
                     }
                     // 计数牌
                     if coinCount > 0 || !showButtons {
@@ -167,7 +164,7 @@ struct CeremonyView: View {
                         .padding(.horizontal, 14).padding(.vertical, 7)
                         .background(Capsule().fill(.white))
                         .shadow(color: .black.opacity(0.2), radius: 4, y: 3)
-                        .offset(y: -150)
+                        .offset(y: -196)
                         .opacity(coinIds.isEmpty && coinCount == 0 ? 0 : 1)
                     }
                 }
@@ -202,12 +199,20 @@ struct CeremonyView: View {
                         Button(action: onNext) {
                             Label("下一关", systemImage: "arrow.right").font(.kidHead(19))
                         }.buttonStyle(.jellyGreen)
+                    } else {
+                        // 最终关通关：一键清空本学科关卡星数，从第 1 关重新探险
+                        Button {
+                            store.resetSubject(subject)
+                            route = .level(subject: subject, index: 0)
+                        } label: {
+                            Label("从头再玩一次", systemImage: "arrow.counterclockwise").font(.kidHead(19))
+                        }.buttonStyle(.jellyGreen)
                     }
                     Button { route = .map } label: {
                         Label("返回地图", systemImage: "map").font(.kidHead(19))
                     }.buttonStyle(.jellyOrange)
                     Button(action: onReplay) {
-                        Label("再玩一次", systemImage: "arrow.counterclockwise").font(.kidHead(19))
+                        Label("再玩本关", systemImage: "arrow.clockwise").font(.kidHead(19))
                     }.buttonStyle(.jellyCream)
                 }
                 .transition(.move(edge: .bottom).combined(with: .opacity))
@@ -246,8 +251,8 @@ struct CeremonyView: View {
             mascotAtCastle = true
             try? await Task.sleep(nanoseconds: 450_000_000)
             doorOpen = true
-            // beat 3：金币逐枚计数
-            for i in 0..<max(rainTotal, 1) {
+            // beat 3：金币逐枚计数（本次实际入账 0 枚则不掉金币，避免"有币无计数"）
+            for i in 0..<rainTotal {
                 if Task.isCancelled { return }
                 coinIds.append(i)
                 coinCount = min(coinCount + 1, rainTotal)
@@ -273,7 +278,7 @@ struct CeremonyView: View {
         mascotAtCastle = true
         doorOpen = true
         coinCount = rainTotal
-        coinIds = Array(0..<max(rainTotal, 1))
+        coinIds = Array(0..<rainTotal)
         litStars = stars
         showSummary = true
         showButtons = true

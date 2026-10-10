@@ -14,6 +14,11 @@ struct AdventureIslandApp: App {
     init() {
         let s = SettingsStore()
         let p = ProgressStore()
+        #if DEBUG
+        DebugLaunch.seedIfNeeded(store: p)
+        // 与地图「全部通关」弹窗的「从头再玩一次」按钮走同一闭包（resetSubject + 第 0 关）
+        if let s = DebugLaunch.arg("-AIReset") { p.resetSubject(s) }
+        #endif
         _settings = StateObject(wrappedValue: s)
         _store = StateObject(wrappedValue: p)
         _timeManager = StateObject(wrappedValue: TimeManager(settings: s, store: p))
@@ -55,6 +60,9 @@ enum Route: Equatable {
     case lab
     case collection
     case parent
+    #if DEBUG
+    case debugCeremony(subject: String, index: Int, total: Int)
+    #endif
 }
 
 struct RootView: View {
@@ -63,9 +71,17 @@ struct RootView: View {
     @EnvironmentObject var timeManager: TimeManager
     @EnvironmentObject var speech: SpeechService
     @EnvironmentObject var toast: ToastCenter
-    @State private var route: Route = .map
+    @State private var route: Route
     @State private var confettiTrigger = 0
     @State private var showResetConfirm = false
+
+    init() {
+        #if DEBUG
+        _route = State(initialValue: DebugLaunch.initialRoute())
+        #else
+        _route = State(initialValue: .map)
+        #endif
+    }
 
     private let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
 
@@ -82,6 +98,16 @@ struct RootView: View {
                 CollectionView(route: $route)
             case .parent:
                 ParentView(route: $route)
+            #if DEBUG
+            case .debugCeremony(let subject, let index, let total):
+                ZStack {
+                    SceneBackground(theme: (SubjectConfig.map[subject] ?? SubjectConfig.map["cn"]!).theme)
+                    CeremonyView(subject: subject, index: index,
+                                 levelId: LevelCatalog.ids(subject)[safe: index] ?? "",
+                                 totalLevels: total, stars: 3, wrongCount: 0,
+                                 onNext: {}, onReplay: {}, route: $route)
+                }
+            #endif
             }
 
             ToastOverlay()

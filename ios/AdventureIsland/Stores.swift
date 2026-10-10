@@ -113,6 +113,22 @@ final class ProgressStore: ObservableObject {
         save()
     }
 
+    /// 重置单个学科的关卡星级（孩子「全部通关后从头再玩」）。
+    /// 金币、收集册、学习记录等战利品保留，只把该学科关卡路径恢复成未通关。
+    func resetSubject(_ subject: String) {
+        for id in LevelCatalog.ids(subject) {
+            snapshot.levelStars.removeValue(forKey: id)
+        }
+        save()
+    }
+
+    /// 该学科是否已全部通关（所有关卡都有星；含复习关与 boss 关）
+    func isSubjectComplete(_ subject: String) -> Bool {
+        let ids = LevelCatalog.ids(subject)
+        guard !ids.isEmpty else { return false }
+        return ids.allSatisfy { stars(for: subject, levelId: $0) > 0 }
+    }
+
     // MARK: 金币账本（只经此路变动；余额永不为负）
 
     /// 账本条目上限：只留最近 N 笔，防止进度文件无限膨胀（家长统计只看近期口径）

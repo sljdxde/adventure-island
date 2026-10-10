@@ -290,10 +290,10 @@ final class ReviewMigrationTests: XCTestCase {
         XCTAssertEqual(store.stars(for: "cn", levelId: "cn-4"), 3)
         XCTAssertEqual(store.stars(for: "cn", levelId: "cn-5"), 2)
         XCTAssertEqual(store.stars(for: "cn", levelId: "cn-r0"), 0, "新复习关无旧星")
-        // 复习关（位置 5）已解锁；正式关 cn-5（位置 6）不被复习关挡住
+        // 复习关（位置 5）已解锁；cn-5（位置 6）旧快照里已有 2 星 → done；下一关 cn-6（位置 7）解锁
         XCTAssertEqual(store.nodeState(subject: "cn", index: 5, ids: cnIds, reviews: cnReviews), .current)
-        XCTAssertEqual(store.nodeState(subject: "cn", index: 6, ids: cnIds, reviews: cnReviews), .current)
-        XCTAssertEqual(store.nodeState(subject: "cn", index: 7, ids: cnIds, reviews: cnReviews), .locked)
+        XCTAssertEqual(store.nodeState(subject: "cn", index: 6, ids: cnIds, reviews: cnReviews), .done)
+        XCTAssertEqual(store.nodeState(subject: "cn", index: 7, ids: cnIds, reviews: cnReviews), .current)
         // 后段复习关（位置 11）：前一个正式关 cn-9 未通关 → 锁定，cn-10 同样不解锁
         XCTAssertEqual(store.nodeState(subject: "cn", index: 11, ids: cnIds, reviews: cnReviews), .locked)
         XCTAssertEqual(store.nodeState(subject: "cn", index: 12, ids: cnIds, reviews: cnReviews), .locked)

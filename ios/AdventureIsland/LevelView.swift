@@ -76,6 +76,11 @@ struct LevelView: View {
             if content == nil {
                 content = ContentLoader.load(SubjectFile.self, config.file)
             }
+            #if DEBUG
+            if let stepArg = DebugLaunch.arg("-AIStep"), let n = Int(stepArg), n > 0 {
+                for _ in 0..<n { flow.advance(stepCount: level?.steps.count ?? 0) }
+            }
+            #endif
             // 学过的内容进收集册
             if let teach = level?.steps.first(where: { $0.kind == "teach" }), let ch = teach.char {
                 store.learnHanzi(ch)
@@ -218,7 +223,8 @@ struct TeachStepView: View {
                         )
                         .shadow(color: .brandCoralDdk, radius: 0, x: 0, y: 4)
                     Button {
-                        speech.speak("\(step.pinyin ?? "")。\(step.char ?? "")。\(step.words?.first?.say ?? "")")
+                        // 拼音注音（如 rì）必须先转中文同音字，否则会被 zh-CN 按英文字母名读出
+                        speech.speakPinyin("\(step.pinyin ?? "")。\(step.char ?? "")。\(step.words?.first?.say ?? "")")
                         toast.show("🔊 播放读音")
                     } label: {
                         ZStack {
@@ -700,6 +706,14 @@ struct LetterStepView: View {
     }
     private var guideIcon: String { isEnglish || isAstro ? "robot" : "panda" }
 
+    /// 按学科选择朗读语音：英语用 en-US，拼音转中文同音字，其余中文朗读
+    private func sayLetter(_ text: String?) {
+        guard let text else { return }
+        if isEnglish { speech.speakEnglish(text) }
+        else if subject == "pinyin" { speech.speakPinyin(text) }
+        else { speech.speak(text) }
+    }
+
     var body: some View {
         HStack(spacing: 22) {
             VStack(spacing: 14) {
@@ -744,7 +758,7 @@ struct LetterStepView: View {
 
                 HStack(spacing: 12) {
                     Button {
-                        speech.speak(isEnglish ? (step.display ?? "A") : (step.display ?? "a"))
+                        sayLetter(step.display ?? (isEnglish ? "A" : "a"))
                         toast.show("🔊 播放读音")
                     } label: {
                         HStack(spacing: 8) {
@@ -763,7 +777,7 @@ struct LetterStepView: View {
                 HStack(spacing: 10) {
                     ForEach(step.examples ?? [], id: \.text) { ex in
                         Button {
-                            speech.speak(ex.say ?? ex.text)
+                            sayLetter(ex.say ?? ex.text)
                             toast.show("例词：\(ex.text)")
                         } label: {
                             HStack(spacing: 6) {
@@ -813,6 +827,7 @@ struct LetterStepView: View {
 
 struct ListenStepView: View {
     let step: Step
+    let subject: String
     let onWrong: () -> Void
     let onNext: () -> Void
     let onCorrectCelebrate: () -> Void
@@ -821,6 +836,14 @@ struct ListenStepView: View {
     @Environment(\.soundService) private var sound
     @State private var solved = false
     @State private var wrongIndex: Int?
+
+    /// 按学科选择朗读语音（拼音转中文同音字，英语用 en-US）
+    private func say(_ text: String?) {
+        guard let text, !text.isEmpty else { return }
+        if subject == "pinyin" { speech.speakPinyin(text) }
+        else if subject == "english" { speech.speakEnglish(text) }
+        else { speech.speak(text) }
+    }
 
     var body: some View {
         VStack(spacing: 18) {
@@ -900,8 +923,8 @@ struct ListenStepView: View {
             } else {
                 // 朗读完全可选：想听再点，不做题的必要条件
                 Button {
-                    speech.speak(step.speakText ?? "")
-                    toast.show("🔊 朗读：\(step.speakText ?? "")")
+                    say(step.speakText ?? step.prompt ?? "")
+                    toast.show("🔊 朗读：\(step.speakText ?? step.prompt ?? "")")
                 } label: {
                     HStack(spacing: 8) {
                         IconView(name: "speaker", size: 20)
@@ -981,7 +1004,7 @@ struct BlendStepView: View {
                         if i == step.answer {
                             solved = true
                             sound.correct()
-                            if let t = opt.text { speech.speak(step.praise ?? "拼对了！\(t)") }
+                            if let t = opt.text { speech.speakPinyin(step.praise ?? "拼对了！\(t)") }
                             onCorrectCelebrate()
                             DispatchQueue.main.asyncAfter(deadline: .now() + 1.15) { onNext() }
                         } else {
@@ -1666,6 +1689,11 @@ struct MemoryStepView: View {
         .onAppear {
             if deck.isEmpty {
                 deck = (step.cards ?? []).shuffled()
+                #if DEBUG
+                if ProcessInfo.processInfo.arguments.contains("-AIFlip") {
+                    flipped = Set(0..<6)
+                }
+                #endif
             }
         }
     }
@@ -1711,6 +1739,8 @@ struct MemoryStepView: View {
                 .overlay(alignment: .topLeading) {
                     Text(suits[i % 4]).font(.system(size: 13)).padding(6)
                 }
+                // 牌面反向旋转 180°，抵消外层卡片翻转，避免翻开后内容左右镜像
+                .rotation3DEffect(.degrees(180), axis: (x: 0, y: 1, z: 0))
                 .opacity(isUp ? 1 : 0)
             }
             .frame(width: 150, height: 132)
