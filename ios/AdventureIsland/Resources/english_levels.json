@@ -1149,6 +1149,1089 @@
       ]
     },
     {
+      "id": "en-12",
+      "title": "Level 13 Animals",
+      "subtitle": "动物",
+      "steps": [
+        {
+          "id": "en-12-t",
+          "kind": "letter",
+          "letters": [
+            "C"
+          ],
+          "display": "Cat",
+          "examples": [
+            {
+              "icon": "cat",
+              "text": "Cat 猫",
+              "say": "Cat"
+            },
+            {
+              "icon": "duck",
+              "text": "Duck 鸭",
+              "say": "Duck"
+            },
+            {
+              "icon": "rabbit",
+              "text": "Rabbit 兔",
+              "say": "Rabbit"
+            },
+            {
+              "icon": "bear",
+              "text": "Bear 熊",
+              "say": "Bear"
+            }
+          ],
+          "question": "Learn: 动物 主题单词"
+        },
+        {
+          "id": "en-12-q1",
+          "kind": "quiz",
+          "question": "Which one is Cat? 猫 是哪一个？",
+          "options": [
+            {
+              "icon": "cat",
+              "text": "Cat"
+            },
+            {
+              "icon": "duck",
+              "text": "Duck"
+            },
+            {
+              "icon": "rabbit",
+              "text": "Rabbit"
+            }
+          ],
+          "answer": 0,
+          "hint": "Cat",
+          "praise": "Yes! It's Cat!"
+        },
+        {
+          "id": "en-12-m",
+          "kind": "memory",
+          "question": "翻翻牌：单词和图片配成对",
+          "cards": [
+            {
+              "key": "Cat",
+              "icon": "cat"
+            },
+            {
+              "key": "Cat",
+              "text": "Cat"
+            },
+            {
+              "key": "Duck",
+              "icon": "duck"
+            },
+            {
+              "key": "Duck",
+              "text": "Duck"
+            },
+            {
+              "key": "Rabbit",
+              "icon": "rabbit"
+            },
+            {
+              "key": "Rabbit",
+              "text": "Rabbit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "en-13",
+      "title": "Level 14 Colors",
+      "subtitle": "颜色",
+      "steps": [
+        {
+          "id": "en-13-t",
+          "kind": "letter",
+          "letters": [
+            "R"
+          ],
+          "display": "Red",
+          "examples": [
+            {
+              "icon": "apple",
+              "text": "Red 红",
+              "say": "Red"
+            },
+            {
+              "icon": "banana",
+              "text": "Yellow 黄",
+              "say": "Yellow"
+            },
+            {
+              "icon": "wave",
+              "text": "Blue 蓝",
+              "say": "Blue"
+            },
+            {
+              "icon": "leaf",
+              "text": "Green 绿",
+              "say": "Green"
+            }
+          ],
+          "question": "Learn: 颜色 主题单词"
+        },
+        {
+          "id": "en-13-q1",
+          "kind": "quiz",
+          "question": "Which one is Red? 红 是哪一个？",
+          "options": [
+            {
+              "icon": "banana",
+              "text": "Yellow"
+            },
+            {
+              "icon": "apple",
+              "text": "Red"
+            },
+            {
+              "icon": "wave",
+              "text": "Blue"
+            }
+          ],
+          "answer": 1,
+          "hint": "Red",
+          "praise": "Yes! It's Red!"
+        },
+        {
+          "id": "en-13-m",
+          "kind": "memory",
+          "question": "翻翻牌：单词和图片配成对",
+          "cards": [
+            {
+              "key": "Red",
+              "icon": "apple"
+            },
+            {
+              "key": "Red",
+              "text": "Red"
+            },
+            {
+              "key": "Yellow",
+              "icon": "banana"
+            },
+            {
+              "key": "Yellow",
+              "text": "Yellow"
+            },
+            {
+              "key": "Blue",
+              "icon": "wave"
+            },
+            {
+              "key": "Blue",
+              "text": "Blue"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "en-14",
+      "title": "Level 15 Numbers",
+      "subtitle": "数字",
+      "steps": [
+        {
+          "id": "en-14-t",
+          "kind": "letter",
+          "letters": [
+            "O"
+          ],
+          "display": "One",
+          "examples": [
+            {
+              "icon": "starface",
+              "text": "One 一",
+              "say": "One"
+            },
+            {
+              "icon": "star",
+              "text": "Two 二",
+              "say": "Two"
+            },
+            {
+              "icon": "moon",
+              "text": "Three 三",
+              "say": "Three"
+            },
+            {
+              "icon": "sun",
+              "text": "Four 四",
+              "say": "Four"
+            }
+          ],
+          "question": "Learn: 数字 主题单词"
+        },
+        {
+          "id": "en-14-q1",
+          "kind": "quiz",
+          "question": "Which one is One? 一 是哪一个？",
+          "options": [
+            {
+              "icon": "star",
+              "text": "Two"
+            },
+            {
+              "icon": "moon",
+              "text": "Three"
+            },
+            {
+              "icon": "starface",
+              "text": "One"
+            }
+          ],
+          "answer": 2,
+          "hint": "One",
+          "praise": "Yes! It's One!"
+        },
+        {
+          "id": "en-14-m",
+          "kind": "memory",
+          "question": "翻翻牌：单词和图片配成对",
+          "cards": [
+            {
+              "key": "One",
+              "icon": "starface"
+            },
+            {
+              "key": "One",
+              "text": "One"
+            },
+            {
+              "key": "Two",
+              "icon": "star"
+            },
+            {
+              "key": "Two",
+              "text": "Two"
+            },
+            {
+              "key": "Three",
+              "icon": "moon"
+            },
+            {
+              "key": "Three",
+              "text": "Three"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "en-15",
+      "title": "Level 16 Fruits",
+      "subtitle": "水果",
+      "steps": [
+        {
+          "id": "en-15-t",
+          "kind": "letter",
+          "letters": [
+            "A"
+          ],
+          "display": "Apple",
+          "examples": [
+            {
+              "icon": "apple",
+              "text": "Apple 苹果",
+              "say": "Apple"
+            },
+            {
+              "icon": "banana",
+              "text": "Banana 香蕉",
+              "say": "Banana"
+            },
+            {
+              "icon": "heart",
+              "text": "Peach 桃",
+              "say": "Peach"
+            },
+            {
+              "icon": "candy",
+              "text": "Grape 葡萄",
+              "say": "Grape"
+            }
+          ],
+          "question": "Learn: 水果 主题单词"
+        },
+        {
+          "id": "en-15-q1",
+          "kind": "quiz",
+          "question": "Which one is Apple? 苹果 是哪一个？",
+          "options": [
+            {
+              "icon": "apple",
+              "text": "Apple"
+            },
+            {
+              "icon": "banana",
+              "text": "Banana"
+            },
+            {
+              "icon": "heart",
+              "text": "Peach"
+            }
+          ],
+          "answer": 0,
+          "hint": "Apple",
+          "praise": "Yes! It's Apple!"
+        },
+        {
+          "id": "en-15-m",
+          "kind": "memory",
+          "question": "翻翻牌：单词和图片配成对",
+          "cards": [
+            {
+              "key": "Apple",
+              "icon": "apple"
+            },
+            {
+              "key": "Apple",
+              "text": "Apple"
+            },
+            {
+              "key": "Banana",
+              "icon": "banana"
+            },
+            {
+              "key": "Banana",
+              "text": "Banana"
+            },
+            {
+              "key": "Peach",
+              "icon": "heart"
+            },
+            {
+              "key": "Peach",
+              "text": "Peach"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "en-16",
+      "title": "Level 17 Family",
+      "subtitle": "家庭",
+      "steps": [
+        {
+          "id": "en-16-t",
+          "kind": "letter",
+          "letters": [
+            "M"
+          ],
+          "display": "Mom",
+          "examples": [
+            {
+              "icon": "girl",
+              "text": "Mom 妈妈",
+              "say": "Mom"
+            },
+            {
+              "icon": "fox",
+              "text": "Dad 爸爸",
+              "say": "Dad"
+            },
+            {
+              "icon": "paw",
+              "text": "Baby 宝宝",
+              "say": "Baby"
+            },
+            {
+              "icon": "home",
+              "text": "Home 家",
+              "say": "Home"
+            }
+          ],
+          "question": "Learn: 家庭 主题单词"
+        },
+        {
+          "id": "en-16-q1",
+          "kind": "quiz",
+          "question": "Which one is Mom? 妈妈 是哪一个？",
+          "options": [
+            {
+              "icon": "fox",
+              "text": "Dad"
+            },
+            {
+              "icon": "girl",
+              "text": "Mom"
+            },
+            {
+              "icon": "paw",
+              "text": "Baby"
+            }
+          ],
+          "answer": 1,
+          "hint": "Mom",
+          "praise": "Yes! It's Mom!"
+        },
+        {
+          "id": "en-16-m",
+          "kind": "memory",
+          "question": "翻翻牌：单词和图片配成对",
+          "cards": [
+            {
+              "key": "Mom",
+              "icon": "girl"
+            },
+            {
+              "key": "Mom",
+              "text": "Mom"
+            },
+            {
+              "key": "Dad",
+              "icon": "fox"
+            },
+            {
+              "key": "Dad",
+              "text": "Dad"
+            },
+            {
+              "key": "Baby",
+              "icon": "paw"
+            },
+            {
+              "key": "Baby",
+              "text": "Baby"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "en-17",
+      "title": "Level 18 Body",
+      "subtitle": "身体",
+      "steps": [
+        {
+          "id": "en-17-t",
+          "kind": "letter",
+          "letters": [
+            "E"
+          ],
+          "display": "Eye",
+          "examples": [
+            {
+              "icon": "starface",
+              "text": "Eye 眼睛",
+              "say": "Eye"
+            },
+            {
+              "icon": "paw",
+              "text": "Hand 手",
+              "say": "Hand"
+            },
+            {
+              "icon": "crystal",
+              "text": "Nose 鼻子",
+              "say": "Nose"
+            },
+            {
+              "icon": "speaker",
+              "text": "Mouth 嘴",
+              "say": "Mouth"
+            }
+          ],
+          "question": "Learn: 身体 主题单词"
+        },
+        {
+          "id": "en-17-q1",
+          "kind": "quiz",
+          "question": "Which one is Eye? 眼睛 是哪一个？",
+          "options": [
+            {
+              "icon": "paw",
+              "text": "Hand"
+            },
+            {
+              "icon": "crystal",
+              "text": "Nose"
+            },
+            {
+              "icon": "starface",
+              "text": "Eye"
+            }
+          ],
+          "answer": 2,
+          "hint": "Eye",
+          "praise": "Yes! It's Eye!"
+        },
+        {
+          "id": "en-17-m",
+          "kind": "memory",
+          "question": "翻翻牌：单词和图片配成对",
+          "cards": [
+            {
+              "key": "Eye",
+              "icon": "starface"
+            },
+            {
+              "key": "Eye",
+              "text": "Eye"
+            },
+            {
+              "key": "Hand",
+              "icon": "paw"
+            },
+            {
+              "key": "Hand",
+              "text": "Hand"
+            },
+            {
+              "key": "Nose",
+              "icon": "crystal"
+            },
+            {
+              "key": "Nose",
+              "text": "Nose"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "en-18",
+      "title": "Level 19 Stationery",
+      "subtitle": "文具",
+      "steps": [
+        {
+          "id": "en-18-t",
+          "kind": "letter",
+          "letters": [
+            "B"
+          ],
+          "display": "Book",
+          "examples": [
+            {
+              "icon": "book",
+              "text": "Book 书",
+              "say": "Book"
+            },
+            {
+              "icon": "gift",
+              "text": "Bag 书包",
+              "say": "Bag"
+            },
+            {
+              "icon": "key",
+              "text": "Pen 笔",
+              "say": "Pen"
+            },
+            {
+              "icon": "school",
+              "text": "School 学校",
+              "say": "School"
+            }
+          ],
+          "question": "Learn: 文具 主题单词"
+        },
+        {
+          "id": "en-18-q1",
+          "kind": "quiz",
+          "question": "Which one is Book? 书 是哪一个？",
+          "options": [
+            {
+              "icon": "book",
+              "text": "Book"
+            },
+            {
+              "icon": "gift",
+              "text": "Bag"
+            },
+            {
+              "icon": "key",
+              "text": "Pen"
+            }
+          ],
+          "answer": 0,
+          "hint": "Book",
+          "praise": "Yes! It's Book!"
+        },
+        {
+          "id": "en-18-m",
+          "kind": "memory",
+          "question": "翻翻牌：单词和图片配成对",
+          "cards": [
+            {
+              "key": "Book",
+              "icon": "book"
+            },
+            {
+              "key": "Book",
+              "text": "Book"
+            },
+            {
+              "key": "Bag",
+              "icon": "gift"
+            },
+            {
+              "key": "Bag",
+              "text": "Bag"
+            },
+            {
+              "key": "Pen",
+              "icon": "key"
+            },
+            {
+              "key": "Pen",
+              "text": "Pen"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "en-19",
+      "title": "Level 20 Food",
+      "subtitle": "食物",
+      "steps": [
+        {
+          "id": "en-19-t",
+          "kind": "letter",
+          "letters": [
+            "C"
+          ],
+          "display": "Cake",
+          "examples": [
+            {
+              "icon": "cake",
+              "text": "Cake 蛋糕",
+              "say": "Cake"
+            },
+            {
+              "icon": "candy",
+              "text": "Candy 糖",
+              "say": "Candy"
+            },
+            {
+              "icon": "bread",
+              "text": "Bread 面包",
+              "say": "Bread"
+            },
+            {
+              "icon": "milk",
+              "text": "Milk 牛奶",
+              "say": "Milk"
+            }
+          ],
+          "question": "Learn: 食物 主题单词"
+        },
+        {
+          "id": "en-19-q1",
+          "kind": "quiz",
+          "question": "Which one is Cake? 蛋糕 是哪一个？",
+          "options": [
+            {
+              "icon": "candy",
+              "text": "Candy"
+            },
+            {
+              "icon": "cake",
+              "text": "Cake"
+            },
+            {
+              "icon": "bread",
+              "text": "Bread"
+            }
+          ],
+          "answer": 1,
+          "hint": "Cake",
+          "praise": "Yes! It's Cake!"
+        },
+        {
+          "id": "en-19-m",
+          "kind": "memory",
+          "question": "翻翻牌：单词和图片配成对",
+          "cards": [
+            {
+              "key": "Cake",
+              "icon": "cake"
+            },
+            {
+              "key": "Cake",
+              "text": "Cake"
+            },
+            {
+              "key": "Candy",
+              "icon": "candy"
+            },
+            {
+              "key": "Candy",
+              "text": "Candy"
+            },
+            {
+              "key": "Bread",
+              "icon": "bread"
+            },
+            {
+              "key": "Bread",
+              "text": "Bread"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "en-20",
+      "title": "Level 21 Clothes",
+      "subtitle": "衣物",
+      "steps": [
+        {
+          "id": "en-20-t",
+          "kind": "letter",
+          "letters": [
+            "S"
+          ],
+          "display": "Shirt",
+          "examples": [
+            {
+              "icon": "hanger",
+              "text": "Shirt 衬衫",
+              "say": "Shirt"
+            },
+            {
+              "icon": "shoe",
+              "text": "Shoe 鞋",
+              "say": "Shoe"
+            },
+            {
+              "icon": "hat",
+              "text": "Hat 帽子",
+              "say": "Hat"
+            },
+            {
+              "icon": "bear",
+              "text": "Coat 外套",
+              "say": "Coat"
+            }
+          ],
+          "question": "Learn: 衣物 主题单词"
+        },
+        {
+          "id": "en-20-q1",
+          "kind": "quiz",
+          "question": "Which one is Shirt? 衬衫 是哪一个？",
+          "options": [
+            {
+              "icon": "shoe",
+              "text": "Shoe"
+            },
+            {
+              "icon": "hat",
+              "text": "Hat"
+            },
+            {
+              "icon": "hanger",
+              "text": "Shirt"
+            }
+          ],
+          "answer": 2,
+          "hint": "Shirt",
+          "praise": "Yes! It's Shirt!"
+        },
+        {
+          "id": "en-20-m",
+          "kind": "memory",
+          "question": "翻翻牌：单词和图片配成对",
+          "cards": [
+            {
+              "key": "Shirt",
+              "icon": "hanger"
+            },
+            {
+              "key": "Shirt",
+              "text": "Shirt"
+            },
+            {
+              "key": "Shoe",
+              "icon": "shoe"
+            },
+            {
+              "key": "Shoe",
+              "text": "Shoe"
+            },
+            {
+              "key": "Hat",
+              "icon": "hat"
+            },
+            {
+              "key": "Hat",
+              "text": "Hat"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "en-21",
+      "title": "Level 22 Transport",
+      "subtitle": "交通",
+      "steps": [
+        {
+          "id": "en-21-t",
+          "kind": "letter",
+          "letters": [
+            "T"
+          ],
+          "display": "Train",
+          "examples": [
+            {
+              "icon": "train",
+              "text": "Train 火车",
+              "say": "Train"
+            },
+            {
+              "icon": "rocket",
+              "text": "Rocket 火箭",
+              "say": "Rocket"
+            },
+            {
+              "icon": "wave",
+              "text": "Boat 船",
+              "say": "Boat"
+            },
+            {
+              "icon": "balloon",
+              "text": "Plane 飞机",
+              "say": "Plane"
+            }
+          ],
+          "question": "Learn: 交通 主题单词"
+        },
+        {
+          "id": "en-21-q1",
+          "kind": "quiz",
+          "question": "Which one is Train? 火车 是哪一个？",
+          "options": [
+            {
+              "icon": "train",
+              "text": "Train"
+            },
+            {
+              "icon": "rocket",
+              "text": "Rocket"
+            },
+            {
+              "icon": "wave",
+              "text": "Boat"
+            }
+          ],
+          "answer": 0,
+          "hint": "Train",
+          "praise": "Yes! It's Train!"
+        },
+        {
+          "id": "en-21-m",
+          "kind": "memory",
+          "question": "翻翻牌：单词和图片配成对",
+          "cards": [
+            {
+              "key": "Train",
+              "icon": "train"
+            },
+            {
+              "key": "Train",
+              "text": "Train"
+            },
+            {
+              "key": "Rocket",
+              "icon": "rocket"
+            },
+            {
+              "key": "Rocket",
+              "text": "Rocket"
+            },
+            {
+              "key": "Boat",
+              "icon": "wave"
+            },
+            {
+              "key": "Boat",
+              "text": "Boat"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "en-22",
+      "title": "Level 23 Actions",
+      "subtitle": "动作",
+      "steps": [
+        {
+          "id": "en-22-t",
+          "kind": "letter",
+          "letters": [
+            "R"
+          ],
+          "display": "Run",
+          "examples": [
+            {
+              "icon": "girl",
+              "text": "Run 跑",
+              "say": "Run"
+            },
+            {
+              "icon": "rabbit",
+              "text": "Jump 跳",
+              "say": "Jump"
+            },
+            {
+              "icon": "fish",
+              "text": "Swim 游",
+              "say": "Swim"
+            },
+            {
+              "icon": "bird",
+              "text": "Fly 飞",
+              "say": "Fly"
+            }
+          ],
+          "question": "Learn: 动作 主题单词"
+        },
+        {
+          "id": "en-22-q1",
+          "kind": "quiz",
+          "question": "Which one is Run? 跑 是哪一个？",
+          "options": [
+            {
+              "icon": "rabbit",
+              "text": "Jump"
+            },
+            {
+              "icon": "girl",
+              "text": "Run"
+            },
+            {
+              "icon": "fish",
+              "text": "Swim"
+            }
+          ],
+          "answer": 1,
+          "hint": "Run",
+          "praise": "Yes! It's Run!"
+        },
+        {
+          "id": "en-22-m",
+          "kind": "memory",
+          "question": "翻翻牌：单词和图片配成对",
+          "cards": [
+            {
+              "key": "Run",
+              "icon": "girl"
+            },
+            {
+              "key": "Run",
+              "text": "Run"
+            },
+            {
+              "key": "Jump",
+              "icon": "rabbit"
+            },
+            {
+              "key": "Jump",
+              "text": "Jump"
+            },
+            {
+              "key": "Swim",
+              "icon": "fish"
+            },
+            {
+              "key": "Swim",
+              "text": "Swim"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "en-23",
+      "title": "Level 24 Word Review",
+      "subtitle": "单词大复习",
+      "steps": [
+        {
+          "id": "en-23-m",
+          "kind": "memory",
+          "question": "翻翻牌：主题单词大配对",
+          "cards": [
+            {
+              "key": "cat",
+              "icon": "cat"
+            },
+            {
+              "key": "cat",
+              "text": "Cat"
+            },
+            {
+              "key": "apple",
+              "icon": "apple"
+            },
+            {
+              "key": "apple",
+              "text": "Apple"
+            },
+            {
+              "key": "train",
+              "icon": "train"
+            },
+            {
+              "key": "train",
+              "text": "Train"
+            }
+          ]
+        },
+        {
+          "id": "en-23-q1",
+          "kind": "quiz",
+          "question": "Which one is the cat? 猫是哪一个？",
+          "options": [
+            {
+              "icon": "bear",
+              "text": "Bear"
+            },
+            {
+              "icon": "cat",
+              "text": "Cat"
+            },
+            {
+              "icon": "rabbit",
+              "text": "Rabbit"
+            }
+          ],
+          "answer": 1,
+          "hint": "Cat 猫",
+          "praise": "Yes! Cat!"
+        },
+        {
+          "id": "en-23-q2",
+          "kind": "quiz",
+          "question": "Which one is the train? 火车是哪一个？",
+          "options": [
+            {
+              "icon": "rocket",
+              "text": "Rocket"
+            },
+            {
+              "icon": "wave",
+              "text": "Boat"
+            },
+            {
+              "icon": "train",
+              "text": "Train"
+            }
+          ],
+          "answer": 2,
+          "hint": "Train 火车",
+          "praise": "Yes! Train!"
+        }
+      ]
+    },
+    {
       "id": "english-boss",
       "title": "Boss 大挑战",
       "subtitle": "大壳壳兽 · 三颗心大决战",

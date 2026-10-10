@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs><linearGradient id="g-sand" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F7D98C"/><stop offset="1" stop-color="#E0A952"/></linearGradient><linearGradient id="g-coral" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFA793"/><stop offset="1" stop-color="#F0705F"/></linearGradient></defs>
+  <circle cx="32" cy="32" r="22" fill="url(#g-sand)"/>
+  <path d="M11 26 Q32 22 53 26" stroke="#D9A066" stroke-width="3.5" fill="none" opacity=".7"/>
+  <path d="M11 34 Q32 30 53 34" stroke="#B9854E" stroke-width="3.5" fill="none" opacity=".6"/>
+  <path d="M12 42 Q32 38 52 42" stroke="#D9A066" stroke-width="3.5" fill="none" opacity=".6"/>
+  <ellipse cx="40" cy="38" rx="5.5" ry="3" fill="url(#g-coral)"/>
+  <ellipse cx="25" cy="20" rx="6" ry="3.5" fill="#fff" opacity=".4" transform="rotate(-20 25 20)"/></svg>

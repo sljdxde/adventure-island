@@ -25,6 +25,44 @@ def ok(msg): passes.append(msg)
 def err(msg): errors.append(msg)
 def warn(msg): warnings.append(msg)
 
+# ---------- 数独唯一性求解器（工单05） ----------
+def sudoku_unique(sol, givens):
+    """按 givens 填 4x4，统计合法解数；返回是否恰好唯一"""
+    grid = [[-1] * 4 for _ in range(4)]
+    for g in givens:
+        grid[g["r"]][g["c"]] = g["v"]
+    def ok_pos(r, c, v):
+        for i in range(4):
+            if grid[r][i] == v or grid[i][c] == v:
+                return False
+        br, bc = (r // 2) * 2, (c // 2) * 2
+        for i in range(br, br + 2):
+            for j in range(bc, bc + 2):
+                if grid[i][j] == v:
+                    return False
+        return True
+    count = [0]
+    def bt():
+        if count[0] > 1:
+            return
+        cell = None
+        for r in range(4):
+            for c in range(4):
+                if grid[r][c] == -1:
+                    cell = (r, c); break
+            if cell:
+                break
+        if not cell:
+            count[0] += 1; return
+        r, c = cell
+        for v in range(4):
+            if ok_pos(r, c, v):
+                grid[r][c] = v; bt(); grid[r][c] = -1
+                if count[0] > 1:
+                    return
+    bt()
+    return count[0] == 1
+
 # ---------- 1. 内容 JSON ----------
 def load_json(path):
     with open(path, encoding="utf-8") as f:
@@ -34,7 +72,8 @@ manifest = load_json(os.path.join(DESIGN, "design/assets/manifest.json"))
 manifest_icons = {p.split("/")[1].replace(".svg", "") for p in manifest["icons"]} | \
                  {p.split("/")[1].replace(".svg", "") for p in manifest["bg"]}
 
-SUBJECTS = [("cn_levels", 18), ("math_levels", 18), ("pinyin_levels", 15), ("english_levels", 15), ("astro_levels", 13)]
+SUBJECTS = [("cn_levels", 33), ("math_levels", 37), ("pinyin_levels", 19),
+            ("english_levels", 27), ("astro_levels", 19), ("geo_levels", 15)]
 subject_docs = {name: load_json(os.path.join(RES, name + ".json")) for name, _ in SUBJECTS}
 exps = load_json(os.path.join(RES, "experiments.json"))
 coll = load_json(os.path.join(RES, "collection.json"))
@@ -203,7 +242,7 @@ def check_subject(doc, name, expect_levels):
                 correct = l + r if op == "+" else l - r
                 if correct not in (st.get("arithOptions") or []):
                     err(f"{sid} 选项不含正确答案 {correct}")
-                if not (0 <= correct <= 10): err(f"{sid} 结果超范围 {correct}")
+                if not (0 <= correct <= 200): err(f"{sid} 结果超范围 {correct}")
             elif kind == "compare":
                 keys = {o["key"] for o in st.get("compareOptions") or []}
                 if keys != {"left", "right", "same"}: err(f"{sid} 比较选项不完整 {keys}")
@@ -211,6 +250,133 @@ def check_subject(doc, name, expect_levels):
                 expect = "same" if l == r else ("left" if l > r else "right")
                 if st.get("answerKey") != expect:
                     err(f"{sid} 答案 {st.get('answerKey')} 与数量不符（应为 {expect}）")
+            elif kind == "write":
+                if not st.get("char") or not st.get("pinyin"):
+                    err(f"{sid} write 缺 char/pinyin")
+                strokes = st.get("strokes") or []
+                if not strokes:
+                    err(f"{sid} write 笔画序列为空")
+                for k, sk in enumerate(strokes):
+                    if not sk.get("d") or not sk.get("start"):
+                        err(f"{sid} write 第{k+1}笔缺 d/start")
+                    else:
+                        s = sk["start"]
+                        if not (isinstance(s.get("x"), (int, float)) and isinstance(s.get("y"), (int, float))):
+                            err(f"{sid} write 第{k+1}笔 start 坐标非法")
+            elif kind == "muldiv":
+                op, mode = st.get("op"), st.get("mode")
+                opts = st.get("options") or st.get("arithOptions") or []
+                ans = st.get("answer")
+                correct = None
+                if op == "×":
+                    g, p = st.get("groups"), st.get("per")
+                    if not isinstance(g, int) or not isinstance(p, int):
+                        err(f"{sid} muldiv× 缺 groups/per")
+                    else:
+                        correct = g * p
+                elif op == "÷":
+                    if mode == "average":
+                        t, g = st.get("total"), st.get("groups")
+                        if not isinstance(t, int) or not isinstance(g, int) or g == 0 or t % g != 0:
+                            err(f"{sid} 平均分不整除或缺参 {t}/{g}")
+                        else:
+                            correct = t // g
+                    elif mode == "contain":
+                        t, p = st.get("total"), st.get("per")
+                        if not isinstance(t, int) or not isinstance(p, int) or p == 0 or t % p != 0:
+                            err(f"{sid} 包含除不整除或缺参 {t}/{p}")
+                        else:
+                            correct = t // p
+                    else:
+                        err(f"{sid} muldiv÷ mode 非法 {mode}")
+                else:
+                    err(f"{sid} muldiv op 非法 {op}")
+                if correct is not None:
+                    if correct not in opts:
+                        err(f"{sid} muldiv 选项不含正确答案 {correct}")
+                    elif not isinstance(ans, int) or opts[ans] != correct:
+                        err(f"{sid} muldiv answer 指向错误")
+            elif kind == "cards":
+                from itertools import combinations
+                mode, target, pick = st.get("mode"), st.get("target"), st.get("pick")
+                cards = st.get("cards") or []
+                if not all(isinstance(c, int) and 1 <= c <= 10 for c in cards):
+                    err(f"{sid} cards 牌面应在 1-10：{cards}")
+                solved = False
+                if mode == "make10":
+                    if pick != 2: err(f"{sid} make10 pick 应为 2，实际 {pick}")
+                    solved = any(a + b == target for a, b in combinations(cards, 2))
+                elif mode == "target":
+                    if pick != 3: err(f"{sid} target pick 应为 3，实际 {pick}")
+                    for a, b, c in combinations(cards, 3):
+                        if target in (a + b + c, a + b - c, a - b + c, -a + b + c, a - b - c):
+                            solved = True; break
+                else:
+                    err(f"{sid} cards mode 非法 {mode}")
+                if not solved:
+                    err(f"{sid} cards 无合法解凑出目标 {target}")
+            elif kind == "sudoku":
+                if st.get("size") != 4: err(f"{sid} sudoku size 应为 4")
+                sol = st.get("solution") or []
+                givens = st.get("givens") or []
+                syms = st.get("symbols") or []
+                if len(syms) != 4: err(f"{sid} sudoku symbols 应为 4 个")
+                if len(sol) != 4 or any(len(r) != 4 for r in sol):
+                    err(f"{sid} sudoku solution 应为 4x4")
+                else:
+                    for r in range(4):
+                        if sorted(sol[r]) != [0, 1, 2, 3]: err(f"{sid} sudoku 第{r}行重复")
+                    for c in range(4):
+                        if sorted(sol[r][c] for r in range(4)) != [0, 1, 2, 3]: err(f"{sid} sudoku 第{c}列重复")
+                    for br in (0, 2):
+                        for bc in (0, 2):
+                            box = [sol[r][c] for r in range(br, br + 2) for c in range(bc, bc + 2)]
+                            if sorted(box) != [0, 1, 2, 3]: err(f"{sid} sudoku 2x2 宫重复")
+                    if not (4 <= len(givens) <= 8):
+                        err(f"{sid} sudoku givens 数量 {len(givens)} 不在 4-8")
+                    for g in givens:
+                        if sol[g["r"]][g["c"]] != g["v"]:
+                            err(f"{sid} sudoku given 与 solution 不一致")
+                    if not sudoku_unique(sol, givens):
+                        err(f"{sid} sudoku 解不唯一（求解器校验）")
+            elif kind == "clock":
+                mode, h, m = st.get("mode"), st.get("hour"), st.get("minute")
+                if not isinstance(h, int) or not (1 <= h <= 12):
+                    err(f"{sid} clock hour {h} 非法")
+                if m not in (0, 30):
+                    err(f"{sid} clock minute {m} 应为整点/半点")
+                if mode == "read":
+                    opts = st.get("options") or []
+                    ans = st.get("answer")
+                    if len(opts) != 3 or not isinstance(ans, int) or not (0 <= ans < 3):
+                        err(f"{sid} clock read 选项/答案非法")
+                    elif opts[ans] != f"{h}:{m:02d}":
+                        err(f"{sid} clock read answer {opts[ans]} 与钟面 {h}:{m:02d} 不一致")
+                elif mode != "set":
+                    err(f"{sid} clock mode 非法 {mode}")
+            elif kind == "money":
+                price = st.get("price")
+                denoms = st.get("denominations") or []
+                vals = [d.get("value") for d in denoms]
+                if not all(v in (1, 5, 10, 50, 100) for v in vals):
+                    err(f"{sid} money 面额非法 {vals}")
+                if not isinstance(price, int) or price <= 0:
+                    err(f"{sid} money price 非法 {price}")
+                else:
+                    dp = [False] * (price + 1); dp[0] = True
+                    for v in vals:
+                        for x in range(v, price + 1):
+                            if dp[x - v]: dp[x] = True
+                    if not dp[price]:
+                        err(f"{sid} money 无法用所选面额恰好付清 {price}")
+            elif kind == "mappuzzle":
+                regions = st.get("regions") or []
+                ids = [r.get("id") for r in regions]
+                if len(ids) != len(set(ids)):
+                    err(f"{sid} mappuzzle 块 id 重复 {ids}")
+                for r in regions:
+                    if not r.get("points") or len(r["points"]) < 3:
+                        err(f"{sid} mappuzzle 块 {r.get('id')} 多边形点数<3")
             else:
                 err(f"{sid} 未知步骤类型 {kind}")
 
@@ -234,10 +400,11 @@ for exp in exps["experiments"]:
 ok(f"[experiments] {len(exps['experiments'])} 个实验校验完成")
 
 group_ids = [g["id"] for g in coll["groups"]]
-if group_ids != ["science", "sticker", "hanzi", "pinyin", "english", "astro", "badge"]: err(f"[collection] 分组顺序异常 {group_ids}")
+if group_ids != ["science", "sticker", "hanzi", "pinyin", "english", "astro", "geo", "badge"]:
+    err(f"[collection] 分组顺序异常 {group_ids}")
 for g in coll["groups"]:
     if len(g["items"]) < 10: warn(f"[collection/{g['id']}] 条目 {len(g['items'])} 偏少")
-ok("[collection] 7 个分组校验完成")
+ok("[collection] 8 个分组校验完成")
 
 # ---------- 2. 资产一致性 ----------
 missing = json_icons - manifest_icons
@@ -260,7 +427,7 @@ m = re.search(r"enum IconEmoji \{[^{]*static let map: \[String: String\] = \[(.*
 if not m:
     err("未找到 IconEmoji.map 定义")
 else:
-    fallback = set(re.findall(r'"([a-zA-Z-]+)"\s*:', m.group(1)))
+    fallback = set(re.findall(r'"([a-zA-Z0-9-]+)"\s*:', m.group(1)))
     lack = manifest_icons - fallback
     if lack: err(f"以下图标缺少 Emoji 兜底: {sorted(lack)}")
     else: ok(f"Emoji 兜底覆盖全部 {len(manifest_icons)} 个图标")

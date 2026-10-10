@@ -15,6 +15,10 @@ final class TimeManager: ObservableObject {
     @Published private(set) var phase: Phase = .playing
     @Published private(set) var todaySeconds: Int = 0
     @Published private(set) var segmentSeconds: Int = 0   // 距上次休息的使用秒数
+    /// 单次/间隔休息被推迟到本关结算（对齐 HTML restPending / checkRestAfterSettle）
+    @Published private(set) var restPending = false
+    /// 是否处于棋盘/Boss/线性关进行中（由 RootView 按 route 设置）
+    var inLevel = false
 
     private(set) var dayKey: String = ""
     var now: () -> Date
@@ -76,12 +80,33 @@ final class TimeManager: ObservableObject {
             segmentSeconds += seconds
             saveUsage()
             if todaySeconds >= dailyLimitSeconds {
+                // 每日总量：立即收束，不推迟
                 phase = .dayOver
             } else if restIntervalSeconds > 0, segmentSeconds >= restIntervalSeconds {
-                phase = .resting(secondsLeft: Self.restDurationSeconds)
+                queueRestIfInLevel()
             } else if segmentSeconds >= sessionLimitSeconds {
-                phase = .resting(secondsLeft: Self.restDurationSeconds)
+                queueRestIfInLevel()
             }
+        }
+    }
+
+    /// 单次/间隔时限到：若正在闯关，先挂起 restPending，不立即打断；离开关卡（结算后）再进休息
+    private func queueRestIfInLevel() {
+        if inLevel {
+            restPending = true
+            segmentSeconds = 0          // 清空累计，休息完成后重新计时
+            saveUsage()
+        } else {
+            phase = .resting(secondsLeft: Self.restDurationSeconds)
+        }
+    }
+
+    /// RootView 按 route 设置是否在关卡内；离开关卡时若有挂起休息，立即进休息
+    func setInLevel(_ v: Bool) {
+        inLevel = v
+        if !v, restPending, phase == .playing {
+            restPending = false
+            phase = .resting(secondsLeft: Self.restDurationSeconds)
         }
     }
 

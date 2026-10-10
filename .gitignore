@@ -17,3 +17,7 @@ build/
 .zcode/
 .zcodeignore
 .video_agent/
+.workbuddy/
+
+# ===== 本地验证截图（体积大，不入库） =====
+.scratch/shots/

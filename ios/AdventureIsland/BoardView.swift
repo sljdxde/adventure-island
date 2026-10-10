@@ -4,10 +4,12 @@ import SwiftUI
 // 掷骰 → 蛇形路径逐格蹦跳 → 题目格出题（答对 +2 金币、答错可重答）→ 金币格 +5
 // → 到城堡走结算卡。路径形状按格数由渲染层计算，不进 JSON（规格实现决策 4）。
 
-/// 骰子点面（1-6 点）：掷骰步骤与棋盘掷骰共用
+/// 骰子点面（1-6 点）：掷骰步骤与棋盘掷骰共用。pip 决定点图案："dot"=红点（经典），
+/// 其余为已购骰子皮肤图标（fruit/star/paw/heart 等）
 struct DieFaceView: View {
     let face: Int
     var size: CGFloat = 64
+    var pip: String = "dot"
 
     /// 1-6 点的骰子点位坐标（0-1 比例）
     static let pips: [Int: [(Double, Double)]] = [
@@ -27,11 +29,16 @@ struct DieFaceView: View {
                     .stroke(Color(hex: 0xD8CBAF), lineWidth: size * 0.05))
                 .shadow(color: .ink.opacity(0.16), radius: 6, y: 4)
             ForEach(Array((Self.pips[face] ?? []).enumerated()), id: \.offset) { _, p in
-                Circle()
-                    .fill(RadialGradient(colors: [Color(hex: 0xE84838), Color(hex: 0xC24836)],
-                                         center: .center, startRadius: 0, endRadius: size * 0.11))
-                    .frame(width: size * 0.17, height: size * 0.17)
-                    .position(x: size * p.0, y: size * p.1)
+                if pip == "dot" {
+                    Circle()
+                        .fill(RadialGradient(colors: [Color(hex: 0xE84838), Color(hex: 0xC24836)],
+                                             center: .center, startRadius: 0, endRadius: size * 0.11))
+                        .frame(width: size * 0.17, height: size * 0.17)
+                        .position(x: size * p.0, y: size * p.1)
+                } else {
+                    IconView(name: pip, size: size * 0.19)
+                        .position(x: size * p.0, y: size * p.1)
+                }
             }
         }
         .frame(width: size, height: size)
@@ -62,6 +69,13 @@ struct StepContainerView: View {
         case "quiz": QuizStepView(step: step, onWrong: onWrong, onNext: onNext, onCorrectCelebrate: onCorrectCelebrate)
         case "count": CountStepView(step: step, onNext: onNext, onCorrectCelebrate: onCorrectCelebrate)
         case "compare": CompareStepView(step: step, onNext: onNext, onCorrectCelebrate: onCorrectCelebrate)
+        case "write": WriteStepView(step: step, subject: subject, onNext: onNext, onCorrectCelebrate: onCorrectCelebrate)
+        case "muldiv": MulDivStepView(step: step, onWrong: onWrong, onNext: onNext, onCorrectCelebrate: onCorrectCelebrate)
+        case "cards": CardsStepView(step: step, onNext: onNext, onCorrectCelebrate: onCorrectCelebrate)
+        case "sudoku": SudokuStepView(step: step, onNext: onNext, onCorrectCelebrate: onCorrectCelebrate)
+        case "clock": ClockStepView(step: step, onWrong: onWrong, onNext: onNext, onCorrectCelebrate: onCorrectCelebrate)
+        case "money": MoneyStepView(step: step, onNext: onNext, onCorrectCelebrate: onCorrectCelebrate)
+        case "mappuzzle": MapPuzzleStepView(step: step, subject: subject, onNext: onNext, onCorrectCelebrate: onCorrectCelebrate)
         default: EmptyView()
         }
     }
@@ -93,7 +107,7 @@ struct FinishCardView: View {
                             IconView(name: "flag", size: 30)
                             IconView(name: "castle", size: 66)
                         }
-                        IconView(name: index % 2 == 0 ? "mario" : "dino", size: 58)
+                        IconView(name: ShopCatalog.charIcon(for: store.snapshot.activeChar), size: 58)
                             .modifier(NodePulse(active: true))
                         Text("🎉").font(.system(size: 52))
                         IconView(name: "mushroom", size: 52)
@@ -271,6 +285,7 @@ struct BoardLevelView: View {
                              totalLevels: totalLevels,
                              stars: flow.stars,
                              wrongCount: flow.wrongCount,
+                             mascot: ShopCatalog.charIcon(for: store.snapshot.activeChar),
                              onNext: goNext,
                              onReplay: replay,
                              route: $route)
@@ -358,7 +373,7 @@ struct BoardLevelView: View {
                 IconView(name: "castle", size: 60)
                     .position(Self.point(n, n: n, in: size))
 
-                IconView(name: index % 2 == 0 ? "mario" : "dino", size: 54)
+                IconView(name: ShopCatalog.charIcon(for: store.snapshot.activeChar), size: 54)
                     .shadow(color: .black.opacity(0.25), radius: 4, y: 3)
                     .modifier(HopBounceModifier(tick: hopTick))
                     .position(Self.point(flow.position, n: n, in: size))
@@ -413,7 +428,8 @@ struct BoardLevelView: View {
                 rollDice()
             } label: {
                 HStack(spacing: 14) {
-                    DieFaceView(face: dieFace, size: 64)
+                    DieFaceView(face: dieFace, size: 64,
+                                pip: ShopCatalog.dicePipIcon(for: store.snapshot.activeDice))
                         .rotation3DEffect(.degrees(rolling ? 10 : 0), axis: (x: 1, y: 1, z: 0))
                     Text("掷骰子，前进！")
                         .font(.kidHead(23))
@@ -539,7 +555,7 @@ struct BoardLevelView: View {
             VStack(spacing: 12) {
                 ZStack {
                     IconView(name: "home", size: 124)
-                    IconView(name: index % 2 == 0 ? "mario" : "dino", size: 46)
+                    IconView(name: ShopCatalog.charIcon(for: store.snapshot.activeChar), size: 46)
                         .offset(y: 12)
                         .scaleEffect(restShowing ? 0.35 : 1)
                         .opacity(restShowing ? 0.2 : 1)

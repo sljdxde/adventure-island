@@ -902,6 +902,414 @@
       ]
     },
     {
+      "id": "astro-10",
+      "title": "第 11 关 岩质行星",
+      "subtitle": "水金地火",
+      "steps": [
+        {
+          "id": "astro-10-t",
+          "kind": "letter",
+          "letters": [
+            "Mercury"
+          ],
+          "display": "岩质四兄弟",
+          "examples": [
+            {
+              "icon": "mercury",
+              "text": "水星 Mercury",
+              "say": "水星"
+            },
+            {
+              "icon": "venus",
+              "text": "金星 Venus",
+              "say": "金星"
+            },
+            {
+              "icon": "earth",
+              "text": "地球 Earth",
+              "say": "地球"
+            },
+            {
+              "icon": "mars",
+              "text": "火星 Mars",
+              "say": "火星"
+            }
+          ],
+          "question": "学一学：离太阳最近的四颗岩质行星"
+        },
+        {
+          "id": "astro-10-q1",
+          "kind": "quiz",
+          "question": "哪个行星红红的，像火星？",
+          "options": [
+            {
+              "icon": "venus"
+            },
+            {
+              "icon": "mars"
+            },
+            {
+              "icon": "mercury"
+            }
+          ],
+          "answer": 1,
+          "hint": "火星是红色的",
+          "praise": "对，火星红红的！"
+        },
+        {
+          "id": "astro-10-q2",
+          "kind": "quiz",
+          "question": "我们住在哪颗行星上？",
+          "options": [
+            {
+              "icon": "earth",
+              "text": "地球"
+            },
+            {
+              "icon": "moon"
+            },
+            {
+              "icon": "sun"
+            }
+          ],
+          "answer": 0,
+          "hint": "蓝蓝的家",
+          "praise": "地球是我们的家！"
+        }
+      ]
+    },
+    {
+      "id": "astro-11",
+      "title": "第 12 关 巨行星",
+      "subtitle": "木土天海",
+      "steps": [
+        {
+          "id": "astro-11-t",
+          "kind": "letter",
+          "letters": [
+            "Jupiter"
+          ],
+          "display": "巨行星四兄弟",
+          "examples": [
+            {
+              "icon": "jupiter",
+              "text": "木星 Jupiter",
+              "say": "木星"
+            },
+            {
+              "icon": "saturn",
+              "text": "土星 Saturn",
+              "say": "土星"
+            },
+            {
+              "icon": "uranus",
+              "text": "天王星 Uranus",
+              "say": "天王星"
+            },
+            {
+              "icon": "neptune",
+              "text": "海王星 Neptune",
+              "say": "海王星"
+            }
+          ],
+          "question": "学一学：巨大的四颗行星，土星戴着光环"
+        },
+        {
+          "id": "astro-11-q1",
+          "kind": "quiz",
+          "question": "哪颗行星戴着像草帽的光环？",
+          "options": [
+            {
+              "icon": "jupiter"
+            },
+            {
+              "icon": "saturn"
+            },
+            {
+              "icon": "mars"
+            }
+          ],
+          "answer": 1,
+          "hint": "像大草帽",
+          "praise": "土星有美丽的光环！"
+        },
+        {
+          "id": "astro-11-q2",
+          "kind": "quiz",
+          "question": "八颗行星里个头最大的是谁？",
+          "options": [
+            {
+              "icon": "jupiter"
+            },
+            {
+              "icon": "earth"
+            },
+            {
+              "icon": "moon"
+            }
+          ],
+          "answer": 0,
+          "hint": "木星最大",
+          "praise": "木星是行星老大哥！"
+        }
+      ]
+    },
+    {
+      "id": "astro-12",
+      "title": "第 13 关 行星排排队",
+      "subtitle": "远近与大小",
+      "steps": [
+        {
+          "id": "astro-12-t",
+          "kind": "letter",
+          "letters": [
+            "Order"
+          ],
+          "display": "行星排队",
+          "examples": [
+            {
+              "icon": "mercury",
+              "text": "离太阳最近",
+              "say": "水星"
+            },
+            {
+              "icon": "neptune",
+              "text": "离太阳最远",
+              "say": "海王星"
+            }
+          ],
+          "question": "学一学：八颗行星按离太阳远近排排站"
+        },
+        {
+          "id": "astro-12-q1",
+          "kind": "quiz",
+          "question": "离太阳最近的行星是谁？",
+          "options": [
+            {
+              "icon": "mercury"
+            },
+            {
+              "icon": "earth"
+            },
+            {
+              "icon": "saturn"
+            }
+          ],
+          "answer": 0,
+          "hint": "排队第一名",
+          "praise": "水星排第一！"
+        },
+        {
+          "id": "astro-12-q2",
+          "kind": "quiz",
+          "question": "谁个头最大、是行星老大哥？",
+          "options": [
+            {
+              "icon": "moon"
+            },
+            {
+              "icon": "jupiter"
+            },
+            {
+              "icon": "mars"
+            }
+          ],
+          "answer": 1,
+          "hint": "大胖子",
+          "praise": "木星最大！"
+        }
+      ]
+    },
+    {
+      "id": "astro-13",
+      "title": "第 14 关 月亮变变变",
+      "subtitle": "月相循环",
+      "steps": [
+        {
+          "id": "astro-13-t",
+          "kind": "letter",
+          "letters": [
+            "Moon"
+          ],
+          "display": "月相变化",
+          "examples": [
+            {
+              "icon": "newmoon",
+              "text": "新月 New Moon",
+              "say": "新月"
+            },
+            {
+              "icon": "fullmoon",
+              "text": "满月 Full Moon",
+              "say": "满月"
+            }
+          ],
+          "question": "学一学：月亮有时弯弯、有时圆圆，月相在循环"
+        },
+        {
+          "id": "astro-13-p1",
+          "kind": "pattern",
+          "seq": [
+            "newmoon",
+            "fullmoon",
+            "newmoon"
+          ],
+          "question": "月相规律：下一个是新月还是满月？",
+          "options": [
+            {
+              "icon": "fullmoon"
+            },
+            {
+              "icon": "newmoon"
+            },
+            {
+              "icon": "star"
+            }
+          ],
+          "answer": 0,
+          "hint": "先读一读前面几个，找一找谁在轮流出现",
+          "praise": "规律找对啦，小侦探！"
+        },
+        {
+          "id": "astro-13-q1",
+          "kind": "quiz",
+          "question": "月亮为什么有时圆、有时弯？",
+          "options": [
+            {
+              "text": "月亮被太阳照亮的部分在变"
+            },
+            {
+              "text": "月亮真的变大变小"
+            },
+            {
+              "text": "被云挡住了"
+            }
+          ],
+          "answer": 0,
+          "hint": "月亮本身不发光",
+          "praise": "月相变化，真神奇！"
+        }
+      ]
+    },
+    {
+      "id": "astro-14",
+      "title": "第 15 关 银河系",
+      "subtitle": "我们的星之城",
+      "steps": [
+        {
+          "id": "astro-14-t",
+          "kind": "letter",
+          "letters": [
+            "Galaxy"
+          ],
+          "display": "银河系",
+          "examples": [
+            {
+              "icon": "milkyway",
+              "text": "银河系 Milky Way",
+              "say": "银河"
+            },
+            {
+              "icon": "sun",
+              "text": "太阳是其中一颗星",
+              "say": "太阳"
+            }
+          ],
+          "question": "学一学：银河系是千千万万颗星星组成的大城市"
+        },
+        {
+          "id": "astro-14-q1",
+          "kind": "quiz",
+          "question": "我们的太阳在哪个星系里？",
+          "options": [
+            {
+              "icon": "milkyway"
+            },
+            {
+              "icon": "comet"
+            },
+            {
+              "icon": "rocket"
+            }
+          ],
+          "answer": 0,
+          "hint": "星星大城市",
+          "praise": "我们在银河系！"
+        }
+      ]
+    },
+    {
+      "id": "astro-15",
+      "title": "第 16 关 宇航员",
+      "subtitle": "太空生活",
+      "steps": [
+        {
+          "id": "astro-15-t",
+          "kind": "letter",
+          "letters": [
+            "Astronaut"
+          ],
+          "display": "宇航员",
+          "examples": [
+            {
+              "icon": "astronaut",
+              "text": "宇航员 Astronaut",
+              "say": "宇航员"
+            },
+            {
+              "icon": "station",
+              "text": "空间站 Station",
+              "say": "空间站"
+            },
+            {
+              "icon": "blackhole",
+              "text": "黑洞 Black Hole",
+              "say": "黑洞"
+            }
+          ],
+          "question": "学一学：宇航员穿宇航服，在空间站里生活和做实验"
+        },
+        {
+          "id": "astro-15-q1",
+          "kind": "quiz",
+          "question": "宇航员在太空中住的大房子叫什么？",
+          "options": [
+            {
+              "icon": "station"
+            },
+            {
+              "icon": "castle"
+            },
+            {
+              "icon": "shop"
+            }
+          ],
+          "answer": 0,
+          "hint": "太空之家",
+          "praise": "空间站答对啦！"
+        },
+        {
+          "id": "astro-15-q2",
+          "kind": "quiz",
+          "question": "连光都逃不出来、超级重的洞叫什么？",
+          "options": [
+            {
+              "icon": "comet"
+            },
+            {
+              "icon": "blackhole"
+            },
+            {
+              "icon": "volcano"
+            }
+          ],
+          "answer": 1,
+          "hint": "神秘黑洞",
+          "praise": "黑洞真神秘！"
+        }
+      ]
+    },
+    {
       "id": "astro-boss",
       "title": "Boss 大挑战",
       "subtitle": "大壳壳兽 · 三颗心大决战",

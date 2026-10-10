@@ -5,8 +5,8 @@
   "levels": [
     {
       "id": "cn-0",
-      "title": "第 1 关 象形字",
-      "subtitle": "认识「日」",
+      "title": "第 1 关 识字写字",
+      "subtitle": "认识并会写「日」",
       "steps": [
         {
           "id": "cn-0-t",
@@ -117,28 +117,6 @@
           "praise": "记住啦！"
         },
         {
-          "id": "cn-0-w2",
-          "kind": "quiz",
-          "question": "再想一想：「日」还能组成哪个词？",
-          "options": [
-            {
-              "icon": "cake",
-              "text": "月饼"
-            },
-            {
-              "icon": "wave",
-              "text": "海浪"
-            },
-            {
-              "icon": "cake",
-              "text": "生日"
-            }
-          ],
-          "answer": 2,
-          "hint": "找一找还有「日」的词",
-          "praise": "又是组词高手：生日！"
-        },
-        {
           "id": "cn-0-l3",
           "kind": "listen",
           "prompt": "日",
@@ -159,6 +137,44 @@
           "answer": 1,
           "hint": "「日」长什么样",
           "praise": "又找对啦！日！"
+        },
+        {
+          "id": "cn-0-wr",
+          "kind": "write",
+          "char": "日",
+          "pinyin": "rì",
+          "strokes": [
+            {
+              "d": "M34 26 L34 74",
+              "start": {
+                "x": 34.0,
+                "y": 26.0
+              }
+            },
+            {
+              "d": "M34 26 L66 26 L66 74",
+              "start": {
+                "x": 34.0,
+                "y": 26.0
+              }
+            },
+            {
+              "d": "M34 50 L66 50",
+              "start": {
+                "x": 34.0,
+                "y": 50.0
+              }
+            },
+            {
+              "d": "M34 74 L66 74",
+              "start": {
+                "x": 34.0,
+                "y": 74.0
+              }
+            }
+          ],
+          "question": "写一写：看一笔、描一笔，写「日」",
+          "praise": "写得真好，汉字卡到手！"
         }
       ],
       "board": {
@@ -187,22 +203,22 @@
           },
           {
             "type": "question",
-            "step": "cn-0-w2"
+            "step": "cn-0-l3"
           },
           {
             "type": "chest"
           },
           {
             "type": "question",
-            "step": "cn-0-l3"
+            "step": "cn-0-wr"
           }
         ]
       }
     },
     {
       "id": "cn-1",
-      "title": "第 2 关 象形字",
-      "subtitle": "认识「月」",
+      "title": "第 2 关 识字写字",
+      "subtitle": "认识并会写「月」",
       "steps": [
         {
           "id": "cn-1-t",
@@ -313,28 +329,6 @@
           "praise": "记住啦！"
         },
         {
-          "id": "cn-1-w2",
-          "kind": "quiz",
-          "question": "再想一想：「月」还能组成哪个词？",
-          "options": [
-            {
-              "icon": "starface",
-              "text": "星星"
-            },
-            {
-              "icon": "leaf",
-              "text": "山林"
-            },
-            {
-              "icon": "leaf",
-              "text": "树叶"
-            }
-          ],
-          "answer": 0,
-          "hint": "找一找还有「月」的词",
-          "praise": "又是组词高手：星星！"
-        },
-        {
           "id": "cn-1-l3",
           "kind": "listen",
           "prompt": "月",
@@ -355,6 +349,44 @@
           "answer": 0,
           "hint": "「月」长什么样",
           "praise": "又找对啦！月！"
+        },
+        {
+          "id": "cn-1-wr",
+          "kind": "write",
+          "char": "月",
+          "pinyin": "yuè",
+          "strokes": [
+            {
+              "d": "M40 26 Q38 50 34 74",
+              "start": {
+                "x": 40.0,
+                "y": 26.0
+              }
+            },
+            {
+              "d": "M44 26 L66 26 L66 70 Q66 76 60 76",
+              "start": {
+                "x": 44.0,
+                "y": 26.0
+              }
+            },
+            {
+              "d": "M44 46 L62 46",
+              "start": {
+                "x": 44.0,
+                "y": 46.0
+              }
+            },
+            {
+              "d": "M44 62 L62 62",
+              "start": {
+                "x": 44.0,
+                "y": 62.0
+              }
+            }
+          ],
+          "question": "写一写：看一笔、描一笔，写「月」",
+          "praise": "写得真好，汉字卡到手！"
         }
       ],
       "board": {
@@ -376,14 +408,14 @@
           },
           {
             "type": "question",
-            "step": "cn-1-w2"
+            "step": "cn-1-l3"
           },
           {
             "type": "mushroom"
           },
           {
             "type": "question",
-            "step": "cn-1-l3"
+            "step": "cn-1-wr"
           },
           {
             "type": "question",
@@ -394,8 +426,8 @@
     },
     {
       "id": "cn-2",
-      "title": "第 3 关 象形字",
-      "subtitle": "认识「水」",
+      "title": "第 3 关 识字写字",
+      "subtitle": "认识并会写「水」",
       "steps": [
         {
           "id": "cn-2-t",
@@ -506,28 +538,6 @@
           "praise": "记住啦！"
         },
         {
-          "id": "cn-2-w2",
-          "kind": "quiz",
-          "question": "再想一想：「水」还能组成哪个词？",
-          "options": [
-            {
-              "icon": "speaker",
-              "text": "开口"
-            },
-            {
-              "icon": "crystal",
-              "text": "泉水"
-            },
-            {
-              "icon": "heart",
-              "text": "口水"
-            }
-          ],
-          "answer": 1,
-          "hint": "找一找还有「水」的词",
-          "praise": "又是组词高手：泉水！"
-        },
-        {
           "id": "cn-2-l3",
           "kind": "listen",
           "prompt": "水",
@@ -548,6 +558,44 @@
           "answer": 1,
           "hint": "「水」长什么样",
           "praise": "又找对啦！水！"
+        },
+        {
+          "id": "cn-2-wr",
+          "kind": "write",
+          "char": "水",
+          "pinyin": "shuǐ",
+          "strokes": [
+            {
+              "d": "M50 26 L50 70 Q50 76 44 74",
+              "start": {
+                "x": 50.0,
+                "y": 26.0
+              }
+            },
+            {
+              "d": "M44 36 Q38 44 32 48",
+              "start": {
+                "x": 44.0,
+                "y": 36.0
+              }
+            },
+            {
+              "d": "M42 50 Q38 60 34 68",
+              "start": {
+                "x": 42.0,
+                "y": 50.0
+              }
+            },
+            {
+              "d": "M58 40 Q64 54 70 66",
+              "start": {
+                "x": 58.0,
+                "y": 40.0
+              }
+            }
+          ],
+          "question": "写一写：看一笔、描一笔，写「水」",
+          "praise": "写得真好，汉字卡到手！"
         }
       ],
       "board": {
@@ -565,11 +613,11 @@
           },
           {
             "type": "question",
-            "step": "cn-2-w2"
+            "step": "cn-2-l3"
           },
           {
             "type": "question",
-            "step": "cn-2-l3"
+            "step": "cn-2-wr"
           },
           {
             "type": "coin"
@@ -590,8 +638,8 @@
     },
     {
       "id": "cn-3",
-      "title": "第 4 关 象形字",
-      "subtitle": "认识「山」",
+      "title": "第 4 关 识字写字",
+      "subtitle": "认识并会写「山」",
       "steps": [
         {
           "id": "cn-3-t",
@@ -697,28 +745,6 @@
           "praise": "记住啦！"
         },
         {
-          "id": "cn-3-w2",
-          "kind": "quiz",
-          "question": "再想一想：「山」还能组成哪个词？",
-          "options": [
-            {
-              "icon": "sprout",
-              "text": "田里"
-            },
-            {
-              "icon": "flower",
-              "text": "水田"
-            },
-            {
-              "icon": "leaf",
-              "text": "山林"
-            }
-          ],
-          "answer": 2,
-          "hint": "找一找还有「山」的词",
-          "praise": "又是组词高手：山林！"
-        },
-        {
           "id": "cn-3-l3",
           "kind": "listen",
           "prompt": "山",
@@ -739,6 +765,37 @@
           "answer": 2,
           "hint": "「山」长什么样",
           "praise": "又找对啦！山！"
+        },
+        {
+          "id": "cn-3-wr",
+          "kind": "write",
+          "char": "山",
+          "pinyin": "shān",
+          "strokes": [
+            {
+              "d": "M50 30 L50 72",
+              "start": {
+                "x": 50.0,
+                "y": 30.0
+              }
+            },
+            {
+              "d": "M32 38 L32 72 L68 72",
+              "start": {
+                "x": 32.0,
+                "y": 38.0
+              }
+            },
+            {
+              "d": "M68 38 L68 72",
+              "start": {
+                "x": 68.0,
+                "y": 38.0
+              }
+            }
+          ],
+          "question": "写一写：看一笔、描一笔，写「山」",
+          "praise": "写得真好，汉字卡到手！"
         }
       ],
       "board": {
@@ -749,14 +806,14 @@
           },
           {
             "type": "question",
-            "step": "cn-3-w2"
+            "step": "cn-3-l3"
           },
           {
             "type": "coin"
           },
           {
             "type": "question",
-            "step": "cn-3-l3"
+            "step": "cn-3-wr"
           },
           {
             "type": "question",
@@ -781,8 +838,8 @@
     },
     {
       "id": "cn-4",
-      "title": "第 5 关 象形字",
-      "subtitle": "认识「木」",
+      "title": "第 5 关 识字写字",
+      "subtitle": "认识并会写「木」",
       "steps": [
         {
           "id": "cn-4-t",
@@ -888,28 +945,6 @@
           "praise": "记住啦！"
         },
         {
-          "id": "cn-4-w2",
-          "kind": "quiz",
-          "question": "再想一想：「木」还能组成哪个词？",
-          "options": [
-            {
-              "icon": "flower",
-              "text": "花木"
-            },
-            {
-              "icon": "volcano",
-              "text": "火山"
-            },
-            {
-              "icon": "starface",
-              "text": "火花"
-            }
-          ],
-          "answer": 0,
-          "hint": "找一找还有「木」的词",
-          "praise": "又是组词高手：花木！"
-        },
-        {
           "id": "cn-4-l3",
           "kind": "listen",
           "prompt": "木",
@@ -930,17 +965,55 @@
           "answer": 1,
           "hint": "「木」长什么样",
           "praise": "又找对啦！木！"
+        },
+        {
+          "id": "cn-4-wr",
+          "kind": "write",
+          "char": "木",
+          "pinyin": "mù",
+          "strokes": [
+            {
+              "d": "M28 38 L72 38",
+              "start": {
+                "x": 28.0,
+                "y": 38.0
+              }
+            },
+            {
+              "d": "M50 30 L50 74",
+              "start": {
+                "x": 50.0,
+                "y": 30.0
+              }
+            },
+            {
+              "d": "M50 46 Q42 58 34 70",
+              "start": {
+                "x": 50.0,
+                "y": 46.0
+              }
+            },
+            {
+              "d": "M50 46 Q58 58 66 70",
+              "start": {
+                "x": 50.0,
+                "y": 46.0
+              }
+            }
+          ],
+          "question": "写一写：看一笔、描一笔，写「木」",
+          "praise": "写得真好，汉字卡到手！"
         }
       ],
       "board": {
         "spaces": [
           {
             "type": "question",
-            "step": "cn-4-w2"
+            "step": "cn-4-l3"
           },
           {
             "type": "question",
-            "step": "cn-4-l3"
+            "step": "cn-4-wr"
           },
           {
             "type": "coin"
@@ -1154,8 +1227,8 @@
     },
     {
       "id": "cn-5",
-      "title": "第 6 关 象形字",
-      "subtitle": "认识「人」",
+      "title": "第 6 关 识字写字",
+      "subtitle": "认识并会写「人」",
       "steps": [
         {
           "id": "cn-5-t",
@@ -1261,28 +1334,6 @@
           "praise": "记住啦！"
         },
         {
-          "id": "cn-5-w2",
-          "kind": "quiz",
-          "question": "再想一想：「人」还能组成哪个词？",
-          "options": [
-            {
-              "icon": "leaf",
-              "text": "小草"
-            },
-            {
-              "icon": "party",
-              "text": "人们"
-            },
-            {
-              "icon": "sprout",
-              "text": "草地"
-            }
-          ],
-          "answer": 1,
-          "hint": "找一找还有「人」的词",
-          "praise": "又是组词高手：人们！"
-        },
-        {
           "id": "cn-5-l3",
           "kind": "listen",
           "prompt": "人",
@@ -1303,13 +1354,37 @@
           "answer": 0,
           "hint": "「人」长什么样",
           "praise": "又找对啦！人！"
+        },
+        {
+          "id": "cn-5-wr",
+          "kind": "write",
+          "char": "人",
+          "pinyin": "rén",
+          "strokes": [
+            {
+              "d": "M50 26 Q40 52 30 74",
+              "start": {
+                "x": 50.0,
+                "y": 26.0
+              }
+            },
+            {
+              "d": "M50 40 Q60 58 72 74",
+              "start": {
+                "x": 50.0,
+                "y": 40.0
+              }
+            }
+          ],
+          "question": "写一写：看一笔、描一笔，写「人」",
+          "praise": "写得真好，汉字卡到手！"
         }
       ],
       "board": {
         "spaces": [
           {
             "type": "question",
-            "step": "cn-5-l3"
+            "step": "cn-5-wr"
           },
           {
             "type": "question",
@@ -1338,15 +1413,15 @@
           },
           {
             "type": "question",
-            "step": "cn-5-w2"
+            "step": "cn-5-l3"
           }
         ]
       }
     },
     {
       "id": "cn-6",
-      "title": "第 7 关 象形字",
-      "subtitle": "认识「口」",
+      "title": "第 7 关 识字写字",
+      "subtitle": "认识并会写「口」",
       "steps": [
         {
           "id": "cn-6-t",
@@ -1403,7 +1478,7 @@
               "text": "鸟"
             },
             {
-              "text": "日"
+              "text": "一"
             }
           ],
           "answer": 0,
@@ -1452,28 +1527,6 @@
           "praise": "记住啦！"
         },
         {
-          "id": "cn-6-w2",
-          "kind": "quiz",
-          "question": "再想一想：「口」还能组成哪个词？",
-          "options": [
-            {
-              "icon": "cake",
-              "text": "生日"
-            },
-            {
-              "icon": "calendar",
-              "text": "日子"
-            },
-            {
-              "icon": "heart",
-              "text": "口水"
-            }
-          ],
-          "answer": 2,
-          "hint": "找一找还有「口」的词",
-          "praise": "又是组词高手：口水！"
-        },
-        {
           "id": "cn-6-l3",
           "kind": "listen",
           "prompt": "口",
@@ -1494,6 +1547,37 @@
           "answer": 1,
           "hint": "「口」长什么样",
           "praise": "又找对啦！口！"
+        },
+        {
+          "id": "cn-6-wr",
+          "kind": "write",
+          "char": "口",
+          "pinyin": "kǒu",
+          "strokes": [
+            {
+              "d": "M36 32 L36 70",
+              "start": {
+                "x": 36.0,
+                "y": 32.0
+              }
+            },
+            {
+              "d": "M36 32 L64 32 L64 70",
+              "start": {
+                "x": 36.0,
+                "y": 32.0
+              }
+            },
+            {
+              "d": "M36 70 L64 70",
+              "start": {
+                "x": 36.0,
+                "y": 70.0
+              }
+            }
+          ],
+          "question": "写一写：看一笔、描一笔，写「口」",
+          "praise": "写得真好，汉字卡到手！"
         }
       ],
       "board": {
@@ -1522,22 +1606,22 @@
           },
           {
             "type": "question",
-            "step": "cn-6-w2"
+            "step": "cn-6-l3"
           },
           {
             "type": "chest"
           },
           {
             "type": "question",
-            "step": "cn-6-l3"
+            "step": "cn-6-wr"
           }
         ]
       }
     },
     {
       "id": "cn-7",
-      "title": "第 8 关 象形字",
-      "subtitle": "认识「天」",
+      "title": "第 8 关 识字写字",
+      "subtitle": "认识并会写「天」",
       "steps": [
         {
           "id": "cn-7-t",
@@ -1588,13 +1672,13 @@
           "question": "看一看：这张图变成的字是哪个？",
           "options": [
             {
-              "text": "月"
+              "text": "二"
             },
             {
               "text": "天"
             },
             {
-              "text": "水"
+              "text": "三"
             }
           ],
           "answer": 1,
@@ -1643,28 +1727,6 @@
           "praise": "记住啦！"
         },
         {
-          "id": "cn-7-w2",
-          "kind": "quiz",
-          "question": "再想一想：「天」还能组成哪个词？",
-          "options": [
-            {
-              "icon": "sunrise",
-              "text": "今天"
-            },
-            {
-              "icon": "wave",
-              "text": "海浪"
-            },
-            {
-              "icon": "crystal",
-              "text": "泉水"
-            }
-          ],
-          "answer": 0,
-          "hint": "找一找还有「天」的词",
-          "praise": "又是组词高手：今天！"
-        },
-        {
           "id": "cn-7-l3",
           "kind": "listen",
           "prompt": "天",
@@ -1685,6 +1747,44 @@
           "answer": 2,
           "hint": "「天」长什么样",
           "praise": "又找对啦！天！"
+        },
+        {
+          "id": "cn-7-wr",
+          "kind": "write",
+          "char": "天",
+          "pinyin": "tiān",
+          "strokes": [
+            {
+              "d": "M30 32 L70 32",
+              "start": {
+                "x": 30.0,
+                "y": 32.0
+              }
+            },
+            {
+              "d": "M34 46 L66 46",
+              "start": {
+                "x": 34.0,
+                "y": 46.0
+              }
+            },
+            {
+              "d": "M50 46 Q42 60 34 74",
+              "start": {
+                "x": 50.0,
+                "y": 46.0
+              }
+            },
+            {
+              "d": "M50 52 Q58 64 66 74",
+              "start": {
+                "x": 50.0,
+                "y": 52.0
+              }
+            }
+          ],
+          "question": "写一写：看一笔、描一笔，写「天」",
+          "praise": "写得真好，汉字卡到手！"
         }
       ],
       "board": {
@@ -1706,14 +1806,14 @@
           },
           {
             "type": "question",
-            "step": "cn-7-w2"
+            "step": "cn-7-l3"
           },
           {
             "type": "mushroom"
           },
           {
             "type": "question",
-            "step": "cn-7-l3"
+            "step": "cn-7-wr"
           },
           {
             "type": "question",
@@ -1724,8 +1824,8 @@
     },
     {
       "id": "cn-8",
-      "title": "第 9 关 象形字",
-      "subtitle": "认识「田」",
+      "title": "第 9 关 识字写字",
+      "subtitle": "认识并会写「田」",
       "steps": [
         {
           "id": "cn-8-t",
@@ -1776,10 +1876,10 @@
           "question": "看一看：这张图变成的字是哪个？",
           "options": [
             {
-              "text": "山"
+              "text": "四"
             },
             {
-              "text": "木"
+              "text": "五"
             },
             {
               "text": "田"
@@ -1831,28 +1931,6 @@
           "praise": "记住啦！"
         },
         {
-          "id": "cn-8-w2",
-          "kind": "quiz",
-          "question": "再想一想：「田」还能组成哪个词？",
-          "options": [
-            {
-              "icon": "leaf",
-              "text": "树叶"
-            },
-            {
-              "icon": "flower",
-              "text": "水田"
-            },
-            {
-              "icon": "flower",
-              "text": "花木"
-            }
-          ],
-          "answer": 1,
-          "hint": "找一找还有「田」的词",
-          "praise": "又是组词高手：水田！"
-        },
-        {
           "id": "cn-8-l3",
           "kind": "listen",
           "prompt": "田",
@@ -1873,6 +1951,51 @@
           "answer": 0,
           "hint": "「田」长什么样",
           "praise": "又找对啦！田！"
+        },
+        {
+          "id": "cn-8-wr",
+          "kind": "write",
+          "char": "田",
+          "pinyin": "tián",
+          "strokes": [
+            {
+              "d": "M32 30 L32 72",
+              "start": {
+                "x": 32.0,
+                "y": 30.0
+              }
+            },
+            {
+              "d": "M32 30 L68 30 L68 72",
+              "start": {
+                "x": 32.0,
+                "y": 30.0
+              }
+            },
+            {
+              "d": "M32 51 L68 51",
+              "start": {
+                "x": 32.0,
+                "y": 51.0
+              }
+            },
+            {
+              "d": "M50 30 L50 72",
+              "start": {
+                "x": 50.0,
+                "y": 30.0
+              }
+            },
+            {
+              "d": "M32 72 L68 72",
+              "start": {
+                "x": 32.0,
+                "y": 72.0
+              }
+            }
+          ],
+          "question": "写一写：看一笔、描一笔，写「田」",
+          "praise": "写得真好，汉字卡到手！"
         }
       ],
       "board": {
@@ -1890,11 +2013,11 @@
           },
           {
             "type": "question",
-            "step": "cn-8-w2"
+            "step": "cn-8-l3"
           },
           {
             "type": "question",
-            "step": "cn-8-l3"
+            "step": "cn-8-wr"
           },
           {
             "type": "coin"
@@ -1915,8 +2038,8 @@
     },
     {
       "id": "cn-9",
-      "title": "第 10 关 象形字",
-      "subtitle": "认识「石」",
+      "title": "第 10 关 识字写字",
+      "subtitle": "认识并会写「石」",
       "steps": [
         {
           "id": "cn-9-t",
@@ -1970,10 +2093,10 @@
               "text": "石"
             },
             {
-              "text": "人"
+              "text": "六"
             },
             {
-              "text": "口"
+              "text": "七"
             }
           ],
           "answer": 0,
@@ -2022,28 +2145,6 @@
           "praise": "记住啦！"
         },
         {
-          "id": "cn-9-w2",
-          "kind": "quiz",
-          "question": "再想一想：「石」还能组成哪个词？",
-          "options": [
-            {
-              "icon": "heart",
-              "text": "口水"
-            },
-            {
-              "icon": "sun",
-              "text": "天空"
-            },
-            {
-              "icon": "castle",
-              "text": "石桥"
-            }
-          ],
-          "answer": 2,
-          "hint": "找一找还有「石」的词",
-          "praise": "又是组词高手：石桥！"
-        },
-        {
           "id": "cn-9-l3",
           "kind": "listen",
           "prompt": "石",
@@ -2064,6 +2165,51 @@
           "answer": 1,
           "hint": "「石」长什么样",
           "praise": "又找对啦！石！"
+        },
+        {
+          "id": "cn-9-wr",
+          "kind": "write",
+          "char": "石",
+          "pinyin": "shí",
+          "strokes": [
+            {
+              "d": "M30 30 L66 30",
+              "start": {
+                "x": 30.0,
+                "y": 30.0
+              }
+            },
+            {
+              "d": "M40 30 Q36 50 30 70",
+              "start": {
+                "x": 40.0,
+                "y": 30.0
+              }
+            },
+            {
+              "d": "M52 38 L52 70",
+              "start": {
+                "x": 52.0,
+                "y": 38.0
+              }
+            },
+            {
+              "d": "M52 38 L68 38 L68 62",
+              "start": {
+                "x": 52.0,
+                "y": 38.0
+              }
+            },
+            {
+              "d": "M52 62 L68 62",
+              "start": {
+                "x": 52.0,
+                "y": 62.0
+              }
+            }
+          ],
+          "question": "写一写：看一笔、描一笔，写「石」",
+          "praise": "写得真好，汉字卡到手！"
         }
       ],
       "board": {
@@ -2074,14 +2220,14 @@
           },
           {
             "type": "question",
-            "step": "cn-9-w2"
+            "step": "cn-9-l3"
           },
           {
             "type": "coin"
           },
           {
             "type": "question",
-            "step": "cn-9-l3"
+            "step": "cn-9-wr"
           },
           {
             "type": "question",
@@ -2286,8 +2432,8 @@
     },
     {
       "id": "cn-10",
-      "title": "第 11 关 象形字",
-      "subtitle": "认识「火」",
+      "title": "第 11 关 识字写字",
+      "subtitle": "认识并会写「火」",
       "steps": [
         {
           "id": "cn-10-t",
@@ -2343,13 +2489,13 @@
           "question": "看一看：这张图变成的字是哪个？",
           "options": [
             {
-              "text": "天"
+              "text": "八"
             },
             {
               "text": "火"
             },
             {
-              "text": "田"
+              "text": "九"
             }
           ],
           "answer": 1,
@@ -2362,12 +2508,12 @@
           "question": "「火」可以组成哪个词？",
           "options": [
             {
-              "icon": "sunrise",
-              "text": "日出"
+              "icon": "equal",
+              "text": "一个"
             },
             {
-              "icon": "cake",
-              "text": "生日"
+              "icon": "sunrise",
+              "text": "一天"
             },
             {
               "icon": "flame",
@@ -2398,28 +2544,6 @@
           "praise": "记住啦！"
         },
         {
-          "id": "cn-10-w2",
-          "kind": "quiz",
-          "question": "再想一想：「火」还能组成哪个词？",
-          "options": [
-            {
-              "icon": "volcano",
-              "text": "火山"
-            },
-            {
-              "icon": "castle",
-              "text": "石桥"
-            },
-            {
-              "icon": "flower",
-              "text": "花朵"
-            }
-          ],
-          "answer": 0,
-          "hint": "找一找还有「火」的词",
-          "praise": "又是组词高手：火山！"
-        },
-        {
           "id": "cn-10-l3",
           "kind": "listen",
           "prompt": "火",
@@ -2440,17 +2564,55 @@
           "answer": 1,
           "hint": "「火」长什么样",
           "praise": "又找对啦！火！"
+        },
+        {
+          "id": "cn-10-wr",
+          "kind": "write",
+          "char": "火",
+          "pinyin": "huǒ",
+          "strokes": [
+            {
+              "d": "M42 32 Q40 38 38 42",
+              "start": {
+                "x": 42.0,
+                "y": 32.0
+              }
+            },
+            {
+              "d": "M58 28 Q50 46 40 66",
+              "start": {
+                "x": 58.0,
+                "y": 28.0
+              }
+            },
+            {
+              "d": "M50 40 Q44 54 38 68",
+              "start": {
+                "x": 50.0,
+                "y": 40.0
+              }
+            },
+            {
+              "d": "M54 46 Q60 58 66 70",
+              "start": {
+                "x": 54.0,
+                "y": 46.0
+              }
+            }
+          ],
+          "question": "写一写：看一笔、描一笔，写「火」",
+          "praise": "写得真好，汉字卡到手！"
         }
       ],
       "board": {
         "spaces": [
           {
             "type": "question",
-            "step": "cn-10-w2"
+            "step": "cn-10-l3"
           },
           {
             "type": "question",
-            "step": "cn-10-l3"
+            "step": "cn-10-wr"
           },
           {
             "type": "coin"
@@ -2485,8 +2647,8 @@
     },
     {
       "id": "cn-11",
-      "title": "第 12 关 象形字",
-      "subtitle": "认识「花」",
+      "title": "第 12 关 识字写字",
+      "subtitle": "认识并会写「花」",
       "steps": [
         {
           "id": "cn-11-t",
@@ -2542,10 +2704,10 @@
           "question": "看一看：这张图变成的字是哪个？",
           "options": [
             {
-              "text": "石"
+              "text": "十"
             },
             {
-              "text": "火"
+              "text": "大"
             },
             {
               "text": "花"
@@ -2565,12 +2727,12 @@
               "text": "花朵"
             },
             {
-              "icon": "moon",
-              "text": "月亮"
+              "icon": "calendar",
+              "text": "第二"
             },
             {
-              "icon": "starface",
-              "text": "星星"
+              "icon": "star",
+              "text": "三个"
             }
           ],
           "answer": 0,
@@ -2597,28 +2759,6 @@
           "praise": "记住啦！"
         },
         {
-          "id": "cn-11-w2",
-          "kind": "quiz",
-          "question": "再想一想：「花」还能组成哪个词？",
-          "options": [
-            {
-              "icon": "sprout",
-              "text": "草地"
-            },
-            {
-              "icon": "leaf",
-              "text": "花瓣"
-            },
-            {
-              "icon": "duck",
-              "text": "小鸟"
-            }
-          ],
-          "answer": 1,
-          "hint": "找一找还有「花」的词",
-          "praise": "又是组词高手：花瓣！"
-        },
-        {
           "id": "cn-11-l3",
           "kind": "listen",
           "prompt": "花",
@@ -2639,13 +2779,58 @@
           "answer": 2,
           "hint": "「花」长什么样",
           "praise": "又找对啦！花！"
+        },
+        {
+          "id": "cn-11-wr",
+          "kind": "write",
+          "char": "花",
+          "pinyin": "huā",
+          "strokes": [
+            {
+              "d": "M28 30 L72 30",
+              "start": {
+                "x": 28.0,
+                "y": 30.0
+              }
+            },
+            {
+              "d": "M38 30 L38 44",
+              "start": {
+                "x": 38.0,
+                "y": 30.0
+              }
+            },
+            {
+              "d": "M62 30 L62 44",
+              "start": {
+                "x": 62.0,
+                "y": 30.0
+              }
+            },
+            {
+              "d": "M50 44 Q42 58 34 72",
+              "start": {
+                "x": 50.0,
+                "y": 44.0
+              }
+            },
+            {
+              "d": "M50 44 L50 66 Q50 74 58 74",
+              "start": {
+                "x": 50.0,
+                "y": 44.0
+              }
+            }
+          ],
+          "question": "写一写：看一笔、描一笔，写「花」",
+          "praise": "写得真好，汉字卡到手！"
         }
       ],
       "board": {
         "spaces": [
           {
             "type": "question",
-            "step": "cn-11-l3"
+            "step": "cn-11-wr"
           },
           {
             "type": "question",
@@ -2674,15 +2859,15 @@
           },
           {
             "type": "question",
-            "step": "cn-11-w2"
+            "step": "cn-11-l3"
           }
         ]
       }
     },
     {
       "id": "cn-12",
-      "title": "第 13 关 象形字",
-      "subtitle": "认识「草」",
+      "title": "第 13 关 识字写字",
+      "subtitle": "认识并会写「草」",
       "steps": [
         {
           "id": "cn-12-t",
@@ -2736,10 +2921,10 @@
               "text": "草"
             },
             {
-              "text": "花"
+              "text": "小"
             },
             {
-              "text": "鸟"
+              "text": "上"
             }
           ],
           "answer": 0,
@@ -2752,16 +2937,16 @@
           "question": "「草」可以组成哪个词？",
           "options": [
             {
-              "icon": "cake",
-              "text": "月饼"
+              "icon": "school",
+              "text": "三角"
             },
             {
               "icon": "leaf",
               "text": "小草"
             },
             {
-              "icon": "wave",
-              "text": "海浪"
+              "icon": "calendar",
+              "text": "四季"
             }
           ],
           "answer": 1,
@@ -2788,28 +2973,6 @@
           "praise": "记住啦！"
         },
         {
-          "id": "cn-12-w2",
-          "kind": "quiz",
-          "question": "再想一想：「草」还能组成哪个词？",
-          "options": [
-            {
-              "icon": "sunrise",
-              "text": "日出"
-            },
-            {
-              "icon": "cake",
-              "text": "生日"
-            },
-            {
-              "icon": "sprout",
-              "text": "草地"
-            }
-          ],
-          "answer": 2,
-          "hint": "找一找还有「草」的词",
-          "praise": "又是组词高手：草地！"
-        },
-        {
           "id": "cn-12-l3",
           "kind": "listen",
           "prompt": "草",
@@ -2830,6 +2993,58 @@
           "answer": 2,
           "hint": "「草」长什么样",
           "praise": "又找对啦！草！"
+        },
+        {
+          "id": "cn-12-wr",
+          "kind": "write",
+          "char": "草",
+          "pinyin": "cǎo",
+          "strokes": [
+            {
+              "d": "M28 26 L72 26",
+              "start": {
+                "x": 28.0,
+                "y": 26.0
+              }
+            },
+            {
+              "d": "M36 26 L36 42",
+              "start": {
+                "x": 36.0,
+                "y": 26.0
+              }
+            },
+            {
+              "d": "M64 26 L64 42",
+              "start": {
+                "x": 64.0,
+                "y": 26.0
+              }
+            },
+            {
+              "d": "M42 44 L42 74",
+              "start": {
+                "x": 42.0,
+                "y": 44.0
+              }
+            },
+            {
+              "d": "M42 52 L62 52",
+              "start": {
+                "x": 42.0,
+                "y": 52.0
+              }
+            },
+            {
+              "d": "M52 44 L52 74",
+              "start": {
+                "x": 52.0,
+                "y": 44.0
+              }
+            }
+          ],
+          "question": "写一写：看一笔、描一笔，写「草」",
+          "praise": "写得真好，汉字卡到手！"
         }
       ],
       "board": {
@@ -2858,22 +3073,22 @@
           },
           {
             "type": "question",
-            "step": "cn-12-w2"
+            "step": "cn-12-l3"
           },
           {
             "type": "chest"
           },
           {
             "type": "question",
-            "step": "cn-12-l3"
+            "step": "cn-12-wr"
           }
         ]
       }
     },
     {
       "id": "cn-13",
-      "title": "第 14 关 象形字",
-      "subtitle": "认识「鸟」",
+      "title": "第 14 关 识字写字",
+      "subtitle": "认识并会写「鸟」",
       "steps": [
         {
           "id": "cn-13-t",
@@ -2924,13 +3139,13 @@
           "question": "看一看：这张图变成的字是哪个？",
           "options": [
             {
-              "text": "日"
+              "text": "下"
             },
             {
               "text": "鸟"
             },
             {
-              "text": "月"
+              "text": "星"
             }
           ],
           "answer": 1,
@@ -2943,12 +3158,12 @@
           "question": "「鸟」可以组成哪个词？",
           "options": [
             {
-              "icon": "leaf",
-              "text": "露珠"
+              "icon": "star",
+              "text": "五个"
             },
             {
-              "icon": "school",
-              "text": "上山"
+              "icon": "party",
+              "text": "五官"
             },
             {
               "icon": "duck",
@@ -2979,28 +3194,6 @@
           "praise": "记住啦！"
         },
         {
-          "id": "cn-13-w2",
-          "kind": "quiz",
-          "question": "再想一想：「鸟」还能组成哪个词？",
-          "options": [
-            {
-              "icon": "leaf",
-              "text": "鸟窝"
-            },
-            {
-              "icon": "cake",
-              "text": "月饼"
-            },
-            {
-              "icon": "wave",
-              "text": "海浪"
-            }
-          ],
-          "answer": 0,
-          "hint": "找一找还有「鸟」的词",
-          "praise": "又是组词高手：鸟窝！"
-        },
-        {
           "id": "cn-13-l3",
           "kind": "listen",
           "prompt": "鸟",
@@ -3021,6 +3214,51 @@
           "answer": 1,
           "hint": "「鸟」长什么样",
           "praise": "又找对啦！鸟！"
+        },
+        {
+          "id": "cn-13-wr",
+          "kind": "write",
+          "char": "鸟",
+          "pinyin": "niǎo",
+          "strokes": [
+            {
+              "d": "M46 24 Q42 30 38 34",
+              "start": {
+                "x": 46.0,
+                "y": 24.0
+              }
+            },
+            {
+              "d": "M42 32 L64 32 L64 58 Q64 66 56 66",
+              "start": {
+                "x": 42.0,
+                "y": 32.0
+              }
+            },
+            {
+              "d": "M46 44 Q48 48 50 50",
+              "start": {
+                "x": 46.0,
+                "y": 44.0
+              }
+            },
+            {
+              "d": "M46 56 L58 56 L58 64 Q58 70 52 70",
+              "start": {
+                "x": 46.0,
+                "y": 56.0
+              }
+            },
+            {
+              "d": "M44 66 L62 66",
+              "start": {
+                "x": 44.0,
+                "y": 66.0
+              }
+            }
+          ],
+          "question": "写一写：看一笔、描一笔，写「鸟」",
+          "praise": "写得真好，汉字卡到手！"
         }
       ],
       "board": {
@@ -3042,14 +3280,14 @@
           },
           {
             "type": "question",
-            "step": "cn-13-w2"
+            "step": "cn-13-l3"
           },
           {
             "type": "mushroom"
           },
           {
             "type": "question",
-            "step": "cn-13-l3"
+            "step": "cn-13-wr"
           },
           {
             "type": "question",
@@ -3060,139 +3298,150 @@
     },
     {
       "id": "cn-14",
-      "title": "第 15 关 复习挑战",
-      "subtitle": "汉字小达人",
+      "title": "第 15 关 识字写字",
+      "subtitle": "认识并会写「一」",
       "steps": [
         {
-          "id": "cn-14-m",
-          "kind": "memory",
-          "question": "翻翻牌：把字和它的图片配成对",
-          "cards": [
+          "id": "cn-14-t",
+          "kind": "teach",
+          "morphFrom": "equal",
+          "char": "一",
+          "pinyin": "yī",
+          "words": [
             {
-              "key": "日",
-              "icon": "sunface"
+              "icon": "equal",
+              "text": "一个",
+              "say": "一个"
             },
             {
-              "key": "日",
-              "text": "日"
-            },
-            {
-              "key": "月",
-              "icon": "moon"
-            },
-            {
-              "key": "月",
-              "text": "月"
-            },
-            {
-              "key": "火",
-              "icon": "flame"
-            },
-            {
-              "key": "火",
-              "text": "火"
+              "icon": "sunrise",
+              "text": "一天",
+              "say": "一天"
             }
           ]
         },
         {
-          "id": "cn-14-l1",
+          "id": "cn-14-l",
           "kind": "listen",
-          "promptIcon": "flame",
-          "speakText": "火",
+          "prompt": "一",
+          "speakText": "一",
+          "question": "找一找：哪张图片是「一」？",
+          "options": [
+            {
+              "icon": "equal",
+              "text": "一"
+            },
+            {
+              "icon": "sun"
+            },
+            {
+              "icon": "moon"
+            }
+          ],
+          "answer": 0,
+          "hint": "想想刚才的图片：「一」",
+          "praise": "眼睛真亮！一 找对啦！"
+        },
+        {
+          "id": "cn-14-l2",
+          "kind": "listen",
+          "promptIcon": "equal",
+          "speakText": "一",
           "question": "看一看：这张图变成的字是哪个？",
           "options": [
             {
-              "text": "山"
+              "text": "手"
             },
             {
-              "text": "火"
+              "text": "日"
             },
             {
-              "text": "水"
+              "text": "一"
             }
           ],
-          "answer": 1,
-          "hint": "热热的、红红的",
-          "praise": "真棒！"
+          "answer": 2,
+          "hint": "想一想它像什么字",
+          "praise": "对！这张图就是「一」"
         },
         {
           "id": "cn-14-w",
           "kind": "quiz",
-          "question": "「花」可以组成哪个词？",
+          "question": "「一」可以组成哪个词？",
           "options": [
             {
-              "icon": "flower",
-              "text": "花朵"
+              "icon": "equal",
+              "text": "一个"
             },
             {
-              "icon": "flower",
-              "text": "花木"
+              "icon": "gift",
+              "text": "六一小礼物"
             },
             {
-              "icon": "heart",
-              "text": "大人"
+              "icon": "dice",
+              "text": "七天"
             }
           ],
           "answer": 0,
-          "hint": "找一找有「花」的词",
-          "praise": "组词成功：花朵！"
+          "hint": "找一找有「一」的词",
+          "praise": "组词成功：一个！"
         },
         {
           "id": "cn-14-q",
           "kind": "quiz",
-          "question": "大挑战：哪个是「鸟」？",
+          "question": "练一练：哪个字是「一」？",
           "options": [
             {
-              "text": "鸟"
+              "text": "木"
             },
             {
-              "text": "乌"
+              "text": "口"
             },
             {
-              "text": "鸣"
+              "text": "一"
             }
           ],
-          "answer": 0,
-          "hint": "有一点点，就是小鸟",
-          "praise": "复习家！全对啦！"
+          "answer": 2,
+          "hint": "想一想刚才的字",
+          "praise": "记住啦！"
         },
         {
-          "id": "cn-14-q2",
-          "kind": "quiz",
-          "question": "连一连：哪个是「山」？",
+          "id": "cn-14-l3",
+          "kind": "listen",
+          "prompt": "一",
+          "speakText": "一",
+          "question": "再找一找：哪张图片是「一」？",
           "options": [
             {
-              "text": "出"
+              "icon": "sun"
             },
             {
-              "text": "山"
+              "icon": "equal",
+              "text": "一"
             },
             {
-              "text": "田"
+              "icon": "moon"
             }
           ],
           "answer": 1,
-          "hint": "三个尖尖头",
-          "praise": "山找对啦！"
+          "hint": "「一」长什么样",
+          "praise": "又找对啦！一！"
         },
         {
-          "id": "cn-14-q3",
-          "kind": "quiz",
-          "question": "猜一猜：哪个是「月」？",
-          "options": [
+          "id": "cn-14-wr",
+          "kind": "write",
+          "char": "一",
+          "pinyin": "yī",
+          "strokes": [
             {
-              "text": "月"
-            },
-            {
-              "text": "用"
-            },
-            {
-              "text": "明"
+              "d": "M22 50 L78 50",
+              "start": {
+                "x": 22.0,
+                "y": 50.0
+              }
             }
           ],
-          "answer": 0,
-          "hint": "弯弯的，像小船",
-          "praise": "月亮出来啦！"
+          "question": "写一写：看一笔、描一笔，写「一」",
+          "praise": "写得真好，汉字卡到手！"
         }
       ],
       "board": {
@@ -3210,25 +3459,3042 @@
           },
           {
             "type": "question",
-            "step": "cn-14-q2"
+            "step": "cn-14-l3"
           },
           {
             "type": "question",
-            "step": "cn-14-q3"
+            "step": "cn-14-wr"
           },
           {
             "type": "coin"
           },
           {
             "type": "question",
-            "step": "cn-14-m"
+            "step": "cn-14-l"
           },
           {
             "type": "rest"
           },
           {
             "type": "question",
-            "step": "cn-14-l1"
+            "step": "cn-14-l2"
+          }
+        ]
+      }
+    },
+    {
+      "id": "cn-15",
+      "title": "第 16 关 识字写字",
+      "subtitle": "认识并会写「二」",
+      "steps": [
+        {
+          "id": "cn-15-t",
+          "kind": "teach",
+          "morphFrom": "equal",
+          "char": "二",
+          "pinyin": "èr",
+          "words": [
+            {
+              "icon": "moon",
+              "text": "二月",
+              "say": "二月"
+            },
+            {
+              "icon": "calendar",
+              "text": "第二",
+              "say": "第二"
+            }
+          ]
+        },
+        {
+          "id": "cn-15-l",
+          "kind": "listen",
+          "prompt": "二",
+          "speakText": "二",
+          "question": "找一找：哪张图片是「二」？",
+          "options": [
+            {
+              "icon": "star"
+            },
+            {
+              "icon": "equal",
+              "text": "二"
+            },
+            {
+              "icon": "sun"
+            }
+          ],
+          "answer": 1,
+          "hint": "想想刚才的图片：「二」",
+          "praise": "眼睛真亮！二 找对啦！"
+        },
+        {
+          "id": "cn-15-l2",
+          "kind": "listen",
+          "promptIcon": "equal",
+          "speakText": "二",
+          "question": "看一看：这张图变成的字是哪个？",
+          "options": [
+            {
+              "text": "二"
+            },
+            {
+              "text": "月"
+            },
+            {
+              "text": "水"
+            }
+          ],
+          "answer": 0,
+          "hint": "想一想它像什么字",
+          "praise": "对！这张图就是「二」"
+        },
+        {
+          "id": "cn-15-w",
+          "kind": "quiz",
+          "question": "「二」可以组成哪个词？",
+          "options": [
+            {
+              "icon": "candy",
+              "text": "八个"
+            },
+            {
+              "icon": "moon",
+              "text": "二月"
+            },
+            {
+              "icon": "flower",
+              "text": "八哥花"
+            }
+          ],
+          "answer": 1,
+          "hint": "找一找有「二」的词",
+          "praise": "组词成功：二月！"
+        },
+        {
+          "id": "cn-15-q",
+          "kind": "quiz",
+          "question": "练一练：哪个字是「二」？",
+          "options": [
+            {
+              "text": "二"
+            },
+            {
+              "text": "木"
+            },
+            {
+              "text": "口"
+            }
+          ],
+          "answer": 0,
+          "hint": "想一想刚才的字",
+          "praise": "记住啦！"
+        },
+        {
+          "id": "cn-15-l3",
+          "kind": "listen",
+          "prompt": "二",
+          "speakText": "二",
+          "question": "再找一找：哪张图片是「二」？",
+          "options": [
+            {
+              "icon": "star"
+            },
+            {
+              "icon": "sun"
+            },
+            {
+              "icon": "equal",
+              "text": "二"
+            }
+          ],
+          "answer": 2,
+          "hint": "「二」长什么样",
+          "praise": "又找对啦！二！"
+        },
+        {
+          "id": "cn-15-wr",
+          "kind": "write",
+          "char": "二",
+          "pinyin": "èr",
+          "strokes": [
+            {
+              "d": "M28 38 L72 38",
+              "start": {
+                "x": 28.0,
+                "y": 38.0
+              }
+            },
+            {
+              "d": "M22 62 L78 62",
+              "start": {
+                "x": 22.0,
+                "y": 62.0
+              }
+            }
+          ],
+          "question": "写一写：看一笔、描一笔，写「二」",
+          "praise": "写得真好，汉字卡到手！"
+        }
+      ],
+      "board": {
+        "spaces": [
+          {
+            "type": "question",
+            "step": "cn-15-q"
+          },
+          {
+            "type": "question",
+            "step": "cn-15-l3"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "cn-15-wr"
+          },
+          {
+            "type": "question",
+            "step": "cn-15-l"
+          },
+          {
+            "type": "chest"
+          },
+          {
+            "type": "question",
+            "step": "cn-15-l2"
+          },
+          {
+            "type": "mushroom"
+          },
+          {
+            "type": "question",
+            "step": "cn-15-w"
+          }
+        ]
+      }
+    },
+    {
+      "id": "cn-16",
+      "title": "第 17 关 识字写字",
+      "subtitle": "认识并会写「三」",
+      "steps": [
+        {
+          "id": "cn-16-t",
+          "kind": "teach",
+          "morphFrom": "equal",
+          "char": "三",
+          "pinyin": "sān",
+          "words": [
+            {
+              "icon": "star",
+              "text": "三个",
+              "say": "三个"
+            },
+            {
+              "icon": "school",
+              "text": "三角",
+              "say": "三角"
+            }
+          ]
+        },
+        {
+          "id": "cn-16-l",
+          "kind": "listen",
+          "prompt": "三",
+          "speakText": "三",
+          "question": "找一找：哪张图片是「三」？",
+          "options": [
+            {
+              "icon": "flower"
+            },
+            {
+              "icon": "moon"
+            },
+            {
+              "icon": "equal",
+              "text": "三"
+            }
+          ],
+          "answer": 2,
+          "hint": "想想刚才的图片：「三」",
+          "praise": "眼睛真亮！三 找对啦！"
+        },
+        {
+          "id": "cn-16-l2",
+          "kind": "listen",
+          "promptIcon": "equal",
+          "speakText": "三",
+          "question": "看一看：这张图变成的字是哪个？",
+          "options": [
+            {
+              "text": "山"
+            },
+            {
+              "text": "三"
+            },
+            {
+              "text": "木"
+            }
+          ],
+          "answer": 1,
+          "hint": "想一想它像什么字",
+          "praise": "对！这张图就是「三」"
+        },
+        {
+          "id": "cn-16-w",
+          "kind": "quiz",
+          "question": "「三」可以组成哪个词？",
+          "options": [
+            {
+              "icon": "star",
+              "text": "九颗星"
+            },
+            {
+              "icon": "star",
+              "text": "十个"
+            },
+            {
+              "icon": "star",
+              "text": "三个"
+            }
+          ],
+          "answer": 2,
+          "hint": "找一找有「三」的词",
+          "praise": "组词成功：三个！"
+        },
+        {
+          "id": "cn-16-q",
+          "kind": "quiz",
+          "question": "练一练：哪个字是「三」？",
+          "options": [
+            {
+              "text": "木"
+            },
+            {
+              "text": "三"
+            },
+            {
+              "text": "口"
+            }
+          ],
+          "answer": 1,
+          "hint": "想一想刚才的字",
+          "praise": "记住啦！"
+        },
+        {
+          "id": "cn-16-l3",
+          "kind": "listen",
+          "prompt": "三",
+          "speakText": "三",
+          "question": "再找一找：哪张图片是「三」？",
+          "options": [
+            {
+              "icon": "equal",
+              "text": "三"
+            },
+            {
+              "icon": "moon"
+            },
+            {
+              "icon": "flower"
+            }
+          ],
+          "answer": 0,
+          "hint": "「三」长什么样",
+          "praise": "又找对啦！三！"
+        },
+        {
+          "id": "cn-16-wr",
+          "kind": "write",
+          "char": "三",
+          "pinyin": "sān",
+          "strokes": [
+            {
+              "d": "M30 32 L70 32",
+              "start": {
+                "x": 30.0,
+                "y": 32.0
+              }
+            },
+            {
+              "d": "M26 50 L74 50",
+              "start": {
+                "x": 26.0,
+                "y": 50.0
+              }
+            },
+            {
+              "d": "M22 68 L78 68",
+              "start": {
+                "x": 22.0,
+                "y": 68.0
+              }
+            }
+          ],
+          "question": "写一写：看一笔、描一笔，写「三」",
+          "praise": "写得真好，汉字卡到手！"
+        }
+      ],
+      "board": {
+        "spaces": [
+          {
+            "type": "question",
+            "step": "cn-16-l3"
+          },
+          {
+            "type": "question",
+            "step": "cn-16-wr"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "cn-16-l"
+          },
+          {
+            "type": "question",
+            "step": "cn-16-l2"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "cn-16-w"
+          },
+          {
+            "type": "mushroom"
+          },
+          {
+            "type": "question",
+            "step": "cn-16-q"
+          },
+          {
+            "type": "rest"
+          }
+        ]
+      }
+    },
+    {
+      "id": "cn-17",
+      "title": "第 18 关 识字写字",
+      "subtitle": "认识并会写「四」",
+      "steps": [
+        {
+          "id": "cn-17-t",
+          "kind": "teach",
+          "morphFrom": "calendar",
+          "char": "四",
+          "pinyin": "sì",
+          "words": [
+            {
+              "icon": "calendar",
+              "text": "四季",
+              "say": "四季"
+            },
+            {
+              "icon": "gift",
+              "text": "四方",
+              "say": "四方"
+            }
+          ]
+        },
+        {
+          "id": "cn-17-l",
+          "kind": "listen",
+          "prompt": "四",
+          "speakText": "四",
+          "question": "找一找：哪张图片是「四」？",
+          "options": [
+            {
+              "icon": "calendar",
+              "text": "四"
+            },
+            {
+              "icon": "equal"
+            },
+            {
+              "icon": "sunrise"
+            }
+          ],
+          "answer": 0,
+          "hint": "想想刚才的图片：「四」",
+          "praise": "眼睛真亮！四 找对啦！"
+        },
+        {
+          "id": "cn-17-l2",
+          "kind": "listen",
+          "promptIcon": "calendar",
+          "speakText": "四",
+          "question": "看一看：这张图变成的字是哪个？",
+          "options": [
+            {
+              "text": "人"
+            },
+            {
+              "text": "口"
+            },
+            {
+              "text": "四"
+            }
+          ],
+          "answer": 2,
+          "hint": "想一想它像什么字",
+          "praise": "对！这张图就是「四」"
+        },
+        {
+          "id": "cn-17-w",
+          "kind": "quiz",
+          "question": "「四」可以组成哪个词？",
+          "options": [
+            {
+              "icon": "calendar",
+              "text": "四季"
+            },
+            {
+              "icon": "girl",
+              "text": "大人"
+            },
+            {
+              "icon": "bear",
+              "text": "大象"
+            }
+          ],
+          "answer": 0,
+          "hint": "找一找有「四」的词",
+          "praise": "组词成功：四季！"
+        },
+        {
+          "id": "cn-17-q",
+          "kind": "quiz",
+          "question": "练一练：哪个字是「四」？",
+          "options": [
+            {
+              "text": "木"
+            },
+            {
+              "text": "口"
+            },
+            {
+              "text": "四"
+            }
+          ],
+          "answer": 2,
+          "hint": "想一想刚才的字",
+          "praise": "记住啦！"
+        },
+        {
+          "id": "cn-17-l3",
+          "kind": "listen",
+          "prompt": "四",
+          "speakText": "四",
+          "question": "再找一找：哪张图片是「四」？",
+          "options": [
+            {
+              "icon": "equal"
+            },
+            {
+              "icon": "calendar",
+              "text": "四"
+            },
+            {
+              "icon": "sunrise"
+            }
+          ],
+          "answer": 1,
+          "hint": "「四」长什么样",
+          "praise": "又找对啦！四！"
+        },
+        {
+          "id": "cn-17-wr",
+          "kind": "write",
+          "char": "四",
+          "pinyin": "sì",
+          "strokes": [
+            {
+              "d": "M28 26 L28 74",
+              "start": {
+                "x": 28.0,
+                "y": 26.0
+              }
+            },
+            {
+              "d": "M28 26 L66 26 L66 70",
+              "start": {
+                "x": 28.0,
+                "y": 26.0
+              }
+            },
+            {
+              "d": "M38 40 Q36 52 34 64",
+              "start": {
+                "x": 38.0,
+                "y": 40.0
+              }
+            },
+            {
+              "d": "M52 40 L52 64 Q52 70 58 70",
+              "start": {
+                "x": 52.0,
+                "y": 40.0
+              }
+            }
+          ],
+          "question": "写一写：看一笔、描一笔，写「四」",
+          "praise": "写得真好，汉字卡到手！"
+        }
+      ],
+      "board": {
+        "spaces": [
+          {
+            "type": "question",
+            "step": "cn-17-wr"
+          },
+          {
+            "type": "question",
+            "step": "cn-17-l"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "cn-17-l2"
+          },
+          {
+            "type": "question",
+            "step": "cn-17-w"
+          },
+          {
+            "type": "chest"
+          },
+          {
+            "type": "question",
+            "step": "cn-17-q"
+          },
+          {
+            "type": "rest"
+          },
+          {
+            "type": "question",
+            "step": "cn-17-l3"
+          }
+        ]
+      }
+    },
+    {
+      "id": "cn-18",
+      "title": "第 19 关 识字写字",
+      "subtitle": "认识并会写「五」",
+      "steps": [
+        {
+          "id": "cn-18-t",
+          "kind": "teach",
+          "morphFrom": "star",
+          "char": "五",
+          "pinyin": "wǔ",
+          "words": [
+            {
+              "icon": "star",
+              "text": "五个",
+              "say": "五个"
+            },
+            {
+              "icon": "party",
+              "text": "五官",
+              "say": "五官"
+            }
+          ]
+        },
+        {
+          "id": "cn-18-l",
+          "kind": "listen",
+          "prompt": "五",
+          "speakText": "五",
+          "question": "找一找：哪张图片是「五」？",
+          "options": [
+            {
+              "icon": "equal"
+            },
+            {
+              "icon": "star",
+              "text": "五"
+            },
+            {
+              "icon": "moon"
+            }
+          ],
+          "answer": 1,
+          "hint": "想想刚才的图片：「五」",
+          "praise": "眼睛真亮！五 找对啦！"
+        },
+        {
+          "id": "cn-18-l2",
+          "kind": "listen",
+          "promptIcon": "star",
+          "speakText": "五",
+          "question": "看一看：这张图变成的字是哪个？",
+          "options": [
+            {
+              "text": "五"
+            },
+            {
+              "text": "天"
+            },
+            {
+              "text": "田"
+            }
+          ],
+          "answer": 0,
+          "hint": "想一想它像什么字",
+          "praise": "对！这张图就是「五」"
+        },
+        {
+          "id": "cn-18-w",
+          "kind": "quiz",
+          "question": "「五」可以组成哪个词？",
+          "options": [
+            {
+              "icon": "rabbit",
+              "text": "小兔子"
+            },
+            {
+              "icon": "star",
+              "text": "五个"
+            },
+            {
+              "icon": "sunrise",
+              "text": "上学"
+            }
+          ],
+          "answer": 1,
+          "hint": "找一找有「五」的词",
+          "praise": "组词成功：五个！"
+        },
+        {
+          "id": "cn-18-q",
+          "kind": "quiz",
+          "question": "练一练：哪个字是「五」？",
+          "options": [
+            {
+              "text": "五"
+            },
+            {
+              "text": "木"
+            },
+            {
+              "text": "口"
+            }
+          ],
+          "answer": 0,
+          "hint": "想一想刚才的字",
+          "praise": "记住啦！"
+        },
+        {
+          "id": "cn-18-l3",
+          "kind": "listen",
+          "prompt": "五",
+          "speakText": "五",
+          "question": "再找一找：哪张图片是「五」？",
+          "options": [
+            {
+              "icon": "equal"
+            },
+            {
+              "icon": "moon"
+            },
+            {
+              "icon": "star",
+              "text": "五"
+            }
+          ],
+          "answer": 2,
+          "hint": "「五」长什么样",
+          "praise": "又找对啦！五！"
+        },
+        {
+          "id": "cn-18-wr",
+          "kind": "write",
+          "char": "五",
+          "pinyin": "wǔ",
+          "strokes": [
+            {
+              "d": "M28 32 L72 32",
+              "start": {
+                "x": 28.0,
+                "y": 32.0
+              }
+            },
+            {
+              "d": "M40 32 L40 46",
+              "start": {
+                "x": 40.0,
+                "y": 32.0
+              }
+            },
+            {
+              "d": "M40 46 L66 46 L66 66",
+              "start": {
+                "x": 40.0,
+                "y": 46.0
+              }
+            },
+            {
+              "d": "M34 66 L66 66",
+              "start": {
+                "x": 34.0,
+                "y": 66.0
+              }
+            }
+          ],
+          "question": "写一写：看一笔、描一笔，写「五」",
+          "praise": "写得真好，汉字卡到手！"
+        }
+      ],
+      "board": {
+        "spaces": [
+          {
+            "type": "question",
+            "step": "cn-18-l"
+          },
+          {
+            "type": "question",
+            "step": "cn-18-l2"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "cn-18-w"
+          },
+          {
+            "type": "question",
+            "step": "cn-18-q"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "cn-18-l3"
+          },
+          {
+            "type": "chest"
+          },
+          {
+            "type": "question",
+            "step": "cn-18-wr"
+          }
+        ]
+      }
+    },
+    {
+      "id": "cn-19",
+      "title": "第 20 关 识字写字",
+      "subtitle": "认识并会写「六」",
+      "steps": [
+        {
+          "id": "cn-19-t",
+          "kind": "teach",
+          "morphFrom": "sparkle",
+          "char": "六",
+          "pinyin": "liù",
+          "words": [
+            {
+              "icon": "sparkle",
+              "text": "六个",
+              "say": "六个"
+            },
+            {
+              "icon": "gift",
+              "text": "六一小礼物",
+              "say": "六一小礼物"
+            }
+          ]
+        },
+        {
+          "id": "cn-19-l",
+          "kind": "listen",
+          "prompt": "六",
+          "speakText": "六",
+          "question": "找一找：哪张图片是「六」？",
+          "options": [
+            {
+              "icon": "equal"
+            },
+            {
+              "icon": "star"
+            },
+            {
+              "icon": "sparkle",
+              "text": "六"
+            }
+          ],
+          "answer": 2,
+          "hint": "想想刚才的图片：「六」",
+          "praise": "眼睛真亮！六 找对啦！"
+        },
+        {
+          "id": "cn-19-l2",
+          "kind": "listen",
+          "promptIcon": "sparkle",
+          "speakText": "六",
+          "question": "看一看：这张图变成的字是哪个？",
+          "options": [
+            {
+              "text": "石"
+            },
+            {
+              "text": "六"
+            },
+            {
+              "text": "火"
+            }
+          ],
+          "answer": 1,
+          "hint": "想一想它像什么字",
+          "praise": "对！这张图就是「六」"
+        },
+        {
+          "id": "cn-19-w",
+          "kind": "quiz",
+          "question": "「六」可以组成哪个词？",
+          "options": [
+            {
+              "icon": "wave",
+              "text": "下雨"
+            },
+            {
+              "icon": "home",
+              "text": "下面"
+            },
+            {
+              "icon": "sparkle",
+              "text": "六个"
+            }
+          ],
+          "answer": 2,
+          "hint": "找一找有「六」的词",
+          "praise": "组词成功：六个！"
+        },
+        {
+          "id": "cn-19-q",
+          "kind": "quiz",
+          "question": "练一练：哪个字是「六」？",
+          "options": [
+            {
+              "text": "木"
+            },
+            {
+              "text": "六"
+            },
+            {
+              "text": "口"
+            }
+          ],
+          "answer": 1,
+          "hint": "想一想刚才的字",
+          "praise": "记住啦！"
+        },
+        {
+          "id": "cn-19-l3",
+          "kind": "listen",
+          "prompt": "六",
+          "speakText": "六",
+          "question": "再找一找：哪张图片是「六」？",
+          "options": [
+            {
+              "icon": "sparkle",
+              "text": "六"
+            },
+            {
+              "icon": "star"
+            },
+            {
+              "icon": "equal"
+            }
+          ],
+          "answer": 0,
+          "hint": "「六」长什么样",
+          "praise": "又找对啦！六！"
+        },
+        {
+          "id": "cn-19-wr",
+          "kind": "write",
+          "char": "六",
+          "pinyin": "liù",
+          "strokes": [
+            {
+              "d": "M50 24 Q48 30 46 34",
+              "start": {
+                "x": 50.0,
+                "y": 24.0
+              }
+            },
+            {
+              "d": "M32 42 L58 42 Q60 46 54 52",
+              "start": {
+                "x": 32.0,
+                "y": 42.0
+              }
+            },
+            {
+              "d": "M52 54 Q56 62 54 70",
+              "start": {
+                "x": 52.0,
+                "y": 54.0
+              }
+            }
+          ],
+          "question": "写一写：看一笔、描一笔，写「六」",
+          "praise": "写得真好，汉字卡到手！"
+        }
+      ],
+      "board": {
+        "spaces": [
+          {
+            "type": "question",
+            "step": "cn-19-l2"
+          },
+          {
+            "type": "question",
+            "step": "cn-19-w"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "cn-19-q"
+          },
+          {
+            "type": "question",
+            "step": "cn-19-l3"
+          },
+          {
+            "type": "mushroom"
+          },
+          {
+            "type": "question",
+            "step": "cn-19-wr"
+          },
+          {
+            "type": "question",
+            "step": "cn-19-l"
+          }
+        ]
+      }
+    },
+    {
+      "id": "cn-20",
+      "title": "第 21 关 识字写字",
+      "subtitle": "认识并会写「七」",
+      "steps": [
+        {
+          "id": "cn-20-t",
+          "kind": "teach",
+          "morphFrom": "dice",
+          "char": "七",
+          "pinyin": "qī",
+          "words": [
+            {
+              "icon": "dice",
+              "text": "七天",
+              "say": "七天"
+            },
+            {
+              "icon": "balloon",
+              "text": "七彩色",
+              "say": "七彩色"
+            }
+          ]
+        },
+        {
+          "id": "cn-20-l",
+          "kind": "listen",
+          "prompt": "七",
+          "speakText": "七",
+          "question": "找一找：哪张图片是「七」？",
+          "options": [
+            {
+              "icon": "dice",
+              "text": "七"
+            },
+            {
+              "icon": "star"
+            },
+            {
+              "icon": "balloon"
+            }
+          ],
+          "answer": 0,
+          "hint": "想想刚才的图片：「七」",
+          "praise": "眼睛真亮！七 找对啦！"
+        },
+        {
+          "id": "cn-20-l2",
+          "kind": "listen",
+          "promptIcon": "dice",
+          "speakText": "七",
+          "question": "看一看：这张图变成的字是哪个？",
+          "options": [
+            {
+              "text": "花"
+            },
+            {
+              "text": "草"
+            },
+            {
+              "text": "七"
+            }
+          ],
+          "answer": 2,
+          "hint": "想一想它像什么字",
+          "praise": "对！这张图就是「七」"
+        },
+        {
+          "id": "cn-20-w",
+          "kind": "quiz",
+          "question": "「七」可以组成哪个词？",
+          "options": [
+            {
+              "icon": "dice",
+              "text": "七天"
+            },
+            {
+              "icon": "rocket",
+              "text": "星空"
+            },
+            {
+              "icon": "paw",
+              "text": "小手"
+            }
+          ],
+          "answer": 0,
+          "hint": "找一找有「七」的词",
+          "praise": "组词成功：七天！"
+        },
+        {
+          "id": "cn-20-q",
+          "kind": "quiz",
+          "question": "练一练：哪个字是「七」？",
+          "options": [
+            {
+              "text": "木"
+            },
+            {
+              "text": "口"
+            },
+            {
+              "text": "七"
+            }
+          ],
+          "answer": 2,
+          "hint": "想一想刚才的字",
+          "praise": "记住啦！"
+        },
+        {
+          "id": "cn-20-l3",
+          "kind": "listen",
+          "prompt": "七",
+          "speakText": "七",
+          "question": "再找一找：哪张图片是「七」？",
+          "options": [
+            {
+              "icon": "star"
+            },
+            {
+              "icon": "dice",
+              "text": "七"
+            },
+            {
+              "icon": "balloon"
+            }
+          ],
+          "answer": 1,
+          "hint": "「七」长什么样",
+          "praise": "又找对啦！七！"
+        },
+        {
+          "id": "cn-20-wr",
+          "kind": "write",
+          "char": "七",
+          "pinyin": "qī",
+          "strokes": [
+            {
+              "d": "M28 40 L66 40",
+              "start": {
+                "x": 28.0,
+                "y": 40.0
+              }
+            },
+            {
+              "d": "M50 40 L50 66 Q50 74 58 74",
+              "start": {
+                "x": 50.0,
+                "y": 40.0
+              }
+            }
+          ],
+          "question": "写一写：看一笔、描一笔，写「七」",
+          "praise": "写得真好，汉字卡到手！"
+        }
+      ],
+      "board": {
+        "spaces": [
+          {
+            "type": "question",
+            "step": "cn-20-w"
+          },
+          {
+            "type": "question",
+            "step": "cn-20-q"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "cn-20-l3"
+          },
+          {
+            "type": "question",
+            "step": "cn-20-wr"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "cn-20-l"
+          },
+          {
+            "type": "rest"
+          },
+          {
+            "type": "question",
+            "step": "cn-20-l2"
+          }
+        ]
+      }
+    },
+    {
+      "id": "cn-21",
+      "title": "第 22 关 识字写字",
+      "subtitle": "认识并会写「八」",
+      "steps": [
+        {
+          "id": "cn-21-t",
+          "kind": "teach",
+          "morphFrom": "candy",
+          "char": "八",
+          "pinyin": "bā",
+          "words": [
+            {
+              "icon": "candy",
+              "text": "八个",
+              "say": "八个"
+            },
+            {
+              "icon": "flower",
+              "text": "八哥花",
+              "say": "八哥花"
+            }
+          ]
+        },
+        {
+          "id": "cn-21-l",
+          "kind": "listen",
+          "prompt": "八",
+          "speakText": "八",
+          "question": "找一找：哪张图片是「八」？",
+          "options": [
+            {
+              "icon": "balloon"
+            },
+            {
+              "icon": "candy",
+              "text": "八"
+            },
+            {
+              "icon": "star"
+            }
+          ],
+          "answer": 1,
+          "hint": "想想刚才的图片：「八」",
+          "praise": "眼睛真亮！八 找对啦！"
+        },
+        {
+          "id": "cn-21-l2",
+          "kind": "listen",
+          "promptIcon": "candy",
+          "speakText": "八",
+          "question": "看一看：这张图变成的字是哪个？",
+          "options": [
+            {
+              "text": "八"
+            },
+            {
+              "text": "鸟"
+            },
+            {
+              "text": "一"
+            }
+          ],
+          "answer": 0,
+          "hint": "想一想它像什么字",
+          "praise": "对！这张图就是「八」"
+        },
+        {
+          "id": "cn-21-w",
+          "kind": "quiz",
+          "question": "「八」可以组成哪个词？",
+          "options": [
+            {
+              "icon": "sunrise",
+              "text": "日出"
+            },
+            {
+              "icon": "candy",
+              "text": "八个"
+            },
+            {
+              "icon": "cake",
+              "text": "生日"
+            }
+          ],
+          "answer": 1,
+          "hint": "找一找有「八」的词",
+          "praise": "组词成功：八个！"
+        },
+        {
+          "id": "cn-21-q",
+          "kind": "quiz",
+          "question": "练一练：哪个字是「八」？",
+          "options": [
+            {
+              "text": "八"
+            },
+            {
+              "text": "木"
+            },
+            {
+              "text": "口"
+            }
+          ],
+          "answer": 0,
+          "hint": "想一想刚才的字",
+          "praise": "记住啦！"
+        },
+        {
+          "id": "cn-21-l3",
+          "kind": "listen",
+          "prompt": "八",
+          "speakText": "八",
+          "question": "再找一找：哪张图片是「八」？",
+          "options": [
+            {
+              "icon": "balloon"
+            },
+            {
+              "icon": "star"
+            },
+            {
+              "icon": "candy",
+              "text": "八"
+            }
+          ],
+          "answer": 2,
+          "hint": "「八」长什么样",
+          "praise": "又找对啦！八！"
+        },
+        {
+          "id": "cn-21-wr",
+          "kind": "write",
+          "char": "八",
+          "pinyin": "bā",
+          "strokes": [
+            {
+              "d": "M46 32 Q40 50 32 68",
+              "start": {
+                "x": 46.0,
+                "y": 32.0
+              }
+            },
+            {
+              "d": "M54 32 Q60 50 68 68",
+              "start": {
+                "x": 54.0,
+                "y": 32.0
+              }
+            }
+          ],
+          "question": "写一写：看一笔、描一笔，写「八」",
+          "praise": "写得真好，汉字卡到手！"
+        }
+      ],
+      "board": {
+        "spaces": [
+          {
+            "type": "question",
+            "step": "cn-21-q"
+          },
+          {
+            "type": "question",
+            "step": "cn-21-l3"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "cn-21-wr"
+          },
+          {
+            "type": "question",
+            "step": "cn-21-l"
+          },
+          {
+            "type": "chest"
+          },
+          {
+            "type": "question",
+            "step": "cn-21-l2"
+          },
+          {
+            "type": "mushroom"
+          },
+          {
+            "type": "question",
+            "step": "cn-21-w"
+          }
+        ]
+      }
+    },
+    {
+      "id": "cn-22",
+      "title": "第 23 关 识字写字",
+      "subtitle": "认识并会写「九」",
+      "steps": [
+        {
+          "id": "cn-22-t",
+          "kind": "teach",
+          "morphFrom": "balloon",
+          "char": "九",
+          "pinyin": "jiǔ",
+          "words": [
+            {
+              "icon": "balloon",
+              "text": "九月",
+              "say": "九月"
+            },
+            {
+              "icon": "star",
+              "text": "九颗星",
+              "say": "九颗星"
+            }
+          ]
+        },
+        {
+          "id": "cn-22-l",
+          "kind": "listen",
+          "prompt": "九",
+          "speakText": "九",
+          "question": "找一找：哪张图片是「九」？",
+          "options": [
+            {
+              "icon": "moon"
+            },
+            {
+              "icon": "candy"
+            },
+            {
+              "icon": "balloon",
+              "text": "九"
+            }
+          ],
+          "answer": 2,
+          "hint": "想想刚才的图片：「九」",
+          "praise": "眼睛真亮！九 找对啦！"
+        },
+        {
+          "id": "cn-22-l2",
+          "kind": "listen",
+          "promptIcon": "balloon",
+          "speakText": "九",
+          "question": "看一看：这张图变成的字是哪个？",
+          "options": [
+            {
+              "text": "二"
+            },
+            {
+              "text": "九"
+            },
+            {
+              "text": "三"
+            }
+          ],
+          "answer": 1,
+          "hint": "想一想它像什么字",
+          "praise": "对！这张图就是「九」"
+        },
+        {
+          "id": "cn-22-w",
+          "kind": "quiz",
+          "question": "「九」可以组成哪个词？",
+          "options": [
+            {
+              "icon": "moon",
+              "text": "月亮"
+            },
+            {
+              "icon": "starface",
+              "text": "星星"
+            },
+            {
+              "icon": "balloon",
+              "text": "九月"
+            }
+          ],
+          "answer": 2,
+          "hint": "找一找有「九」的词",
+          "praise": "组词成功：九月！"
+        },
+        {
+          "id": "cn-22-q",
+          "kind": "quiz",
+          "question": "练一练：哪个字是「九」？",
+          "options": [
+            {
+              "text": "木"
+            },
+            {
+              "text": "九"
+            },
+            {
+              "text": "口"
+            }
+          ],
+          "answer": 1,
+          "hint": "想一想刚才的字",
+          "praise": "记住啦！"
+        },
+        {
+          "id": "cn-22-l3",
+          "kind": "listen",
+          "prompt": "九",
+          "speakText": "九",
+          "question": "再找一找：哪张图片是「九」？",
+          "options": [
+            {
+              "icon": "balloon",
+              "text": "九"
+            },
+            {
+              "icon": "candy"
+            },
+            {
+              "icon": "moon"
+            }
+          ],
+          "answer": 0,
+          "hint": "「九」长什么样",
+          "praise": "又找对啦！九！"
+        },
+        {
+          "id": "cn-22-wr",
+          "kind": "write",
+          "char": "九",
+          "pinyin": "jiǔ",
+          "strokes": [
+            {
+              "d": "M42 28 Q40 46 34 66",
+              "start": {
+                "x": 42.0,
+                "y": 28.0
+              }
+            },
+            {
+              "d": "M54 28 L66 28 L66 56 Q66 70 54 70",
+              "start": {
+                "x": 54.0,
+                "y": 28.0
+              }
+            }
+          ],
+          "question": "写一写：看一笔、描一笔，写「九」",
+          "praise": "写得真好，汉字卡到手！"
+        }
+      ],
+      "board": {
+        "spaces": [
+          {
+            "type": "question",
+            "step": "cn-22-l3"
+          },
+          {
+            "type": "question",
+            "step": "cn-22-wr"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "cn-22-l"
+          },
+          {
+            "type": "question",
+            "step": "cn-22-l2"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "cn-22-w"
+          },
+          {
+            "type": "mushroom"
+          },
+          {
+            "type": "question",
+            "step": "cn-22-q"
+          },
+          {
+            "type": "rest"
+          }
+        ]
+      }
+    },
+    {
+      "id": "cn-23",
+      "title": "第 24 关 识字写字",
+      "subtitle": "认识并会写「十」",
+      "steps": [
+        {
+          "id": "cn-23-t",
+          "kind": "teach",
+          "morphFrom": "star",
+          "char": "十",
+          "pinyin": "shí",
+          "words": [
+            {
+              "icon": "star",
+              "text": "十个",
+              "say": "十个"
+            },
+            {
+              "icon": "school",
+              "text": "十分好",
+              "say": "十分好"
+            }
+          ]
+        },
+        {
+          "id": "cn-23-l",
+          "kind": "listen",
+          "prompt": "十",
+          "speakText": "十",
+          "question": "找一找：哪张图片是「十」？",
+          "options": [
+            {
+              "icon": "star",
+              "text": "十"
+            },
+            {
+              "icon": "equal"
+            },
+            {
+              "icon": "gift"
+            }
+          ],
+          "answer": 0,
+          "hint": "想想刚才的图片：「十」",
+          "praise": "眼睛真亮！十 找对啦！"
+        },
+        {
+          "id": "cn-23-l2",
+          "kind": "listen",
+          "promptIcon": "star",
+          "speakText": "十",
+          "question": "看一看：这张图变成的字是哪个？",
+          "options": [
+            {
+              "text": "四"
+            },
+            {
+              "text": "五"
+            },
+            {
+              "text": "十"
+            }
+          ],
+          "answer": 2,
+          "hint": "想一想它像什么字",
+          "praise": "对！这张图就是「十」"
+        },
+        {
+          "id": "cn-23-w",
+          "kind": "quiz",
+          "question": "「十」可以组成哪个词？",
+          "options": [
+            {
+              "icon": "star",
+              "text": "十个"
+            },
+            {
+              "icon": "wave",
+              "text": "海浪"
+            },
+            {
+              "icon": "crystal",
+              "text": "泉水"
+            }
+          ],
+          "answer": 0,
+          "hint": "找一找有「十」的词",
+          "praise": "组词成功：十个！"
+        },
+        {
+          "id": "cn-23-q",
+          "kind": "quiz",
+          "question": "练一练：哪个字是「十」？",
+          "options": [
+            {
+              "text": "木"
+            },
+            {
+              "text": "口"
+            },
+            {
+              "text": "十"
+            }
+          ],
+          "answer": 2,
+          "hint": "想一想刚才的字",
+          "praise": "记住啦！"
+        },
+        {
+          "id": "cn-23-l3",
+          "kind": "listen",
+          "prompt": "十",
+          "speakText": "十",
+          "question": "再找一找：哪张图片是「十」？",
+          "options": [
+            {
+              "icon": "equal"
+            },
+            {
+              "icon": "star",
+              "text": "十"
+            },
+            {
+              "icon": "gift"
+            }
+          ],
+          "answer": 1,
+          "hint": "「十」长什么样",
+          "praise": "又找对啦！十！"
+        },
+        {
+          "id": "cn-23-wr",
+          "kind": "write",
+          "char": "十",
+          "pinyin": "shí",
+          "strokes": [
+            {
+              "d": "M24 50 L76 50",
+              "start": {
+                "x": 24.0,
+                "y": 50.0
+              }
+            },
+            {
+              "d": "M50 24 L50 76",
+              "start": {
+                "x": 50.0,
+                "y": 24.0
+              }
+            }
+          ],
+          "question": "写一写：看一笔、描一笔，写「十」",
+          "praise": "写得真好，汉字卡到手！"
+        }
+      ],
+      "board": {
+        "spaces": [
+          {
+            "type": "question",
+            "step": "cn-23-wr"
+          },
+          {
+            "type": "question",
+            "step": "cn-23-l"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "cn-23-l2"
+          },
+          {
+            "type": "question",
+            "step": "cn-23-w"
+          },
+          {
+            "type": "chest"
+          },
+          {
+            "type": "question",
+            "step": "cn-23-q"
+          },
+          {
+            "type": "rest"
+          },
+          {
+            "type": "question",
+            "step": "cn-23-l3"
+          }
+        ]
+      }
+    },
+    {
+      "id": "cn-24",
+      "title": "第 25 关 识字写字",
+      "subtitle": "认识并会写「大」",
+      "steps": [
+        {
+          "id": "cn-24-t",
+          "kind": "teach",
+          "morphFrom": "girl",
+          "char": "大",
+          "pinyin": "dà",
+          "words": [
+            {
+              "icon": "girl",
+              "text": "大人",
+              "say": "大人"
+            },
+            {
+              "icon": "bear",
+              "text": "大象",
+              "say": "大象"
+            }
+          ]
+        },
+        {
+          "id": "cn-24-l",
+          "kind": "listen",
+          "prompt": "大",
+          "speakText": "大",
+          "question": "找一找：哪张图片是「大」？",
+          "options": [
+            {
+              "icon": "bear"
+            },
+            {
+              "icon": "girl",
+              "text": "大"
+            },
+            {
+              "icon": "paw"
+            }
+          ],
+          "answer": 1,
+          "hint": "想想刚才的图片：「大」",
+          "praise": "眼睛真亮！大 找对啦！"
+        },
+        {
+          "id": "cn-24-l2",
+          "kind": "listen",
+          "promptIcon": "girl",
+          "speakText": "大",
+          "question": "看一看：这张图变成的字是哪个？",
+          "options": [
+            {
+              "text": "大"
+            },
+            {
+              "text": "六"
+            },
+            {
+              "text": "七"
+            }
+          ],
+          "answer": 0,
+          "hint": "想一想它像什么字",
+          "praise": "对！这张图就是「大」"
+        },
+        {
+          "id": "cn-24-w",
+          "kind": "quiz",
+          "question": "「大」可以组成哪个词？",
+          "options": [
+            {
+              "icon": "school",
+              "text": "上山"
+            },
+            {
+              "icon": "girl",
+              "text": "大人"
+            },
+            {
+              "icon": "leaf",
+              "text": "山林"
+            }
+          ],
+          "answer": 1,
+          "hint": "找一找有「大」的词",
+          "praise": "组词成功：大人！"
+        },
+        {
+          "id": "cn-24-q",
+          "kind": "quiz",
+          "question": "练一练：哪个字是「大」？",
+          "options": [
+            {
+              "text": "大"
+            },
+            {
+              "text": "木"
+            },
+            {
+              "text": "口"
+            }
+          ],
+          "answer": 0,
+          "hint": "想一想刚才的字",
+          "praise": "记住啦！"
+        },
+        {
+          "id": "cn-24-l3",
+          "kind": "listen",
+          "prompt": "大",
+          "speakText": "大",
+          "question": "再找一找：哪张图片是「大」？",
+          "options": [
+            {
+              "icon": "bear"
+            },
+            {
+              "icon": "paw"
+            },
+            {
+              "icon": "girl",
+              "text": "大"
+            }
+          ],
+          "answer": 2,
+          "hint": "「大」长什么样",
+          "praise": "又找对啦！大！"
+        },
+        {
+          "id": "cn-24-wr",
+          "kind": "write",
+          "char": "大",
+          "pinyin": "dà",
+          "strokes": [
+            {
+              "d": "M26 40 L74 40",
+              "start": {
+                "x": 26.0,
+                "y": 40.0
+              }
+            },
+            {
+              "d": "M50 24 Q44 50 34 76",
+              "start": {
+                "x": 50.0,
+                "y": 24.0
+              }
+            },
+            {
+              "d": "M50 46 Q60 62 72 76",
+              "start": {
+                "x": 50.0,
+                "y": 46.0
+              }
+            }
+          ],
+          "question": "写一写：看一笔、描一笔，写「大」",
+          "praise": "写得真好，汉字卡到手！"
+        }
+      ],
+      "board": {
+        "spaces": [
+          {
+            "type": "question",
+            "step": "cn-24-l"
+          },
+          {
+            "type": "question",
+            "step": "cn-24-l2"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "cn-24-w"
+          },
+          {
+            "type": "question",
+            "step": "cn-24-q"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "cn-24-l3"
+          },
+          {
+            "type": "chest"
+          },
+          {
+            "type": "question",
+            "step": "cn-24-wr"
+          }
+        ]
+      }
+    },
+    {
+      "id": "cn-25",
+      "title": "第 26 关 识字写字",
+      "subtitle": "认识并会写「小」",
+      "steps": [
+        {
+          "id": "cn-25-t",
+          "kind": "teach",
+          "morphFrom": "paw",
+          "char": "小",
+          "pinyin": "xiǎo",
+          "words": [
+            {
+              "icon": "paw",
+              "text": "小手",
+              "say": "小手"
+            },
+            {
+              "icon": "rabbit",
+              "text": "小兔子",
+              "say": "小兔子"
+            }
+          ]
+        },
+        {
+          "id": "cn-25-l",
+          "kind": "listen",
+          "prompt": "小",
+          "speakText": "小",
+          "question": "找一找：哪张图片是「小」？",
+          "options": [
+            {
+              "icon": "girl"
+            },
+            {
+              "icon": "bear"
+            },
+            {
+              "icon": "paw",
+              "text": "小"
+            }
+          ],
+          "answer": 2,
+          "hint": "想想刚才的图片：「小」",
+          "praise": "眼睛真亮！小 找对啦！"
+        },
+        {
+          "id": "cn-25-l2",
+          "kind": "listen",
+          "promptIcon": "paw",
+          "speakText": "小",
+          "question": "看一看：这张图变成的字是哪个？",
+          "options": [
+            {
+              "text": "八"
+            },
+            {
+              "text": "小"
+            },
+            {
+              "text": "九"
+            }
+          ],
+          "answer": 1,
+          "hint": "想一想它像什么字",
+          "praise": "对！这张图就是「小」"
+        },
+        {
+          "id": "cn-25-w",
+          "kind": "quiz",
+          "question": "「小」可以组成哪个词？",
+          "options": [
+            {
+              "icon": "flower",
+              "text": "花木"
+            },
+            {
+              "icon": "heart",
+              "text": "大人"
+            },
+            {
+              "icon": "paw",
+              "text": "小手"
+            }
+          ],
+          "answer": 2,
+          "hint": "找一找有「小」的词",
+          "praise": "组词成功：小手！"
+        },
+        {
+          "id": "cn-25-q",
+          "kind": "quiz",
+          "question": "练一练：哪个字是「小」？",
+          "options": [
+            {
+              "text": "木"
+            },
+            {
+              "text": "小"
+            },
+            {
+              "text": "口"
+            }
+          ],
+          "answer": 1,
+          "hint": "想一想刚才的字",
+          "praise": "记住啦！"
+        },
+        {
+          "id": "cn-25-l3",
+          "kind": "listen",
+          "prompt": "小",
+          "speakText": "小",
+          "question": "再找一找：哪张图片是「小」？",
+          "options": [
+            {
+              "icon": "paw",
+              "text": "小"
+            },
+            {
+              "icon": "bear"
+            },
+            {
+              "icon": "girl"
+            }
+          ],
+          "answer": 0,
+          "hint": "「小」长什么样",
+          "praise": "又找对啦！小！"
+        },
+        {
+          "id": "cn-25-wr",
+          "kind": "write",
+          "char": "小",
+          "pinyin": "xiǎo",
+          "strokes": [
+            {
+              "d": "M50 26 L50 66 Q48 72 42 70",
+              "start": {
+                "x": 50.0,
+                "y": 26.0
+              }
+            },
+            {
+              "d": "M40 44 Q32 52 30 60",
+              "start": {
+                "x": 40.0,
+                "y": 44.0
+              }
+            },
+            {
+              "d": "M60 44 Q68 52 70 60",
+              "start": {
+                "x": 60.0,
+                "y": 44.0
+              }
+            }
+          ],
+          "question": "写一写：看一笔、描一笔，写「小」",
+          "praise": "写得真好，汉字卡到手！"
+        }
+      ],
+      "board": {
+        "spaces": [
+          {
+            "type": "question",
+            "step": "cn-25-l2"
+          },
+          {
+            "type": "question",
+            "step": "cn-25-w"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "cn-25-q"
+          },
+          {
+            "type": "question",
+            "step": "cn-25-l3"
+          },
+          {
+            "type": "mushroom"
+          },
+          {
+            "type": "question",
+            "step": "cn-25-wr"
+          },
+          {
+            "type": "question",
+            "step": "cn-25-l"
+          }
+        ]
+      }
+    },
+    {
+      "id": "cn-26",
+      "title": "第 27 关 识字写字",
+      "subtitle": "认识并会写「上」",
+      "steps": [
+        {
+          "id": "cn-26-t",
+          "kind": "teach",
+          "morphFrom": "sunrise",
+          "char": "上",
+          "pinyin": "shàng",
+          "words": [
+            {
+              "icon": "sunrise",
+              "text": "上学",
+              "say": "上学"
+            },
+            {
+              "icon": "school",
+              "text": "上面",
+              "say": "上面"
+            }
+          ]
+        },
+        {
+          "id": "cn-26-l",
+          "kind": "listen",
+          "prompt": "上",
+          "speakText": "上",
+          "question": "找一找：哪张图片是「上」？",
+          "options": [
+            {
+              "icon": "sunrise",
+              "text": "上"
+            },
+            {
+              "icon": "wave"
+            },
+            {
+              "icon": "rocket"
+            }
+          ],
+          "answer": 0,
+          "hint": "想想刚才的图片：「上」",
+          "praise": "眼睛真亮！上 找对啦！"
+        },
+        {
+          "id": "cn-26-l2",
+          "kind": "listen",
+          "promptIcon": "sunrise",
+          "speakText": "上",
+          "question": "看一看：这张图变成的字是哪个？",
+          "options": [
+            {
+              "text": "十"
+            },
+            {
+              "text": "大"
+            },
+            {
+              "text": "上"
+            }
+          ],
+          "answer": 2,
+          "hint": "想一想它像什么字",
+          "praise": "对！这张图就是「上」"
+        },
+        {
+          "id": "cn-26-w",
+          "kind": "quiz",
+          "question": "「上」可以组成哪个词？",
+          "options": [
+            {
+              "icon": "sunrise",
+              "text": "上学"
+            },
+            {
+              "icon": "speaker",
+              "text": "开口"
+            },
+            {
+              "icon": "heart",
+              "text": "口水"
+            }
+          ],
+          "answer": 0,
+          "hint": "找一找有「上」的词",
+          "praise": "组词成功：上学！"
+        },
+        {
+          "id": "cn-26-q",
+          "kind": "quiz",
+          "question": "练一练：哪个字是「上」？",
+          "options": [
+            {
+              "text": "木"
+            },
+            {
+              "text": "口"
+            },
+            {
+              "text": "上"
+            }
+          ],
+          "answer": 2,
+          "hint": "想一想刚才的字",
+          "praise": "记住啦！"
+        },
+        {
+          "id": "cn-26-l3",
+          "kind": "listen",
+          "prompt": "上",
+          "speakText": "上",
+          "question": "再找一找：哪张图片是「上」？",
+          "options": [
+            {
+              "icon": "wave"
+            },
+            {
+              "icon": "sunrise",
+              "text": "上"
+            },
+            {
+              "icon": "rocket"
+            }
+          ],
+          "answer": 1,
+          "hint": "「上」长什么样",
+          "praise": "又找对啦！上！"
+        },
+        {
+          "id": "cn-26-wr",
+          "kind": "write",
+          "char": "上",
+          "pinyin": "shàng",
+          "strokes": [
+            {
+              "d": "M50 22 L50 38",
+              "start": {
+                "x": 50.0,
+                "y": 22.0
+              }
+            },
+            {
+              "d": "M34 38 L66 38",
+              "start": {
+                "x": 34.0,
+                "y": 38.0
+              }
+            },
+            {
+              "d": "M24 62 L76 62",
+              "start": {
+                "x": 24.0,
+                "y": 62.0
+              }
+            }
+          ],
+          "question": "写一写：看一笔、描一笔，写「上」",
+          "praise": "写得真好，汉字卡到手！"
+        }
+      ],
+      "board": {
+        "spaces": [
+          {
+            "type": "question",
+            "step": "cn-26-w"
+          },
+          {
+            "type": "question",
+            "step": "cn-26-q"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "cn-26-l3"
+          },
+          {
+            "type": "question",
+            "step": "cn-26-wr"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "cn-26-l"
+          },
+          {
+            "type": "rest"
+          },
+          {
+            "type": "question",
+            "step": "cn-26-l2"
+          }
+        ]
+      }
+    },
+    {
+      "id": "cn-27",
+      "title": "第 28 关 识字写字",
+      "subtitle": "认识并会写「下」",
+      "steps": [
+        {
+          "id": "cn-27-t",
+          "kind": "teach",
+          "morphFrom": "wave",
+          "char": "下",
+          "pinyin": "xià",
+          "words": [
+            {
+              "icon": "wave",
+              "text": "下雨",
+              "say": "下雨"
+            },
+            {
+              "icon": "home",
+              "text": "下面",
+              "say": "下面"
+            }
+          ]
+        },
+        {
+          "id": "cn-27-l",
+          "kind": "listen",
+          "prompt": "下",
+          "speakText": "下",
+          "question": "找一找：哪张图片是「下」？",
+          "options": [
+            {
+              "icon": "sunrise"
+            },
+            {
+              "icon": "wave",
+              "text": "下"
+            },
+            {
+              "icon": "moon"
+            }
+          ],
+          "answer": 1,
+          "hint": "想想刚才的图片：「下」",
+          "praise": "眼睛真亮！下 找对啦！"
+        },
+        {
+          "id": "cn-27-l2",
+          "kind": "listen",
+          "promptIcon": "wave",
+          "speakText": "下",
+          "question": "看一看：这张图变成的字是哪个？",
+          "options": [
+            {
+              "text": "下"
+            },
+            {
+              "text": "小"
+            },
+            {
+              "text": "上"
+            }
+          ],
+          "answer": 0,
+          "hint": "想一想它像什么字",
+          "praise": "对！这张图就是「下」"
+        },
+        {
+          "id": "cn-27-w",
+          "kind": "quiz",
+          "question": "「下」可以组成哪个词？",
+          "options": [
+            {
+              "icon": "sunrise",
+              "text": "今天"
+            },
+            {
+              "icon": "wave",
+              "text": "下雨"
+            },
+            {
+              "icon": "sprout",
+              "text": "田里"
+            }
+          ],
+          "answer": 1,
+          "hint": "找一找有「下」的词",
+          "praise": "组词成功：下雨！"
+        },
+        {
+          "id": "cn-27-q",
+          "kind": "quiz",
+          "question": "练一练：哪个字是「下」？",
+          "options": [
+            {
+              "text": "下"
+            },
+            {
+              "text": "木"
+            },
+            {
+              "text": "口"
+            }
+          ],
+          "answer": 0,
+          "hint": "想一想刚才的字",
+          "praise": "记住啦！"
+        },
+        {
+          "id": "cn-27-l3",
+          "kind": "listen",
+          "prompt": "下",
+          "speakText": "下",
+          "question": "再找一找：哪张图片是「下」？",
+          "options": [
+            {
+              "icon": "sunrise"
+            },
+            {
+              "icon": "moon"
+            },
+            {
+              "icon": "wave",
+              "text": "下"
+            }
+          ],
+          "answer": 2,
+          "hint": "「下」长什么样",
+          "praise": "又找对啦！下！"
+        },
+        {
+          "id": "cn-27-wr",
+          "kind": "write",
+          "char": "下",
+          "pinyin": "xià",
+          "strokes": [
+            {
+              "d": "M26 40 L74 40",
+              "start": {
+                "x": 26.0,
+                "y": 40.0
+              }
+            },
+            {
+              "d": "M50 26 L50 72",
+              "start": {
+                "x": 50.0,
+                "y": 26.0
+              }
+            },
+            {
+              "d": "M62 48 Q70 52 72 60",
+              "start": {
+                "x": 62.0,
+                "y": 48.0
+              }
+            }
+          ],
+          "question": "写一写：看一笔、描一笔，写「下」",
+          "praise": "写得真好，汉字卡到手！"
+        }
+      ],
+      "board": {
+        "spaces": [
+          {
+            "type": "question",
+            "step": "cn-27-q"
+          },
+          {
+            "type": "question",
+            "step": "cn-27-l3"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "cn-27-wr"
+          },
+          {
+            "type": "question",
+            "step": "cn-27-l"
+          },
+          {
+            "type": "chest"
+          },
+          {
+            "type": "question",
+            "step": "cn-27-l2"
+          },
+          {
+            "type": "mushroom"
+          },
+          {
+            "type": "question",
+            "step": "cn-27-w"
+          }
+        ]
+      }
+    },
+    {
+      "id": "cn-28",
+      "title": "第 29 关 识字写字",
+      "subtitle": "认识并会写「星」",
+      "steps": [
+        {
+          "id": "cn-28-t",
+          "kind": "teach",
+          "morphFrom": "starface",
+          "char": "星",
+          "pinyin": "xīng",
+          "words": [
+            {
+              "icon": "starface",
+              "text": "星星",
+              "say": "星星"
+            },
+            {
+              "icon": "rocket",
+              "text": "星空",
+              "say": "星空"
+            }
+          ]
+        },
+        {
+          "id": "cn-28-l",
+          "kind": "listen",
+          "prompt": "星",
+          "speakText": "星",
+          "question": "找一找：哪张图片是「星」？",
+          "options": [
+            {
+              "icon": "comet"
+            },
+            {
+              "icon": "moon"
+            },
+            {
+              "icon": "starface",
+              "text": "星"
+            }
+          ],
+          "answer": 2,
+          "hint": "想想刚才的图片：「星」",
+          "praise": "眼睛真亮！星 找对啦！"
+        },
+        {
+          "id": "cn-28-l2",
+          "kind": "listen",
+          "promptIcon": "starface",
+          "speakText": "星",
+          "question": "看一看：这张图变成的字是哪个？",
+          "options": [
+            {
+              "text": "下"
+            },
+            {
+              "text": "星"
+            },
+            {
+              "text": "手"
+            }
+          ],
+          "answer": 1,
+          "hint": "想一想它像什么字",
+          "praise": "对！这张图就是「星」"
+        },
+        {
+          "id": "cn-28-w",
+          "kind": "quiz",
+          "question": "「星」可以组成哪个词？",
+          "options": [
+            {
+              "icon": "rock",
+              "text": "石头"
+            },
+            {
+              "icon": "castle",
+              "text": "石桥"
+            },
+            {
+              "icon": "starface",
+              "text": "星星"
+            }
+          ],
+          "answer": 2,
+          "hint": "找一找有「星」的词",
+          "praise": "组词成功：星星！"
+        },
+        {
+          "id": "cn-28-q",
+          "kind": "quiz",
+          "question": "练一练：哪个字是「星」？",
+          "options": [
+            {
+              "text": "木"
+            },
+            {
+              "text": "星"
+            },
+            {
+              "text": "口"
+            }
+          ],
+          "answer": 1,
+          "hint": "想一想刚才的字",
+          "praise": "记住啦！"
+        },
+        {
+          "id": "cn-28-l3",
+          "kind": "listen",
+          "prompt": "星",
+          "speakText": "星",
+          "question": "再找一找：哪张图片是「星」？",
+          "options": [
+            {
+              "icon": "starface",
+              "text": "星"
+            },
+            {
+              "icon": "moon"
+            },
+            {
+              "icon": "comet"
+            }
+          ],
+          "answer": 0,
+          "hint": "「星」长什么样",
+          "praise": "又找对啦！星！"
+        },
+        {
+          "id": "cn-28-wr",
+          "kind": "write",
+          "char": "星",
+          "pinyin": "xīng",
+          "strokes": [
+            {
+              "d": "M36 24 L36 40",
+              "start": {
+                "x": 36.0,
+                "y": 24.0
+              }
+            },
+            {
+              "d": "M36 24 L64 24 L64 40",
+              "start": {
+                "x": 36.0,
+                "y": 24.0
+              }
+            },
+            {
+              "d": "M36 32 L64 32",
+              "start": {
+                "x": 36.0,
+                "y": 32.0
+              }
+            },
+            {
+              "d": "M40 46 Q36 54 32 60",
+              "start": {
+                "x": 40.0,
+                "y": 46.0
+              }
+            },
+            {
+              "d": "M34 58 L66 58",
+              "start": {
+                "x": 34.0,
+                "y": 58.0
+              }
+            },
+            {
+              "d": "M38 66 L62 66",
+              "start": {
+                "x": 38.0,
+                "y": 66.0
+              }
+            },
+            {
+              "d": "M50 58 L50 74",
+              "start": {
+                "x": 50.0,
+                "y": 58.0
+              }
+            }
+          ],
+          "question": "写一写：看一笔、描一笔，写「星」",
+          "praise": "写得真好，汉字卡到手！"
+        }
+      ],
+      "board": {
+        "spaces": [
+          {
+            "type": "question",
+            "step": "cn-28-l3"
+          },
+          {
+            "type": "question",
+            "step": "cn-28-wr"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "cn-28-l"
+          },
+          {
+            "type": "question",
+            "step": "cn-28-l2"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "cn-28-w"
+          },
+          {
+            "type": "mushroom"
+          },
+          {
+            "type": "question",
+            "step": "cn-28-q"
+          },
+          {
+            "type": "rest"
+          }
+        ]
+      }
+    },
+    {
+      "id": "cn-29",
+      "title": "第 30 关 识字写字",
+      "subtitle": "认识并会写「手」",
+      "steps": [
+        {
+          "id": "cn-29-t",
+          "kind": "teach",
+          "morphFrom": "paw",
+          "char": "手",
+          "pinyin": "shǒu",
+          "words": [
+            {
+              "icon": "paw",
+              "text": "小手",
+              "say": "小手"
+            },
+            {
+              "icon": "heart",
+              "text": "手心",
+              "say": "手心"
+            }
+          ]
+        },
+        {
+          "id": "cn-29-l",
+          "kind": "listen",
+          "prompt": "手",
+          "speakText": "手",
+          "question": "找一找：哪张图片是「手」？",
+          "options": [
+            {
+              "icon": "paw",
+              "text": "手"
+            },
+            {
+              "icon": "girl"
+            },
+            {
+              "icon": "wave"
+            }
+          ],
+          "answer": 0,
+          "hint": "想想刚才的图片：「手」",
+          "praise": "眼睛真亮！手 找对啦！"
+        },
+        {
+          "id": "cn-29-l2",
+          "kind": "listen",
+          "promptIcon": "paw",
+          "speakText": "手",
+          "question": "看一看：这张图变成的字是哪个？",
+          "options": [
+            {
+              "text": "日"
+            },
+            {
+              "text": "月"
+            },
+            {
+              "text": "手"
+            }
+          ],
+          "answer": 2,
+          "hint": "想一想它像什么字",
+          "praise": "对！这张图就是「手」"
+        },
+        {
+          "id": "cn-29-w",
+          "kind": "quiz",
+          "question": "「手」可以组成哪个词？",
+          "options": [
+            {
+              "icon": "paw",
+              "text": "小手"
+            },
+            {
+              "icon": "volcano",
+              "text": "火山"
+            },
+            {
+              "icon": "starface",
+              "text": "火花"
+            }
+          ],
+          "answer": 0,
+          "hint": "找一找有「手」的词",
+          "praise": "组词成功：小手！"
+        },
+        {
+          "id": "cn-29-q",
+          "kind": "quiz",
+          "question": "练一练：哪个字是「手」？",
+          "options": [
+            {
+              "text": "木"
+            },
+            {
+              "text": "口"
+            },
+            {
+              "text": "手"
+            }
+          ],
+          "answer": 2,
+          "hint": "想一想刚才的字",
+          "praise": "记住啦！"
+        },
+        {
+          "id": "cn-29-l3",
+          "kind": "listen",
+          "prompt": "手",
+          "speakText": "手",
+          "question": "再找一找：哪张图片是「手」？",
+          "options": [
+            {
+              "icon": "girl"
+            },
+            {
+              "icon": "paw",
+              "text": "手"
+            },
+            {
+              "icon": "wave"
+            }
+          ],
+          "answer": 1,
+          "hint": "「手」长什么样",
+          "praise": "又找对啦！手！"
+        },
+        {
+          "id": "cn-29-wr",
+          "kind": "write",
+          "char": "手",
+          "pinyin": "shǒu",
+          "strokes": [
+            {
+              "d": "M42 26 Q40 34 38 40",
+              "start": {
+                "x": 42.0,
+                "y": 26.0
+              }
+            },
+            {
+              "d": "M34 46 L66 46",
+              "start": {
+                "x": 34.0,
+                "y": 46.0
+              }
+            },
+            {
+              "d": "M38 58 L62 58",
+              "start": {
+                "x": 38.0,
+                "y": 58.0
+              }
+            },
+            {
+              "d": "M50 28 L50 72 Q50 78 44 76",
+              "start": {
+                "x": 50.0,
+                "y": 28.0
+              }
+            }
+          ],
+          "question": "写一写：看一笔、描一笔，写「手」",
+          "praise": "写得真好，汉字卡到手！"
+        }
+      ],
+      "board": {
+        "spaces": [
+          {
+            "type": "question",
+            "step": "cn-29-wr"
+          },
+          {
+            "type": "question",
+            "step": "cn-29-l"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "cn-29-l2"
+          },
+          {
+            "type": "question",
+            "step": "cn-29-w"
+          },
+          {
+            "type": "chest"
+          },
+          {
+            "type": "question",
+            "step": "cn-29-q"
+          },
+          {
+            "type": "rest"
+          },
+          {
+            "type": "question",
+            "step": "cn-29-l3"
           }
         ]
       }

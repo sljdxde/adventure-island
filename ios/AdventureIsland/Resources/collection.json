@@ -169,88 +169,184 @@
       "lockedLabel": "？？？",
       "items": [
         {
-          "id": "hz-ri",
+          "id": "hz-日",
           "name": "日",
           "text": "日",
           "pinyin": "rì"
         },
         {
-          "id": "hz-yue",
+          "id": "hz-月",
           "name": "月",
           "text": "月",
           "pinyin": "yuè"
         },
         {
-          "id": "hz-shui",
+          "id": "hz-水",
           "name": "水",
           "text": "水",
           "pinyin": "shuǐ"
         },
         {
-          "id": "hz-shan",
+          "id": "hz-山",
           "name": "山",
           "text": "山",
           "pinyin": "shān"
         },
         {
-          "id": "hz-mu",
+          "id": "hz-木",
           "name": "木",
           "text": "木",
           "pinyin": "mù"
         },
         {
-          "id": "hz-ren",
+          "id": "hz-人",
           "name": "人",
           "text": "人",
           "pinyin": "rén"
         },
         {
-          "id": "hz-kou",
+          "id": "hz-口",
           "name": "口",
           "text": "口",
           "pinyin": "kǒu"
         },
         {
-          "id": "hz-tian",
+          "id": "hz-天",
           "name": "天",
           "text": "天",
           "pinyin": "tiān"
         },
         {
-          "id": "hz-tian2",
+          "id": "hz-田",
           "name": "田",
           "text": "田",
           "pinyin": "tián"
         },
         {
-          "id": "hz-shi",
+          "id": "hz-石",
           "name": "石",
           "text": "石",
           "pinyin": "shí"
         },
         {
-          "id": "hz-huo",
+          "id": "hz-火",
           "name": "火",
           "text": "火",
           "pinyin": "huǒ"
         },
         {
-          "id": "hz-hua",
+          "id": "hz-花",
           "name": "花",
           "text": "花",
           "pinyin": "huā"
         },
         {
-          "id": "hz-cao",
+          "id": "hz-草",
           "name": "草",
           "text": "草",
           "pinyin": "cǎo"
         },
         {
-          "id": "hz-niao",
+          "id": "hz-鸟",
           "name": "鸟",
           "text": "鸟",
           "pinyin": "niǎo"
+        },
+        {
+          "id": "hz-一",
+          "name": "一",
+          "text": "一",
+          "pinyin": "yī"
+        },
+        {
+          "id": "hz-二",
+          "name": "二",
+          "text": "二",
+          "pinyin": "èr"
+        },
+        {
+          "id": "hz-三",
+          "name": "三",
+          "text": "三",
+          "pinyin": "sān"
+        },
+        {
+          "id": "hz-四",
+          "name": "四",
+          "text": "四",
+          "pinyin": "sì"
+        },
+        {
+          "id": "hz-五",
+          "name": "五",
+          "text": "五",
+          "pinyin": "wǔ"
+        },
+        {
+          "id": "hz-六",
+          "name": "六",
+          "text": "六",
+          "pinyin": "liù"
+        },
+        {
+          "id": "hz-七",
+          "name": "七",
+          "text": "七",
+          "pinyin": "qī"
+        },
+        {
+          "id": "hz-八",
+          "name": "八",
+          "text": "八",
+          "pinyin": "bā"
+        },
+        {
+          "id": "hz-九",
+          "name": "九",
+          "text": "九",
+          "pinyin": "jiǔ"
+        },
+        {
+          "id": "hz-十",
+          "name": "十",
+          "text": "十",
+          "pinyin": "shí"
+        },
+        {
+          "id": "hz-大",
+          "name": "大",
+          "text": "大",
+          "pinyin": "dà"
+        },
+        {
+          "id": "hz-小",
+          "name": "小",
+          "text": "小",
+          "pinyin": "xiǎo"
+        },
+        {
+          "id": "hz-上",
+          "name": "上",
+          "text": "上",
+          "pinyin": "shàng"
+        },
+        {
+          "id": "hz-下",
+          "name": "下",
+          "text": "下",
+          "pinyin": "xià"
+        },
+        {
+          "id": "hz-星",
+          "name": "星",
+          "text": "星",
+          "pinyin": "xīng"
+        },
+        {
+          "id": "hz-手",
+          "name": "手",
+          "text": "手",
+          "pinyin": "shǒu"
         }
       ]
     },
@@ -319,6 +415,56 @@
           "id": "py-zhi",
           "name": "zhi 蜘",
           "text": "zhi"
+        },
+        {
+          "id": "py-tone1",
+          "name": "一声 ā",
+          "text": "ā"
+        },
+        {
+          "id": "py-tone2",
+          "name": "二声 á",
+          "text": "á"
+        },
+        {
+          "id": "py-tone3",
+          "name": "三声 ǎ",
+          "text": "ǎ"
+        },
+        {
+          "id": "py-tone4",
+          "name": "四声 à",
+          "text": "à"
+        },
+        {
+          "id": "py-ai",
+          "name": "ai 阿姨",
+          "text": "ai"
+        },
+        {
+          "id": "py-ei",
+          "name": "ei 诶",
+          "text": "ei"
+        },
+        {
+          "id": "py-ui",
+          "name": "ui 围巾",
+          "text": "ui"
+        },
+        {
+          "id": "py-an",
+          "name": "an 天安门",
+          "text": "an"
+        },
+        {
+          "id": "py-en",
+          "name": "en 人",
+          "text": "en"
+        },
+        {
+          "id": "py-in",
+          "name": "in 音",
+          "text": "in"
         }
       ]
     },
@@ -387,6 +533,246 @@
           "id": "en-gift",
           "name": "Gift",
           "icon": "gift"
+        },
+        {
+          "id": "en-cat",
+          "name": "Cat 猫",
+          "icon": "cat"
+        },
+        {
+          "id": "en-duck",
+          "name": "Duck 鸭",
+          "icon": "duck"
+        },
+        {
+          "id": "en-rabbit",
+          "name": "Rabbit 兔",
+          "icon": "rabbit"
+        },
+        {
+          "id": "en-bear",
+          "name": "Bear 熊",
+          "icon": "bear"
+        },
+        {
+          "id": "en-red",
+          "name": "Red 红",
+          "icon": "apple"
+        },
+        {
+          "id": "en-yellow",
+          "name": "Yellow 黄",
+          "icon": "banana"
+        },
+        {
+          "id": "en-blue",
+          "name": "Blue 蓝",
+          "icon": "wave"
+        },
+        {
+          "id": "en-green",
+          "name": "Green 绿",
+          "icon": "leaf"
+        },
+        {
+          "id": "en-one",
+          "name": "One 一",
+          "icon": "starface"
+        },
+        {
+          "id": "en-two",
+          "name": "Two 二",
+          "icon": "star"
+        },
+        {
+          "id": "en-three",
+          "name": "Three 三",
+          "icon": "moon"
+        },
+        {
+          "id": "en-four",
+          "name": "Four 四",
+          "icon": "sun"
+        },
+        {
+          "id": "en-apple",
+          "name": "Apple 苹果",
+          "icon": "apple"
+        },
+        {
+          "id": "en-banana",
+          "name": "Banana 香蕉",
+          "icon": "banana"
+        },
+        {
+          "id": "en-peach",
+          "name": "Peach 桃",
+          "icon": "heart"
+        },
+        {
+          "id": "en-grape",
+          "name": "Grape 葡萄",
+          "icon": "candy"
+        },
+        {
+          "id": "en-mom",
+          "name": "Mom 妈妈",
+          "icon": "girl"
+        },
+        {
+          "id": "en-dad",
+          "name": "Dad 爸爸",
+          "icon": "fox"
+        },
+        {
+          "id": "en-baby",
+          "name": "Baby 宝宝",
+          "icon": "paw"
+        },
+        {
+          "id": "en-home",
+          "name": "Home 家",
+          "icon": "home"
+        },
+        {
+          "id": "en-eye",
+          "name": "Eye 眼睛",
+          "icon": "starface"
+        },
+        {
+          "id": "en-hand",
+          "name": "Hand 手",
+          "icon": "paw"
+        },
+        {
+          "id": "en-nose",
+          "name": "Nose 鼻子",
+          "icon": "crystal"
+        },
+        {
+          "id": "en-mouth",
+          "name": "Mouth 嘴",
+          "icon": "speaker"
+        },
+        {
+          "id": "en-book",
+          "name": "Book 书",
+          "icon": "book"
+        },
+        {
+          "id": "en-bag",
+          "name": "Bag 书包",
+          "icon": "gift"
+        },
+        {
+          "id": "en-pen",
+          "name": "Pen 笔",
+          "icon": "key"
+        },
+        {
+          "id": "en-school",
+          "name": "School 学校",
+          "icon": "school"
+        },
+        {
+          "id": "en-cake",
+          "name": "Cake 蛋糕",
+          "icon": "cake"
+        },
+        {
+          "id": "en-candy",
+          "name": "Candy 糖",
+          "icon": "candy"
+        },
+        {
+          "id": "en-bread",
+          "name": "Bread 面包",
+          "icon": "bread"
+        },
+        {
+          "id": "en-milk",
+          "name": "Milk 牛奶",
+          "icon": "milk"
+        },
+        {
+          "id": "en-shirt",
+          "name": "Shirt 衬衫",
+          "icon": "hanger"
+        },
+        {
+          "id": "en-shoe",
+          "name": "Shoe 鞋",
+          "icon": "shoe"
+        },
+        {
+          "id": "en-hat",
+          "name": "Hat 帽子",
+          "icon": "hat"
+        },
+        {
+          "id": "en-coat",
+          "name": "Coat 外套",
+          "icon": "bear"
+        },
+        {
+          "id": "en-train",
+          "name": "Train 火车",
+          "icon": "train"
+        },
+        {
+          "id": "en-rocket",
+          "name": "Rocket 火箭",
+          "icon": "rocket"
+        },
+        {
+          "id": "en-boat",
+          "name": "Boat 船",
+          "icon": "wave"
+        },
+        {
+          "id": "en-plane",
+          "name": "Plane 飞机",
+          "icon": "balloon"
+        },
+        {
+          "id": "en-run",
+          "name": "Run 跑",
+          "icon": "girl"
+        },
+        {
+          "id": "en-jump",
+          "name": "Jump 跳",
+          "icon": "rabbit"
+        },
+        {
+          "id": "en-swim",
+          "name": "Swim 游",
+          "icon": "fish"
+        },
+        {
+          "id": "en-fly",
+          "name": "Fly 飞",
+          "icon": "bird"
+        },
+        {
+          "id": "en-run",
+          "name": "Run 跑",
+          "icon": "girl"
+        },
+        {
+          "id": "en-jump",
+          "name": "Jump 跳",
+          "icon": "rabbit"
+        },
+        {
+          "id": "en-swim",
+          "name": "Swim 游",
+          "icon": "wave"
+        },
+        {
+          "id": "en-fly",
+          "name": "Fly 飞",
+          "icon": "duck"
         }
       ]
     },
@@ -445,6 +831,134 @@
           "id": "as-sky",
           "name": "星晶夜空",
           "icon": "crystal"
+        },
+        {
+          "id": "as-mercury",
+          "name": "水星 Mercury",
+          "icon": "mercury"
+        },
+        {
+          "id": "as-venus",
+          "name": "金星 Venus",
+          "icon": "venus"
+        },
+        {
+          "id": "as-mars",
+          "name": "火星 Mars",
+          "icon": "mars"
+        },
+        {
+          "id": "as-jupiter",
+          "name": "木星 Jupiter",
+          "icon": "jupiter"
+        },
+        {
+          "id": "as-saturn",
+          "name": "土星 Saturn",
+          "icon": "saturn"
+        },
+        {
+          "id": "as-milkyway",
+          "name": "银河系 Milky Way",
+          "icon": "milkyway"
+        }
+      ]
+    },
+    {
+      "id": "geo",
+      "title": "地理卡",
+      "icon": "earth",
+      "lockedLabel": "？？？",
+      "items": [
+        {
+          "id": "ge-china",
+          "name": "中国地图",
+          "icon": "china-map",
+          "fact": "中国地图像一只大雄鸡。"
+        },
+        {
+          "id": "ge-tiananmen",
+          "name": "天安门",
+          "icon": "tiananmen",
+          "fact": "天安门在北京，北京是中国的首都。"
+        },
+        {
+          "id": "ge-river",
+          "name": "长江黄河",
+          "icon": "river",
+          "fact": "长江和黄河是中国的母亲河。"
+        },
+        {
+          "id": "ge-greatwall",
+          "name": "万里长城",
+          "icon": "greatwall",
+          "fact": "长城像一条长龙卧在山上。"
+        },
+        {
+          "id": "ge-everest",
+          "name": "珠穆朗玛峰",
+          "icon": "everest",
+          "fact": "世界第一高峰，山顶盖着白雪。"
+        },
+        {
+          "id": "ge-panda",
+          "name": "大熊猫",
+          "icon": "panda",
+          "fact": "中国的国宝，最爱吃竹子。"
+        },
+        {
+          "id": "ge-world",
+          "name": "世界地图",
+          "icon": "world-map",
+          "fact": "地球上有七大洲四大洋。"
+        },
+        {
+          "id": "ge-asia",
+          "name": "亚洲",
+          "icon": "earth",
+          "fact": "我们住在亚洲，它是最大的大洲。"
+        },
+        {
+          "id": "ge-lion",
+          "name": "狮子",
+          "icon": "lion",
+          "fact": "非洲草原上的万兽之王。"
+        },
+        {
+          "id": "ge-elephant",
+          "name": "大象",
+          "icon": "elephant",
+          "fact": "非洲象有长长的鼻子和大耳朵。"
+        },
+        {
+          "id": "ge-windmill",
+          "name": "风车",
+          "icon": "windmill",
+          "fact": "欧洲田野上慢慢转动的大风车。"
+        },
+        {
+          "id": "ge-liberty",
+          "name": "自由女神",
+          "icon": "libertystatue",
+          "fact": "举着火炬，站在美国纽约港。"
+        },
+        {
+          "id": "ge-kangaroo",
+          "name": "袋鼠",
+          "icon": "kangaroo",
+          "fact": "肚子上有口袋，是大洋洲的动物。"
+        },
+        {
+          "id": "ge-penguin",
+          "name": "企鹅",
+          "icon": "penguin",
+          "fact": "住在南极，像穿黑燕尾服的小绅士。"
+        },
+        {
+          "id": "ge-polarbear",
+          "name": "北极熊",
+          "icon": "polarbear",
+          "fact": "住在北极，厚厚的白毛不怕冷。"
         }
       ]
     },
@@ -518,6 +1032,36 @@
           "id": "bg-king",
           "name": "全科通",
           "icon": "medal"
+        },
+        {
+          "id": "bg-writer",
+          "name": "小小书法家",
+          "icon": "hanzi",
+          "fact": "写完 10 个汉字获得"
+        },
+        {
+          "id": "bg-mul",
+          "name": "乘法小达人",
+          "icon": "equal",
+          "fact": "学会乘法口诀获得"
+        },
+        {
+          "id": "bg-sudoku",
+          "name": "数独侦探",
+          "icon": "block",
+          "fact": "推理完成数独获得"
+        },
+        {
+          "id": "bg-geo",
+          "name": "环球旅行家",
+          "icon": "earth",
+          "fact": "通关环球号获得"
+        },
+        {
+          "id": "bg-words50",
+          "name": "单词大富豪",
+          "icon": "book",
+          "fact": "收集约 50 个单词获得"
         }
       ]
     }

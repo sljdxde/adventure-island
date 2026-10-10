@@ -77,7 +77,7 @@ extension ShapeStyle where Self == Color {
 
 /// 页面主题：天空配色 + 面板描边色（对应 CSS data-theme）
 enum AppTheme {
-    case home, cn, math, lab, coll, parent, pinyin, english, astro
+    case home, cn, math, lab, coll, parent, pinyin, english, astro, geo
 
     var sky: [Color] {
         switch self {
@@ -90,6 +90,7 @@ enum AppTheme {
         case .pinyin: return [Color(hex: 0xFFC98A), Color(hex: 0xFFDCA8), Color(hex: 0xFFF0CE)]
         case .english: return [Color(hex: 0x6FD0A8), Color(hex: 0xA8E5C8), Color(hex: 0xE1F8EC)]
         case .astro: return [Color(hex: 0x2E3A87), Color(hex: 0x4A5AB8), Color(hex: 0x8C9BE8)]
+        case .geo: return [Color(hex: 0x6FD0A8), Color(hex: 0xA8E5C8), Color(hex: 0xDFF3E4)]
         }
     }
 
@@ -104,6 +105,7 @@ enum AppTheme {
         case .pinyin: return .brandOrangeDdk
         case .english: return .brandGreenDk
         case .astro: return Color(hex: 0x6C7BE8)
+        case .geo: return .brandGreenDk
         }
     }
 
@@ -118,6 +120,7 @@ enum AppTheme {
         case .pinyin: return Color(hex: 0xB85E14)
         case .english: return .brandGreenDdk
         case .astro: return Color(hex: 0x3D4CB0)
+        case .geo: return Color(hex: 0x2E7D4F)
         }
     }
 
@@ -146,6 +149,7 @@ struct SubjectConfig {
         "pinyin": SubjectConfig(file: "pinyin_levels", title: "拼音谷", guide: "panda", theme: .pinyin),
         "english": SubjectConfig(file: "english_levels", title: "英语王国", guide: "robot", theme: .english),
         "astro": SubjectConfig(file: "astro_levels", title: "天文台", guide: "robot", theme: .astro),
+        "geo": SubjectConfig(file: "geo_levels", title: "环球号", guide: "panda", theme: .geo),
     ]
 }
 

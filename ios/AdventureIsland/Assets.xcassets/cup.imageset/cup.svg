@@ -1,0 +1,4 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs><linearGradient id="g-coral" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFA793"/><stop offset="1" stop-color="#F0705F"/></linearGradient></defs>
+  <path d="M18 22 L20 50 Q20 54 24 54 L40 54 Q44 54 44 50 L46 22 Z" fill="url(#g-coral)"/>
+  <path d="M46 26 Q54 28 52 36 Q50 42 44 40" fill="none" stroke="url(#g-coral)" stroke-width="3"/>
+  <path d="M22 34 L42 34" stroke="#fff" stroke-width="2" opacity=".5"/></svg>

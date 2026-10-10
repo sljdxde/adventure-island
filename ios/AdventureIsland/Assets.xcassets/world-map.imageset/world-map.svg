@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs><linearGradient id="g-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#C9ECFB"/><stop offset="1" stop-color="#8ED8F6"/></linearGradient><linearGradient id="g-green" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8CE08A"/><stop offset="1" stop-color="#46B45A"/></linearGradient><linearGradient id="g-gold" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFE58A"/><stop offset="1" stop-color="#F7B32B"/></linearGradient><linearGradient id="g-coral" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFA793"/><stop offset="1" stop-color="#F0705F"/></linearGradient></defs>
+  <rect x="8" y="14" width="48" height="36" rx="8" fill="url(#g-sky)"/>
+  <path d="M14 24 Q20 20 26 24 Q28 30 22 32 Q15 31 14 24 Z" fill="url(#g-green)"/>
+  <path d="M34 22 Q42 18 48 24 Q50 30 44 32 Q36 32 34 26 Z" fill="url(#g-gold)"/>
+  <path d="M30 36 Q36 34 40 40 Q38 46 32 44 Q28 42 30 36 Z" fill="url(#g-coral)"/>
+  <path d="M46 40 Q52 40 52 46 Q48 50 44 46 Z" fill="url(#g-green)"/></svg>

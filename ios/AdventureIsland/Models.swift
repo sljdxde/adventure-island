@@ -58,7 +58,8 @@ struct Step: Codable, Equatable, Identifiable {
     var dir: String?   // up | down
 
     // memory（翻牌配对：扑克牌翻牌，cards 两两同 key 配对）
-    var cards: [MemoryCard]?
+    // cards（扑克凑十/凑目标）：同一 JSON 键 cards，元素可能是 {key,icon,text} 或数字
+    var cards: StepCards?
 
     // blend（拼一拼：声母+韵母）
     var parts: [String]?
@@ -69,10 +70,29 @@ struct Step: Codable, Equatable, Identifiable {
 
     // quiz
     var question: String?
-    var options: [QuizOption]?
+    // options：同一 JSON 键，quiz/listen/pattern 为对象选项，muldiv 为整数选项，clock 为字符串选项
+    var options: StepOptions?
     var answer: Int?
     var hint: String?
     var praise: String?
+
+    // MARK: v0.9 新题型字段
+    var mode: String?        // muldiv: groups/average/contain；cards: make10/target；clock: read/set
+    var groups: Int?         // muldiv 乘法组数 / 除法盘数
+    var per: Int?            // muldiv 乘法每组数 / 除法每盘数（包含除）
+    var icon: String?        // muldiv 可视化图标
+    var target: Int?         // cards 目标和
+    var pick: Int?           // cards 需选张数
+    var hour: Int?           // clock
+    var minute: Int?         // clock（0 或 30）
+    var price: Int?          // money 标价（角）
+    var size: Int?           // sudoku（4）
+    var strokes: [StrokeStep]?   // write
+    var symbols: [String]?       // sudoku 图标
+    var givens: [GivenCell]?     // sudoku 给定格
+    var solution: [[Int]]?       // sudoku 完整解
+    var denominations: [Denomination]?  // money
+    var regions: [MapRegion]?     // mappuzzle
 
     // count（点数：duckIcon 为本关情境道具，backdrop 池塘/夜空/白天场景）
     var duckIcon: String?
@@ -88,6 +108,114 @@ struct Step: Codable, Equatable, Identifiable {
     var rightCount: Int?
     var compareOptions: [CompareOption]?
     var answerKey: String?
+}
+
+// MARK: - v0.9 新题型值类型（柔性解码：同一 JSON 键在不同题型里形状不同）
+
+/// 柔性 options：对象选项（quiz/listen/pattern）/ 整数选项（muldiv）/ 字符串选项（clock）
+enum StepOptions: Codable, Equatable {
+    case quiz([QuizOption])
+    case ints([Int])
+    case strings([String])
+
+    init(from decoder: Decoder) throws {
+        let c = try decoder.singleValueContainer()
+        if let v = try? c.decode([QuizOption].self) { self = .quiz(v); return }
+        if let v = try? c.decode([Int].self) { self = .ints(v); return }
+        if let v = try? c.decode([String].self) { self = .strings(v); return }
+        self = .quiz([])
+    }
+    func encode(to encoder: Encoder) throws {
+        var c = encoder.singleValueContainer()
+        switch self {
+        case .quiz(let v): try c.encode(v)
+        case .ints(let v): try c.encode(v)
+        case .strings(let v): try c.encode(v)
+        }
+    }
+    var quizList: [QuizOption] { if case .quiz(let v) = self { return v }; return [] }
+    var intList: [Int] { if case .ints(let v) = self { return v }; return [] }
+    var stringList: [String] { if case .strings(let v) = self { return v }; return [] }
+}
+
+/// 柔性 cards：翻牌配对为对象数组，扑克凑数为整数数组
+enum StepCards: Codable, Equatable {
+    case memory([MemoryCard])
+    case values([Int])
+
+    init(from decoder: Decoder) throws {
+        let c = try decoder.singleValueContainer()
+        if let v = try? c.decode([MemoryCard].self) { self = .memory(v); return }
+        if let v = try? c.decode([Int].self) { self = .values(v); return }
+        self = .values([])
+    }
+    func encode(to encoder: Encoder) throws {
+        var c = encoder.singleValueContainer()
+        switch self {
+        case .memory(let v): try c.encode(v)
+        case .values(let v): try c.encode(v)
+        }
+    }
+    var memoryList: [MemoryCard] { if case .memory(let v) = self { return v }; return [] }
+    var valueList: [Int] { if case .values(let v) = self { return v }; return [] }
+}
+
+struct StrokePoint: Codable, Equatable { var x: Double; var y: Double }
+
+struct StrokeStep: Codable, Equatable {
+    var d: String
+    var start: StrokePoint?
+}
+
+struct GivenCell: Codable, Equatable { var r: Int; var c: Int; var v: Int }
+
+struct Denomination: Codable, Equatable, Identifiable {
+    var id: String { label }
+    var value: Int
+    var label: String
+    var icon: String?
+}
+
+struct MapRegion: Codable, Equatable, Identifiable {
+    var id: String
+    var label: String
+    var color: String?
+    var points: [[Double]]   // viewBox 0 0 100 60 坐标
+}
+
+// MARK: - 商店（shop.json：小伙伴 characters + 骰子皮肤 dice）
+
+struct ShopItem: Codable, Identifiable {
+    var id: String
+    var name: String
+    var icon: String
+    var price: Int
+    var isDefault: Bool?
+
+    enum CodingKeys: String, CodingKey { case id, name, icon, price, isDefault = "default" }
+}
+
+struct ShopFile: Codable {
+    var characters: [ShopItem]
+    var dice: [ShopItem]
+}
+
+/// 商店目录访问（带缓存）：按 id 取图标，激活角色/骰面时用
+enum ShopCatalog {
+    private static var cached: ShopFile?
+    static var shared: ShopFile {
+        if let cached { return cached }
+        let f = ContentLoader.load(ShopFile.self, "shop")
+        cached = f
+        return f
+    }
+    static func charIcon(for id: String) -> String {
+        shared.characters.first { $0.id == id }?.icon ?? id
+    }
+    /// 骰面点图案：std→红点 dot，其余皮肤用对应图标名
+    static func dicePipIcon(for id: String) -> String {
+        shared.dice.first { $0.id == id }?.icon ?? "dot"
+    }
 }
 
 struct Level: Codable, Equatable, Identifiable {
@@ -219,6 +347,11 @@ struct LevelFlow: Equatable {
     /// 答错一题：不后退不惩罚（防挫败铁律），只计入星级
     mutating func registerWrong() { wrongCount += 1 }
 
+    #if DEBUG
+    /// DEBUG 深链：直接定位到指定步骤（仅用于验证）
+    mutating func jump(to step: Int) { if step > 0 { stepIndex = step } }
+    #endif
+
     /// 答完当前步骤推进：还有下一步则前进，已是最后一步则置 finished 进入通关结算；
     /// 已结算或空关卡（stepCount ≤ 0）为非法输入，忽略不改变状态
     mutating func advance(stepCount: Int) {
@@ -304,5 +437,11 @@ enum ContentLoader {
         } catch {
             fatalError("内容文件 \(name).json 解码失败: \(error)")
         }
+    }
+
+    /// 容错加载：文件缺失或解码失败返回 nil（用于 geo 等内容尚未生成时不崩溃）
+    static func loadOptional<T: Decodable>(_ type: T.Type, _ name: String) -> T? {
+        guard let url = Bundle.main.url(forResource: name, withExtension: "json") else { return nil }
+        return try? JSONDecoder().decode(T.self, from: Data(contentsOf: url))
     }
 }

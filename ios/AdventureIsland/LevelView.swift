@@ -15,7 +15,14 @@ struct LevelView: View {
     let index: Int
 
     @State private var content: SubjectFile?
-    @State private var flow = LevelFlow()
+    @State private var flow: LevelFlow = {
+        #if DEBUG
+        if let s = DebugLaunch.arg("-AIStepAt"), let n = Int(s) {
+            var f = LevelFlow(); f.jump(to: n); return f
+        }
+        #endif
+        return LevelFlow()
+    }()
 
     private var level: Level? { content?.levels[safe: index] }
     private var step: Step? { level?.steps[safe: flow.stepIndex] }
@@ -133,6 +140,13 @@ struct LevelView: View {
             case "neighbor": name = "填一填"
             case "memory": name = "翻翻牌"
             case "dice": name = "掷骰子"
+            case "write": name = "写一写"
+            case "muldiv": name = "乘除法"
+            case "cards": name = "凑十牌"
+            case "sudoku": name = "数独"
+            case "clock": name = "认钟表"
+            case "money": name = "买东西"
+            case "mappuzzle": name = "拼地图"
             default: name = "比一比"
             }
             return StepChipState(title: name, state: i < flow.stepIndex ? .done : (i == flow.stepIndex ? .now : .todo))
@@ -158,6 +172,7 @@ struct LevelView: View {
                      totalLevels: content?.levels.count ?? 0,
                      stars: flow.stars,
                      wrongCount: flow.wrongCount,
+                     mascot: ShopCatalog.charIcon(for: store.snapshot.activeChar),
                      onNext: goNextLevel,
                      onReplay: { flow = LevelFlow() },
                      route: $route)
@@ -315,7 +330,7 @@ struct QuizStepView: View {
                 .shadow(color: Color(hex: 0xF0DCAC), radius: 0, x: 0, y: 4)
 
             HStack(spacing: 26) {
-                ForEach((step.options ?? []).indices, id: \.self) { i in
+                ForEach((step.options?.quizList ?? []).indices, id: \.self) { i in
                     optionCard(i)
                 }
             }
@@ -336,7 +351,7 @@ struct QuizStepView: View {
 
     @ViewBuilder
     private func optionCard(_ i: Int) -> some View {
-        let opt = step.options![i]
+        let opt = step.options!.quizList[i]
         Button {
             guard !solved else { return }
             if i == step.answer {
@@ -864,8 +879,8 @@ struct ListenStepView: View {
             }
 
             HStack(spacing: 26) {
-                ForEach((step.options ?? []).indices, id: \.self) { i in
-                    let opt = step.options![i]
+                ForEach((step.options?.quizList ?? []).indices, id: \.self) { i in
+                    let opt = step.options!.quizList[i]
                     Button {
                         guard !solved else { return }
                         if i == step.answer {
@@ -983,7 +998,7 @@ struct BlendStepView: View {
                 ZStack {
                     RoundedRectangle(cornerRadius: 22, style: .continuous)
                         .fill(resultCardFill)
-                    Text(solved ? (step.options?[safe: step.answer ?? 0]?.text ?? "?") : "?")
+                    Text(solved ? (step.options?.quizList[safe: step.answer ?? 0]?.text ?? "?") : "?")
                         .font(.system(size: 64, weight: .heavy))
                         .foregroundColor(solved ? Color(hex: 0x2F6B22) : .inkSoft)
                 }
@@ -993,8 +1008,8 @@ struct BlendStepView: View {
             }
 
             HStack(spacing: 20) {
-                ForEach((step.options ?? []).indices, id: \.self) { i in
-                    let opt = step.options![i]
+                ForEach((step.options?.quizList ?? []).indices, id: \.self) { i in
+                    let opt = step.options!.quizList[i]
                     Button {
                         guard !solved else { return }
                         if i == step.answer {
@@ -1230,8 +1245,8 @@ struct PatternStepView: View {
             }
 
             HStack(spacing: 26) {
-                ForEach((step.options ?? []).indices, id: \.self) { i in
-                    let opt = step.options![i]
+                ForEach((step.options?.quizList ?? []).indices, id: \.self) { i in
+                    let opt = step.options!.quizList[i]
                     Button {
                         guard !solved else { return }
                         if i == step.answer {
@@ -1684,7 +1699,7 @@ struct MemoryStepView: View {
         .modifier(StickerCardModifier())
         .onAppear {
             if deck.isEmpty {
-                deck = (step.cards ?? []).shuffled()
+                deck = (step.cards?.memoryList ?? []).shuffled()
                 #if DEBUG
                 if ProcessInfo.processInfo.arguments.contains("-AIFlip") {
                     flipped = Set(0..<6)
@@ -1783,6 +1798,7 @@ struct DiceStepView: View {
     let onWrong: () -> Void
     let onNext: () -> Void
     let onCorrectCelebrate: () -> Void
+    @EnvironmentObject var store: ProgressStore
     @EnvironmentObject var toast: ToastCenter
     @Environment(\.soundService) private var sound
     @State private var face = 1
@@ -1806,13 +1822,14 @@ struct DiceStepView: View {
             Button {
                 roll()
             } label: {
-                DieFaceView(face: face, size: 132)
+                DieFaceView(face: face, size: 132,
+                            pip: ShopCatalog.dicePipIcon(for: store.snapshot.activeDice))
                     .rotation3DEffect(.degrees(rolled ? 0 : 12), axis: (x: 1, y: 1, z: 0))
             }
             .buttonStyle(.plain)
             .disabled(rolled)
 
-            Text(rolled ? "数一数红点有几个" : "👆 点骰子，掷一掷！")
+            Text(rolled ? "数一数图案有几个" : "👆 点骰子，掷一掷！")
                 .font(.kidBody(16))
                 .foregroundColor(.inkSoft)
 

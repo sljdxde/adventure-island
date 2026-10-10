@@ -59,10 +59,17 @@ enum Route: Equatable {
     case level(subject: String, index: Int)
     case lab
     case collection
+    case shop
     case parent
     #if DEBUG
     case debugCeremony(subject: String, index: Int, total: Int)
     #endif
+}
+
+/// 是否处于关卡内（棋盘/Boss/线性关）：用于护眼休息延迟到结算后
+func isLevelRoute(_ r: Route) -> Bool {
+    if case .level = r { return true }
+    return false
 }
 
 struct RootView: View {
@@ -96,6 +103,8 @@ struct RootView: View {
                 LabView(route: $route, confetti: $confettiTrigger)
             case .collection:
                 CollectionView(route: $route)
+            case .shop:
+                ShopView(route: $route)
             case .parent:
                 ParentView(route: $route)
             #if DEBUG
@@ -117,6 +126,13 @@ struct RootView: View {
         .onReceive(timer) { _ in
             timeManager.tick()
             if case .resting = timeManager.phase { speech.stop() }
+        }
+        .onChange(of: route) { r in
+            // 关卡进行中推迟休息到结算后；每日总量 dayOver 仍由 TimeManager 立即收束
+            timeManager.setInLevel(isLevelRoute(r))
+        }
+        .onAppear {
+            timeManager.setInLevel(isLevelRoute(route))
         }
         .animation(.easeInOut(duration: 0.25), value: route)
     }

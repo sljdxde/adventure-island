@@ -6,7 +6,7 @@
          design/assets/manifest.json
    说明：本文件是全部自产美术资产的唯一源；页面通过 <img src="assets/icons/x.svg"> 引用。
    ========================================================== */
-import { mkdirSync, writeFileSync } from 'node:fs';
+import { mkdirSync, writeFileSync, readFileSync, existsSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -523,6 +523,7 @@ const PIPE = (color) => `
 S['pipe-red'] = PIPE('#F0705F');
 S['pipe-blue'] = PIPE('#4FA9E8');
 S['pipe-purple'] = PIPE('#9B7BF5');
+S['pipe-brown'] = PIPE('#B5835A');
 
 S.flag = `
   <path d="M14 6 L14 58" stroke="#5B4636" stroke-width="4.5" stroke-linecap="round"/>
@@ -545,6 +546,392 @@ S.brick = `
   <path d="M6 25 L58 25 M6 40 L58 40 M22 10 L22 25 M42 10 L42 25 M14 25 L14 40 M32 25 L32 40 M50 25 L50 40 M22 40 L22 54 M42 40 L42 54" stroke="#B0402F" stroke-width="3"/>
   <path d="M12 16 Q12 14 15 14 L26 14" stroke="#fff" stroke-width="3.5" fill="none" opacity=".45" stroke-linecap="round"/>`;
 
+/* ---------- v0.9 新增：天文 · 行星 ---------- */
+S.mercury = `
+  <circle cx="32" cy="32" r="20" fill="url(#g-gray)"/>
+  <circle cx="25" cy="26" r="3.5" fill="#9AA7B4" opacity=".6"/>
+  <circle cx="39" cy="38" r="2.6" fill="#9AA7B4" opacity=".55"/>
+  <circle cx="35" cy="22" r="2" fill="#9AA7B4" opacity=".5"/>
+  <ellipse cx="25" cy="22" rx="5" ry="3" fill="#fff" opacity=".45" transform="rotate(-20 25 22)"/>`;
+
+S.venus = `
+  <circle cx="32" cy="32" r="21" fill="url(#g-gold)"/>
+  <path d="M14 26 Q26 22 40 26 Q48 28 50 26" stroke="#F0C04A" stroke-width="3" fill="none" opacity=".6" stroke-linecap="round"/>
+  <path d="M15 38 Q28 42 46 37" stroke="#F0C04A" stroke-width="3" fill="none" opacity=".5" stroke-linecap="round"/>
+  <ellipse cx="25" cy="20" rx="6" ry="3.5" fill="#fff" opacity=".5" transform="rotate(-20 25 20)"/>`;
+
+S.mars = `
+  <circle cx="32" cy="32" r="20" fill="url(#g-red)"/>
+  <path d="M20 34 q6 -4 12 0 q5 3 10 0 q4 -2 6 0 q-2 6 -9 7 q-11 2 -19 -2z" fill="#C93A2E" opacity=".55"/>
+  <circle cx="40" cy="24" r="3" fill="#C93A2E" opacity=".5"/>
+  <ellipse cx="24" cy="23" rx="5" ry="3" fill="#fff" opacity=".4" transform="rotate(-20 24 23)"/>`;
+
+S.jupiter = `
+  <circle cx="32" cy="32" r="22" fill="url(#g-sand)"/>
+  <path d="M11 26 Q32 22 53 26" stroke="#D9A066" stroke-width="3.5" fill="none" opacity=".7"/>
+  <path d="M11 34 Q32 30 53 34" stroke="#B9854E" stroke-width="3.5" fill="none" opacity=".6"/>
+  <path d="M12 42 Q32 38 52 42" stroke="#D9A066" stroke-width="3.5" fill="none" opacity=".6"/>
+  <ellipse cx="40" cy="38" rx="5.5" ry="3" fill="url(#g-coral)"/>
+  <ellipse cx="25" cy="20" rx="6" ry="3.5" fill="#fff" opacity=".4" transform="rotate(-20 25 20)"/>`;
+
+S.saturn = `
+  <circle cx="32" cy="32" r="17" fill="url(#g-gold)"/>
+  <ellipse cx="32" cy="32" rx="26" ry="8" fill="none" stroke="url(#g-cream)" stroke-width="4.5" opacity=".9" transform="rotate(-18 32 32)"/>
+  <path d="M16 38 Q32 46 48 38" stroke="#E8C98A" stroke-width="3" fill="none" opacity=".7" transform="rotate(-18 32 32)"/>
+  <ellipse cx="27" cy="26" rx="4.5" ry="2.6" fill="#fff" opacity=".5" transform="rotate(-20 27 26)"/>`;
+
+S.uranus = `
+  <circle cx="32" cy="32" r="19" fill="url(#g-ice)"/>
+  <path d="M16 32 Q32 29 48 32" stroke="#7FCDF4" stroke-width="2.5" fill="none" opacity=".6"/>
+  <ellipse cx="26" cy="25" rx="5" ry="3" fill="#fff" opacity=".55" transform="rotate(-20 26 25)"/>`;
+
+S.neptune = `
+  <circle cx="32" cy="32" r="19" fill="url(#g-blue)"/>
+  <path d="M20 38 q8 -4 16 0" stroke="#2F6FB0" stroke-width="3" fill="none" opacity=".6" stroke-linecap="round"/>
+  <ellipse cx="25" cy="24" rx="5" ry="3" fill="#fff" opacity=".45" transform="rotate(-20 25 24)"/>`;
+
+/* ---------- v0.9 新增：月相 ---------- */
+S.newmoon = `
+  <circle cx="32" cy="32" r="20" fill="url(#g-graydk)"/>
+  <circle cx="26" cy="26" r="3" fill="#7E8B98" opacity=".6"/>
+  <circle cx="39" cy="38" r="2.4" fill="#7E8B98" opacity=".5"/>
+  <circle cx="32" cy="32" r="20" fill="none" stroke="#C9D2DA" stroke-width="2" opacity=".6"/>`;
+
+S.waxing = `
+  <circle cx="32" cy="32" r="20" fill="url(#g-gold)"/>
+  <path d="M32 12 A20 20 0 0 0 32 52 Z" fill="url(#g-graydk)"/>
+  <circle cx="32" cy="32" r="20" fill="none" stroke="#D9C98A" stroke-width="1.5" opacity=".5"/>`;
+
+S.fullmoon = `
+  <circle cx="32" cy="32" r="20" fill="url(#g-gold)"/>
+  <circle cx="25" cy="26" r="3" fill="#E5C24A" opacity=".6"/>
+  <circle cx="40" cy="36" r="3.6" fill="#E5C24A" opacity=".55"/>
+  <circle cx="35" cy="22" r="2.2" fill="#E5C24A" opacity=".5"/>
+  <ellipse cx="25" cy="22" rx="5" ry="3" fill="#fff" opacity=".55" transform="rotate(-20 25 22)"/>`;
+
+S.waning = `
+  <circle cx="32" cy="32" r="20" fill="url(#g-gold)"/>
+  <path d="M32 12 A20 20 0 0 1 32 52 Z" fill="url(#g-graydk)"/>
+  <circle cx="32" cy="32" r="20" fill="none" stroke="#D9C98A" stroke-width="1.5" opacity=".5"/>`;
+
+/* ---------- v0.9 新增：天文其他 ---------- */
+S.milkyway = `
+  <path d="M10 50 Q26 30 54 14" stroke="url(#g-purple)" stroke-width="9" fill="none" opacity=".55" stroke-linecap="round"/>
+  <path d="M12 48 Q28 32 52 18" stroke="url(#g-lav)" stroke-width="5" fill="none" opacity=".7" stroke-linecap="round"/>
+  <circle cx="20" cy="42" r="2" fill="#fff"/>
+  <circle cx="32" cy="33" r="2.4" fill="#FFF3C4"/>
+  <circle cx="44" cy="24" r="1.8" fill="#fff"/>
+  <path d="M50 8 L51 10.6 L53.6 11.4 L51 12.2 L50 14.8 L49 12.2 L46.4 11.4 L49 10.6 Z" fill="url(#g-gold)"/>`;
+
+S.astronaut = `
+  <circle cx="32" cy="24" r="14" fill="url(#g-white)"/>
+  <rect x="24" y="18" width="16" height="11" rx="5.5" fill="url(#g-sky)"/>
+  <circle cx="29" cy="23" r="1.6" fill="#fff"/><circle cx="35" cy="23" r="1.6" fill="#fff"/>
+  <rect x="20" y="38" width="24" height="18" rx="8" fill="url(#g-white)"/>
+  <rect x="26" y="42" width="12" height="6" rx="3" fill="url(#g-blue)"/>
+  <rect x="16" y="40" width="6" height="12" rx="3" fill="url(#g-gray)"/>
+  <rect x="42" y="40" width="6" height="12" rx="3" fill="url(#g-gray)"/>
+  <ellipse cx="32" cy="16" rx="8" ry="3" fill="#fff" opacity=".5"/>`;
+
+S.station = `
+  <rect x="24" y="26" width="16" height="12" rx="4" fill="url(#g-gray)"/>
+  <circle cx="32" cy="32" r="4" fill="url(#g-white)"/>
+  <rect x="8" y="27" width="14" height="10" rx="2" fill="url(#g-blue)"/>
+  <rect x="42" y="27" width="14" height="10" rx="2" fill="url(#g-blue)"/>
+  <path d="M22 32 L24 32 M40 32 L42 32" stroke="#7E8B98" stroke-width="2.5"/>
+  <path d="M32 26 L32 18" stroke="#7E8B98" stroke-width="2.5"/>
+  <circle cx="32" cy="16" r="2.5" fill="url(#g-gold)"/>`;
+
+S.blackhole = `
+  <circle cx="32" cy="32" r="22" fill="url(#g-purple)" opacity=".25"/>
+  <circle cx="32" cy="32" r="13" fill="#1A1A24"/>
+  <path d="M14 32 Q32 22 50 32 Q32 42 14 32" fill="none" stroke="url(#g-pink)" stroke-width="4" opacity=".8"/>
+  <path d="M18 26 Q32 18 46 26" stroke="#C7B4FF" stroke-width="3" fill="none" opacity=".7"/>`;
+
+S.meteor = `
+  <path d="M14 14 L34 30" stroke="url(#g-gold)" stroke-width="5" stroke-linecap="round"/>
+  <path d="M20 10 L38 26" stroke="url(#g-orange)" stroke-width="3.5" stroke-linecap="round" opacity=".8"/>
+  <path d="M44 26 L46.6 31.4 L52.4 32.2 L48.2 36.2 L49.2 42 L44 39.2 L38.8 42 L39.8 36.2 L35.6 32.2 L41.4 31.4 Z" fill="url(#g-gold)"/>`;
+
+/* ---------- v0.9 新增：人民币（红/绿，区别于金币） ---------- */
+S['m-jiao1'] = `
+  <circle cx="32" cy="32" r="18" fill="url(#g-golddk)"/>
+  <rect x="26" y="26" width="12" height="12" rx="2" fill="url(#g-cream)"/>
+  <ellipse cx="26" cy="24" rx="5" ry="3" fill="#fff" opacity=".5" transform="rotate(-20 26 24)"/>`;
+
+S['m-jiao5'] = `
+  <circle cx="32" cy="32" r="21" fill="url(#g-gold)"/>
+  <rect x="25" y="25" width="14" height="14" rx="2" fill="url(#g-cream)"/>
+  <ellipse cx="25" cy="23" rx="6" ry="3.5" fill="#fff" opacity=".5" transform="rotate(-20 25 23)"/>`;
+
+S['m-yuan1'] = `
+  <rect x="10" y="20" width="44" height="24" rx="5" fill="url(#g-green)"/>
+  <circle cx="22" cy="32" r="7" fill="url(#g-cream)"/>
+  <path d="M22 28 L22 36 M19 30.5 L25 30.5" stroke="#3BA851" stroke-width="2" stroke-linecap="round"/>
+  <rect x="33" y="26" width="16" height="3.5" rx="1.75" fill="#fff" opacity=".6"/>
+  <rect x="33" y="33" width="12" height="3.5" rx="1.75" fill="#fff" opacity=".5"/>`;
+
+S['m-yuan5'] = `
+  <rect x="10" y="20" width="44" height="24" rx="5" fill="url(#g-coral)"/>
+  <circle cx="22" cy="32" r="7" fill="url(#g-cream)"/>
+  <path d="M22 28 L22 36 M19 30.5 L25 30.5" stroke="#E8564A" stroke-width="2" stroke-linecap="round"/>
+  <rect x="33" y="26" width="16" height="3.5" rx="1.75" fill="#fff" opacity=".6"/>
+  <rect x="33" y="33" width="12" height="3.5" rx="1.75" fill="#fff" opacity=".5"/>`;
+
+S['m-yuan10'] = `
+  <rect x="10" y="20" width="44" height="24" rx="5" fill="url(#g-blue)"/>
+  <circle cx="22" cy="32" r="7" fill="url(#g-cream)"/>
+  <path d="M22 28 L22 36 M19 30.5 L25 30.5" stroke="#3D8FD1" stroke-width="2" stroke-linecap="round"/>
+  <rect x="33" y="26" width="16" height="3.5" rx="1.75" fill="#fff" opacity=".6"/>
+  <rect x="33" y="33" width="12" height="3.5" rx="1.75" fill="#fff" opacity=".5"/>`;
+
+/* ---------- v0.9 新增：几何图形 ---------- */
+S.triangle = `
+  <polygon points="32,14 52,48 12,48" fill="url(#g-coral)"/>
+  <ellipse cx="26" cy="26" rx="5" ry="3" fill="#fff" opacity=".4" transform="rotate(-20 26 26)"/>`;
+
+S.square = `
+  <rect x="14" y="14" width="36" height="36" rx="8" fill="url(#g-blue)"/>
+  <ellipse cx="24" cy="24" rx="6" ry="4" fill="#fff" opacity=".4" transform="rotate(-20 24 24)"/>`;
+
+S.pentagon = `
+  <polygon points="32,12 52,26 45,50 19,50 12,26" fill="url(#g-purple)"/>
+  <ellipse cx="26" cy="24" rx="5" ry="3" fill="#fff" opacity=".4" transform="rotate(-20 26 24)"/>`;
+
+S.circle = `
+  <circle cx="32" cy="32" r="20" fill="url(#g-green)"/>
+  <ellipse cx="25" cy="24" rx="6" ry="4" fill="#fff" opacity=".45" transform="rotate(-20 25 24)"/>`;
+
+/* ---------- v0.9 新增：地理地标 ---------- */
+S['china-map'] = `
+  <path d="M14 30 Q12 20 22 16 Q30 12 38 15 Q48 12 52 20 Q56 26 50 32 Q54 38 48 44 Q40 52 30 48 Q20 46 16 38 Q12 34 14 30 Z" fill="url(#g-red)"/>
+  <circle cx="46" cy="22" r="2.5" fill="#fff" opacity=".5"/>
+  <path d="M20 26 Q26 22 34 24" stroke="#fff" stroke-width="2.5" fill="none" opacity=".4" stroke-linecap="round"/>`;
+
+S['world-map'] = `
+  <rect x="8" y="14" width="48" height="36" rx="8" fill="url(#g-sky)"/>
+  <path d="M14 24 Q20 20 26 24 Q28 30 22 32 Q15 31 14 24 Z" fill="url(#g-green)"/>
+  <path d="M34 22 Q42 18 48 24 Q50 30 44 32 Q36 32 34 26 Z" fill="url(#g-gold)"/>
+  <path d="M30 36 Q36 34 40 40 Q38 46 32 44 Q28 42 30 36 Z" fill="url(#g-coral)"/>
+  <path d="M46 40 Q52 40 52 46 Q48 50 44 46 Z" fill="url(#g-green)"/>`;
+
+S.greatwall = `
+  <path d="M8 48 Q20 40 32 44 Q44 48 56 42 L56 52 L8 52 Z" fill="url(#g-brown)"/>
+  <rect x="14" y="34" width="36" height="10" fill="url(#g-sand)"/>
+  <rect x="14" y="30" width="5" height="5" fill="url(#g-sand)"/><rect x="23" y="30" width="5" height="5" fill="url(#g-sand)"/><rect x="32" y="30" width="5" height="5" fill="url(#g-sand)"/><rect x="41" y="30" width="5" height="5" fill="url(#g-sand)"/><rect x="48" y="30" width="5" height="5" fill="url(#g-sand)"/>
+  <rect x="46" y="24" width="10" height="20" fill="url(#g-sand)"/>`;
+
+S.tiananmen = `
+  <rect x="10" y="34" width="44" height="20" fill="url(#g-red)"/>
+  <path d="M8 34 L32 22 L56 34 Z" fill="url(#g-orangedk)"/>
+  <rect x="28" y="42" width="8" height="12" rx="3" fill="#8E150E"/>
+  <circle cx="32" cy="30" r="3.5" fill="url(#g-gold)"/>
+  <rect x="14" y="38" width="6" height="5" rx="1.5" fill="#fff" opacity=".7"/>
+  <rect x="44" y="38" width="6" height="5" rx="1.5" fill="#fff" opacity=".7"/>`;
+
+S.everest = `
+  <path d="M10 52 L28 20 L36 34 L42 24 L54 52 Z" fill="url(#g-mtn)"/>
+  <path d="M28 20 L32 28 L25 30 Z" fill="#fff"/>
+  <path d="M42 24 L45 30 L39 31 Z" fill="#fff"/>`;
+
+S.river = `
+  <path d="M16 10 Q24 22 18 32 Q12 42 24 54" stroke="url(#g-blue)" stroke-width="7" fill="none" stroke-linecap="round"/>
+  <path d="M20 14 Q26 24 21 32" stroke="#8ED8F6" stroke-width="3" fill="none" opacity=".7" stroke-linecap="round"/>
+  <circle cx="46" cy="20" r="3" fill="#fff" opacity=".9"/>
+  <circle cx="50" cy="42" r="3" fill="#fff" opacity=".9"/>`;
+
+S.lion = `
+  <circle cx="32" cy="32" r="20" fill="url(#g-orangedk)"/>
+  <circle cx="32" cy="32" r="13" fill="url(#g-sand)"/>
+  <circle cx="27" cy="29" r="2" fill="#5B4636"/><circle cx="37" cy="29" r="2" fill="#5B4636"/>
+  <ellipse cx="32" cy="33" rx="2" ry="1.5" fill="#8A5A3B"/>
+  <path d="M30 38 Q32 40 34 38" stroke="#5B4636" stroke-width="2" fill="none" stroke-linecap="round"/>`;
+
+S.elephant = `
+  <ellipse cx="32" cy="38" rx="18" ry="14" fill="url(#g-gray)"/>
+  <circle cx="32" cy="26" r="12" fill="url(#g-gray)"/>
+  <ellipse cx="18" cy="28" rx="6" ry="7" fill="url(#g-graydk)"/>
+  <ellipse cx="46" cy="28" rx="6" ry="7" fill="url(#g-graydk)"/>
+  <path d="M32 34 Q34 44 30 50 Q28 52 26 50" stroke="url(#g-graydk)" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <circle cx="28" cy="24" r="1.8" fill="#3A3A46"/><circle cx="36" cy="24" r="1.8" fill="#3A3A46"/>`;
+
+S.kangaroo = `
+  <path d="M44 44 Q54 40 52 30 Q50 26 46 28 Q48 36 42 38 Z" fill="url(#g-orange)"/>
+  <ellipse cx="34" cy="42" rx="12" ry="10" fill="url(#g-orange)"/>
+  <circle cx="30" cy="26" r="9" fill="url(#g-orange)"/>
+  <path d="M24 20 L22 12 L28 18 Z" fill="url(#g-orange)"/>
+  <circle cx="28" cy="25" r="1.6" fill="#5B4636"/>
+  <rect x="26" y="50" width="5" height="8" rx="2" fill="url(#g-orangedk)"/>
+  <rect x="38" y="50" width="5" height="8" rx="2" fill="url(#g-orangedk)"/>`;
+
+S.polarbear = `
+  <ellipse cx="32" cy="38" rx="16" ry="13" fill="url(#g-white)"/>
+  <circle cx="32" cy="25" r="11" fill="url(#g-white)"/>
+  <circle cx="23" cy="18" r="4" fill="url(#g-white)"/>
+  <circle cx="41" cy="18" r="4" fill="url(#g-white)"/>
+  <circle cx="28" cy="24" r="1.8" fill="#3A3A46"/><circle cx="36" cy="24" r="1.8" fill="#3A3A46"/>
+  <ellipse cx="32" cy="29" rx="2" ry="1.5" fill="#C9D2DA"/>`;
+
+S.libertystatue = `
+  <path d="M28 50 L28 26 L36 26 L36 50 Z" fill="url(#g-green)"/>
+  <circle cx="32" cy="20" r="7" fill="url(#g-leaf)"/>
+  <path d="M26 15 L24 9 L29 13 Z M38 15 L40 9 L35 13 Z" fill="url(#g-gold)"/>
+  <rect x="40" y="14" width="4" height="16" rx="2" fill="url(#g-golddk)"/>
+  <circle cx="42" cy="12" r="3.5" fill="url(#g-gold)"/>
+  <path d="M28 34 L24 40 M36 34 L40 40" stroke="url(#g-leaf)" stroke-width="3" stroke-linecap="round"/>`;
+
+S.windmill = `
+  <path d="M26 52 L28 26 L36 26 L38 52 Z" fill="url(#g-cream)"/>
+  <path d="M32 26 L32 8 M32 26 L47 15 M32 26 L17 15" stroke="url(#g-graydk)" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="32" cy="26" r="3" fill="url(#g-coral)"/>
+  <rect x="28" y="44" width="8" height="8" rx="2" fill="url(#g-brown)"/>`;
+
+/* ---------- v0.9 新增：英语主题词 ---------- */
+S.dog = `
+  <circle cx="32" cy="32" r="18" fill="url(#g-brown)"/>
+  <path d="M18 20 L12 10 L26 16 Z" fill="url(#g-brown)"/>
+  <path d="M46 20 L52 10 L38 16 Z" fill="url(#g-brown)"/>
+  <ellipse cx="32" cy="40" rx="9" ry="6" fill="url(#g-sand)"/>
+  <circle cx="26" cy="30" r="2.2" fill="#3A2416"/><circle cx="38" cy="30" r="2.2" fill="#3A2416"/>
+  <ellipse cx="32" cy="37" rx="2.6" ry="1.8" fill="#3A2416"/>`;
+
+S.fish = `
+  <ellipse cx="28" cy="32" rx="16" ry="11" fill="url(#g-coral)"/>
+  <path d="M44 32 L56 24 L56 40 Z" fill="url(#g-coral)"/>
+  <circle cx="22" cy="29" r="2.4" fill="#fff"/><circle cx="22.6" cy="29" r="1.3" fill="#3A2416"/>
+  <path d="M30 26 Q34 32 30 38" stroke="#E8564A" stroke-width="2.5" fill="none" opacity=".6"/>`;
+
+S.bread = `
+  <path d="M14 40 Q14 26 32 26 Q50 26 50 40 Z" fill="url(#g-golddk)"/>
+  <path d="M14 40 L14 46 Q14 50 18 50 L46 50 Q50 50 50 46 L50 40 Z" fill="url(#g-brown)"/>
+  <path d="M22 34 L26 38 M32 33 L36 37 M42 34 L46 38" stroke="#fff" stroke-width="2" opacity=".5" stroke-linecap="round"/>`;
+
+S.milk = `
+  <path d="M22 16 L26 10 L38 10 L42 16 L44 50 Q44 54 40 54 L24 54 Q20 54 20 50 Z" fill="url(#g-white)"/>
+  <path d="M22 26 L42 26" stroke="#C9D2DA" stroke-width="2"/>
+  <rect x="26" y="34" width="12" height="10" rx="2" fill="url(#g-blue)"/>`;
+
+S.egg = `
+  <path d="M32 14 Q46 14 46 34 Q46 52 32 52 Q18 52 18 34 Q18 14 32 14 Z" fill="url(#g-cream)"/>
+  <circle cx="32" cy="36" r="8" fill="url(#g-gold)"/>
+  <ellipse cx="27" cy="26" rx="5" ry="3" fill="#fff" opacity=".6" transform="rotate(-20 27 26)"/>`;
+
+S.bird = `
+  <ellipse cx="30" cy="36" rx="14" ry="11" fill="url(#g-blue)"/>
+  <circle cx="38" cy="24" r="9" fill="url(#g-blue)"/>
+  <circle cx="40" cy="22" r="1.8" fill="#fff"/><circle cx="40.6" cy="22" r="1" fill="#3A2416"/>
+  <path d="M46 24 L52 26 L46 28 Z" fill="url(#g-orangedk)"/>
+  <path d="M24 36 Q30 32 34 38" stroke="#2F6FB0" stroke-width="2.5" fill="none"/>`;
+
+S.tiger = `
+  <circle cx="32" cy="32" r="17" fill="url(#g-gold)"/>
+  <path d="M22 22 L20 16 M32 18 L32 13 M42 22 L44 16" stroke="#8A5A2B" stroke-width="2.5" stroke-linecap="round"/>
+  <circle cx="26" cy="30" r="2" fill="#3A2416"/><circle cx="38" cy="30" r="2" fill="#3A2416"/>
+  <ellipse cx="32" cy="35" rx="2" ry="1.5" fill="#8A5A2B"/>
+  <path d="M30 38 Q32 40 34 38" stroke="#8A5A2B" stroke-width="2" fill="none" stroke-linecap="round"/>`;
+
+S.monkey = `
+  <circle cx="32" cy="32" r="16" fill="url(#g-brown)"/>
+  <circle cx="16" cy="30" r="6" fill="url(#g-brown)"/><circle cx="48" cy="30" r="6" fill="url(#g-brown)"/>
+  <circle cx="16" cy="30" r="3" fill="url(#g-sand)"/><circle cx="48" cy="30" r="3" fill="url(#g-sand)"/>
+  <ellipse cx="32" cy="38" rx="9" ry="7" fill="url(#g-sand)"/>
+  <circle cx="27" cy="31" r="1.8" fill="#3A2416"/><circle cx="37" cy="31" r="1.8" fill="#3A2416"/>`;
+
+S.car = `
+  <path d="M14 36 L18 26 L46 26 L50 36 Z" fill="url(#g-red)"/>
+  <rect x="10" y="36" width="44" height="10" rx="4" fill="url(#g-coral)"/>
+  <circle cx="20" cy="48" r="5" fill="#3A3A46"/><circle cx="44" cy="48" r="5" fill="#3A3A46"/>
+  <circle cx="20" cy="48" r="2" fill="#fff"/><circle cx="44" cy="48" r="2" fill="#fff"/>`;
+
+S.ball = `
+  <circle cx="32" cy="32" r="19" fill="url(#g-orange)"/>
+  <path d="M32 13 L32 51 M13 32 L51 32" stroke="#fff" stroke-width="2.5" opacity=".6"/>
+  <path d="M20 20 Q32 32 44 44 M44 20 Q32 32 20 44" stroke="#fff" stroke-width="2.5" opacity=".5"/>`;
+
+S.bed = `
+  <rect x="8" y="34" width="48" height="12" rx="4" fill="url(#g-blue)"/>
+  <rect x="8" y="22" width="8" height="24" rx="3" fill="url(#g-brown)"/>
+  <rect x="14" y="28" width="12" height="8" rx="3" fill="url(#g-white)"/>
+  <rect x="48" y="26" width="6" height="20" rx="2" fill="url(#g-brown)"/>`;
+
+S.shoe = `
+  <path d="M12 36 Q12 28 22 28 L34 28 Q44 28 50 36 L52 44 Q52 48 48 48 L16 48 Q12 48 12 44 Z" fill="url(#g-coral)"/>
+  <path d="M20 28 L24 22 L30 28" fill="url(#g-white)"/>`;
+
+S.hat = `
+  <path d="M20 30 Q20 16 32 16 Q44 16 44 30 Z" fill="url(#g-blue)"/>
+  <rect x="14" y="29" width="36" height="5" rx="2.5" fill="url(#g-blue)"/>
+  <rect x="20" y="26" width="24" height="4" fill="url(#g-coral)"/>`;
+
+S.cup = `
+  <path d="M18 22 L20 50 Q20 54 24 54 L40 54 Q44 54 44 50 L46 22 Z" fill="url(#g-coral)"/>
+  <path d="M46 26 Q54 28 52 36 Q50 42 44 40" fill="none" stroke="url(#g-coral)" stroke-width="3"/>
+  <path d="M22 34 L42 34" stroke="#fff" stroke-width="2" opacity=".5"/>`;
+
+S.cow = `
+  <circle cx="32" cy="32" r="16" fill="url(#g-white)"/>
+  <path d="M22 24 q4 -6 10 -2 q-4 4 -10 2z" fill="#3A3A46"/>
+  <path d="M38 36 q5 -3 8 2 q-4 4 -8 -2z" fill="#3A3A46"/>
+  <ellipse cx="32" cy="40" rx="8" ry="5" fill="url(#g-rose)"/>
+  <circle cx="28" cy="30" r="1.8" fill="#3A3A46"/><circle cx="36" cy="30" r="1.8" fill="#3A3A46"/>`;
+
+S.pig = `
+  <circle cx="32" cy="32" r="16" fill="url(#g-pink)"/>
+  <ellipse cx="32" cy="38" rx="8" ry="5.5" fill="url(#g-rose)"/>
+  <circle cx="29" cy="38" r="1.3" fill="#E8564A"/><circle cx="35" cy="38" r="1.3" fill="#E8564A"/>
+  <circle cx="27" cy="29" r="1.8" fill="#3A2416"/><circle cx="37" cy="29" r="1.8" fill="#3A2416"/>`;
+
+S.frog = `
+  <ellipse cx="32" cy="36" rx="18" ry="12" fill="url(#g-green)"/>
+  <circle cx="24" cy="24" r="7" fill="url(#g-green)"/><circle cx="40" cy="24" r="7" fill="url(#g-green)"/>
+  <circle cx="24" cy="24" r="3.5" fill="#fff"/><circle cx="40" cy="24" r="3.5" fill="#fff"/>
+  <circle cx="24" cy="25" r="1.8" fill="#3A2416"/><circle cx="40" cy="25" r="1.8" fill="#3A2416"/>`;
+
+S.bee = `
+  <ellipse cx="32" cy="36" rx="13" ry="10" fill="url(#g-gold)"/>
+  <path d="M25 28 L25 44 M32 26 L32 46 M39 28 L39 44" stroke="#3A3A46" stroke-width="3"/>
+  <ellipse cx="26" cy="22" rx="7" ry="5" fill="url(#g-sky)" opacity=".8"/><ellipse cx="38" cy="22" rx="7" ry="5" fill="url(#g-sky)" opacity=".8"/>`;
+
+S.bus = `
+  <rect x="10" y="18" width="44" height="30" rx="6" fill="url(#g-yellow)"/>
+  <rect x="14" y="22" width="10" height="9" rx="2" fill="url(#g-sky)"/><rect x="27" y="22" width="10" height="9" rx="2" fill="url(#g-sky)"/><rect x="40" y="22" width="10" height="9" rx="2" fill="url(#g-sky)"/>
+  <circle cx="20" cy="50" r="5" fill="#3A3A46"/><circle cx="44" cy="50" r="5" fill="#3A3A46"/>`;
+
+/* ---------- v0.9 新增：徽章（medal 风） ---------- */
+S['bg-writer'] = `
+  <path d="M20 4 L32 22 L26 26 L14 9 Z" fill="url(#g-coral)"/>
+  <path d="M44 4 L32 22 L38 26 L50 9 Z" fill="url(#g-blue)"/>
+  <circle cx="32" cy="38" r="15" fill="url(#g-gold)"/>
+  <path d="M28 44 L36 32 L39 35 L31 47 Z" fill="url(#g-coral)"/>
+  <path d="M36 32 L38 30 L41 33 L39 35 Z" fill="#3A3A46"/>`;
+
+S['bg-mul'] = `
+  <path d="M20 4 L32 22 L26 26 L14 9 Z" fill="url(#g-coral)"/>
+  <path d="M44 4 L32 22 L38 26 L50 9 Z" fill="url(#g-green)"/>
+  <circle cx="32" cy="38" r="15" fill="url(#g-gold)"/>
+  <path d="M26 32 L38 44 M38 32 L26 44" stroke="#8A5B00" stroke-width="4" stroke-linecap="round"/>`;
+
+S['bg-sudoku'] = `
+  <path d="M20 4 L32 22 L26 26 L14 9 Z" fill="url(#g-purple)"/>
+  <path d="M44 4 L32 22 L38 26 L50 9 Z" fill="url(#g-blue)"/>
+  <circle cx="32" cy="38" r="15" fill="url(#g-gold)"/>
+  <rect x="24" y="30" width="16" height="16" rx="2" fill="none" stroke="#8A5B00" stroke-width="2.5"/>
+  <path d="M32 30 L32 46 M24 38 L40 38" stroke="#8A5B00" stroke-width="2"/>`;
+
+S['bg-geo'] = `
+  <path d="M20 4 L32 22 L26 26 L14 9 Z" fill="url(#g-blue)"/>
+  <path d="M44 4 L32 22 L38 26 L50 9 Z" fill="url(#g-green)"/>
+  <circle cx="32" cy="38" r="15" fill="url(#g-gold)"/>
+  <circle cx="32" cy="38" r="8" fill="url(#g-sky)"/>
+  <path d="M32 30 L32 46 M24 38 L40 38" stroke="#3D8FD1" stroke-width="1.8"/>`;
+
+S['bg-words50'] = `
+  <path d="M20 4 L32 22 L26 26 L14 9 Z" fill="url(#g-pink)"/>
+  <path d="M44 4 L32 22 L38 26 L50 9 Z" fill="url(#g-coral)"/>
+  <circle cx="32" cy="38" r="15" fill="url(#g-gold)"/>
+  <path d="M26 32 Q30 30 32 32 Q34 30 38 32 L38 44 Q34 42 32 44 Q30 42 26 44 Z" fill="url(#g-blue)"/>
+  <path d="M32 32 L32 44" stroke="#fff" stroke-width="1.5"/>`;
+
 /* ---------- 背景 ---------- */
 const HILLS_BACK = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="300" viewBox="0 0 1200 300"><circle cx="90" cy="330" r="170" fill="#ACE27E"/><circle cx="430" cy="345" r="210" fill="#ACE27E"/><circle cx="780" cy="330" r="180" fill="#ACE27E"/><circle cx="1110" cy="345" r="200" fill="#ACE27E"/></svg>`;
 const HILLS_FRONT = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="250" viewBox="0 0 1200 250"><rect y="150" width="1200" height="100" fill="#6FCC44"/><circle cx="0" cy="165" r="150" fill="#6FCC44"/><circle cx="330" cy="175" r="180" fill="#6FCC44"/><circle cx="690" cy="168" r="160" fill="#6FCC44"/><circle cx="1030" cy="175" r="180" fill="#6FCC44"/><circle cx="165" cy="150" r="120" fill="#7ED451"/><circle cx="520" cy="158" r="130" fill="#7ED451"/><circle cx="870" cy="152" r="120" fill="#7ED451"/></svg>`;
@@ -562,6 +949,12 @@ function standalone(body) {
 const manifest = { icons: [], bg: ['bg/hills-back.svg', 'bg/hills-front.svg'] };
 for (const [id, body] of Object.entries(S)) {
   writeFileSync(join(ICONS, id + '.svg'), standalone(body));
+  manifest.icons.push('icons/' + id + '.svg');
+}
+/* 历史遗留图标：带自定义渐变/非 64 viewBox，已作为独立 SVG 提交，原样保留进 manifest（不重绘） */
+const LEGACY = ['earth','cat','rabbit','bear','penguin','planet','comet','boss','bush','dino','hanger','mario','mushroom','paw','shop','pipe-green','pipe-indigo','pipe-orange'];
+for (const id of LEGACY) {
+  if (!existsSync(join(ICONS, id + '.svg'))) throw new Error('LEGACY 图标缺失: ' + id);
   manifest.icons.push('icons/' + id + '.svg');
 }
 writeFileSync(join(BG, 'hills-back.svg'), HILLS_BACK);

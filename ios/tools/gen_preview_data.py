@@ -15,7 +15,7 @@ PREVIEW = os.path.join(ROOT, "ios", "preview", "index.html")
 
 docs = {}
 KEYMAP = {"cn_levels": "cn", "math_levels": "math", "pinyin_levels": "pinyin",
-          "english_levels": "english", "astro_levels": "astro",
+          "english_levels": "english", "astro_levels": "astro", "geo_levels": "geo",
           "collection": "collection", "experiments": "experiments", "shop": "shop"}
 for name, key in KEYMAP.items():
     with open(os.path.join(RES, name + ".json"), encoding="utf-8") as f:

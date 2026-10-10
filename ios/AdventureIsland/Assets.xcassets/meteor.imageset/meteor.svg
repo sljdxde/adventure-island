@@ -1,0 +1,4 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs><linearGradient id="g-gold" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFE58A"/><stop offset="1" stop-color="#F7B32B"/></linearGradient><linearGradient id="g-orange" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFB25C"/><stop offset="1" stop-color="#F08C1F"/></linearGradient></defs>
+  <path d="M14 14 L34 30" stroke="url(#g-gold)" stroke-width="5" stroke-linecap="round"/>
+  <path d="M20 10 L38 26" stroke="url(#g-orange)" stroke-width="3.5" stroke-linecap="round" opacity=".8"/>
+  <path d="M44 26 L46.6 31.4 L52.4 32.2 L48.2 36.2 L49.2 42 L44 39.2 L38.8 42 L39.8 36.2 L35.6 32.2 L41.4 31.4 Z" fill="url(#g-gold)"/></svg>

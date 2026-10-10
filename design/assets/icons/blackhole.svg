@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs><linearGradient id="g-purple" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#C7B4FF"/><stop offset="1" stop-color="#8F6BE8"/></linearGradient><linearGradient id="g-pink" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFC1D4"/><stop offset="1" stop-color="#F76EA0"/></linearGradient></defs>
+  <circle cx="32" cy="32" r="22" fill="url(#g-purple)" opacity=".25"/>
+  <circle cx="32" cy="32" r="13" fill="#1A1A24"/>
+  <path d="M14 32 Q32 22 50 32 Q32 42 14 32" fill="none" stroke="url(#g-pink)" stroke-width="4" opacity=".8"/>
+  <path d="M18 26 Q32 18 46 26" stroke="#C7B4FF" stroke-width="3" fill="none" opacity=".7"/></svg>

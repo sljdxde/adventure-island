@@ -19,6 +19,12 @@ struct ProgressSnapshot: Codable, Equatable {
     var coinLedger: [CoinEntry] = []             // v0.8 金币账本：每笔来源/数额/时间（决策 12）
     var brickClaims: [String] = []               // 问号砖已领日期："2026-09-30|brick-cn"（决策 13）
     var mushroomBuff: Bool = false               // 幸运蘑菇：持有一次答错豁免（决策 8，工单03）
+    // MARK: v0.9 商店/衣橱 + 地理
+    var ownedChars: [String] = ["mario", "dino"]  // 已购小伙伴
+    var ownedDice: [String] = ["std"]             // 已购骰子皮肤
+    var activeChar: String = "mario"             // 当前激活角色
+    var activeDice: String = "std"               // 当前激活骰子皮肤
+    var learnedGeo: [String] = []                 // 已拼/已学地理地区 id
 
     init() {}
 
@@ -26,6 +32,7 @@ struct ProgressSnapshot: Codable, Equatable {
         case coins, levelStars, testedItems, collectedScience, stickers
         case learnedHanzi, learnedPinyin, learnedEnglish, learnedAstro
         case dailyDone, streak, lastPlayDay, coinLedger, brickClaims, mushroomBuff
+        case ownedChars, ownedDice, activeChar, activeDice, learnedGeo
     }
 
     /// 字段全部 decodeIfPresent + 默认值：旧版本 progress.json（无账本/砖块字段）解码不失败，
@@ -47,6 +54,11 @@ struct ProgressSnapshot: Codable, Equatable {
         coinLedger = try c.decodeIfPresent([CoinEntry].self, forKey: .coinLedger) ?? []
         brickClaims = try c.decodeIfPresent([String].self, forKey: .brickClaims) ?? []
         mushroomBuff = try c.decodeIfPresent(Bool.self, forKey: .mushroomBuff) ?? false
+        ownedChars = try c.decodeIfPresent([String].self, forKey: .ownedChars) ?? ["mario", "dino"]
+        ownedDice = try c.decodeIfPresent([String].self, forKey: .ownedDice) ?? ["std"]
+        activeChar = try c.decodeIfPresent(String.self, forKey: .activeChar) ?? "mario"
+        activeDice = try c.decodeIfPresent(String.self, forKey: .activeDice) ?? "std"
+        learnedGeo = try c.decodeIfPresent([String].self, forKey: .learnedGeo) ?? []
     }
 }
 
@@ -63,6 +75,7 @@ enum CoinSource: String, Codable {
     case labReward = "lab-reward"          // 实验猜对
     case collection = "collection"         // 图鉴收集奖励
     case boss = "boss"                     // 工单06：击败 boss +15
+    case shop = "shop"                     // 金币商店消费（扣款为负）
 }
 
 struct CoinEntry: Codable, Equatable, Identifiable {
@@ -355,6 +368,41 @@ final class ProgressStore: ObservableObject {
             snapshot.learnedAstro.append(name)
             save()
         }
+    }
+
+    func learnGeo(_ id: String) {
+        if !snapshot.learnedGeo.contains(id) {
+            snapshot.learnedGeo.append(id)
+            save()
+        }
+    }
+
+    // MARK: 商店/衣橱（工单08/09）：购买扣款经账本，余额不足拒绝、不透支
+
+    /// 购买：kind "chars" | "dice"。余额不足或已拥有返回 false。
+    @discardableResult
+    func buyItem(kind: String, id: String, price: Int) -> Bool {
+        let owned = kind == "chars" ? snapshot.ownedChars : snapshot.ownedDice
+        guard !owned.contains(id) else { return false }
+        guard snapshot.coins >= price else { return false }
+        recordCoin(.shop, amount: -price)
+        if kind == "chars" { snapshot.ownedChars.append(id) } else { snapshot.ownedDice.append(id) }
+        save()
+        return true
+    }
+
+    /// 激活：仅已拥有可激活；角色与骰子各自独立
+    func activate(kind: String, id: String) {
+        if kind == "chars" {
+            guard snapshot.ownedChars.contains(id) else { return }
+            guard snapshot.activeChar != id else { return }
+            snapshot.activeChar = id
+        } else {
+            guard snapshot.ownedDice.contains(id) else { return }
+            guard snapshot.activeDice != id else { return }
+            snapshot.activeDice = id
+        }
+        save()
     }
 }
 

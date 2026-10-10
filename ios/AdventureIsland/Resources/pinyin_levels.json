@@ -1224,6 +1224,327 @@
       ]
     },
     {
+      "id": "py-12",
+      "title": "第 13 关 四声小帽子",
+      "subtitle": "ā á ǎ à",
+      "steps": [
+        {
+          "id": "py-12-t",
+          "kind": "letter",
+          "letters": [
+            "ā",
+            "á",
+            "ǎ",
+            "à"
+          ],
+          "display": "a",
+          "examples": [
+            {
+              "icon": "girl",
+              "text": "mā 妈妈",
+              "say": "mā"
+            },
+            {
+              "icon": "sunrise",
+              "text": "má 麻绳",
+              "say": "má"
+            }
+          ],
+          "question": "学一学四声：一声平、二声扬、三声拐弯、四声降"
+        },
+        {
+          "id": "py-12-l",
+          "kind": "listen",
+          "prompt": "á",
+          "speakText": "á",
+          "question": "找一找：哪个是第二声「á」？",
+          "options": [
+            {
+              "text": "ā"
+            },
+            {
+              "text": "á"
+            },
+            {
+              "text": "à"
+            }
+          ],
+          "answer": 1,
+          "hint": "二声往上扬",
+          "praise": "第二声找对啦！"
+        },
+        {
+          "id": "py-12-q1",
+          "kind": "quiz",
+          "question": "mā 妈妈的「妈」是第几声？",
+          "options": [
+            {
+              "text": "第一声"
+            },
+            {
+              "text": "第二声"
+            },
+            {
+              "text": "第四声"
+            }
+          ],
+          "answer": 0,
+          "hint": "妈妈的妈声音平平的",
+          "praise": "第一声，真棒！"
+        }
+      ]
+    },
+    {
+      "id": "py-13",
+      "title": "第 14 关 复韵母",
+      "subtitle": "ai ei ui",
+      "steps": [
+        {
+          "id": "py-13-t",
+          "kind": "letter",
+          "letters": [
+            "ai",
+            "ei",
+            "ui"
+          ],
+          "display": "ai",
+          "examples": [
+            {
+              "icon": "girl",
+              "text": "āyí 阿姨",
+              "say": "āyí"
+            },
+            {
+              "icon": "gift",
+              "text": "wéijīn 围巾",
+              "say": "wéijīn"
+            }
+          ],
+          "question": "学一学复韵母 ai ei ui"
+        },
+        {
+          "id": "py-13-b",
+          "kind": "blend",
+          "parts": [
+            "a",
+            "i"
+          ],
+          "question": "拼一拼：a — i = ?",
+          "options": [
+            {
+              "text": "ai"
+            },
+            {
+              "text": "an"
+            },
+            {
+              "text": "ao"
+            }
+          ],
+          "answer": 0,
+          "hint": "a 碰上 i",
+          "praise": "拼对了，ai！"
+        },
+        {
+          "id": "py-13-l",
+          "kind": "listen",
+          "prompt": "ai",
+          "speakText": "ai",
+          "question": "找一找：哪个是复韵母「ai」？",
+          "options": [
+            {
+              "text": "ai"
+            },
+            {
+              "text": "ao"
+            },
+            {
+              "text": "an"
+            }
+          ],
+          "answer": 0,
+          "hint": "a 和 i 拉手",
+          "praise": "复韵母 ai 找对啦！"
+        }
+      ]
+    },
+    {
+      "id": "py-14",
+      "title": "第 15 关 前鼻韵母",
+      "subtitle": "an en in",
+      "steps": [
+        {
+          "id": "py-14-t",
+          "kind": "letter",
+          "letters": [
+            "an",
+            "en",
+            "in"
+          ],
+          "display": "an",
+          "examples": [
+            {
+              "icon": "sunrise",
+              "text": "ān 天安门",
+              "say": "ān"
+            },
+            {
+              "icon": "girl",
+              "text": "rén 人",
+              "say": "rén"
+            }
+          ],
+          "question": "学一学前鼻韵母 an en in"
+        },
+        {
+          "id": "py-14-b",
+          "kind": "blend",
+          "parts": [
+            "e",
+            "n"
+          ],
+          "question": "拼一拼：e — n = ?",
+          "options": [
+            {
+              "text": "en"
+            },
+            {
+              "text": "eng"
+            },
+            {
+              "text": "er"
+            }
+          ],
+          "answer": 0,
+          "hint": "e 碰上 n",
+          "praise": "拼对了，en！"
+        },
+        {
+          "id": "py-14-l",
+          "kind": "listen",
+          "prompt": "in",
+          "speakText": "in",
+          "question": "找一找：哪个是前鼻韵母「in」？",
+          "options": [
+            {
+              "text": "in"
+            },
+            {
+              "text": "ing"
+            },
+            {
+              "text": "iu"
+            }
+          ],
+          "answer": 0,
+          "hint": "舌尖抵上牙床",
+          "praise": "前鼻韵母 in 找对啦！"
+        }
+      ]
+    },
+    {
+      "id": "py-15",
+      "title": "第 16 关 拼读大挑战",
+      "subtitle": "两拼 · 描红",
+      "steps": [
+        {
+          "id": "py-15-m",
+          "kind": "memory",
+          "question": "翻翻牌：声母和音节配成对",
+          "cards": [
+            {
+              "key": "b",
+              "icon": "girl"
+            },
+            {
+              "key": "b",
+              "text": "b"
+            },
+            {
+              "key": "m",
+              "icon": "moon"
+            },
+            {
+              "key": "m",
+              "text": "m"
+            },
+            {
+              "key": "d",
+              "icon": "duck"
+            },
+            {
+              "key": "d",
+              "text": "d"
+            }
+          ]
+        },
+        {
+          "id": "py-15-b",
+          "kind": "blend",
+          "parts": [
+            "b",
+            "a"
+          ],
+          "question": "拼一拼：b — a = ?",
+          "options": [
+            {
+              "text": "ba"
+            },
+            {
+              "text": "bo"
+            },
+            {
+              "text": "pa"
+            }
+          ],
+          "answer": 0,
+          "hint": "b 碰上 a",
+          "praise": "拼对了，ba！"
+        },
+        {
+          "id": "py-15-wb",
+          "kind": "write",
+          "char": "b",
+          "pinyin": "b",
+          "strokes": [
+            {
+              "d": "M50 24 L50 76",
+              "start": {
+                "x": 50.0,
+                "y": 24.0
+              }
+            },
+            {
+              "d": "M50 38 Q72 38 72 56 Q72 74 50 74",
+              "start": {
+                "x": 50.0,
+                "y": 38.0
+              }
+            }
+          ],
+          "question": "描一描字母 b：先竖，再右半圆",
+          "praise": "字母 b 写得漂亮！"
+        },
+        {
+          "id": "py-15-wo",
+          "kind": "write",
+          "char": "o",
+          "pinyin": "o",
+          "strokes": [
+            {
+              "d": "M50 38 Q34 44 34 56 Q34 70 50 72 Q66 70 66 56 Q66 44 50 38",
+              "start": {
+                "x": 50.0,
+                "y": 38.0
+              }
+            }
+          ],
+          "question": "描一描字母 o：从右上起笔画个圆",
+          "praise": "字母 o 描圆啦！"
+        }
+      ]
+    },
+    {
       "id": "pinyin-boss",
       "title": "Boss 大挑战",
       "subtitle": "大壳壳兽 · 三颗心大决战",
