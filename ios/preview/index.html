@@ -637,7 +637,56 @@ function blockTap(ev,el,sub){
   if(chip){ chip.innerHTML=`<span class="ico">${ic("coin",18)}</span>${S.coins}`;
     chip.classList.remove("bumped"); void chip.offsetWidth; chip.classList.add("bumped"); }
 }
-function speak(t){ if(!t) return; try{ const u=new SpeechSynthesisUtterance(t); u.lang='zh-CN'; u.rate=.8; u.pitch=1.15; speechSynthesis.cancel(); speechSynthesis.speak(u);}catch(e){} }
+/* === 拼音同音字转换（对齐 iOS PinyinSpeech）：zh-CN 会把拼音字母读成英文字母名（b→"bee"），
+   先把拼音片段转成中文同音字再朗读。带调音节优先、整音节次之、复韵母兜底，贪心最长匹配；
+   中文与拼音混排时只替换拉丁片段 === */
+const PY_TONE={"ā":"a","á":"a","ǎ":"a","à":"a","ē":"e","é":"e","ě":"e","è":"e","ī":"i","í":"i","ǐ":"i","ì":"i","ō":"o","ó":"o","ǒ":"o","ò":"o","ū":"u","ú":"u","ǔ":"u","ù":"u","ǖ":"v","ǘ":"v","ǚ":"v","ǜ":"v","ü":"v","ḿ":"m","ń":"n","ň":"n","ǹ":"n"};
+const PY_INITIALS={b:"玻",p:"坡",m:"摸",f:"佛",d:"得",t:"特",n:"讷",l:"勒",g:"哥",k:"科",h:"喝",j:"基",q:"欺",x:"希",zh:"知",ch:"吃",sh:"诗",r:"日",z:"资",c:"雌",s:"思",y:"衣",w:"乌"};
+const PY_FINALS={a:"啊",o:"喔",e:"鹅",i:"衣",u:"乌",v:"迂",ai:"哀",ei:"诶",ui:"威",ao:"熬",ou:"欧",iu:"优",ie:"耶",ve:"约",er:"儿",an:"安",en:"恩",in:"因",un:"温",vn:"晕",ang:"昂",eng:"鞥",ing:"英",ong:"翁"};
+const PY_ACCENTED={"ā":"啊","á":"啊","ǎ":"啊","à":"啊","ó":"噢","bà":"爸","bái":"白","dì":"地","dāo":"刀","fā":"发","fēi":"飞","gù":"故","gē":"哥","kàn":"看","kāi":"开","lā":"拉","lǎo":"老","mā":"妈","mǐ":"米","ná":"拿","nǐ":"你","pō":"坡","pǎo":"跑","tài":"太","tiào":"跳","zhī":"知"};
+const PY_SYLLABLES={a:"啊",o:"喔",e:"鹅",er:"儿",ba:"八",bo:"波",bi:"比",bu:"不",bai:"白",bao:"包",ban:"班",ben:"本",bang:"帮",beng:"蹦",bie:"别",biao:"标",bian:"边",bin:"宾",bing:"兵",pa:"趴",po:"坡",pi:"皮",pu:"扑",pai:"拍",pao:"跑",pou:"剖",pan:"潘",pen:"喷",pang:"旁",peng:"朋",pie:"撇",piao:"飘",pian:"片",pin:"拼",ping:"平",ma:"妈",mo:"摸",me:"么",mi:"米",mu:"木",mai:"买",mao:"猫",mou:"谋",man:"满",men:"门",mang:"忙",meng:"蒙",mie:"灭",miao:"苗",miu:"谬",mian:"面",min:"民",ming:"明",fa:"发",fo:"佛",fu:"福",fei:"飞",fou:"否",fan:"饭",fen:"分",fang:"方",feng:"风",da:"大",de:"的",di:"地",du:"读",dai:"带",dei:"得",dao:"到",dou:"豆",dan:"但",dang:"当",deng:"灯",dong:"东",die:"爹",diu:"丢",diao:"掉",dian:"点",ding:"丁",dui:"对",duan:"段",dun:"蹲",duo:"多",ta:"他",te:"特",ti:"踢",tu:"土",tai:"太",tao:"桃",tou:"头",tan:"谈",tang:"汤",teng:"疼",tong:"通",tie:"贴",tiao:"跳",tian:"天",ting:"听",tui:"推",tuan:"团",tun:"吞",tuo:"托",na:"拿",ne:"呢",ni:"你",nu:"奴",nv:"女",nai:"奶",nao:"脑",nou:"耨",nan:"南",nen:"嫩",nang:"囊",neng:"能",nong:"农",nie:"捏",niu:"牛",niao:"鸟",nian:"年",nin:"您",niang:"娘",ning:"宁",nve:"虐",nuo:"糯",nuan:"暖",la:"拉",lo:"咯",le:"乐",li:"里",lu:"路",lv:"绿",lai:"来",lei:"类",lao:"老",lou:"楼",lan:"蓝",lang:"狼",leng:"冷",long:"龙",lia:"俩",lie:"列",liu:"六",liao:"了",lian:"连",lin:"林",liang:"亮",ling:"零",lve:"略",luo:"罗",luan:"乱",lun:"轮",ga:"嘎",ge:"哥",gu:"古",gai:"该",gei:"给",gao:"高",gou:"狗",gan:"干",gen:"跟",gang:"刚",geng:"更",gong:"工",gua:"瓜",guo:"国",gui:"贵",guai:"怪",guan:"关",gun:"滚",guang:"光",ka:"咖",ke:"科",ku:"哭",kai:"开",kao:"考",kou:"口",kan:"看",ken:"肯",kang:"康",keng:"坑",kong:"空",kua:"夸",kuo:"阔",kui:"亏",kuai:"快",kuan:"宽",kun:"困",kuang:"筐",ha:"哈",he:"喝",hu:"虎",hai:"海",hei:"黑",hao:"好",hou:"后",han:"汉",hen:"很",hang:"航",heng:"横",hong:"红",hua:"花",huo:"火",hui:"会",huai:"坏",huan:"欢",hun:"婚",huang:"黄",ji:"机",ju:"居",jia:"家",jie:"接",jiao:"交",jiu:"九",jian:"见",jin:"金",jiang:"江",jing:"京",jiong:"窘",jun:"军",juan:"娟",jue:"决",qi:"七",qu:"区",qia:"恰",qie:"切",qiao:"桥",qiu:"秋",qian:"千",qin:"亲",qiang:"强",qing:"青",qiong:"穷",qun:"群",quan:"全",que:"确",xi:"西",xu:"需",xia:"下",xie:"写",xiao:"小",xiu:"休",xian:"先",xin:"心",xiang:"想",xing:"星",xiong:"熊",xun:"寻",xuan:"宣",xue:"学",zhi:"知",chi:"吃",shi:"十",ri:"日",zi:"字",ci:"次",si:"四",zha:"扎",zhe:"这",zhu:"猪",zhai:"摘",zhao:"找",zhou:"周",zhan:"站",zhen:"真",zhang:"张",zheng:"正",zhong:"中",zhua:"抓",zhuo:"桌",zhui:"追",zhuai:"拽",zhuan:"转",zhun:"准",zhuang:"装",cha:"茶",che:"车",chu:"出",chai:"拆",chao:"超",chou:"抽",chan:"产",chen:"陈",chang:"长",cheng:"成",chong:"虫",chuo:"戳",chui:"吹",chuai:"揣",chuan:"船",chun:"春",chuang:"窗",sha:"沙",she:"蛇",shu:"书",shai:"晒",shao:"少",shou:"手",shan:"山",shen:"身",shang:"上",sheng:"生",shua:"刷",shuo:"说",shui:"水",shuai:"帅",shuan:"拴",shun:"顺",shuang:"双",re:"热",ru:"如",rao:"绕",rou:"肉",ran:"然",ren:"人",rang:"让",reng:"仍",rong:"容",ruo:"若",rui:"瑞",ruan:"软",run:"润",za:"杂",ze:"则",zu:"足",zai:"在",zao:"早",zou:"走",zan:"咱",zen:"怎",zang:"脏",zeng:"增",zong:"宗",zuo:"昨",zui:"最",zuan:"钻",zun:"尊",ca:"擦",ce:"册",cu:"粗",cai:"菜",cao:"草",cou:"凑",can:"餐",cen:"岑",cang:"仓",ceng:"层",cong:"从",cuo:"错",cui:"催",cuan:"窜",cun:"村",sa:"撒",se:"色",su:"苏",sai:"赛",sao:"扫",sou:"搜",san:"三",sen:"森",sang:"桑",seng:"僧",song:"送",suo:"所",sui:"岁",suan:"算",sun:"孙",ya:"呀",yo:"哟",ye:"爷",yi:"一",yao:"要",you:"有",yan:"眼",yin:"音",yang:"羊",ying:"英",yong:"用",yu:"鱼",yue:"月",yuan:"圆",yun:"云",wa:"挖",wo:"我",wu:"五",wai:"外",wei:"为",wan:"完",wen:"文",wang:"王",weng:"翁"};
+function pyStripTones(s){ let o=""; for(const ch of s) o+=PY_TONE[ch]||ch; return o; }
+function pyConvertRun(run){
+  const lower=run.toLowerCase(); let out="",i=0;
+  while(i<lower.length){
+    let hit=null,used=0;
+    for(let len=Math.min(6,lower.length-i);len>=1&&!hit;len--){
+      const piece=lower.slice(i,i+len),plain=pyStripTones(piece);
+      const w=PY_ACCENTED[piece]||PY_SYLLABLES[plain]||PY_FINALS[plain];
+      if(w){ hit=w; used=len; }
+    }
+    if(hit){ out+=hit; i+=used; continue; }
+    const two=lower.slice(i,i+2);
+    if(two==="zh"||two==="ch"||two==="sh"){ out+=PY_INITIALS[two]||two; i+=2; continue; }
+    const one=pyStripTones(lower[i]);
+    const w1=PY_INITIALS[one]||PY_FINALS[one];
+    if(w1){ out+=w1; i+=1; continue; }
+    out+=lower[i]; i+=1;
+  }
+  return out;
+}
+function pyConvert(text){ return text.replace(/[a-zA-Zāáǎàēéěèīíǐìōóǒòūúǔùǖǘǚǜüḿńňǹ]+/g,m=>pyConvertRun(m)); }
+/* 中英混排分段：拉丁段用指定语音（en-US），其余用中文（对齐 iOS SpeechService.segments） */
+function speakSeg(text,latinLang){
+  try{
+    speechSynthesis.cancel();
+    const parts=text.match(/[A-Za-z]+|[^A-Za-z]+/g)||[];
+    for(const p of parts){
+      const u=new SpeechSynthesisUtterance(p);
+      u.lang=/^[A-Za-z]+$/.test(p)?latinLang:"zh-CN";
+      u.rate=.8; u.pitch=1.15;
+      speechSynthesis.speak(u);
+    }
+  }catch(e){}
+}
+/* 学科语音路由唯一入口（对齐 iOS SpeechService.speak(_:subject:)）：
+   英语/天文按混排分段（拉丁段 en-US），拼音转同音字后中文读，其余学科中文 */
+function speak(t,sub){
+  if(!t) return;
+  if(sub==="english"||sub==="astro") return speakSeg(t,"en-US");
+  if(sub==="pinyin") t=pyConvert(t);
+  try{ const u=new SpeechSynthesisUtterance(t); u.lang='zh-CN'; u.rate=.8; u.pitch=1.15; speechSynthesis.cancel(); speechSynthesis.speak(u);}catch(e){}
+}
 function levelIds(sub){ return (CONTENT[sub]?CONTENT[sub].levels:[]).map(function(l){return l.id;}); }
 function doneCount(sub){ let n=0; for(const id of levelIds(sub)){ if((S.stars[id]||0)>0) n++; } return n; }
 /* 星级按关卡 id 记账（工单05 平移迁移）；复习关跟随前一个正式关解锁、不挡正式关；
@@ -835,7 +884,41 @@ function mascotJump(el){
 }
 function dailyTotal(){ return ["cn","math","lab","pinyin","english","astro"].filter(k=>S.daily[k]>0).length; }
 function dailyToast(){ toast(dailyTotal()>=3?"今日任务全部完成，明天见 🎉":"六个学科任玩三个就达标啦"); }
-function enterZone(sub){ if(sub==="lab") return route("lab"); const total=SUBJECTS[sub].total; let i=0; while(i<total&&nodeState(sub,i)==="done") i++; enterLevel(sub,Math.min(i,total-1)); }
+/* 学科是否全部通关：正式关+boss 全有星即算；复习关不做要求（与 nodeState 解锁链同口径，对齐 iOS） */
+function subjectComplete(sub){
+  const lv=CONTENT[sub]?CONTENT[sub].levels:[];
+  const req=lv.filter(x=>!x.review);
+  return req.length>0&&req.every(x=>(S.stars[x.id]||0)>0);
+}
+/* 重置单个学科的关卡星星（金币、收集册等战利品保留，对齐 iOS resetSubject） */
+function resetSubject(sub){ for(const id of levelIds(sub)) delete S.stars[id]; save(); }
+function enterZone(sub){
+  if(sub==="lab") return route("lab");
+  if(subjectComplete(sub)) return askRestart(sub);
+  const total=SUBJECTS[sub].total; let i=0; while(i<total&&nodeState(sub,i)==="done") i++; enterLevel(sub,Math.min(i,total-1));
+}
+/* 全部通关后的选择框：从头再玩 / 再战 Boss / 取消（对齐 iOS 地图水管确认框） */
+function askRestart(sub){
+  const cfg=SUBJECTS[sub], ids=levelIds(sub);
+  const ov=document.createElement("div");
+  ov.className="boverlay"; ov.style.position="fixed"; ov.style.zIndex=99;
+  ov.innerHTML=`<div style="background:#fff;border-radius:28px;padding:30px 40px;text-align:center;box-shadow:0 12px 24px rgba(84,66,58,.22);max-width:86%">
+    <div style="font-size:23px;font-weight:900;margin-bottom:4px">「${cfg.title}」全部通关啦！</div>
+    <div style="font-size:15px;color:var(--ink-soft);font-weight:800;margin-bottom:16px">接下来想怎么玩？从头再玩会清空本学科的关卡星星（金币和收集册保留）</div>
+    <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+      <button class="jbtn j-green" data-a="restart">🔄 从头再玩一次</button>
+      <button class="jbtn j-orange" data-a="boss">👾 再战 Boss</button>
+      <button class="jbtn j-cream" data-a="cancel">取消</button>
+    </div></div>`;
+  ov.addEventListener("click",e=>{
+    if(e.target===ov){ ov.remove(); return; }
+    const a=e.target.dataset&&e.target.dataset.a; if(!a) return;
+    ov.remove();
+    if(a==="restart"){ resetSubject(sub); enterLevel(sub,0); }
+    else if(a==="boss"){ enterLevel(sub,ids.length-1); }
+  });
+  document.body.appendChild(ov);
+}
 function rollDice(){ const subs=["cn","math","pinyin","english","astro"]; const sub=subs[Math.floor(Math.random()*subs.length)];
   const total=SUBJECTS[sub].total; let i=0; while(i<total&&nodeState(sub,i)==="done") i++;
   toast("🎲 命运骰子：出发！"); enterLevel(sub,Math.min(i,total-1)); }
@@ -1252,6 +1335,7 @@ function bossHTML(lv){
       <div style="font-size:14px;color:var(--ink-soft);font-weight:800;margin-bottom:12px">星星和金币都收好啦，你是学科小勇士～</div>
       <button class="jbtn j-green" onclick="route('map')">返回地图</button>
       <button class="jbtn j-cream" style="margin-left:10px" onclick="bossRetry()">再玩一次</button>
+      ${S.lv.index===SUBJECTS[S.lv.subject].total-1?`<div style="margin-top:12px"><button class="jbtn j-orange" onclick="resetSubject(S.lv.subject);enterLevel(S.lv.subject,0)">🔄 从头再玩整个学科</button></div>`:""}
     </div></div>`;
   } else if(b.outcome==="lost"){
     overlays=`<div class="boverlay"><div class="boss-result">
@@ -1331,7 +1415,7 @@ function teachHTML(st){
       </div>
       <div style="display:flex;gap:12px;align-items:center">
         <span class="pinyin">${st.pinyin}</span>
-        <button class="speakbtn" onclick="speak('${st.pinyin}。${st.char}')">${ic("speaker",24)}</button>
+        <button class="speakbtn" onclick="speak('${st.pinyin}。${st.char}','pinyin')">${ic("speaker",24)}</button>
       </div>
       <div style="display:flex;gap:9px">${words}</div>
     </div>
@@ -1353,7 +1437,7 @@ function letterHTML(sub, st){
   const guideIcon = (en||astro) ? "robot" : "panda";
   const disp = st.display || (st.letters&&st.letters[0]) || "?";
   const fs = disp.length>=3 ? 62 : (disp.length===2 ? 84 : 122);
-  const exs=(st.examples||[]).map(w=>`<span class="wordchip" onclick="speak('${(w.say||w.text).replace(/'/g,'')}');toast('例词：${w.text}')">${ic(w.icon,22)} ${w.text}</span>`).join("");
+  const exs=(st.examples||[]).map(w=>`<span class="wordchip" onclick="speak('${(w.say||w.text).replace(/'/g,'')}','${sub}');toast('例词：${w.text}')">${ic(w.icon,22)} ${w.text}</span>`).join("");
   return `<div style="display:flex;gap:20px;height:100%">
     <div class="sticker" style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:13px;padding:16px">
       <div style="font-size:16px;font-weight:900;color:${accent};background:linear-gradient(180deg,#FFE7A8,var(--yellow));border-radius:999px;padding:7px 22px;box-shadow:0 3px 0 var(--gold-ddk)">${st.question||"学一学"}</div>
@@ -1361,7 +1445,7 @@ function letterHTML(sub, st){
         <div style="font-size:${fs}px;font-weight:900;color:${accent};text-align:center;line-height:1.15">${disp}</div>
       </div>
       ${(st.letters&&st.letters.length>1)?`<div style="font-size:15px;color:var(--ink-soft);font-weight:800">本关字母：${st.letters.join(" ")}</div>`:""}
-      <button class="jbtn" style="background:linear-gradient(180deg,var(--coral),var(--coral-dk));box-shadow:0 4px 0 var(--coral-ddk)" onclick="speak('${disp}')">${ic("speaker",20)} ${en?"Listen":"读一读"}</button>
+      <button class="jbtn" style="background:linear-gradient(180deg,var(--coral),var(--coral-dk));box-shadow:0 4px 0 var(--coral-ddk)" onclick="speak('${disp}','${sub}')">${ic("speaker",20)} ${en?"Listen":"读一读"}</button>
       <div style="display:flex;gap:9px;flex-wrap:wrap;justify-content:center">${exs}</div>
     </div>
     <div class="sticker" style="width:360px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px">
@@ -1392,7 +1476,7 @@ function listenHTML(st){
       ${(st.options||[]).map((o,i)=>`<div class="opt" id="lopt${i}" onclick="pickListen(${i})">${card(o)}</div>`).join("")}
     </div>
     <div id="lfb" style="min-height:40px;display:flex;align-items:center">
-      <button class="speakopt" onclick="speak(window._listen.say);toast('🔊 朗读：'+window._listen.say)">${ic("speaker",18)} 想听点这里</button>
+      <button class="speakopt" onclick="speak(window._listen.say,S.lv.subject);toast('🔊 朗读：'+window._listen.say)">${ic("speaker",18)} 想听点这里</button>
     </div>
     <div class="mascot-row"><span class="m">${ic((SUBJECTS[S.lv.subject]||{}).guide||"panda",40)}</span><div class="say">点一点图片答题，答对有 <b style="color:var(--gold-ddk)">星星</b> 哦！答错了也没关系～</div></div>
   </div>`;
@@ -2032,11 +2116,11 @@ function slotTap(gid,id){
   const g=COLLECTION.find(x=>x.id===gid);
   const it=g.items.find(x=>x.id===id);
   if(!slotCollected(g,it)) return;
-  if(it.fact){ toast(it.fact,3.2); speak(it.fact); }
-  else if(gid==="english"){ toast(it.name); speak(it.name); }
-  else if(gid==="astro"){ toast(it.name); speak(it.name.split(" ").join("，")); }
-  else if(gid==="hanzi"){ toast(it.text); speak(it.text); }
-  else if(gid==="pinyin"){ toast(it.name); speak((it.text||" ")[0]); }
+  if(it.fact){ toast(it.fact,3.2); speak(it.fact,gid); }
+  else if(gid==="english"){ toast(it.name); speak(it.name,gid); }
+  else if(gid==="astro"){ toast(it.name); speak(it.name.split(" ").join("，"),gid); }
+  else if(gid==="hanzi"){ toast(it.text); speak(it.text,gid); }
+  else if(gid==="pinyin"){ toast(it.name); speak((it.text||" ")[0],gid); }
 }
 
 /* ================= 家长中心 ================= */
