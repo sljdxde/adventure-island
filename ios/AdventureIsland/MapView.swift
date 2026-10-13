@@ -17,13 +17,13 @@ struct MapView: View {
     @State private var finishedSubject: String?
 
     private let zones: [(icon: String, label: String, meta: String, pipe: String, subject: String, unit: String, total: Int)] = [
-        ("panda", "识字村", "象形字 · 认读", "pipe-red", "cn", "关", 33),
-        ("fox", "思维镇", "数感 · 加减法", "pipe-blue", "math", "关", 37),
-        ("robot", "科学岛", "动手做实验", "pipe-purple", "lab", "项已点亮", 12),
-        ("panda", "拼音谷", "声母 · 韵母 · 拼读", "pipe-orange", "pinyin", "关", 19),
-        ("robot", "英语王国", "ABC · 单词", "pipe-green", "english", "关", 27),
-        ("robot", "天文台", "太阳 · 月亮 · 星星", "pipe-indigo", "astro", "关", 19),
-        ("panda", "环球号", "中国 · 世界", "pipe-brown", "geo", "关", 15)
+        ("panda", "识字村", "部编识字 · 写字", "pipe-red", "cn", "关", 50),
+        ("fox", "思维镇", "数感 · 加减法", "pipe-blue", "math", "关", 50),
+        // 科学实验台（lab）v0.10.1 起隐藏入口（实验内容保留，家长可经深链进入）
+        ("panda", "拼音谷", "声母 · 韵母 · 拼读", "pipe-orange", "pinyin", "关", 50),
+        ("robot", "英语王国", "ABC · 单词", "pipe-green", "english", "关", 50),
+        ("robot", "天文台", "星空大探索", "pipe-indigo", "astro", "关", 100),
+        ("panda", "环球号", "中国 · 世界", "pipe-brown", "geo", "关", 50)
     ]
 
     var body: some View {
@@ -266,6 +266,9 @@ struct MapView: View {
                 sound.systemTap()
                 if zone.subject == "lab" {
                     route = .lab
+                } else if LevelCatalog.hasZones(zone.subject) {
+                    // v0.10 星区分章：进星区图（保卫萝卜式，一次只展示一个星区 10 关）
+                    route = .zones(subject: zone.subject)
                 } else if store.isSubjectComplete(zone.subject) {
                     // 全部通关：让孩子选择从头再玩，还是再战最后一关（Boss）
                     finishedSubject = zone.subject
@@ -564,6 +567,12 @@ enum LevelCatalog {
     static func reviews(_ subject: String) -> [Bool] { info(subject).reviews }
     static func bosses(_ subject: String) -> [Bool] { info(subject).bosses }
     static func total(_ subject: String) -> Int { info(subject).ids.count }
+
+    /// v0.10 星区分章（保卫萝卜式选关）：学科 JSON 带 zones 才走星区图
+    static func hasZones(_ subject: String) -> Bool {
+        guard let cfg = SubjectConfig.map[subject] else { return false }
+        return ContentLoader.loadOptional(SubjectFile.self, cfg.file)?.zones?.isEmpty == false
+    }
 }
 
 // 问号方块（水管顶，可顶出金币）

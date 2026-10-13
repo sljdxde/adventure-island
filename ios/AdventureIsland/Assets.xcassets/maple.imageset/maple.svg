@@ -1,0 +1,3 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs><linearGradient id="g-mp" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F08A4A"/><stop offset="1" stop-color="#C24836"/></linearGradient></defs>
+  <path d="M32 6 L37 14 L46 10 L44 20 L54 22 L46 30 L50 38 L38 36 L36 48 L32 42 L28 48 L26 36 L14 38 L18 30 L10 22 L20 20 L18 10 L27 14 Z" fill="url(#g-mp)"/>
+  <path d="M32 44 L32 58 M32 50 L25 44 M32 52 L39 46" stroke="#8A5B2E" stroke-width="3" stroke-linecap="round" fill="none"/></svg>

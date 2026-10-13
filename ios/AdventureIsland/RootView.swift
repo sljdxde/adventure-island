@@ -57,6 +57,8 @@ extension EnvironmentValues {
 enum Route: Equatable {
     case map
     case level(subject: String, index: Int)
+    case zones(subject: String)                    // v0.10 星区图（保卫萝卜式分章选关）
+    case zoneLevels(subject: String, zone: Int)    // v0.10 单星区关卡路径
     case lab
     case collection
     case shop
@@ -70,6 +72,14 @@ enum Route: Equatable {
 func isLevelRoute(_ r: Route) -> Bool {
     if case .level = r { return true }
     return false
+}
+
+/// v0.10：返回路由——星区分章学科回本星区路径页，其余回主页地图
+func backRoute(subject: String, index: Int, zone: Int? = nil) -> Route {
+    if LevelCatalog.hasZones(subject) {
+        return .zoneLevels(subject: subject, zone: zone ?? (index / 10) + 1)
+    }
+    return .map
 }
 
 struct RootView: View {
@@ -99,6 +109,10 @@ struct RootView: View {
                 MapView(route: $route, confetti: $confettiTrigger)
             case .level(let subject, let index):
                 LevelView(route: $route, confetti: $confettiTrigger, subject: subject, index: index)
+            case .zones(let subject):
+                ZoneGalaxyView(subject: subject, route: $route)
+            case .zoneLevels(let subject, let zone):
+                ZoneLevelsView(subject: subject, zone: zone, route: $route)
             case .lab:
                 LabView(route: $route, confetti: $confettiTrigger)
             case .collection:
@@ -111,10 +125,10 @@ struct RootView: View {
             case .debugCeremony(let subject, let index, let total):
                 ZStack {
                     SceneBackground(theme: (SubjectConfig.map[subject] ?? SubjectConfig.map["cn"]!).theme)
-                    CeremonyView(subject: subject, index: index,
-                                 levelId: LevelCatalog.ids(subject)[safe: index] ?? "",
-                                 totalLevels: total, stars: 3, wrongCount: 0,
-                                 onNext: {}, onReplay: {}, route: $route)
+                    LevelSettleCard(subject: subject, index: index,
+                                    levelId: LevelCatalog.ids(subject)[safe: index] ?? "",
+                                    totalLevels: total, stars: 3, wrongCount: 0,
+                                    onNext: {}, onReplay: {}, route: $route)
                 }
             #endif
             }

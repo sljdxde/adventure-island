@@ -66,7 +66,7 @@ struct BossLevelView: View {
 
     private var header: some View {
         HStack(spacing: 14) {
-            SquareIconButton(icon: "back", size: 56, action: { route = .map })
+            SquareIconButton(icon: "back", size: 56, action: { route = backRoute(subject: subject, index: index) })
             VStack(alignment: .leading, spacing: 1) {
                 Text("\(config.title) · \(title)")
                     .font(.kidHead(22))
@@ -217,9 +217,9 @@ struct BossLevelView: View {
                         .buttonStyle(.jellyGreen)
                     } else {
                         Button {
-                            route = .map
+                            route = backRoute(subject: subject, index: index)
                         } label: {
-                            Label("返回地图", systemImage: "map").font(.kidHead(19))
+                            Label(LevelCatalog.hasZones(subject) ? "返回星区" : "返回地图", systemImage: "map").font(.kidHead(19))
                         }
                         .buttonStyle(.jellyGreen)
                     }
@@ -230,9 +230,9 @@ struct BossLevelView: View {
                     // 非最终关已有绿色「返回地图」，橙色返回入口仅最终关与「从头再玩」并列显示
                     if isFinalLevel {
                         Button {
-                            route = .map
+                            route = backRoute(subject: subject, index: index)
                         } label: {
-                            Label("返回地图", systemImage: "map").font(.kidHead(19))
+                            Label(LevelCatalog.hasZones(subject) ? "返回星区" : "返回地图", systemImage: "map").font(.kidHead(19))
                         }
                         .buttonStyle(.jellyOrange)
                     }
@@ -280,9 +280,9 @@ struct BossLevelView: View {
                     }
                     .buttonStyle(.jellyGreen)
                     Button {
-                        route = .map
+                        route = backRoute(subject: subject, index: index)
                     } label: {
-                        Label("返回地图", systemImage: "map").font(.kidHead(19))
+                        Label(LevelCatalog.hasZones(subject) ? "返回星区" : "返回地图", systemImage: "map").font(.kidHead(19))
                     }
                     .buttonStyle(.jellyOrange)
                 }

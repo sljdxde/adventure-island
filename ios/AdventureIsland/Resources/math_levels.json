@@ -2,6 +2,38 @@
   "subject": "math",
   "title": "思维镇",
   "guide": "fox",
+  "zones": [
+    {
+      "n": 1,
+      "title": "数与数数",
+      "subtitle": "点数 · 比较 · 序数",
+      "icon": "dice"
+    },
+    {
+      "n": 2,
+      "title": "加减法",
+      "subtitle": "凑十 · 破十 · 连加连减",
+      "icon": "equal"
+    },
+    {
+      "n": 3,
+      "title": "乘除法",
+      "subtitle": "口诀 · 平均分 · 凑十牌",
+      "icon": "starface"
+    },
+    {
+      "n": 4,
+      "title": "图形与钟表",
+      "subtitle": "图形 · 数独 · 钟表 · 人民币",
+      "icon": "clock"
+    },
+    {
+      "n": 5,
+      "title": "思维大挑战",
+      "subtitle": "规律 · 分类 · 看图列式",
+      "icon": "medal"
+    }
+  ],
   "levels": [
     {
       "id": "math-0",
@@ -47,8 +79,25 @@
           "answerKey": "left",
           "hint": "一个对着一个，比一比",
           "praise": "苹果多，答对啦！"
+        },
+        {
+          "id": "math-x1",
+          "kind": "balance",
+          "question": "天平秤一秤：大象和小鸟，哪边更重？",
+          "left": {
+            "icon": "elephant",
+            "text": "大象"
+          },
+          "right": {
+            "icon": "duck",
+            "text": "小鸟"
+          },
+          "answerKey": "left",
+          "hint": "大象是陆地上最重的动物",
+          "praise": "天平答对啦，小天文学家！"
         }
-      ]
+      ],
+      "zone": 1
     },
     {
       "id": "math-1",
@@ -82,7 +131,8 @@
           "hint": "从小到大：小的排前面",
           "praise": "排队排好啦！"
         }
-      ]
+      ],
+      "zone": 1
     },
     {
       "id": "math-2",
@@ -119,7 +169,8 @@
           "hint": "一共 5 个，左边有 2 个",
           "praise": "分对啦，5 可以分成 2 和 3！"
         }
-      ]
+      ],
+      "zone": 1
     },
     {
       "id": "math-3",
@@ -170,7 +221,8 @@
           "hint": "3 的后面是几？5 的前面是几？",
           "praise": "是 4！3 和 5 的中间是 4！"
         }
-      ]
+      ],
+      "zone": 1
     },
     {
       "id": "math-4",
@@ -217,7 +269,702 @@
           "hint": "一个对着一个，比一比",
           "praise": "星星多，答对啦！"
         }
-      ]
+      ],
+      "zone": 1
+    },
+    {
+      "id": "math-5",
+      "title": "第 6 关 小火车",
+      "subtitle": "7 以内 · 排一排 · 掷骰子",
+      "steps": [
+        {
+          "id": "math-5-c",
+          "kind": "count",
+          "question": "轨道上有几辆小火车（点一点，数数看）",
+          "duckIcon": "train",
+          "count": 7,
+          "countOptions": [
+            6,
+            7,
+            8
+          ],
+          "backdrop": "grass",
+          "unit": "辆"
+        },
+        {
+          "id": "math-5-o2",
+          "kind": "order",
+          "nums": [
+            3,
+            6,
+            4
+          ],
+          "dir": "up",
+          "question": "从小到大，依次点一点",
+          "hint": "从小到大：小的排前面",
+          "praise": "排队排好啦！"
+        },
+        {
+          "id": "math-5-d1",
+          "kind": "dice",
+          "count": 5,
+          "countOptions": [
+            4,
+            5,
+            6
+          ],
+          "question": "掷骰子：掷出了几点？",
+          "hint": "一个一个数红点点",
+          "praise": "对，是 5 点！"
+        },
+        {
+          "id": "math-x2",
+          "kind": "sequence",
+          "question": "按 1→2→3→4 顺序点，小火车出发！",
+          "seq": [
+            "1",
+            "2",
+            "3",
+            "4"
+          ],
+          "hint": "按顺序一个一个点",
+          "praise": "呜呜——小火车开动啦！"
+        }
+      ],
+      "zone": 1
+    },
+    {
+      "id": "math-6",
+      "title": "第 7 关 花园蜜蜂",
+      "subtitle": "8 以内 · 分一分",
+      "steps": [
+        {
+          "id": "math-6-c",
+          "kind": "count",
+          "question": "花园里开了几朵花（点一点，数数看）",
+          "duckIcon": "flower",
+          "count": 8,
+          "countOptions": [
+            7,
+            8,
+            9
+          ],
+          "backdrop": "grass",
+          "unit": "朵"
+        },
+        {
+          "id": "math-6-s2",
+          "kind": "split",
+          "total": 8,
+          "part": 3,
+          "leftIcon": "flower",
+          "unit": "朵",
+          "question": "8 朵花分两个花瓶，左边 3 朵，右边几朵？",
+          "arithOptions": [
+            4,
+            5,
+            6
+          ],
+          "hint": "一共 8 朵，左边有 3 朵",
+          "praise": "分对啦，8 可以分成 3 和 5！"
+        }
+      ],
+      "zone": 1
+    },
+    {
+      "id": "math-7",
+      "title": "第 8 关 爱心礼盒",
+      "subtitle": "9 以内 · 排一排 · 掷骰子",
+      "steps": [
+        {
+          "id": "math-7-c",
+          "kind": "count",
+          "question": "礼盒里有几颗爱心糖（点一点，数数看）",
+          "duckIcon": "heart",
+          "count": 9,
+          "countOptions": [
+            8,
+            9,
+            10
+          ],
+          "backdrop": "grass",
+          "unit": "颗"
+        },
+        {
+          "id": "math-7-o3",
+          "kind": "order",
+          "nums": [
+            9,
+            4,
+            7
+          ],
+          "dir": "down",
+          "question": "从大到小，依次点一点",
+          "hint": "从大到小：大的排前面",
+          "praise": "排队排好啦！"
+        },
+        {
+          "id": "math-7-d2",
+          "kind": "dice",
+          "count": 6,
+          "countOptions": [
+            5,
+            6,
+            7
+          ],
+          "question": "掷骰子：掷出了几点？",
+          "hint": "一个一个数红点点",
+          "praise": "对，是 6 点！"
+        }
+      ],
+      "zone": 1
+    },
+    {
+      "id": "math-8",
+      "title": "第 9 关 宝藏金币",
+      "subtitle": "10 以内点数",
+      "steps": [
+        {
+          "id": "math-8-c",
+          "kind": "count",
+          "question": "宝箱里有几枚金币（点一点，数数看）",
+          "duckIcon": "coin",
+          "count": 10,
+          "countOptions": [
+            8,
+            9,
+            10
+          ],
+          "backdrop": "night",
+          "unit": "枚"
+        },
+        {
+          "id": "math-8-p1",
+          "kind": "pattern",
+          "seq": [
+            "star",
+            "moon",
+            "star"
+          ],
+          "question": "找规律：下一个是哪个？",
+          "options": [
+            {
+              "icon": "moon"
+            },
+            {
+              "icon": "star"
+            },
+            {
+              "icon": "candy"
+            }
+          ],
+          "answer": 0,
+          "hint": "先读一读前面几个，找一找谁在轮流出现",
+          "praise": "规律找对啦，小侦探！"
+        }
+      ],
+      "zone": 1
+    },
+    {
+      "id": "math-9",
+      "title": "第 10 关 数字擂台",
+      "subtitle": "比大小 · 归类",
+      "steps": [
+        {
+          "id": "math-9-q1",
+          "kind": "quiz",
+          "question": "哪个数字最大？",
+          "options": [
+            {
+              "text": "5"
+            },
+            {
+              "text": "9"
+            },
+            {
+              "text": "3"
+            }
+          ],
+          "answer": 1,
+          "hint": "从 1 数到 10，谁排在最后？",
+          "praise": "9 最大，答对啦！"
+        },
+        {
+          "id": "math-9-q2",
+          "kind": "quiz",
+          "question": "哪个数字最小？",
+          "options": [
+            {
+              "text": "2"
+            },
+            {
+              "text": "7"
+            },
+            {
+              "text": "10"
+            }
+          ],
+          "answer": 0,
+          "hint": "越早数到的越小哦",
+          "praise": "思维小达人！"
+        },
+        {
+          "id": "math-9-q3",
+          "kind": "quiz",
+          "question": "火眼金睛：哪个是交通工具？",
+          "options": [
+            {
+              "icon": "duck"
+            },
+            {
+              "icon": "train"
+            },
+            {
+              "icon": "cake"
+            }
+          ],
+          "answer": 1,
+          "hint": "想一想它们分别是做什么的",
+          "praise": "分类小能手！"
+        }
+      ],
+      "zone": 1
+    },
+    {
+      "id": "math-10",
+      "title": "第 11 关 糖果加法",
+      "subtitle": "合起来",
+      "steps": [
+        {
+          "id": "math-10-a+11",
+          "kind": "arith",
+          "op": "+",
+          "leftIcon": "candy",
+          "leftCount": 1,
+          "rightCount": 1,
+          "unit": "颗",
+          "question": "1 颗糖加 1 颗糖，一共有几颗？",
+          "arithOptions": [
+            1,
+            2,
+            3
+          ],
+          "hint": "指着图一个一个数",
+          "praise": "算对啦，等于 2！"
+        },
+        {
+          "id": "math-10-a+21",
+          "kind": "arith",
+          "op": "+",
+          "leftIcon": "candy",
+          "leftCount": 2,
+          "rightCount": 1,
+          "unit": "颗",
+          "question": "2 颗糖加 1 颗糖，一共有几颗？",
+          "arithOptions": [
+            2,
+            3,
+            4
+          ],
+          "hint": "指着图一个一个数",
+          "praise": "算对啦，等于 3！"
+        }
+      ],
+      "zone": 2
+    },
+    {
+      "id": "math-11",
+      "title": "第 12 关 苹果加法",
+      "subtitle": "加法 · 分一分",
+      "steps": [
+        {
+          "id": "math-11-a+22",
+          "kind": "arith",
+          "op": "+",
+          "leftIcon": "apple",
+          "leftCount": 2,
+          "rightCount": 2,
+          "unit": "个",
+          "question": "2 个苹果加 2 个苹果，一共有几个？",
+          "arithOptions": [
+            3,
+            4,
+            5
+          ],
+          "hint": "指着图一个一个数",
+          "praise": "算对啦，等于 4！"
+        },
+        {
+          "id": "math-11-s3",
+          "kind": "split",
+          "total": 6,
+          "part": 2,
+          "leftIcon": "apple",
+          "unit": "个",
+          "question": "6 个苹果分两篮，左边 2 个，右边几个？",
+          "arithOptions": [
+            3,
+            4,
+            5
+          ],
+          "hint": "一共 6 个，左边有 2 个",
+          "praise": "分对啦，6 可以分成 2 和 4！"
+        }
+      ],
+      "zone": 2
+    },
+    {
+      "id": "math-12",
+      "title": "第 13 关 气球飞走了",
+      "subtitle": "减法初识",
+      "steps": [
+        {
+          "id": "math-12-a-31",
+          "kind": "arith",
+          "op": "-",
+          "leftIcon": "balloon",
+          "leftCount": 3,
+          "rightCount": 1,
+          "unit": "个",
+          "question": "3 个气球飞走 1 个，还剩几个？",
+          "arithOptions": [
+            1,
+            2,
+            3
+          ],
+          "hint": "划掉的不算哦",
+          "praise": "算对啦，等于 2！"
+        },
+        {
+          "id": "math-12-a-42",
+          "kind": "arith",
+          "op": "-",
+          "leftIcon": "balloon",
+          "leftCount": 4,
+          "rightCount": 2,
+          "unit": "个",
+          "question": "4 个气球飞走 2 个，还剩几个？",
+          "arithOptions": [
+            1,
+            2,
+            3
+          ],
+          "hint": "划掉的不算哦",
+          "praise": "算对啦，等于 2！"
+        }
+      ],
+      "zone": 2
+    },
+    {
+      "id": "math-13",
+      "title": "第 14 关 星星回家",
+      "subtitle": "减法 · 填一填",
+      "steps": [
+        {
+          "id": "math-13-a-52",
+          "kind": "arith",
+          "op": "-",
+          "leftIcon": "star",
+          "leftCount": 5,
+          "rightCount": 2,
+          "unit": "颗",
+          "question": "5 颗星星回家 2 颗，还剩几颗？",
+          "arithOptions": [
+            2,
+            3,
+            4
+          ],
+          "hint": "划掉的不算哦",
+          "praise": "算对啦，等于 3！"
+        },
+        {
+          "id": "math-13-n2",
+          "kind": "neighbor",
+          "nums": [
+            6,
+            0,
+            8
+          ],
+          "question": "想一想：藏起来的数字是几？",
+          "arithOptions": [
+            6,
+            7,
+            8
+          ],
+          "answer": 1,
+          "hint": "6 的后面是几？8 的前面是几？",
+          "praise": "是 7！6 和 8 的中间是 7！"
+        }
+      ],
+      "zone": 2
+    },
+    {
+      "id": "math-14",
+      "title": "第 15 关 思维大挑战",
+      "subtitle": "加减 · 排队 · 找规律",
+      "steps": [
+        {
+          "id": "math-14-a+44",
+          "kind": "arith",
+          "op": "+",
+          "leftIcon": "star",
+          "leftCount": 4,
+          "rightCount": 4,
+          "unit": "颗",
+          "question": "4 颗星星加 4 颗星星，一共几颗？",
+          "arithOptions": [
+            7,
+            8,
+            9
+          ],
+          "hint": "指着图一个一个数",
+          "praise": "算对啦，等于 8！"
+        },
+        {
+          "id": "math-14-a-93",
+          "kind": "arith",
+          "op": "-",
+          "leftIcon": "duck",
+          "leftCount": 9,
+          "rightCount": 3,
+          "unit": "只",
+          "question": "9 只小鸭游走 3 只，还剩几只？",
+          "arithOptions": [
+            5,
+            6,
+            7
+          ],
+          "hint": "划掉的不算哦",
+          "praise": "算对啦，等于 6！"
+        },
+        {
+          "id": "math-14-o4",
+          "kind": "order",
+          "nums": [
+            10,
+            2,
+            7
+          ],
+          "dir": "down",
+          "question": "从大到小，依次点一点",
+          "hint": "从大到小：大的排前面",
+          "praise": "排队排好啦！"
+        },
+        {
+          "id": "math-14-p2",
+          "kind": "pattern",
+          "seq": [
+            "sun",
+            "moon",
+            "star",
+            "sun",
+            "moon"
+          ],
+          "question": "找规律：下一个是哪个？",
+          "options": [
+            {
+              "icon": "moon"
+            },
+            {
+              "icon": "sun"
+            },
+            {
+              "icon": "star"
+            }
+          ],
+          "answer": 2,
+          "hint": "先读一读前面几个，找一找谁在轮流出现",
+          "praise": "规律找对啦，小侦探！"
+        }
+      ],
+      "zone": 2
+    },
+    {
+      "id": "math-15",
+      "title": "第 16 关 凑十法",
+      "subtitle": "20 以内加法",
+      "steps": [
+        {
+          "id": "math-15-a+94",
+          "kind": "arith",
+          "op": "+",
+          "leftIcon": "candy",
+          "leftCount": 9,
+          "rightCount": 4,
+          "unit": "颗",
+          "question": "9 颗糖加 4 颗，凑成十再加，一共几颗？",
+          "arithOptions": [
+            12,
+            13,
+            14
+          ],
+          "hint": "指着图一个一个数",
+          "praise": "算对啦，等于 13！"
+        },
+        {
+          "id": "math-15-a+85",
+          "kind": "arith",
+          "op": "+",
+          "leftIcon": "apple",
+          "leftCount": 8,
+          "rightCount": 5,
+          "unit": "个",
+          "question": "8 个苹果加 5 个，凑十法算一算，一共几个？",
+          "arithOptions": [
+            12,
+            13,
+            14
+          ],
+          "hint": "指着图一个一个数",
+          "praise": "算对啦，等于 13！"
+        }
+      ],
+      "zone": 2
+    },
+    {
+      "id": "math-16",
+      "title": "第 17 关 破十法",
+      "subtitle": "20 以内减法",
+      "steps": [
+        {
+          "id": "math-16-a-135",
+          "kind": "arith",
+          "op": "-",
+          "leftIcon": "star",
+          "leftCount": 13,
+          "rightCount": 5,
+          "unit": "颗",
+          "question": "13 颗星星去掉 5 颗，破十法算一算，还剩几颗？",
+          "arithOptions": [
+            7,
+            8,
+            9
+          ],
+          "hint": "划掉的不算哦",
+          "praise": "算对啦，等于 8！"
+        },
+        {
+          "id": "math-16-a-158",
+          "kind": "arith",
+          "op": "-",
+          "leftIcon": "balloon",
+          "leftCount": 15,
+          "rightCount": 8,
+          "unit": "个",
+          "question": "15 个气球飞走 8 个，破十法算一算，还剩几个？",
+          "arithOptions": [
+            6,
+            7,
+            8
+          ],
+          "hint": "划掉的不算哦",
+          "praise": "算对啦，等于 7！"
+        }
+      ],
+      "zone": 2
+    },
+    {
+      "id": "math-17",
+      "title": "第 18 关 连加连减",
+      "subtitle": "三个数",
+      "steps": [
+        {
+          "id": "math-17-a+75",
+          "kind": "arith",
+          "op": "+",
+          "leftIcon": "duck",
+          "leftCount": 7,
+          "rightCount": 5,
+          "unit": "只",
+          "question": "先来了 7 只鸭，又来了 5 只，一共几只？",
+          "arithOptions": [
+            11,
+            12,
+            13
+          ],
+          "hint": "指着图一个一个数",
+          "praise": "算对啦，等于 12！"
+        },
+        {
+          "id": "math-17-a-146",
+          "kind": "arith",
+          "op": "-",
+          "leftIcon": "candy",
+          "leftCount": 14,
+          "rightCount": 6,
+          "unit": "颗",
+          "question": "14 颗糖吃掉 6 颗，还剩几颗？",
+          "arithOptions": [
+            7,
+            8,
+            9
+          ],
+          "hint": "划掉的不算哦",
+          "praise": "算对啦，等于 8！"
+        },
+        {
+          "id": "math-17-q3",
+          "kind": "quiz",
+          "question": "连加：3 + 4 + 2 = ?",
+          "options": [
+            {
+              "text": "8"
+            },
+            {
+              "text": "9"
+            },
+            {
+              "text": "10"
+            }
+          ],
+          "answer": 1,
+          "hint": "先算 3+4，再加 2",
+          "praise": "连加小能手！"
+        }
+      ],
+      "zone": 2
+    },
+    {
+      "id": "math-18",
+      "title": "第 19 关 五十以内",
+      "subtitle": "两位数加减",
+      "steps": [
+        {
+          "id": "math-18-a+2315",
+          "kind": "arith",
+          "op": "+",
+          "leftIcon": "block",
+          "leftCount": 23,
+          "rightCount": 15,
+          "unit": "块",
+          "question": "两堆积木，23 块和 15 块，一共几块？",
+          "arithOptions": [
+            37,
+            38,
+            39
+          ],
+          "hint": "指着图一个一个数",
+          "praise": "算对啦，等于 38！"
+        },
+        {
+          "id": "math-18-a-4522",
+          "kind": "arith",
+          "op": "-",
+          "leftIcon": "block",
+          "leftCount": 45,
+          "rightCount": 22,
+          "unit": "块",
+          "question": "45 块积木拿走 22 块，还剩几块？",
+          "arithOptions": [
+            22,
+            23,
+            24
+          ],
+          "hint": "划掉的不算哦",
+          "praise": "算对啦，等于 23！"
+        }
+      ],
+      "zone": 2
     },
     {
       "id": "math-r0",
@@ -308,29 +1055,17 @@
         },
         {
           "id": "math-r0-5",
-          "kind": "compare",
-          "question": "哪边的水果更多？",
-          "leftIcon": "apple",
-          "leftCount": 3,
-          "rightIcon": "banana",
-          "rightCount": 1,
-          "compareOptions": [
-            {
-              "key": "left",
-              "label": "苹果多"
-            },
-            {
-              "key": "right",
-              "label": "香蕉多"
-            },
-            {
-              "key": "same",
-              "label": "一样多"
-            }
+          "kind": "count",
+          "question": "轨道上有几辆小火车（点一点，数数看）",
+          "duckIcon": "train",
+          "count": 7,
+          "countOptions": [
+            6,
+            7,
+            8
           ],
-          "answerKey": "left",
-          "hint": "一个对着一个，比一比",
-          "praise": "苹果多，答对啦！"
+          "backdrop": "grass",
+          "unit": "辆"
         }
       ],
       "board": {
@@ -373,247 +1108,1122 @@
           }
         ]
       },
-      "review": true
+      "review": true,
+      "zone": 2
     },
     {
-      "id": "math-5",
-      "title": "第 6 关 小火车",
-      "subtitle": "7 以内 · 排一排 · 掷骰子",
+      "id": "math-19",
+      "title": "第 20 关 百数大挑战",
+      "subtitle": "100/200 以内",
       "steps": [
         {
-          "id": "math-5-c",
-          "kind": "count",
-          "question": "轨道上有几辆小火车（点一点，数数看）",
-          "duckIcon": "train",
-          "count": 7,
-          "countOptions": [
-            6,
-            7,
-            8
+          "id": "math-19-a+3627",
+          "kind": "arith",
+          "op": "+",
+          "leftIcon": "coin",
+          "leftCount": 36,
+          "rightCount": 27,
+          "unit": "枚",
+          "question": "36 枚金币加 27 枚，一共几枚？",
+          "arithOptions": [
+            62,
+            63,
+            64
           ],
-          "backdrop": "grass",
-          "unit": "辆"
+          "hint": "指着图一个一个数",
+          "praise": "算对啦，等于 63！"
         },
         {
-          "id": "math-5-o2",
-          "kind": "order",
-          "nums": [
-            3,
-            6,
-            4
+          "id": "math-19-a-8035",
+          "kind": "arith",
+          "op": "-",
+          "leftIcon": "coin",
+          "leftCount": 80,
+          "rightCount": 35,
+          "unit": "枚",
+          "question": "80 枚金币花掉 35 枚，还剩几枚？",
+          "arithOptions": [
+            44,
+            45,
+            46
           ],
-          "dir": "up",
-          "question": "从小到大，依次点一点",
-          "hint": "从小到大：小的排前面",
-          "praise": "排队排好啦！"
+          "hint": "划掉的不算哦",
+          "praise": "算对啦，等于 45！"
         },
         {
-          "id": "math-5-d1",
-          "kind": "dice",
-          "count": 5,
-          "countOptions": [
-            4,
-            5,
-            6
+          "id": "math-19-q3",
+          "kind": "quiz",
+          "question": "挑战：100 - 40 = ?",
+          "options": [
+            {
+              "text": "50"
+            },
+            {
+              "text": "60"
+            },
+            {
+              "text": "70"
+            }
           ],
-          "question": "掷骰子：掷出了几点？",
-          "hint": "一个一个数红点点",
-          "praise": "对，是 5 点！"
+          "answer": 1,
+          "hint": "10 个十去掉 4 个十",
+          "praise": "百数达人！"
         }
-      ]
+      ],
+      "zone": 3
     },
     {
-      "id": "math-6",
-      "title": "第 7 关 花园蜜蜂",
-      "subtitle": "8 以内 · 分一分",
+      "id": "math-20",
+      "title": "第 21 关 几个几",
+      "subtitle": "乘法启蒙",
       "steps": [
         {
-          "id": "math-6-c",
-          "kind": "count",
-          "question": "花园里开了几朵花（点一点，数数看）",
-          "duckIcon": "flower",
-          "count": 8,
-          "countOptions": [
+          "id": "math-20-m1",
+          "kind": "muldiv",
+          "op": "×",
+          "mode": "groups",
+          "icon": "train",
+          "unit": "辆",
+          "question": "3 组小车，每组 2 辆，一共几辆？",
+          "hint": "几个几：3 个 2，连加 2+2+2",
+          "praise": "乘法小能手：3×2=6！",
+          "options": [
+            5,
+            6,
+            7
+          ],
+          "answer": 1,
+          "groups": 3,
+          "per": 2
+        },
+        {
+          "id": "math-20-m2",
+          "kind": "muldiv",
+          "op": "×",
+          "mode": "groups",
+          "icon": "apple",
+          "unit": "个",
+          "question": "2 盘苹果，每盘 4 个，一共几个？",
+          "hint": "2 个 4",
+          "praise": "2×4=8，真棒！",
+          "options": [
             7,
             8,
             9
           ],
-          "backdrop": "grass",
-          "unit": "朵"
+          "answer": 1,
+          "groups": 2,
+          "per": 4
+        }
+      ],
+      "zone": 3
+    },
+    {
+      "id": "math-21",
+      "title": "第 22 关 认识乘号",
+      "subtitle": "×",
+      "steps": [
+        {
+          "id": "math-21-m1",
+          "kind": "muldiv",
+          "op": "×",
+          "mode": "groups",
+          "icon": "flower",
+          "unit": "朵",
+          "question": "4 组花，每组 2 朵，乘法算一算，一共几朵？",
+          "hint": "4 个 2",
+          "praise": "4×2=8！",
+          "options": [
+            7,
+            8,
+            9
+          ],
+          "answer": 1,
+          "groups": 4,
+          "per": 2
         },
         {
-          "id": "math-6-s2",
-          "kind": "split",
-          "total": 8,
-          "part": 3,
-          "leftIcon": "flower",
-          "unit": "朵",
-          "question": "8 朵花分两个花瓶，左边 3 朵，右边几朵？",
-          "arithOptions": [
+          "id": "math-21-m2",
+          "kind": "muldiv",
+          "op": "×",
+          "mode": "groups",
+          "icon": "candy",
+          "unit": "颗",
+          "question": "3 堆糖，每堆 3 颗，乘法算一算，一共几颗？",
+          "hint": "3 个 3",
+          "praise": "3×3=9！",
+          "options": [
+            8,
+            9,
+            10
+          ],
+          "answer": 1,
+          "groups": 3,
+          "per": 3
+        }
+      ],
+      "zone": 3
+    },
+    {
+      "id": "math-22",
+      "title": "第 23 关 乘法口诀",
+      "subtitle": "2~5",
+      "steps": [
+        {
+          "id": "math-22-m1",
+          "kind": "muldiv",
+          "op": "×",
+          "mode": "groups",
+          "icon": "star",
+          "unit": "颗",
+          "question": "5 行星星，每行 2 颗，二五一十，一共几颗？",
+          "hint": "二五一十",
+          "praise": "二五一十，口诀真熟！",
+          "options": [
+            9,
+            10,
+            11
+          ],
+          "answer": 1,
+          "groups": 5,
+          "per": 2
+        },
+        {
+          "id": "math-22-m2",
+          "kind": "muldiv",
+          "op": "×",
+          "mode": "groups",
+          "icon": "duck",
+          "unit": "只",
+          "question": "4 群小鸭，每群 3 只，三四十二，一共几只？",
+          "hint": "三四十二",
+          "praise": "三四十二，乘法小达人！",
+          "options": [
+            11,
+            12,
+            13
+          ],
+          "answer": 1,
+          "groups": 4,
+          "per": 3
+        }
+      ],
+      "zone": 3
+    },
+    {
+      "id": "math-23",
+      "title": "第 24 关 平均分",
+      "subtitle": "除法启蒙",
+      "steps": [
+        {
+          "id": "math-23-d1",
+          "kind": "muldiv",
+          "op": "÷",
+          "mode": "average",
+          "icon": "candy",
+          "unit": "颗",
+          "question": "12 颗糖平均分给 3 个人，每人几颗？",
+          "hint": "一样多分",
+          "praise": "12÷3=4，分公平啦！",
+          "options": [
+            3,
+            4,
+            5
+          ],
+          "answer": 1,
+          "total": 12,
+          "groups": 3
+        },
+        {
+          "id": "math-23-d2",
+          "kind": "muldiv",
+          "op": "÷",
+          "mode": "average",
+          "icon": "apple",
+          "unit": "个",
+          "question": "10 个苹果平均装 2 盘，每盘几个？",
+          "hint": "一样多分",
+          "praise": "10÷2=5！",
+          "options": [
             4,
             5,
             6
           ],
-          "hint": "一共 8 朵，左边有 3 朵",
-          "praise": "分对啦，8 可以分成 3 和 5！"
+          "answer": 1,
+          "total": 10,
+          "groups": 2
         }
-      ]
+      ],
+      "zone": 3
     },
     {
-      "id": "math-7",
-      "title": "第 8 关 爱心礼盒",
-      "subtitle": "9 以内 · 排一排 · 掷骰子",
+      "id": "math-24",
+      "title": "第 25 关 能分几组",
+      "subtitle": "包含除",
       "steps": [
         {
-          "id": "math-7-c",
-          "kind": "count",
-          "question": "礼盒里有几颗爱心糖（点一点，数数看）",
-          "duckIcon": "heart",
-          "count": 9,
-          "countOptions": [
-            8,
-            9,
-            10
-          ],
-          "backdrop": "grass",
-          "unit": "颗"
-        },
-        {
-          "id": "math-7-o3",
-          "kind": "order",
-          "nums": [
-            9,
+          "id": "math-24-d1",
+          "kind": "muldiv",
+          "op": "÷",
+          "mode": "contain",
+          "icon": "apple",
+          "unit": "个",
+          "question": "12 个苹果，每盘放 3 个，能放几盘？",
+          "hint": "3 个一圈",
+          "praise": "12÷3=4 盘！",
+          "options": [
+            3,
             4,
-            7
+            5
           ],
-          "dir": "down",
-          "question": "从大到小，依次点一点",
-          "hint": "从大到小：大的排前面",
-          "praise": "排队排好啦！"
+          "answer": 1,
+          "total": 12,
+          "per": 3
         },
         {
-          "id": "math-7-d2",
-          "kind": "dice",
-          "count": 6,
-          "countOptions": [
-            5,
-            6,
-            7
+          "id": "math-24-d2",
+          "kind": "muldiv",
+          "op": "÷",
+          "mode": "contain",
+          "icon": "candy",
+          "unit": "颗",
+          "question": "15 颗糖，每人分 5 颗，能分给几个人？",
+          "hint": "5 个一组",
+          "praise": "15÷5=3 人！",
+          "options": [
+            2,
+            3,
+            4
           ],
-          "question": "掷骰子：掷出了几点？",
-          "hint": "一个一个数红点点",
-          "praise": "对，是 6 点！"
+          "answer": 1,
+          "total": 15,
+          "per": 5
         }
-      ]
+      ],
+      "zone": 3
     },
     {
-      "id": "math-8",
-      "title": "第 9 关 宝藏金币",
-      "subtitle": "10 以内点数",
+      "id": "math-25",
+      "title": "第 26 关 凑十大战",
+      "subtitle": "扑克 make10",
       "steps": [
         {
-          "id": "math-8-c",
-          "kind": "count",
-          "question": "宝箱里有几枚金币（点一点，数数看）",
-          "duckIcon": "coin",
-          "count": 10,
-          "countOptions": [
+          "id": "math-25-c1",
+          "kind": "cards",
+          "mode": "make10",
+          "target": 10,
+          "pick": 2,
+          "cards": [
+            3,
+            7,
+            2,
             8,
-            9,
-            10
+            5,
+            1
           ],
-          "backdrop": "night",
-          "unit": "枚"
+          "question": "凑十大战：点 2 张牌，恰好凑成 10",
+          "praise": "凑数成功，算术小赌神！"
         },
         {
-          "id": "math-8-p1",
+          "id": "math-25-c2",
+          "kind": "cards",
+          "mode": "make10",
+          "target": 10,
+          "pick": 2,
+          "cards": [
+            4,
+            6,
+            1,
+            9,
+            5,
+            2
+          ],
+          "question": "再凑十：再点 2 张牌凑成 10",
+          "praise": "凑数成功，算术小赌神！"
+        }
+      ],
+      "zone": 3
+    },
+    {
+      "id": "math-26",
+      "title": "第 27 关 三牌凑目标",
+      "subtitle": "扑克 target",
+      "steps": [
+        {
+          "id": "math-26-c1",
+          "kind": "cards",
+          "mode": "target",
+          "target": 12,
+          "pick": 3,
+          "cards": [
+            3,
+            5,
+            4,
+            1,
+            2,
+            6
+          ],
+          "question": "点 3 张牌，用加减凑出 12",
+          "praise": "凑数成功，算术小赌神！"
+        },
+        {
+          "id": "math-26-c2",
+          "kind": "cards",
+          "mode": "target",
+          "target": 15,
+          "pick": 3,
+          "cards": [
+            7,
+            2,
+            6,
+            3,
+            4,
+            1
+          ],
+          "question": "点 3 张牌，用加减凑出 15",
+          "praise": "凑数成功，算术小赌神！"
+        }
+      ],
+      "zone": 3
+    },
+    {
+      "id": "math-27",
+      "title": "第 28 关 图案数独",
+      "subtitle": "4×4 入门",
+      "steps": [
+        {
+          "id": "math-27-s1",
+          "kind": "sudoku",
+          "size": 4,
+          "symbols": [
+            "duck",
+            "apple",
+            "star",
+            "moon"
+          ],
+          "givens": [
+            {
+              "r": 0,
+              "c": 0,
+              "v": 0
+            },
+            {
+              "r": 0,
+              "c": 2,
+              "v": 2
+            },
+            {
+              "r": 1,
+              "c": 1,
+              "v": 3
+            },
+            {
+              "r": 1,
+              "c": 3,
+              "v": 1
+            },
+            {
+              "r": 2,
+              "c": 0,
+              "v": 1
+            },
+            {
+              "r": 2,
+              "c": 2,
+              "v": 3
+            },
+            {
+              "r": 3,
+              "c": 1,
+              "v": 0
+            },
+            {
+              "r": 3,
+              "c": 3,
+              "v": 2
+            }
+          ],
+          "solution": [
+            [
+              0,
+              1,
+              2,
+              3
+            ],
+            [
+              2,
+              3,
+              0,
+              1
+            ],
+            [
+              1,
+              2,
+              3,
+              0
+            ],
+            [
+              3,
+              0,
+              1,
+              2
+            ]
+          ],
+          "question": "图案数独：每行、每列、每个 2×2 宫图标不重复",
+          "praise": "数独侦探，推理成功！"
+        }
+      ],
+      "zone": 3
+    },
+    {
+      "id": "math-28",
+      "title": "第 29 关 数独侦探",
+      "subtitle": "4×4 进阶",
+      "steps": [
+        {
+          "id": "math-28-s1",
+          "kind": "sudoku",
+          "size": 4,
+          "symbols": [
+            "duck",
+            "apple",
+            "star",
+            "moon"
+          ],
+          "givens": [
+            {
+              "r": 0,
+              "c": 1,
+              "v": 0
+            },
+            {
+              "r": 1,
+              "c": 0,
+              "v": 3
+            },
+            {
+              "r": 2,
+              "c": 2,
+              "v": 2
+            },
+            {
+              "r": 3,
+              "c": 0,
+              "v": 2
+            },
+            {
+              "r": 3,
+              "c": 3,
+              "v": 0
+            }
+          ],
+          "solution": [
+            [
+              1,
+              0,
+              3,
+              2
+            ],
+            [
+              3,
+              2,
+              0,
+              1
+            ],
+            [
+              0,
+              1,
+              2,
+              3
+            ],
+            [
+              2,
+              3,
+              1,
+              0
+            ]
+          ],
+          "question": "再来一盘：给定更少，推理填完整个数独",
+          "praise": "数独侦探，推理成功！"
+        }
+      ],
+      "zone": 3
+    },
+    {
+      "id": "math-29",
+      "title": "第 30 关 认识钟表",
+      "subtitle": "整点",
+      "steps": [
+        {
+          "id": "math-29-cl1",
+          "kind": "clock",
+          "mode": "read",
+          "hour": 3,
+          "minute": 0,
+          "question": "看钟面：现在是几点？",
+          "praise": "认时小达人！",
+          "options": [
+            "3:00",
+            "4:00",
+            "2:00"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "math-29-cl2",
+          "kind": "clock",
+          "mode": "read",
+          "hour": 8,
+          "minute": 0,
+          "question": "再看一个钟面，是几点？",
+          "praise": "认时小达人！",
+          "options": [
+            "8:00",
+            "7:00",
+            "9:00"
+          ],
+          "answer": 0
+        }
+      ],
+      "zone": 4
+    },
+    {
+      "id": "math-30",
+      "title": "第 31 关 半点和拨针",
+      "subtitle": "半点",
+      "steps": [
+        {
+          "id": "math-30-cl1",
+          "kind": "clock",
+          "mode": "read",
+          "hour": 7,
+          "minute": 30,
+          "question": "分针指 6，是半点，几点半？",
+          "praise": "认时小达人！",
+          "options": [
+            "7:30",
+            "6:30",
+            "8:30"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "math-30-cl2",
+          "kind": "clock",
+          "mode": "set",
+          "hour": 9,
+          "minute": 30,
+          "question": "拨一拨：把时针分针拨到 9 点半",
+          "praise": "认时小达人！"
+        }
+      ],
+      "zone": 4
+    },
+    {
+      "id": "math-31",
+      "title": "第 32 关 小小商店",
+      "subtitle": "人民币",
+      "steps": [
+        {
+          "id": "math-31-m1",
+          "kind": "money",
+          "price": 60,
+          "denominations": [
+            {
+              "value": 1,
+              "label": "1角",
+              "icon": "m-jiao1"
+            },
+            {
+              "value": 5,
+              "label": "5角",
+              "icon": "m-jiao5"
+            },
+            {
+              "value": 10,
+              "label": "1元",
+              "icon": "m-yuan1"
+            },
+            {
+              "value": 50,
+              "label": "5元",
+              "icon": "m-yuan5"
+            },
+            {
+              "value": 100,
+              "label": "10元",
+              "icon": "m-yuan10"
+            }
+          ],
+          "question": "买东西：点钱币，恰好付清 6 元",
+          "praise": "付钱小能手，正好付清！"
+        },
+        {
+          "id": "math-31-m2",
+          "kind": "money",
+          "price": 35,
+          "denominations": [
+            {
+              "value": 1,
+              "label": "1角",
+              "icon": "m-jiao1"
+            },
+            {
+              "value": 5,
+              "label": "5角",
+              "icon": "m-jiao5"
+            },
+            {
+              "value": 10,
+              "label": "1元",
+              "icon": "m-yuan1"
+            },
+            {
+              "value": 50,
+              "label": "5元",
+              "icon": "m-yuan5"
+            },
+            {
+              "value": 100,
+              "label": "10元",
+              "icon": "m-yuan10"
+            }
+          ],
+          "question": "再买一件：点钱币，恰好付清 3 元 5 角",
+          "praise": "付钱小能手，正好付清！"
+        }
+      ],
+      "zone": 4
+    },
+    {
+      "id": "math-32",
+      "title": "第 33 关 单数和双数",
+      "subtitle": "奇偶",
+      "steps": [
+        {
+          "id": "math-32-q1",
+          "kind": "quiz",
+          "question": "哪个是单数？",
+          "options": [
+            {
+              "text": "4"
+            },
+            {
+              "text": "7"
+            },
+            {
+              "text": "8"
+            }
+          ],
+          "answer": 1,
+          "hint": "两两成对分完、多一个的是单数",
+          "praise": "7 是单数！"
+        },
+        {
+          "id": "math-32-q2",
+          "kind": "quiz",
+          "question": "哪个是双数？",
+          "options": [
+            {
+              "text": "3"
+            },
+            {
+              "text": "6"
+            },
+            {
+              "text": "9"
+            }
+          ],
+          "answer": 1,
+          "hint": "两两正好分完的是双数",
+          "praise": "6 是双数！"
+        },
+        {
+          "id": "math-32-q3",
+          "kind": "quiz",
+          "question": "8 个苹果两两分，有没有剩余？",
+          "options": [
+            {
+              "text": "没有剩余"
+            },
+            {
+              "text": "剩1个"
+            },
+            {
+              "text": "剩2个"
+            }
+          ],
+          "answer": 0,
+          "hint": "8 是双数",
+          "praise": "双数分完没剩余！"
+        },
+        {
+          "id": "math-x3",
+          "kind": "tapall",
+          "question": "点点看：把双数都点亮",
+          "options": [
+            {
+              "icon": null,
+              "text": "2",
+              "correct": true
+            },
+            {
+              "icon": null,
+              "text": "4",
+              "correct": true
+            },
+            {
+              "icon": null,
+              "text": "6",
+              "correct": true
+            },
+            {
+              "icon": null,
+              "text": "1",
+              "correct": false
+            },
+            {
+              "icon": null,
+              "text": "3",
+              "correct": false
+            },
+            {
+              "icon": null,
+              "text": "5",
+              "correct": false
+            }
+          ],
+          "hint": "能两个两个分完的是双数",
+          "praise": "全点对啦，小天文学家！"
+        }
+      ],
+      "zone": 4
+    },
+    {
+      "id": "math-33",
+      "title": "第 34 关 图形拼拼乐",
+      "subtitle": "平面图形",
+      "steps": [
+        {
+          "id": "math-33-q1",
+          "kind": "quiz",
+          "question": "哪个物品是圆圆的？",
+          "options": [
+            {
+              "icon": "balloon"
+            },
+            {
+              "icon": "tree"
+            },
+            {
+              "icon": "book"
+            }
+          ],
+          "answer": 0,
+          "hint": "圆圆的会滚",
+          "praise": "圆形滚得远！"
+        },
+        {
+          "id": "math-33-q2",
+          "kind": "quiz",
+          "question": "车轮为什么是圆的？",
+          "options": [
+            {
+              "text": "滚起来平稳"
+            },
+            {
+              "text": "会卡住"
+            },
+            {
+              "text": "容易碎"
+            }
+          ],
+          "answer": 0,
+          "hint": "圆圆的滚起来不颠",
+          "praise": "圆的最平稳！"
+        },
+        {
+          "id": "math-33-p1",
           "kind": "pattern",
           "seq": [
-            "star",
+            "sun",
             "moon",
-            "star"
+            "sun"
           ],
-          "question": "找规律：下一个是哪个？",
+          "question": "图形规律：下一个是谁？",
           "options": [
             {
               "icon": "moon"
             },
             {
-              "icon": "star"
+              "icon": "sun"
             },
             {
-              "icon": "candy"
+              "icon": "star"
+            }
+          ],
+          "answer": 0,
+          "hint": "先读一读前面几个，找一找谁在轮流出现",
+          "praise": "规律找对啦，小侦探！"
+        },
+        {
+          "id": "math-x4",
+          "kind": "match",
+          "question": "连一连：形状和它的特点",
+          "pairs": [
+            {
+              "left": {
+                "icon": "circle",
+                "text": "圆形"
+              },
+              "right": {
+                "text": "没有角，滚滚圆"
+              }
+            },
+            {
+              "left": {
+                "icon": "triangle",
+                "text": "三角形"
+              },
+              "right": {
+                "text": "有三条边"
+              }
+            },
+            {
+              "left": {
+                "icon": "square",
+                "text": "正方形"
+              },
+              "right": {
+                "text": "四条边一样长"
+              }
+            }
+          ],
+          "praise": "全部连对，真棒！"
+        }
+      ],
+      "zone": 4
+    },
+    {
+      "id": "math-34",
+      "title": "第 35 关 认识图形",
+      "subtitle": "平面图形",
+      "steps": [
+        {
+          "id": "math-34-q1",
+          "kind": "quiz",
+          "question": "哪个是圆形？",
+          "options": [
+            {
+              "icon": "circle"
+            },
+            {
+              "icon": "triangle"
+            },
+            {
+              "icon": "square"
+            }
+          ],
+          "answer": 0,
+          "hint": "圆圆的，没有角",
+          "praise": "对，圆形没有角！"
+        },
+        {
+          "id": "math-34-q2",
+          "kind": "quiz",
+          "question": "三角形有几条边？",
+          "options": [
+            {
+              "text": "3 条"
+            },
+            {
+              "text": "4 条"
+            },
+            {
+              "text": "5 条"
+            }
+          ],
+          "answer": 0,
+          "hint": "三条边围起来",
+          "praise": "对，3 条边！"
+        },
+        {
+          "id": "math-34-p",
+          "kind": "pattern",
+          "seq": [
+            "circle",
+            "square",
+            "circle"
+          ],
+          "question": "找规律：下一个是哪个？",
+          "options": [
+            {
+              "icon": "square"
+            },
+            {
+              "icon": "triangle"
+            },
+            {
+              "icon": "ball"
             }
           ],
           "answer": 0,
           "hint": "先读一读前面几个，找一找谁在轮流出现",
           "praise": "规律找对啦，小侦探！"
         }
-      ]
+      ],
+      "zone": 4
     },
     {
-      "id": "math-9",
-      "title": "第 10 关 数字擂台",
-      "subtitle": "比大小 · 归类",
+      "id": "math-35",
+      "title": "第 36 关 立体图形",
+      "subtitle": "球和方块",
       "steps": [
         {
-          "id": "math-9-q1",
+          "id": "math-35-q1",
           "kind": "quiz",
-          "question": "哪个数字最大？",
+          "question": "哪个能咕噜噜滚动，像球？",
           "options": [
             {
-              "text": "5"
+              "icon": "ball"
             },
             {
-              "text": "9"
+              "icon": "block"
             },
             {
-              "text": "3"
-            }
-          ],
-          "answer": 1,
-          "hint": "从 1 数到 10，谁排在最后？",
-          "praise": "9 最大，答对啦！"
-        },
-        {
-          "id": "math-9-q2",
-          "kind": "quiz",
-          "question": "哪个数字最小？",
-          "options": [
-            {
-              "text": "2"
-            },
-            {
-              "text": "7"
-            },
-            {
-              "text": "10"
+              "icon": "dice"
             }
           ],
           "answer": 0,
-          "hint": "越早数到的越小哦",
-          "praise": "思维小达人！"
+          "hint": "球滚滚圆，到处滚",
+          "praise": "对，球会滚！"
         },
         {
-          "id": "math-9-q3",
+          "id": "math-35-q2",
           "kind": "quiz",
-          "question": "火眼金睛：哪个是交通工具？",
+          "question": "骰子是什么形状？",
           "options": [
             {
-              "icon": "duck"
+              "text": "方方的正方体"
             },
             {
-              "icon": "train"
+              "text": "球"
             },
             {
-              "icon": "cake"
+              "text": "圆柱"
             }
           ],
-          "answer": 1,
-          "hint": "想一想它们分别是做什么的",
-          "praise": "分类小能手！"
+          "answer": 0,
+          "hint": "六个面都一样",
+          "praise": "答对啦，正方体！"
         }
-      ]
+      ],
+      "zone": 4
+    },
+    {
+      "id": "math-36",
+      "title": "第 37 关 比一比",
+      "subtitle": "长短高矮",
+      "steps": [
+        {
+          "id": "math-36-q1",
+          "kind": "quiz",
+          "question": "大象和小鸟，谁长得高？",
+          "options": [
+            {
+              "icon": "elephant",
+              "text": "大象"
+            },
+            {
+              "icon": "duck",
+              "text": "小鸟"
+            },
+            {
+              "icon": "cake",
+              "text": "蛋糕"
+            }
+          ],
+          "answer": 0,
+          "hint": "大象个子最高",
+          "praise": "对，大象高！"
+        },
+        {
+          "id": "math-36-q2",
+          "kind": "quiz",
+          "question": "比长短：火车和小汽车，哪个长？",
+          "options": [
+            {
+              "text": "火车长"
+            },
+            {
+              "text": "汽车长"
+            },
+            {
+              "text": "一样长"
+            }
+          ],
+          "answer": 0,
+          "hint": "火车一节连一节",
+          "praise": "对，火车长！"
+        }
+      ],
+      "zone": 4
+    },
+    {
+      "id": "math-37",
+      "title": "第 38 分分类",
+      "subtitle": "分类整理",
+      "steps": [
+        {
+          "id": "math-37-t1",
+          "kind": "tapall",
+          "question": "点点看：把交通工具都点亮",
+          "options": [
+            {
+              "icon": "car",
+              "correct": true
+            },
+            {
+              "icon": "bus",
+              "correct": true
+            },
+            {
+              "icon": "train",
+              "correct": true
+            },
+            {
+              "icon": "apple",
+              "correct": false
+            },
+            {
+              "icon": "duck",
+              "correct": false
+            }
+          ],
+          "hint": "汽车、公交车、火车都能载人载货",
+          "praise": "全点对啦，小天文学家！"
+        },
+        {
+          "id": "math-37-q1",
+          "kind": "quiz",
+          "question": "把杯子、盘子放一起，是在做什么？",
+          "options": [
+            {
+              "text": "分类整理"
+            },
+            {
+              "text": "捉迷藏"
+            },
+            {
+              "text": "画画"
+            }
+          ],
+          "answer": 0,
+          "hint": "同一类的东西放一起",
+          "praise": "对，这叫分类！"
+        }
+      ],
+      "zone": 4
     },
     {
       "id": "math-r1",
@@ -757,154 +2367,201 @@
           }
         ]
       },
-      "review": true
+      "review": true,
+      "zone": 4
     },
     {
-      "id": "math-10",
-      "title": "第 11 关 糖果加法",
-      "subtitle": "合起来",
+      "id": "math-38",
+      "title": "第 39 位置·上下",
+      "subtitle": "上和下",
       "steps": [
         {
-          "id": "math-10-a+11",
-          "kind": "arith",
-          "op": "+",
-          "leftIcon": "candy",
-          "leftCount": 1,
-          "rightCount": 1,
-          "unit": "颗",
-          "question": "1 颗糖加 1 颗糖，一共有几颗？",
-          "arithOptions": [
-            1,
-            2,
-            3
+          "id": "math-38-q1",
+          "kind": "quiz",
+          "question": "小鸟飞在天上，还是树下？",
+          "options": [
+            {
+              "icon": "moon",
+              "text": "天上"
+            },
+            {
+              "icon": "tree",
+              "text": "树下"
+            },
+            {
+              "icon": "cake",
+              "text": "锅里"
+            }
           ],
-          "hint": "指着图一个一个数",
-          "praise": "算对啦，等于 2！"
+          "answer": 0,
+          "hint": "抬头看，小鸟在天上",
+          "praise": "对，小鸟在天上！"
         },
         {
-          "id": "math-10-a+21",
-          "kind": "arith",
-          "op": "+",
-          "leftIcon": "candy",
-          "leftCount": 2,
-          "rightCount": 1,
-          "unit": "颗",
-          "question": "2 颗糖加 1 颗糖，一共有几颗？",
-          "arithOptions": [
-            2,
-            3,
-            4
+          "id": "math-38-q2",
+          "kind": "quiz",
+          "question": "书放在桌子的上面，桌子在书的——",
+          "options": [
+            {
+              "text": "下面"
+            },
+            {
+              "text": "上面"
+            },
+            {
+              "text": "旁边没有"
+            }
           ],
-          "hint": "指着图一个一个数",
-          "praise": "算对啦，等于 3！"
+          "answer": 0,
+          "hint": "上和下是一对好朋友",
+          "praise": "答对啦，桌子在下面！"
         }
-      ]
+      ],
+      "zone": 5
     },
     {
-      "id": "math-11",
-      "title": "第 12 关 苹果加法",
-      "subtitle": "加法 · 分一分",
+      "id": "math-39",
+      "title": "第 40 位置·前后",
+      "subtitle": "前和后",
       "steps": [
         {
-          "id": "math-11-a+22",
-          "kind": "arith",
-          "op": "+",
-          "leftIcon": "apple",
-          "leftCount": 2,
-          "rightCount": 2,
-          "unit": "个",
-          "question": "2 个苹果加 2 个苹果，一共有几个？",
-          "arithOptions": [
-            3,
-            4,
-            5
+          "id": "math-39-q1",
+          "kind": "quiz",
+          "question": "排队啦：火箭跑在最前面，谁在它后面？",
+          "options": [
+            {
+              "icon": "rocket",
+              "text": "火箭"
+            },
+            {
+              "icon": "car",
+              "text": "汽车"
+            },
+            {
+              "icon": "train",
+              "text": "火车"
+            }
           ],
-          "hint": "指着图一个一个数",
-          "praise": "算对啦，等于 4！"
-        },
-        {
-          "id": "math-11-s3",
-          "kind": "split",
-          "total": 6,
-          "part": 2,
-          "leftIcon": "apple",
-          "unit": "个",
-          "question": "6 个苹果分两篮，左边 2 个，右边几个？",
-          "arithOptions": [
-            3,
-            4,
-            5
-          ],
-          "hint": "一共 6 个，左边有 2 个",
-          "praise": "分对啦，6 可以分成 2 和 4！"
+          "answer": 0,
+          "hint": "朝前看，前面只有一个头",
+          "praise": "答对啦，看图找位置！"
         }
-      ]
+      ],
+      "zone": 5
     },
     {
-      "id": "math-12",
-      "title": "第 13 关 气球飞走了",
-      "subtitle": "减法初识",
+      "id": "math-40",
+      "title": "第 41 第几",
+      "subtitle": "序数",
       "steps": [
         {
-          "id": "math-12-a-31",
-          "kind": "arith",
-          "op": "-",
-          "leftIcon": "balloon",
-          "leftCount": 3,
-          "rightCount": 1,
-          "unit": "个",
-          "question": "3 个气球飞走 1 个，还剩几个？",
-          "arithOptions": [
-            1,
-            2,
-            3
+          "id": "math-40-q1",
+          "kind": "quiz",
+          "question": "5 只小鸭排队，从前往后数，第 3 只是——",
+          "options": [
+            {
+              "text": "第 3 只"
+            },
+            {
+              "text": "第 5 只"
+            },
+            {
+              "text": "第 1 只"
+            }
           ],
-          "hint": "划掉的不算哦",
-          "praise": "算对啦，等于 2！"
+          "answer": 0,
+          "hint": "1、2、3，数到 3 就是第 3",
+          "praise": "对，第 3 只！"
         },
         {
-          "id": "math-12-a-42",
-          "kind": "arith",
-          "op": "-",
-          "leftIcon": "balloon",
-          "leftCount": 4,
-          "rightCount": 2,
-          "unit": "个",
-          "question": "4 个气球飞走 2 个，还剩几个？",
-          "arithOptions": [
-            1,
-            2,
-            3
+          "id": "math-40-q2",
+          "kind": "quiz",
+          "question": "赛跑得了第 1 名，就是——",
+          "options": [
+            {
+              "text": "跑在最前面"
+            },
+            {
+              "text": "跑在最后"
+            },
+            {
+              "text": "没参加"
+            }
           ],
-          "hint": "划掉的不算哦",
-          "praise": "算对啦，等于 2！"
+          "answer": 0,
+          "hint": "第 1 名最厉害",
+          "praise": "答对啦！"
         }
-      ]
+      ],
+      "zone": 5
     },
     {
-      "id": "math-13",
-      "title": "第 14 关 星星回家",
-      "subtitle": "减法 · 填一填",
+      "id": "math-41",
+      "title": "第 42 找规律",
+      "subtitle": "变化规律",
       "steps": [
         {
-          "id": "math-13-a-52",
-          "kind": "arith",
-          "op": "-",
-          "leftIcon": "star",
-          "leftCount": 5,
-          "rightCount": 2,
-          "unit": "颗",
-          "question": "5 颗星星回家 2 颗，还剩几颗？",
-          "arithOptions": [
-            2,
-            3,
-            4
+          "id": "math-41-p1",
+          "kind": "pattern",
+          "seq": [
+            "star",
+            "moon",
+            "star",
+            "moon",
+            "star"
           ],
-          "hint": "划掉的不算哦",
-          "praise": "算对啦，等于 3！"
+          "question": "找规律：下一个是谁？",
+          "options": [
+            {
+              "icon": "moon"
+            },
+            {
+              "icon": "sun"
+            },
+            {
+              "icon": "comet"
+            }
+          ],
+          "answer": 0,
+          "hint": "先读一读前面几个，找一找谁在轮流出现",
+          "praise": "规律找对啦，小侦探！"
         },
         {
-          "id": "math-13-n2",
+          "id": "math-41-p2",
+          "kind": "pattern",
+          "seq": [
+            "apple",
+            "apple",
+            "banana",
+            "apple",
+            "apple"
+          ],
+          "question": "找规律：下一个是谁？",
+          "options": [
+            {
+              "icon": "banana"
+            },
+            {
+              "icon": "apple"
+            },
+            {
+              "icon": "cake"
+            }
+          ],
+          "answer": 0,
+          "hint": "先读一读前面几个，找一找谁在轮流出现",
+          "praise": "规律找对啦，小侦探！"
+        }
+      ],
+      "zone": 5
+    },
+    {
+      "id": "math-42",
+      "title": "第 43 相邻数",
+      "subtitle": "数的邻居",
+      "steps": [
+        {
+          "id": "math-42-n1",
           "kind": "neighbor",
           "nums": [
             6,
@@ -920,1075 +2577,316 @@
           "answer": 1,
           "hint": "6 的后面是几？8 的前面是几？",
           "praise": "是 7！6 和 8 的中间是 7！"
+        },
+        {
+          "id": "math-42-n2",
+          "kind": "neighbor",
+          "nums": [
+            3,
+            0,
+            5
+          ],
+          "question": "想一想：藏起来的数字是几？",
+          "arithOptions": [
+            3,
+            4,
+            5
+          ],
+          "answer": 1,
+          "hint": "3 的后面是几？5 的前面是几？",
+          "praise": "是 4！3 和 5 的中间是 4！"
         }
-      ]
+      ],
+      "zone": 5
     },
     {
-      "id": "math-14",
-      "title": "第 15 关 思维大挑战",
-      "subtitle": "加减 · 排队 · 找规律",
+      "id": "math-43",
+      "title": "第 44 看图列式",
+      "subtitle": "加法应用",
       "steps": [
         {
-          "id": "math-14-a+44",
+          "id": "math-4301-a+32",
+          "kind": "arith",
+          "op": "+",
+          "leftIcon": "apple",
+          "leftCount": 3,
+          "rightCount": 2,
+          "unit": "个",
+          "question": "3 个苹果加 2 个苹果，一共几个？",
+          "arithOptions": [
+            4,
+            5,
+            6
+          ],
+          "hint": "指着图一个一个数",
+          "praise": "算对啦，等于 5！"
+        },
+        {
+          "id": "math-4302-a+41",
           "kind": "arith",
           "op": "+",
           "leftIcon": "star",
           "leftCount": 4,
-          "rightCount": 4,
+          "rightCount": 1,
           "unit": "颗",
-          "question": "4 颗星星加 4 颗星星，一共几颗？",
+          "question": "4 颗星加 1 颗星，一共几颗？",
           "arithOptions": [
-            7,
-            8,
-            9
-          ],
-          "hint": "指着图一个一个数",
-          "praise": "算对啦，等于 8！"
-        },
-        {
-          "id": "math-14-a-93",
-          "kind": "arith",
-          "op": "-",
-          "leftIcon": "duck",
-          "leftCount": 9,
-          "rightCount": 3,
-          "unit": "只",
-          "question": "9 只小鸭游走 3 只，还剩几只？",
-          "arithOptions": [
-            5,
-            6,
-            7
-          ],
-          "hint": "划掉的不算哦",
-          "praise": "算对啦，等于 6！"
-        },
-        {
-          "id": "math-14-o4",
-          "kind": "order",
-          "nums": [
-            10,
-            2,
-            7
-          ],
-          "dir": "down",
-          "question": "从大到小，依次点一点",
-          "hint": "从大到小：大的排前面",
-          "praise": "排队排好啦！"
-        },
-        {
-          "id": "math-14-p2",
-          "kind": "pattern",
-          "seq": [
-            "sun",
-            "moon",
-            "star",
-            "sun",
-            "moon"
-          ],
-          "question": "找规律：下一个是哪个？",
-          "options": [
-            {
-              "icon": "moon"
-            },
-            {
-              "icon": "sun"
-            },
-            {
-              "icon": "star"
-            }
-          ],
-          "answer": 2,
-          "hint": "先读一读前面几个，找一找谁在轮流出现",
-          "praise": "规律找对啦，小侦探！"
-        }
-      ]
-    },
-    {
-      "id": "math-15",
-      "title": "第 16 关 凑十法",
-      "subtitle": "20 以内加法",
-      "steps": [
-        {
-          "id": "math-15-a+94",
-          "kind": "arith",
-          "op": "+",
-          "leftIcon": "candy",
-          "leftCount": 9,
-          "rightCount": 4,
-          "unit": "颗",
-          "question": "9 颗糖加 4 颗，凑成十再加，一共几颗？",
-          "arithOptions": [
-            12,
-            13,
-            14
-          ],
-          "hint": "指着图一个一个数",
-          "praise": "算对啦，等于 13！"
-        },
-        {
-          "id": "math-15-a+85",
-          "kind": "arith",
-          "op": "+",
-          "leftIcon": "apple",
-          "leftCount": 8,
-          "rightCount": 5,
-          "unit": "个",
-          "question": "8 个苹果加 5 个，凑十法算一算，一共几个？",
-          "arithOptions": [
-            12,
-            13,
-            14
-          ],
-          "hint": "指着图一个一个数",
-          "praise": "算对啦，等于 13！"
-        }
-      ]
-    },
-    {
-      "id": "math-16",
-      "title": "第 17 关 破十法",
-      "subtitle": "20 以内减法",
-      "steps": [
-        {
-          "id": "math-16-a-135",
-          "kind": "arith",
-          "op": "-",
-          "leftIcon": "star",
-          "leftCount": 13,
-          "rightCount": 5,
-          "unit": "颗",
-          "question": "13 颗星星去掉 5 颗，破十法算一算，还剩几颗？",
-          "arithOptions": [
-            7,
-            8,
-            9
-          ],
-          "hint": "划掉的不算哦",
-          "praise": "算对啦，等于 8！"
-        },
-        {
-          "id": "math-16-a-158",
-          "kind": "arith",
-          "op": "-",
-          "leftIcon": "balloon",
-          "leftCount": 15,
-          "rightCount": 8,
-          "unit": "个",
-          "question": "15 个气球飞走 8 个，破十法算一算，还剩几个？",
-          "arithOptions": [
-            6,
-            7,
-            8
-          ],
-          "hint": "划掉的不算哦",
-          "praise": "算对啦，等于 7！"
-        }
-      ]
-    },
-    {
-      "id": "math-17",
-      "title": "第 18 关 连加连减",
-      "subtitle": "三个数",
-      "steps": [
-        {
-          "id": "math-17-a+75",
-          "kind": "arith",
-          "op": "+",
-          "leftIcon": "duck",
-          "leftCount": 7,
-          "rightCount": 5,
-          "unit": "只",
-          "question": "先来了 7 只鸭，又来了 5 只，一共几只？",
-          "arithOptions": [
-            11,
-            12,
-            13
-          ],
-          "hint": "指着图一个一个数",
-          "praise": "算对啦，等于 12！"
-        },
-        {
-          "id": "math-17-a-146",
-          "kind": "arith",
-          "op": "-",
-          "leftIcon": "candy",
-          "leftCount": 14,
-          "rightCount": 6,
-          "unit": "颗",
-          "question": "14 颗糖吃掉 6 颗，还剩几颗？",
-          "arithOptions": [
-            7,
-            8,
-            9
-          ],
-          "hint": "划掉的不算哦",
-          "praise": "算对啦，等于 8！"
-        },
-        {
-          "id": "math-17-q3",
-          "kind": "quiz",
-          "question": "连加：3 + 4 + 2 = ?",
-          "options": [
-            {
-              "text": "8"
-            },
-            {
-              "text": "9"
-            },
-            {
-              "text": "10"
-            }
-          ],
-          "answer": 1,
-          "hint": "先算 3+4，再加 2",
-          "praise": "连加小能手！"
-        }
-      ]
-    },
-    {
-      "id": "math-18",
-      "title": "第 19 关 五十以内",
-      "subtitle": "两位数加减",
-      "steps": [
-        {
-          "id": "math-18-a+2315",
-          "kind": "arith",
-          "op": "+",
-          "leftIcon": "block",
-          "leftCount": 23,
-          "rightCount": 15,
-          "unit": "块",
-          "question": "两堆积木，23 块和 15 块，一共几块？",
-          "arithOptions": [
-            37,
-            38,
-            39
-          ],
-          "hint": "指着图一个一个数",
-          "praise": "算对啦，等于 38！"
-        },
-        {
-          "id": "math-18-a-4522",
-          "kind": "arith",
-          "op": "-",
-          "leftIcon": "block",
-          "leftCount": 45,
-          "rightCount": 22,
-          "unit": "块",
-          "question": "45 块积木拿走 22 块，还剩几块？",
-          "arithOptions": [
-            22,
-            23,
-            24
-          ],
-          "hint": "划掉的不算哦",
-          "praise": "算对啦，等于 23！"
-        }
-      ]
-    },
-    {
-      "id": "math-19",
-      "title": "第 20 关 百数大挑战",
-      "subtitle": "100/200 以内",
-      "steps": [
-        {
-          "id": "math-19-a+3627",
-          "kind": "arith",
-          "op": "+",
-          "leftIcon": "coin",
-          "leftCount": 36,
-          "rightCount": 27,
-          "unit": "枚",
-          "question": "36 枚金币加 27 枚，一共几枚？",
-          "arithOptions": [
-            62,
-            63,
-            64
-          ],
-          "hint": "指着图一个一个数",
-          "praise": "算对啦，等于 63！"
-        },
-        {
-          "id": "math-19-a-8035",
-          "kind": "arith",
-          "op": "-",
-          "leftIcon": "coin",
-          "leftCount": 80,
-          "rightCount": 35,
-          "unit": "枚",
-          "question": "80 枚金币花掉 35 枚，还剩几枚？",
-          "arithOptions": [
-            44,
-            45,
-            46
-          ],
-          "hint": "划掉的不算哦",
-          "praise": "算对啦，等于 45！"
-        },
-        {
-          "id": "math-19-q3",
-          "kind": "quiz",
-          "question": "挑战：100 - 40 = ?",
-          "options": [
-            {
-              "text": "50"
-            },
-            {
-              "text": "60"
-            },
-            {
-              "text": "70"
-            }
-          ],
-          "answer": 1,
-          "hint": "10 个十去掉 4 个十",
-          "praise": "百数达人！"
-        }
-      ]
-    },
-    {
-      "id": "math-20",
-      "title": "第 21 关 几个几",
-      "subtitle": "乘法启蒙",
-      "steps": [
-        {
-          "id": "math-20-m1",
-          "kind": "muldiv",
-          "op": "×",
-          "mode": "groups",
-          "icon": "train",
-          "unit": "辆",
-          "question": "3 组小车，每组 2 辆，一共几辆？",
-          "hint": "几个几：3 个 2，连加 2+2+2",
-          "praise": "乘法小能手：3×2=6！",
-          "options": [
-            5,
-            6,
-            7
-          ],
-          "answer": 1,
-          "groups": 3,
-          "per": 2
-        },
-        {
-          "id": "math-20-m2",
-          "kind": "muldiv",
-          "op": "×",
-          "mode": "groups",
-          "icon": "apple",
-          "unit": "个",
-          "question": "2 盘苹果，每盘 4 个，一共几个？",
-          "hint": "2 个 4",
-          "praise": "2×4=8，真棒！",
-          "options": [
-            7,
-            8,
-            9
-          ],
-          "answer": 1,
-          "groups": 2,
-          "per": 4
-        }
-      ]
-    },
-    {
-      "id": "math-21",
-      "title": "第 22 关 认识乘号",
-      "subtitle": "×",
-      "steps": [
-        {
-          "id": "math-21-m1",
-          "kind": "muldiv",
-          "op": "×",
-          "mode": "groups",
-          "icon": "flower",
-          "unit": "朵",
-          "question": "4 组花，每组 2 朵，乘法算一算，一共几朵？",
-          "hint": "4 个 2",
-          "praise": "4×2=8！",
-          "options": [
-            7,
-            8,
-            9
-          ],
-          "answer": 1,
-          "groups": 4,
-          "per": 2
-        },
-        {
-          "id": "math-21-m2",
-          "kind": "muldiv",
-          "op": "×",
-          "mode": "groups",
-          "icon": "candy",
-          "unit": "颗",
-          "question": "3 堆糖，每堆 3 颗，乘法算一算，一共几颗？",
-          "hint": "3 个 3",
-          "praise": "3×3=9！",
-          "options": [
-            8,
-            9,
-            10
-          ],
-          "answer": 1,
-          "groups": 3,
-          "per": 3
-        }
-      ]
-    },
-    {
-      "id": "math-22",
-      "title": "第 23 关 乘法口诀",
-      "subtitle": "2~5",
-      "steps": [
-        {
-          "id": "math-22-m1",
-          "kind": "muldiv",
-          "op": "×",
-          "mode": "groups",
-          "icon": "star",
-          "unit": "颗",
-          "question": "5 行星星，每行 2 颗，二五一十，一共几颗？",
-          "hint": "二五一十",
-          "praise": "二五一十，口诀真熟！",
-          "options": [
-            9,
-            10,
-            11
-          ],
-          "answer": 1,
-          "groups": 5,
-          "per": 2
-        },
-        {
-          "id": "math-22-m2",
-          "kind": "muldiv",
-          "op": "×",
-          "mode": "groups",
-          "icon": "duck",
-          "unit": "只",
-          "question": "4 群小鸭，每群 3 只，三四十二，一共几只？",
-          "hint": "三四十二",
-          "praise": "三四十二，乘法小达人！",
-          "options": [
-            11,
-            12,
-            13
-          ],
-          "answer": 1,
-          "groups": 4,
-          "per": 3
-        }
-      ]
-    },
-    {
-      "id": "math-23",
-      "title": "第 24 关 平均分",
-      "subtitle": "除法启蒙",
-      "steps": [
-        {
-          "id": "math-23-d1",
-          "kind": "muldiv",
-          "op": "÷",
-          "mode": "average",
-          "icon": "candy",
-          "unit": "颗",
-          "question": "12 颗糖平均分给 3 个人，每人几颗？",
-          "hint": "一样多分",
-          "praise": "12÷3=4，分公平啦！",
-          "options": [
-            3,
-            4,
-            5
-          ],
-          "answer": 1,
-          "total": 12,
-          "groups": 3
-        },
-        {
-          "id": "math-23-d2",
-          "kind": "muldiv",
-          "op": "÷",
-          "mode": "average",
-          "icon": "apple",
-          "unit": "个",
-          "question": "10 个苹果平均装 2 盘，每盘几个？",
-          "hint": "一样多分",
-          "praise": "10÷2=5！",
-          "options": [
             4,
             5,
             6
           ],
-          "answer": 1,
-          "total": 10,
-          "groups": 2
+          "hint": "指着图一个一个数",
+          "praise": "算对啦，等于 5！"
         }
-      ]
+      ],
+      "zone": 5
     },
     {
-      "id": "math-24",
-      "title": "第 25 关 能分几组",
-      "subtitle": "包含除",
+      "id": "math-44",
+      "title": "第 45 认识人民币",
+      "subtitle": "元角分",
       "steps": [
         {
-          "id": "math-24-d1",
-          "kind": "muldiv",
-          "op": "÷",
-          "mode": "contain",
-          "icon": "apple",
-          "unit": "个",
-          "question": "12 个苹果，每盘放 3 个，能放几盘？",
-          "hint": "3 个一圈",
-          "praise": "12÷3=4 盘！",
+          "id": "math-44-q1",
+          "kind": "quiz",
+          "question": "买铅笔要 1 元，哪个钱币正好？",
           "options": [
-            3,
-            4,
-            5
-          ],
-          "answer": 1,
-          "total": 12,
-          "per": 3
-        },
-        {
-          "id": "math-24-d2",
-          "kind": "muldiv",
-          "op": "÷",
-          "mode": "contain",
-          "icon": "candy",
-          "unit": "颗",
-          "question": "15 颗糖，每人分 5 颗，能分给几个人？",
-          "hint": "5 个一组",
-          "praise": "15÷5=3 人！",
-          "options": [
-            2,
-            3,
-            4
-          ],
-          "answer": 1,
-          "total": 15,
-          "per": 5
-        }
-      ]
-    },
-    {
-      "id": "math-25",
-      "title": "第 26 关 凑十大战",
-      "subtitle": "扑克 make10",
-      "steps": [
-        {
-          "id": "math-25-c1",
-          "kind": "cards",
-          "mode": "make10",
-          "target": 10,
-          "pick": 2,
-          "cards": [
-            3,
-            7,
-            2,
-            8,
-            5,
-            1
-          ],
-          "question": "凑十大战：点 2 张牌，恰好凑成 10",
-          "praise": "凑数成功，算术小赌神！"
-        },
-        {
-          "id": "math-25-c2",
-          "kind": "cards",
-          "mode": "make10",
-          "target": 10,
-          "pick": 2,
-          "cards": [
-            4,
-            6,
-            1,
-            9,
-            5,
-            2
-          ],
-          "question": "再凑十：再点 2 张牌凑成 10",
-          "praise": "凑数成功，算术小赌神！"
-        }
-      ]
-    },
-    {
-      "id": "math-26",
-      "title": "第 27 关 三牌凑目标",
-      "subtitle": "扑克 target",
-      "steps": [
-        {
-          "id": "math-26-c1",
-          "kind": "cards",
-          "mode": "target",
-          "target": 12,
-          "pick": 3,
-          "cards": [
-            3,
-            5,
-            4,
-            1,
-            2,
-            6
-          ],
-          "question": "点 3 张牌，用加减凑出 12",
-          "praise": "凑数成功，算术小赌神！"
-        },
-        {
-          "id": "math-26-c2",
-          "kind": "cards",
-          "mode": "target",
-          "target": 15,
-          "pick": 3,
-          "cards": [
-            7,
-            2,
-            6,
-            3,
-            4,
-            1
-          ],
-          "question": "点 3 张牌，用加减凑出 15",
-          "praise": "凑数成功，算术小赌神！"
-        }
-      ]
-    },
-    {
-      "id": "math-27",
-      "title": "第 28 关 图案数独",
-      "subtitle": "4×4 入门",
-      "steps": [
-        {
-          "id": "math-27-s1",
-          "kind": "sudoku",
-          "size": 4,
-          "symbols": [
-            "duck",
-            "apple",
-            "star",
-            "moon"
-          ],
-          "givens": [
             {
-              "r": 0,
-              "c": 0,
-              "v": 0
+              "icon": "m-yuan1",
+              "text": "1 元"
             },
             {
-              "r": 0,
-              "c": 2,
-              "v": 2
+              "icon": "m-jiao1",
+              "text": "1 角"
             },
             {
-              "r": 1,
-              "c": 1,
-              "v": 3
-            },
-            {
-              "r": 1,
-              "c": 3,
-              "v": 1
-            },
-            {
-              "r": 2,
-              "c": 0,
-              "v": 1
-            },
-            {
-              "r": 2,
-              "c": 2,
-              "v": 3
-            },
-            {
-              "r": 3,
-              "c": 1,
-              "v": 0
-            },
-            {
-              "r": 3,
-              "c": 3,
-              "v": 2
+              "icon": "m-yuan10",
+              "text": "10 元"
             }
           ],
-          "solution": [
-            [
-              0,
-              1,
-              2,
-              3
-            ],
-            [
-              2,
-              3,
-              0,
-              1
-            ],
-            [
-              1,
-              2,
-              3,
-              0
-            ],
-            [
-              3,
-              0,
-              1,
-              2
-            ]
-          ],
-          "question": "图案数独：每行、每列、每个 2×2 宫图标不重复",
-          "praise": "数独侦探，推理成功！"
-        }
-      ]
-    },
-    {
-      "id": "math-28",
-      "title": "第 29 关 数独侦探",
-      "subtitle": "4×4 进阶",
-      "steps": [
+          "answer": 0,
+          "hint": "1 元 = 10 角",
+          "praise": "对，1 元正好！"
+        },
         {
-          "id": "math-28-s1",
-          "kind": "sudoku",
-          "size": 4,
-          "symbols": [
-            "duck",
-            "apple",
-            "star",
-            "moon"
-          ],
-          "givens": [
+          "id": "math-44-m",
+          "kind": "money",
+          "price": 8,
+          "denominations": [
             {
-              "r": 0,
-              "c": 1,
-              "v": 0
+              "value": 1,
+              "label": "1角",
+              "icon": "m-jiao1"
             },
             {
-              "r": 1,
-              "c": 0,
-              "v": 3
+              "value": 5,
+              "label": "5角",
+              "icon": "m-jiao5"
             },
             {
-              "r": 2,
-              "c": 2,
-              "v": 2
+              "value": 10,
+              "label": "1元",
+              "icon": "m-yuan1"
             },
             {
-              "r": 3,
-              "c": 0,
-              "v": 2
+              "value": 50,
+              "label": "5元",
+              "icon": "m-yuan5"
             },
             {
-              "r": 3,
-              "c": 3,
-              "v": 0
+              "value": 100,
+              "label": "10元",
+              "icon": "m-yuan10"
             }
           ],
-          "solution": [
-            [
-              1,
-              0,
-              3,
-              2
-            ],
-            [
-              3,
-              2,
-              0,
-              1
-            ],
-            [
-              0,
-              1,
-              2,
-              3
-            ],
-            [
-              2,
-              3,
-              1,
-              0
-            ]
-          ],
-          "question": "再来一盘：给定更少，推理填完整个数独",
-          "praise": "数独侦探，推理成功！"
+          "question": "买 8 角的橡皮，刚好付清",
+          "praise": "付钱小能手，正好付清！"
         }
-      ]
+      ],
+      "zone": 5
     },
     {
-      "id": "math-29",
-      "title": "第 30 关 认识钟表",
-      "subtitle": "整点",
+      "id": "math-45",
+      "title": "第 46 整点复习",
+      "subtitle": "钟表",
       "steps": [
         {
-          "id": "math-29-cl1",
+          "id": "math-44-c1",
           "kind": "clock",
           "mode": "read",
-          "hour": 3,
+          "hour": 8,
           "minute": 0,
           "question": "看钟面：现在是几点？",
           "praise": "认时小达人！",
           "options": [
             "3:00",
-            "4:00",
-            "2:00"
-          ],
-          "answer": 0
-        },
-        {
-          "id": "math-29-cl2",
-          "kind": "clock",
-          "mode": "read",
-          "hour": 8,
-          "minute": 0,
-          "question": "再看一个钟面，是几点？",
-          "praise": "认时小达人！",
-          "options": [
             "8:00",
-            "7:00",
-            "9:00"
+            "5:30"
           ],
-          "answer": 0
-        }
-      ]
-    },
-    {
-      "id": "math-30",
-      "title": "第 31 关 半点和拨针",
-      "subtitle": "半点",
-      "steps": [
+          "answer": 1
+        },
         {
-          "id": "math-30-cl1",
+          "id": "math-45-c2",
           "kind": "clock",
           "mode": "read",
-          "hour": 7,
+          "hour": 3,
           "minute": 30,
-          "question": "分针指 6，是半点，几点半？",
+          "question": "看钟面：现在是几点？",
           "praise": "认时小达人！",
           "options": [
-            "7:30",
-            "6:30",
-            "8:30"
+            "3:00",
+            "3:30",
+            "6:00"
           ],
-          "answer": 0
-        },
-        {
-          "id": "math-30-cl2",
-          "kind": "clock",
-          "mode": "set",
-          "hour": 9,
-          "minute": 30,
-          "question": "拨一拨：把时针分针拨到 9 点半",
-          "praise": "认时小达人！"
+          "answer": 1
         }
-      ]
+      ],
+      "zone": 5
     },
     {
-      "id": "math-31",
-      "title": "第 32 关 小小商店",
-      "subtitle": "人民币",
+      "id": "math-r2",
+      "title": "复习关 三",
+      "subtitle": "旧题开盲盒 · 混排复习",
       "steps": [
         {
-          "id": "math-31-m1",
-          "kind": "money",
-          "price": 60,
-          "denominations": [
-            {
-              "value": 1,
-              "label": "1角",
-              "icon": "m-jiao1"
-            },
-            {
-              "value": 5,
-              "label": "5角",
-              "icon": "m-jiao5"
-            },
-            {
-              "value": 10,
-              "label": "1元",
-              "icon": "m-yuan1"
-            },
-            {
-              "value": 50,
-              "label": "5元",
-              "icon": "m-yuan5"
-            },
-            {
-              "value": 100,
-              "label": "10元",
-              "icon": "m-yuan10"
-            }
+          "id": "math-r2-0",
+          "kind": "count",
+          "question": "池塘里有几只小鸭（点一点，数数看）",
+          "duckIcon": "duck",
+          "count": 3,
+          "countOptions": [
+            2,
+            3,
+            4
           ],
-          "question": "买东西：点钱币，恰好付清 6 元",
-          "praise": "付钱小能手，正好付清！"
+          "backdrop": "pond",
+          "unit": "只"
         },
         {
-          "id": "math-31-m2",
-          "kind": "money",
-          "price": 35,
-          "denominations": [
+          "id": "math-r2-1",
+          "kind": "count",
+          "question": "盘子里有几颗糖（点一点，数数看）",
+          "duckIcon": "candy",
+          "count": 4,
+          "countOptions": [
+            3,
+            4,
+            5
+          ],
+          "backdrop": "grass",
+          "unit": "颗"
+        },
+        {
+          "id": "math-r2-2",
+          "kind": "count",
+          "question": "果园里摘了几个苹果（点一点，数数看）",
+          "duckIcon": "apple",
+          "count": 5,
+          "countOptions": [
+            4,
+            5,
+            6
+          ],
+          "backdrop": "grass",
+          "unit": "个"
+        },
+        {
+          "id": "math-r2-3",
+          "kind": "compare",
+          "question": "两边气球哪边多？",
+          "leftIcon": "balloon",
+          "leftCount": 4,
+          "rightIcon": "balloon",
+          "rightCount": 4,
+          "compareOptions": [
             {
-              "value": 1,
-              "label": "1角",
-              "icon": "m-jiao1"
+              "key": "left",
+              "label": "左边多"
             },
             {
-              "value": 5,
-              "label": "5角",
-              "icon": "m-jiao5"
+              "key": "right",
+              "label": "右边多"
             },
             {
-              "value": 10,
-              "label": "1元",
-              "icon": "m-yuan1"
-            },
-            {
-              "value": 50,
-              "label": "5元",
-              "icon": "m-yuan5"
-            },
-            {
-              "value": 100,
-              "label": "10元",
-              "icon": "m-yuan10"
+              "key": "same",
+              "label": "一样多"
             }
           ],
-          "question": "再买一件：点钱币，恰好付清 3 元 5 角",
-          "praise": "付钱小能手，正好付清！"
+          "answerKey": "same",
+          "hint": "一个对着一个，比一比",
+          "praise": "火眼金睛！一样多！"
+        },
+        {
+          "id": "math-r2-4",
+          "kind": "count",
+          "question": "夜空里有几颗星星（点一点，数数看）",
+          "duckIcon": "star",
+          "count": 6,
+          "countOptions": [
+            5,
+            6,
+            7
+          ],
+          "backdrop": "night",
+          "unit": "颗"
+        },
+        {
+          "id": "math-r2-5",
+          "kind": "count",
+          "question": "轨道上有几辆小火车（点一点，数数看）",
+          "duckIcon": "train",
+          "count": 7,
+          "countOptions": [
+            6,
+            7,
+            8
+          ],
+          "backdrop": "grass",
+          "unit": "辆"
         }
-      ]
-    },
-    {
-      "id": "math-32",
-      "title": "第 33 关 单数和双数",
-      "subtitle": "奇偶",
-      "steps": [
-        {
-          "id": "math-32-q1",
-          "kind": "quiz",
-          "question": "哪个是单数？",
-          "options": [
-            {
-              "text": "4"
-            },
-            {
-              "text": "7"
-            },
-            {
-              "text": "8"
-            }
-          ],
-          "answer": 1,
-          "hint": "两两成对分完、多一个的是单数",
-          "praise": "7 是单数！"
-        },
-        {
-          "id": "math-32-q2",
-          "kind": "quiz",
-          "question": "哪个是双数？",
-          "options": [
-            {
-              "text": "3"
-            },
-            {
-              "text": "6"
-            },
-            {
-              "text": "9"
-            }
-          ],
-          "answer": 1,
-          "hint": "两两正好分完的是双数",
-          "praise": "6 是双数！"
-        },
-        {
-          "id": "math-32-q3",
-          "kind": "quiz",
-          "question": "8 个苹果两两分，有没有剩余？",
-          "options": [
-            {
-              "text": "没有剩余"
-            },
-            {
-              "text": "剩1个"
-            },
-            {
-              "text": "剩2个"
-            }
-          ],
-          "answer": 0,
-          "hint": "8 是双数",
-          "praise": "双数分完没剩余！"
-        }
-      ]
-    },
-    {
-      "id": "math-33",
-      "title": "第 34 关 图形拼拼乐",
-      "subtitle": "平面图形",
-      "steps": [
-        {
-          "id": "math-33-q1",
-          "kind": "quiz",
-          "question": "哪个物品是圆圆的？",
-          "options": [
-            {
-              "icon": "balloon"
-            },
-            {
-              "icon": "tree"
-            },
-            {
-              "icon": "book"
-            }
-          ],
-          "answer": 0,
-          "hint": "圆圆的会滚",
-          "praise": "圆形滚得远！"
-        },
-        {
-          "id": "math-33-q2",
-          "kind": "quiz",
-          "question": "车轮为什么是圆的？",
-          "options": [
-            {
-              "text": "滚起来平稳"
-            },
-            {
-              "text": "会卡住"
-            },
-            {
-              "text": "容易碎"
-            }
-          ],
-          "answer": 0,
-          "hint": "圆圆的滚起来不颠",
-          "praise": "圆的最平稳！"
-        },
-        {
-          "id": "math-33-p1",
-          "kind": "pattern",
-          "seq": [
-            "sun",
-            "moon",
-            "sun"
-          ],
-          "question": "图形规律：下一个是谁？",
-          "options": [
-            {
-              "icon": "moon"
-            },
-            {
-              "icon": "sun"
-            },
-            {
-              "icon": "star"
-            }
-          ],
-          "answer": 0,
-          "hint": "先读一读前面几个，找一找谁在轮流出现",
-          "praise": "规律找对啦，小侦探！"
-        }
-      ]
+      ],
+      "board": {
+        "spaces": [
+          {
+            "type": "question",
+            "step": "math-r2-2"
+          },
+          {
+            "type": "question",
+            "step": "math-r2-3"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "math-r2-4"
+          },
+          {
+            "type": "question",
+            "step": "math-r2-5"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "math-r2-0"
+          },
+          {
+            "type": "chest"
+          },
+          {
+            "type": "question",
+            "step": "math-r2-1"
+          },
+          {
+            "type": "mushroom"
+          }
+        ]
+      },
+      "review": true,
+      "zone": 5
     },
     {
       "id": "math-boss",
@@ -2080,20 +2978,6 @@
         {
           "id": "math-boss-5",
           "kind": "count",
-          "question": "池塘里有几只小鸭（点一点，数数看）",
-          "duckIcon": "duck",
-          "count": 3,
-          "countOptions": [
-            2,
-            3,
-            4
-          ],
-          "backdrop": "pond",
-          "unit": "只"
-        },
-        {
-          "id": "math-boss-6",
-          "kind": "count",
           "question": "轨道上有几辆小火车（点一点，数数看）",
           "duckIcon": "train",
           "count": 7,
@@ -2106,7 +2990,7 @@
           "unit": "辆"
         },
         {
-          "id": "math-boss-7",
+          "id": "math-boss-6",
           "kind": "count",
           "question": "花园里开了几朵花（点一点，数数看）",
           "duckIcon": "flower",
@@ -2118,6 +3002,20 @@
           ],
           "backdrop": "grass",
           "unit": "朵"
+        },
+        {
+          "id": "math-boss-7",
+          "kind": "count",
+          "question": "礼盒里有几颗爱心糖（点一点，数数看）",
+          "duckIcon": "heart",
+          "count": 9,
+          "countOptions": [
+            8,
+            9,
+            10
+          ],
+          "backdrop": "grass",
+          "unit": "颗"
         }
       ],
       "board": {
@@ -2156,7 +3054,8 @@
           }
         ]
       },
-      "boss": true
+      "boss": true,
+      "zone": 5
     }
   ]
 }

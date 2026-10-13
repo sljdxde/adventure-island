@@ -2,6 +2,38 @@
   "subject": "pinyin",
   "title": "拼音谷",
   "guide": "panda",
+  "zones": [
+    {
+      "n": 1,
+      "title": "声母起步",
+      "subtitle": "b p m f d t n l g k",
+      "icon": "speaker"
+    },
+    {
+      "n": 2,
+      "title": "声母进阶",
+      "subtitle": "h j q x zh ch sh r z c s y w",
+      "icon": "book"
+    },
+    {
+      "n": 3,
+      "title": "韵母家族",
+      "subtitle": "单韵母 · 复韵母 · 鼻韵母",
+      "icon": "star"
+    },
+    {
+      "n": 4,
+      "title": "整体认读",
+      "subtitle": "16 个整体认读音节",
+      "icon": "sparkle"
+    },
+    {
+      "n": 5,
+      "title": "拼读大挑战",
+      "subtitle": "标调 · 三拼 · 拼读",
+      "icon": "medal"
+    }
+  ],
   "levels": [
     {
       "id": "py-0",
@@ -27,7 +59,8 @@
               "say": "白菜"
             }
           ],
-          "question": "学一学声母 b"
+          "question": "学一学声母 b",
+          "anim": "pydraw"
         },
         {
           "id": "py-0-l",
@@ -73,7 +106,8 @@
           "hint": "b 碰上 a",
           "praise": "拼对了，ba！"
         }
-      ]
+      ],
+      "zone": 1
     },
     {
       "id": "py-1",
@@ -99,7 +133,8 @@
               "say": "跑步"
             }
           ],
-          "question": "学一学声母 p"
+          "question": "学一学声母 p",
+          "anim": "pydraw"
         },
         {
           "id": "py-1-l2",
@@ -144,8 +179,44 @@
           "answer": 0,
           "hint": "p 碰上 o",
           "praise": "拼对了，po！"
+        },
+        {
+          "id": "py-x1",
+          "kind": "match",
+          "question": "连一连：声母和词语",
+          "pairs": [
+            {
+              "left": {
+                "icon": "cat",
+                "text": "m"
+              },
+              "right": {
+                "text": "小猫 māo"
+              }
+            },
+            {
+              "left": {
+                "icon": "egg",
+                "text": "d"
+              },
+              "right": {
+                "text": "鸡蛋 dàn"
+              }
+            },
+            {
+              "left": {
+                "icon": "fish",
+                "text": "y"
+              },
+              "right": {
+                "text": "小鱼 yú"
+              }
+            }
+          ],
+          "praise": "全部连对，真棒！"
         }
-      ]
+      ],
+      "zone": 1
     },
     {
       "id": "py-2",
@@ -171,7 +242,8 @@
               "say": "米粒"
             }
           ],
-          "question": "学一学声母 m"
+          "question": "学一学声母 m",
+          "anim": "pydraw"
         },
         {
           "id": "py-2-pq",
@@ -213,8 +285,48 @@
           "answer": 2,
           "hint": "想一想它的样子",
           "praise": "「m」找对啦！"
+        },
+        {
+          "id": "py-x2",
+          "kind": "tapall",
+          "question": "点点看：把声母都点亮",
+          "options": [
+            {
+              "icon": null,
+              "text": "b",
+              "correct": true
+            },
+            {
+              "icon": null,
+              "text": "p",
+              "correct": true
+            },
+            {
+              "icon": null,
+              "text": "m",
+              "correct": true
+            },
+            {
+              "icon": null,
+              "text": "a",
+              "correct": false
+            },
+            {
+              "icon": null,
+              "text": "o",
+              "correct": false
+            },
+            {
+              "icon": null,
+              "text": "e",
+              "correct": false
+            }
+          ],
+          "hint": "b p m 是声母，a o e 是韵母",
+          "praise": "全点对啦，小天文学家！"
         }
-      ]
+      ],
+      "zone": 1
     },
     {
       "id": "py-3",
@@ -240,7 +352,8 @@
               "say": "飞机"
             }
           ],
-          "question": "学一学声母 f"
+          "question": "学一学声母 f",
+          "anim": "pydraw"
         },
         {
           "id": "py-3-b",
@@ -285,7 +398,8 @@
           "hint": "f 碰 a",
           "praise": "拼读小能手：发烧！"
         }
-      ]
+      ],
+      "zone": 1
     },
     {
       "id": "py-4",
@@ -311,7 +425,8 @@
               "say": "大刀"
             }
           ],
-          "question": "学一学声母 d"
+          "question": "学一学声母 d",
+          "anim": "pydraw"
         },
         {
           "id": "py-4-l",
@@ -357,7 +472,1057 @@
           "hint": "d 碰上 e",
           "praise": "拼对了，de！"
         }
-      ]
+      ],
+      "zone": 1
+    },
+    {
+      "id": "py-5",
+      "title": "第 6 关 声母",
+      "subtitle": "认识「t」",
+      "steps": [
+        {
+          "id": "py-5-t",
+          "kind": "letter",
+          "letters": [
+            "t"
+          ],
+          "display": "t",
+          "examples": [
+            {
+              "icon": "train",
+              "text": "太阳 tài",
+              "say": "太阳"
+            },
+            {
+              "icon": "tree",
+              "text": "跳高 tiào",
+              "say": "跳高"
+            }
+          ],
+          "question": "学一学声母 t",
+          "anim": "pydraw"
+        },
+        {
+          "id": "py-5-l2",
+          "kind": "listen",
+          "promptIcon": "train",
+          "speakText": "t",
+          "question": "看一看：「太阳」的开头是哪个声母？",
+          "options": [
+            {
+              "text": "p"
+            },
+            {
+              "text": "m"
+            },
+            {
+              "text": "t"
+            }
+          ],
+          "answer": 2,
+          "hint": "太阳 的第一个音",
+          "praise": "对！太阳 开头是 t"
+        },
+        {
+          "id": "py-5-b",
+          "kind": "blend",
+          "parts": [
+            "t",
+            "a"
+          ],
+          "question": "拼一拼：t — a = ?",
+          "options": [
+            {
+              "text": "ta"
+            },
+            {
+              "text": "te"
+            },
+            {
+              "text": "tu"
+            }
+          ],
+          "answer": 0,
+          "hint": "t 碰上 a",
+          "praise": "拼对了，ta！"
+        }
+      ],
+      "zone": 1
+    },
+    {
+      "id": "py-6",
+      "title": "第 7 关 声母",
+      "subtitle": "认识「n」",
+      "steps": [
+        {
+          "id": "py-6-t",
+          "kind": "letter",
+          "letters": [
+            "n"
+          ],
+          "display": "n",
+          "examples": [
+            {
+              "icon": "girl",
+              "text": "拿苹果 ná",
+              "say": "拿苹果"
+            },
+            {
+              "icon": "heart",
+              "text": "你好 nǐ",
+              "say": "你好"
+            }
+          ],
+          "question": "学一学声母 n",
+          "anim": "pydraw"
+        },
+        {
+          "id": "py-6-pq",
+          "kind": "quiz",
+          "question": "拼一拼 n — i：哪张图是「拿苹果」？",
+          "options": [
+            {
+              "icon": "heart"
+            },
+            {
+              "icon": "girl",
+              "text": "拿苹果"
+            },
+            {
+              "icon": "duck"
+            }
+          ],
+          "answer": 1,
+          "hint": "n 碰 i",
+          "praise": "拼读小能手：拿苹果！"
+        },
+        {
+          "id": "py-6-l",
+          "kind": "listen",
+          "prompt": "n",
+          "speakText": "n",
+          "question": "找一找：哪个是「n」？",
+          "options": [
+            {
+              "text": "d"
+            },
+            {
+              "text": "p"
+            },
+            {
+              "text": "n"
+            }
+          ],
+          "answer": 2,
+          "hint": "想一想它的样子",
+          "praise": "「n」找对啦！"
+        }
+      ],
+      "zone": 1
+    },
+    {
+      "id": "py-7",
+      "title": "第 8 关 声母",
+      "subtitle": "认识「l」",
+      "steps": [
+        {
+          "id": "py-7-t",
+          "kind": "letter",
+          "letters": [
+            "l"
+          ],
+          "display": "l",
+          "examples": [
+            {
+              "icon": "leaf",
+              "text": "拉手 lā",
+              "say": "拉手"
+            },
+            {
+              "icon": "gift",
+              "text": "老虎 lǎo",
+              "say": "老虎"
+            }
+          ],
+          "question": "学一学声母 l",
+          "anim": "pydraw"
+        },
+        {
+          "id": "py-7-b",
+          "kind": "blend",
+          "parts": [
+            "l",
+            "a"
+          ],
+          "question": "拼一拼：l — a = ?",
+          "options": [
+            {
+              "text": "la"
+            },
+            {
+              "text": "le"
+            },
+            {
+              "text": "lu"
+            }
+          ],
+          "answer": 0,
+          "hint": "l 碰上 a",
+          "praise": "拼对了，la！"
+        },
+        {
+          "id": "py-7-pq",
+          "kind": "quiz",
+          "question": "拼一拼 l — a：哪张图是「拉手」？",
+          "options": [
+            {
+              "icon": "sun"
+            },
+            {
+              "icon": "cake"
+            },
+            {
+              "icon": "leaf",
+              "text": "拉手"
+            }
+          ],
+          "answer": 2,
+          "hint": "l 碰 a",
+          "praise": "拼读小能手：拉手！"
+        }
+      ],
+      "zone": 1
+    },
+    {
+      "id": "py-8",
+      "title": "第 9 关 声母",
+      "subtitle": "认识「g」",
+      "steps": [
+        {
+          "id": "py-8-t",
+          "kind": "letter",
+          "letters": [
+            "g"
+          ],
+          "display": "g",
+          "examples": [
+            {
+              "icon": "tree",
+              "text": "哥哥 gē",
+              "say": "哥哥"
+            },
+            {
+              "icon": "moon",
+              "text": "故事 gù",
+              "say": "故事"
+            }
+          ],
+          "question": "学一学声母 g",
+          "anim": "pydraw"
+        },
+        {
+          "id": "py-8-l",
+          "kind": "listen",
+          "prompt": "g",
+          "speakText": "g",
+          "question": "找一找：哪个是「g」？",
+          "options": [
+            {
+              "text": "d"
+            },
+            {
+              "text": "p"
+            },
+            {
+              "text": "g"
+            }
+          ],
+          "answer": 2,
+          "hint": "想一想它的样子",
+          "praise": "「g」找对啦！"
+        },
+        {
+          "id": "py-8-b",
+          "kind": "blend",
+          "parts": [
+            "g",
+            "e"
+          ],
+          "question": "拼一拼：g — e = ?",
+          "options": [
+            {
+              "text": "ge"
+            },
+            {
+              "text": "ga"
+            },
+            {
+              "text": "gu"
+            }
+          ],
+          "answer": 0,
+          "hint": "g 碰上 e",
+          "praise": "拼对了，ge！"
+        }
+      ],
+      "zone": 1
+    },
+    {
+      "id": "py-9",
+      "title": "第 10 关 声母",
+      "subtitle": "认识「k」",
+      "steps": [
+        {
+          "id": "py-9-t",
+          "kind": "letter",
+          "letters": [
+            "k"
+          ],
+          "display": "k",
+          "examples": [
+            {
+              "icon": "heart",
+              "text": "开心 kāi",
+              "say": "开心"
+            },
+            {
+              "icon": "book",
+              "text": "看书 kàn",
+              "say": "看书"
+            }
+          ],
+          "question": "学一学声母 k",
+          "anim": "pydraw"
+        },
+        {
+          "id": "py-9-l2",
+          "kind": "listen",
+          "promptIcon": "heart",
+          "speakText": "k",
+          "question": "看一看：「开心」的开头是哪个声母？",
+          "options": [
+            {
+              "text": "k"
+            },
+            {
+              "text": "d"
+            },
+            {
+              "text": "p"
+            }
+          ],
+          "answer": 0,
+          "hint": "开心 的第一个音",
+          "praise": "对！开心 开头是 k"
+        },
+        {
+          "id": "py-9-b",
+          "kind": "blend",
+          "parts": [
+            "k",
+            "e"
+          ],
+          "question": "拼一拼：k — e = ?",
+          "options": [
+            {
+              "text": "ke"
+            },
+            {
+              "text": "ka"
+            },
+            {
+              "text": "ku"
+            }
+          ],
+          "answer": 0,
+          "hint": "k 碰上 e",
+          "praise": "拼对了，ke！"
+        }
+      ],
+      "zone": 1
+    },
+    {
+      "id": "py-10",
+      "title": "第 11 关 韵母",
+      "subtitle": "a o e i u ü",
+      "steps": [
+        {
+          "id": "py-10-t",
+          "kind": "letter",
+          "letters": [
+            "a",
+            "o",
+            "e",
+            "i",
+            "u",
+            "ü"
+          ],
+          "display": "a",
+          "examples": [
+            {
+              "icon": "duck",
+              "text": "啊 ā 张大嘴",
+              "say": "ā"
+            },
+            {
+              "icon": "flame",
+              "text": "哦 ó",
+              "say": "ó"
+            }
+          ],
+          "question": "学一学韵母 a",
+          "anim": "pydraw"
+        },
+        {
+          "id": "py-10-l",
+          "kind": "listen",
+          "prompt": "a",
+          "speakText": "a",
+          "question": "找一找：哪个是韵母「a」？",
+          "options": [
+            {
+              "text": "o"
+            },
+            {
+              "text": "a"
+            },
+            {
+              "text": "e"
+            }
+          ],
+          "answer": 1,
+          "hint": "张大嘴巴 āāā",
+          "praise": "韵母 a 找对啦！"
+        },
+        {
+          "id": "py-x3",
+          "kind": "sequence",
+          "question": "按顺序点：a → o → e",
+          "seq": [
+            "a",
+            "o",
+            "e"
+          ],
+          "hint": "按顺序一个一个点",
+          "praise": "单韵母排好队！"
+        }
+      ],
+      "zone": 2
+    },
+    {
+      "id": "py-11",
+      "title": "第 12 关 复习",
+      "subtitle": "整体认读 · 拼读",
+      "steps": [
+        {
+          "id": "py-11-m",
+          "kind": "memory",
+          "question": "翻翻牌：声母和它的图片配成对",
+          "cards": [
+            {
+              "key": "b",
+              "icon": "girl"
+            },
+            {
+              "key": "b",
+              "text": "b"
+            },
+            {
+              "key": "d",
+              "icon": "duck"
+            },
+            {
+              "key": "d",
+              "text": "d"
+            },
+            {
+              "key": "l",
+              "icon": "leaf"
+            },
+            {
+              "key": "l",
+              "text": "l"
+            }
+          ]
+        },
+        {
+          "id": "py-11-l1",
+          "kind": "listen",
+          "prompt": "zhi",
+          "speakText": "zhi",
+          "question": "找一找：哪个是「zhi」？",
+          "options": [
+            {
+              "text": "chi"
+            },
+            {
+              "text": "zhi"
+            },
+            {
+              "text": "zi"
+            }
+          ],
+          "answer": 1,
+          "hint": "蜘蛛 zhī zhī 叫",
+          "praise": "整体认读 zhi！"
+        },
+        {
+          "id": "py-11-b",
+          "kind": "blend",
+          "parts": [
+            "b",
+            "a"
+          ],
+          "question": "拼一拼：b — a = ?",
+          "options": [
+            {
+              "text": "ba"
+            },
+            {
+              "text": "bo"
+            },
+            {
+              "text": "pa"
+            }
+          ],
+          "answer": 0,
+          "hint": "爸爸的爸",
+          "praise": "拼读小能手！"
+        },
+        {
+          "id": "py-11-pq",
+          "kind": "quiz",
+          "question": "拼一拼 m — a：哪张图是「妈妈」？",
+          "options": [
+            {
+              "icon": "girl",
+              "text": "妈妈"
+            },
+            {
+              "icon": "moon"
+            },
+            {
+              "icon": "train"
+            }
+          ],
+          "answer": 0,
+          "hint": "m 碰 a",
+          "praise": "拼读小达人！"
+        }
+      ],
+      "zone": 2
+    },
+    {
+      "id": "py-16",
+      "title": "第 17 关 声母",
+      "subtitle": "认识「h」",
+      "steps": [
+        {
+          "id": "py-16-t",
+          "kind": "letter",
+          "letters": [
+            "h"
+          ],
+          "display": "h",
+          "examples": [
+            {
+              "icon": "flame",
+              "text": "火红 huǒ",
+              "say": "火红"
+            },
+            {
+              "icon": "river",
+              "text": "小河 hé",
+              "say": "小河"
+            }
+          ],
+          "question": "学一学：h",
+          "anim": "pydraw"
+        },
+        {
+          "id": "py-16-l",
+          "kind": "listen",
+          "prompt": "h",
+          "speakText": "h",
+          "question": "找一找：哪个是「h」？",
+          "options": [
+            {
+              "text": "d"
+            },
+            {
+              "text": "p"
+            },
+            {
+              "text": "h"
+            }
+          ],
+          "answer": 2,
+          "hint": "想一想它的样子",
+          "praise": "「h」找对啦！"
+        },
+        {
+          "id": "py-16-b",
+          "kind": "blend",
+          "parts": [
+            "h",
+            "e"
+          ],
+          "question": "拼一拼：h — e = ?",
+          "options": [
+            {
+              "text": "he"
+            },
+            {
+              "text": "ha"
+            },
+            {
+              "text": "hu"
+            }
+          ],
+          "answer": 0,
+          "hint": "h 碰上 e",
+          "praise": "拼对了，he！"
+        }
+      ],
+      "zone": 2
+    },
+    {
+      "id": "py-17",
+      "title": "第 18 关 声母",
+      "subtitle": "认识「j」",
+      "steps": [
+        {
+          "id": "py-17-t",
+          "kind": "letter",
+          "letters": [
+            "j"
+          ],
+          "display": "j",
+          "examples": [
+            {
+              "icon": "home",
+              "text": "回家 jiā",
+              "say": "回家"
+            },
+            {
+              "icon": "duck",
+              "text": "母鸡 jī",
+              "say": "母鸡"
+            }
+          ],
+          "question": "学一学：j",
+          "anim": "pydraw"
+        },
+        {
+          "id": "py-17-l2",
+          "kind": "listen",
+          "promptIcon": "home",
+          "speakText": "j",
+          "question": "看一看：「回家」的开头是哪个声母？",
+          "options": [
+            {
+              "text": "t"
+            },
+            {
+              "text": "n"
+            },
+            {
+              "text": "j"
+            }
+          ],
+          "answer": 2,
+          "hint": "回家 的第一个音",
+          "praise": "对！回家 开头是 j"
+        },
+        {
+          "id": "py-17-pq",
+          "kind": "quiz",
+          "question": "拼一拼 j — i：哪张图是「回家」？",
+          "options": [
+            {
+              "icon": "home",
+              "text": "回家"
+            },
+            {
+              "icon": "sun"
+            },
+            {
+              "icon": "cake"
+            }
+          ],
+          "answer": 0,
+          "hint": "j 碰 i",
+          "praise": "拼读小能手：回家！"
+        }
+      ],
+      "zone": 2
+    },
+    {
+      "id": "py-18",
+      "title": "第 19 关 声母",
+      "subtitle": "认识「q」",
+      "steps": [
+        {
+          "id": "py-18-t",
+          "kind": "letter",
+          "letters": [
+            "q"
+          ],
+          "display": "q",
+          "examples": [
+            {
+              "icon": "balloon",
+              "text": "气球 qì",
+              "say": "气球"
+            },
+            {
+              "icon": "apple",
+              "text": "七 qī",
+              "say": "七"
+            }
+          ],
+          "question": "学一学：q",
+          "anim": "pydraw"
+        },
+        {
+          "id": "py-18-b",
+          "kind": "blend",
+          "parts": [
+            "q",
+            "i"
+          ],
+          "question": "拼一拼：q — i = ?",
+          "options": [
+            {
+              "text": "qi"
+            },
+            {
+              "text": "qu"
+            },
+            {
+              "text": "qa"
+            }
+          ],
+          "answer": 0,
+          "hint": "q 碰上 i",
+          "praise": "拼对了，qi！"
+        },
+        {
+          "id": "py-18-l",
+          "kind": "listen",
+          "prompt": "q",
+          "speakText": "q",
+          "question": "找一找：哪个是「q」？",
+          "options": [
+            {
+              "text": "d"
+            },
+            {
+              "text": "p"
+            },
+            {
+              "text": "q"
+            }
+          ],
+          "answer": 2,
+          "hint": "想一想它的样子",
+          "praise": "「q」找对啦！"
+        }
+      ],
+      "zone": 2
+    },
+    {
+      "id": "py-19",
+      "title": "第 20 关 声母",
+      "subtitle": "认识「x」",
+      "steps": [
+        {
+          "id": "py-19-t",
+          "kind": "letter",
+          "letters": [
+            "x"
+          ],
+          "display": "x",
+          "examples": [
+            {
+              "icon": "star",
+              "text": "星星 xīng",
+              "say": "星星"
+            },
+            {
+              "icon": "banana",
+              "text": "香蕉 xiāngjiāo",
+              "say": "香蕉"
+            }
+          ],
+          "question": "学一学：x",
+          "anim": "pydraw"
+        },
+        {
+          "id": "py-19-l",
+          "kind": "listen",
+          "prompt": "x",
+          "speakText": "x",
+          "question": "找一找：哪个是「x」？",
+          "options": [
+            {
+              "text": "d"
+            },
+            {
+              "text": "p"
+            },
+            {
+              "text": "x"
+            }
+          ],
+          "answer": 2,
+          "hint": "想一想它的样子",
+          "praise": "「x」找对啦！"
+        },
+        {
+          "id": "py-19-b",
+          "kind": "blend",
+          "parts": [
+            "x",
+            "i"
+          ],
+          "question": "拼一拼：x — i = ?",
+          "options": [
+            {
+              "text": "xi"
+            },
+            {
+              "text": "xu"
+            },
+            {
+              "text": "xa"
+            }
+          ],
+          "answer": 0,
+          "hint": "x 碰上 i",
+          "praise": "拼对了，xi！"
+        }
+      ],
+      "zone": 2
+    },
+    {
+      "id": "py-20",
+      "title": "第 21 关 声母",
+      "subtitle": "认识「zh」",
+      "steps": [
+        {
+          "id": "py-20-t",
+          "kind": "letter",
+          "letters": [
+            "zh"
+          ],
+          "display": "zh",
+          "examples": [
+            {
+              "icon": "pig",
+              "text": "小猪 zhū",
+              "say": "小猪"
+            },
+            {
+              "icon": "bee",
+              "text": "蜘蛛 zhī",
+              "say": "蜘蛛"
+            }
+          ],
+          "question": "学一学：zh",
+          "anim": "pydraw"
+        },
+        {
+          "id": "py-20-l2",
+          "kind": "listen",
+          "promptIcon": "pig",
+          "speakText": "zh",
+          "question": "看一看：「小猪」的开头是哪个声母？",
+          "options": [
+            {
+              "text": "d"
+            },
+            {
+              "text": "p"
+            },
+            {
+              "text": "zh"
+            }
+          ],
+          "answer": 2,
+          "hint": "小猪 的第一个音",
+          "praise": "对！小猪 开头是 zh"
+        },
+        {
+          "id": "py-20-pq",
+          "kind": "quiz",
+          "question": "拼一拼 zh — i：哪张图是「小猪」？",
+          "options": [
+            {
+              "icon": "pig",
+              "text": "小猪"
+            },
+            {
+              "icon": "duck"
+            },
+            {
+              "icon": "moon"
+            }
+          ],
+          "answer": 0,
+          "hint": "zh 碰 i",
+          "praise": "拼读小能手：小猪！"
+        }
+      ],
+      "zone": 2
+    },
+    {
+      "id": "py-21",
+      "title": "第 22 关 声母",
+      "subtitle": "认识「ch」",
+      "steps": [
+        {
+          "id": "py-21-t",
+          "kind": "letter",
+          "letters": [
+            "ch"
+          ],
+          "display": "ch",
+          "examples": [
+            {
+              "icon": "bee",
+              "text": "虫虫 chóng",
+              "say": "虫虫"
+            },
+            {
+              "icon": "car",
+              "text": "开车 chē",
+              "say": "开车"
+            }
+          ],
+          "question": "学一学：ch",
+          "anim": "pydraw"
+        },
+        {
+          "id": "py-21-b",
+          "kind": "blend",
+          "parts": [
+            "ch",
+            "i"
+          ],
+          "question": "拼一拼：ch — i = ?",
+          "options": [
+            {
+              "text": "chi"
+            },
+            {
+              "text": "chu"
+            },
+            {
+              "text": "cha"
+            }
+          ],
+          "answer": 0,
+          "hint": "ch 碰上 i",
+          "praise": "拼对了，chi！"
+        },
+        {
+          "id": "py-21-l",
+          "kind": "listen",
+          "prompt": "ch",
+          "speakText": "ch",
+          "question": "找一找：哪个是「ch」？",
+          "options": [
+            {
+              "text": "d"
+            },
+            {
+              "text": "p"
+            },
+            {
+              "text": "ch"
+            }
+          ],
+          "answer": 2,
+          "hint": "想一想它的样子",
+          "praise": "「ch」找对啦！"
+        }
+      ],
+      "zone": 2
+    },
+    {
+      "id": "py-22",
+      "title": "第 23 关 声母",
+      "subtitle": "认识「sh」",
+      "steps": [
+        {
+          "id": "py-22-t",
+          "kind": "letter",
+          "letters": [
+            "sh"
+          ],
+          "display": "sh",
+          "examples": [
+            {
+              "icon": "lion",
+              "text": "狮子 shī",
+              "say": "狮子"
+            },
+            {
+              "icon": "sun",
+              "text": "上山 shàng",
+              "say": "上山"
+            }
+          ],
+          "question": "学一学：sh",
+          "anim": "pydraw"
+        },
+        {
+          "id": "py-22-l",
+          "kind": "listen",
+          "prompt": "sh",
+          "speakText": "sh",
+          "question": "找一找：哪个是「sh」？",
+          "options": [
+            {
+              "text": "d"
+            },
+            {
+              "text": "p"
+            },
+            {
+              "text": "sh"
+            }
+          ],
+          "answer": 2,
+          "hint": "想一想它的样子",
+          "praise": "「sh」找对啦！"
+        },
+        {
+          "id": "py-22-b",
+          "kind": "blend",
+          "parts": [
+            "sh",
+            "i"
+          ],
+          "question": "拼一拼：sh — i = ?",
+          "options": [
+            {
+              "text": "shi"
+            },
+            {
+              "text": "shu"
+            },
+            {
+              "text": "sha"
+            }
+          ],
+          "answer": 0,
+          "hint": "sh 碰上 i",
+          "praise": "拼对了，shi！"
+        }
+      ],
+      "zone": 2
     },
     {
       "id": "pinyin-r0",
@@ -472,26 +1637,24 @@
         },
         {
           "id": "pinyin-r0-5",
-          "kind": "blend",
-          "parts": [
-            "b",
-            "a"
-          ],
-          "question": "拼一拼：b — a = ?",
+          "kind": "listen",
+          "promptIcon": "train",
+          "speakText": "t",
+          "question": "看一看：「太阳」的开头是哪个声母？",
           "options": [
             {
-              "text": "ba"
+              "text": "p"
             },
             {
-              "text": "bo"
+              "text": "m"
             },
             {
-              "text": "bu"
+              "text": "t"
             }
           ],
-          "answer": 0,
-          "hint": "b 碰上 a",
-          "praise": "拼对了，ba！"
+          "answer": 2,
+          "hint": "太阳 的第一个音",
+          "praise": "对！太阳 开头是 t"
         }
       ],
       "board": {
@@ -534,132 +1697,136 @@
           }
         ]
       },
-      "review": true
+      "review": true,
+      "zone": 2
     },
     {
-      "id": "py-5",
-      "title": "第 6 关 声母",
-      "subtitle": "认识「t」",
+      "id": "py-23",
+      "title": "第 24 关 声母",
+      "subtitle": "认识「r」",
       "steps": [
         {
-          "id": "py-5-t",
+          "id": "py-23-t",
           "kind": "letter",
           "letters": [
-            "t"
+            "r"
           ],
-          "display": "t",
+          "display": "r",
           "examples": [
             {
-              "icon": "train",
-              "text": "太阳 tài",
-              "say": "太阳"
+              "icon": "sun",
+              "text": "日出 rì",
+              "say": "日出"
             },
             {
-              "icon": "tree",
-              "text": "跳高 tiào",
-              "say": "跳高"
+              "icon": "girl",
+              "text": "人多 rè",
+              "say": "人多"
             }
           ],
-          "question": "学一学声母 t"
+          "question": "学一学：r",
+          "anim": "pydraw"
         },
         {
-          "id": "py-5-l2",
+          "id": "py-23-l2",
           "kind": "listen",
-          "promptIcon": "train",
-          "speakText": "t",
-          "question": "看一看：「太阳」的开头是哪个声母？",
+          "promptIcon": "sun",
+          "speakText": "r",
+          "question": "看一看：「日出」的开头是哪个声母？",
           "options": [
             {
-              "text": "p"
+              "text": "l"
             },
             {
-              "text": "m"
+              "text": "g"
             },
             {
-              "text": "t"
+              "text": "r"
             }
           ],
           "answer": 2,
-          "hint": "太阳 的第一个音",
-          "praise": "对！太阳 开头是 t"
+          "hint": "日出 的第一个音",
+          "praise": "对！日出 开头是 r"
         },
         {
-          "id": "py-5-b",
-          "kind": "blend",
-          "parts": [
-            "t",
-            "a"
-          ],
-          "question": "拼一拼：t — a = ?",
+          "id": "py-23-pq",
+          "kind": "quiz",
+          "question": "拼一拼 r — i：哪张图是「日出」？",
           "options": [
             {
-              "text": "ta"
+              "icon": "sun",
+              "text": "日出"
             },
             {
-              "text": "te"
+              "icon": "apple"
             },
             {
-              "text": "tu"
+              "icon": "clock"
             }
           ],
           "answer": 0,
-          "hint": "t 碰上 a",
-          "praise": "拼对了，ta！"
+          "hint": "r 碰 i",
+          "praise": "拼读小能手：日出！"
         }
-      ]
+      ],
+      "zone": 3
     },
     {
-      "id": "py-6",
-      "title": "第 7 关 声母",
-      "subtitle": "认识「n」",
+      "id": "py-24",
+      "title": "第 25 关 声母",
+      "subtitle": "认识「z」",
       "steps": [
         {
-          "id": "py-6-t",
+          "id": "py-24-t",
           "kind": "letter",
           "letters": [
-            "n"
+            "z"
           ],
-          "display": "n",
+          "display": "z",
           "examples": [
             {
-              "icon": "girl",
-              "text": "拿苹果 ná",
-              "say": "拿苹果"
+              "icon": "sunrise",
+              "text": "早起 zǎo",
+              "say": "早起"
             },
             {
-              "icon": "heart",
-              "text": "你好 nǐ",
-              "say": "你好"
+              "icon": "rock",
+              "text": "坐 zuò",
+              "say": "坐"
             }
           ],
-          "question": "学一学声母 n"
+          "question": "学一学：z",
+          "anim": "pydraw"
         },
         {
-          "id": "py-6-pq",
-          "kind": "quiz",
-          "question": "拼一拼 n — i：哪张图是「拿苹果」？",
+          "id": "py-24-b",
+          "kind": "blend",
+          "parts": [
+            "z",
+            "i"
+          ],
+          "question": "拼一拼：z — i = ?",
           "options": [
             {
-              "icon": "heart"
+              "text": "zi"
             },
             {
-              "icon": "girl",
-              "text": "拿苹果"
+              "text": "zu"
             },
             {
-              "icon": "duck"
+              "text": "za"
             }
           ],
-          "answer": 1,
-          "hint": "n 碰 i",
-          "praise": "拼读小能手：拿苹果！"
+          "answer": 0,
+          "hint": "z 碰上 i",
+          "praise": "拼对了，zi！"
         },
         {
-          "id": "py-6-l",
+          "id": "py-24-l",
           "kind": "listen",
-          "prompt": "n",
-          "speakText": "n",
-          "question": "找一找：哪个是「n」？",
+          "prompt": "z",
+          "speakText": "z",
+          "question": "找一找：哪个是「z」？",
           "options": [
             {
               "text": "d"
@@ -668,229 +1835,1157 @@
               "text": "p"
             },
             {
-              "text": "n"
+              "text": "z"
             }
           ],
           "answer": 2,
           "hint": "想一想它的样子",
-          "praise": "「n」找对啦！"
+          "praise": "「z」找对啦！"
         }
-      ]
+      ],
+      "zone": 3
     },
     {
-      "id": "py-7",
-      "title": "第 8 关 声母",
-      "subtitle": "认识「l」",
+      "id": "py-25",
+      "title": "第 26 关 声母",
+      "subtitle": "认识「c」",
       "steps": [
         {
-          "id": "py-7-t",
+          "id": "py-25-t",
           "kind": "letter",
           "letters": [
-            "l"
+            "c"
           ],
-          "display": "l",
+          "display": "c",
           "examples": [
             {
               "icon": "leaf",
-              "text": "拉手 lā",
-              "say": "拉手"
+              "text": "草地 cǎo",
+              "say": "草地"
             },
             {
-              "icon": "gift",
-              "text": "老虎 lǎo",
-              "say": "老虎"
+              "icon": "crystal",
+              "text": "刺 cì",
+              "say": "刺"
             }
           ],
-          "question": "学一学声母 l"
+          "question": "学一学：c",
+          "anim": "pydraw"
         },
         {
-          "id": "py-7-b",
-          "kind": "blend",
-          "parts": [
-            "l",
-            "a"
-          ],
-          "question": "拼一拼：l — a = ?",
-          "options": [
-            {
-              "text": "la"
-            },
-            {
-              "text": "le"
-            },
-            {
-              "text": "lu"
-            }
-          ],
-          "answer": 0,
-          "hint": "l 碰上 a",
-          "praise": "拼对了，la！"
-        },
-        {
-          "id": "py-7-pq",
-          "kind": "quiz",
-          "question": "拼一拼 l — a：哪张图是「拉手」？",
-          "options": [
-            {
-              "icon": "sun"
-            },
-            {
-              "icon": "cake"
-            },
-            {
-              "icon": "leaf",
-              "text": "拉手"
-            }
-          ],
-          "answer": 2,
-          "hint": "l 碰 a",
-          "praise": "拼读小能手：拉手！"
-        }
-      ]
-    },
-    {
-      "id": "py-8",
-      "title": "第 9 关 声母",
-      "subtitle": "认识「g」",
-      "steps": [
-        {
-          "id": "py-8-t",
-          "kind": "letter",
-          "letters": [
-            "g"
-          ],
-          "display": "g",
-          "examples": [
-            {
-              "icon": "tree",
-              "text": "哥哥 gē",
-              "say": "哥哥"
-            },
-            {
-              "icon": "moon",
-              "text": "故事 gù",
-              "say": "故事"
-            }
-          ],
-          "question": "学一学声母 g"
-        },
-        {
-          "id": "py-8-l",
+          "id": "py-25-l",
           "kind": "listen",
-          "prompt": "g",
-          "speakText": "g",
-          "question": "找一找：哪个是「g」？",
+          "prompt": "c",
+          "speakText": "c",
+          "question": "找一找：哪个是「c」？",
           "options": [
             {
               "text": "d"
             },
             {
               "text": "p"
+            },
+            {
+              "text": "c"
+            }
+          ],
+          "answer": 2,
+          "hint": "想一想它的样子",
+          "praise": "「c」找对啦！"
+        },
+        {
+          "id": "py-25-b",
+          "kind": "blend",
+          "parts": [
+            "c",
+            "i"
+          ],
+          "question": "拼一拼：c — i = ?",
+          "options": [
+            {
+              "text": "ci"
+            },
+            {
+              "text": "cu"
+            },
+            {
+              "text": "ca"
+            }
+          ],
+          "answer": 0,
+          "hint": "c 碰上 i",
+          "praise": "拼对了，ci！"
+        }
+      ],
+      "zone": 3
+    },
+    {
+      "id": "py-26",
+      "title": "第 27 关 声母",
+      "subtitle": "认识「s」",
+      "steps": [
+        {
+          "id": "py-26-t",
+          "kind": "letter",
+          "letters": [
+            "s"
+          ],
+          "display": "s",
+          "examples": [
+            {
+              "icon": "star",
+              "text": "三十 sān",
+              "say": "三十"
+            },
+            {
+              "icon": "paw",
+              "text": "四十 sì",
+              "say": "四十"
+            }
+          ],
+          "question": "学一学：s",
+          "anim": "pydraw"
+        },
+        {
+          "id": "py-26-l2",
+          "kind": "listen",
+          "promptIcon": "star",
+          "speakText": "s",
+          "question": "看一看：「三十」的开头是哪个声母？",
+          "options": [
+            {
+              "text": "m"
+            },
+            {
+              "text": "f"
+            },
+            {
+              "text": "s"
+            }
+          ],
+          "answer": 2,
+          "hint": "三十 的第一个音",
+          "praise": "对！三十 开头是 s"
+        },
+        {
+          "id": "py-26-pq",
+          "kind": "quiz",
+          "question": "拼一拼 s — i：哪张图是「三十」？",
+          "options": [
+            {
+              "icon": "star",
+              "text": "三十"
+            },
+            {
+              "icon": "apple"
+            },
+            {
+              "icon": "clock"
+            }
+          ],
+          "answer": 0,
+          "hint": "s 碰 i",
+          "praise": "拼读小能手：三十！"
+        }
+      ],
+      "zone": 3
+    },
+    {
+      "id": "py-27",
+      "title": "第 28 关 声母",
+      "subtitle": "认识「y」",
+      "steps": [
+        {
+          "id": "py-27-t",
+          "kind": "letter",
+          "letters": [
+            "y"
+          ],
+          "display": "y",
+          "examples": [
+            {
+              "icon": "fish",
+              "text": "小鱼 yú",
+              "say": "小鱼"
+            },
+            {
+              "icon": "duck",
+              "text": "鸭子 yā",
+              "say": "鸭子"
+            }
+          ],
+          "question": "学一学：y",
+          "anim": "pydraw"
+        },
+        {
+          "id": "py-27-b",
+          "kind": "blend",
+          "parts": [
+            "y",
+            "i"
+          ],
+          "question": "拼一拼：y — i = ?",
+          "options": [
+            {
+              "text": "yi"
+            },
+            {
+              "text": "yu"
+            },
+            {
+              "text": "ya"
+            }
+          ],
+          "answer": 0,
+          "hint": "y 碰上 i",
+          "praise": "拼对了，yi！"
+        },
+        {
+          "id": "py-27-l",
+          "kind": "listen",
+          "prompt": "y",
+          "speakText": "y",
+          "question": "找一找：哪个是「y」？",
+          "options": [
+            {
+              "text": "d"
+            },
+            {
+              "text": "p"
+            },
+            {
+              "text": "y"
+            }
+          ],
+          "answer": 2,
+          "hint": "想一想它的样子",
+          "praise": "「y」找对啦！"
+        }
+      ],
+      "zone": 3
+    },
+    {
+      "id": "py-28",
+      "title": "第 29 关 声母",
+      "subtitle": "认识「w」",
+      "steps": [
+        {
+          "id": "py-28-t",
+          "kind": "letter",
+          "letters": [
+            "w"
+          ],
+          "display": "w",
+          "examples": [
+            {
+              "icon": "frog",
+              "text": "青蛙 wā",
+              "say": "青蛙"
+            },
+            {
+              "icon": "home",
+              "text": "屋子 wū",
+              "say": "屋子"
+            }
+          ],
+          "question": "学一学：w",
+          "anim": "pydraw"
+        },
+        {
+          "id": "py-28-l",
+          "kind": "listen",
+          "prompt": "w",
+          "speakText": "w",
+          "question": "找一找：哪个是「w」？",
+          "options": [
+            {
+              "text": "d"
+            },
+            {
+              "text": "p"
+            },
+            {
+              "text": "w"
+            }
+          ],
+          "answer": 2,
+          "hint": "想一想它的样子",
+          "praise": "「w」找对啦！"
+        },
+        {
+          "id": "py-28-b",
+          "kind": "blend",
+          "parts": [
+            "w",
+            "u"
+          ],
+          "question": "拼一拼：w — u = ?",
+          "options": [
+            {
+              "text": "wu"
+            },
+            {
+              "text": "wa"
+            },
+            {
+              "text": "wo"
+            }
+          ],
+          "answer": 0,
+          "hint": "w 碰上 u",
+          "praise": "拼对了，wu！"
+        }
+      ],
+      "zone": 3
+    },
+    {
+      "id": "py-29",
+      "title": "第 30 关 单韵母 o e",
+      "subtitle": "o e",
+      "steps": [
+        {
+          "id": "py-29-t",
+          "kind": "letter",
+          "letters": [
+            "o",
+            "e"
+          ],
+          "display": "o e",
+          "examples": [
+            {
+              "text": "哦 ó 拔萝卜"
+            },
+            {
+              "text": "鹅 é 鹅 é"
+            }
+          ],
+          "question": "学一学：o e",
+          "anim": "pydraw"
+        },
+        {
+          "id": "py-29-l",
+          "kind": "listen",
+          "prompt": "o",
+          "speakText": "o",
+          "question": "找一找：哪个是韵母「o」？",
+          "options": [
+            {
+              "text": "e"
+            },
+            {
+              "text": "o"
+            },
+            {
+              "text": "a"
+            }
+          ],
+          "answer": 1,
+          "hint": "嘴巴圆圆 ó",
+          "praise": "韵母 o 找对啦！"
+        },
+        {
+          "id": "py-29-q",
+          "kind": "quiz",
+          "question": "大公鸡怎么叫？",
+          "options": [
+            {
+              "text": "ō ō ō"
+            },
+            {
+              "text": "ā ā ā"
+            },
+            {
+              "text": "ū ū ū"
+            }
+          ],
+          "answer": 0,
+          "hint": "喔喔啼",
+          "praise": "对，公鸡 ō ō 啼！"
+        }
+      ],
+      "zone": 3
+    },
+    {
+      "id": "py-30",
+      "title": "第 31 关 单韵母 i u",
+      "subtitle": "i u",
+      "steps": [
+        {
+          "id": "py-30-t",
+          "kind": "letter",
+          "letters": [
+            "i",
+            "u"
+          ],
+          "display": "i u",
+          "examples": [
+            {
+              "icon": "girl",
+              "text": "衣服 yīfu",
+              "say": "衣服"
+            },
+            {
+              "icon": "home",
+              "text": "屋子 wū",
+              "say": "屋子"
+            }
+          ],
+          "question": "学一学：i u",
+          "anim": "pydraw"
+        },
+        {
+          "id": "py-30-b",
+          "kind": "blend",
+          "parts": [
+            "d",
+            "i"
+          ],
+          "question": "拼一拼：d — i = ?",
+          "options": [
+            {
+              "text": "di"
+            },
+            {
+              "text": "du"
+            },
+            {
+              "text": "da"
+            }
+          ],
+          "answer": 0,
+          "hint": "弟弟 dìdì",
+          "praise": "拼对了，dì！"
+        },
+        {
+          "id": "py-30-b2",
+          "kind": "blend",
+          "parts": [
+            "w",
+            "u"
+          ],
+          "question": "拼一拼：w — u = ?",
+          "options": [
+            {
+              "text": "wu"
+            },
+            {
+              "text": "wa"
+            },
+            {
+              "text": "wo"
+            }
+          ],
+          "answer": 0,
+          "hint": "屋子 wū",
+          "praise": "拼对了，wū！"
+        }
+      ],
+      "zone": 3
+    },
+    {
+      "id": "py-31",
+      "title": "第 32 关 单韵母 ü",
+      "subtitle": "ü",
+      "steps": [
+        {
+          "id": "py-31-t",
+          "kind": "letter",
+          "letters": [
+            "ü"
+          ],
+          "display": "ü",
+          "examples": [
+            {
+              "icon": "fish",
+              "text": "小鱼 yú 吹泡泡",
+              "say": "小鱼"
+            }
+          ],
+          "question": "学一学：ü",
+          "anim": "pydraw"
+        },
+        {
+          "id": "py-31-q",
+          "kind": "quiz",
+          "question": "小 ü 见到 j q x，帽子要——",
+          "options": [
+            {
+              "text": "摘掉再握手"
+            },
+            {
+              "text": "一直戴着"
+            },
+            {
+              "text": "反过来戴"
+            }
+          ],
+          "answer": 0,
+          "hint": "j q x 从不跟 ü 戴帽相拼",
+          "praise": "答对啦，小 ü 有礼貌！"
+        },
+        {
+          "id": "py-31-l",
+          "kind": "listen",
+          "prompt": "ü",
+          "speakText": "ü",
+          "question": "找一找：哪个是韵母「ü」？",
+          "options": [
+            {
+              "text": "u"
+            },
+            {
+              "text": "ü"
+            },
+            {
+              "text": "i"
+            }
+          ],
+          "answer": 1,
+          "hint": "小鱼吐泡泡 ǖ ǘ ǚ ǜ",
+          "praise": "韵母 ü 找对啦！"
+        }
+      ],
+      "zone": 3
+    },
+    {
+      "id": "py-32",
+      "title": "第 33 关 复韵母 ai ei ui",
+      "subtitle": "ai ei ui",
+      "steps": [
+        {
+          "id": "py-32-t",
+          "kind": "letter",
+          "letters": [
+            "ai",
+            "ei",
+            "ui"
+          ],
+          "display": "ai ei ui",
+          "examples": [
+            {
+              "icon": "girl",
+              "text": "阿姨 āyí",
+              "say": "阿姨"
+            },
+            {
+              "icon": "speaker",
+              "text": "飞 fēi",
+              "say": "飞"
+            },
+            {
+              "icon": "crystal",
+              "text": "水 uǐ",
+              "say": "水"
+            }
+          ],
+          "question": "学一学：ai ei ui",
+          "anim": "merge"
+        },
+        {
+          "id": "py-32-b",
+          "kind": "blend",
+          "parts": [
+            "l",
+            "ai"
+          ],
+          "question": "拼一拼：l — ai = ?",
+          "options": [
+            {
+              "text": "lai"
+            },
+            {
+              "text": "lai?"
+            },
+            {
+              "text": "li"
+            }
+          ],
+          "answer": 0,
+          "hint": "来 lái",
+          "praise": "拼对了，lái！"
+        },
+        {
+          "id": "py-32-q",
+          "kind": "quiz",
+          "question": "「ui」是哪两个字母手拉手？",
+          "options": [
+            {
+              "text": "u + i"
+            },
+            {
+              "text": "a + i"
+            },
+            {
+              "text": "e + i"
+            }
+          ],
+          "answer": 0,
+          "hint": "u 和 i 挨在一起",
+          "praise": "答对啦，u+i！"
+        }
+      ],
+      "zone": 3
+    },
+    {
+      "id": "py-33",
+      "title": "第 34 关 复韵母 ao ou iu",
+      "subtitle": "ao ou iu",
+      "steps": [
+        {
+          "id": "py-33-t",
+          "kind": "letter",
+          "letters": [
+            "ao",
+            "ou",
+            "iu"
+          ],
+          "display": "ao ou iu",
+          "examples": [
+            {
+              "icon": "ball",
+              "text": "棉袄 ǎo",
+              "say": "棉袄"
+            },
+            {
+              "icon": "sun",
+              "text": "藕 ǒu",
+              "say": "藕"
+            }
+          ],
+          "question": "学一学：ao ou iu",
+          "anim": "merge"
+        },
+        {
+          "id": "py-33-b",
+          "kind": "blend",
+          "parts": [
+            "h",
+            "ao"
+          ],
+          "question": "拼一拼：h — ao = ?",
+          "options": [
+            {
+              "text": "hao"
+            },
+            {
+              "text": "hou"
+            },
+            {
+              "text": "hao?"
+            }
+          ],
+          "answer": 0,
+          "hint": "好 hǎo",
+          "praise": "拼对了，hǎo！"
+        },
+        {
+          "id": "py-33-q",
+          "kind": "quiz",
+          "question": "小猫喵喵叫，韵母是——",
+          "options": [
+            {
+              "text": "ao"
+            },
+            {
+              "text": "ou"
+            },
+            {
+              "text": "iu"
+            }
+          ],
+          "answer": 0,
+          "hint": "喵 miāo 里有 ao",
+          "praise": "对，是 ao！"
+        }
+      ],
+      "zone": 4
+    },
+    {
+      "id": "py-34",
+      "title": "第 35 关 复韵母 ie üe er",
+      "subtitle": "ie üe er",
+      "steps": [
+        {
+          "id": "py-34-t",
+          "kind": "letter",
+          "letters": [
+            "ie",
+            "üe",
+            "er"
+          ],
+          "display": "ie üe er",
+          "examples": [
+            {
+              "icon": "leaf",
+              "text": "树叶 yè",
+              "say": "树叶"
+            },
+            {
+              "icon": "moon",
+              "text": "月 yuè",
+              "say": "月"
+            }
+          ],
+          "question": "学一学：ie üe er",
+          "anim": "merge"
+        },
+        {
+          "id": "py-34-q",
+          "kind": "quiz",
+          "question": "「er」单独做韵母时，写成——",
+          "options": [
+            {
+              "text": "儿 er（耳朵 er）"
+            },
+            {
+              "text": "e"
+            },
+            {
+              "text": "r"
+            }
+          ],
+          "answer": 0,
+          "hint": "er 是特殊韵母，自己当韵母",
+          "praise": "答对啦，儿化音的 er！"
+        }
+      ],
+      "zone": 4
+    },
+    {
+      "id": "py-35",
+      "title": "第 36 关 前鼻韵母 an en in",
+      "subtitle": "an en in",
+      "steps": [
+        {
+          "id": "py-35-t",
+          "kind": "letter",
+          "letters": [
+            "an",
+            "en",
+            "in"
+          ],
+          "display": "an en in",
+          "examples": [
+            {
+              "icon": "speaker",
+              "text": "天安门 ān",
+              "say": "天安门"
+            },
+            {
+              "icon": "tree",
+              "text": "树根 gēn",
+              "say": "树根"
+            }
+          ],
+          "question": "学一学：an en in",
+          "anim": "merge"
+        },
+        {
+          "id": "py-35-b",
+          "kind": "blend",
+          "parts": [
+            "g",
+            "an"
+          ],
+          "question": "拼一拼：g — an = ?",
+          "options": [
+            {
+              "text": "gan"
+            },
+            {
+              "text": "gan?"
+            },
+            {
+              "text": "gen"
+            }
+          ],
+          "answer": 0,
+          "hint": "干净 gānjìng",
+          "praise": "拼对了，gān！"
+        },
+        {
+          "id": "py-35-q",
+          "kind": "quiz",
+          "question": "前鼻韵母的尾巴是——",
+          "options": [
+            {
+              "text": "n"
+            },
+            {
+              "text": "ng"
             },
             {
               "text": "g"
             }
           ],
-          "answer": 2,
-          "hint": "想一想它的样子",
-          "praise": "「g」找对啦！"
+          "answer": 0,
+          "hint": "舌尖顶住前上牙：-n",
+          "praise": "对，前鼻音收尾 n！"
+        }
+      ],
+      "zone": 4
+    },
+    {
+      "id": "py-36",
+      "title": "第 37 关 前鼻韵母 un ün",
+      "subtitle": "un ün",
+      "steps": [
+        {
+          "id": "py-36-t",
+          "kind": "letter",
+          "letters": [
+            "un",
+            "ün"
+          ],
+          "display": "un ün",
+          "examples": [
+            {
+              "icon": "crystal",
+              "text": "温 wēn",
+              "say": "温"
+            },
+            {
+              "icon": "fish",
+              "text": "云 yún",
+              "say": "云"
+            }
+          ],
+          "question": "学一学：un ün",
+          "anim": "merge"
         },
         {
-          "id": "py-8-b",
+          "id": "py-36-b",
+          "kind": "blend",
+          "parts": [
+            "d",
+            "un"
+          ],
+          "question": "拼一拼：d — un = ?",
+          "options": [
+            {
+              "text": "dun"
+            },
+            {
+              "text": "dan"
+            },
+            {
+              "text": "din"
+            }
+          ],
+          "answer": 0,
+          "hint": "蹲下 dūn",
+          "praise": "拼对了，dūn！"
+        }
+      ],
+      "zone": 4
+    },
+    {
+      "id": "py-37",
+      "title": "第 38 关 后鼻韵母 ang eng ing ong",
+      "subtitle": "ang eng ing ong",
+      "steps": [
+        {
+          "id": "py-37-t",
+          "kind": "letter",
+          "letters": [
+            "ang",
+            "eng",
+            "ing",
+            "ong"
+          ],
+          "display": "ang eng ing ong",
+          "examples": [
+            {
+              "icon": "star",
+              "text": "亮 liàng",
+              "say": "亮"
+            },
+            {
+              "icon": "bulb",
+              "text": "灯 dēng",
+              "say": "灯"
+            }
+          ],
+          "question": "学一学：ang eng ing ong",
+          "anim": "merge"
+        },
+        {
+          "id": "py-37-q",
+          "kind": "quiz",
+          "question": "后鼻韵母的尾巴是——",
+          "options": [
+            {
+              "text": "ng"
+            },
+            {
+              "text": "n"
+            },
+            {
+              "text": "m"
+            }
+          ],
+          "answer": 0,
+          "hint": "舌根抬起：-ng，声音响亮",
+          "praise": "对，后鼻音 ng！"
+        },
+        {
+          "id": "py-37-b",
           "kind": "blend",
           "parts": [
             "g",
-            "e"
+            "ong"
           ],
-          "question": "拼一拼：g — e = ?",
+          "question": "拼一拼：g — ong = ?",
           "options": [
             {
-              "text": "ge"
+              "text": "gong"
             },
             {
-              "text": "ga"
+              "text": "gan"
             },
             {
-              "text": "gu"
+              "text": "geng"
             }
           ],
           "answer": 0,
-          "hint": "g 碰上 e",
-          "praise": "拼对了，ge！"
+          "hint": "公鸡 gōngjī",
+          "praise": "拼对了，gōng！"
         }
-      ]
+      ],
+      "zone": 4
     },
     {
-      "id": "py-9",
-      "title": "第 10 关 声母",
-      "subtitle": "认识「k」",
+      "id": "py-38",
+      "title": "第 39 关 整体认读 zhi chi shi ri zi ci si",
+      "subtitle": "zhi chi shi ri zi ci si",
       "steps": [
         {
-          "id": "py-9-t",
+          "id": "py-38-t",
           "kind": "letter",
           "letters": [
-            "k"
+            "zhi",
+            "chi",
+            "shi",
+            "ri",
+            "zi",
+            "ci",
+            "si"
           ],
-          "display": "k",
+          "display": "zhi chi shi ri zi ci si",
           "examples": [
             {
-              "icon": "heart",
-              "text": "开心 kāi",
-              "say": "开心"
+              "icon": "bee",
+              "text": "蜘蛛 zhī",
+              "say": "蜘蛛"
             },
             {
-              "icon": "book",
-              "text": "看书 kàn",
-              "say": "看书"
+              "icon": "sun",
+              "text": "日子 rì",
+              "say": "日子"
             }
           ],
-          "question": "学一学声母 k"
+          "question": "学一学：zhi chi shi ri zi ci si",
+          "anim": "tone"
         },
         {
-          "id": "py-9-l2",
-          "kind": "listen",
-          "promptIcon": "heart",
-          "speakText": "k",
-          "question": "看一看：「开心」的开头是哪个声母？",
+          "id": "py-38-q",
+          "kind": "quiz",
+          "question": "整体认读音节要——",
           "options": [
             {
-              "text": "k"
+              "text": "整个记住，不拆开拼"
             },
             {
-              "text": "d"
+              "text": "拆成声母和韵母"
             },
             {
-              "text": "p"
+              "text": "倒着读"
             }
           ],
           "answer": 0,
-          "hint": "开心 的第一个音",
-          "praise": "对！开心 开头是 k"
-        },
-        {
-          "id": "py-9-b",
-          "kind": "blend",
-          "parts": [
-            "k",
-            "e"
-          ],
-          "question": "拼一拼：k — e = ?",
-          "options": [
-            {
-              "text": "ke"
-            },
-            {
-              "text": "ka"
-            },
-            {
-              "text": "ku"
-            }
-          ],
-          "answer": 0,
-          "hint": "k 碰上 e",
-          "praise": "拼对了，ke！"
+          "hint": "一口读出，不能拼",
+          "praise": "对，整体认读！"
         }
-      ]
+      ],
+      "zone": 4
+    },
+    {
+      "id": "py-39",
+      "title": "第 40 关 整体认读 yi wu yu",
+      "subtitle": "yi wu yu",
+      "steps": [
+        {
+          "id": "py-39-t",
+          "kind": "letter",
+          "letters": [
+            "yi",
+            "wu",
+            "yu"
+          ],
+          "display": "yi wu yu",
+          "examples": [
+            {
+              "icon": "duck",
+              "text": "阿姨 yī",
+              "say": "阿姨"
+            },
+            {
+              "icon": "home",
+              "text": "屋子 wū",
+              "say": "屋子"
+            },
+            {
+              "icon": "fish",
+              "text": "鱼 yú",
+              "say": "鱼"
+            }
+          ],
+          "question": "学一学：yi wu yu",
+          "anim": "tone"
+        },
+        {
+          "id": "py-39-q",
+          "kind": "quiz",
+          "question": "「yī」是几个音节？",
+          "options": [
+            {
+              "text": "1 个，整体认读"
+            },
+            {
+              "text": "2 个"
+            },
+            {
+              "text": "3 个"
+            }
+          ],
+          "answer": 0,
+          "hint": "yi 是大 y 带小 i 组成",
+          "praise": "答对啦，1 个整体！"
+        }
+      ],
+      "zone": 4
+    },
+    {
+      "id": "py-40",
+      "title": "第 41 关 整体认读 ye yue yuan yin yun ying",
+      "subtitle": "ye yue yuan yin yun ying",
+      "steps": [
+        {
+          "id": "py-40-t",
+          "kind": "letter",
+          "letters": [
+            "ye",
+            "yue",
+            "yuan",
+            "yin",
+            "yun",
+            "ying"
+          ],
+          "display": "ye yue yuan yin yun ying",
+          "examples": [
+            {
+              "icon": "moon",
+              "text": "月 yuè",
+              "say": "月"
+            },
+            {
+              "icon": "star",
+              "text": "夜 yè",
+              "say": "夜"
+            }
+          ],
+          "question": "学一学：ye yue yuan yin yun ying",
+          "anim": "tone"
+        },
+        {
+          "id": "py-40-q",
+          "kind": "quiz",
+          "question": "夜晚的「yè」，属于——",
+          "options": [
+            {
+              "text": "整体认读音节"
+            },
+            {
+              "text": "声母"
+            },
+            {
+              "text": "三拼音节"
+            }
+          ],
+          "answer": 0,
+          "hint": "ye 是整体认读",
+          "praise": "对，整体认读 yè！"
+        }
+      ],
+      "zone": 4
+    },
+    {
+      "id": "py-41",
+      "title": "第 42 关 标调小规则",
+      "subtitle": "标调口诀",
+      "steps": [
+        {
+          "id": "py-41-t",
+          "kind": "letter",
+          "letters": [
+            "a"
+          ],
+          "display": "ā á ǎ à",
+          "examples": [
+            {
+              "icon": "girl",
+              "text": "ā á ǎ à",
+              "say": "ā"
+            },
+            {
+              "icon": "paw",
+              "text": "à à à",
+              "say": "à"
+            }
+          ],
+          "question": "学一学：ā á ǎ à",
+          "anim": "tone"
+        },
+        {
+          "id": "py-41-q",
+          "kind": "quiz",
+          "question": "标调口诀：a 母出现不放过——",
+          "options": [
+            {
+              "text": "有 a 给 a 戴"
+            },
+            {
+              "text": "随便戴"
+            },
+            {
+              "text": "都戴"
+            }
+          ],
+          "answer": 0,
+          "hint": "没 a 找 o e，i u 并排标在后",
+          "praise": "答对啦！"
+        },
+        {
+          "id": "py-41-q2",
+          "kind": "quiz",
+          "question": "hǎo（好）的声调戴在——",
+          "options": [
+            {
+              "text": "a 上"
+            },
+            {
+              "text": "o 上"
+            },
+            {
+              "text": "h 上"
+            }
+          ],
+          "answer": 0,
+          "hint": "有 a 给 a 戴",
+          "praise": "对，戴在 a 上！"
+        }
+      ],
+      "zone": 4
     },
     {
       "id": "pinyin-r1",
@@ -1065,163 +3160,256 @@
           }
         ]
       },
-      "review": true
+      "review": true,
+      "zone": 4
     },
     {
-      "id": "py-10",
-      "title": "第 11 关 韵母",
-      "subtitle": "a o e i u ü",
+      "id": "py-42",
+      "title": "第 43 关 三拼音节",
+      "subtitle": "声母+介母+韵母",
       "steps": [
         {
-          "id": "py-10-t",
+          "id": "py-42-t",
+          "kind": "letter",
+          "letters": [
+            "g",
+            "u",
+            "a"
+          ],
+          "display": "gua",
+          "examples": [
+            {
+              "text": "瓜 guā"
+            },
+            {
+              "icon": "home",
+              "text": "花 huā",
+              "say": "花"
+            }
+          ],
+          "question": "学一学：gua",
+          "anim": "merge"
+        },
+        {
+          "id": "py-42-q",
+          "kind": "quiz",
+          "question": "guā（瓜）是几拼音节？",
+          "options": [
+            {
+              "text": "三拼：g-u-a"
+            },
+            {
+              "text": "两拼：g-a"
+            },
+            {
+              "text": "不用拼"
+            }
+          ],
+          "answer": 0,
+          "hint": "声母+介母+韵母，三音相连",
+          "praise": "答对啦，三拼！"
+        }
+      ],
+      "zone": 5
+    },
+    {
+      "id": "py-43",
+      "title": "第 44 关 拼读巩固一",
+      "subtitle": "声母+复韵母",
+      "steps": [
+        {
+          "id": "py-43-t",
+          "kind": "letter",
+          "letters": [
+            "b",
+            "f",
+            "h"
+          ],
+          "display": "bai fei hui",
+          "examples": [
+            {
+              "icon": "egg",
+              "text": "白 bái",
+              "say": "白"
+            },
+            {
+              "icon": "speaker",
+              "text": "飞 fēi",
+              "say": "飞"
+            }
+          ],
+          "question": "学一学：bai fei hui",
+          "anim": "merge"
+        },
+        {
+          "id": "py-43-b",
+          "kind": "blend",
+          "parts": [
+            "f",
+            "ei"
+          ],
+          "question": "拼一拼：f — ei = ?",
+          "options": [
+            {
+              "text": "fei"
+            },
+            {
+              "text": "fa"
+            },
+            {
+              "text": "fi"
+            }
+          ],
+          "answer": 0,
+          "hint": "飞机 fēijī",
+          "praise": "拼对了，fēi！"
+        },
+        {
+          "id": "py-43-b2",
+          "kind": "blend",
+          "parts": [
+            "h",
+            "ui"
+          ],
+          "question": "拼一拼：h — ui = ?",
+          "options": [
+            {
+              "text": "hui"
+            },
+            {
+              "text": "hai"
+            },
+            {
+              "text": "hu"
+            }
+          ],
+          "answer": 0,
+          "hint": "回 huí",
+          "praise": "拼对了，huí！"
+        }
+      ],
+      "zone": 5
+    },
+    {
+      "id": "py-44",
+      "title": "第 45 关 拼读巩固二",
+      "subtitle": "声母+鼻韵母",
+      "steps": [
+        {
+          "id": "py-44-t",
+          "kind": "letter",
+          "letters": [
+            "sh",
+            "m",
+            "l"
+          ],
+          "display": "shan men ling",
+          "examples": [
+            {
+              "icon": "everest",
+              "text": "山 shān",
+              "say": "山"
+            },
+            {
+              "icon": "bulb",
+              "text": "铃 líng",
+              "say": "铃"
+            }
+          ],
+          "question": "学一学：shan men ling",
+          "anim": "merge"
+        },
+        {
+          "id": "py-44-b",
+          "kind": "blend",
+          "parts": [
+            "sh",
+            "an"
+          ],
+          "question": "拼一拼：sh — an = ?",
+          "options": [
+            {
+              "text": "shan"
+            },
+            {
+              "text": "sha"
+            },
+            {
+              "text": "sheng"
+            }
+          ],
+          "answer": 0,
+          "hint": "高山 shān",
+          "praise": "拼对了，shān！"
+        }
+      ],
+      "zone": 5
+    },
+    {
+      "id": "py-45",
+      "title": "第 46 关 韵母大复习",
+      "subtitle": "24 韵母一家亲",
+      "steps": [
+        {
+          "id": "py-45-t",
           "kind": "letter",
           "letters": [
             "a",
             "o",
             "e",
-            "i",
-            "u",
-            "ü"
+            "ong"
           ],
-          "display": "a",
+          "display": "a o e … ong",
           "examples": [
             {
-              "icon": "duck",
-              "text": "啊 ā 张大嘴",
-              "say": "ā"
-            },
-            {
-              "icon": "flame",
-              "text": "哦 ó",
-              "say": "ó"
+              "icon": "star",
+              "text": "韵母大家族",
+              "say": "韵母大家族"
             }
           ],
-          "question": "学一学韵母 a"
+          "question": "学一学：a o e … ong",
+          "anim": "merge"
         },
         {
-          "id": "py-10-l",
-          "kind": "listen",
-          "prompt": "a",
-          "speakText": "a",
-          "question": "找一找：哪个是韵母「a」？",
-          "options": [
-            {
-              "text": "o"
-            },
-            {
-              "text": "a"
-            },
-            {
-              "text": "e"
-            }
-          ],
-          "answer": 1,
-          "hint": "张大嘴巴 āāā",
-          "praise": "韵母 a 找对啦！"
-        }
-      ]
-    },
-    {
-      "id": "py-11",
-      "title": "第 12 关 复习",
-      "subtitle": "整体认读 · 拼读",
-      "steps": [
-        {
-          "id": "py-11-m",
-          "kind": "memory",
-          "question": "翻翻牌：声母和它的图片配成对",
-          "cards": [
-            {
-              "key": "b",
-              "icon": "girl"
-            },
-            {
-              "key": "b",
-              "text": "b"
-            },
-            {
-              "key": "d",
-              "icon": "duck"
-            },
-            {
-              "key": "d",
-              "text": "d"
-            },
-            {
-              "key": "l",
-              "icon": "leaf"
-            },
-            {
-              "key": "l",
-              "text": "l"
-            }
-          ]
-        },
-        {
-          "id": "py-11-l1",
-          "kind": "listen",
-          "prompt": "zhi",
-          "speakText": "zhi",
-          "question": "找一找：哪个是「zhi」？",
-          "options": [
-            {
-              "text": "chi"
-            },
-            {
-              "text": "zhi"
-            },
-            {
-              "text": "zi"
-            }
-          ],
-          "answer": 1,
-          "hint": "蜘蛛 zhī zhī 叫",
-          "praise": "整体认读 zhi！"
-        },
-        {
-          "id": "py-11-b",
-          "kind": "blend",
-          "parts": [
-            "b",
-            "a"
-          ],
-          "question": "拼一拼：b — a = ?",
-          "options": [
-            {
-              "text": "ba"
-            },
-            {
-              "text": "bo"
-            },
-            {
-              "text": "pa"
-            }
-          ],
-          "answer": 0,
-          "hint": "爸爸的爸",
-          "praise": "拼读小能手！"
-        },
-        {
-          "id": "py-11-pq",
+          "id": "py-45-q",
           "kind": "quiz",
-          "question": "拼一拼 m — a：哪张图是「妈妈」？",
+          "question": "汉语拼音一共有几个单韵母？",
           "options": [
             {
-              "icon": "girl",
-              "text": "妈妈"
+              "text": "6 个：a o e i u ü"
             },
             {
-              "icon": "moon"
+              "text": "3 个"
             },
             {
-              "icon": "train"
+              "text": "23 个"
             }
           ],
           "answer": 0,
-          "hint": "m 碰 a",
-          "praise": "拼读小达人！"
+          "hint": "六个兄弟排队站",
+          "praise": "对，6 个单韵母！"
+        },
+        {
+          "id": "py-45-q2",
+          "kind": "quiz",
+          "question": "声母一共有几个？",
+          "options": [
+            {
+              "text": "23 个"
+            },
+            {
+              "text": "6 个"
+            },
+            {
+              "text": "16 个"
+            }
+          ],
+          "answer": 0,
+          "hint": "b p m f … y w",
+          "praise": "答对啦，23 个声母！"
         }
-      ]
+      ],
+      "zone": 5
     },
     {
       "id": "py-12",
@@ -1250,7 +3438,8 @@
               "say": "má"
             }
           ],
-          "question": "学一学四声：一声平、二声扬、三声拐弯、四声降"
+          "question": "学一学四声：一声平、二声扬、三声拐弯、四声降",
+          "anim": "tone"
         },
         {
           "id": "py-12-l",
@@ -1292,7 +3481,8 @@
           "hint": "妈妈的妈声音平平的",
           "praise": "第一声，真棒！"
         }
-      ]
+      ],
+      "zone": 5
     },
     {
       "id": "py-13",
@@ -1320,7 +3510,8 @@
               "say": "wéijīn"
             }
           ],
-          "question": "学一学复韵母 ai ei ui"
+          "question": "学一学复韵母 ai ei ui",
+          "anim": "merge"
         },
         {
           "id": "py-13-b",
@@ -1366,7 +3557,8 @@
           "hint": "a 和 i 拉手",
           "praise": "复韵母 ai 找对啦！"
         }
-      ]
+      ],
+      "zone": 5
     },
     {
       "id": "py-14",
@@ -1394,7 +3586,8 @@
               "say": "rén"
             }
           ],
-          "question": "学一学前鼻韵母 an en in"
+          "question": "学一学前鼻韵母 an en in",
+          "anim": "merge"
         },
         {
           "id": "py-14-b",
@@ -1440,7 +3633,8 @@
           "hint": "舌尖抵上牙床",
           "praise": "前鼻韵母 in 找对啦！"
         }
-      ]
+      ],
+      "zone": 5
     },
     {
       "id": "py-15",
@@ -1542,7 +3736,184 @@
           "question": "描一描字母 o：从右上起笔画个圆",
           "praise": "字母 o 描圆啦！"
         }
-      ]
+      ],
+      "zone": 5
+    },
+    {
+      "id": "pinyin-r2",
+      "title": "复习关 三",
+      "subtitle": "旧题开盲盒 · 混排复习",
+      "steps": [
+        {
+          "id": "pinyin-r2-0",
+          "kind": "listen",
+          "prompt": "b",
+          "speakText": "b",
+          "question": "找一找：哪个是「b」？",
+          "options": [
+            {
+              "text": "d"
+            },
+            {
+              "text": "p"
+            },
+            {
+              "text": "b"
+            }
+          ],
+          "answer": 2,
+          "hint": "想一想它的样子",
+          "praise": "「b」找对啦！"
+        },
+        {
+          "id": "pinyin-r2-1",
+          "kind": "listen",
+          "promptIcon": "volcano",
+          "speakText": "p",
+          "question": "看一看：「山坡」的开头是哪个声母？",
+          "options": [
+            {
+              "text": "f"
+            },
+            {
+              "text": "p"
+            },
+            {
+              "text": "t"
+            }
+          ],
+          "answer": 1,
+          "hint": "山坡 的第一个音",
+          "praise": "对！山坡 开头是 p"
+        },
+        {
+          "id": "pinyin-r2-2",
+          "kind": "quiz",
+          "question": "拼一拼 m — a：哪张图是「妈妈」？",
+          "options": [
+            {
+              "icon": "girl",
+              "text": "妈妈"
+            },
+            {
+              "icon": "candy"
+            },
+            {
+              "icon": "heart"
+            }
+          ],
+          "answer": 0,
+          "hint": "m 碰 a",
+          "praise": "拼读小能手：妈妈！"
+        },
+        {
+          "id": "pinyin-r2-3",
+          "kind": "blend",
+          "parts": [
+            "f",
+            "a"
+          ],
+          "question": "拼一拼：f — a = ?",
+          "options": [
+            {
+              "text": "fa"
+            },
+            {
+              "text": "fo"
+            },
+            {
+              "text": "fu"
+            }
+          ],
+          "answer": 0,
+          "hint": "f 碰上 a",
+          "praise": "拼对了，fa！"
+        },
+        {
+          "id": "pinyin-r2-4",
+          "kind": "listen",
+          "prompt": "d",
+          "speakText": "d",
+          "question": "找一找：哪个是「d」？",
+          "options": [
+            {
+              "text": "p"
+            },
+            {
+              "text": "m"
+            },
+            {
+              "text": "d"
+            }
+          ],
+          "answer": 2,
+          "hint": "想一想它的样子",
+          "praise": "「d」找对啦！"
+        },
+        {
+          "id": "pinyin-r2-5",
+          "kind": "listen",
+          "promptIcon": "train",
+          "speakText": "t",
+          "question": "看一看：「太阳」的开头是哪个声母？",
+          "options": [
+            {
+              "text": "p"
+            },
+            {
+              "text": "m"
+            },
+            {
+              "text": "t"
+            }
+          ],
+          "answer": 2,
+          "hint": "太阳 的第一个音",
+          "praise": "对！太阳 开头是 t"
+        }
+      ],
+      "board": {
+        "spaces": [
+          {
+            "type": "question",
+            "step": "pinyin-r2-2"
+          },
+          {
+            "type": "question",
+            "step": "pinyin-r2-3"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "pinyin-r2-4"
+          },
+          {
+            "type": "question",
+            "step": "pinyin-r2-5"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "pinyin-r2-0"
+          },
+          {
+            "type": "chest"
+          },
+          {
+            "type": "question",
+            "step": "pinyin-r2-1"
+          },
+          {
+            "type": "mushroom"
+          }
+        ]
+      },
+      "review": true,
+      "zone": 5
     },
     {
       "id": "pinyin-boss",
@@ -1658,27 +4029,6 @@
         {
           "id": "pinyin-boss-5",
           "kind": "listen",
-          "prompt": "b",
-          "speakText": "b",
-          "question": "找一找：哪个是「b」？",
-          "options": [
-            {
-              "text": "d"
-            },
-            {
-              "text": "p"
-            },
-            {
-              "text": "b"
-            }
-          ],
-          "answer": 2,
-          "hint": "想一想它的样子",
-          "praise": "「b」找对啦！"
-        },
-        {
-          "id": "pinyin-boss-6",
-          "kind": "listen",
           "promptIcon": "train",
           "speakText": "t",
           "question": "看一看：「太阳」的开头是哪个声母？",
@@ -1698,7 +4048,7 @@
           "praise": "对！太阳 开头是 t"
         },
         {
-          "id": "pinyin-boss-7",
+          "id": "pinyin-boss-6",
           "kind": "quiz",
           "question": "拼一拼 n — i：哪张图是「拿苹果」？",
           "options": [
@@ -1716,6 +4066,29 @@
           "answer": 1,
           "hint": "n 碰 i",
           "praise": "拼读小能手：拿苹果！"
+        },
+        {
+          "id": "pinyin-boss-7",
+          "kind": "blend",
+          "parts": [
+            "l",
+            "a"
+          ],
+          "question": "拼一拼：l — a = ?",
+          "options": [
+            {
+              "text": "la"
+            },
+            {
+              "text": "le"
+            },
+            {
+              "text": "lu"
+            }
+          ],
+          "answer": 0,
+          "hint": "l 碰上 a",
+          "praise": "拼对了，la！"
         }
       ],
       "board": {
@@ -1754,7 +4127,8 @@
           }
         ]
       },
-      "boss": true
+      "boss": true,
+      "zone": 5
     }
   ]
 }

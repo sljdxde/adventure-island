@@ -72,8 +72,15 @@ manifest = load_json(os.path.join(DESIGN, "design/assets/manifest.json"))
 manifest_icons = {p.split("/")[1].replace(".svg", "") for p in manifest["icons"]} | \
                  {p.split("/")[1].replace(".svg", "") for p in manifest["bg"]}
 
-SUBJECTS = [("cn_levels", 33), ("math_levels", 37), ("pinyin_levels", 19),
-            ("english_levels", 27), ("astro_levels", 19), ("geo_levels", 15)]
+# v0.10.1 学一学动画 id 全集（letter.anim 枚举校验；两端 AstroAnimView/animHTML 各自实现）
+ANIM_IDS = {"sunrise", "daynight", "orbit", "satellite", "moonphases", "rocket", "float",
+            "meteor", "bigdipper", "blackhole", "galaxy", "bigbang", "tide",
+            "pydraw", "tone", "merge",
+            "walk", "rainbow", "countpop", "fall", "heartbeat", "train",
+            "river", "wall", "mountain", "panda", "drift", "windmill"}
+
+SUBJECTS = [("cn_levels", 50), ("math_levels", 50), ("pinyin_levels", 50),
+            ("english_levels", 50), ("astro_levels", 100), ("geo_levels", 50)]
 subject_docs = {name: load_json(os.path.join(RES, name + ".json")) for name, _ in SUBJECTS}
 exps = load_json(os.path.join(RES, "experiments.json"))
 coll = load_json(os.path.join(RES, "collection.json"))
@@ -86,10 +93,10 @@ def collect_icons(node):
             if k == "morphFrom" and isinstance(v, str): json_icons.add(v)
             if k == "duckIcon" and isinstance(v, str): json_icons.add(v)
             if k in ("leftIcon", "rightIcon", "guessIcon") and isinstance(v, str): json_icons.add(v)
-            if k == "promptIcon" and isinstance(v, str): json_icons.add(v)
-            if k == "seq" and isinstance(v, list):
-                for s in v:
-                    if isinstance(s, str): json_icons.add(s)
+            if k in ("promptIcon", "targetIcon", "shadow") and isinstance(v, str): json_icons.add(v)
+            if k == "decoys" and isinstance(v, list):
+                for d in v:
+                    if isinstance(d, str): json_icons.add(d)
             collect_icons(v)
     elif isinstance(node, list):
         for v in node: collect_icons(v)
@@ -105,6 +112,22 @@ def check_subject(doc, name, expect_levels):
     ids = [l["id"] for l in levels]
     if len(set(ids)) != len(ids): err(f"[{name}] 关卡 id 重复")
     else: ok(f"[{name}] 关卡 id 唯一")
+    # v0.10/v0.11 星区分章（保卫萝卜式）：每星区恰好 10 关，zones 数 = 关卡数/10
+    zones = doc.get("zones") or []
+    if zones:
+        if len(zones) * 10 != len(levels):
+            err(f"[{name}] 星区数 {len(zones)} × 10 != 关卡数 {len(levels)}")
+        else:
+            ok(f"[{name}] 星区图 {len(zones)} 区：{zones[0]['title']} … {zones[-1]['title']}")
+        zl = {}
+        for lv in levels:
+            z = lv.get("zone")
+            if not z:
+                err(f"[{name}/{lv['id']}] 缺 zone 字段")
+            else:
+                zl[z] = zl.get(z, 0) + 1
+        if zl and sorted(zl.values()) != [10] * len(zl):
+            err(f"[{name}] 星区关卡数不均 {sorted(zl.items())}")
     for li, lv in enumerate(levels):
         if not lv["steps"]: err(f"[{name}] 第{li+1}关无步骤")
         # v0.8 迷你棋盘（工单02/03/05）：题目格占比 ≥ 60%、题目引用存在且不重复（规格实现决策 2）；
@@ -172,6 +195,8 @@ def check_subject(doc, name, expect_levels):
             elif kind == "letter":
                 if not st.get("letters") or not st.get("display") or not st.get("examples"):
                     err(f"{sid} letter 缺 letters/display/examples")
+                if st.get("anim") and st["anim"] not in ANIM_IDS:
+                    err(f"{sid} letter anim 非法 {st['anim']}")
             elif kind == "listen":
                 # 视觉化找一找：目标大卡为 prompt 文字或 promptIcon 图片（不依赖声音可作答）
                 if not (st.get("prompt") or st.get("promptIcon")):
@@ -377,6 +402,96 @@ def check_subject(doc, name, expect_levels):
                 for r in regions:
                     if not r.get("points") or len(r["points"]) < 3:
                         err(f"{sid} mappuzzle 块 {r.get('id')} 多边形点数<3")
+            elif kind == "balance":
+                # v0.10 天文台：天平比一比（answerKey 复用 left/right 语义）
+                for k in ("left", "right"):
+                    side = st.get(k)
+                    if not isinstance(side, dict) or not (side.get("icon") or side.get("text")):
+                        err(f"{sid} balance {k} 侧缺 icon/text")
+                if st.get("answerKey") not in ("left", "right"):
+                    err(f"{sid} balance answerKey 非法 {st.get('answerKey')}")
+            elif kind == "sort":
+                # v0.10 天文台：拖一拖分类（2 筐，物品 3-6 件，每筐至少 1 件）
+                bins = st.get("bins") or []
+                items = st.get("items") or []
+                bin_ids = [b.get("id") for b in bins]
+                if len(bins) != 2 or len(bin_ids) != len(set(bin_ids)) or not all(bin_ids):
+                    err(f"{sid} sort 应为 2 个 id 唯一的筐 {bin_ids}")
+                if not all(b.get("label") for b in bins):
+                    err(f"{sid} sort 筐缺 label")
+                if not (3 <= len(items) <= 6):
+                    err(f"{sid} sort 物品数 {len(items)} 不在 3-6")
+                iids = [i.get("id") for i in items]
+                if len(iids) != len(set(iids)) or not all(iids):
+                    err(f"{sid} sort 物品 id 重复或缺失 {iids}")
+                for it in items:
+                    if not (it.get("icon") or it.get("text")):
+                        err(f"{sid} sort 物品 {it.get('id')} 缺 icon/text")
+                    if it.get("bin") not in bin_ids:
+                        err(f"{sid} sort 物品 {it.get('id')} 指向不存在的筐 {it.get('bin')}")
+                if len(set(bin_ids)) == 2:
+                    for b in bin_ids:
+                        if not any(i.get("bin") == b for i in items):
+                            err(f"{sid} sort 筐 {b} 没有物品")
+            elif kind == "tapall":
+                # v0.10.1 点点看：点中全部 correct 项
+                opts = st.get("options") or []
+                if not (4 <= len(opts) <= 9):
+                    err(f"{sid} tapall 选项数 {len(opts)} 不在 4-9")
+                correct = [o for o in opts if o.get("correct") is True]
+                if len(correct) < 2:
+                    err(f"{sid} tapall 正确项应 ≥2，实际 {len(correct)}")
+                for o in opts:
+                    if not (o.get("icon") or o.get("text")):
+                        err(f"{sid} tapall 选项为空")
+            elif kind == "match":
+                # v0.10.1 连一连：3 组左右配对
+                pairs = st.get("pairs") or []
+                if len(pairs) != 3:
+                    err(f"{sid} match 配对数 {len(pairs)} != 3")
+                rights = [p.get("right", {}).get("text") for p in pairs]
+                if len(set(rights)) != len(rights) or not all(rights):
+                    err(f"{sid} match 右列文字重复或缺失 {rights}")
+                for pi, p in enumerate(pairs):
+                    l, r = p.get("left") or {}, p.get("right") or {}
+                    if not (l.get("icon") or l.get("text")) or not r.get("text"):
+                        err(f"{sid} match 第{pi+1}组缺 left/right 内容")
+            elif kind == "lineup":
+                # v0.10.1 排排队：数组顺序即正确顺序
+                items = st.get("lineup") or []
+                if not (3 <= len(items) <= 4):
+                    err(f"{sid} lineup 物品数 {len(items)} 不在 3-4")
+                ids = [i.get("id") for i in items]
+                if len(set(ids)) != len(ids) or not all(ids):
+                    err(f"{sid} lineup id 重复或缺失 {ids}")
+                for it in items:
+                    if not it.get("icon"):
+                        err(f"{sid} lineup 物品 {it.get('id')} 缺 icon")
+            elif kind == "sequence":
+                # v0.10.1 倒计时点火：按 seq 顺序点
+                seq = st.get("seq") or []
+                if not (3 <= len(seq) <= 5) or not all(isinstance(x, str) and x for x in seq):
+                    err(f"{sid} sequence seq 非法 {seq}")
+                if len(set(seq)) != len(seq):
+                    err(f"{sid} sequence seq 重复 {seq}")
+            elif kind == "spotlight":
+                # v0.10.1 望远镜找星
+                if not st.get("targetIcon"):
+                    err(f"{sid} spotlight 缺 targetIcon")
+                decoys = st.get("decoys") or []
+                if not (3 <= len(decoys) <= 8):
+                    err(f"{sid} spotlight 干扰星数 {len(decoys)} 不在 3-8")
+            elif kind == "shadow":
+                # v0.10.1 剪影猜猜
+                if not st.get("shadow"):
+                    err(f"{sid} shadow 缺 shadow 图标")
+                opts = st.get("options") or []
+                ans = st.get("answer")
+                if len(opts) != 3 or not isinstance(ans, int) or not (0 <= ans < 3):
+                    err(f"{sid} shadow 选项/答案非法")
+                for o in opts:
+                    if not o.get("icon"):
+                        err(f"{sid} shadow 选项缺 icon")
             else:
                 err(f"{sid} 未知步骤类型 {kind}")
 

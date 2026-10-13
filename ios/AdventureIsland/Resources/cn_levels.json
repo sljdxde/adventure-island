@@ -2,6 +2,38 @@
   "subject": "cn",
   "title": "识字村",
   "guide": "panda",
+  "zones": [
+    {
+      "n": 1,
+      "title": "自然万象",
+      "subtitle": "日月水火山石田禾",
+      "icon": "sun"
+    },
+    {
+      "n": 2,
+      "title": "数字启蒙",
+      "subtitle": "一二三四五六七八九十",
+      "icon": "dice"
+    },
+    {
+      "n": 3,
+      "title": "生活常用",
+      "subtitle": "大小上下星手糖车",
+      "icon": "girl"
+    },
+    {
+      "n": 4,
+      "title": "身边事物",
+      "subtitle": "目耳足云雨风虫贝见",
+      "icon": "home"
+    },
+    {
+      "n": 5,
+      "title": "汉字大挑战",
+      "subtitle": "白牛羊果 · 总复习",
+      "icon": "medal"
+    }
+  ],
   "levels": [
     {
       "id": "cn-0",
@@ -175,6 +207,41 @@
           ],
           "question": "写一写：看一笔、描一笔，写「日」",
           "praise": "写得真好，汉字卡到手！"
+        },
+        {
+          "id": "cn-x1",
+          "kind": "match",
+          "question": "连一连：字和它变成的东西",
+          "pairs": [
+            {
+              "left": {
+                "icon": "sun",
+                "text": "日"
+              },
+              "right": {
+                "text": "太阳"
+              }
+            },
+            {
+              "left": {
+                "icon": "moon",
+                "text": "月"
+              },
+              "right": {
+                "text": "月亮"
+              }
+            },
+            {
+              "left": {
+                "icon": "volcano",
+                "text": "山"
+              },
+              "right": {
+                "text": "大山"
+              }
+            }
+          ],
+          "praise": "全部连对，真棒！"
         }
       ],
       "board": {
@@ -199,7 +266,8 @@
             "step": "cn-0-q"
           },
           {
-            "type": "coin"
+            "type": "question",
+            "step": "cn-x1"
           },
           {
             "type": "question",
@@ -213,7 +281,8 @@
             "step": "cn-0-wr"
           }
         ]
-      }
+      },
+      "zone": 1
     },
     {
       "id": "cn-1",
@@ -422,7 +491,8 @@
             "step": "cn-1-l"
           }
         ]
-      }
+      },
+      "zone": 1
     },
     {
       "id": "cn-2",
@@ -634,7 +704,8 @@
             "step": "cn-2-l2"
           }
         ]
-      }
+      },
+      "zone": 1
     },
     {
       "id": "cn-3",
@@ -834,7 +905,8 @@
             "step": "cn-3-w"
           }
         ]
-      }
+      },
+      "zone": 1
     },
     {
       "id": "cn-4",
@@ -1044,186 +1116,8 @@
             "type": "rest"
           }
         ]
-      }
-    },
-    {
-      "id": "cn-r0",
-      "title": "复习关 一",
-      "subtitle": "旧题开盲盒 · 混排复习",
-      "steps": [
-        {
-          "id": "cn-r0-0",
-          "kind": "listen",
-          "prompt": "日",
-          "speakText": "日",
-          "question": "找一找：哪张图片是「日」？",
-          "options": [
-            {
-              "icon": "sunrise",
-              "text": "日"
-            },
-            {
-              "icon": "moon"
-            },
-            {
-              "icon": "cake"
-            }
-          ],
-          "answer": 0,
-          "hint": "想想刚才的图片：「日」",
-          "praise": "眼睛真亮！日 找对啦！"
-        },
-        {
-          "id": "cn-r0-1",
-          "kind": "listen",
-          "prompt": "月",
-          "speakText": "月",
-          "question": "找一找：哪张图片是「月」？",
-          "options": [
-            {
-              "icon": "star"
-            },
-            {
-              "icon": "sun"
-            },
-            {
-              "icon": "moon",
-              "text": "月"
-            }
-          ],
-          "answer": 2,
-          "hint": "想想刚才的图片：「月」",
-          "praise": "眼睛真亮！月 找对啦！"
-        },
-        {
-          "id": "cn-r0-2",
-          "kind": "listen",
-          "prompt": "水",
-          "speakText": "水",
-          "question": "找一找：哪张图片是「水」？",
-          "options": [
-            {
-              "icon": "wave",
-              "text": "水"
-            },
-            {
-              "icon": "sun"
-            },
-            {
-              "icon": "crystal"
-            }
-          ],
-          "answer": 0,
-          "hint": "想想刚才的图片：「水」",
-          "praise": "眼睛真亮！水 找对啦！"
-        },
-        {
-          "id": "cn-r0-3",
-          "kind": "listen",
-          "prompt": "山",
-          "speakText": "山",
-          "question": "找一找：哪张图片是「山」？",
-          "options": [
-            {
-              "icon": "rocket"
-            },
-            {
-              "icon": "volcano",
-              "text": "山"
-            },
-            {
-              "icon": "home"
-            }
-          ],
-          "answer": 1,
-          "hint": "想想刚才的图片：「山」",
-          "praise": "眼睛真亮！山 找对啦！"
-        },
-        {
-          "id": "cn-r0-4",
-          "kind": "listen",
-          "prompt": "木",
-          "speakText": "木",
-          "question": "找一找：哪张图片是「木」？",
-          "options": [
-            {
-              "icon": "sprout",
-              "text": "木"
-            },
-            {
-              "icon": "flower"
-            },
-            {
-              "icon": "rock"
-            }
-          ],
-          "answer": 0,
-          "hint": "想想刚才的图片：「木」",
-          "praise": "眼睛真亮！木 找对啦！"
-        },
-        {
-          "id": "cn-r0-5",
-          "kind": "listen",
-          "promptIcon": "sunface",
-          "speakText": "日",
-          "question": "看一看：这张图变成的字是哪个？",
-          "options": [
-            {
-              "text": "日"
-            },
-            {
-              "text": "月"
-            },
-            {
-              "text": "水"
-            }
-          ],
-          "answer": 0,
-          "hint": "想一想它像什么字",
-          "praise": "对！这张图就是「日」"
-        }
-      ],
-      "board": {
-        "spaces": [
-          {
-            "type": "question",
-            "step": "cn-r0-0"
-          },
-          {
-            "type": "question",
-            "step": "cn-r0-1"
-          },
-          {
-            "type": "coin"
-          },
-          {
-            "type": "question",
-            "step": "cn-r0-2"
-          },
-          {
-            "type": "question",
-            "step": "cn-r0-3"
-          },
-          {
-            "type": "coin"
-          },
-          {
-            "type": "question",
-            "step": "cn-r0-4"
-          },
-          {
-            "type": "chest"
-          },
-          {
-            "type": "question",
-            "step": "cn-r0-5"
-          },
-          {
-            "type": "mushroom"
-          }
-        ]
       },
-      "review": true
+      "zone": 1
     },
     {
       "id": "cn-5",
@@ -1416,7 +1310,8 @@
             "step": "cn-5-l3"
           }
         ]
-      }
+      },
+      "zone": 1
     },
     {
       "id": "cn-6",
@@ -1616,7 +1511,8 @@
             "step": "cn-6-wr"
           }
         ]
-      }
+      },
+      "zone": 1
     },
     {
       "id": "cn-7",
@@ -1820,7 +1716,8 @@
             "step": "cn-7-l"
           }
         ]
-      }
+      },
+      "zone": 1
     },
     {
       "id": "cn-8",
@@ -2034,7 +1931,8 @@
             "step": "cn-8-l2"
           }
         ]
-      }
+      },
+      "zone": 1
     },
     {
       "id": "cn-9",
@@ -2248,187 +2146,8 @@
             "step": "cn-9-w"
           }
         ]
-      }
-    },
-    {
-      "id": "cn-r1",
-      "title": "复习关 二",
-      "subtitle": "旧题开盲盒 · 混排复习",
-      "steps": [
-        {
-          "id": "cn-r1-0",
-          "kind": "listen",
-          "prompt": "日",
-          "speakText": "日",
-          "question": "找一找：哪张图片是「日」？",
-          "options": [
-            {
-              "icon": "sunrise",
-              "text": "日"
-            },
-            {
-              "icon": "moon"
-            },
-            {
-              "icon": "cake"
-            }
-          ],
-          "answer": 0,
-          "hint": "想想刚才的图片：「日」",
-          "praise": "眼睛真亮！日 找对啦！"
-        },
-        {
-          "id": "cn-r1-1",
-          "kind": "listen",
-          "prompt": "月",
-          "speakText": "月",
-          "question": "找一找：哪张图片是「月」？",
-          "options": [
-            {
-              "icon": "star"
-            },
-            {
-              "icon": "sun"
-            },
-            {
-              "icon": "moon",
-              "text": "月"
-            }
-          ],
-          "answer": 2,
-          "hint": "想想刚才的图片：「月」",
-          "praise": "眼睛真亮！月 找对啦！"
-        },
-        {
-          "id": "cn-r1-2",
-          "kind": "listen",
-          "prompt": "水",
-          "speakText": "水",
-          "question": "找一找：哪张图片是「水」？",
-          "options": [
-            {
-              "icon": "wave",
-              "text": "水"
-            },
-            {
-              "icon": "sun"
-            },
-            {
-              "icon": "crystal"
-            }
-          ],
-          "answer": 0,
-          "hint": "想想刚才的图片：「水」",
-          "praise": "眼睛真亮！水 找对啦！"
-        },
-        {
-          "id": "cn-r1-3",
-          "kind": "listen",
-          "prompt": "山",
-          "speakText": "山",
-          "question": "找一找：哪张图片是「山」？",
-          "options": [
-            {
-              "icon": "rocket"
-            },
-            {
-              "icon": "volcano",
-              "text": "山"
-            },
-            {
-              "icon": "home"
-            }
-          ],
-          "answer": 1,
-          "hint": "想想刚才的图片：「山」",
-          "praise": "眼睛真亮！山 找对啦！"
-        },
-        {
-          "id": "cn-r1-4",
-          "kind": "listen",
-          "prompt": "木",
-          "speakText": "木",
-          "question": "找一找：哪张图片是「木」？",
-          "options": [
-            {
-              "icon": "sprout",
-              "text": "木"
-            },
-            {
-              "icon": "flower"
-            },
-            {
-              "icon": "rock"
-            }
-          ],
-          "answer": 0,
-          "hint": "想想刚才的图片：「木」",
-          "praise": "眼睛真亮！木 找对啦！"
-        },
-        {
-          "id": "cn-r1-5",
-          "kind": "listen",
-          "prompt": "人",
-          "speakText": "人",
-          "question": "找一找：哪张图片是「人」？",
-          "options": [
-            {
-              "icon": "sun"
-            },
-            {
-              "icon": "duck"
-            },
-            {
-              "icon": "girl",
-              "text": "人"
-            }
-          ],
-          "answer": 2,
-          "hint": "想想刚才的图片：「人」",
-          "praise": "眼睛真亮！人 找对啦！"
-        }
-      ],
-      "board": {
-        "spaces": [
-          {
-            "type": "question",
-            "step": "cn-r1-1"
-          },
-          {
-            "type": "question",
-            "step": "cn-r1-2"
-          },
-          {
-            "type": "coin"
-          },
-          {
-            "type": "question",
-            "step": "cn-r1-3"
-          },
-          {
-            "type": "question",
-            "step": "cn-r1-4"
-          },
-          {
-            "type": "coin"
-          },
-          {
-            "type": "question",
-            "step": "cn-r1-5"
-          },
-          {
-            "type": "chest"
-          },
-          {
-            "type": "question",
-            "step": "cn-r1-0"
-          },
-          {
-            "type": "rest"
-          }
-        ]
       },
-      "review": true
+      "zone": 1
     },
     {
       "id": "cn-10",
@@ -2602,6 +2321,29 @@
           ],
           "question": "写一写：看一笔、描一笔，写「火」",
           "praise": "写得真好，汉字卡到手！"
+        },
+        {
+          "id": "cn-x2",
+          "kind": "shadow",
+          "question": "看影子猜猜：哪张是「火」的词卡？",
+          "shadow": "flame",
+          "options": [
+            {
+              "icon": "flame",
+              "text": "火"
+            },
+            {
+              "icon": "volcano",
+              "text": "山"
+            },
+            {
+              "icon": "crystal",
+              "text": "冰晶"
+            }
+          ],
+          "answer": 0,
+          "hint": "火苗向上跳的样子",
+          "praise": "猜对啦！"
         }
       ],
       "board": {
@@ -2626,7 +2368,8 @@
             "step": "cn-10-l2"
           },
           {
-            "type": "coin"
+            "type": "question",
+            "step": "cn-x2"
           },
           {
             "type": "question",
@@ -2643,7 +2386,8 @@
             "type": "rest"
           }
         ]
-      }
+      },
+      "zone": 2
     },
     {
       "id": "cn-11",
@@ -2862,7 +2606,8 @@
             "step": "cn-11-l3"
           }
         ]
-      }
+      },
+      "zone": 2
     },
     {
       "id": "cn-12",
@@ -3083,7 +2828,8 @@
             "step": "cn-12-wr"
           }
         ]
-      }
+      },
+      "zone": 2
     },
     {
       "id": "cn-13",
@@ -3259,6 +3005,39 @@
           ],
           "question": "写一写：看一笔、描一笔，写「鸟」",
           "praise": "写得真好，汉字卡到手！"
+        },
+        {
+          "id": "cn-x3",
+          "kind": "tapall",
+          "question": "点点看：把动物朋友都点亮",
+          "options": [
+            {
+              "icon": "duck",
+              "correct": true
+            },
+            {
+              "icon": "panda",
+              "correct": true
+            },
+            {
+              "icon": "rabbit",
+              "correct": true
+            },
+            {
+              "icon": "bear",
+              "correct": true
+            },
+            {
+              "icon": "sun",
+              "correct": false
+            },
+            {
+              "icon": "apple",
+              "correct": false
+            }
+          ],
+          "hint": "小鸟、熊猫、兔子、小熊是动物朋友",
+          "praise": "全点对啦，小天文学家！"
         }
       ],
       "board": {
@@ -3272,7 +3051,8 @@
             "step": "cn-13-w"
           },
           {
-            "type": "coin"
+            "type": "question",
+            "step": "cn-x3"
           },
           {
             "type": "question",
@@ -3294,7 +3074,8 @@
             "step": "cn-13-l"
           }
         ]
-      }
+      },
+      "zone": 2
     },
     {
       "id": "cn-14",
@@ -3353,7 +3134,7 @@
               "text": "手"
             },
             {
-              "text": "日"
+              "text": "目"
             },
             {
               "text": "一"
@@ -3442,6 +3223,18 @@
           ],
           "question": "写一写：看一笔、描一笔，写「一」",
           "praise": "写得真好，汉字卡到手！"
+        },
+        {
+          "id": "cn-x4",
+          "kind": "sequence",
+          "question": "按顺序点：一 → 二 → 三",
+          "seq": [
+            "一",
+            "二",
+            "三"
+          ],
+          "hint": "按顺序一个一个点",
+          "praise": "汉字火车开动啦！"
         }
       ],
       "board": {
@@ -3466,7 +3259,8 @@
             "step": "cn-14-wr"
           },
           {
-            "type": "coin"
+            "type": "question",
+            "step": "cn-x4"
           },
           {
             "type": "question",
@@ -3480,7 +3274,8 @@
             "step": "cn-14-l2"
           }
         ]
-      }
+      },
+      "zone": 2
     },
     {
       "id": "cn-15",
@@ -3539,10 +3334,10 @@
               "text": "二"
             },
             {
-              "text": "月"
+              "text": "耳"
             },
             {
-              "text": "水"
+              "text": "足"
             }
           ],
           "answer": 0,
@@ -3673,7 +3468,8 @@
             "step": "cn-15-w"
           }
         ]
-      }
+      },
+      "zone": 2
     },
     {
       "id": "cn-16",
@@ -3729,13 +3525,13 @@
           "question": "看一看：这张图变成的字是哪个？",
           "options": [
             {
-              "text": "山"
+              "text": "云"
             },
             {
               "text": "三"
             },
             {
-              "text": "木"
+              "text": "雨"
             }
           ],
           "answer": 1,
@@ -3876,7 +3672,8 @@
             "type": "rest"
           }
         ]
-      }
+      },
+      "zone": 2
     },
     {
       "id": "cn-17",
@@ -3932,10 +3729,10 @@
           "question": "看一看：这张图变成的字是哪个？",
           "options": [
             {
-              "text": "人"
+              "text": "风"
             },
             {
-              "text": "口"
+              "text": "禾"
             },
             {
               "text": "四"
@@ -4083,7 +3880,8 @@
             "step": "cn-17-l3"
           }
         ]
-      }
+      },
+      "zone": 2
     },
     {
       "id": "cn-18",
@@ -4142,10 +3940,10 @@
               "text": "五"
             },
             {
-              "text": "天"
+              "text": "虫"
             },
             {
-              "text": "田"
+              "text": "贝"
             }
           ],
           "answer": 0,
@@ -4290,7 +4088,189 @@
             "step": "cn-18-wr"
           }
         ]
-      }
+      },
+      "zone": 2
+    },
+    {
+      "id": "cn-r0",
+      "title": "复习关 一",
+      "subtitle": "旧题开盲盒 · 混排复习",
+      "steps": [
+        {
+          "id": "cn-r0-0",
+          "kind": "listen",
+          "prompt": "日",
+          "speakText": "日",
+          "question": "找一找：哪张图片是「日」？",
+          "options": [
+            {
+              "icon": "sunrise",
+              "text": "日"
+            },
+            {
+              "icon": "moon"
+            },
+            {
+              "icon": "cake"
+            }
+          ],
+          "answer": 0,
+          "hint": "想想刚才的图片：「日」",
+          "praise": "眼睛真亮！日 找对啦！"
+        },
+        {
+          "id": "cn-r0-1",
+          "kind": "listen",
+          "prompt": "月",
+          "speakText": "月",
+          "question": "找一找：哪张图片是「月」？",
+          "options": [
+            {
+              "icon": "star"
+            },
+            {
+              "icon": "sun"
+            },
+            {
+              "icon": "moon",
+              "text": "月"
+            }
+          ],
+          "answer": 2,
+          "hint": "想想刚才的图片：「月」",
+          "praise": "眼睛真亮！月 找对啦！"
+        },
+        {
+          "id": "cn-r0-2",
+          "kind": "listen",
+          "prompt": "水",
+          "speakText": "水",
+          "question": "找一找：哪张图片是「水」？",
+          "options": [
+            {
+              "icon": "wave",
+              "text": "水"
+            },
+            {
+              "icon": "sun"
+            },
+            {
+              "icon": "crystal"
+            }
+          ],
+          "answer": 0,
+          "hint": "想想刚才的图片：「水」",
+          "praise": "眼睛真亮！水 找对啦！"
+        },
+        {
+          "id": "cn-r0-3",
+          "kind": "listen",
+          "prompt": "山",
+          "speakText": "山",
+          "question": "找一找：哪张图片是「山」？",
+          "options": [
+            {
+              "icon": "rocket"
+            },
+            {
+              "icon": "volcano",
+              "text": "山"
+            },
+            {
+              "icon": "home"
+            }
+          ],
+          "answer": 1,
+          "hint": "想想刚才的图片：「山」",
+          "praise": "眼睛真亮！山 找对啦！"
+        },
+        {
+          "id": "cn-r0-4",
+          "kind": "listen",
+          "prompt": "木",
+          "speakText": "木",
+          "question": "找一找：哪张图片是「木」？",
+          "options": [
+            {
+              "icon": "sprout",
+              "text": "木"
+            },
+            {
+              "icon": "flower"
+            },
+            {
+              "icon": "rock"
+            }
+          ],
+          "answer": 0,
+          "hint": "想想刚才的图片：「木」",
+          "praise": "眼睛真亮！木 找对啦！"
+        },
+        {
+          "id": "cn-r0-5",
+          "kind": "listen",
+          "prompt": "人",
+          "speakText": "人",
+          "question": "找一找：哪张图片是「人」？",
+          "options": [
+            {
+              "icon": "sun"
+            },
+            {
+              "icon": "duck"
+            },
+            {
+              "icon": "girl",
+              "text": "人"
+            }
+          ],
+          "answer": 2,
+          "hint": "想想刚才的图片：「人」",
+          "praise": "眼睛真亮！人 找对啦！"
+        }
+      ],
+      "board": {
+        "spaces": [
+          {
+            "type": "question",
+            "step": "cn-r0-0"
+          },
+          {
+            "type": "question",
+            "step": "cn-r0-1"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "cn-r0-2"
+          },
+          {
+            "type": "question",
+            "step": "cn-r0-3"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "cn-r0-4"
+          },
+          {
+            "type": "chest"
+          },
+          {
+            "type": "question",
+            "step": "cn-r0-5"
+          },
+          {
+            "type": "mushroom"
+          }
+        ]
+      },
+      "review": true,
+      "zone": 2
     },
     {
       "id": "cn-19",
@@ -4346,13 +4326,13 @@
           "question": "看一看：这张图变成的字是哪个？",
           "options": [
             {
-              "text": "石"
+              "text": "见"
             },
             {
               "text": "六"
             },
             {
-              "text": "火"
+              "text": "白"
             }
           ],
           "answer": 1,
@@ -4487,7 +4467,8 @@
             "step": "cn-19-l"
           }
         ]
-      }
+      },
+      "zone": 3
     },
     {
       "id": "cn-20",
@@ -4543,10 +4524,10 @@
           "question": "看一看：这张图变成的字是哪个？",
           "options": [
             {
-              "text": "花"
+              "text": "牛"
             },
             {
-              "text": "草"
+              "text": "羊"
             },
             {
               "text": "七"
@@ -4680,7 +4661,8 @@
             "step": "cn-20-l2"
           }
         ]
-      }
+      },
+      "zone": 3
     },
     {
       "id": "cn-21",
@@ -4739,10 +4721,10 @@
               "text": "八"
             },
             {
-              "text": "鸟"
+              "text": "果"
             },
             {
-              "text": "一"
+              "text": "车"
             }
           ],
           "answer": 0,
@@ -4755,16 +4737,16 @@
           "question": "「八」可以组成哪个词？",
           "options": [
             {
-              "icon": "sunrise",
-              "text": "日出"
+              "icon": "girl",
+              "text": "目光"
             },
             {
               "icon": "candy",
               "text": "八个"
             },
             {
-              "icon": "cake",
-              "text": "生日"
+              "icon": "book",
+              "text": "目录"
             }
           ],
           "answer": 1,
@@ -4873,7 +4855,8 @@
             "step": "cn-21-w"
           }
         ]
-      }
+      },
+      "zone": 3
     },
     {
       "id": "cn-22",
@@ -4929,13 +4912,13 @@
           "question": "看一看：这张图变成的字是哪个？",
           "options": [
             {
-              "text": "二"
+              "text": "糖"
             },
             {
               "text": "九"
             },
             {
-              "text": "三"
+              "text": "日"
             }
           ],
           "answer": 1,
@@ -4948,12 +4931,12 @@
           "question": "「九」可以组成哪个词？",
           "options": [
             {
-              "icon": "moon",
-              "text": "月亮"
+              "icon": "girl",
+              "text": "耳朵"
             },
             {
-              "icon": "starface",
-              "text": "星星"
+              "icon": "ball",
+              "text": "足球"
             },
             {
               "icon": "balloon",
@@ -5069,7 +5052,8 @@
             "type": "rest"
           }
         ]
-      }
+      },
+      "zone": 3
     },
     {
       "id": "cn-23",
@@ -5125,10 +5109,10 @@
           "question": "看一看：这张图变成的字是哪个？",
           "options": [
             {
-              "text": "四"
+              "text": "月"
             },
             {
-              "text": "五"
+              "text": "水"
             },
             {
               "text": "十"
@@ -5148,12 +5132,12 @@
               "text": "十个"
             },
             {
-              "icon": "wave",
-              "text": "海浪"
+              "icon": "milk",
+              "text": "白云"
             },
             {
-              "icon": "crystal",
-              "text": "泉水"
+              "icon": "rainbow",
+              "text": "彩云"
             }
           ],
           "answer": 0,
@@ -5262,7 +5246,8 @@
             "step": "cn-23-l3"
           }
         ]
-      }
+      },
+      "zone": 3
     },
     {
       "id": "cn-24",
@@ -5321,10 +5306,10 @@
               "text": "大"
             },
             {
-              "text": "六"
+              "text": "山"
             },
             {
-              "text": "七"
+              "text": "木"
             }
           ],
           "answer": 0,
@@ -5337,16 +5322,16 @@
           "question": "「大」可以组成哪个词？",
           "options": [
             {
-              "icon": "school",
-              "text": "上山"
+              "icon": "crystal",
+              "text": "水滴"
             },
             {
               "icon": "girl",
               "text": "大人"
             },
             {
-              "icon": "leaf",
-              "text": "山林"
+              "icon": "windmill",
+              "text": "风车 fēngchē"
             }
           ],
           "answer": 1,
@@ -5462,7 +5447,8 @@
             "step": "cn-24-wr"
           }
         ]
-      }
+      },
+      "zone": 3
     },
     {
       "id": "cn-25",
@@ -5518,13 +5504,13 @@
           "question": "看一看：这张图变成的字是哪个？",
           "options": [
             {
-              "text": "八"
+              "text": "人"
             },
             {
               "text": "小"
             },
             {
-              "text": "九"
+              "text": "口"
             }
           ],
           "answer": 1,
@@ -5537,12 +5523,12 @@
           "question": "「小」可以组成哪个词？",
           "options": [
             {
-              "icon": "flower",
-              "text": "花木"
+              "icon": "sprout",
+              "text": "禾苗"
             },
             {
-              "icon": "heart",
-              "text": "大人"
+              "icon": "leaf",
+              "text": "叶子"
             },
             {
               "icon": "paw",
@@ -5659,7 +5645,8 @@
             "step": "cn-25-l"
           }
         ]
-      }
+      },
+      "zone": 3
     },
     {
       "id": "cn-26",
@@ -5715,10 +5702,10 @@
           "question": "看一看：这张图变成的字是哪个？",
           "options": [
             {
-              "text": "十"
+              "text": "天"
             },
             {
-              "text": "大"
+              "text": "田"
             },
             {
               "text": "上"
@@ -5738,12 +5725,12 @@
               "text": "上学"
             },
             {
-              "icon": "speaker",
-              "text": "开口"
+              "icon": "fish",
+              "text": "鱼虫"
             },
             {
-              "icon": "heart",
-              "text": "口水"
+              "icon": "coin",
+              "text": "宝贝"
             }
           ],
           "answer": 0,
@@ -5859,7 +5846,8 @@
             "step": "cn-26-l2"
           }
         ]
-      }
+      },
+      "zone": 3
     },
     {
       "id": "cn-27",
@@ -5918,10 +5906,10 @@
               "text": "下"
             },
             {
-              "text": "小"
+              "text": "石"
             },
             {
-              "text": "上"
+              "text": "火"
             }
           ],
           "answer": 0,
@@ -5934,16 +5922,16 @@
           "question": "「下」可以组成哪个词？",
           "options": [
             {
-              "icon": "sunrise",
-              "text": "今天"
+              "icon": "girl",
+              "text": "看见"
             },
             {
               "icon": "wave",
               "text": "下雨"
             },
             {
-              "icon": "sprout",
-              "text": "田里"
+              "icon": "book",
+              "text": "再见"
             }
           ],
           "answer": 1,
@@ -6059,7 +6047,8 @@
             "step": "cn-27-w"
           }
         ]
-      }
+      },
+      "zone": 3
     },
     {
       "id": "cn-28",
@@ -6115,13 +6104,13 @@
           "question": "看一看：这张图变成的字是哪个？",
           "options": [
             {
-              "text": "下"
+              "text": "花"
             },
             {
               "text": "星"
             },
             {
-              "text": "手"
+              "text": "草"
             }
           ],
           "answer": 1,
@@ -6134,12 +6123,12 @@
           "question": "「星」可以组成哪个词？",
           "options": [
             {
-              "icon": "rock",
-              "text": "石头"
+              "icon": "milk",
+              "text": "白牛奶"
             },
             {
-              "icon": "castle",
-              "text": "石桥"
+              "icon": "cow",
+              "text": "小牛"
             },
             {
               "icon": "starface",
@@ -6290,7 +6279,8 @@
             "type": "rest"
           }
         ]
-      }
+      },
+      "zone": 3
     },
     {
       "id": "cn-29",
@@ -6346,10 +6336,10 @@
           "question": "看一看：这张图变成的字是哪个？",
           "options": [
             {
-              "text": "日"
+              "text": "鸟"
             },
             {
-              "text": "月"
+              "text": "一"
             },
             {
               "text": "手"
@@ -6369,12 +6359,12 @@
               "text": "小手"
             },
             {
-              "icon": "volcano",
-              "text": "火山"
+              "icon": "polarbear",
+              "text": "小羊"
             },
             {
-              "icon": "starface",
-              "text": "火花"
+              "icon": "milk",
+              "text": "羊毛"
             }
           ],
           "answer": 0,
@@ -6497,7 +6487,3786 @@
             "step": "cn-29-l3"
           }
         ]
-      }
+      },
+      "zone": 4
+    },
+    {
+      "id": "cn-30",
+      "title": "第 31 关 识字写字",
+      "subtitle": "认识并会写「目」",
+      "steps": [
+        {
+          "id": "cn-30-t",
+          "kind": "teach",
+          "morphFrom": "calendar",
+          "char": "目",
+          "pinyin": "mù",
+          "words": [
+            {
+              "icon": "girl",
+              "text": "目光",
+              "say": "目光"
+            },
+            {
+              "icon": "book",
+              "text": "目录",
+              "say": "目录"
+            }
+          ]
+        },
+        {
+          "id": "cn-30-l",
+          "kind": "listen",
+          "prompt": "目",
+          "speakText": "目",
+          "question": "找一找：哪张图片是「目」？",
+          "options": [
+            {
+              "icon": "girl",
+              "text": "目"
+            },
+            {
+              "icon": "duck"
+            },
+            {
+              "icon": "calendar"
+            }
+          ],
+          "answer": 0,
+          "hint": "想想刚才的图片：「目」",
+          "praise": "眼睛真亮！目 找对啦！"
+        },
+        {
+          "id": "cn-30-l2",
+          "kind": "listen",
+          "promptIcon": "calendar",
+          "speakText": "目",
+          "question": "看一看：这张图变成的字是哪个？",
+          "options": [
+            {
+              "text": "目"
+            },
+            {
+              "text": "二"
+            },
+            {
+              "text": "三"
+            }
+          ],
+          "answer": 0,
+          "hint": "想一想它像什么字",
+          "praise": "对！这张图就是「目」"
+        },
+        {
+          "id": "cn-30-w",
+          "kind": "quiz",
+          "question": "「目」可以组成哪个词？",
+          "options": [
+            {
+              "icon": "leaf",
+              "text": "树叶"
+            },
+            {
+              "icon": "girl",
+              "text": "目光"
+            },
+            {
+              "icon": "car",
+              "text": "汽车"
+            }
+          ],
+          "answer": 1,
+          "hint": "找一找有「目」的词",
+          "praise": "组词成功：目光！"
+        },
+        {
+          "id": "cn-30-q",
+          "kind": "quiz",
+          "question": "练一练：哪个字是「目」？",
+          "options": [
+            {
+              "text": "目"
+            },
+            {
+              "text": "木"
+            },
+            {
+              "text": "口"
+            }
+          ],
+          "answer": 0,
+          "hint": "想一想刚才的字",
+          "praise": "记住啦！"
+        },
+        {
+          "id": "cn-30-l3",
+          "kind": "listen",
+          "prompt": "目",
+          "speakText": "目",
+          "question": "再找一找：哪张图片是「目」？",
+          "options": [
+            {
+              "icon": "duck"
+            },
+            {
+              "icon": "girl",
+              "text": "目"
+            },
+            {
+              "icon": "calendar"
+            }
+          ],
+          "answer": 1,
+          "hint": "「目」长什么样",
+          "praise": "又找对啦！目！"
+        },
+        {
+          "id": "cn-30-wr",
+          "kind": "write",
+          "char": "目",
+          "pinyin": "mù",
+          "strokes": [
+            {
+              "d": "M34 24 L34 74",
+              "start": {
+                "x": 34.0,
+                "y": 24.0
+              }
+            },
+            {
+              "d": "M34 24 L66 24 L66 74",
+              "start": {
+                "x": 34.0,
+                "y": 24.0
+              }
+            },
+            {
+              "d": "M34 42 L66 42",
+              "start": {
+                "x": 34.0,
+                "y": 42.0
+              }
+            },
+            {
+              "d": "M34 58 L66 58",
+              "start": {
+                "x": 34.0,
+                "y": 58.0
+              }
+            },
+            {
+              "d": "M34 74 L66 74",
+              "start": {
+                "x": 34.0,
+                "y": 74.0
+              }
+            }
+          ],
+          "question": "写一写：看一笔、描一笔，写「目」",
+          "praise": "写得真好，汉字卡到手！"
+        }
+      ],
+      "board": {
+        "spaces": [
+          {
+            "type": "question",
+            "step": "cn-30-l"
+          },
+          {
+            "type": "question",
+            "step": "cn-30-l2"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "cn-30-w"
+          },
+          {
+            "type": "question",
+            "step": "cn-30-q"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "cn-30-l3"
+          },
+          {
+            "type": "chest"
+          },
+          {
+            "type": "question",
+            "step": "cn-30-wr"
+          }
+        ]
+      },
+      "zone": 4
+    },
+    {
+      "id": "cn-31",
+      "title": "第 32 关 识字写字",
+      "subtitle": "认识并会写「耳」",
+      "steps": [
+        {
+          "id": "cn-31-t",
+          "kind": "teach",
+          "morphFrom": "speaker",
+          "char": "耳",
+          "pinyin": "ěr",
+          "words": [
+            {
+              "icon": "speaker",
+              "text": "耳机",
+              "say": "耳机"
+            },
+            {
+              "icon": "girl",
+              "text": "耳朵",
+              "say": "耳朵"
+            }
+          ]
+        },
+        {
+          "id": "cn-31-l",
+          "kind": "listen",
+          "prompt": "耳",
+          "speakText": "耳",
+          "question": "找一找：哪张图片是「耳」？",
+          "options": [
+            {
+              "icon": "speaker",
+              "text": "耳"
+            },
+            {
+              "icon": "calendar"
+            },
+            {
+              "icon": "star"
+            }
+          ],
+          "answer": 0,
+          "hint": "想想刚才的图片：「耳」",
+          "praise": "眼睛真亮！耳 找对啦！"
+        },
+        {
+          "id": "cn-31-l2",
+          "kind": "listen",
+          "promptIcon": "speaker",
+          "speakText": "耳",
+          "question": "看一看：这张图变成的字是哪个？",
+          "options": [
+            {
+              "text": "四"
+            },
+            {
+              "text": "耳"
+            },
+            {
+              "text": "五"
+            }
+          ],
+          "answer": 1,
+          "hint": "想一想它像什么字",
+          "praise": "对！这张图就是「耳」"
+        },
+        {
+          "id": "cn-31-w",
+          "kind": "quiz",
+          "question": "「耳」可以组成哪个词？",
+          "options": [
+            {
+              "icon": "candy",
+              "text": "糖果"
+            },
+            {
+              "icon": "cake",
+              "text": "甜心"
+            },
+            {
+              "icon": "speaker",
+              "text": "耳机"
+            }
+          ],
+          "answer": 2,
+          "hint": "找一找有「耳」的词",
+          "praise": "组词成功：耳机！"
+        },
+        {
+          "id": "cn-31-q",
+          "kind": "quiz",
+          "question": "练一练：哪个字是「耳」？",
+          "options": [
+            {
+              "text": "木"
+            },
+            {
+              "text": "耳"
+            },
+            {
+              "text": "口"
+            }
+          ],
+          "answer": 1,
+          "hint": "想一想刚才的字",
+          "praise": "记住啦！"
+        },
+        {
+          "id": "cn-31-l3",
+          "kind": "listen",
+          "prompt": "耳",
+          "speakText": "耳",
+          "question": "再找一找：哪张图片是「耳」？",
+          "options": [
+            {
+              "icon": "calendar"
+            },
+            {
+              "icon": "speaker",
+              "text": "耳"
+            },
+            {
+              "icon": "star"
+            }
+          ],
+          "answer": 1,
+          "hint": "「耳」长什么样",
+          "praise": "又找对啦！耳！"
+        },
+        {
+          "id": "cn-31-wr",
+          "kind": "write",
+          "char": "耳",
+          "pinyin": "ěr",
+          "strokes": [
+            {
+              "d": "M30 30 L30 66",
+              "start": {
+                "x": 30.0,
+                "y": 30.0
+              }
+            },
+            {
+              "d": "M30 30 L70 30 L70 40",
+              "start": {
+                "x": 30.0,
+                "y": 30.0
+              }
+            },
+            {
+              "d": "M30 48 L64 48",
+              "start": {
+                "x": 30.0,
+                "y": 48.0
+              }
+            },
+            {
+              "d": "M30 66 L70 66",
+              "start": {
+                "x": 30.0,
+                "y": 66.0
+              }
+            },
+            {
+              "d": "M70 46 L70 66",
+              "start": {
+                "x": 70.0,
+                "y": 46.0
+              }
+            }
+          ],
+          "question": "写一写：看一笔、描一笔，写「耳」",
+          "praise": "写得真好，汉字卡到手！"
+        }
+      ],
+      "board": {
+        "spaces": [
+          {
+            "type": "question",
+            "step": "cn-31-l2"
+          },
+          {
+            "type": "question",
+            "step": "cn-31-w"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "cn-31-q"
+          },
+          {
+            "type": "question",
+            "step": "cn-31-l3"
+          },
+          {
+            "type": "mushroom"
+          },
+          {
+            "type": "question",
+            "step": "cn-31-wr"
+          },
+          {
+            "type": "question",
+            "step": "cn-31-l"
+          }
+        ]
+      },
+      "zone": 4
+    },
+    {
+      "id": "cn-32",
+      "title": "第 33 关 识字写字",
+      "subtitle": "认识并会写「足」",
+      "steps": [
+        {
+          "id": "cn-32-t",
+          "kind": "teach",
+          "morphFrom": "ball",
+          "char": "足",
+          "pinyin": "zú",
+          "words": [
+            {
+              "icon": "ball",
+              "text": "足球",
+              "say": "足球"
+            },
+            {
+              "icon": "paw",
+              "text": "脚印",
+              "say": "脚印"
+            }
+          ]
+        },
+        {
+          "id": "cn-32-l",
+          "kind": "listen",
+          "prompt": "足",
+          "speakText": "足",
+          "question": "找一找：哪张图片是「足」？",
+          "options": [
+            {
+              "icon": "paw"
+            },
+            {
+              "icon": "ball",
+              "text": "足"
+            },
+            {
+              "icon": "train"
+            }
+          ],
+          "answer": 1,
+          "hint": "想想刚才的图片：「足」",
+          "praise": "眼睛真亮！足 找对啦！"
+        },
+        {
+          "id": "cn-32-l2",
+          "kind": "listen",
+          "promptIcon": "ball",
+          "speakText": "足",
+          "question": "看一看：这张图变成的字是哪个？",
+          "options": [
+            {
+              "text": "六"
+            },
+            {
+              "text": "七"
+            },
+            {
+              "text": "足"
+            }
+          ],
+          "answer": 2,
+          "hint": "想一想它像什么字",
+          "praise": "对！这张图就是「足」"
+        },
+        {
+          "id": "cn-32-w",
+          "kind": "quiz",
+          "question": "「足」可以组成哪个词？",
+          "options": [
+            {
+              "icon": "ball",
+              "text": "足球"
+            },
+            {
+              "icon": "cake",
+              "text": "生日"
+            },
+            {
+              "icon": "calendar",
+              "text": "日子"
+            }
+          ],
+          "answer": 0,
+          "hint": "找一找有「足」的词",
+          "praise": "组词成功：足球！"
+        },
+        {
+          "id": "cn-32-q",
+          "kind": "quiz",
+          "question": "练一练：哪个字是「足」？",
+          "options": [
+            {
+              "text": "木"
+            },
+            {
+              "text": "口"
+            },
+            {
+              "text": "足"
+            }
+          ],
+          "answer": 2,
+          "hint": "想一想刚才的字",
+          "praise": "记住啦！"
+        },
+        {
+          "id": "cn-32-l3",
+          "kind": "listen",
+          "prompt": "足",
+          "speakText": "足",
+          "question": "再找一找：哪张图片是「足」？",
+          "options": [
+            {
+              "icon": "paw"
+            },
+            {
+              "icon": "train"
+            },
+            {
+              "icon": "ball",
+              "text": "足"
+            }
+          ],
+          "answer": 2,
+          "hint": "「足」长什么样",
+          "praise": "又找对啦！足！"
+        },
+        {
+          "id": "cn-32-wr",
+          "kind": "write",
+          "char": "足",
+          "pinyin": "zú",
+          "strokes": [
+            {
+              "d": "M36 26 L60 26 L60 46 L36 46",
+              "start": {
+                "x": 36.0,
+                "y": 26.0
+              }
+            },
+            {
+              "d": "M48 46 L48 58",
+              "start": {
+                "x": 48.0,
+                "y": 46.0
+              }
+            },
+            {
+              "d": "M32 62 L48 74",
+              "start": {
+                "x": 32.0,
+                "y": 62.0
+              }
+            },
+            {
+              "d": "M48 60 Q60 66 68 72",
+              "start": {
+                "x": 48.0,
+                "y": 60.0
+              }
+            }
+          ],
+          "question": "写一写：看一笔、描一笔，写「足」",
+          "praise": "写得真好，汉字卡到手！"
+        }
+      ],
+      "board": {
+        "spaces": [
+          {
+            "type": "question",
+            "step": "cn-32-w"
+          },
+          {
+            "type": "question",
+            "step": "cn-32-q"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "cn-32-l3"
+          },
+          {
+            "type": "question",
+            "step": "cn-32-wr"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "cn-32-l"
+          },
+          {
+            "type": "rest"
+          },
+          {
+            "type": "question",
+            "step": "cn-32-l2"
+          }
+        ]
+      },
+      "zone": 4
+    },
+    {
+      "id": "cn-33",
+      "title": "第 34 关 识字写字",
+      "subtitle": "认识并会写「云」",
+      "steps": [
+        {
+          "id": "cn-33-t",
+          "kind": "teach",
+          "morphFrom": "milk",
+          "char": "云",
+          "pinyin": "yún",
+          "words": [
+            {
+              "icon": "milk",
+              "text": "白云",
+              "say": "白云"
+            },
+            {
+              "icon": "rainbow",
+              "text": "彩云",
+              "say": "彩云"
+            }
+          ]
+        },
+        {
+          "id": "cn-33-l",
+          "kind": "listen",
+          "prompt": "云",
+          "speakText": "云",
+          "question": "找一找：哪张图片是「云」？",
+          "options": [
+            {
+              "icon": "moon"
+            },
+            {
+              "icon": "sun"
+            },
+            {
+              "icon": "milk",
+              "text": "云"
+            }
+          ],
+          "answer": 2,
+          "hint": "想想刚才的图片：「云」",
+          "praise": "眼睛真亮！云 找对啦！"
+        },
+        {
+          "id": "cn-33-l2",
+          "kind": "listen",
+          "promptIcon": "milk",
+          "speakText": "云",
+          "question": "看一看：这张图变成的字是哪个？",
+          "options": [
+            {
+              "text": "云"
+            },
+            {
+              "text": "八"
+            },
+            {
+              "text": "九"
+            }
+          ],
+          "answer": 0,
+          "hint": "想一想它像什么字",
+          "praise": "对！这张图就是「云」"
+        },
+        {
+          "id": "cn-33-w",
+          "kind": "quiz",
+          "question": "「云」可以组成哪个词？",
+          "options": [
+            {
+              "icon": "starface",
+              "text": "星星"
+            },
+            {
+              "icon": "milk",
+              "text": "白云"
+            },
+            {
+              "icon": "cake",
+              "text": "月饼"
+            }
+          ],
+          "answer": 1,
+          "hint": "找一找有「云」的词",
+          "praise": "组词成功：白云！"
+        },
+        {
+          "id": "cn-33-q",
+          "kind": "quiz",
+          "question": "练一练：哪个字是「云」？",
+          "options": [
+            {
+              "text": "云"
+            },
+            {
+              "text": "木"
+            },
+            {
+              "text": "口"
+            }
+          ],
+          "answer": 0,
+          "hint": "想一想刚才的字",
+          "praise": "记住啦！"
+        },
+        {
+          "id": "cn-33-l3",
+          "kind": "listen",
+          "prompt": "云",
+          "speakText": "云",
+          "question": "再找一找：哪张图片是「云」？",
+          "options": [
+            {
+              "icon": "milk",
+              "text": "云"
+            },
+            {
+              "icon": "sun"
+            },
+            {
+              "icon": "moon"
+            }
+          ],
+          "answer": 0,
+          "hint": "「云」长什么样",
+          "praise": "又找对啦！云！"
+        },
+        {
+          "id": "cn-33-wr",
+          "kind": "write",
+          "char": "云",
+          "pinyin": "yún",
+          "strokes": [
+            {
+              "d": "M24 34 Q40 24 58 32",
+              "start": {
+                "x": 24.0,
+                "y": 34.0
+              }
+            },
+            {
+              "d": "M28 48 L60 48",
+              "start": {
+                "x": 28.0,
+                "y": 48.0
+              }
+            },
+            {
+              "d": "M46 56 Q40 66 32 72",
+              "start": {
+                "x": 46.0,
+                "y": 56.0
+              }
+            },
+            {
+              "d": "M46 56 Q52 66 58 70",
+              "start": {
+                "x": 46.0,
+                "y": 56.0
+              }
+            }
+          ],
+          "question": "写一写：看一笔、描一笔，写「云」",
+          "praise": "写得真好，汉字卡到手！"
+        }
+      ],
+      "board": {
+        "spaces": [
+          {
+            "type": "question",
+            "step": "cn-33-q"
+          },
+          {
+            "type": "question",
+            "step": "cn-33-l3"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "cn-33-wr"
+          },
+          {
+            "type": "question",
+            "step": "cn-33-l"
+          },
+          {
+            "type": "chest"
+          },
+          {
+            "type": "question",
+            "step": "cn-33-l2"
+          },
+          {
+            "type": "mushroom"
+          },
+          {
+            "type": "question",
+            "step": "cn-33-w"
+          }
+        ]
+      },
+      "zone": 4
+    },
+    {
+      "id": "cn-34",
+      "title": "第 35 关 识字写字",
+      "subtitle": "认识并会写「雨」",
+      "steps": [
+        {
+          "id": "cn-34-t",
+          "kind": "teach",
+          "morphFrom": "wave",
+          "char": "雨",
+          "pinyin": "yǔ",
+          "words": [
+            {
+              "icon": "wave",
+              "text": "雨水",
+              "say": "雨水"
+            },
+            {
+              "icon": "crystal",
+              "text": "水滴",
+              "say": "水滴"
+            }
+          ]
+        },
+        {
+          "id": "cn-34-l",
+          "kind": "listen",
+          "prompt": "雨",
+          "speakText": "雨",
+          "question": "找一找：哪张图片是「雨」？",
+          "options": [
+            {
+              "icon": "wave",
+              "text": "雨"
+            },
+            {
+              "icon": "milk"
+            },
+            {
+              "icon": "crystal"
+            }
+          ],
+          "answer": 0,
+          "hint": "想想刚才的图片：「雨」",
+          "praise": "眼睛真亮！雨 找对啦！"
+        },
+        {
+          "id": "cn-34-l2",
+          "kind": "listen",
+          "promptIcon": "wave",
+          "speakText": "雨",
+          "question": "看一看：这张图变成的字是哪个？",
+          "options": [
+            {
+              "text": "十"
+            },
+            {
+              "text": "雨"
+            },
+            {
+              "text": "大"
+            }
+          ],
+          "answer": 1,
+          "hint": "想一想它像什么字",
+          "praise": "对！这张图就是「雨」"
+        },
+        {
+          "id": "cn-34-w",
+          "kind": "quiz",
+          "question": "「雨」可以组成哪个词？",
+          "options": [
+            {
+              "icon": "crystal",
+              "text": "泉水"
+            },
+            {
+              "icon": "leaf",
+              "text": "露珠"
+            },
+            {
+              "icon": "wave",
+              "text": "雨水"
+            }
+          ],
+          "answer": 2,
+          "hint": "找一找有「雨」的词",
+          "praise": "组词成功：雨水！"
+        },
+        {
+          "id": "cn-34-q",
+          "kind": "quiz",
+          "question": "练一练：哪个字是「雨」？",
+          "options": [
+            {
+              "text": "木"
+            },
+            {
+              "text": "雨"
+            },
+            {
+              "text": "口"
+            }
+          ],
+          "answer": 1,
+          "hint": "想一想刚才的字",
+          "praise": "记住啦！"
+        },
+        {
+          "id": "cn-34-l3",
+          "kind": "listen",
+          "prompt": "雨",
+          "speakText": "雨",
+          "question": "再找一找：哪张图片是「雨」？",
+          "options": [
+            {
+              "icon": "milk"
+            },
+            {
+              "icon": "wave",
+              "text": "雨"
+            },
+            {
+              "icon": "crystal"
+            }
+          ],
+          "answer": 1,
+          "hint": "「雨」长什么样",
+          "praise": "又找对啦！雨！"
+        },
+        {
+          "id": "cn-34-wr",
+          "kind": "write",
+          "char": "雨",
+          "pinyin": "yǔ",
+          "strokes": [
+            {
+              "d": "M30 22 L70 22",
+              "start": {
+                "x": 30.0,
+                "y": 22.0
+              }
+            },
+            {
+              "d": "M50 22 L50 32",
+              "start": {
+                "x": 50.0,
+                "y": 22.0
+              }
+            },
+            {
+              "d": "M24 40 Q50 32 76 40",
+              "start": {
+                "x": 24.0,
+                "y": 40.0
+              }
+            },
+            {
+              "d": "M32 48 L32 58",
+              "start": {
+                "x": 32.0,
+                "y": 48.0
+              }
+            },
+            {
+              "d": "M50 48 L50 58",
+              "start": {
+                "x": 50.0,
+                "y": 48.0
+              }
+            },
+            {
+              "d": "M40 60 L36 72",
+              "start": {
+                "x": 40.0,
+                "y": 60.0
+              }
+            },
+            {
+              "d": "M60 60 L56 72",
+              "start": {
+                "x": 60.0,
+                "y": 60.0
+              }
+            }
+          ],
+          "question": "写一写：看一笔、描一笔，写「雨」",
+          "praise": "写得真好，汉字卡到手！"
+        }
+      ],
+      "board": {
+        "spaces": [
+          {
+            "type": "question",
+            "step": "cn-34-l3"
+          },
+          {
+            "type": "question",
+            "step": "cn-34-wr"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "cn-34-l"
+          },
+          {
+            "type": "question",
+            "step": "cn-34-l2"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "cn-34-w"
+          },
+          {
+            "type": "mushroom"
+          },
+          {
+            "type": "question",
+            "step": "cn-34-q"
+          },
+          {
+            "type": "rest"
+          }
+        ]
+      },
+      "zone": 4
+    },
+    {
+      "id": "cn-35",
+      "title": "第 36 关 识字写字",
+      "subtitle": "认识并会写「风」",
+      "steps": [
+        {
+          "id": "cn-35-t",
+          "kind": "teach",
+          "morphFrom": "windmill",
+          "char": "风",
+          "pinyin": "fēng",
+          "words": [
+            {
+              "icon": "windmill",
+              "text": "风车 fēngchē",
+              "say": "风车 fēngchē"
+            },
+            {
+              "icon": "leaf",
+              "text": "吹树叶",
+              "say": "吹树叶"
+            }
+          ]
+        },
+        {
+          "id": "cn-35-l",
+          "kind": "listen",
+          "prompt": "风",
+          "speakText": "风",
+          "question": "找一找：哪张图片是「风」？",
+          "options": [
+            {
+              "icon": "leaf"
+            },
+            {
+              "icon": "windmill",
+              "text": "风"
+            },
+            {
+              "icon": "flag"
+            }
+          ],
+          "answer": 1,
+          "hint": "想想刚才的图片：「风」",
+          "praise": "眼睛真亮！风 找对啦！"
+        },
+        {
+          "id": "cn-35-l2",
+          "kind": "listen",
+          "promptIcon": "windmill",
+          "speakText": "风",
+          "question": "看一看：这张图变成的字是哪个？",
+          "options": [
+            {
+              "text": "小"
+            },
+            {
+              "text": "上"
+            },
+            {
+              "text": "风"
+            }
+          ],
+          "answer": 2,
+          "hint": "想一想它像什么字",
+          "praise": "对！这张图就是「风」"
+        },
+        {
+          "id": "cn-35-w",
+          "kind": "quiz",
+          "question": "「风」可以组成哪个词？",
+          "options": [
+            {
+              "icon": "windmill",
+              "text": "风车 fēngchē"
+            },
+            {
+              "icon": "leaf",
+              "text": "山林"
+            },
+            {
+              "icon": "leaf",
+              "text": "树叶"
+            }
+          ],
+          "answer": 0,
+          "hint": "找一找有「风」的词",
+          "praise": "组词成功：风车 fēngchē！"
+        },
+        {
+          "id": "cn-35-q",
+          "kind": "quiz",
+          "question": "练一练：哪个字是「风」？",
+          "options": [
+            {
+              "text": "木"
+            },
+            {
+              "text": "口"
+            },
+            {
+              "text": "风"
+            }
+          ],
+          "answer": 2,
+          "hint": "想一想刚才的字",
+          "praise": "记住啦！"
+        },
+        {
+          "id": "cn-35-l3",
+          "kind": "listen",
+          "prompt": "风",
+          "speakText": "风",
+          "question": "再找一找：哪张图片是「风」？",
+          "options": [
+            {
+              "icon": "leaf"
+            },
+            {
+              "icon": "flag"
+            },
+            {
+              "icon": "windmill",
+              "text": "风"
+            }
+          ],
+          "answer": 2,
+          "hint": "「风」长什么样",
+          "praise": "又找对啦！风！"
+        },
+        {
+          "id": "cn-35-wr",
+          "kind": "write",
+          "char": "风",
+          "pinyin": "fēng",
+          "strokes": [
+            {
+              "d": "M44 20 Q28 42 30 60 Q31 70 40 74",
+              "start": {
+                "x": 44.0,
+                "y": 20.0
+              }
+            },
+            {
+              "d": "M44 20 Q62 34 62 52",
+              "start": {
+                "x": 44.0,
+                "y": 20.0
+              }
+            },
+            {
+              "d": "M42 40 Q50 46 58 44",
+              "start": {
+                "x": 42.0,
+                "y": 40.0
+              }
+            },
+            {
+              "d": "M40 48 Q48 58 56 56",
+              "start": {
+                "x": 40.0,
+                "y": 48.0
+              }
+            }
+          ],
+          "question": "写一写：看一笔、描一笔，写「风」",
+          "praise": "写得真好，汉字卡到手！"
+        }
+      ],
+      "board": {
+        "spaces": [
+          {
+            "type": "question",
+            "step": "cn-35-wr"
+          },
+          {
+            "type": "question",
+            "step": "cn-35-l"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "cn-35-l2"
+          },
+          {
+            "type": "question",
+            "step": "cn-35-w"
+          },
+          {
+            "type": "chest"
+          },
+          {
+            "type": "question",
+            "step": "cn-35-q"
+          },
+          {
+            "type": "rest"
+          },
+          {
+            "type": "question",
+            "step": "cn-35-l3"
+          }
+        ]
+      },
+      "zone": 4
+    },
+    {
+      "id": "cn-36",
+      "title": "第 37 关 识字写字",
+      "subtitle": "认识并会写「禾」",
+      "steps": [
+        {
+          "id": "cn-36-t",
+          "kind": "teach",
+          "morphFrom": "sprout",
+          "char": "禾",
+          "pinyin": "hé",
+          "words": [
+            {
+              "icon": "sprout",
+              "text": "禾苗",
+              "say": "禾苗"
+            },
+            {
+              "icon": "leaf",
+              "text": "叶子",
+              "say": "叶子"
+            }
+          ]
+        },
+        {
+          "id": "cn-36-l",
+          "kind": "listen",
+          "prompt": "禾",
+          "speakText": "禾",
+          "question": "找一找：哪张图片是「禾」？",
+          "options": [
+            {
+              "icon": "sprout",
+              "text": "禾"
+            },
+            {
+              "icon": "flower"
+            },
+            {
+              "icon": "leaf"
+            }
+          ],
+          "answer": 0,
+          "hint": "想想刚才的图片：「禾」",
+          "praise": "眼睛真亮！禾 找对啦！"
+        },
+        {
+          "id": "cn-36-l2",
+          "kind": "listen",
+          "promptIcon": "sprout",
+          "speakText": "禾",
+          "question": "看一看：这张图变成的字是哪个？",
+          "options": [
+            {
+              "text": "禾"
+            },
+            {
+              "text": "下"
+            },
+            {
+              "text": "星"
+            }
+          ],
+          "answer": 0,
+          "hint": "想一想它像什么字",
+          "praise": "对！这张图就是「禾」"
+        },
+        {
+          "id": "cn-36-w",
+          "kind": "quiz",
+          "question": "「禾」可以组成哪个词？",
+          "options": [
+            {
+              "icon": "heart",
+              "text": "大人"
+            },
+            {
+              "icon": "sprout",
+              "text": "禾苗"
+            },
+            {
+              "icon": "party",
+              "text": "人们"
+            }
+          ],
+          "answer": 1,
+          "hint": "找一找有「禾」的词",
+          "praise": "组词成功：禾苗！"
+        },
+        {
+          "id": "cn-36-q",
+          "kind": "quiz",
+          "question": "练一练：哪个字是「禾」？",
+          "options": [
+            {
+              "text": "禾"
+            },
+            {
+              "text": "木"
+            },
+            {
+              "text": "口"
+            }
+          ],
+          "answer": 0,
+          "hint": "想一想刚才的字",
+          "praise": "记住啦！"
+        },
+        {
+          "id": "cn-36-l3",
+          "kind": "listen",
+          "prompt": "禾",
+          "speakText": "禾",
+          "question": "再找一找：哪张图片是「禾」？",
+          "options": [
+            {
+              "icon": "flower"
+            },
+            {
+              "icon": "sprout",
+              "text": "禾"
+            },
+            {
+              "icon": "leaf"
+            }
+          ],
+          "answer": 1,
+          "hint": "「禾」长什么样",
+          "praise": "又找对啦！禾！"
+        },
+        {
+          "id": "cn-36-wr",
+          "kind": "write",
+          "char": "禾",
+          "pinyin": "hé",
+          "strokes": [
+            {
+              "d": "M50 20 L50 44",
+              "start": {
+                "x": 50.0,
+                "y": 20.0
+              }
+            },
+            {
+              "d": "M32 34 L68 34",
+              "start": {
+                "x": 32.0,
+                "y": 34.0
+              }
+            },
+            {
+              "d": "M50 44 Q42 60 32 70",
+              "start": {
+                "x": 50.0,
+                "y": 44.0
+              }
+            },
+            {
+              "d": "M50 44 Q58 60 70 68",
+              "start": {
+                "x": 50.0,
+                "y": 44.0
+              }
+            },
+            {
+              "d": "M34 70 Q48 66 62 70",
+              "start": {
+                "x": 34.0,
+                "y": 70.0
+              }
+            }
+          ],
+          "question": "写一写：看一笔、描一笔，写「禾」",
+          "praise": "写得真好，汉字卡到手！"
+        }
+      ],
+      "board": {
+        "spaces": [
+          {
+            "type": "question",
+            "step": "cn-36-l"
+          },
+          {
+            "type": "question",
+            "step": "cn-36-l2"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "cn-36-w"
+          },
+          {
+            "type": "question",
+            "step": "cn-36-q"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "cn-36-l3"
+          },
+          {
+            "type": "chest"
+          },
+          {
+            "type": "question",
+            "step": "cn-36-wr"
+          }
+        ]
+      },
+      "zone": 4
+    },
+    {
+      "id": "cn-37",
+      "title": "第 38 关 识字写字",
+      "subtitle": "认识并会写「虫」",
+      "steps": [
+        {
+          "id": "cn-37-t",
+          "kind": "teach",
+          "morphFrom": "bee",
+          "char": "虫",
+          "pinyin": "chóng",
+          "words": [
+            {
+              "icon": "bee",
+              "text": "蜜蜂",
+              "say": "蜜蜂"
+            },
+            {
+              "icon": "fish",
+              "text": "鱼虫",
+              "say": "鱼虫"
+            }
+          ]
+        },
+        {
+          "id": "cn-37-l",
+          "kind": "listen",
+          "prompt": "虫",
+          "speakText": "虫",
+          "question": "找一找：哪张图片是「虫」？",
+          "options": [
+            {
+              "icon": "fish"
+            },
+            {
+              "icon": "duck"
+            },
+            {
+              "icon": "bee",
+              "text": "虫"
+            }
+          ],
+          "answer": 2,
+          "hint": "想想刚才的图片：「虫」",
+          "praise": "眼睛真亮！虫 找对啦！"
+        },
+        {
+          "id": "cn-37-l2",
+          "kind": "listen",
+          "promptIcon": "bee",
+          "speakText": "虫",
+          "question": "看一看：这张图变成的字是哪个？",
+          "options": [
+            {
+              "text": "手"
+            },
+            {
+              "text": "虫"
+            },
+            {
+              "text": "目"
+            }
+          ],
+          "answer": 1,
+          "hint": "想一想它像什么字",
+          "praise": "对！这张图就是「虫」"
+        },
+        {
+          "id": "cn-37-w",
+          "kind": "quiz",
+          "question": "「虫」可以组成哪个词？",
+          "options": [
+            {
+              "icon": "heart",
+              "text": "口水"
+            },
+            {
+              "icon": "sun",
+              "text": "天空"
+            },
+            {
+              "icon": "bee",
+              "text": "蜜蜂"
+            }
+          ],
+          "answer": 2,
+          "hint": "找一找有「虫」的词",
+          "praise": "组词成功：蜜蜂！"
+        },
+        {
+          "id": "cn-37-q",
+          "kind": "quiz",
+          "question": "练一练：哪个字是「虫」？",
+          "options": [
+            {
+              "text": "木"
+            },
+            {
+              "text": "虫"
+            },
+            {
+              "text": "口"
+            }
+          ],
+          "answer": 1,
+          "hint": "想一想刚才的字",
+          "praise": "记住啦！"
+        },
+        {
+          "id": "cn-37-l3",
+          "kind": "listen",
+          "prompt": "虫",
+          "speakText": "虫",
+          "question": "再找一找：哪张图片是「虫」？",
+          "options": [
+            {
+              "icon": "bee",
+              "text": "虫"
+            },
+            {
+              "icon": "duck"
+            },
+            {
+              "icon": "fish"
+            }
+          ],
+          "answer": 0,
+          "hint": "「虫」长什么样",
+          "praise": "又找对啦！虫！"
+        },
+        {
+          "id": "cn-37-wr",
+          "kind": "write",
+          "char": "虫",
+          "pinyin": "chóng",
+          "strokes": [
+            {
+              "d": "M40 32 L58 32 L58 54 L40 54",
+              "start": {
+                "x": 40.0,
+                "y": 32.0
+              }
+            },
+            {
+              "d": "M49 18 L49 32",
+              "start": {
+                "x": 49.0,
+                "y": 18.0
+              }
+            },
+            {
+              "d": "M30 44 L40 44",
+              "start": {
+                "x": 30.0,
+                "y": 44.0
+              }
+            },
+            {
+              "d": "M49 54 L44 70",
+              "start": {
+                "x": 49.0,
+                "y": 54.0
+              }
+            },
+            {
+              "d": "M49 54 Q58 62 64 66",
+              "start": {
+                "x": 49.0,
+                "y": 54.0
+              }
+            }
+          ],
+          "question": "写一写：看一笔、描一笔，写「虫」",
+          "praise": "写得真好，汉字卡到手！"
+        }
+      ],
+      "board": {
+        "spaces": [
+          {
+            "type": "question",
+            "step": "cn-37-l2"
+          },
+          {
+            "type": "question",
+            "step": "cn-37-w"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "cn-37-q"
+          },
+          {
+            "type": "question",
+            "step": "cn-37-l3"
+          },
+          {
+            "type": "mushroom"
+          },
+          {
+            "type": "question",
+            "step": "cn-37-wr"
+          },
+          {
+            "type": "question",
+            "step": "cn-37-l"
+          }
+        ]
+      },
+      "zone": 4
+    },
+    {
+      "id": "cn-r1",
+      "title": "复习关 二",
+      "subtitle": "旧题开盲盒 · 混排复习",
+      "steps": [
+        {
+          "id": "cn-r1-0",
+          "kind": "listen",
+          "prompt": "日",
+          "speakText": "日",
+          "question": "找一找：哪张图片是「日」？",
+          "options": [
+            {
+              "icon": "sunrise",
+              "text": "日"
+            },
+            {
+              "icon": "moon"
+            },
+            {
+              "icon": "cake"
+            }
+          ],
+          "answer": 0,
+          "hint": "想想刚才的图片：「日」",
+          "praise": "眼睛真亮！日 找对啦！"
+        },
+        {
+          "id": "cn-r1-1",
+          "kind": "listen",
+          "prompt": "月",
+          "speakText": "月",
+          "question": "找一找：哪张图片是「月」？",
+          "options": [
+            {
+              "icon": "star"
+            },
+            {
+              "icon": "sun"
+            },
+            {
+              "icon": "moon",
+              "text": "月"
+            }
+          ],
+          "answer": 2,
+          "hint": "想想刚才的图片：「月」",
+          "praise": "眼睛真亮！月 找对啦！"
+        },
+        {
+          "id": "cn-r1-2",
+          "kind": "listen",
+          "prompt": "水",
+          "speakText": "水",
+          "question": "找一找：哪张图片是「水」？",
+          "options": [
+            {
+              "icon": "wave",
+              "text": "水"
+            },
+            {
+              "icon": "sun"
+            },
+            {
+              "icon": "crystal"
+            }
+          ],
+          "answer": 0,
+          "hint": "想想刚才的图片：「水」",
+          "praise": "眼睛真亮！水 找对啦！"
+        },
+        {
+          "id": "cn-r1-3",
+          "kind": "listen",
+          "prompt": "山",
+          "speakText": "山",
+          "question": "找一找：哪张图片是「山」？",
+          "options": [
+            {
+              "icon": "rocket"
+            },
+            {
+              "icon": "volcano",
+              "text": "山"
+            },
+            {
+              "icon": "home"
+            }
+          ],
+          "answer": 1,
+          "hint": "想想刚才的图片：「山」",
+          "praise": "眼睛真亮！山 找对啦！"
+        },
+        {
+          "id": "cn-r1-4",
+          "kind": "listen",
+          "prompt": "木",
+          "speakText": "木",
+          "question": "找一找：哪张图片是「木」？",
+          "options": [
+            {
+              "icon": "sprout",
+              "text": "木"
+            },
+            {
+              "icon": "flower"
+            },
+            {
+              "icon": "rock"
+            }
+          ],
+          "answer": 0,
+          "hint": "想想刚才的图片：「木」",
+          "praise": "眼睛真亮！木 找对啦！"
+        },
+        {
+          "id": "cn-r1-5",
+          "kind": "listen",
+          "prompt": "人",
+          "speakText": "人",
+          "question": "找一找：哪张图片是「人」？",
+          "options": [
+            {
+              "icon": "sun"
+            },
+            {
+              "icon": "duck"
+            },
+            {
+              "icon": "girl",
+              "text": "人"
+            }
+          ],
+          "answer": 2,
+          "hint": "想想刚才的图片：「人」",
+          "praise": "眼睛真亮！人 找对啦！"
+        }
+      ],
+      "board": {
+        "spaces": [
+          {
+            "type": "question",
+            "step": "cn-r1-1"
+          },
+          {
+            "type": "question",
+            "step": "cn-r1-2"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "cn-r1-3"
+          },
+          {
+            "type": "question",
+            "step": "cn-r1-4"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "cn-r1-5"
+          },
+          {
+            "type": "chest"
+          },
+          {
+            "type": "question",
+            "step": "cn-r1-0"
+          },
+          {
+            "type": "rest"
+          }
+        ]
+      },
+      "review": true,
+      "zone": 4
+    },
+    {
+      "id": "cn-38",
+      "title": "第 39 关 识字写字",
+      "subtitle": "认识并会写「贝」",
+      "steps": [
+        {
+          "id": "cn-38-t",
+          "kind": "teach",
+          "morphFrom": "coin",
+          "char": "贝",
+          "pinyin": "bèi",
+          "words": [
+            {
+              "icon": "coin",
+              "text": "宝贝",
+              "say": "宝贝"
+            },
+            {
+              "icon": "gift",
+              "text": "宝物",
+              "say": "宝物"
+            }
+          ]
+        },
+        {
+          "id": "cn-38-l",
+          "kind": "listen",
+          "prompt": "贝",
+          "speakText": "贝",
+          "question": "找一找：哪张图片是「贝」？",
+          "options": [
+            {
+              "icon": "coin",
+              "text": "贝"
+            },
+            {
+              "icon": "rock"
+            },
+            {
+              "icon": "gift"
+            }
+          ],
+          "answer": 0,
+          "hint": "想想刚才的图片：「贝」",
+          "praise": "眼睛真亮！贝 找对啦！"
+        },
+        {
+          "id": "cn-38-l2",
+          "kind": "listen",
+          "promptIcon": "coin",
+          "speakText": "贝",
+          "question": "看一看：这张图变成的字是哪个？",
+          "options": [
+            {
+              "text": "耳"
+            },
+            {
+              "text": "足"
+            },
+            {
+              "text": "贝"
+            }
+          ],
+          "answer": 2,
+          "hint": "想一想它像什么字",
+          "praise": "对！这张图就是「贝」"
+        },
+        {
+          "id": "cn-38-w",
+          "kind": "quiz",
+          "question": "「贝」可以组成哪个词？",
+          "options": [
+            {
+              "icon": "coin",
+              "text": "宝贝"
+            },
+            {
+              "icon": "sprout",
+              "text": "田里"
+            },
+            {
+              "icon": "flower",
+              "text": "水田"
+            }
+          ],
+          "answer": 0,
+          "hint": "找一找有「贝」的词",
+          "praise": "组词成功：宝贝！"
+        },
+        {
+          "id": "cn-38-q",
+          "kind": "quiz",
+          "question": "练一练：哪个字是「贝」？",
+          "options": [
+            {
+              "text": "木"
+            },
+            {
+              "text": "口"
+            },
+            {
+              "text": "贝"
+            }
+          ],
+          "answer": 2,
+          "hint": "想一想刚才的字",
+          "praise": "记住啦！"
+        },
+        {
+          "id": "cn-38-l3",
+          "kind": "listen",
+          "prompt": "贝",
+          "speakText": "贝",
+          "question": "再找一找：哪张图片是「贝」？",
+          "options": [
+            {
+              "icon": "rock"
+            },
+            {
+              "icon": "coin",
+              "text": "贝"
+            },
+            {
+              "icon": "gift"
+            }
+          ],
+          "answer": 1,
+          "hint": "「贝」长什么样",
+          "praise": "又找对啦！贝！"
+        },
+        {
+          "id": "cn-38-wr",
+          "kind": "write",
+          "char": "贝",
+          "pinyin": "bèi",
+          "strokes": [
+            {
+              "d": "M36 24 L36 66",
+              "start": {
+                "x": 36.0,
+                "y": 24.0
+              }
+            },
+            {
+              "d": "M36 24 L62 24 L62 66",
+              "start": {
+                "x": 36.0,
+                "y": 24.0
+              }
+            },
+            {
+              "d": "M62 66 Q46 64 30 74",
+              "start": {
+                "x": 62.0,
+                "y": 66.0
+              }
+            },
+            {
+              "d": "M50 66 Q56 70 62 74",
+              "start": {
+                "x": 50.0,
+                "y": 66.0
+              }
+            }
+          ],
+          "question": "写一写：看一笔、描一笔，写「贝」",
+          "praise": "写得真好，汉字卡到手！"
+        }
+      ],
+      "board": {
+        "spaces": [
+          {
+            "type": "question",
+            "step": "cn-38-w"
+          },
+          {
+            "type": "question",
+            "step": "cn-38-q"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "cn-38-l3"
+          },
+          {
+            "type": "question",
+            "step": "cn-38-wr"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "cn-38-l"
+          },
+          {
+            "type": "rest"
+          },
+          {
+            "type": "question",
+            "step": "cn-38-l2"
+          }
+        ]
+      },
+      "zone": 5
+    },
+    {
+      "id": "cn-39",
+      "title": "第 40 关 识字写字",
+      "subtitle": "认识并会写「见」",
+      "steps": [
+        {
+          "id": "cn-39-t",
+          "kind": "teach",
+          "morphFrom": "girl",
+          "char": "见",
+          "pinyin": "jiàn",
+          "words": [
+            {
+              "icon": "girl",
+              "text": "看见",
+              "say": "看见"
+            },
+            {
+              "icon": "book",
+              "text": "再见",
+              "say": "再见"
+            }
+          ]
+        },
+        {
+          "id": "cn-39-l",
+          "kind": "listen",
+          "prompt": "见",
+          "speakText": "见",
+          "question": "找一找：哪张图片是「见」？",
+          "options": [
+            {
+              "icon": "book"
+            },
+            {
+              "icon": "girl",
+              "text": "见"
+            },
+            {
+              "icon": "star"
+            }
+          ],
+          "answer": 1,
+          "hint": "想想刚才的图片：「见」",
+          "praise": "眼睛真亮！见 找对啦！"
+        },
+        {
+          "id": "cn-39-l2",
+          "kind": "listen",
+          "promptIcon": "girl",
+          "speakText": "见",
+          "question": "看一看：这张图变成的字是哪个？",
+          "options": [
+            {
+              "text": "见"
+            },
+            {
+              "text": "云"
+            },
+            {
+              "text": "雨"
+            }
+          ],
+          "answer": 0,
+          "hint": "想一想它像什么字",
+          "praise": "对！这张图就是「见」"
+        },
+        {
+          "id": "cn-39-w",
+          "kind": "quiz",
+          "question": "「见」可以组成哪个词？",
+          "options": [
+            {
+              "icon": "castle",
+              "text": "石桥"
+            },
+            {
+              "icon": "girl",
+              "text": "看见"
+            },
+            {
+              "icon": "flame",
+              "text": "火焰"
+            }
+          ],
+          "answer": 1,
+          "hint": "找一找有「见」的词",
+          "praise": "组词成功：看见！"
+        },
+        {
+          "id": "cn-39-q",
+          "kind": "quiz",
+          "question": "练一练：哪个字是「见」？",
+          "options": [
+            {
+              "text": "见"
+            },
+            {
+              "text": "木"
+            },
+            {
+              "text": "口"
+            }
+          ],
+          "answer": 0,
+          "hint": "想一想刚才的字",
+          "praise": "记住啦！"
+        },
+        {
+          "id": "cn-39-l3",
+          "kind": "listen",
+          "prompt": "见",
+          "speakText": "见",
+          "question": "再找一找：哪张图片是「见」？",
+          "options": [
+            {
+              "icon": "book"
+            },
+            {
+              "icon": "star"
+            },
+            {
+              "icon": "girl",
+              "text": "见"
+            }
+          ],
+          "answer": 2,
+          "hint": "「见」长什么样",
+          "praise": "又找对啦！见！"
+        },
+        {
+          "id": "cn-39-wr",
+          "kind": "write",
+          "char": "见",
+          "pinyin": "jiàn",
+          "strokes": [
+            {
+              "d": "M34 24 L34 62",
+              "start": {
+                "x": 34.0,
+                "y": 24.0
+              }
+            },
+            {
+              "d": "M34 24 L62 24 L62 62",
+              "start": {
+                "x": 34.0,
+                "y": 24.0
+              }
+            },
+            {
+              "d": "M62 62 Q48 64 38 74",
+              "start": {
+                "x": 62.0,
+                "y": 62.0
+              }
+            },
+            {
+              "d": "M52 54 Q60 66 70 70",
+              "start": {
+                "x": 52.0,
+                "y": 54.0
+              }
+            }
+          ],
+          "question": "写一写：看一笔、描一笔，写「见」",
+          "praise": "写得真好，汉字卡到手！"
+        }
+      ],
+      "board": {
+        "spaces": [
+          {
+            "type": "question",
+            "step": "cn-39-q"
+          },
+          {
+            "type": "question",
+            "step": "cn-39-l3"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "cn-39-wr"
+          },
+          {
+            "type": "question",
+            "step": "cn-39-l"
+          },
+          {
+            "type": "chest"
+          },
+          {
+            "type": "question",
+            "step": "cn-39-l2"
+          },
+          {
+            "type": "mushroom"
+          },
+          {
+            "type": "question",
+            "step": "cn-39-w"
+          }
+        ]
+      },
+      "zone": 5
+    },
+    {
+      "id": "cn-40",
+      "title": "第 41 关 识字写字",
+      "subtitle": "认识并会写「白」",
+      "steps": [
+        {
+          "id": "cn-40-t",
+          "kind": "teach",
+          "morphFrom": "egg",
+          "char": "白",
+          "pinyin": "bái",
+          "words": [
+            {
+              "icon": "egg",
+              "text": "雪白",
+              "say": "雪白"
+            },
+            {
+              "icon": "milk",
+              "text": "白牛奶",
+              "say": "白牛奶"
+            }
+          ]
+        },
+        {
+          "id": "cn-40-l",
+          "kind": "listen",
+          "prompt": "白",
+          "speakText": "白",
+          "question": "找一找：哪张图片是「白」？",
+          "options": [
+            {
+              "icon": "star"
+            },
+            {
+              "icon": "milk"
+            },
+            {
+              "icon": "egg",
+              "text": "白"
+            }
+          ],
+          "answer": 2,
+          "hint": "想想刚才的图片：「白」",
+          "praise": "眼睛真亮！白 找对啦！"
+        },
+        {
+          "id": "cn-40-l2",
+          "kind": "listen",
+          "promptIcon": "egg",
+          "speakText": "白",
+          "question": "看一看：这张图变成的字是哪个？",
+          "options": [
+            {
+              "text": "风"
+            },
+            {
+              "text": "白"
+            },
+            {
+              "text": "禾"
+            }
+          ],
+          "answer": 1,
+          "hint": "想一想它像什么字",
+          "praise": "对！这张图就是「白」"
+        },
+        {
+          "id": "cn-40-w",
+          "kind": "quiz",
+          "question": "「白」可以组成哪个词？",
+          "options": [
+            {
+              "icon": "starface",
+              "text": "火花"
+            },
+            {
+              "icon": "flower",
+              "text": "花朵"
+            },
+            {
+              "icon": "egg",
+              "text": "雪白"
+            }
+          ],
+          "answer": 2,
+          "hint": "找一找有「白」的词",
+          "praise": "组词成功：雪白！"
+        },
+        {
+          "id": "cn-40-q",
+          "kind": "quiz",
+          "question": "练一练：哪个字是「白」？",
+          "options": [
+            {
+              "text": "木"
+            },
+            {
+              "text": "白"
+            },
+            {
+              "text": "口"
+            }
+          ],
+          "answer": 1,
+          "hint": "想一想刚才的字",
+          "praise": "记住啦！"
+        },
+        {
+          "id": "cn-40-l3",
+          "kind": "listen",
+          "prompt": "白",
+          "speakText": "白",
+          "question": "再找一找：哪张图片是「白」？",
+          "options": [
+            {
+              "icon": "egg",
+              "text": "白"
+            },
+            {
+              "icon": "milk"
+            },
+            {
+              "icon": "star"
+            }
+          ],
+          "answer": 0,
+          "hint": "「白」长什么样",
+          "praise": "又找对啦！白！"
+        },
+        {
+          "id": "cn-40-wr",
+          "kind": "write",
+          "char": "白",
+          "pinyin": "bái",
+          "strokes": [
+            {
+              "d": "M32 26 L58 26",
+              "start": {
+                "x": 32.0,
+                "y": 26.0
+              }
+            },
+            {
+              "d": "M45 18 L45 26",
+              "start": {
+                "x": 45.0,
+                "y": 18.0
+              }
+            },
+            {
+              "d": "M32 40 L32 74",
+              "start": {
+                "x": 32.0,
+                "y": 40.0
+              }
+            },
+            {
+              "d": "M32 40 L66 40 L66 74",
+              "start": {
+                "x": 32.0,
+                "y": 40.0
+              }
+            },
+            {
+              "d": "M32 74 L66 74",
+              "start": {
+                "x": 32.0,
+                "y": 74.0
+              }
+            }
+          ],
+          "question": "写一写：看一笔、描一笔，写「白」",
+          "praise": "写得真好，汉字卡到手！"
+        }
+      ],
+      "board": {
+        "spaces": [
+          {
+            "type": "question",
+            "step": "cn-40-l3"
+          },
+          {
+            "type": "question",
+            "step": "cn-40-wr"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "cn-40-l"
+          },
+          {
+            "type": "question",
+            "step": "cn-40-l2"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "cn-40-w"
+          },
+          {
+            "type": "mushroom"
+          },
+          {
+            "type": "question",
+            "step": "cn-40-q"
+          },
+          {
+            "type": "rest"
+          }
+        ]
+      },
+      "zone": 5
+    },
+    {
+      "id": "cn-41",
+      "title": "第 42 关 识字写字",
+      "subtitle": "认识并会写「牛」",
+      "steps": [
+        {
+          "id": "cn-41-t",
+          "kind": "teach",
+          "morphFrom": "cow",
+          "char": "牛",
+          "pinyin": "niú",
+          "words": [
+            {
+              "icon": "cow",
+              "text": "小牛",
+              "say": "小牛"
+            },
+            {
+              "icon": "milk",
+              "text": "牛奶",
+              "say": "牛奶"
+            }
+          ]
+        },
+        {
+          "id": "cn-41-l",
+          "kind": "listen",
+          "prompt": "牛",
+          "speakText": "牛",
+          "question": "找一找：哪张图片是「牛」？",
+          "options": [
+            {
+              "icon": "milk"
+            },
+            {
+              "icon": "cow",
+              "text": "牛"
+            },
+            {
+              "icon": "bear"
+            }
+          ],
+          "answer": 1,
+          "hint": "想想刚才的图片：「牛」",
+          "praise": "眼睛真亮！牛 找对啦！"
+        },
+        {
+          "id": "cn-41-l2",
+          "kind": "listen",
+          "promptIcon": "cow",
+          "speakText": "牛",
+          "question": "看一看：这张图变成的字是哪个？",
+          "options": [
+            {
+              "text": "虫"
+            },
+            {
+              "text": "贝"
+            },
+            {
+              "text": "牛"
+            }
+          ],
+          "answer": 2,
+          "hint": "想一想它像什么字",
+          "praise": "对！这张图就是「牛」"
+        },
+        {
+          "id": "cn-41-w",
+          "kind": "quiz",
+          "question": "「牛」可以组成哪个词？",
+          "options": [
+            {
+              "icon": "cow",
+              "text": "小牛"
+            },
+            {
+              "icon": "heart",
+              "text": "花园"
+            },
+            {
+              "icon": "leaf",
+              "text": "小草"
+            }
+          ],
+          "answer": 0,
+          "hint": "找一找有「牛」的词",
+          "praise": "组词成功：小牛！"
+        },
+        {
+          "id": "cn-41-q",
+          "kind": "quiz",
+          "question": "练一练：哪个字是「牛」？",
+          "options": [
+            {
+              "text": "木"
+            },
+            {
+              "text": "口"
+            },
+            {
+              "text": "牛"
+            }
+          ],
+          "answer": 2,
+          "hint": "想一想刚才的字",
+          "praise": "记住啦！"
+        },
+        {
+          "id": "cn-41-l3",
+          "kind": "listen",
+          "prompt": "牛",
+          "speakText": "牛",
+          "question": "再找一找：哪张图片是「牛」？",
+          "options": [
+            {
+              "icon": "milk"
+            },
+            {
+              "icon": "bear"
+            },
+            {
+              "icon": "cow",
+              "text": "牛"
+            }
+          ],
+          "answer": 2,
+          "hint": "「牛」长什么样",
+          "praise": "又找对啦！牛！"
+        },
+        {
+          "id": "cn-41-wr",
+          "kind": "write",
+          "char": "牛",
+          "pinyin": "niú",
+          "strokes": [
+            {
+              "d": "M32 34 L68 34",
+              "start": {
+                "x": 32.0,
+                "y": 34.0
+              }
+            },
+            {
+              "d": "M50 20 L50 72",
+              "start": {
+                "x": 50.0,
+                "y": 20.0
+              }
+            },
+            {
+              "d": "M50 48 Q40 62 28 70",
+              "start": {
+                "x": 50.0,
+                "y": 48.0
+              }
+            },
+            {
+              "d": "M50 48 Q58 62 72 68",
+              "start": {
+                "x": 50.0,
+                "y": 48.0
+              }
+            }
+          ],
+          "question": "写一写：看一笔、描一笔，写「牛」",
+          "praise": "写得真好，汉字卡到手！"
+        }
+      ],
+      "board": {
+        "spaces": [
+          {
+            "type": "question",
+            "step": "cn-41-wr"
+          },
+          {
+            "type": "question",
+            "step": "cn-41-l"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "cn-41-l2"
+          },
+          {
+            "type": "question",
+            "step": "cn-41-w"
+          },
+          {
+            "type": "chest"
+          },
+          {
+            "type": "question",
+            "step": "cn-41-q"
+          },
+          {
+            "type": "rest"
+          },
+          {
+            "type": "question",
+            "step": "cn-41-l3"
+          }
+        ]
+      },
+      "zone": 5
+    },
+    {
+      "id": "cn-42",
+      "title": "第 43 关 识字写字",
+      "subtitle": "认识并会写「羊」",
+      "steps": [
+        {
+          "id": "cn-42-t",
+          "kind": "teach",
+          "morphFrom": "polarbear",
+          "char": "羊",
+          "pinyin": "yáng",
+          "words": [
+            {
+              "icon": "polarbear",
+              "text": "小羊",
+              "say": "小羊"
+            },
+            {
+              "icon": "milk",
+              "text": "羊毛",
+              "say": "羊毛"
+            }
+          ]
+        },
+        {
+          "id": "cn-42-l",
+          "kind": "listen",
+          "prompt": "羊",
+          "speakText": "羊",
+          "question": "找一找：哪张图片是「羊」？",
+          "options": [
+            {
+              "icon": "duck"
+            },
+            {
+              "icon": "milk"
+            },
+            {
+              "icon": "polarbear",
+              "text": "羊"
+            }
+          ],
+          "answer": 2,
+          "hint": "想想刚才的图片：「羊」",
+          "praise": "眼睛真亮！羊 找对啦！"
+        },
+        {
+          "id": "cn-42-l2",
+          "kind": "listen",
+          "promptIcon": "polarbear",
+          "speakText": "羊",
+          "question": "看一看：这张图变成的字是哪个？",
+          "options": [
+            {
+              "text": "羊"
+            },
+            {
+              "text": "见"
+            },
+            {
+              "text": "白"
+            }
+          ],
+          "answer": 0,
+          "hint": "想一想它像什么字",
+          "praise": "对！这张图就是「羊」"
+        },
+        {
+          "id": "cn-42-w",
+          "kind": "quiz",
+          "question": "「羊」可以组成哪个词？",
+          "options": [
+            {
+              "icon": "duck",
+              "text": "小鸟"
+            },
+            {
+              "icon": "polarbear",
+              "text": "小羊"
+            },
+            {
+              "icon": "leaf",
+              "text": "鸟窝"
+            }
+          ],
+          "answer": 1,
+          "hint": "找一找有「羊」的词",
+          "praise": "组词成功：小羊！"
+        },
+        {
+          "id": "cn-42-q",
+          "kind": "quiz",
+          "question": "练一练：哪个字是「羊」？",
+          "options": [
+            {
+              "text": "羊"
+            },
+            {
+              "text": "木"
+            },
+            {
+              "text": "口"
+            }
+          ],
+          "answer": 0,
+          "hint": "想一想刚才的字",
+          "praise": "记住啦！"
+        },
+        {
+          "id": "cn-42-l3",
+          "kind": "listen",
+          "prompt": "羊",
+          "speakText": "羊",
+          "question": "再找一找：哪张图片是「羊」？",
+          "options": [
+            {
+              "icon": "polarbear",
+              "text": "羊"
+            },
+            {
+              "icon": "milk"
+            },
+            {
+              "icon": "duck"
+            }
+          ],
+          "answer": 0,
+          "hint": "「羊」长什么样",
+          "praise": "又找对啦！羊！"
+        },
+        {
+          "id": "cn-42-wr",
+          "kind": "write",
+          "char": "羊",
+          "pinyin": "yáng",
+          "strokes": [
+            {
+              "d": "M30 28 L70 28",
+              "start": {
+                "x": 30.0,
+                "y": 28.0
+              }
+            },
+            {
+              "d": "M32 42 L68 42",
+              "start": {
+                "x": 32.0,
+                "y": 42.0
+              }
+            },
+            {
+              "d": "M50 16 L50 72",
+              "start": {
+                "x": 50.0,
+                "y": 16.0
+              }
+            },
+            {
+              "d": "M50 48 Q40 60 30 68",
+              "start": {
+                "x": 50.0,
+                "y": 48.0
+              }
+            },
+            {
+              "d": "M50 48 Q60 60 68 68",
+              "start": {
+                "x": 50.0,
+                "y": 48.0
+              }
+            }
+          ],
+          "question": "写一写：看一笔、描一笔，写「羊」",
+          "praise": "写得真好，汉字卡到手！"
+        }
+      ],
+      "board": {
+        "spaces": [
+          {
+            "type": "question",
+            "step": "cn-42-l"
+          },
+          {
+            "type": "question",
+            "step": "cn-42-l2"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "cn-42-w"
+          },
+          {
+            "type": "question",
+            "step": "cn-42-q"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "cn-42-l3"
+          },
+          {
+            "type": "chest"
+          },
+          {
+            "type": "question",
+            "step": "cn-42-wr"
+          }
+        ]
+      },
+      "zone": 5
+    },
+    {
+      "id": "cn-43",
+      "title": "第 44 关 识字写字",
+      "subtitle": "认识并会写「果」",
+      "steps": [
+        {
+          "id": "cn-43-t",
+          "kind": "teach",
+          "morphFrom": "apple",
+          "char": "果",
+          "pinyin": "guǒ",
+          "words": [
+            {
+              "icon": "apple",
+              "text": "果子",
+              "say": "果子"
+            },
+            {
+              "icon": "leaf",
+              "text": "树叶",
+              "say": "树叶"
+            }
+          ]
+        },
+        {
+          "id": "cn-43-l",
+          "kind": "listen",
+          "prompt": "果",
+          "speakText": "果",
+          "question": "找一找：哪张图片是「果」？",
+          "options": [
+            {
+              "icon": "apple",
+              "text": "果"
+            },
+            {
+              "icon": "banana"
+            },
+            {
+              "icon": "leaf"
+            }
+          ],
+          "answer": 0,
+          "hint": "想想刚才的图片：「果」",
+          "praise": "眼睛真亮！果 找对啦！"
+        },
+        {
+          "id": "cn-43-l2",
+          "kind": "listen",
+          "promptIcon": "apple",
+          "speakText": "果",
+          "question": "看一看：这张图变成的字是哪个？",
+          "options": [
+            {
+              "text": "牛"
+            },
+            {
+              "text": "果"
+            },
+            {
+              "text": "羊"
+            }
+          ],
+          "answer": 1,
+          "hint": "想一想它像什么字",
+          "praise": "对！这张图就是「果」"
+        },
+        {
+          "id": "cn-43-w",
+          "kind": "quiz",
+          "question": "「果」可以组成哪个词？",
+          "options": [
+            {
+              "icon": "sunrise",
+              "text": "一天"
+            },
+            {
+              "icon": "moon",
+              "text": "二月"
+            },
+            {
+              "icon": "apple",
+              "text": "果子"
+            }
+          ],
+          "answer": 2,
+          "hint": "找一找有「果」的词",
+          "praise": "组词成功：果子！"
+        },
+        {
+          "id": "cn-43-q",
+          "kind": "quiz",
+          "question": "练一练：哪个字是「果」？",
+          "options": [
+            {
+              "text": "木"
+            },
+            {
+              "text": "果"
+            },
+            {
+              "text": "口"
+            }
+          ],
+          "answer": 1,
+          "hint": "想一想刚才的字",
+          "praise": "记住啦！"
+        },
+        {
+          "id": "cn-43-l3",
+          "kind": "listen",
+          "prompt": "果",
+          "speakText": "果",
+          "question": "再找一找：哪张图片是「果」？",
+          "options": [
+            {
+              "icon": "banana"
+            },
+            {
+              "icon": "apple",
+              "text": "果"
+            },
+            {
+              "icon": "leaf"
+            }
+          ],
+          "answer": 1,
+          "hint": "「果」长什么样",
+          "praise": "又找对啦！果！"
+        },
+        {
+          "id": "cn-43-wr",
+          "kind": "write",
+          "char": "果",
+          "pinyin": "guǒ",
+          "strokes": [
+            {
+              "d": "M26 30 L74 30",
+              "start": {
+                "x": 26.0,
+                "y": 30.0
+              }
+            },
+            {
+              "d": "M50 14 L50 60",
+              "start": {
+                "x": 50.0,
+                "y": 14.0
+              }
+            },
+            {
+              "d": "M50 44 Q38 58 26 66",
+              "start": {
+                "x": 50.0,
+                "y": 44.0
+              }
+            },
+            {
+              "d": "M50 44 Q62 58 74 66",
+              "start": {
+                "x": 50.0,
+                "y": 44.0
+              }
+            },
+            {
+              "d": "M34 74 L66 74",
+              "start": {
+                "x": 34.0,
+                "y": 74.0
+              }
+            }
+          ],
+          "question": "写一写：看一笔、描一笔，写「果」",
+          "praise": "写得真好，汉字卡到手！"
+        }
+      ],
+      "board": {
+        "spaces": [
+          {
+            "type": "question",
+            "step": "cn-43-l2"
+          },
+          {
+            "type": "question",
+            "step": "cn-43-w"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "cn-43-q"
+          },
+          {
+            "type": "question",
+            "step": "cn-43-l3"
+          },
+          {
+            "type": "mushroom"
+          },
+          {
+            "type": "question",
+            "step": "cn-43-wr"
+          },
+          {
+            "type": "question",
+            "step": "cn-43-l"
+          }
+        ]
+      },
+      "zone": 5
+    },
+    {
+      "id": "cn-44",
+      "title": "第 45 关 识字写字",
+      "subtitle": "认识并会写「车」",
+      "steps": [
+        {
+          "id": "cn-44-t",
+          "kind": "teach",
+          "morphFrom": "car",
+          "char": "车",
+          "pinyin": "chē",
+          "words": [
+            {
+              "icon": "car",
+              "text": "汽车",
+              "say": "汽车"
+            },
+            {
+              "icon": "train",
+              "text": "火车",
+              "say": "火车"
+            }
+          ]
+        },
+        {
+          "id": "cn-44-l",
+          "kind": "listen",
+          "prompt": "车",
+          "speakText": "车",
+          "question": "找一找：哪张图片是「车」？",
+          "options": [
+            {
+              "icon": "train"
+            },
+            {
+              "icon": "car",
+              "text": "车"
+            },
+            {
+              "icon": "bus"
+            }
+          ],
+          "answer": 1,
+          "hint": "想想刚才的图片：「车」",
+          "praise": "眼睛真亮！车 找对啦！"
+        },
+        {
+          "id": "cn-44-l2",
+          "kind": "listen",
+          "promptIcon": "car",
+          "speakText": "车",
+          "question": "看一看：这张图变成的字是哪个？",
+          "options": [
+            {
+              "text": "果"
+            },
+            {
+              "text": "糖"
+            },
+            {
+              "text": "车"
+            }
+          ],
+          "answer": 2,
+          "hint": "想一想它像什么字",
+          "praise": "对！这张图就是「车」"
+        },
+        {
+          "id": "cn-44-w",
+          "kind": "quiz",
+          "question": "「车」可以组成哪个词？",
+          "options": [
+            {
+              "icon": "car",
+              "text": "汽车"
+            },
+            {
+              "icon": "star",
+              "text": "三个"
+            },
+            {
+              "icon": "school",
+              "text": "三角"
+            }
+          ],
+          "answer": 0,
+          "hint": "找一找有「车」的词",
+          "praise": "组词成功：汽车！"
+        },
+        {
+          "id": "cn-44-q",
+          "kind": "quiz",
+          "question": "练一练：哪个字是「车」？",
+          "options": [
+            {
+              "text": "木"
+            },
+            {
+              "text": "口"
+            },
+            {
+              "text": "车"
+            }
+          ],
+          "answer": 2,
+          "hint": "想一想刚才的字",
+          "praise": "记住啦！"
+        },
+        {
+          "id": "cn-44-l3",
+          "kind": "listen",
+          "prompt": "车",
+          "speakText": "车",
+          "question": "再找一找：哪张图片是「车」？",
+          "options": [
+            {
+              "icon": "train"
+            },
+            {
+              "icon": "bus"
+            },
+            {
+              "icon": "car",
+              "text": "车"
+            }
+          ],
+          "answer": 2,
+          "hint": "「车」长什么样",
+          "praise": "又找对啦！车！"
+        },
+        {
+          "id": "cn-44-wr",
+          "kind": "write",
+          "char": "车",
+          "pinyin": "chē",
+          "strokes": [
+            {
+              "d": "M30 28 L70 28",
+              "start": {
+                "x": 30.0,
+                "y": 28.0
+              }
+            },
+            {
+              "d": "M50 18 L50 56",
+              "start": {
+                "x": 50.0,
+                "y": 18.0
+              }
+            },
+            {
+              "d": "M26 44 L50 56",
+              "start": {
+                "x": 26.0,
+                "y": 44.0
+              }
+            },
+            {
+              "d": "M50 56 L36 74",
+              "start": {
+                "x": 50.0,
+                "y": 56.0
+              }
+            },
+            {
+              "d": "M36 74 L64 74",
+              "start": {
+                "x": 36.0,
+                "y": 74.0
+              }
+            }
+          ],
+          "question": "写一写：看一笔、描一笔，写「车」",
+          "praise": "写得真好，汉字卡到手！"
+        }
+      ],
+      "board": {
+        "spaces": [
+          {
+            "type": "question",
+            "step": "cn-44-w"
+          },
+          {
+            "type": "question",
+            "step": "cn-44-q"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "cn-44-l3"
+          },
+          {
+            "type": "question",
+            "step": "cn-44-wr"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "cn-44-l"
+          },
+          {
+            "type": "rest"
+          },
+          {
+            "type": "question",
+            "step": "cn-44-l2"
+          }
+        ]
+      },
+      "zone": 5
+    },
+    {
+      "id": "cn-45",
+      "title": "第 46 关 识字写字",
+      "subtitle": "认识并会写「糖」",
+      "steps": [
+        {
+          "id": "cn-45-t",
+          "kind": "teach",
+          "morphFrom": "candy",
+          "char": "糖",
+          "pinyin": "táng",
+          "words": [
+            {
+              "icon": "candy",
+              "text": "糖果",
+              "say": "糖果"
+            },
+            {
+              "icon": "cake",
+              "text": "甜心",
+              "say": "甜心"
+            }
+          ]
+        },
+        {
+          "id": "cn-45-l",
+          "kind": "listen",
+          "prompt": "糖",
+          "speakText": "糖",
+          "question": "找一找：哪张图片是「糖」？",
+          "options": [
+            {
+              "icon": "gift"
+            },
+            {
+              "icon": "cake"
+            },
+            {
+              "icon": "candy",
+              "text": "糖"
+            }
+          ],
+          "answer": 2,
+          "hint": "想想刚才的图片：「糖」",
+          "praise": "眼睛真亮！糖 找对啦！"
+        },
+        {
+          "id": "cn-45-l2",
+          "kind": "listen",
+          "promptIcon": "candy",
+          "speakText": "糖",
+          "question": "看一看：这张图变成的字是哪个？",
+          "options": [
+            {
+              "text": "糖"
+            },
+            {
+              "text": "日"
+            },
+            {
+              "text": "月"
+            }
+          ],
+          "answer": 0,
+          "hint": "想一想它像什么字",
+          "praise": "对！这张图就是「糖」"
+        },
+        {
+          "id": "cn-45-w",
+          "kind": "quiz",
+          "question": "「糖」可以组成哪个词？",
+          "options": [
+            {
+              "icon": "gift",
+              "text": "四方"
+            },
+            {
+              "icon": "candy",
+              "text": "糖果"
+            },
+            {
+              "icon": "star",
+              "text": "五个"
+            }
+          ],
+          "answer": 1,
+          "hint": "找一找有「糖」的词",
+          "praise": "组词成功：糖果！"
+        },
+        {
+          "id": "cn-45-q",
+          "kind": "quiz",
+          "question": "练一练：哪个字是「糖」？",
+          "options": [
+            {
+              "text": "糖"
+            },
+            {
+              "text": "木"
+            },
+            {
+              "text": "口"
+            }
+          ],
+          "answer": 0,
+          "hint": "想一想刚才的字",
+          "praise": "记住啦！"
+        },
+        {
+          "id": "cn-45-l3",
+          "kind": "listen",
+          "prompt": "糖",
+          "speakText": "糖",
+          "question": "再找一找：哪张图片是「糖」？",
+          "options": [
+            {
+              "icon": "candy",
+              "text": "糖"
+            },
+            {
+              "icon": "cake"
+            },
+            {
+              "icon": "gift"
+            }
+          ],
+          "answer": 0,
+          "hint": "「糖」长什么样",
+          "praise": "又找对啦！糖！"
+        },
+        {
+          "id": "cn-45-wr",
+          "kind": "write",
+          "char": "糖",
+          "pinyin": "táng",
+          "strokes": [
+            {
+              "d": "M30 24 L30 72",
+              "start": {
+                "x": 30.0,
+                "y": 24.0
+              }
+            },
+            {
+              "d": "M44 30 L58 30",
+              "start": {
+                "x": 44.0,
+                "y": 30.0
+              }
+            },
+            {
+              "d": "M52 30 L52 46",
+              "start": {
+                "x": 52.0,
+                "y": 30.0
+              }
+            },
+            {
+              "d": "M62 58 L74 58",
+              "start": {
+                "x": 62.0,
+                "y": 58.0
+              }
+            },
+            {
+              "d": "M56 54 L62 74",
+              "start": {
+                "x": 56.0,
+                "y": 54.0
+              }
+            },
+            {
+              "d": "M40 58 L52 58",
+              "start": {
+                "x": 40.0,
+                "y": 58.0
+              }
+            }
+          ],
+          "question": "写一写：看一笔、描一笔，写「糖」",
+          "praise": "写得真好，汉字卡到手！"
+        }
+      ],
+      "board": {
+        "spaces": [
+          {
+            "type": "question",
+            "step": "cn-45-q"
+          },
+          {
+            "type": "question",
+            "step": "cn-45-l3"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "cn-45-wr"
+          },
+          {
+            "type": "question",
+            "step": "cn-45-l"
+          },
+          {
+            "type": "chest"
+          },
+          {
+            "type": "question",
+            "step": "cn-45-l2"
+          },
+          {
+            "type": "mushroom"
+          },
+          {
+            "type": "question",
+            "step": "cn-45-w"
+          }
+        ]
+      },
+      "zone": 5
+    },
+    {
+      "id": "cn-r2",
+      "title": "复习关 三",
+      "subtitle": "旧题开盲盒 · 混排复习",
+      "steps": [
+        {
+          "id": "cn-r2-0",
+          "kind": "listen",
+          "prompt": "日",
+          "speakText": "日",
+          "question": "找一找：哪张图片是「日」？",
+          "options": [
+            {
+              "icon": "sunrise",
+              "text": "日"
+            },
+            {
+              "icon": "moon"
+            },
+            {
+              "icon": "cake"
+            }
+          ],
+          "answer": 0,
+          "hint": "想想刚才的图片：「日」",
+          "praise": "眼睛真亮！日 找对啦！"
+        },
+        {
+          "id": "cn-r2-1",
+          "kind": "listen",
+          "prompt": "月",
+          "speakText": "月",
+          "question": "找一找：哪张图片是「月」？",
+          "options": [
+            {
+              "icon": "star"
+            },
+            {
+              "icon": "sun"
+            },
+            {
+              "icon": "moon",
+              "text": "月"
+            }
+          ],
+          "answer": 2,
+          "hint": "想想刚才的图片：「月」",
+          "praise": "眼睛真亮！月 找对啦！"
+        },
+        {
+          "id": "cn-r2-2",
+          "kind": "listen",
+          "prompt": "水",
+          "speakText": "水",
+          "question": "找一找：哪张图片是「水」？",
+          "options": [
+            {
+              "icon": "wave",
+              "text": "水"
+            },
+            {
+              "icon": "sun"
+            },
+            {
+              "icon": "crystal"
+            }
+          ],
+          "answer": 0,
+          "hint": "想想刚才的图片：「水」",
+          "praise": "眼睛真亮！水 找对啦！"
+        },
+        {
+          "id": "cn-r2-3",
+          "kind": "listen",
+          "prompt": "山",
+          "speakText": "山",
+          "question": "找一找：哪张图片是「山」？",
+          "options": [
+            {
+              "icon": "rocket"
+            },
+            {
+              "icon": "volcano",
+              "text": "山"
+            },
+            {
+              "icon": "home"
+            }
+          ],
+          "answer": 1,
+          "hint": "想想刚才的图片：「山」",
+          "praise": "眼睛真亮！山 找对啦！"
+        },
+        {
+          "id": "cn-r2-4",
+          "kind": "listen",
+          "prompt": "木",
+          "speakText": "木",
+          "question": "找一找：哪张图片是「木」？",
+          "options": [
+            {
+              "icon": "sprout",
+              "text": "木"
+            },
+            {
+              "icon": "flower"
+            },
+            {
+              "icon": "rock"
+            }
+          ],
+          "answer": 0,
+          "hint": "想想刚才的图片：「木」",
+          "praise": "眼睛真亮！木 找对啦！"
+        },
+        {
+          "id": "cn-r2-5",
+          "kind": "listen",
+          "prompt": "人",
+          "speakText": "人",
+          "question": "找一找：哪张图片是「人」？",
+          "options": [
+            {
+              "icon": "sun"
+            },
+            {
+              "icon": "duck"
+            },
+            {
+              "icon": "girl",
+              "text": "人"
+            }
+          ],
+          "answer": 2,
+          "hint": "想想刚才的图片：「人」",
+          "praise": "眼睛真亮！人 找对啦！"
+        }
+      ],
+      "board": {
+        "spaces": [
+          {
+            "type": "question",
+            "step": "cn-r2-2"
+          },
+          {
+            "type": "question",
+            "step": "cn-r2-3"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "cn-r2-4"
+          },
+          {
+            "type": "question",
+            "step": "cn-r2-5"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "cn-r2-0"
+          },
+          {
+            "type": "chest"
+          },
+          {
+            "type": "question",
+            "step": "cn-r2-1"
+          },
+          {
+            "type": "mushroom"
+          }
+        ]
+      },
+      "review": true,
+      "zone": 5
     },
     {
       "id": "cn-boss",
@@ -6617,28 +10386,6 @@
         {
           "id": "cn-boss-5",
           "kind": "listen",
-          "prompt": "日",
-          "speakText": "日",
-          "question": "找一找：哪张图片是「日」？",
-          "options": [
-            {
-              "icon": "sunrise",
-              "text": "日"
-            },
-            {
-              "icon": "moon"
-            },
-            {
-              "icon": "cake"
-            }
-          ],
-          "answer": 0,
-          "hint": "想想刚才的图片：「日」",
-          "praise": "眼睛真亮！日 找对啦！"
-        },
-        {
-          "id": "cn-boss-6",
-          "kind": "listen",
           "prompt": "人",
           "speakText": "人",
           "question": "找一找：哪张图片是「人」？",
@@ -6659,7 +10406,7 @@
           "praise": "眼睛真亮！人 找对啦！"
         },
         {
-          "id": "cn-boss-7",
+          "id": "cn-boss-6",
           "kind": "listen",
           "prompt": "口",
           "speakText": "口",
@@ -6679,6 +10426,28 @@
           "answer": 0,
           "hint": "想想刚才的图片：「口」",
           "praise": "眼睛真亮！口 找对啦！"
+        },
+        {
+          "id": "cn-boss-7",
+          "kind": "listen",
+          "prompt": "天",
+          "speakText": "天",
+          "question": "找一找：哪张图片是「天」？",
+          "options": [
+            {
+              "icon": "banana"
+            },
+            {
+              "icon": "sun",
+              "text": "天"
+            },
+            {
+              "icon": "rocket"
+            }
+          ],
+          "answer": 1,
+          "hint": "想想刚才的图片：「天」",
+          "praise": "眼睛真亮！天 找对啦！"
         }
       ],
       "board": {
@@ -6717,7 +10486,8 @@
           }
         ]
       },
-      "boss": true
+      "boss": true,
+      "zone": 5
     }
   ]
 }

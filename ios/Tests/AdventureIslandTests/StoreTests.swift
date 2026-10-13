@@ -54,6 +54,25 @@ final class ProgressStoreTests: XCTestCase {
         XCTAssertTrue(store.isSubjectComplete("astro"), "复习关不做要求，跳过复习关也应视为全通关")
     }
 
+    /// v0.10 天文台扩到 100 关后 id 重排，家长中心「↺ 重置」是给出的迁移路径：
+    /// 重置须清空该学科全部关卡星（含新 id），不动其他学科与金币
+    func testResetSubjectClearsAstroAndKeepsOthers() {
+        let (store, _) = makeStore(day: "2026-10-13")
+        let astroIds = LevelCatalog.ids("astro")
+        XCTAssertEqual(astroIds.count, 100, "夹具前提：天文台应 100 关")
+        for id in astroIds { store.completeLevel(subject: "astro", levelId: id, stars: 3) }
+        store.completeLevel(subject: "cn", levelId: "cn-0", stars: 2)
+        let coinsBefore = store.snapshot.coins
+
+        store.resetSubject("astro")
+
+        XCTAssertTrue(astroIds.allSatisfy { store.stars(for: "astro", levelId: $0) == 0 },
+                      "重置后天文台 100 关星级应全部清空")
+        XCTAssertEqual(store.stars(for: "cn", levelId: "cn-0"), 2, "其他学科进度不受影响")
+        XCTAssertEqual(store.snapshot.coins, coinsBefore, "重置不扣金币")
+        XCTAssertFalse(store.isSubjectComplete("astro"))
+    }
+
     func testDailyTasksPerDay() {
         let (store, _) = makeStore(day: "2026-09-29")
         store.bumpDaily(subject: "cn")

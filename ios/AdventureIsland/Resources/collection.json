@@ -347,6 +347,102 @@
           "name": "手",
           "text": "手",
           "pinyin": "shǒu"
+        },
+        {
+          "id": "hz-目",
+          "name": "目",
+          "text": "目",
+          "pinyin": "mù"
+        },
+        {
+          "id": "hz-耳",
+          "name": "耳",
+          "text": "耳",
+          "pinyin": "ěr"
+        },
+        {
+          "id": "hz-足",
+          "name": "足",
+          "text": "足",
+          "pinyin": "zú"
+        },
+        {
+          "id": "hz-云",
+          "name": "云",
+          "text": "云",
+          "pinyin": "yún"
+        },
+        {
+          "id": "hz-雨",
+          "name": "雨",
+          "text": "雨",
+          "pinyin": "yǔ"
+        },
+        {
+          "id": "hz-风",
+          "name": "风",
+          "text": "风",
+          "pinyin": "fēng"
+        },
+        {
+          "id": "hz-禾",
+          "name": "禾",
+          "text": "禾",
+          "pinyin": "hé"
+        },
+        {
+          "id": "hz-虫",
+          "name": "虫",
+          "text": "虫",
+          "pinyin": "chóng"
+        },
+        {
+          "id": "hz-贝",
+          "name": "贝",
+          "text": "贝",
+          "pinyin": "bèi"
+        },
+        {
+          "id": "hz-见",
+          "name": "见",
+          "text": "见",
+          "pinyin": "jiàn"
+        },
+        {
+          "id": "hz-白",
+          "name": "白",
+          "text": "白",
+          "pinyin": "bái"
+        },
+        {
+          "id": "hz-牛",
+          "name": "牛",
+          "text": "牛",
+          "pinyin": "niú"
+        },
+        {
+          "id": "hz-羊",
+          "name": "羊",
+          "text": "羊",
+          "pinyin": "yáng"
+        },
+        {
+          "id": "hz-果",
+          "name": "果",
+          "text": "果",
+          "pinyin": "guǒ"
+        },
+        {
+          "id": "hz-车",
+          "name": "车",
+          "text": "车",
+          "pinyin": "chē"
+        },
+        {
+          "id": "hz-糖",
+          "name": "糖",
+          "text": "糖",
+          "pinyin": "táng"
         }
       ]
     },
@@ -755,6 +851,271 @@
           "icon": "bird"
         },
         {
+          "id": "en-ball",
+          "name": "Ball 球",
+          "icon": "ball"
+        },
+        {
+          "id": "en-block",
+          "name": "Block 积木",
+          "icon": "block"
+        },
+        {
+          "id": "en-dice",
+          "name": "Dice 骰子",
+          "icon": "dice"
+        },
+        {
+          "id": "en-gift",
+          "name": "Gift 礼物",
+          "icon": "gift"
+        },
+        {
+          "id": "en-home",
+          "name": "Home 家",
+          "icon": "home"
+        },
+        {
+          "id": "en-bed",
+          "name": "Bed 床",
+          "icon": "bed"
+        },
+        {
+          "id": "en-cup",
+          "name": "Cup 杯子",
+          "icon": "cup"
+        },
+        {
+          "id": "en-key",
+          "name": "Key 钥匙",
+          "icon": "key"
+        },
+        {
+          "id": "en-sun",
+          "name": "Sun 太阳",
+          "icon": "sun"
+        },
+        {
+          "id": "en-moon",
+          "name": "Moon 月亮",
+          "icon": "moon"
+        },
+        {
+          "id": "en-rainbow",
+          "name": "Rainbow 彩虹",
+          "icon": "rainbow"
+        },
+        {
+          "id": "en-windmill",
+          "name": "Windmill 风车",
+          "icon": "windmill"
+        },
+        {
+          "id": "en-car",
+          "name": "Car 汽车",
+          "icon": "car"
+        },
+        {
+          "id": "en-bus",
+          "name": "Bus 公交",
+          "icon": "bus"
+        },
+        {
+          "id": "en-school",
+          "name": "School 学校",
+          "icon": "school"
+        },
+        {
+          "id": "en-shop",
+          "name": "Shop 商店",
+          "icon": "shop"
+        },
+        {
+          "id": "en-castle",
+          "name": "Castle 城堡",
+          "icon": "castle"
+        },
+        {
+          "id": "en-tree",
+          "name": "Tree 树",
+          "icon": "tree"
+        },
+        {
+          "id": "en-flower",
+          "name": "Flower 花",
+          "icon": "flower"
+        },
+        {
+          "id": "en-leaf",
+          "name": "Leaf 叶子",
+          "icon": "leaf"
+        },
+        {
+          "id": "en-sprout",
+          "name": "Sprout 幼苗",
+          "icon": "sprout"
+        },
+        {
+          "id": "en-lion",
+          "name": "Lion 狮子",
+          "icon": "lion"
+        },
+        {
+          "id": "en-tiger",
+          "name": "Tiger 老虎",
+          "icon": "tiger"
+        },
+        {
+          "id": "en-monkey",
+          "name": "Monkey 猴子",
+          "icon": "monkey"
+        },
+        {
+          "id": "en-elephant",
+          "name": "Elephant 大象",
+          "icon": "elephant"
+        },
+        {
+          "id": "en-fish",
+          "name": "Fish 鱼",
+          "icon": "fish"
+        },
+        {
+          "id": "en-wave",
+          "name": "Wave 浪",
+          "icon": "wave"
+        },
+        {
+          "id": "en-penguin",
+          "name": "Penguin 企鹅",
+          "icon": "penguin"
+        },
+        {
+          "id": "en-ice",
+          "name": "Ice 海冰",
+          "icon": "ice"
+        },
+        {
+          "id": "en-party",
+          "name": "Party 派对",
+          "icon": "party"
+        },
+        {
+          "id": "en-gift",
+          "name": "Gift 礼物",
+          "icon": "gift"
+        },
+        {
+          "id": "en-cake",
+          "name": "Cake 蛋糕",
+          "icon": "cake"
+        },
+        {
+          "id": "en-candy",
+          "name": "Candy 糖果",
+          "icon": "candy"
+        },
+        {
+          "id": "en-bulb",
+          "name": "Bulb 灯泡",
+          "icon": "bulb"
+        },
+        {
+          "id": "en-magnet",
+          "name": "Magnet 磁铁",
+          "icon": "magnet"
+        },
+        {
+          "id": "en-crystal",
+          "name": "Crystal 水晶",
+          "icon": "crystal"
+        },
+        {
+          "id": "en-star",
+          "name": "Star 星",
+          "icon": "starface"
+        },
+        {
+          "id": "en-key",
+          "name": "Key 钥匙",
+          "icon": "key"
+        },
+        {
+          "id": "en-magnet",
+          "name": "Magnet 磁铁",
+          "icon": "magnet"
+        },
+        {
+          "id": "en-slider",
+          "name": "Slider 滑块",
+          "icon": "slider"
+        },
+        {
+          "id": "en-clip",
+          "name": "Clip 夹子",
+          "icon": "clip"
+        },
+        {
+          "id": "en-bee",
+          "name": "Bee 蜜蜂",
+          "icon": "bee"
+        },
+        {
+          "id": "en-flower",
+          "name": "Flower 花",
+          "icon": "flower"
+        },
+        {
+          "id": "en-leaf",
+          "name": "Leaf 叶",
+          "icon": "leaf"
+        },
+        {
+          "id": "en-tree",
+          "name": "Tree 树",
+          "icon": "tree"
+        },
+        {
+          "id": "en-snowflake",
+          "name": "Snowflake 雪花",
+          "icon": "snowflake"
+        },
+        {
+          "id": "en-ice",
+          "name": "Ice 冰",
+          "icon": "ice"
+        },
+        {
+          "id": "en-polar bear",
+          "name": "Polar Bear 北极熊",
+          "icon": "polarbear"
+        },
+        {
+          "id": "en-penguin",
+          "name": "Penguin 企鹅",
+          "icon": "penguin"
+        },
+        {
+          "id": "en-fox",
+          "name": "Fox 狐狸",
+          "icon": "fox"
+        },
+        {
+          "id": "en-frog",
+          "name": "Frog 青蛙",
+          "icon": "frog"
+        },
+        {
+          "id": "en-bear",
+          "name": "Bear 熊",
+          "icon": "bear"
+        },
+        {
+          "id": "en-dino",
+          "name": "Dino 恐龙",
+          "icon": "dino"
+        },
+        {
           "id": "en-run",
           "name": "Run 跑",
           "icon": "girl"
@@ -860,6 +1221,51 @@
         {
           "id": "as-milkyway",
           "name": "银河系 Milky Way",
+          "icon": "milkyway"
+        },
+        {
+          "id": "as-uranus",
+          "name": "天王星 Uranus",
+          "icon": "uranus"
+        },
+        {
+          "id": "as-neptune",
+          "name": "海王星 Neptune",
+          "icon": "neptune"
+        },
+        {
+          "id": "as-satellite",
+          "name": "卫星 Satellite",
+          "icon": "satellite"
+        },
+        {
+          "id": "as-telescope",
+          "name": "望远镜 Telescope",
+          "icon": "telescope"
+        },
+        {
+          "id": "as-blackhole",
+          "name": "黑洞 Black Hole",
+          "icon": "blackhole"
+        },
+        {
+          "id": "as-bigdipper",
+          "name": "北斗七星 Big Dipper",
+          "icon": "bigdipper"
+        },
+        {
+          "id": "as-meteorite",
+          "name": "陨石 Meteorite",
+          "icon": "meteorite"
+        },
+        {
+          "id": "as-ufo",
+          "name": "外星人 UFO",
+          "icon": "ufo"
+        },
+        {
+          "id": "as-universe",
+          "name": "宇宙 Universe",
           "icon": "milkyway"
         }
       ]

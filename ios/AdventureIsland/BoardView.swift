@@ -76,6 +76,14 @@ struct StepContainerView: View {
         case "clock": ClockStepView(step: step, onWrong: onWrong, onNext: onNext, onCorrectCelebrate: onCorrectCelebrate)
         case "money": MoneyStepView(step: step, onNext: onNext, onCorrectCelebrate: onCorrectCelebrate)
         case "mappuzzle": MapPuzzleStepView(step: step, subject: subject, onNext: onNext, onCorrectCelebrate: onCorrectCelebrate)
+        case "balance": BalanceStepView(step: step, onWrong: onWrong, onNext: onNext, onCorrectCelebrate: onCorrectCelebrate)
+        case "sort": SortStepView(step: step, onNext: onNext, onCorrectCelebrate: onCorrectCelebrate)
+        case "tapall": TapAllStepView(step: step, onWrong: onWrong, onNext: onNext, onCorrectCelebrate: onCorrectCelebrate)
+        case "match": MatchStepView(step: step, onWrong: onWrong, onNext: onNext, onCorrectCelebrate: onCorrectCelebrate)
+        case "lineup": LineupStepView(step: step, onWrong: onWrong, onNext: onNext, onCorrectCelebrate: onCorrectCelebrate)
+        case "sequence": SequenceStepView(step: step, onWrong: onWrong, onNext: onNext, onCorrectCelebrate: onCorrectCelebrate)
+        case "spotlight": SpotlightStepView(step: step, onNext: onNext, onCorrectCelebrate: onCorrectCelebrate)
+        case "shadow": ShadowStepView(step: step, onWrong: onWrong, onNext: onNext, onCorrectCelebrate: onCorrectCelebrate)
         default: EmptyView()
         }
     }
@@ -145,9 +153,9 @@ struct FinishCardView: View {
                         .buttonStyle(.jellyGreen)
                     }
                     Button {
-                        route = .map
+                        route = backRoute(subject: subject, index: index)
                     } label: {
-                        Label("返回地图", systemImage: "map")
+                        Label(LevelCatalog.hasZones(subject) ? "返回星区" : "返回地图", systemImage: "map")
                             .font(.kidHead(19))
                     }
                     .buttonStyle(.jellyOrange)
@@ -279,16 +287,15 @@ struct BoardLevelView: View {
             }
 
             if flow.finished {
-                CeremonyView(subject: subject,
-                             index: index,
-                             levelId: levelId,
-                             totalLevels: totalLevels,
-                             stars: flow.stars,
-                             wrongCount: flow.wrongCount,
-                             mascot: ShopCatalog.charIcon(for: store.snapshot.activeChar),
-                             onNext: goNext,
-                             onReplay: replay,
-                             route: $route)
+                LevelSettleCard(subject: subject,
+                                index: index,
+                                levelId: levelId,
+                                totalLevels: totalLevels,
+                                stars: flow.stars,
+                                wrongCount: flow.wrongCount,
+                                onNext: goNext,
+                                onReplay: replay,
+                                route: $route)
             }
         }
         .onAppear {
@@ -303,7 +310,7 @@ struct BoardLevelView: View {
 
     private var header: some View {
         HStack(spacing: 14) {
-            SquareIconButton(icon: "back", size: 56, action: { route = .map })
+            SquareIconButton(icon: "back", size: 56, action: { route = backRoute(subject: subject, index: index) })
             VStack(alignment: .leading, spacing: 1) {
                 Text("\(config.title) · \(title)")
                     .font(.kidHead(22))

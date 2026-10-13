@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs><linearGradient id="g-dome" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#B8F0E8"/><stop offset="1" stop-color="#6ECFC4"/></linearGradient><linearGradient id="g-saucer" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#A7B4C9"/><stop offset="1" stop-color="#6B7A94"/></linearGradient></defs>
+  <path d="M22 26 a10 10 0 0 1 20 0 Z" fill="url(#g-dome)"/>
+  <ellipse cx="32" cy="30" rx="26" ry="9" fill="url(#g-saucer)"/>
+  <ellipse cx="32" cy="28.5" rx="26" ry="7" fill="#B9C6DA"/>
+  <circle cx="16" cy="31" r="2.2" fill="#FFE58A"/><circle cx="30" cy="34" r="2.2" fill="#FFE58A"/><circle cx="45" cy="31" r="2.2" fill="#FFE58A"/>
+  <path d="M22 40 L18 52 M42 40 L46 52" stroke="#FFE58A" stroke-width="4" stroke-linecap="round" opacity=".85"/></svg>

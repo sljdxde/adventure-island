@@ -4,7 +4,7 @@ import Foundation
 /// 调试用启动参数（仅 DEBUG 编译进 App，正式包不含此代码）：
 /// - `-AISeed all`：把全部学科关卡置为三星通关（用于验证「全部通关后重新开始」流程）
 /// - `-AISeed none`：清空全部进度
-/// - `-AIRoute map|lab|collection|parent|level:<subject>:<index>`：直接进入指定页面
+/// - `-AIRoute map|lab|collection|parent|level:<subject>:<index>|zones:<subject>|zonelevels:<subject>:<zone>`：直接进入指定页面
 enum DebugLaunch {
 
     static func seedIfNeeded(store: ProgressStore) {
@@ -46,6 +46,16 @@ enum DebugLaunch {
             let parts = String(target.dropFirst("level:".count)).components(separatedBy: ":")
             if parts.count == 2, let index = Int(parts[1]) {
                 return .level(subject: parts[0], index: index)
+            }
+        }
+        // v0.10 星区页：zones:<subject> / zonelevels:<subject>:<zone>
+        if target.hasPrefix("zones:") {
+            return .zones(subject: String(target.dropFirst("zones:".count)))
+        }
+        if target.hasPrefix("zonelevels:") {
+            let parts = String(target.dropFirst("zonelevels:".count)).components(separatedBy: ":")
+            if parts.count == 2, let zone = Int(parts[1]) {
+                return .zoneLevels(subject: parts[0], zone: zone)
             }
         }
         #if DEBUG

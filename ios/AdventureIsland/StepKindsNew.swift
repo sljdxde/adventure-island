@@ -841,6 +841,10 @@ struct MoneyStepView: View {
         let y = price / 10, j = price % 10
         return y > 0 ? (j > 0 ? "\(y)元\(j)角" : "\(y)元") : "\(j)角"
     }
+    private func jiaoText(_ jiao: Int) -> String {
+        let y = jiao / 10, j = jiao % 10
+        return y > 0 ? (j > 0 ? "\(y)元\(j)角" : "\(y)元") : "\(j)角"
+    }
     private var paidText: String {
         let y = total / 10, j = total % 10
         return y > 0 ? (j > 0 ? "\(y)元\(j)角" : "\(y)元") : "\(j)角"
@@ -856,7 +860,7 @@ struct MoneyStepView: View {
             toast.show("付多啦，点已选的钱币去掉一些", seconds: 1.8)
         } else {
             sound.wrong()
-            toast.show("还差 \(price - total) 角，再加点钱", seconds: 1.8)
+            toast.show("还差 \(jiaoText(price - total))，再加点钱", seconds: 1.8)
         }
     }
 
@@ -1021,5 +1025,1029 @@ struct RegionShape: Shape {
         for pt in points.dropFirst() { p.addLine(to: CGPoint(x: pt[0] * sx, y: pt[1] * sy)) }
         p.closeSubpath()
         return p
+    }
+}
+
+// MARK: - balance（天平比一比：点天平两边，哪边更重？v0.10 天文台）
+
+struct BalanceStepView: View {
+    let step: Step
+    let onWrong: () -> Void
+    let onNext: () -> Void
+    let onCorrectCelebrate: () -> Void
+    @EnvironmentObject var toast: ToastCenter
+    @Environment(\.soundService) private var sound
+    @State private var solved = false
+    @State private var tilt: CGFloat = 0          // 答对后向重的一侧倾斜
+    @State private var idleWobble = false
+    @State private var shakeSide: String?         // 答错的一侧轻抖
+
+    var body: some View {
+        VStack(spacing: 14) {
+            StepHeader(text: step.question ?? "天平秤一秤：哪边更重？")
+
+            balance
+                .frame(height: 240)
+
+            if solved {
+                Text(step.praise ?? "答对啦！")
+                    .font(.kidHead(21)).foregroundColor(.brandGreenDk)
+            } else {
+                Text("点一点天平上的盘子，选更重的那边")
+                    .font(.kidBody(15)).foregroundColor(.inkSoft)
+            }
+            #if DEBUG
+            AutoSolveButton { autoSolve() }
+            #endif
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .modifier(StickerCardModifier())
+        .onAppear {
+            withAnimation(.easeInOut(duration: 1.6).repeatForever(autoreverses: true)) { idleWobble = true }
+        }
+    }
+
+    private var answer: String { step.answerKey ?? "left" }
+
+    /// 整组（横梁 + 两侧吊盘）绕支点旋转：左重 → 逆时针，右重 → 顺时针
+    private var balance: some View {
+        let angle: CGFloat = solved ? (answer == "left" ? -9 : 9) : (idleWobble ? 2.5 : -2.5)
+        return ZStack {
+            // 支点立柱
+            VStack(spacing: 0) {
+                Circle().fill(LinearGradient(colors: [Color(hex: 0xFFE29A), .brandYellowDk],
+                                             startPoint: .top, endPoint: .bottom))
+                    .frame(width: 22, height: 22)
+                    .overlay(Circle().stroke(.white, lineWidth: 3))
+                RoundedRectangle(cornerRadius: 6, style: .continuous)
+                    .fill(LinearGradient(colors: [Color(hex: 0xE8D5AE), Color(hex: 0xC9B083)],
+                                         startPoint: .top, endPoint: .bottom))
+                    .frame(width: 12, height: 118)
+            }
+            .offset(y: 46)
+
+            HStack(spacing: 116) {
+                pan(step.left, key: "left")
+                pan(step.right, key: "right")
+            }
+            .offset(y: -34)
+        }
+        .rotationEffect(.degrees(angle))
+        .animation(.spring(response: 0.5, dampingFraction: 0.55), value: solved)
+        .animation(.easeInOut(duration: 1.6), value: idleWobble)
+    }
+
+    private func pan(_ side: BalanceSide?, key: String) -> some View {
+        Button {
+            guard !solved else { return }
+            if key == answer {
+                solved = true
+                sound.correct()
+                onCorrectCelebrate()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { onNext() }
+            } else {
+                shakeSide = key
+                sound.wrong()
+                onWrong()
+                toast.show(step.hint ?? "再掂一掂哦", seconds: 1.8)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { shakeSide = nil }
+            }
+        } label: {
+            VStack(spacing: 0) {
+                // 吊绳 + 秤盘
+                HStack(spacing: 76) {
+                    Rectangle().fill(Color(hex: 0xC9B083)).frame(width: 2, height: 26)
+                    Rectangle().fill(Color(hex: 0xC9B083)).frame(width: 2, height: 26)
+                }
+                ZStack {
+                    Ellipse()
+                        .fill(LinearGradient(colors: [Color(hex: 0xF6E3B4), Color(hex: 0xE0C08A)],
+                                             startPoint: .top, endPoint: .bottom))
+                        .frame(width: 132, height: 30)
+                    if let s = side {
+                        HStack(spacing: 8) {
+                            if let icon = s.icon { IconView(name: icon, size: 64) }
+                            if let text = s.text, !text.isEmpty {
+                                Text(text).font(.kidHead(19)).foregroundColor(.ink)
+                            }
+                        }
+                        .offset(y: -34)
+                    }
+                }
+            }
+            .offset(y: shakeSide == key ? -5 : 0)
+            .opacity(shakeSide == nil || shakeSide == key ? 1 : 0.85)
+        }
+        .buttonStyle(.plain)
+    }
+
+    private func autoSolve() {
+        guard !solved else { return }
+        solved = true
+        onCorrectCelebrate()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { onNext() }
+    }
+}
+
+// MARK: - sort（拖一拖分类：把物品拖进正确的筐，也支持点选；v0.10 天文台）
+
+struct SortStepView: View {
+    let step: Step
+    let onNext: () -> Void
+    let onCorrectCelebrate: () -> Void
+    @EnvironmentObject var toast: ToastCenter
+    @Environment(\.soundService) private var sound
+    @State private var placed: [String: String] = [:]   // itemId → binId
+    @State private var dragging: SortItem?
+    @State private var dragPoint: CGPoint = .zero
+    @State private var selected: SortItem?              // 点选备选：点物品 → 点筐
+    @State private var binFrames: [String: CGRect] = [:]
+    @State private var finished = false
+
+    private var bins: [SortBin] { step.bins ?? [] }
+    private var items: [SortItem] { step.items ?? [] }
+    private var trayItems: [SortItem] {
+        items.filter { placed[$0.id] == nil && dragging?.id != $0.id }
+    }
+
+    var body: some View {
+        VStack(spacing: 12) {
+            StepHeader(text: step.question ?? "拖一拖：把物品送进正确的筐")
+
+            HStack(spacing: 20) {
+                ForEach(bins) { bin in
+                    binCard(bin)
+                        .frame(maxWidth: .infinity)
+                        .frame(height: 168)
+                }
+            }
+            .padding(.horizontal, 18)
+
+            tray
+                .frame(minHeight: 84)
+                .padding(.horizontal, 18)
+
+            Text(finished ? (step.praise ?? "分类完成！")
+                          : "拖动物品到筐里（先点物品再点筐也可以），已分 \(placed.count)/\(items.count)")
+                .font(.kidHead(finished ? 19 : 15))
+                .foregroundColor(finished ? .brandGreenDk : .inkSoft)
+                .lineLimit(2)
+            #if DEBUG
+            AutoSolveButton { autoSolve() }
+            #endif
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .modifier(StickerCardModifier())
+        .coordinateSpace(name: "sortPlay")
+        .overlay {
+            if let item = dragging {
+                floatingChip(item)
+                    .position(dragPoint)
+                    .allowsHitTesting(false)
+            }
+        }
+    }
+
+    private func binCard(_ bin: SortBin) -> some View {
+        let placedItems = items.filter { placed[$0.id] == bin.id }
+        let isTarget = dragging != nil && binFrame(bin).contains(dragPoint)
+        return VStack(spacing: 6) {
+            HStack(spacing: 8) {
+                if let icon = bin.icon { IconView(name: icon, size: 34) }
+                Text(bin.label).font(.kidHead(18)).foregroundColor(.ink).lineLimit(1)
+                    .minimumScaleFactor(0.7)
+            }
+            VStack(spacing: 4) {
+                ForEach(placedItems) { it in
+                    HStack(spacing: 5) {
+                        if let icon = it.icon { IconView(name: icon, size: 22) }
+                        Text(it.text ?? "").font(.system(size: 13, weight: .heavy, design: .rounded))
+                            .foregroundColor(.ink)
+                    }
+                    .padding(.horizontal, 9).padding(.vertical, 3)
+                    .background(Capsule().fill(Color(hex: 0xEAFBE7)))
+                    .overlay(Capsule().stroke(Color(hex: 0x9BD08E), lineWidth: 1.5))
+                }
+            }
+            Spacer(minLength: 0)
+        }
+        .padding(.vertical, 10)
+        .background(
+            RoundedRectangle(cornerRadius: 18, style: .continuous)
+                .fill(isTarget ? Color(hex: 0xFDF6DC) : Color(hex: 0xFBF4E4))
+        )
+        .overlay(
+            RoundedRectangle(cornerRadius: 18, style: .continuous)
+                .stroke(isTarget ? Color.brandYellowDk : Color(hex: 0xE0CFA8),
+                        style: StrokeStyle(lineWidth: isTarget ? 3.5 : 2, dash: placedItems.isEmpty ? [6, 4] : []))
+        )
+        .contentShape(RoundedRectangle(cornerRadius: 18))
+        .background(GeometryReader { g in
+            Color.clear.onAppear { binFrames[bin.id] = g.frame(in: .named("sortPlay")) }
+                .onChange(of: g.size) { _ in binFrames[bin.id] = g.frame(in: .named("sortPlay")) }
+        })
+        .onTapGesture {
+            guard let sel = selected else { return }
+            tryPlace(sel, in: bin)
+        }
+    }
+
+    private var tray: some View {
+        HStack(spacing: 12) {
+            ForEach(trayItems) { item in
+                chip(item)
+                    .gesture(dragGesture(item))
+                    .onTapGesture {
+                        sound.systemTap()
+                        selected = selected?.id == item.id ? nil : item
+                    }
+            }
+        }
+        .frame(maxWidth: .infinity)
+    }
+
+    private func chip(_ item: SortItem, floating: Bool = false) -> some View {
+        let isSelected = selected?.id == item.id && !floating
+        return HStack(spacing: 6) {
+            if let icon = item.icon { IconView(name: icon, size: floating ? 30 : 36) }
+            Text(item.text ?? "").font(.kidHead(floating ? 15 : 16)).foregroundColor(.ink).lineLimit(1)
+        }
+        .padding(.horizontal, 13).padding(.vertical, 9)
+        .background(
+            RoundedRectangle(cornerRadius: 14, style: .continuous)
+                .fill(Color.white)
+        )
+        .overlay(
+            RoundedRectangle(cornerRadius: 14, style: .continuous)
+                .stroke(isSelected ? Color.brandYellowDk : Color(hex: 0xD8CBAF),
+                        lineWidth: isSelected ? 3.5 : 2)
+        )
+        .shadow(color: .ink.opacity(floating ? 0.25 : 0.1), radius: floating ? 8 : 3, y: floating ? 5 : 2)
+        .scaleEffect(floating ? 1.08 : 1)
+    }
+
+    private func floatingChip(_ item: SortItem) -> some View {
+        chip(item, floating: true)
+    }
+
+    private func dragGesture(_ item: SortItem) -> some Gesture {
+        DragGesture(minimumDistance: 6, coordinateSpace: .named("sortPlay"))
+            .onChanged { v in
+                dragging = item
+                selected = nil
+                dragPoint = v.location
+            }
+            .onEnded { v in
+                dragPoint = v.location
+                let target = bins.first { binFrame($0).contains(v.location) }
+                if let target { tryPlace(item, in: target) }
+                dragging = nil
+            }
+    }
+
+    private func tryPlace(_ item: SortItem, in bin: SortBin) {
+        guard placed[item.id] == nil else { return }
+        if item.bin == bin.id {
+            placed[item.id] = bin.id
+            selected = nil
+            sound.correct()
+            if placed.count == items.count { finish() }
+        } else {
+            // 防挫败铁律：放错弹回，不扣分，轻提示
+            sound.wrong()
+            toast.show("「\(item.text ?? "")」好像不属于「\(bin.label)」，再想想", seconds: 1.8)
+            selected = nil
+        }
+    }
+
+    private func binFrame(_ bin: SortBin) -> CGRect { binFrames[bin.id] ?? .zero }
+
+    private func finish() {
+        guard !finished else { return }
+        finished = true
+        onCorrectCelebrate()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.4) { onNext() }
+    }
+
+    private func autoSolve() {
+        for item in items where placed[item.id] == nil {
+            placed[item.id] = item.bin
+        }
+        finish()
+    }
+}
+
+// MARK: - tapall（点点看：把正确的都点亮，v0.10.1 天文台）
+
+struct TapAllStepView: View {
+    let step: Step
+    let onWrong: () -> Void
+    let onNext: () -> Void
+    let onCorrectCelebrate: () -> Void
+    @EnvironmentObject var toast: ToastCenter
+    @Environment(\.soundService) private var sound
+    @State private var selected: Set<Int> = []
+    @State private var shaking: Set<Int> = []
+    @State private var solved = false
+
+    private var options: [QuizOption] { step.options?.quizList ?? [] }
+    private var correctIdx: Set<Int> {
+        Set(options.indices.filter { options[$0].correct == true })
+    }
+
+    var body: some View {
+        VStack(spacing: 14) {
+            StepHeader(text: step.question ?? "把正确的都点亮")
+            LazyVGrid(columns: [GridItem(.adaptive(minimum: 104), spacing: 14)], spacing: 14) {
+                ForEach(options.indices, id: \.self) { i in
+                    optionCard(i)
+                }
+            }
+            .padding(.horizontal, 16)
+
+            Text(solved ? (step.praise ?? "全点对啦！")
+                        : "点亮的卡片要全部正确哦，点错了它会抖一下")
+                .font(.kidHead(solved ? 19 : 14))
+                .foregroundColor(solved ? .brandGreenDk : .inkSoft)
+            #if DEBUG
+            AutoSolveButton { autoSolve() }
+            #endif
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .modifier(StickerCardModifier())
+    }
+
+    private func optionCard(_ i: Int) -> some View {
+        let opt = options[i]
+        let isOn = selected.contains(i)
+        return Button {
+            guard !solved else { return }
+            if isOn {
+                selected.remove(i)
+                sound.systemTap()
+                return
+            }
+            if opt.correct == true {
+                selected.insert(i)
+                sound.systemTap()
+                if selected == correctIdx { finish() }
+            } else {
+                shaking.insert(i)
+                sound.wrong()
+                onWrong()
+                toast.show(step.hint ?? "这个不属于哦，再想想", seconds: 1.6)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { shaking.remove(i) }
+            }
+        } label: {
+            VStack(spacing: 5) {
+                if let icon = opt.icon { IconView(name: icon, size: 52) }
+                if let text = opt.text, !text.isEmpty {
+                    Text(text).font(.kidHead(14)).foregroundColor(.ink).lineLimit(1).minimumScaleFactor(0.75)
+                }
+            }
+            .frame(maxWidth: .infinity)
+            .frame(height: 92)
+            .background(RoundedRectangle(cornerRadius: 16, style: .continuous)
+                .fill(isOn ? Color(hex: 0xFDF6DC) : .white))
+            .overlay(RoundedRectangle(cornerRadius: 16, style: .continuous)
+                .stroke(isOn ? Color.brandYellowDk : Color(hex: 0xD8CBAF), lineWidth: isOn ? 3.5 : 2))
+            .shadow(color: .ink.opacity(0.08), radius: 3, y: 2)
+            .overlay(alignment: .topTrailing) {
+                if isOn {
+                    Image(systemName: "checkmark.circle.fill")
+                        .font(.system(size: 19))
+                        .foregroundColor(.brandGreenDk)
+                        .background(Circle().fill(.white))
+                        .offset(x: 7, y: -7)
+                }
+            }
+            .offset(x: shaking.contains(i) ? -5 : 0)
+            .animation(.spring(response: 0.25, dampingFraction: 0.4), value: shaking)
+        }
+        .buttonStyle(.plain)
+    }
+
+    private func finish() {
+        solved = true
+        sound.correct()
+        onCorrectCelebrate()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.3) { onNext() }
+    }
+
+    private func autoSolve() {
+        selected = correctIdx
+        finish()
+    }
+}
+
+// MARK: - match（连一连：左列图标连右列文字，v0.10.1 天文台）
+
+struct MatchStepView: View {
+    let step: Step
+    let onWrong: () -> Void
+    let onNext: () -> Void
+    let onCorrectCelebrate: () -> Void
+    @EnvironmentObject var toast: ToastCenter
+    @Environment(\.soundService) private var sound
+    @State private var picked: Int?            // 已选左列下标
+    @State private var locked: [Int: Int] = [:] // 左下标 → 右下标
+    @State private var wrongRight: Int?
+    @State private var solved = false
+
+    private var pairs: [MatchPair] { step.pairs ?? [] }
+    /// 右列固定洗牌：整体反转（3 项时旋转 1 位，必然打乱）
+    private var rightOrder: [Int] { Array((0..<pairs.count).reversed()) }
+
+    var body: some View {
+        VStack(spacing: 12) {
+            StepHeader(text: step.question ?? "连一连")
+            GeometryReader { geo in
+                let w = geo.size.width
+                ZStack(alignment: .topLeading) {
+                    // 已连对的线
+                    ForEach(Array(locked.keys), id: \.self) { li in
+                        if let ri = locked[li] {
+                            Path { p in
+                                p.move(to: leftAnchor(li, w))
+                                p.addLine(to: rightAnchor(ri, w))
+                            }
+                            .stroke(Color.brandGreen, style: StrokeStyle(lineWidth: 4, lineCap: .round))
+                        }
+                    }
+                    // 待确认的线
+                    if let li = picked, let ri = wrongRight {
+                        Path { p in
+                            p.move(to: leftAnchor(li, w))
+                            p.addLine(to: rightAnchor(ri, w))
+                        }
+                        .stroke(Color(hex: 0xE84838), style: StrokeStyle(lineWidth: 4, lineCap: .round))
+                        .transition(.opacity)
+                    }
+                    // 左列
+                    VStack(spacing: 16) {
+                        ForEach(pairs.indices, id: \.self) { li in
+                            leftCard(li)
+                                .frame(width: 132)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                        }
+                    }
+                    // 右列
+                    VStack(spacing: 16) {
+                        ForEach(rightOrder, id: \.self) { ri in
+                            rightCard(ri)
+                                .frame(width: 150)
+                                .frame(maxWidth: .infinity, alignment: .trailing)
+                        }
+                    }
+                }
+            }
+            .frame(maxHeight: .infinity)
+
+            Text(solved ? (step.praise ?? "全部连对！") : "先点左边，再点右边连起来")
+                .font(.kidHead(solved ? 19 : 14))
+                .foregroundColor(solved ? .brandGreenDk : .inkSoft)
+            #if DEBUG
+            AutoSolveButton { autoSolve() }
+            #endif
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .modifier(StickerCardModifier())
+    }
+
+    private func leftAnchor(_ li: Int, _ w: CGFloat) -> CGPoint {
+        CGPoint(x: w * 0.22, y: 44 + CGFloat(li) * 76)
+    }
+    private func rightAnchor(_ ri: Int, _ w: CGFloat) -> CGPoint {
+        CGPoint(x: w * 0.78, y: 44 + CGFloat(ri) * 76)
+    }
+
+    private func leftCard(_ li: Int) -> some View {
+        let pair = pairs[li]
+        let isLocked = locked[li] != nil
+        return Button {
+            guard !solved, !isLocked else { return }
+            sound.systemTap()
+            picked = picked == li ? nil : li
+        } label: {
+            HStack(spacing: 8) {
+                if let icon = pair.left.icon { IconView(name: icon, size: 36) }
+                Text(pair.left.text ?? "").font(.kidHead(17)).foregroundColor(.ink)
+            }
+            .frame(maxWidth: .infinity)
+            .padding(.vertical, 12)
+            .background(RoundedRectangle(cornerRadius: 15, style: .continuous)
+                .fill(picked == li ? Color(hex: 0xFDF6DC) : .white))
+            .overlay(RoundedRectangle(cornerRadius: 15, style: .continuous)
+                .stroke(picked == li ? Color.brandYellowDk : Color(hex: 0xD8CBAF),
+                        lineWidth: picked == li ? 3.5 : 2))
+            .opacity(isLocked ? 0.55 : 1)
+        }
+        .buttonStyle(.plain)
+        .disabled(isLocked)
+    }
+
+    private func rightCard(_ ri: Int) -> some View {
+        let pair = pairs[ri]
+        let isLocked = locked.values.contains(ri)
+        return Button {
+            guard !solved, !isLocked, let li = picked else { return }
+            if pairs[li].right.text == pair.right.text {
+                locked[li] = ri
+                picked = nil
+                wrongRight = nil
+                sound.correct()
+                if locked.count == pairs.count { finish() }
+            } else {
+                wrongRight = ri
+                sound.wrong()
+                onWrong()
+                toast.show("这两个不是一对，再想想", seconds: 1.5)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.55) { wrongRight = nil }
+            }
+        } label: {
+            Text(pair.right.text ?? "")
+                .font(.kidHead(15))
+                .foregroundColor(.ink)
+                .lineLimit(2)
+                .multilineTextAlignment(.center)
+                .frame(maxWidth: .infinity)
+                .padding(.vertical, 12).padding(.horizontal, 8)
+                .background(RoundedRectangle(cornerRadius: 15, style: .continuous).fill(.white))
+                .overlay(RoundedRectangle(cornerRadius: 15, style: .continuous)
+                    .stroke(wrongRight == ri ? Color(hex: 0xE84838) : Color(hex: 0xD8CBAF),
+                            lineWidth: wrongRight == ri ? 3 : 2))
+                .opacity(isLocked ? 0.55 : 1)
+        }
+        .buttonStyle(.plain)
+        .disabled(isLocked)
+    }
+
+    private func finish() {
+        solved = true
+        onCorrectCelebrate()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.3) { onNext() }
+    }
+
+    private func autoSolve() {
+        for i in pairs.indices { locked[i] = i }
+        finish()
+    }
+}
+
+// MARK: - lineup（排排队：拖/点选放进有序槽位，v0.10.1 天文台）
+
+struct LineupStepView: View {
+    let step: Step
+    let onWrong: () -> Void
+    let onNext: () -> Void
+    let onCorrectCelebrate: () -> Void
+    @EnvironmentObject var toast: ToastCenter
+    @Environment(\.soundService) private var sound
+    @State private var placed: [String?]           // 槽位 → itemId
+    @State private var selected: SortItem?
+    @State private var solved = false
+
+    private var items: [SortItem] { step.lineup ?? [] }   // 数组顺序即正确顺序
+    private var tray: [SortItem] {
+        items.filter { item in !(placed ?? []).contains(item.id) }
+    }
+
+    init(step: Step, onWrong: @escaping () -> Void, onNext: @escaping () -> Void,
+         onCorrectCelebrate: @escaping () -> Void, route: Binding<Route> = .constant(.map)) {
+        self.step = step
+        self.onWrong = onWrong
+        self.onNext = onNext
+        self.onCorrectCelebrate = onCorrectCelebrate
+        // 打乱：整体旋转 1 位（≥2 项必不等于原序）
+        let its = step.lineup ?? []
+        self._placed = State(initialValue: Array(repeating: nil, count: its.count))
+        self._shuffled = State(initialValue: Array(its.dropFirst() + its.prefix(1)))
+    }
+
+    @State private var shuffled: [SortItem]
+
+    var body: some View {
+        VStack(spacing: 14) {
+            StepHeader(text: step.question ?? "按顺序排好")
+
+            // 槽位
+            HStack(spacing: 12) {
+                ForEach(items.indices, id: \.self) { si in
+                    slot(si)
+                }
+            }
+            .padding(.horizontal, 16)
+
+            // 待排托盘
+            HStack(spacing: 12) {
+                ForEach(shuffled.filter { !(placed ?? []).contains($0.id) }) { item in
+                    trayChip(item)
+                }
+            }
+            .frame(minHeight: 84)
+
+            Text(solved ? (step.praise ?? "排好啦！") : "点物品再点格子（按 1、2、3…顺序放）")
+                .font(.kidHead(solved ? 19 : 14))
+                .foregroundColor(solved ? .brandGreenDk : .inkSoft)
+            #if DEBUG
+            AutoSolveButton { autoSolve() }
+            #endif
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .modifier(StickerCardModifier())
+    }
+
+    private func slot(_ si: Int) -> some View {
+        let item = items.indices.contains(si) ? (placed ?? [])[si].flatMap { id in items.first { $0.id == id } } : nil
+        return VStack(spacing: 5) {
+            Text("\(si + 1)")
+                .font(.system(size: 13, weight: .heavy, design: .rounded))
+                .foregroundColor(.inkSoft)
+            if let item {
+                VStack(spacing: 4) {
+                    if let icon = item.icon { IconView(name: icon, size: 40) }
+                    Text(item.text ?? "").font(.kidHead(14)).foregroundColor(.ink).lineLimit(1).minimumScaleFactor(0.7)
+                }
+                .transition(.scale.combined(with: .opacity))
+            } else {
+                Circle().stroke(Color(hex: 0xD8CBAF), style: StrokeStyle(lineWidth: 2, dash: [5, 4]))
+                    .frame(width: 40, height: 40)
+            }
+        }
+        .frame(maxWidth: .infinity)
+        .frame(height: 116)
+        .background(RoundedRectangle(cornerRadius: 16, style: .continuous)
+            .fill(item != nil ? Color(hex: 0xFDF6DC) : Color(hex: 0xFBF4E4)))
+        .overlay(RoundedRectangle(cornerRadius: 16, style: .continuous)
+            .stroke(item != nil ? Color.brandYellowDk : Color(hex: 0xE0CFA8),
+                    style: StrokeStyle(lineWidth: item != nil ? 3 : 2, dash: item == nil ? [6, 4] : [])))
+        .contentShape(Rectangle())
+        .onTapGesture { if let sel = selected { tryPlace(sel, at: si) } }
+    }
+
+    private func trayChip(_ item: SortItem) -> some View {
+        let isSelected = selected?.id == item.id
+        return Button {
+            sound.systemTap()
+            selected = isSelected ? nil : item
+        } label: {
+            HStack(spacing: 6) {
+                if let icon = item.icon { IconView(name: icon, size: 32) }
+                Text(item.text ?? "").font(.kidHead(15)).foregroundColor(.ink)
+            }
+            .padding(.horizontal, 13).padding(.vertical, 9)
+            .background(RoundedRectangle(cornerRadius: 14, style: .continuous).fill(.white))
+            .overlay(RoundedRectangle(cornerRadius: 14, style: .continuous)
+                .stroke(isSelected ? Color.brandYellowDk : Color(hex: 0xD8CBAF),
+                        lineWidth: isSelected ? 3.5 : 2))
+            .shadow(color: .ink.opacity(0.1), radius: 3, y: 2)
+        }
+        .buttonStyle(.plain)
+    }
+
+    private func tryPlace(_ item: SortItem, at si: Int) {
+        guard si < placed.count, placed[si] == nil else { return }
+        selected = nil
+        if item.id == items[si].id {
+            placed[si] = item.id
+            sound.correct()
+            if placed.allSatisfy({ $0 != nil }) { finish() }
+        } else {
+            // 防挫败：不落槽，轻提示
+            sound.wrong()
+            onWrong()
+            toast.show("「\(item.text ?? "")」放这里不对哦，看看序号", seconds: 1.6)
+        }
+    }
+
+    private func finish() {
+        guard !solved else { return }
+        solved = true
+        onCorrectCelebrate()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.3) { onNext() }
+    }
+
+    private func autoSolve() {
+        placed = items.map { $0.id }
+        finish()
+    }
+}
+
+// MARK: - sequence（倒计时点火：按顺序点 token，v0.10.1 天文台）
+
+struct SequenceStepView: View {
+    let step: Step
+    let onWrong: () -> Void
+    let onNext: () -> Void
+    let onCorrectCelebrate: () -> Void
+    @EnvironmentObject var toast: ToastCenter
+    @Environment(\.soundService) private var sound
+    @State private var nextIdx = 0
+    @State private var lit: Set<Int> = []
+    @State private var shaking: Set<Int> = []
+    @State private var launched = false
+
+    private var tokens: [String] { step.seq ?? [] }
+    /// 打乱：旋转 1 位
+    private var shuffled: [(Int, String)] {
+        Array((0..<tokens.count).map { ((($0 + 1) % tokens.count), tokens[(($0 + 1) % tokens.count)]) })
+    }
+
+    var body: some View {
+        VStack(spacing: 16) {
+            StepHeader(text: step.question ?? "按顺序点")
+            HStack(spacing: 18) {
+                ForEach(shuffled, id: \.0) { idx, token in
+                    tokenButton(idx, token)
+                }
+            }
+            ZStack {
+                Circle().fill(Color.black.opacity(0.14)).frame(width: 8, height: 8)
+                if launched {
+                    IconView(name: "rocket", size: 72)
+                        .scaleEffect(x: -1, y: 1, anchor: .center)
+                        .offset(y: launched ? -150 : 0)
+                        .animation(.easeIn(duration: 1.1), value: launched)
+                } else {
+                    IconView(name: "rocket", size: 56)
+                        .scaleEffect(x: -1, y: 1, anchor: .center)
+                }
+            }
+            .frame(height: 110)
+
+            Text(launched ? (step.praise ?? "🚀 发射！") : (step.hint ?? "按顺序一个一个点"))
+                .font(.kidHead(launched ? 20 : 14))
+                .foregroundColor(launched ? .brandGreenDk : .inkSoft)
+            #if DEBUG
+            AutoSolveButton { autoSolve() }
+            #endif
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .modifier(StickerCardModifier())
+    }
+
+    private func tokenButton(_ idx: Int, _ token: String) -> some View {
+        let isLit = lit.contains(idx)
+        return Button {
+            guard !launched, !isLit else { return }
+            if idx == nextIdx {
+                lit.insert(idx)
+                nextIdx += 1
+                sound.systemTap()
+                if lit.count == tokens.count {
+                    launched = true
+                    sound.correct()
+                    onCorrectCelebrate()
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { onNext() }
+                }
+            } else {
+                shaking.insert(idx)
+                sound.wrong()
+                onWrong()
+                toast.show(step.hint ?? "顺序不对哦", seconds: 1.4)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { shaking.remove(idx) }
+            }
+        } label: {
+            Text(token)
+                .font(.kidTitle(30))
+                .foregroundColor(.white)
+                .frame(width: 74, height: 74)
+                .background(Circle().fill(LinearGradient(colors: [Color(hex: 0xFF9068), .brandCoralDk],
+                                                         startPoint: .top, endPoint: .bottom)))
+                .overlay(Circle().stroke(.white, lineWidth: 4))
+                .shadow(color: .brandCoralDdk.opacity(isLit ? 0.25 : 0.5), radius: isLit ? 3 : 8, y: 4)
+                .opacity(isLit ? 0.45 : 1)
+                .overlay(Circle().stroke(Color.brandGreen, lineWidth: 3).opacity(isLit ? 1 : 0))
+                .scaleEffect(shaking.contains(idx) ? 0.92 : 1)
+                .animation(.spring(response: 0.25, dampingFraction: 0.4), value: shaking)
+        }
+        .buttonStyle(.plain)
+    }
+
+    private func autoSolve() {
+        lit = Set(tokens.indices)
+        nextIdx = tokens.count
+        launched = true
+        onCorrectCelebrate()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { onNext() }
+    }
+}
+
+// MARK: - spotlight（望远镜找星：拖动镜筒找目标，v0.10.1 天文台）
+
+struct SpotlightStepView: View {
+    let step: Step
+    let onNext: () -> Void
+    let onCorrectCelebrate: () -> Void
+    @Environment(\.soundService) private var sound
+    @State private var lens: CGPoint? = nil
+    @State private var found = false
+
+    private let size = CGSize(width: 620, height: 380)
+    private var target: String { step.targetIcon ?? "starface" }
+    private var decoys: [String] { step.decoys ?? [] }
+
+    /// 位置由 step.id 哈希播种，两端布局确定性
+    private func seededPos(_ seed: UInt64) -> CGPoint {
+        var s = seed &+ 0x9E3779B97F4A7C15
+        s = s &* 6364136223846793005 &+ 1442695040888963407
+        let x = CGFloat((s >> 33) % 100) / 100
+        s = s &* 6364136223846793005 &+ 1442695040888963407
+        let y = CGFloat((s >> 33) % 100) / 100
+        return CGPoint(x: 44 + x * (size.width - 88), y: 44 + y * (size.height - 88))
+    }
+    private var targetSeed: UInt64 { step.id.unicodeScalars.reduce(UInt64(0)) { $0 &+ UInt64($1.value) } }
+    private var targetPos: CGPoint { seededPos(targetSeed) }
+    private var decoyPos: [CGPoint] {
+        decoys.enumerated().map { i, _ in
+            seededPos(targetSeed &+ UInt64(i + 1) &* 7919)
+        }
+    }
+    private var lensRadius: CGFloat { 62 }
+
+    var body: some View {
+        VStack(spacing: 12) {
+            StepHeader(text: step.question ?? "拖动望远镜找到目标")
+            ZStack {
+                NightSkyBackdrop()
+                ForEach(Array(zip(decoys, decoyPos)), id: \.0) { icon, pos in
+                    IconView(name: icon, size: 40)
+                        .opacity(0.5)
+                        .position(pos)
+                }
+                IconView(name: target, size: 52)
+                    .position(targetPos)
+                    .opacity(found ? 1 : 0.06)
+                    .scaleEffect(found ? 1.15 : 1)
+                if found {
+                    Text(step.praise ?? "找到啦！")
+                        .font(.kidHead(19))
+                        .foregroundColor(.white)
+                        .padding(.horizontal, 15).padding(.vertical, 6)
+                        .background(Capsule().fill(Color.brandGreen))
+                        .position(x: size.width / 2, y: size.height - 36)
+                }
+                if let l = lens {
+                    Circle()
+                        .stroke(Color(hex: 0xFFE58A), lineWidth: 4)
+                        .background(Circle().fill(Color.white.opacity(0.08)))
+                        .frame(width: lensRadius * 2, height: lensRadius * 2)
+                        .shadow(color: .brandYellow.opacity(0.55), radius: 10)
+                        .position(l)
+                    IconView(name: "telescope", size: 40)
+                        .position(x: l.x + lensRadius + 26, y: l.y + lensRadius + 20)
+                }
+            }
+            .frame(width: size.width, height: size.height)
+            .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
+            .overlay(RoundedRectangle(cornerRadius: 20, style: .continuous).stroke(Color(hex: 0x3D4CB0), lineWidth: 4))
+            .contentShape(Rectangle())
+            .gesture(dragGesture)
+            Text(found ? "" : "按住拖动望远镜圆窗，在夜空里搜寻")
+                .font(.kidHead(14)).foregroundColor(.inkSoft)
+                .frame(height: 20)
+            #if DEBUG
+            AutoSolveButton { autoSolve() }
+            #endif
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .modifier(StickerCardModifier())
+    }
+
+    private var dragGesture: some Gesture {
+        DragGesture(minimumDistance: 0)
+            .onChanged { v in
+                guard !found else { return }
+                lens = v.location
+                if hypot(v.location.x - targetPos.x, v.location.y - targetPos.y) < lensRadius - 6 {
+                    found = true
+                    sound.correct()
+                    onCorrectCelebrate()
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.3) { onNext() }
+                }
+            }
+            .onEnded { _ in if !found { lens = nil } }
+    }
+
+    private func autoSolve() {
+        lens = targetPos
+        found = true
+        onCorrectCelebrate()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.3) { onNext() }
+    }
+}
+
+/// 星空底景（镜筒找星专用）
+private struct NightSkyBackdrop: View {
+    var body: some View {
+        ZStack {
+            LinearGradient(colors: [Color(hex: 0x10163C), Color(hex: 0x2A3170)],
+                           startPoint: .top, endPoint: .bottom)
+            ForEach(0..<34, id: \.self) { i in
+                let x = Double((i * 137 + 41) % 100) / 100
+                let y = Double((i * 61 + 13) % 100) / 100
+                Circle()
+                    .fill(.white.opacity(0.25 + y * 0.5))
+                    .frame(width: 2 + y * 2, height: 2 + y * 2)
+                    .position(x: x * 620, y: y * 380)
+            }
+        }
+    }
+}
+
+// MARK: - shadow（剪影猜猜：看影子选天体，v0.10.1 天文台）
+
+struct ShadowStepView: View {
+    let step: Step
+    let onWrong: () -> Void
+    let onNext: () -> Void
+    let onCorrectCelebrate: () -> Void
+    @EnvironmentObject var toast: ToastCenter
+    @Environment(\.soundService) private var sound
+    @State private var solved = false
+    @State private var wrongIdx: Int?
+
+    private var options: [QuizOption] { step.options?.quizList ?? [] }
+
+    var body: some View {
+        VStack(spacing: 16) {
+            StepHeader(text: step.question ?? "看影子猜猜我是谁？")
+            ZStack {
+                RoundedRectangle(cornerRadius: 24, style: .continuous)
+                    .fill(LinearGradient(colors: [Color(hex: 0x1B2252), Color(hex: 0x3D4CB0)],
+                                         startPoint: .top, endPoint: .bottom))
+                IconView(name: step.shadow ?? "starface", size: 128)
+                    .colorMultiply(.black)
+                    .opacity(0.85)
+                starDots
+            }
+            .frame(width: 236, height: 190)
+
+            HStack(spacing: 20) {
+                ForEach(options.indices, id: \.self) { i in
+                    optionCard(i)
+                }
+            }
+
+            Text(solved ? (step.praise ?? "猜对啦！") : "黑黑的影子，猜猜是哪个星空朋友？")
+                .font(.kidHead(solved ? 19 : 14))
+                .foregroundColor(solved ? .brandGreenDk : .inkSoft)
+            #if DEBUG
+            AutoSolveButton { autoSolve() }
+            #endif
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .modifier(StickerCardModifier())
+    }
+
+    private var starDots: some View {
+        ForEach(0..<12, id: \.self) { i in
+            let x = Double((i * 137 + 29) % 100) / 100
+            let y = Double((i * 61 + 7) % 100) / 100
+            Circle()
+                .fill(.white.opacity(0.4 + y * 0.4))
+                .frame(width: 2.4, height: 2.4)
+                .position(x: x * 236, y: y * 190)
+        }
+    }
+
+    private func optionCard(_ i: Int) -> some View {
+        let opt = options[i]
+        return Button {
+            guard !solved else { return }
+            if i == step.answer {
+                solved = true
+                sound.correct()
+                onCorrectCelebrate()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) { onNext() }
+            } else {
+                wrongIdx = i
+                sound.wrong()
+                onWrong()
+                toast.show(step.hint ?? "再看看影子的形状", seconds: 1.6)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.55) { wrongIdx = nil }
+            }
+        } label: {
+            VStack(spacing: 5) {
+                if let icon = opt.icon { IconView(name: icon, size: 62) }
+                if let text = opt.text, !text.isEmpty {
+                    Text(text).font(.kidHead(14)).foregroundColor(.ink)
+                }
+            }
+            .frame(width: 116, height: 108)
+            .background(RoundedRectangle(cornerRadius: 16, style: .continuous).fill(.white))
+            .overlay(RoundedRectangle(cornerRadius: 16, style: .continuous)
+                .stroke(wrongIdx == i ? Color(hex: 0xE84838) : Color(hex: 0xD8CBAF),
+                        lineWidth: wrongIdx == i ? 3 : 2))
+            .scaleEffect(wrongIdx == i ? 0.94 : 1)
+            .animation(.spring(response: 0.25, dampingFraction: 0.4), value: wrongIdx)
+        }
+        .buttonStyle(.plain)
+    }
+
+    private func autoSolve() {
+        solved = true
+        onCorrectCelebrate()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) { onNext() }
     }
 }

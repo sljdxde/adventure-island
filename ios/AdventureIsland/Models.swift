@@ -12,6 +12,13 @@ struct QuizOption: Codable, Equatable {
     var icon: String?   // 资源图标名
     var emoji: String?  // 无资源时的兜底
     var text: String?   // 文字选项（找字/数字题）
+    var correct: Bool?  // tapall 点点看：该项是否为应点中的正确项
+}
+
+/// match 连一连：左右两列各一项
+struct MatchPair: Codable, Equatable {
+    var left: BalanceSide
+    var right: BalanceSide
 }
 
 struct CompareOption: Codable, Equatable {
@@ -108,6 +115,43 @@ struct Step: Codable, Equatable, Identifiable {
     var rightCount: Int?
     var compareOptions: [CompareOption]?
     var answerKey: String?
+
+    // MARK: v0.10 天文台新题型
+    // balance（天平比一比：answerKey = left/right，复用 compare 的 answerKey 键）
+    var left: BalanceSide?
+    var right: BalanceSide?
+    // sort（拖一拖分类：把 items 拖进正确的 bins）
+    var bins: [SortBin]?
+    var items: [SortItem]?
+
+    // MARK: v0.10.1 学一学动画 + 新题型
+    var anim: String?            // letter 动画 id（sunrise/daynight/…，未配回静态卡）
+    var pairs: [MatchPair]?      // match 连一连
+    var lineup: [SortItem]?      // lineup 排排队（数组顺序即正确顺序）
+    var targetIcon: String?      // spotlight 望远镜找星的目标图标
+    var decoys: [String]?        // spotlight 干扰星图标
+    var shadow: String?          // shadow 剪影猜猜的剪影图标
+}
+
+/// balance 天平两端（icon/text 至少一项）
+struct BalanceSide: Codable, Equatable {
+    var icon: String?
+    var text: String?
+}
+
+/// sort 分类筐
+struct SortBin: Codable, Equatable, Identifiable {
+    var id: String
+    var label: String
+    var icon: String?
+}
+
+/// sort 待分类物品（bin 指向正确的筐 id；lineup 排排队复用本类型，bin 为空）
+struct SortItem: Codable, Equatable, Identifiable {
+    var id: String
+    var icon: String?
+    var text: String?
+    var bin: String?
 }
 
 // MARK: - v0.9 新题型值类型（柔性解码：同一 JSON 键在不同题型里形状不同）
@@ -226,6 +270,16 @@ struct Level: Codable, Equatable, Identifiable {
     var board: Board?          // v0.8 迷你棋盘；nil = 线性步骤关
     var review: Bool?          // v0.8 工单05：复习关标记（默认解锁、不挡正式关进度）
     var boss: Bool?            // v0.8 工单06：boss 关标记（正式关全通后解锁，血条玩法）
+    var zone: Int?             // v0.10 星区编号（天文台 10 星区，保卫萝卜式分章）
+}
+
+/// 星区元信息（astro_levels.json 顶层 zones；保卫萝卜式：地图一次只展示一个星区）
+struct SubjectZone: Codable, Equatable, Identifiable {
+    var n: Int
+    var title: String
+    var subtitle: String?
+    var icon: String?      // 星区代表图标（v0.11 各学科专属；缺省回落 AstroZoneIcons）
+    var id: Int { n }
 }
 
 // MARK: - 迷你棋盘（v0.8 工单02：识字村试点）
@@ -374,6 +428,7 @@ struct SubjectFile: Codable {
     var title: String
     var guide: String
     var levels: [Level]
+    var zones: [SubjectZone]?   // v0.10：分章选关（天文台专用；nil = 不分章）
 }
 
 // MARK: - 实验模型
