@@ -35,6 +35,8 @@ import socketserver
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))       # ios/
 REPO = os.path.dirname(ROOT)                                            # 仓库根
 PREVIEW = os.path.join(ROOT, "preview", "index.html")
+# PID 后缀：多实例并行 sweep（按学科分跑）时各写各的探针，避免互删导致 404 误报弹回
+PROBE_NAME = f"__sweep_probe_{os.getpid()}.html"
 
 ALL_SUBJECTS = ["cn", "math", "pinyin", "english", "astro", "geo"]
 
@@ -142,7 +144,7 @@ def render(chrome, url, profile, budget=2600):
         "d.id='__sweep';d.textContent=JSON.stringify(" + MEASURE_JS + ");"
         "document.body.appendChild(d);},900);</script></body>")
     # probe 放在 preview 目录下，相对资源路径不变
-    probe_in_preview = os.path.join(ROOT, "preview", "__sweep_probe.html")
+    probe_in_preview = os.path.join(ROOT, "preview", PROBE_NAME)
     with open(probe_in_preview, "w", encoding="utf-8") as f:
         f.write(html)
     try:
@@ -194,7 +196,7 @@ def main():
     content = load_levels()
 
     httpd, port = serve(REPO)
-    base = f"http://127.0.0.1:{port}/ios/preview/__sweep_probe.html?route=level:"
+    base = f"http://127.0.0.1:{port}/ios/preview/{PROBE_NAME}?route=level:"
     prof = tempfile.mkdtemp(prefix="dsh_sweep_prof_")
 
     overflows, blanks, heavy, missing = [], [], [], []
