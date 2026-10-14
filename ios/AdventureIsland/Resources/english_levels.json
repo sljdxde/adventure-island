@@ -6,13 +6,13 @@
     {
       "n": 1,
       "title": "字母启蒙",
-      "subtitle": "A-J 字母与发音",
+      "subtitle": "A-T 字母与发音",
       "icon": "book"
     },
     {
       "n": 2,
       "title": "动物与食物",
-      "subtitle": "动物 · 水果 · 食物",
+      "subtitle": "Starters 动物食物",
       "icon": "cat"
     },
     {
@@ -23,14 +23,44 @@
     },
     {
       "n": 4,
+      "title": "星期月份",
+      "subtitle": "Days · Months · Seasons",
+      "icon": "star"
+    },
+    {
+      "n": 5,
       "title": "多彩世界",
       "subtitle": "动物园 · 海洋 · 天气",
       "icon": "world-map"
     },
     {
-      "n": 5,
+      "n": 6,
+      "title": "动作与职业",
+      "subtitle": "动作 · 职业 · 心情",
+      "icon": "girl"
+    },
+    {
+      "n": 7,
+      "title": "主题词场",
+      "subtitle": "玩具 · 工具 · 花园",
+      "icon": "block"
+    },
+    {
+      "n": 8,
+      "title": "四季与自然",
+      "subtitle": "四季 · 晚会 · 冬天",
+      "icon": "snowflake"
+    },
+    {
+      "n": 9,
+      "title": "恐龙与朋友",
+      "subtitle": "恐龙 · 朋友 · 大小快慢",
+      "icon": "dino"
+    },
+    {
+      "n": 10,
       "title": "词汇大挑战",
-      "subtitle": "主题词大闯关",
+      "subtitle": "句型 · 复习 · 大闯关",
       "icon": "medal"
     }
   ],
@@ -1248,175 +1278,6 @@
       "zone": 2
     },
     {
-      "id": "english-r0",
-      "title": "复习关 一",
-      "subtitle": "旧题开盲盒 · 混排复习",
-      "steps": [
-        {
-          "id": "english-r0-0",
-          "kind": "listen",
-          "prompt": "Aa",
-          "speakText": "A",
-          "question": "Find: which one is Aa ?",
-          "options": [
-            {
-              "text": "Bb"
-            },
-            {
-              "text": "Cc"
-            },
-            {
-              "text": "Aa"
-            }
-          ],
-          "answer": 2,
-          "hint": "A for Aa",
-          "praise": "Yes! Aa!"
-        },
-        {
-          "id": "english-r0-1",
-          "kind": "quiz",
-          "question": "小写 b 对应哪个大写字母？",
-          "options": [
-            {
-              "text": "D"
-            },
-            {
-              "text": "S"
-            },
-            {
-              "text": "B"
-            }
-          ],
-          "answer": 2,
-          "hint": "Bb = Bb",
-          "praise": "Bb 配对成功！"
-        },
-        {
-          "id": "english-r0-2",
-          "kind": "listen",
-          "prompt": "Cc",
-          "speakText": "C",
-          "question": "Find: which one is Cc ?",
-          "options": [
-            {
-              "text": "Dd"
-            },
-            {
-              "text": "Ss"
-            },
-            {
-              "text": "Cc"
-            }
-          ],
-          "answer": 2,
-          "hint": "C for Cc",
-          "praise": "Yes! Cc!"
-        },
-        {
-          "id": "english-r0-3",
-          "kind": "quiz",
-          "question": "Which picture starts with Dd?",
-          "options": [
-            {
-              "icon": "flower"
-            },
-            {
-              "icon": "duck"
-            },
-            {
-              "icon": "leaf"
-            }
-          ],
-          "answer": 1,
-          "hint": "Duck 小鸭",
-          "praise": "Great job!"
-        },
-        {
-          "id": "english-r0-4",
-          "kind": "listen",
-          "prompt": "Ss",
-          "speakText": "S",
-          "question": "Find: which one is Ss ?",
-          "options": [
-            {
-              "text": "Aa"
-            },
-            {
-              "text": "Bb"
-            },
-            {
-              "text": "Ss"
-            }
-          ],
-          "answer": 2,
-          "hint": "S for Ss",
-          "praise": "Yes! Ss!"
-        },
-        {
-          "id": "english-r0-5",
-          "kind": "quiz",
-          "question": "小写 m 对应哪个大写字母？",
-          "options": [
-            {
-              "text": "M"
-            },
-            {
-              "text": "G"
-            },
-            {
-              "text": "E"
-            }
-          ],
-          "answer": 0,
-          "hint": "Mm = Mm",
-          "praise": "Mm 配对成功！"
-        }
-      ],
-      "board": {
-        "spaces": [
-          {
-            "type": "question",
-            "step": "english-r0-0"
-          },
-          {
-            "type": "question",
-            "step": "english-r0-1"
-          },
-          {
-            "type": "coin"
-          },
-          {
-            "type": "question",
-            "step": "english-r0-2"
-          },
-          {
-            "type": "question",
-            "step": "english-r0-3"
-          },
-          {
-            "type": "coin"
-          },
-          {
-            "type": "question",
-            "step": "english-r0-4"
-          },
-          {
-            "type": "chest"
-          },
-          {
-            "type": "question",
-            "step": "english-r0-5"
-          },
-          {
-            "type": "mushroom"
-          }
-        ]
-      },
-      "review": true,
-      "zone": 2
-    },
-    {
       "id": "en-10",
       "title": "Level 11 Words",
       "subtitle": "图词配对",
@@ -1488,7 +1349,7 @@
           "praise": "Yes! Apple!"
         }
       ],
-      "zone": 3
+      "zone": 2
     },
     {
       "id": "en-11",
@@ -1824,22 +1685,18 @@
           "display": "One",
           "examples": [
             {
-              "icon": "starface",
               "text": "One 一",
               "say": "One"
             },
             {
-              "icon": "star",
               "text": "Two 二",
               "say": "Two"
             },
             {
-              "icon": "moon",
               "text": "Three 三",
               "say": "Three"
             },
             {
-              "icon": "sun",
               "text": "Four 四",
               "say": "Four"
             }
@@ -1853,15 +1710,12 @@
           "question": "Which one is One? 一 是哪一个？",
           "options": [
             {
-              "icon": "star",
               "text": "Two"
             },
             {
-              "icon": "moon",
               "text": "Three"
             },
             {
-              "icon": "starface",
               "text": "One"
             }
           ],
@@ -1876,7 +1730,7 @@
           "cards": [
             {
               "key": "One",
-              "icon": "starface"
+              "icon": "dice"
             },
             {
               "key": "One",
@@ -1884,7 +1738,7 @@
             },
             {
               "key": "Two",
-              "icon": "star"
+              "icon": "dice"
             },
             {
               "key": "Two",
@@ -1892,7 +1746,7 @@
             },
             {
               "key": "Three",
-              "icon": "moon"
+              "icon": "dice"
             },
             {
               "key": "Three",
@@ -1927,14 +1781,14 @@
               "say": "Banana"
             },
             {
-              "icon": "heart",
-              "text": "Peach 桃",
-              "say": "Peach"
+              "icon": "candy",
+              "text": "Sweet 甜",
+              "say": "Sweet"
             },
             {
-              "icon": "candy",
-              "text": "Grape 葡萄",
-              "say": "Grape"
+              "icon": "bread",
+              "text": "Bread 面包",
+              "say": "Bread"
             }
           ],
           "question": "Learn: 水果 主题单词",
@@ -1954,8 +1808,8 @@
               "text": "Banana"
             },
             {
-              "icon": "heart",
-              "text": "Peach"
+              "icon": "candy",
+              "text": "Sweet"
             }
           ],
           "answer": 0,
@@ -1984,12 +1838,12 @@
               "text": "Banana"
             },
             {
-              "key": "Peach",
-              "icon": "heart"
+              "key": "Sweet",
+              "icon": "candy"
             },
             {
-              "key": "Peach",
-              "text": "Peach"
+              "key": "Sweet",
+              "text": "Sweet"
             }
           ]
         },
@@ -2030,22 +1884,22 @@
           "letters": [
             "M"
           ],
-          "display": "Mom",
+          "display": "Me",
           "examples": [
             {
               "icon": "girl",
-              "text": "Mom 妈妈",
-              "say": "Mom"
+              "text": "Me 我",
+              "say": "Me"
+            },
+            {
+              "icon": "girl",
+              "text": "Teacher 老师",
+              "say": "Teacher"
             },
             {
               "icon": "fox",
-              "text": "Dad 爸爸",
-              "say": "Dad"
-            },
-            {
-              "icon": "paw",
-              "text": "Baby 宝宝",
-              "say": "Baby"
+              "text": "Fox 狐狸",
+              "say": "Fox"
             },
             {
               "icon": "home",
@@ -2058,24 +1912,24 @@
         {
           "id": "en-16-q1",
           "kind": "quiz",
-          "question": "Which one is Mom? 妈妈 是哪一个？",
+          "question": "Which one is Me? 我 是哪一个？",
           "options": [
             {
-              "icon": "fox",
-              "text": "Dad"
+              "icon": "girl",
+              "text": "Teacher"
             },
             {
               "icon": "girl",
-              "text": "Mom"
+              "text": "Me"
             },
             {
-              "icon": "paw",
-              "text": "Baby"
+              "icon": "fox",
+              "text": "Fox"
             }
           ],
           "answer": 1,
-          "hint": "Mom",
-          "praise": "Yes! It's Mom!"
+          "hint": "Me",
+          "praise": "Yes! It's Me!"
         },
         {
           "id": "en-16-m",
@@ -2083,28 +1937,28 @@
           "question": "翻翻牌：单词和图片配成对",
           "cards": [
             {
-              "key": "Mom",
+              "key": "Me",
               "icon": "girl"
             },
             {
-              "key": "Mom",
-              "text": "Mom"
+              "key": "Me",
+              "text": "Me"
             },
             {
-              "key": "Dad",
+              "key": "Teacher",
+              "icon": "girl"
+            },
+            {
+              "key": "Teacher",
+              "text": "Teacher"
+            },
+            {
+              "key": "Fox",
               "icon": "fox"
             },
             {
-              "key": "Dad",
-              "text": "Dad"
-            },
-            {
-              "key": "Baby",
-              "icon": "paw"
-            },
-            {
-              "key": "Baby",
-              "text": "Baby"
+              "key": "Fox",
+              "text": "Fox"
             }
           ]
         }
@@ -2120,29 +1974,29 @@
           "id": "en-17-t",
           "kind": "letter",
           "letters": [
-            "E"
+            "F"
           ],
-          "display": "Eye",
+          "display": "Foot",
           "examples": [
             {
-              "icon": "starface",
-              "text": "Eye 眼睛",
-              "say": "Eye"
+              "icon": "paw",
+              "text": "Foot 脚",
+              "say": "Foot"
             },
             {
               "icon": "paw",
-              "text": "Hand 手",
-              "say": "Hand"
-            },
-            {
-              "icon": "crystal",
-              "text": "Nose 鼻子",
-              "say": "Nose"
+              "text": "Baby Paw 小脚丫",
+              "say": "Baby Paw"
             },
             {
               "icon": "speaker",
               "text": "Mouth 嘴",
               "say": "Mouth"
+            },
+            {
+              "icon": "girl",
+              "text": "Me 我",
+              "say": "Me"
             }
           ],
           "question": "Learn: 身体 主题单词",
@@ -2151,24 +2005,24 @@
         {
           "id": "en-17-q1",
           "kind": "quiz",
-          "question": "Which one is Eye? 眼睛 是哪一个？",
+          "question": "Which one is Foot? 脚 是哪一个？",
           "options": [
             {
               "icon": "paw",
-              "text": "Hand"
+              "text": "Baby Paw"
             },
             {
-              "icon": "crystal",
-              "text": "Nose"
+              "icon": "speaker",
+              "text": "Mouth"
             },
             {
-              "icon": "starface",
-              "text": "Eye"
+              "icon": "paw",
+              "text": "Foot"
             }
           ],
           "answer": 2,
-          "hint": "Eye",
-          "praise": "Yes! It's Eye!"
+          "hint": "Foot",
+          "praise": "Yes! It's Foot!"
         },
         {
           "id": "en-17-m",
@@ -2176,28 +2030,28 @@
           "question": "翻翻牌：单词和图片配成对",
           "cards": [
             {
-              "key": "Eye",
-              "icon": "starface"
-            },
-            {
-              "key": "Eye",
-              "text": "Eye"
-            },
-            {
-              "key": "Hand",
+              "key": "Foot",
               "icon": "paw"
             },
             {
-              "key": "Hand",
-              "text": "Hand"
+              "key": "Foot",
+              "text": "Foot"
             },
             {
-              "key": "Nose",
-              "icon": "crystal"
+              "key": "Baby Paw",
+              "icon": "paw"
             },
             {
-              "key": "Nose",
-              "text": "Nose"
+              "key": "Baby Paw",
+              "text": "Baby Paw"
+            },
+            {
+              "key": "Mouth",
+              "icon": "speaker"
+            },
+            {
+              "key": "Mouth",
+              "text": "Mouth"
             }
           ]
         }
@@ -2223,19 +2077,19 @@
               "say": "Book"
             },
             {
-              "icon": "gift",
-              "text": "Bag 书包",
-              "say": "Bag"
-            },
-            {
-              "icon": "key",
-              "text": "Pen 笔",
-              "say": "Pen"
+              "icon": "clip",
+              "text": "Clip 夹子",
+              "say": "Clip"
             },
             {
               "icon": "school",
               "text": "School 学校",
               "say": "School"
+            },
+            {
+              "icon": "chart",
+              "text": "Chart 图表",
+              "say": "Chart"
             }
           ],
           "question": "Learn: 文具 主题单词"
@@ -2250,12 +2104,12 @@
               "text": "Book"
             },
             {
-              "icon": "gift",
-              "text": "Bag"
+              "icon": "clip",
+              "text": "Clip"
             },
             {
-              "icon": "key",
-              "text": "Pen"
+              "icon": "school",
+              "text": "School"
             }
           ],
           "answer": 0,
@@ -2276,20 +2130,20 @@
               "text": "Book"
             },
             {
-              "key": "Bag",
-              "icon": "gift"
+              "key": "Clip",
+              "icon": "clip"
             },
             {
-              "key": "Bag",
-              "text": "Bag"
+              "key": "Clip",
+              "text": "Clip"
             },
             {
-              "key": "Pen",
-              "icon": "key"
+              "key": "School",
+              "icon": "school"
             },
             {
-              "key": "Pen",
-              "text": "Pen"
+              "key": "School",
+              "text": "School"
             }
           ]
         }
@@ -2424,6 +2278,175 @@
       "zone": 3
     },
     {
+      "id": "english-r0",
+      "title": "复习关 一",
+      "subtitle": "旧题开盲盒 · 混排复习",
+      "steps": [
+        {
+          "id": "english-r0-0",
+          "kind": "listen",
+          "prompt": "Aa",
+          "speakText": "A",
+          "question": "Find: which one is Aa ?",
+          "options": [
+            {
+              "text": "Bb"
+            },
+            {
+              "text": "Cc"
+            },
+            {
+              "text": "Aa"
+            }
+          ],
+          "answer": 2,
+          "hint": "A for Aa",
+          "praise": "Yes! Aa!"
+        },
+        {
+          "id": "english-r0-1",
+          "kind": "quiz",
+          "question": "小写 b 对应哪个大写字母？",
+          "options": [
+            {
+              "text": "D"
+            },
+            {
+              "text": "S"
+            },
+            {
+              "text": "B"
+            }
+          ],
+          "answer": 2,
+          "hint": "Bb = Bb",
+          "praise": "Bb 配对成功！"
+        },
+        {
+          "id": "english-r0-2",
+          "kind": "listen",
+          "prompt": "Cc",
+          "speakText": "C",
+          "question": "Find: which one is Cc ?",
+          "options": [
+            {
+              "text": "Dd"
+            },
+            {
+              "text": "Ss"
+            },
+            {
+              "text": "Cc"
+            }
+          ],
+          "answer": 2,
+          "hint": "C for Cc",
+          "praise": "Yes! Cc!"
+        },
+        {
+          "id": "english-r0-3",
+          "kind": "quiz",
+          "question": "Which picture starts with Dd?",
+          "options": [
+            {
+              "icon": "flower"
+            },
+            {
+              "icon": "duck"
+            },
+            {
+              "icon": "leaf"
+            }
+          ],
+          "answer": 1,
+          "hint": "Duck 小鸭",
+          "praise": "Great job!"
+        },
+        {
+          "id": "english-r0-4",
+          "kind": "listen",
+          "prompt": "Ss",
+          "speakText": "S",
+          "question": "Find: which one is Ss ?",
+          "options": [
+            {
+              "text": "Aa"
+            },
+            {
+              "text": "Bb"
+            },
+            {
+              "text": "Ss"
+            }
+          ],
+          "answer": 2,
+          "hint": "S for Ss",
+          "praise": "Yes! Ss!"
+        },
+        {
+          "id": "english-r0-5",
+          "kind": "quiz",
+          "question": "小写 m 对应哪个大写字母？",
+          "options": [
+            {
+              "text": "M"
+            },
+            {
+              "text": "G"
+            },
+            {
+              "text": "E"
+            }
+          ],
+          "answer": 0,
+          "hint": "Mm = Mm",
+          "praise": "Mm 配对成功！"
+        }
+      ],
+      "board": {
+        "spaces": [
+          {
+            "type": "question",
+            "step": "english-r0-0"
+          },
+          {
+            "type": "question",
+            "step": "english-r0-1"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "english-r0-2"
+          },
+          {
+            "type": "question",
+            "step": "english-r0-3"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "english-r0-4"
+          },
+          {
+            "type": "chest"
+          },
+          {
+            "type": "question",
+            "step": "english-r0-5"
+          },
+          {
+            "type": "mushroom"
+          }
+        ]
+      },
+      "review": true,
+      "zone": 3
+    },
+    {
       "id": "en-20",
       "title": "Level 21 Clothes",
       "subtitle": "衣物",
@@ -2434,13 +2457,8 @@
           "letters": [
             "S"
           ],
-          "display": "Shirt",
+          "display": "Shoe",
           "examples": [
-            {
-              "icon": "hanger",
-              "text": "Shirt 衬衫",
-              "say": "Shirt"
-            },
             {
               "icon": "shoe",
               "text": "Shoe 鞋",
@@ -2452,9 +2470,14 @@
               "say": "Hat"
             },
             {
-              "icon": "bear",
-              "text": "Coat 外套",
-              "say": "Coat"
+              "icon": "hanger",
+              "text": "Hanger 衣架",
+              "say": "Hanger"
+            },
+            {
+              "icon": "gift",
+              "text": "Gift 礼物",
+              "say": "Gift"
             }
           ],
           "question": "Learn: 衣物 主题单词"
@@ -2462,38 +2485,30 @@
         {
           "id": "en-20-q1",
           "kind": "quiz",
-          "question": "Which one is Shirt? 衬衫 是哪一个？",
+          "question": "Which one is Shoe? 鞋 是哪一个？",
           "options": [
-            {
-              "icon": "shoe",
-              "text": "Shoe"
-            },
             {
               "icon": "hat",
               "text": "Hat"
             },
             {
               "icon": "hanger",
-              "text": "Shirt"
+              "text": "Hanger"
+            },
+            {
+              "icon": "shoe",
+              "text": "Shoe"
             }
           ],
           "answer": 2,
-          "hint": "Shirt",
-          "praise": "Yes! It's Shirt!"
+          "hint": "Shoe",
+          "praise": "Yes! It's Shoe!"
         },
         {
           "id": "en-20-m",
           "kind": "memory",
           "question": "翻翻牌：单词和图片配成对",
           "cards": [
-            {
-              "key": "Shirt",
-              "icon": "hanger"
-            },
-            {
-              "key": "Shirt",
-              "text": "Shirt"
-            },
             {
               "key": "Shoe",
               "icon": "shoe"
@@ -2509,6 +2524,14 @@
             {
               "key": "Hat",
               "text": "Hat"
+            },
+            {
+              "key": "Hanger",
+              "icon": "hanger"
+            },
+            {
+              "key": "Hanger",
+              "text": "Hanger"
             }
           ]
         }
@@ -2540,13 +2563,13 @@
             },
             {
               "icon": "wave",
-              "text": "Boat 船",
-              "say": "Boat"
+              "text": "Wave 浪",
+              "say": "Wave"
             },
             {
-              "icon": "balloon",
-              "text": "Plane 飞机",
-              "say": "Plane"
+              "icon": "bus",
+              "text": "Bus 公交",
+              "say": "Bus"
             }
           ],
           "question": "Learn: 交通 主题单词",
@@ -2567,7 +2590,7 @@
             },
             {
               "icon": "wave",
-              "text": "Boat"
+              "text": "Wave"
             }
           ],
           "answer": 0,
@@ -2596,12 +2619,12 @@
               "text": "Rocket"
             },
             {
-              "key": "Boat",
+              "key": "Wave",
               "icon": "wave"
             },
             {
-              "key": "Boat",
-              "text": "Boat"
+              "key": "Wave",
+              "text": "Wave"
             }
           ]
         }
@@ -2637,9 +2660,9 @@
               "say": "Swim"
             },
             {
-              "icon": "bird",
-              "text": "Fly 飞",
-              "say": "Fly"
+              "icon": "apple",
+              "text": "Eat 吃",
+              "say": "Eat"
             }
           ],
           "question": "Learn: 动作 主题单词"
@@ -3258,175 +3281,6 @@
       "zone": 4
     },
     {
-      "id": "english-r1",
-      "title": "复习关 二",
-      "subtitle": "旧题开盲盒 · 混排复习",
-      "steps": [
-        {
-          "id": "english-r1-0",
-          "kind": "listen",
-          "prompt": "Aa",
-          "speakText": "A",
-          "question": "Find: which one is Aa ?",
-          "options": [
-            {
-              "text": "Bb"
-            },
-            {
-              "text": "Cc"
-            },
-            {
-              "text": "Aa"
-            }
-          ],
-          "answer": 2,
-          "hint": "A for Aa",
-          "praise": "Yes! Aa!"
-        },
-        {
-          "id": "english-r1-1",
-          "kind": "quiz",
-          "question": "小写 b 对应哪个大写字母？",
-          "options": [
-            {
-              "text": "D"
-            },
-            {
-              "text": "S"
-            },
-            {
-              "text": "B"
-            }
-          ],
-          "answer": 2,
-          "hint": "Bb = Bb",
-          "praise": "Bb 配对成功！"
-        },
-        {
-          "id": "english-r1-2",
-          "kind": "listen",
-          "prompt": "Cc",
-          "speakText": "C",
-          "question": "Find: which one is Cc ?",
-          "options": [
-            {
-              "text": "Dd"
-            },
-            {
-              "text": "Ss"
-            },
-            {
-              "text": "Cc"
-            }
-          ],
-          "answer": 2,
-          "hint": "C for Cc",
-          "praise": "Yes! Cc!"
-        },
-        {
-          "id": "english-r1-3",
-          "kind": "quiz",
-          "question": "Which picture starts with Dd?",
-          "options": [
-            {
-              "icon": "flower"
-            },
-            {
-              "icon": "duck"
-            },
-            {
-              "icon": "leaf"
-            }
-          ],
-          "answer": 1,
-          "hint": "Duck 小鸭",
-          "praise": "Great job!"
-        },
-        {
-          "id": "english-r1-4",
-          "kind": "listen",
-          "prompt": "Ss",
-          "speakText": "S",
-          "question": "Find: which one is Ss ?",
-          "options": [
-            {
-              "text": "Aa"
-            },
-            {
-              "text": "Bb"
-            },
-            {
-              "text": "Ss"
-            }
-          ],
-          "answer": 2,
-          "hint": "S for Ss",
-          "praise": "Yes! Ss!"
-        },
-        {
-          "id": "english-r1-5",
-          "kind": "quiz",
-          "question": "小写 m 对应哪个大写字母？",
-          "options": [
-            {
-              "text": "M"
-            },
-            {
-              "text": "G"
-            },
-            {
-              "text": "E"
-            }
-          ],
-          "answer": 0,
-          "hint": "Mm = Mm",
-          "praise": "Mm 配对成功！"
-        }
-      ],
-      "board": {
-        "spaces": [
-          {
-            "type": "question",
-            "step": "english-r1-1"
-          },
-          {
-            "type": "question",
-            "step": "english-r1-2"
-          },
-          {
-            "type": "coin"
-          },
-          {
-            "type": "question",
-            "step": "english-r1-3"
-          },
-          {
-            "type": "question",
-            "step": "english-r1-4"
-          },
-          {
-            "type": "coin"
-          },
-          {
-            "type": "question",
-            "step": "english-r1-5"
-          },
-          {
-            "type": "chest"
-          },
-          {
-            "type": "question",
-            "step": "english-r1-0"
-          },
-          {
-            "type": "rest"
-          }
-        ]
-      },
-      "review": true,
-      "zone": 4
-    },
-    {
       "id": "en-39",
       "title": "Level 40 Ocean",
       "subtitle": "海洋",
@@ -3516,7 +3370,7 @@
           ]
         }
       ],
-      "zone": 5
+      "zone": 4
     },
     {
       "id": "en-40",
@@ -4154,6 +4008,4260 @@
       "zone": 5
     },
     {
+      "id": "en-46",
+      "title": "Level 47 Days 1",
+      "subtitle": "星期一至三",
+      "steps": [
+        {
+          "id": "en-46-t",
+          "kind": "letter",
+          "letters": [
+            "Monday"
+          ],
+          "display": "Days 1",
+          "examples": [
+            {
+              "text": "Monday 星期一",
+              "say": "Monday"
+            },
+            {
+              "text": "Tuesday 星期二",
+              "say": "Tuesday"
+            },
+            {
+              "text": "Wednesday 星期三",
+              "say": "Wednesday"
+            }
+          ],
+          "question": "Learn: Days 1 星期一至三"
+        },
+        {
+          "id": "en-46-q0",
+          "kind": "quiz",
+          "question": "Which one is 「星期一」?",
+          "options": [
+            {
+              "text": "Tuesday"
+            },
+            {
+              "text": "Wednesday"
+            },
+            {
+              "text": "Monday"
+            }
+          ],
+          "answer": 2,
+          "hint": "Monday",
+          "praise": "Yes! Monday!"
+        },
+        {
+          "id": "en-46-q1",
+          "kind": "quiz",
+          "question": "Which one is 「星期二」?",
+          "options": [
+            {
+              "text": "Monday"
+            },
+            {
+              "text": "Wednesday"
+            },
+            {
+              "text": "Tuesday"
+            }
+          ],
+          "answer": 2,
+          "hint": "Tuesday",
+          "praise": "Yes! Tuesday!"
+        },
+        {
+          "id": "en-46-q2",
+          "kind": "quiz",
+          "question": "Which one is 「星期三」?",
+          "options": [
+            {
+              "text": "Monday"
+            },
+            {
+              "text": "Tuesday"
+            },
+            {
+              "text": "Wednesday"
+            }
+          ],
+          "answer": 2,
+          "hint": "Wednesday",
+          "praise": "Yes! Wednesday!"
+        }
+      ],
+      "zone": 5
+    },
+    {
+      "id": "en-47",
+      "title": "Level 48 Days 2",
+      "subtitle": "星期四至五",
+      "steps": [
+        {
+          "id": "en-47-t",
+          "kind": "letter",
+          "letters": [
+            "Thursday"
+          ],
+          "display": "Days 2",
+          "examples": [
+            {
+              "text": "Thursday 星期四",
+              "say": "Thursday"
+            },
+            {
+              "text": "Friday 星期五",
+              "say": "Friday"
+            },
+            {
+              "text": "Monday 星期一",
+              "say": "Monday"
+            }
+          ],
+          "question": "Learn: Days 2 星期四至五"
+        },
+        {
+          "id": "en-47-q0",
+          "kind": "quiz",
+          "question": "Which one is 「星期四」?",
+          "options": [
+            {
+              "text": "Friday"
+            },
+            {
+              "text": "Monday"
+            },
+            {
+              "text": "Thursday"
+            }
+          ],
+          "answer": 2,
+          "hint": "Thursday",
+          "praise": "Yes! Thursday!"
+        },
+        {
+          "id": "en-47-q1",
+          "kind": "quiz",
+          "question": "Which one is 「星期五」?",
+          "options": [
+            {
+              "text": "Thursday"
+            },
+            {
+              "text": "Monday"
+            },
+            {
+              "text": "Friday"
+            }
+          ],
+          "answer": 2,
+          "hint": "Friday",
+          "praise": "Yes! Friday!"
+        },
+        {
+          "id": "en-47-q2",
+          "kind": "quiz",
+          "question": "Which one is 「星期一」?",
+          "options": [
+            {
+              "text": "Thursday"
+            },
+            {
+              "text": "Friday"
+            },
+            {
+              "text": "Monday"
+            }
+          ],
+          "answer": 2,
+          "hint": "Monday",
+          "praise": "Yes! Monday!"
+        }
+      ],
+      "zone": 5
+    },
+    {
+      "id": "en-48",
+      "title": "Level 49 Days 3",
+      "subtitle": "周末",
+      "steps": [
+        {
+          "id": "en-48-t",
+          "kind": "letter",
+          "letters": [
+            "Saturday"
+          ],
+          "display": "Days 3",
+          "examples": [
+            {
+              "text": "Saturday 星期六",
+              "say": "Saturday"
+            },
+            {
+              "text": "Sunday 星期日",
+              "say": "Sunday"
+            },
+            {
+              "text": "Monday 星期一",
+              "say": "Monday"
+            }
+          ],
+          "question": "Learn: Days 3 周末"
+        },
+        {
+          "id": "en-48-q0",
+          "kind": "quiz",
+          "question": "Which one is 「星期六」?",
+          "options": [
+            {
+              "text": "Sunday"
+            },
+            {
+              "text": "Monday"
+            },
+            {
+              "text": "Saturday"
+            }
+          ],
+          "answer": 2,
+          "hint": "Saturday",
+          "praise": "Yes! Saturday!"
+        },
+        {
+          "id": "en-48-q1",
+          "kind": "quiz",
+          "question": "Which one is 「星期日」?",
+          "options": [
+            {
+              "text": "Saturday"
+            },
+            {
+              "text": "Monday"
+            },
+            {
+              "text": "Sunday"
+            }
+          ],
+          "answer": 2,
+          "hint": "Sunday",
+          "praise": "Yes! Sunday!"
+        },
+        {
+          "id": "en-48-q2",
+          "kind": "quiz",
+          "question": "Which one is 「星期一」?",
+          "options": [
+            {
+              "text": "Saturday"
+            },
+            {
+              "text": "Sunday"
+            },
+            {
+              "text": "Monday"
+            }
+          ],
+          "answer": 2,
+          "hint": "Monday",
+          "praise": "Yes! Monday!"
+        }
+      ],
+      "zone": 5
+    },
+    {
+      "id": "en-49",
+      "title": "Level 50 Months 1",
+      "subtitle": "一至四月",
+      "steps": [
+        {
+          "id": "en-49-t",
+          "kind": "letter",
+          "letters": [
+            "March"
+          ],
+          "display": "Months 1",
+          "examples": [
+            {
+              "text": "March 三月",
+              "say": "March"
+            },
+            {
+              "text": "April 四月",
+              "say": "April"
+            },
+            {
+              "text": "May 五月",
+              "say": "May"
+            }
+          ],
+          "question": "Learn: Months 1 一至四月"
+        },
+        {
+          "id": "en-49-q0",
+          "kind": "quiz",
+          "question": "Which one is 「三月」?",
+          "options": [
+            {
+              "text": "April"
+            },
+            {
+              "text": "May"
+            },
+            {
+              "text": "March"
+            }
+          ],
+          "answer": 2,
+          "hint": "March",
+          "praise": "Yes! March!"
+        },
+        {
+          "id": "en-49-q1",
+          "kind": "quiz",
+          "question": "Which one is 「四月」?",
+          "options": [
+            {
+              "text": "March"
+            },
+            {
+              "text": "May"
+            },
+            {
+              "text": "April"
+            }
+          ],
+          "answer": 2,
+          "hint": "April",
+          "praise": "Yes! April!"
+        },
+        {
+          "id": "en-49-q2",
+          "kind": "quiz",
+          "question": "Which one is 「五月」?",
+          "options": [
+            {
+              "text": "March"
+            },
+            {
+              "text": "April"
+            },
+            {
+              "text": "May"
+            }
+          ],
+          "answer": 2,
+          "hint": "May",
+          "praise": "Yes! May!"
+        }
+      ],
+      "zone": 6
+    },
+    {
+      "id": "en-50",
+      "title": "Level 51 Months 2",
+      "subtitle": "六至九月",
+      "steps": [
+        {
+          "id": "en-50-t",
+          "kind": "letter",
+          "letters": [
+            "June"
+          ],
+          "display": "Months 2",
+          "examples": [
+            {
+              "text": "June 六月",
+              "say": "June"
+            },
+            {
+              "text": "July 七月",
+              "say": "July"
+            },
+            {
+              "text": "September 九月",
+              "say": "September"
+            }
+          ],
+          "question": "Learn: Months 2 六至九月"
+        },
+        {
+          "id": "en-50-q0",
+          "kind": "quiz",
+          "question": "Which one is 「六月」?",
+          "options": [
+            {
+              "text": "July"
+            },
+            {
+              "text": "September"
+            },
+            {
+              "text": "June"
+            }
+          ],
+          "answer": 2,
+          "hint": "June",
+          "praise": "Yes! June!"
+        },
+        {
+          "id": "en-50-q1",
+          "kind": "quiz",
+          "question": "Which one is 「七月」?",
+          "options": [
+            {
+              "text": "June"
+            },
+            {
+              "text": "September"
+            },
+            {
+              "text": "July"
+            }
+          ],
+          "answer": 2,
+          "hint": "July",
+          "praise": "Yes! July!"
+        },
+        {
+          "id": "en-50-q2",
+          "kind": "quiz",
+          "question": "Which one is 「九月」?",
+          "options": [
+            {
+              "text": "June"
+            },
+            {
+              "text": "July"
+            },
+            {
+              "text": "September"
+            }
+          ],
+          "answer": 2,
+          "hint": "September",
+          "praise": "Yes! September!"
+        }
+      ],
+      "zone": 6
+    },
+    {
+      "id": "en-51",
+      "title": "Level 52 Months 3",
+      "subtitle": "十至十二月",
+      "steps": [
+        {
+          "id": "en-51-t",
+          "kind": "letter",
+          "letters": [
+            "October"
+          ],
+          "display": "Months 3",
+          "examples": [
+            {
+              "text": "October 十月",
+              "say": "October"
+            },
+            {
+              "text": "November 十一月",
+              "say": "November"
+            },
+            {
+              "text": "December 十二月",
+              "say": "December"
+            }
+          ],
+          "question": "Learn: Months 3 十至十二月"
+        },
+        {
+          "id": "en-51-q0",
+          "kind": "quiz",
+          "question": "Which one is 「十月」?",
+          "options": [
+            {
+              "text": "November"
+            },
+            {
+              "text": "December"
+            },
+            {
+              "text": "October"
+            }
+          ],
+          "answer": 2,
+          "hint": "October",
+          "praise": "Yes! October!"
+        },
+        {
+          "id": "en-51-q1",
+          "kind": "quiz",
+          "question": "Which one is 「十一月」?",
+          "options": [
+            {
+              "text": "October"
+            },
+            {
+              "text": "December"
+            },
+            {
+              "text": "November"
+            }
+          ],
+          "answer": 2,
+          "hint": "November",
+          "praise": "Yes! November!"
+        },
+        {
+          "id": "en-51-q2",
+          "kind": "quiz",
+          "question": "Which one is 「十二月」?",
+          "options": [
+            {
+              "text": "October"
+            },
+            {
+              "text": "November"
+            },
+            {
+              "text": "December"
+            }
+          ],
+          "answer": 2,
+          "hint": "December",
+          "praise": "Yes! December!"
+        }
+      ],
+      "zone": 6
+    },
+    {
+      "id": "en-52",
+      "title": "Level 53 Seasons",
+      "subtitle": "四季",
+      "steps": [
+        {
+          "id": "en-52-t",
+          "kind": "letter",
+          "letters": [
+            "Spring"
+          ],
+          "display": "Seasons",
+          "examples": [
+            {
+              "icon": "flower",
+              "text": "Spring 春天",
+              "say": "Spring"
+            },
+            {
+              "icon": "sun",
+              "text": "Summer 夏天",
+              "say": "Summer"
+            },
+            {
+              "icon": "maple",
+              "text": "Autumn 秋天",
+              "say": "Autumn"
+            },
+            {
+              "icon": "snowflake",
+              "text": "Winter 冬天",
+              "say": "Winter"
+            }
+          ],
+          "question": "Learn: Seasons 四季"
+        },
+        {
+          "id": "en-52-q0",
+          "kind": "quiz",
+          "question": "Which one is 「春天」?",
+          "options": [
+            {
+              "icon": "sun",
+              "text": "Summer"
+            },
+            {
+              "icon": "maple",
+              "text": "Autumn"
+            },
+            {
+              "icon": "flower",
+              "text": "Spring"
+            }
+          ],
+          "answer": 2,
+          "hint": "Spring",
+          "praise": "Yes! Spring!"
+        },
+        {
+          "id": "en-52-q1",
+          "kind": "quiz",
+          "question": "Which one is 「夏天」?",
+          "options": [
+            {
+              "icon": "flower",
+              "text": "Spring"
+            },
+            {
+              "icon": "maple",
+              "text": "Autumn"
+            },
+            {
+              "icon": "sun",
+              "text": "Summer"
+            }
+          ],
+          "answer": 2,
+          "hint": "Summer",
+          "praise": "Yes! Summer!"
+        },
+        {
+          "id": "en-52-q2",
+          "kind": "quiz",
+          "question": "Which one is 「秋天」?",
+          "options": [
+            {
+              "icon": "flower",
+              "text": "Spring"
+            },
+            {
+              "icon": "sun",
+              "text": "Summer"
+            },
+            {
+              "icon": "maple",
+              "text": "Autumn"
+            }
+          ],
+          "answer": 2,
+          "hint": "Autumn",
+          "praise": "Yes! Autumn!"
+        }
+      ],
+      "zone": 6
+    },
+    {
+      "id": "en-53",
+      "title": "Level 54 Verbs 1",
+      "subtitle": "动作·吃跑睡",
+      "steps": [
+        {
+          "id": "en-53-t",
+          "kind": "letter",
+          "letters": [
+            "Eat"
+          ],
+          "display": "Verbs 1",
+          "examples": [
+            {
+              "icon": "apple",
+              "text": "Eat 吃",
+              "say": "Eat"
+            },
+            {
+              "icon": "girl",
+              "text": "Run 跑",
+              "say": "Run"
+            },
+            {
+              "icon": "bed",
+              "text": "Sleep 睡觉",
+              "say": "Sleep"
+            }
+          ],
+          "question": "Learn: Verbs 1 动作·吃跑睡"
+        },
+        {
+          "id": "en-53-q0",
+          "kind": "quiz",
+          "question": "Which one is 「吃」?",
+          "options": [
+            {
+              "icon": "girl",
+              "text": "Run"
+            },
+            {
+              "icon": "bed",
+              "text": "Sleep"
+            },
+            {
+              "icon": "apple",
+              "text": "Eat"
+            }
+          ],
+          "answer": 2,
+          "hint": "Eat",
+          "praise": "Yes! Eat!"
+        },
+        {
+          "id": "en-53-q1",
+          "kind": "quiz",
+          "question": "Which one is 「跑」?",
+          "options": [
+            {
+              "icon": "apple",
+              "text": "Eat"
+            },
+            {
+              "icon": "bed",
+              "text": "Sleep"
+            },
+            {
+              "icon": "girl",
+              "text": "Run"
+            }
+          ],
+          "answer": 2,
+          "hint": "Run",
+          "praise": "Yes! Run!"
+        },
+        {
+          "id": "en-53-q2",
+          "kind": "quiz",
+          "question": "Which one is 「睡觉」?",
+          "options": [
+            {
+              "icon": "apple",
+              "text": "Eat"
+            },
+            {
+              "icon": "girl",
+              "text": "Run"
+            },
+            {
+              "icon": "bed",
+              "text": "Sleep"
+            }
+          ],
+          "answer": 2,
+          "hint": "Sleep",
+          "praise": "Yes! Sleep!"
+        }
+      ],
+      "zone": 6
+    },
+    {
+      "id": "en-54",
+      "title": "Level 55 Verbs 2",
+      "subtitle": "动作·读画唱",
+      "steps": [
+        {
+          "id": "en-54-t",
+          "kind": "letter",
+          "letters": [
+            "Read"
+          ],
+          "display": "Verbs 2",
+          "examples": [
+            {
+              "icon": "book",
+              "text": "Read 读",
+              "say": "Read"
+            },
+            {
+              "icon": "chart",
+              "text": "Draw 画",
+              "say": "Draw"
+            },
+            {
+              "icon": "speaker",
+              "text": "Sing 唱",
+              "say": "Sing"
+            }
+          ],
+          "question": "Learn: Verbs 2 动作·读画唱"
+        },
+        {
+          "id": "en-54-q0",
+          "kind": "quiz",
+          "question": "Which one is 「读」?",
+          "options": [
+            {
+              "icon": "chart",
+              "text": "Draw"
+            },
+            {
+              "icon": "speaker",
+              "text": "Sing"
+            },
+            {
+              "icon": "book",
+              "text": "Read"
+            }
+          ],
+          "answer": 2,
+          "hint": "Read",
+          "praise": "Yes! Read!"
+        },
+        {
+          "id": "en-54-q1",
+          "kind": "quiz",
+          "question": "Which one is 「画」?",
+          "options": [
+            {
+              "icon": "book",
+              "text": "Read"
+            },
+            {
+              "icon": "speaker",
+              "text": "Sing"
+            },
+            {
+              "icon": "chart",
+              "text": "Draw"
+            }
+          ],
+          "answer": 2,
+          "hint": "Draw",
+          "praise": "Yes! Draw!"
+        },
+        {
+          "id": "en-54-q2",
+          "kind": "quiz",
+          "question": "Which one is 「唱」?",
+          "options": [
+            {
+              "icon": "book",
+              "text": "Read"
+            },
+            {
+              "icon": "chart",
+              "text": "Draw"
+            },
+            {
+              "icon": "speaker",
+              "text": "Sing"
+            }
+          ],
+          "answer": 2,
+          "hint": "Sing",
+          "praise": "Yes! Sing!"
+        }
+      ],
+      "zone": 6
+    },
+    {
+      "id": "en-55",
+      "title": "Level 56 Jobs",
+      "subtitle": "职业",
+      "steps": [
+        {
+          "id": "en-55-t",
+          "kind": "letter",
+          "letters": [
+            "Robot Maker"
+          ],
+          "display": "Jobs",
+          "examples": [
+            {
+              "icon": "robot",
+              "text": "Robot Maker 造机器人",
+              "say": "Robot Maker"
+            },
+            {
+              "icon": "girl",
+              "text": "Teacher 老师",
+              "say": "Teacher"
+            },
+            {
+              "icon": "flask",
+              "text": "Scientist 科学家",
+              "say": "Scientist"
+            }
+          ],
+          "question": "Learn: Jobs 职业"
+        },
+        {
+          "id": "en-55-q0",
+          "kind": "quiz",
+          "question": "Which one is 「造机器人」?",
+          "options": [
+            {
+              "icon": "girl",
+              "text": "Teacher"
+            },
+            {
+              "icon": "flask",
+              "text": "Scientist"
+            },
+            {
+              "icon": "robot",
+              "text": "Robot Maker"
+            }
+          ],
+          "answer": 2,
+          "hint": "Robot Maker",
+          "praise": "Yes! Robot Maker!"
+        },
+        {
+          "id": "en-55-q1",
+          "kind": "quiz",
+          "question": "Which one is 「老师」?",
+          "options": [
+            {
+              "icon": "robot",
+              "text": "Robot Maker"
+            },
+            {
+              "icon": "flask",
+              "text": "Scientist"
+            },
+            {
+              "icon": "girl",
+              "text": "Teacher"
+            }
+          ],
+          "answer": 2,
+          "hint": "Teacher",
+          "praise": "Yes! Teacher!"
+        },
+        {
+          "id": "en-55-q2",
+          "kind": "quiz",
+          "question": "Which one is 「科学家」?",
+          "options": [
+            {
+              "icon": "robot",
+              "text": "Robot Maker"
+            },
+            {
+              "icon": "girl",
+              "text": "Teacher"
+            },
+            {
+              "icon": "flask",
+              "text": "Scientist"
+            }
+          ],
+          "answer": 2,
+          "hint": "Scientist",
+          "praise": "Yes! Scientist!"
+        }
+      ],
+      "zone": 6
+    },
+    {
+      "id": "en-56",
+      "title": "Level 57 Feelings",
+      "subtitle": "心情",
+      "steps": [
+        {
+          "id": "en-56-t",
+          "kind": "letter",
+          "letters": [
+            "Happy"
+          ],
+          "display": "Feelings",
+          "examples": [
+            {
+              "icon": "heart",
+              "text": "Happy 开心",
+              "say": "Happy"
+            },
+            {
+              "icon": "heart",
+              "text": "Love 爱",
+              "say": "Love"
+            },
+            {
+              "icon": "party",
+              "text": "Excited 兴奋",
+              "say": "Excited"
+            }
+          ],
+          "question": "Learn: Feelings 心情"
+        },
+        {
+          "id": "en-56-q0",
+          "kind": "quiz",
+          "question": "Which one is 「开心」?",
+          "options": [
+            {
+              "icon": "heart",
+              "text": "Love"
+            },
+            {
+              "icon": "party",
+              "text": "Excited"
+            },
+            {
+              "icon": "heart",
+              "text": "Happy"
+            }
+          ],
+          "answer": 2,
+          "hint": "Happy",
+          "praise": "Yes! Happy!"
+        },
+        {
+          "id": "en-56-q1",
+          "kind": "quiz",
+          "question": "Which one is 「爱」?",
+          "options": [
+            {
+              "icon": "heart",
+              "text": "Happy"
+            },
+            {
+              "icon": "party",
+              "text": "Excited"
+            },
+            {
+              "icon": "heart",
+              "text": "Love"
+            }
+          ],
+          "answer": 2,
+          "hint": "Love",
+          "praise": "Yes! Love!"
+        },
+        {
+          "id": "en-56-q2",
+          "kind": "quiz",
+          "question": "Which one is 「兴奋」?",
+          "options": [
+            {
+              "icon": "heart",
+              "text": "Happy"
+            },
+            {
+              "icon": "heart",
+              "text": "Love"
+            },
+            {
+              "icon": "party",
+              "text": "Excited"
+            }
+          ],
+          "answer": 2,
+          "hint": "Excited",
+          "praise": "Yes! Excited!"
+        }
+      ],
+      "zone": 6
+    },
+    {
+      "id": "en-57",
+      "title": "Level 58 Places",
+      "subtitle": "场所",
+      "steps": [
+        {
+          "id": "en-57-t",
+          "kind": "letter",
+          "letters": [
+            "School"
+          ],
+          "display": "Places",
+          "examples": [
+            {
+              "icon": "school",
+              "text": "School 学校",
+              "say": "School"
+            },
+            {
+              "icon": "shop",
+              "text": "Shop 商店",
+              "say": "Shop"
+            },
+            {
+              "icon": "castle",
+              "text": "Castle 城堡",
+              "say": "Castle"
+            }
+          ],
+          "question": "Learn: Places 场所"
+        },
+        {
+          "id": "en-57-q0",
+          "kind": "quiz",
+          "question": "Which one is 「学校」?",
+          "options": [
+            {
+              "icon": "shop",
+              "text": "Shop"
+            },
+            {
+              "icon": "castle",
+              "text": "Castle"
+            },
+            {
+              "icon": "school",
+              "text": "School"
+            }
+          ],
+          "answer": 2,
+          "hint": "School",
+          "praise": "Yes! School!"
+        },
+        {
+          "id": "en-57-q1",
+          "kind": "quiz",
+          "question": "Which one is 「商店」?",
+          "options": [
+            {
+              "icon": "school",
+              "text": "School"
+            },
+            {
+              "icon": "castle",
+              "text": "Castle"
+            },
+            {
+              "icon": "shop",
+              "text": "Shop"
+            }
+          ],
+          "answer": 2,
+          "hint": "Shop",
+          "praise": "Yes! Shop!"
+        },
+        {
+          "id": "en-57-q2",
+          "kind": "quiz",
+          "question": "Which one is 「城堡」?",
+          "options": [
+            {
+              "icon": "school",
+              "text": "School"
+            },
+            {
+              "icon": "shop",
+              "text": "Shop"
+            },
+            {
+              "icon": "castle",
+              "text": "Castle"
+            }
+          ],
+          "answer": 2,
+          "hint": "Castle",
+          "praise": "Yes! Castle!"
+        }
+      ],
+      "zone": 6
+    },
+    {
+      "id": "en-58",
+      "title": "Level 59 Big and Small",
+      "subtitle": "大小",
+      "steps": [
+        {
+          "id": "en-58-t",
+          "kind": "letter",
+          "letters": [
+            "Big"
+          ],
+          "display": "Big and Small",
+          "examples": [
+            {
+              "icon": "elephant",
+              "text": "Big 大",
+              "say": "Big"
+            },
+            {
+              "icon": "duck",
+              "text": "Small 小",
+              "say": "Small"
+            },
+            {
+              "icon": "bear",
+              "text": "Bear 熊",
+              "say": "Bear"
+            }
+          ],
+          "question": "Learn: Big and Small 大小"
+        },
+        {
+          "id": "en-58-q0",
+          "kind": "quiz",
+          "question": "Which one is 「大」?",
+          "options": [
+            {
+              "icon": "duck",
+              "text": "Small"
+            },
+            {
+              "icon": "bear",
+              "text": "Bear"
+            },
+            {
+              "icon": "elephant",
+              "text": "Big"
+            }
+          ],
+          "answer": 2,
+          "hint": "Big",
+          "praise": "Yes! Big!"
+        },
+        {
+          "id": "en-58-q1",
+          "kind": "quiz",
+          "question": "Which one is 「小」?",
+          "options": [
+            {
+              "icon": "elephant",
+              "text": "Big"
+            },
+            {
+              "icon": "bear",
+              "text": "Bear"
+            },
+            {
+              "icon": "duck",
+              "text": "Small"
+            }
+          ],
+          "answer": 2,
+          "hint": "Small",
+          "praise": "Yes! Small!"
+        },
+        {
+          "id": "en-58-q2",
+          "kind": "quiz",
+          "question": "Which one is 「熊」?",
+          "options": [
+            {
+              "icon": "elephant",
+              "text": "Big"
+            },
+            {
+              "icon": "duck",
+              "text": "Small"
+            },
+            {
+              "icon": "bear",
+              "text": "Bear"
+            }
+          ],
+          "answer": 2,
+          "hint": "Bear",
+          "praise": "Yes! Bear!"
+        }
+      ],
+      "zone": 6
+    },
+    {
+      "id": "english-r1",
+      "title": "复习关 二",
+      "subtitle": "旧题开盲盒 · 混排复习",
+      "steps": [
+        {
+          "id": "english-r1-0",
+          "kind": "listen",
+          "prompt": "Aa",
+          "speakText": "A",
+          "question": "Find: which one is Aa ?",
+          "options": [
+            {
+              "text": "Bb"
+            },
+            {
+              "text": "Cc"
+            },
+            {
+              "text": "Aa"
+            }
+          ],
+          "answer": 2,
+          "hint": "A for Aa",
+          "praise": "Yes! Aa!"
+        },
+        {
+          "id": "english-r1-1",
+          "kind": "quiz",
+          "question": "小写 b 对应哪个大写字母？",
+          "options": [
+            {
+              "text": "D"
+            },
+            {
+              "text": "S"
+            },
+            {
+              "text": "B"
+            }
+          ],
+          "answer": 2,
+          "hint": "Bb = Bb",
+          "praise": "Bb 配对成功！"
+        },
+        {
+          "id": "english-r1-2",
+          "kind": "listen",
+          "prompt": "Cc",
+          "speakText": "C",
+          "question": "Find: which one is Cc ?",
+          "options": [
+            {
+              "text": "Dd"
+            },
+            {
+              "text": "Ss"
+            },
+            {
+              "text": "Cc"
+            }
+          ],
+          "answer": 2,
+          "hint": "C for Cc",
+          "praise": "Yes! Cc!"
+        },
+        {
+          "id": "english-r1-3",
+          "kind": "quiz",
+          "question": "Which picture starts with Dd?",
+          "options": [
+            {
+              "icon": "flower"
+            },
+            {
+              "icon": "duck"
+            },
+            {
+              "icon": "leaf"
+            }
+          ],
+          "answer": 1,
+          "hint": "Duck 小鸭",
+          "praise": "Great job!"
+        },
+        {
+          "id": "english-r1-4",
+          "kind": "listen",
+          "prompt": "Ss",
+          "speakText": "S",
+          "question": "Find: which one is Ss ?",
+          "options": [
+            {
+              "text": "Aa"
+            },
+            {
+              "text": "Bb"
+            },
+            {
+              "text": "Ss"
+            }
+          ],
+          "answer": 2,
+          "hint": "S for Ss",
+          "praise": "Yes! Ss!"
+        },
+        {
+          "id": "english-r1-5",
+          "kind": "quiz",
+          "question": "小写 m 对应哪个大写字母？",
+          "options": [
+            {
+              "text": "M"
+            },
+            {
+              "text": "G"
+            },
+            {
+              "text": "E"
+            }
+          ],
+          "answer": 0,
+          "hint": "Mm = Mm",
+          "praise": "Mm 配对成功！"
+        }
+      ],
+      "board": {
+        "spaces": [
+          {
+            "type": "question",
+            "step": "english-r1-1"
+          },
+          {
+            "type": "question",
+            "step": "english-r1-2"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "english-r1-3"
+          },
+          {
+            "type": "question",
+            "step": "english-r1-4"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "english-r1-5"
+          },
+          {
+            "type": "chest"
+          },
+          {
+            "type": "question",
+            "step": "english-r1-0"
+          },
+          {
+            "type": "rest"
+          }
+        ]
+      },
+      "review": true,
+      "zone": 7
+    },
+    {
+      "id": "en-59",
+      "title": "Level 60 Fast and Slow",
+      "subtitle": "快慢",
+      "steps": [
+        {
+          "id": "en-59-t",
+          "kind": "letter",
+          "letters": [
+            "Fast"
+          ],
+          "display": "Fast and Slow",
+          "examples": [
+            {
+              "icon": "rocket",
+              "text": "Fast 快",
+              "say": "Fast"
+            },
+            {
+              "icon": "train",
+              "text": "Train 火车",
+              "say": "Train"
+            },
+            {
+              "icon": "comet",
+              "text": "Comet 彗星",
+              "say": "Comet"
+            }
+          ],
+          "question": "Learn: Fast and Slow 快慢"
+        },
+        {
+          "id": "en-59-q0",
+          "kind": "quiz",
+          "question": "Which one is 「快」?",
+          "options": [
+            {
+              "icon": "train",
+              "text": "Train"
+            },
+            {
+              "icon": "comet",
+              "text": "Comet"
+            },
+            {
+              "icon": "rocket",
+              "text": "Fast"
+            }
+          ],
+          "answer": 2,
+          "hint": "Fast",
+          "praise": "Yes! Fast!"
+        },
+        {
+          "id": "en-59-q1",
+          "kind": "quiz",
+          "question": "Which one is 「火车」?",
+          "options": [
+            {
+              "icon": "rocket",
+              "text": "Fast"
+            },
+            {
+              "icon": "comet",
+              "text": "Comet"
+            },
+            {
+              "icon": "train",
+              "text": "Train"
+            }
+          ],
+          "answer": 2,
+          "hint": "Train",
+          "praise": "Yes! Train!"
+        },
+        {
+          "id": "en-59-q2",
+          "kind": "quiz",
+          "question": "Which one is 「彗星」?",
+          "options": [
+            {
+              "icon": "rocket",
+              "text": "Fast"
+            },
+            {
+              "icon": "train",
+              "text": "Train"
+            },
+            {
+              "icon": "comet",
+              "text": "Comet"
+            }
+          ],
+          "answer": 2,
+          "hint": "Comet",
+          "praise": "Yes! Comet!"
+        }
+      ],
+      "zone": 7
+    },
+    {
+      "id": "en-60",
+      "title": "Level 61 Breakfast",
+      "subtitle": "早餐",
+      "steps": [
+        {
+          "id": "en-60-t",
+          "kind": "letter",
+          "letters": [
+            "Bread"
+          ],
+          "display": "Breakfast",
+          "examples": [
+            {
+              "icon": "bread",
+              "text": "Bread 面包",
+              "say": "Bread"
+            },
+            {
+              "icon": "milk",
+              "text": "Milk 牛奶",
+              "say": "Milk"
+            },
+            {
+              "icon": "egg",
+              "text": "Egg 蛋",
+              "say": "Egg"
+            }
+          ],
+          "question": "Learn: Breakfast 早餐"
+        },
+        {
+          "id": "en-60-q0",
+          "kind": "quiz",
+          "question": "Which one is 「面包」?",
+          "options": [
+            {
+              "icon": "milk",
+              "text": "Milk"
+            },
+            {
+              "icon": "egg",
+              "text": "Egg"
+            },
+            {
+              "icon": "bread",
+              "text": "Bread"
+            }
+          ],
+          "answer": 2,
+          "hint": "Bread",
+          "praise": "Yes! Bread!"
+        },
+        {
+          "id": "en-60-q1",
+          "kind": "quiz",
+          "question": "Which one is 「牛奶」?",
+          "options": [
+            {
+              "icon": "bread",
+              "text": "Bread"
+            },
+            {
+              "icon": "egg",
+              "text": "Egg"
+            },
+            {
+              "icon": "milk",
+              "text": "Milk"
+            }
+          ],
+          "answer": 2,
+          "hint": "Milk",
+          "praise": "Yes! Milk!"
+        },
+        {
+          "id": "en-60-q2",
+          "kind": "quiz",
+          "question": "Which one is 「蛋」?",
+          "options": [
+            {
+              "icon": "bread",
+              "text": "Bread"
+            },
+            {
+              "icon": "milk",
+              "text": "Milk"
+            },
+            {
+              "icon": "egg",
+              "text": "Egg"
+            }
+          ],
+          "answer": 2,
+          "hint": "Egg",
+          "praise": "Yes! Egg!"
+        }
+      ],
+      "zone": 7
+    },
+    {
+      "id": "en-61",
+      "title": "Level 62 Fruit Bowl",
+      "subtitle": "水果盘",
+      "steps": [
+        {
+          "id": "en-61-t",
+          "kind": "letter",
+          "letters": [
+            "Apple"
+          ],
+          "display": "Fruit Bowl",
+          "examples": [
+            {
+              "icon": "apple",
+              "text": "Apple 苹果",
+              "say": "Apple"
+            },
+            {
+              "icon": "banana",
+              "text": "Banana 香蕉",
+              "say": "Banana"
+            },
+            {
+              "icon": "candy",
+              "text": "Sweet 甜食",
+              "say": "Sweet"
+            }
+          ],
+          "question": "Learn: Fruit Bowl 水果盘"
+        },
+        {
+          "id": "en-61-q0",
+          "kind": "quiz",
+          "question": "Which one is 「苹果」?",
+          "options": [
+            {
+              "icon": "banana",
+              "text": "Banana"
+            },
+            {
+              "icon": "candy",
+              "text": "Sweet"
+            },
+            {
+              "icon": "apple",
+              "text": "Apple"
+            }
+          ],
+          "answer": 2,
+          "hint": "Apple",
+          "praise": "Yes! Apple!"
+        },
+        {
+          "id": "en-61-q1",
+          "kind": "quiz",
+          "question": "Which one is 「香蕉」?",
+          "options": [
+            {
+              "icon": "apple",
+              "text": "Apple"
+            },
+            {
+              "icon": "candy",
+              "text": "Sweet"
+            },
+            {
+              "icon": "banana",
+              "text": "Banana"
+            }
+          ],
+          "answer": 2,
+          "hint": "Banana",
+          "praise": "Yes! Banana!"
+        },
+        {
+          "id": "en-61-q2",
+          "kind": "quiz",
+          "question": "Which one is 「甜食」?",
+          "options": [
+            {
+              "icon": "apple",
+              "text": "Apple"
+            },
+            {
+              "icon": "banana",
+              "text": "Banana"
+            },
+            {
+              "icon": "candy",
+              "text": "Sweet"
+            }
+          ],
+          "answer": 2,
+          "hint": "Sweet",
+          "praise": "Yes! Sweet!"
+        }
+      ],
+      "zone": 7
+    },
+    {
+      "id": "en-62",
+      "title": "Level 63 On the Farm",
+      "subtitle": "农场",
+      "steps": [
+        {
+          "id": "en-62-t",
+          "kind": "letter",
+          "letters": [
+            "Cow"
+          ],
+          "display": "On the Farm",
+          "examples": [
+            {
+              "icon": "cow",
+              "text": "Cow 奶牛",
+              "say": "Cow"
+            },
+            {
+              "icon": "pig",
+              "text": "Pig 猪",
+              "say": "Pig"
+            },
+            {
+              "icon": "duck",
+              "text": "Duck 鸭",
+              "say": "Duck"
+            }
+          ],
+          "question": "Learn: On the Farm 农场"
+        },
+        {
+          "id": "en-62-q0",
+          "kind": "quiz",
+          "question": "Which one is 「奶牛」?",
+          "options": [
+            {
+              "icon": "pig",
+              "text": "Pig"
+            },
+            {
+              "icon": "duck",
+              "text": "Duck"
+            },
+            {
+              "icon": "cow",
+              "text": "Cow"
+            }
+          ],
+          "answer": 2,
+          "hint": "Cow",
+          "praise": "Yes! Cow!"
+        },
+        {
+          "id": "en-62-q1",
+          "kind": "quiz",
+          "question": "Which one is 「猪」?",
+          "options": [
+            {
+              "icon": "cow",
+              "text": "Cow"
+            },
+            {
+              "icon": "duck",
+              "text": "Duck"
+            },
+            {
+              "icon": "pig",
+              "text": "Pig"
+            }
+          ],
+          "answer": 2,
+          "hint": "Pig",
+          "praise": "Yes! Pig!"
+        },
+        {
+          "id": "en-62-q2",
+          "kind": "quiz",
+          "question": "Which one is 「鸭」?",
+          "options": [
+            {
+              "icon": "cow",
+              "text": "Cow"
+            },
+            {
+              "icon": "pig",
+              "text": "Pig"
+            },
+            {
+              "icon": "duck",
+              "text": "Duck"
+            }
+          ],
+          "answer": 2,
+          "hint": "Duck",
+          "praise": "Yes! Duck!"
+        }
+      ],
+      "zone": 7
+    },
+    {
+      "id": "en-63",
+      "title": "Level 64 Pets",
+      "subtitle": "宠物",
+      "steps": [
+        {
+          "id": "en-63-t",
+          "kind": "letter",
+          "letters": [
+            "Cat"
+          ],
+          "display": "Pets",
+          "examples": [
+            {
+              "icon": "cat",
+              "text": "Cat 猫",
+              "say": "Cat"
+            },
+            {
+              "icon": "dog",
+              "text": "Dog 狗",
+              "say": "Dog"
+            },
+            {
+              "icon": "rabbit",
+              "text": "Rabbit 兔子",
+              "say": "Rabbit"
+            }
+          ],
+          "question": "Learn: Pets 宠物"
+        },
+        {
+          "id": "en-63-q0",
+          "kind": "quiz",
+          "question": "Which one is 「猫」?",
+          "options": [
+            {
+              "icon": "dog",
+              "text": "Dog"
+            },
+            {
+              "icon": "rabbit",
+              "text": "Rabbit"
+            },
+            {
+              "icon": "cat",
+              "text": "Cat"
+            }
+          ],
+          "answer": 2,
+          "hint": "Cat",
+          "praise": "Yes! Cat!"
+        },
+        {
+          "id": "en-63-q1",
+          "kind": "quiz",
+          "question": "Which one is 「狗」?",
+          "options": [
+            {
+              "icon": "cat",
+              "text": "Cat"
+            },
+            {
+              "icon": "rabbit",
+              "text": "Rabbit"
+            },
+            {
+              "icon": "dog",
+              "text": "Dog"
+            }
+          ],
+          "answer": 2,
+          "hint": "Dog",
+          "praise": "Yes! Dog!"
+        },
+        {
+          "id": "en-63-q2",
+          "kind": "quiz",
+          "question": "Which one is 「兔子」?",
+          "options": [
+            {
+              "icon": "cat",
+              "text": "Cat"
+            },
+            {
+              "icon": "dog",
+              "text": "Dog"
+            },
+            {
+              "icon": "rabbit",
+              "text": "Rabbit"
+            }
+          ],
+          "answer": 2,
+          "hint": "Rabbit",
+          "praise": "Yes! Rabbit!"
+        }
+      ],
+      "zone": 7
+    },
+    {
+      "id": "en-64",
+      "title": "Level 65 Wild Animals",
+      "subtitle": "野生动物",
+      "steps": [
+        {
+          "id": "en-64-t",
+          "kind": "letter",
+          "letters": [
+            "Lion"
+          ],
+          "display": "Wild Animals",
+          "examples": [
+            {
+              "icon": "lion",
+              "text": "Lion 狮子",
+              "say": "Lion"
+            },
+            {
+              "icon": "fox",
+              "text": "Fox 狐狸",
+              "say": "Fox"
+            },
+            {
+              "icon": "polarbear",
+              "text": "Polar Bear 北极熊",
+              "say": "Polar Bear"
+            }
+          ],
+          "question": "Learn: Wild Animals 野生动物"
+        },
+        {
+          "id": "en-64-q0",
+          "kind": "quiz",
+          "question": "Which one is 「狮子」?",
+          "options": [
+            {
+              "icon": "fox",
+              "text": "Fox"
+            },
+            {
+              "icon": "polarbear",
+              "text": "Polar Bear"
+            },
+            {
+              "icon": "lion",
+              "text": "Lion"
+            }
+          ],
+          "answer": 2,
+          "hint": "Lion",
+          "praise": "Yes! Lion!"
+        },
+        {
+          "id": "en-64-q1",
+          "kind": "quiz",
+          "question": "Which one is 「狐狸」?",
+          "options": [
+            {
+              "icon": "lion",
+              "text": "Lion"
+            },
+            {
+              "icon": "polarbear",
+              "text": "Polar Bear"
+            },
+            {
+              "icon": "fox",
+              "text": "Fox"
+            }
+          ],
+          "answer": 2,
+          "hint": "Fox",
+          "praise": "Yes! Fox!"
+        },
+        {
+          "id": "en-64-q2",
+          "kind": "quiz",
+          "question": "Which one is 「北极熊」?",
+          "options": [
+            {
+              "icon": "lion",
+              "text": "Lion"
+            },
+            {
+              "icon": "fox",
+              "text": "Fox"
+            },
+            {
+              "icon": "polarbear",
+              "text": "Polar Bear"
+            }
+          ],
+          "answer": 2,
+          "hint": "Polar Bear",
+          "praise": "Yes! Polar Bear!"
+        }
+      ],
+      "zone": 7
+    },
+    {
+      "id": "en-65",
+      "title": "Level 66 Sea Friends",
+      "subtitle": "海洋",
+      "steps": [
+        {
+          "id": "en-65-t",
+          "kind": "letter",
+          "letters": [
+            "Fish"
+          ],
+          "display": "Sea Friends",
+          "examples": [
+            {
+              "icon": "fish",
+              "text": "Fish 鱼",
+              "say": "Fish"
+            },
+            {
+              "icon": "penguin",
+              "text": "Penguin 企鹅",
+              "say": "Penguin"
+            },
+            {
+              "icon": "wave",
+              "text": "Wave 海浪",
+              "say": "Wave"
+            }
+          ],
+          "question": "Learn: Sea Friends 海洋"
+        },
+        {
+          "id": "en-65-q0",
+          "kind": "quiz",
+          "question": "Which one is 「鱼」?",
+          "options": [
+            {
+              "icon": "penguin",
+              "text": "Penguin"
+            },
+            {
+              "icon": "wave",
+              "text": "Wave"
+            },
+            {
+              "icon": "fish",
+              "text": "Fish"
+            }
+          ],
+          "answer": 2,
+          "hint": "Fish",
+          "praise": "Yes! Fish!"
+        },
+        {
+          "id": "en-65-q1",
+          "kind": "quiz",
+          "question": "Which one is 「企鹅」?",
+          "options": [
+            {
+              "icon": "fish",
+              "text": "Fish"
+            },
+            {
+              "icon": "wave",
+              "text": "Wave"
+            },
+            {
+              "icon": "penguin",
+              "text": "Penguin"
+            }
+          ],
+          "answer": 2,
+          "hint": "Penguin",
+          "praise": "Yes! Penguin!"
+        },
+        {
+          "id": "en-65-q2",
+          "kind": "quiz",
+          "question": "Which one is 「海浪」?",
+          "options": [
+            {
+              "icon": "fish",
+              "text": "Fish"
+            },
+            {
+              "icon": "penguin",
+              "text": "Penguin"
+            },
+            {
+              "icon": "wave",
+              "text": "Wave"
+            }
+          ],
+          "answer": 2,
+          "hint": "Wave",
+          "praise": "Yes! Wave!"
+        }
+      ],
+      "zone": 7
+    },
+    {
+      "id": "en-66",
+      "title": "Level 67 Sky",
+      "subtitle": "天空",
+      "steps": [
+        {
+          "id": "en-66-t",
+          "kind": "letter",
+          "letters": [
+            "Star"
+          ],
+          "display": "Sky",
+          "examples": [
+            {
+              "icon": "star",
+              "text": "Star 星星",
+              "say": "Star"
+            },
+            {
+              "icon": "moon",
+              "text": "Moon 月亮",
+              "say": "Moon"
+            },
+            {
+              "icon": "sunface",
+              "text": "Sun 太阳",
+              "say": "Sun"
+            }
+          ],
+          "question": "Learn: Sky 天空"
+        },
+        {
+          "id": "en-66-q0",
+          "kind": "quiz",
+          "question": "Which one is 「星星」?",
+          "options": [
+            {
+              "icon": "moon",
+              "text": "Moon"
+            },
+            {
+              "icon": "sunface",
+              "text": "Sun"
+            },
+            {
+              "icon": "star",
+              "text": "Star"
+            }
+          ],
+          "answer": 2,
+          "hint": "Star",
+          "praise": "Yes! Star!"
+        },
+        {
+          "id": "en-66-q1",
+          "kind": "quiz",
+          "question": "Which one is 「月亮」?",
+          "options": [
+            {
+              "icon": "star",
+              "text": "Star"
+            },
+            {
+              "icon": "sunface",
+              "text": "Sun"
+            },
+            {
+              "icon": "moon",
+              "text": "Moon"
+            }
+          ],
+          "answer": 2,
+          "hint": "Moon",
+          "praise": "Yes! Moon!"
+        },
+        {
+          "id": "en-66-q2",
+          "kind": "quiz",
+          "question": "Which one is 「太阳」?",
+          "options": [
+            {
+              "icon": "star",
+              "text": "Star"
+            },
+            {
+              "icon": "moon",
+              "text": "Moon"
+            },
+            {
+              "icon": "sunface",
+              "text": "Sun"
+            }
+          ],
+          "answer": 2,
+          "hint": "Sun",
+          "praise": "Yes! Sun!"
+        }
+      ],
+      "zone": 7
+    },
+    {
+      "id": "en-67",
+      "title": "Level 68 At Home",
+      "subtitle": "在家里",
+      "steps": [
+        {
+          "id": "en-67-t",
+          "kind": "letter",
+          "letters": [
+            "House"
+          ],
+          "display": "At Home",
+          "examples": [
+            {
+              "icon": "home",
+              "text": "House 房子",
+              "say": "House"
+            },
+            {
+              "icon": "bed",
+              "text": "Bed 床",
+              "say": "Bed"
+            },
+            {
+              "icon": "clock",
+              "text": "Clock 钟",
+              "say": "Clock"
+            }
+          ],
+          "question": "Learn: At Home 在家里"
+        },
+        {
+          "id": "en-67-q0",
+          "kind": "quiz",
+          "question": "Which one is 「房子」?",
+          "options": [
+            {
+              "icon": "bed",
+              "text": "Bed"
+            },
+            {
+              "icon": "clock",
+              "text": "Clock"
+            },
+            {
+              "icon": "home",
+              "text": "House"
+            }
+          ],
+          "answer": 2,
+          "hint": "House",
+          "praise": "Yes! House!"
+        },
+        {
+          "id": "en-67-q1",
+          "kind": "quiz",
+          "question": "Which one is 「床」?",
+          "options": [
+            {
+              "icon": "home",
+              "text": "House"
+            },
+            {
+              "icon": "clock",
+              "text": "Clock"
+            },
+            {
+              "icon": "bed",
+              "text": "Bed"
+            }
+          ],
+          "answer": 2,
+          "hint": "Bed",
+          "praise": "Yes! Bed!"
+        },
+        {
+          "id": "en-67-q2",
+          "kind": "quiz",
+          "question": "Which one is 「钟」?",
+          "options": [
+            {
+              "icon": "home",
+              "text": "House"
+            },
+            {
+              "icon": "bed",
+              "text": "Bed"
+            },
+            {
+              "icon": "clock",
+              "text": "Clock"
+            }
+          ],
+          "answer": 2,
+          "hint": "Clock",
+          "praise": "Yes! Clock!"
+        }
+      ],
+      "zone": 7
+    },
+    {
+      "id": "en-68",
+      "title": "Level 69 Play Time",
+      "subtitle": "游戏",
+      "steps": [
+        {
+          "id": "en-68-t",
+          "kind": "letter",
+          "letters": [
+            "Dice"
+          ],
+          "display": "Play Time",
+          "examples": [
+            {
+              "icon": "dice",
+              "text": "Dice 骰子",
+              "say": "Dice"
+            },
+            {
+              "icon": "block",
+              "text": "Block 积木",
+              "say": "Block"
+            },
+            {
+              "icon": "ball",
+              "text": "Ball 球",
+              "say": "Ball"
+            }
+          ],
+          "question": "Learn: Play Time 游戏"
+        },
+        {
+          "id": "en-68-q0",
+          "kind": "quiz",
+          "question": "Which one is 「骰子」?",
+          "options": [
+            {
+              "icon": "block",
+              "text": "Block"
+            },
+            {
+              "icon": "ball",
+              "text": "Ball"
+            },
+            {
+              "icon": "dice",
+              "text": "Dice"
+            }
+          ],
+          "answer": 2,
+          "hint": "Dice",
+          "praise": "Yes! Dice!"
+        },
+        {
+          "id": "en-68-q1",
+          "kind": "quiz",
+          "question": "Which one is 「积木」?",
+          "options": [
+            {
+              "icon": "dice",
+              "text": "Dice"
+            },
+            {
+              "icon": "ball",
+              "text": "Ball"
+            },
+            {
+              "icon": "block",
+              "text": "Block"
+            }
+          ],
+          "answer": 2,
+          "hint": "Block",
+          "praise": "Yes! Block!"
+        },
+        {
+          "id": "en-68-q2",
+          "kind": "quiz",
+          "question": "Which one is 「球」?",
+          "options": [
+            {
+              "icon": "dice",
+              "text": "Dice"
+            },
+            {
+              "icon": "block",
+              "text": "Block"
+            },
+            {
+              "icon": "ball",
+              "text": "Ball"
+            }
+          ],
+          "answer": 2,
+          "hint": "Ball",
+          "praise": "Yes! Ball!"
+        }
+      ],
+      "zone": 8
+    },
+    {
+      "id": "en-69",
+      "title": "Level 70 Body Power",
+      "subtitle": "身体本领",
+      "steps": [
+        {
+          "id": "en-69-t",
+          "kind": "letter",
+          "letters": [
+            "Foot"
+          ],
+          "display": "Body Power",
+          "examples": [
+            {
+              "icon": "paw",
+              "text": "Foot 脚",
+              "say": "Foot"
+            },
+            {
+              "icon": "paw",
+              "text": "Baby Paw 小脚丫",
+              "say": "Baby Paw"
+            },
+            {
+              "icon": "girl",
+              "text": "Me 我",
+              "say": "Me"
+            }
+          ],
+          "question": "Learn: Body Power 身体本领"
+        },
+        {
+          "id": "en-69-q0",
+          "kind": "quiz",
+          "question": "Which one is 「脚」?",
+          "options": [
+            {
+              "icon": "paw",
+              "text": "Baby Paw"
+            },
+            {
+              "icon": "girl",
+              "text": "Me"
+            },
+            {
+              "icon": "paw",
+              "text": "Foot"
+            }
+          ],
+          "answer": 2,
+          "hint": "Foot",
+          "praise": "Yes! Foot!"
+        },
+        {
+          "id": "en-69-q1",
+          "kind": "quiz",
+          "question": "Which one is 「小脚丫」?",
+          "options": [
+            {
+              "icon": "paw",
+              "text": "Foot"
+            },
+            {
+              "icon": "girl",
+              "text": "Me"
+            },
+            {
+              "icon": "paw",
+              "text": "Baby Paw"
+            }
+          ],
+          "answer": 2,
+          "hint": "Baby Paw",
+          "praise": "Yes! Baby Paw!"
+        },
+        {
+          "id": "en-69-q2",
+          "kind": "quiz",
+          "question": "Which one is 「我」?",
+          "options": [
+            {
+              "icon": "paw",
+              "text": "Foot"
+            },
+            {
+              "icon": "paw",
+              "text": "Baby Paw"
+            },
+            {
+              "icon": "girl",
+              "text": "Me"
+            }
+          ],
+          "answer": 2,
+          "hint": "Me",
+          "praise": "Yes! Me!"
+        }
+      ],
+      "zone": 8
+    },
+    {
+      "id": "en-70",
+      "title": "Level 71 Colours Again",
+      "subtitle": "颜色",
+      "steps": [
+        {
+          "id": "en-70-t",
+          "kind": "letter",
+          "letters": [
+            "Rainbow"
+          ],
+          "display": "Colours Again",
+          "examples": [
+            {
+              "icon": "rainbow",
+              "text": "Rainbow 彩虹",
+              "say": "Rainbow"
+            },
+            {
+              "icon": "apple",
+              "text": "Red 红",
+              "say": "Red"
+            },
+            {
+              "icon": "leaf",
+              "text": "Green 绿",
+              "say": "Green"
+            }
+          ],
+          "question": "Learn: Colours Again 颜色"
+        },
+        {
+          "id": "en-70-q0",
+          "kind": "quiz",
+          "question": "Which one is 「彩虹」?",
+          "options": [
+            {
+              "icon": "apple",
+              "text": "Red"
+            },
+            {
+              "icon": "leaf",
+              "text": "Green"
+            },
+            {
+              "icon": "rainbow",
+              "text": "Rainbow"
+            }
+          ],
+          "answer": 2,
+          "hint": "Rainbow",
+          "praise": "Yes! Rainbow!"
+        },
+        {
+          "id": "en-70-q1",
+          "kind": "quiz",
+          "question": "Which one is 「红」?",
+          "options": [
+            {
+              "icon": "rainbow",
+              "text": "Rainbow"
+            },
+            {
+              "icon": "leaf",
+              "text": "Green"
+            },
+            {
+              "icon": "apple",
+              "text": "Red"
+            }
+          ],
+          "answer": 2,
+          "hint": "Red",
+          "praise": "Yes! Red!"
+        },
+        {
+          "id": "en-70-q2",
+          "kind": "quiz",
+          "question": "Which one is 「绿」?",
+          "options": [
+            {
+              "icon": "rainbow",
+              "text": "Rainbow"
+            },
+            {
+              "icon": "apple",
+              "text": "Red"
+            },
+            {
+              "icon": "leaf",
+              "text": "Green"
+            }
+          ],
+          "answer": 2,
+          "hint": "Green",
+          "praise": "Yes! Green!"
+        }
+      ],
+      "zone": 8
+    },
+    {
+      "id": "en-71",
+      "title": "Level 72 Numbers 5-8",
+      "subtitle": "数字五到八",
+      "steps": [
+        {
+          "id": "en-71-t",
+          "kind": "letter",
+          "letters": [
+            "Five"
+          ],
+          "display": "Numbers 5-8",
+          "examples": [
+            {
+              "text": "Five 五",
+              "say": "Five"
+            },
+            {
+              "text": "Six 六",
+              "say": "Six"
+            },
+            {
+              "text": "Seven 七",
+              "say": "Seven"
+            },
+            {
+              "text": "Eight 八",
+              "say": "Eight"
+            }
+          ],
+          "question": "Learn: Numbers 5-8 数字五到八"
+        },
+        {
+          "id": "en-71-q0",
+          "kind": "quiz",
+          "question": "Which one is 「五」?",
+          "options": [
+            {
+              "text": "Six"
+            },
+            {
+              "text": "Seven"
+            },
+            {
+              "text": "Five"
+            }
+          ],
+          "answer": 2,
+          "hint": "Five",
+          "praise": "Yes! Five!"
+        },
+        {
+          "id": "en-71-q1",
+          "kind": "quiz",
+          "question": "Which one is 「六」?",
+          "options": [
+            {
+              "text": "Five"
+            },
+            {
+              "text": "Seven"
+            },
+            {
+              "text": "Six"
+            }
+          ],
+          "answer": 2,
+          "hint": "Six",
+          "praise": "Yes! Six!"
+        },
+        {
+          "id": "en-71-q2",
+          "kind": "quiz",
+          "question": "Which one is 「七」?",
+          "options": [
+            {
+              "text": "Five"
+            },
+            {
+              "text": "Six"
+            },
+            {
+              "text": "Seven"
+            }
+          ],
+          "answer": 2,
+          "hint": "Seven",
+          "praise": "Yes! Seven!"
+        }
+      ],
+      "zone": 8
+    },
+    {
+      "id": "en-72",
+      "title": "Level 73 Greetings",
+      "subtitle": "打招呼",
+      "steps": [
+        {
+          "id": "en-72-t",
+          "kind": "letter",
+          "letters": [
+            "Hello"
+          ],
+          "display": "Greetings",
+          "examples": [
+            {
+              "icon": "girl",
+              "text": "Hello 你好",
+              "say": "Hello"
+            },
+            {
+              "icon": "party",
+              "text": "Bye 再见",
+              "say": "Bye"
+            },
+            {
+              "icon": "heart",
+              "text": "Thank you 谢谢",
+              "say": "Thank you"
+            }
+          ],
+          "question": "Learn: Greetings 打招呼"
+        },
+        {
+          "id": "en-72-q0",
+          "kind": "quiz",
+          "question": "Which one is 「你好」?",
+          "options": [
+            {
+              "icon": "party",
+              "text": "Bye"
+            },
+            {
+              "icon": "heart",
+              "text": "Thank you"
+            },
+            {
+              "icon": "girl",
+              "text": "Hello"
+            }
+          ],
+          "answer": 2,
+          "hint": "Hello",
+          "praise": "Yes! Hello!"
+        },
+        {
+          "id": "en-72-q1",
+          "kind": "quiz",
+          "question": "Which one is 「再见」?",
+          "options": [
+            {
+              "icon": "girl",
+              "text": "Hello"
+            },
+            {
+              "icon": "heart",
+              "text": "Thank you"
+            },
+            {
+              "icon": "party",
+              "text": "Bye"
+            }
+          ],
+          "answer": 2,
+          "hint": "Bye",
+          "praise": "Yes! Bye!"
+        },
+        {
+          "id": "en-72-q2",
+          "kind": "quiz",
+          "question": "Which one is 「谢谢」?",
+          "options": [
+            {
+              "icon": "girl",
+              "text": "Hello"
+            },
+            {
+              "icon": "party",
+              "text": "Bye"
+            },
+            {
+              "icon": "heart",
+              "text": "Thank you"
+            }
+          ],
+          "answer": 2,
+          "hint": "Thank you",
+          "praise": "Yes! Thank you!"
+        }
+      ],
+      "zone": 8
+    },
+    {
+      "id": "en-73",
+      "title": "Level 74 On the Table",
+      "subtitle": "桌上",
+      "steps": [
+        {
+          "id": "en-73-t",
+          "kind": "letter",
+          "letters": [
+            "Cup"
+          ],
+          "display": "On the Table",
+          "examples": [
+            {
+              "icon": "cup",
+              "text": "Cup 杯子",
+              "say": "Cup"
+            },
+            {
+              "icon": "book",
+              "text": "Book 书",
+              "say": "Book"
+            },
+            {
+              "icon": "jar",
+              "text": "Jar 罐",
+              "say": "Jar"
+            }
+          ],
+          "question": "Learn: On the Table 桌上"
+        },
+        {
+          "id": "en-73-q0",
+          "kind": "quiz",
+          "question": "Which one is 「杯子」?",
+          "options": [
+            {
+              "icon": "book",
+              "text": "Book"
+            },
+            {
+              "icon": "jar",
+              "text": "Jar"
+            },
+            {
+              "icon": "cup",
+              "text": "Cup"
+            }
+          ],
+          "answer": 2,
+          "hint": "Cup",
+          "praise": "Yes! Cup!"
+        },
+        {
+          "id": "en-73-q1",
+          "kind": "quiz",
+          "question": "Which one is 「书」?",
+          "options": [
+            {
+              "icon": "cup",
+              "text": "Cup"
+            },
+            {
+              "icon": "jar",
+              "text": "Jar"
+            },
+            {
+              "icon": "book",
+              "text": "Book"
+            }
+          ],
+          "answer": 2,
+          "hint": "Book",
+          "praise": "Yes! Book!"
+        },
+        {
+          "id": "en-73-q2",
+          "kind": "quiz",
+          "question": "Which one is 「罐」?",
+          "options": [
+            {
+              "icon": "cup",
+              "text": "Cup"
+            },
+            {
+              "icon": "book",
+              "text": "Book"
+            },
+            {
+              "icon": "jar",
+              "text": "Jar"
+            }
+          ],
+          "answer": 2,
+          "hint": "Jar",
+          "praise": "Yes! Jar!"
+        }
+      ],
+      "zone": 8
+    },
+    {
+      "id": "en-74",
+      "title": "Level 75 Week Review",
+      "subtitle": "星期复习",
+      "steps": [
+        {
+          "id": "en-74-t",
+          "kind": "letter",
+          "letters": [
+            "Monday"
+          ],
+          "display": "Week",
+          "examples": [
+            {
+              "text": "Monday 星期一"
+            },
+            {
+              "text": "Sunday 星期日"
+            }
+          ],
+          "question": "复习：一周七天"
+        },
+        {
+          "id": "en-74-q1",
+          "kind": "quiz",
+          "question": "The first day of school is——",
+          "options": [
+            {
+              "text": "Monday"
+            },
+            {
+              "text": "Saturday"
+            },
+            {
+              "text": "Sunday"
+            }
+          ],
+          "answer": 0,
+          "hint": "上学第一天",
+          "praise": "Yes! Monday!"
+        },
+        {
+          "id": "en-74-q2",
+          "kind": "quiz",
+          "question": "Which day is on the weekend?",
+          "options": [
+            {
+              "text": "Saturday"
+            },
+            {
+              "text": "Monday"
+            },
+            {
+              "text": "Thursday"
+            }
+          ],
+          "answer": 0,
+          "hint": "周末两天",
+          "praise": "Yes! Weekend!"
+        }
+      ],
+      "zone": 8
+    },
+    {
+      "id": "en-75",
+      "title": "Level 76 Seasons Review",
+      "subtitle": "四季复习",
+      "steps": [
+        {
+          "id": "en-75-t",
+          "kind": "letter",
+          "letters": [
+            "Spring"
+          ],
+          "display": "Seasons",
+          "examples": [
+            {
+              "icon": "flower",
+              "text": "Spring 春"
+            },
+            {
+              "icon": "snowflake",
+              "text": "Winter 冬"
+            }
+          ],
+          "question": "复习：四季"
+        },
+        {
+          "id": "en-75-q1",
+          "kind": "quiz",
+          "question": "Snow falls in——",
+          "options": [
+            {
+              "icon": "snowflake",
+              "text": "Winter"
+            },
+            {
+              "icon": "sun",
+              "text": "Summer"
+            },
+            {
+              "icon": "flower",
+              "text": "Spring"
+            }
+          ],
+          "answer": 0,
+          "hint": "冬天下雪",
+          "praise": "Yes! Winter!"
+        },
+        {
+          "id": "en-75-q2",
+          "kind": "quiz",
+          "question": "Flowers bloom in——",
+          "options": [
+            {
+              "icon": "flower",
+              "text": "Spring"
+            },
+            {
+              "icon": "snowflake",
+              "text": "Winter"
+            },
+            {
+              "icon": "maple",
+              "text": "Autumn"
+            }
+          ],
+          "answer": 0,
+          "hint": "春天开花",
+          "praise": "Yes! Spring!"
+        }
+      ],
+      "zone": 8
+    },
+    {
+      "id": "en-76",
+      "title": "Level 77 I can...",
+      "subtitle": "句型·我会",
+      "steps": [
+        {
+          "id": "en-76-t",
+          "kind": "letter",
+          "letters": [
+            "I can"
+          ],
+          "display": "I can…",
+          "examples": [
+            {
+              "icon": "girl",
+              "text": "I can run 我会跑"
+            },
+            {
+              "icon": "fish",
+              "text": "I can swim 我会游"
+            }
+          ],
+          "question": "句型：I can… 我会……"
+        },
+        {
+          "id": "en-76-q1",
+          "kind": "quiz",
+          "question": "「我会游泳」是——",
+          "options": [
+            {
+              "text": "I can swim"
+            },
+            {
+              "text": "I can run"
+            },
+            {
+              "text": "I can sing"
+            }
+          ],
+          "answer": 0,
+          "hint": "swim 游泳",
+          "praise": "Yes! I can swim!"
+        },
+        {
+          "id": "en-76-q2",
+          "kind": "quiz",
+          "question": "「我会读书」是——",
+          "options": [
+            {
+              "text": "I can read"
+            },
+            {
+              "text": "I can jump"
+            },
+            {
+              "text": "I can fly"
+            }
+          ],
+          "answer": 0,
+          "hint": "read 读书",
+          "praise": "Yes! I can read!"
+        }
+      ],
+      "zone": 8
+    },
+    {
+      "id": "en-77",
+      "title": "Level 78 I like...",
+      "subtitle": "句型·我喜欢",
+      "steps": [
+        {
+          "id": "en-77-t",
+          "kind": "letter",
+          "letters": [
+            "I like"
+          ],
+          "display": "I like…",
+          "examples": [
+            {
+              "icon": "apple",
+              "text": "I like apples 我喜欢苹果"
+            },
+            {
+              "icon": "cat",
+              "text": "I like cats 我喜欢猫"
+            }
+          ],
+          "question": "句型：I like… 我喜欢……"
+        },
+        {
+          "id": "en-77-q1",
+          "kind": "quiz",
+          "question": "「我喜欢小猫」是——",
+          "options": [
+            {
+              "text": "I like cats"
+            },
+            {
+              "text": "I like dogs"
+            },
+            {
+              "text": "I like cake"
+            }
+          ],
+          "answer": 0,
+          "hint": "cats 小猫复数",
+          "praise": "Yes! I like cats!"
+        }
+      ],
+      "zone": 8
+    },
+    {
+      "id": "en-78",
+      "title": "Level 79 School Things",
+      "subtitle": "学习用品",
+      "steps": [
+        {
+          "id": "en-78-t",
+          "kind": "letter",
+          "letters": [
+            "Book"
+          ],
+          "display": "School Things",
+          "examples": [
+            {
+              "icon": "book",
+              "text": "Book 书",
+              "say": "Book"
+            },
+            {
+              "icon": "chart",
+              "text": "Chart 图表",
+              "say": "Chart"
+            },
+            {
+              "icon": "clip",
+              "text": "Clip 夹子",
+              "say": "Clip"
+            },
+            {
+              "icon": "school",
+              "text": "School 学校",
+              "say": "School"
+            }
+          ],
+          "question": "Learn: School Things 学习用品"
+        },
+        {
+          "id": "en-78-q0",
+          "kind": "quiz",
+          "question": "Which one is 「书」?",
+          "options": [
+            {
+              "icon": "chart",
+              "text": "Chart"
+            },
+            {
+              "icon": "clip",
+              "text": "Clip"
+            },
+            {
+              "icon": "book",
+              "text": "Book"
+            }
+          ],
+          "answer": 2,
+          "hint": "Book",
+          "praise": "Yes! Book!"
+        },
+        {
+          "id": "en-78-q1",
+          "kind": "quiz",
+          "question": "Which one is 「图表」?",
+          "options": [
+            {
+              "icon": "book",
+              "text": "Book"
+            },
+            {
+              "icon": "clip",
+              "text": "Clip"
+            },
+            {
+              "icon": "chart",
+              "text": "Chart"
+            }
+          ],
+          "answer": 2,
+          "hint": "Chart",
+          "praise": "Yes! Chart!"
+        },
+        {
+          "id": "en-78-q2",
+          "kind": "quiz",
+          "question": "Which one is 「夹子」?",
+          "options": [
+            {
+              "icon": "book",
+              "text": "Book"
+            },
+            {
+              "icon": "chart",
+              "text": "Chart"
+            },
+            {
+              "icon": "clip",
+              "text": "Clip"
+            }
+          ],
+          "answer": 2,
+          "hint": "Clip",
+          "praise": "Yes! Clip!"
+        }
+      ],
+      "zone": 9
+    },
+    {
+      "id": "en-79",
+      "title": "Level 80 In the Park",
+      "subtitle": "公园",
+      "steps": [
+        {
+          "id": "en-79-t",
+          "kind": "letter",
+          "letters": [
+            "Tree"
+          ],
+          "display": "In the Park",
+          "examples": [
+            {
+              "icon": "tree",
+              "text": "Tree 树",
+              "say": "Tree"
+            },
+            {
+              "icon": "flower",
+              "text": "Flower 花",
+              "say": "Flower"
+            },
+            {
+              "icon": "bush",
+              "text": "Bush 灌木",
+              "say": "Bush"
+            },
+            {
+              "icon": "duck",
+              "text": "Duck 鸭",
+              "say": "Duck"
+            }
+          ],
+          "question": "Learn: In the Park 公园"
+        },
+        {
+          "id": "en-79-q0",
+          "kind": "quiz",
+          "question": "Which one is 「树」?",
+          "options": [
+            {
+              "icon": "flower",
+              "text": "Flower"
+            },
+            {
+              "icon": "bush",
+              "text": "Bush"
+            },
+            {
+              "icon": "tree",
+              "text": "Tree"
+            }
+          ],
+          "answer": 2,
+          "hint": "Tree",
+          "praise": "Yes! Tree!"
+        },
+        {
+          "id": "en-79-q1",
+          "kind": "quiz",
+          "question": "Which one is 「花」?",
+          "options": [
+            {
+              "icon": "tree",
+              "text": "Tree"
+            },
+            {
+              "icon": "bush",
+              "text": "Bush"
+            },
+            {
+              "icon": "flower",
+              "text": "Flower"
+            }
+          ],
+          "answer": 2,
+          "hint": "Flower",
+          "praise": "Yes! Flower!"
+        },
+        {
+          "id": "en-79-q2",
+          "kind": "quiz",
+          "question": "Which one is 「灌木」?",
+          "options": [
+            {
+              "icon": "tree",
+              "text": "Tree"
+            },
+            {
+              "icon": "flower",
+              "text": "Flower"
+            },
+            {
+              "icon": "bush",
+              "text": "Bush"
+            }
+          ],
+          "answer": 2,
+          "hint": "Bush",
+          "praise": "Yes! Bush!"
+        }
+      ],
+      "zone": 9
+    },
+    {
+      "id": "en-80",
+      "title": "Level 81 On the Beach",
+      "subtitle": "海滩",
+      "steps": [
+        {
+          "id": "en-80-t",
+          "kind": "letter",
+          "letters": [
+            "Wave"
+          ],
+          "display": "On the Beach",
+          "examples": [
+            {
+              "icon": "wave",
+              "text": "Wave 海浪",
+              "say": "Wave"
+            },
+            {
+              "icon": "palm",
+              "text": "Palm 椰树",
+              "say": "Palm"
+            },
+            {
+              "icon": "desert",
+              "text": "Sand 沙",
+              "say": "Sand"
+            },
+            {
+              "icon": "penguin",
+              "text": "Penguin 企鹅",
+              "say": "Penguin"
+            }
+          ],
+          "question": "Learn: On the Beach 海滩"
+        },
+        {
+          "id": "en-80-q0",
+          "kind": "quiz",
+          "question": "Which one is 「海浪」?",
+          "options": [
+            {
+              "icon": "palm",
+              "text": "Palm"
+            },
+            {
+              "icon": "desert",
+              "text": "Sand"
+            },
+            {
+              "icon": "wave",
+              "text": "Wave"
+            }
+          ],
+          "answer": 2,
+          "hint": "Wave",
+          "praise": "Yes! Wave!"
+        },
+        {
+          "id": "en-80-q1",
+          "kind": "quiz",
+          "question": "Which one is 「椰树」?",
+          "options": [
+            {
+              "icon": "wave",
+              "text": "Wave"
+            },
+            {
+              "icon": "desert",
+              "text": "Sand"
+            },
+            {
+              "icon": "palm",
+              "text": "Palm"
+            }
+          ],
+          "answer": 2,
+          "hint": "Palm",
+          "praise": "Yes! Palm!"
+        },
+        {
+          "id": "en-80-q2",
+          "kind": "quiz",
+          "question": "Which one is 「沙」?",
+          "options": [
+            {
+              "icon": "wave",
+              "text": "Wave"
+            },
+            {
+              "icon": "palm",
+              "text": "Palm"
+            },
+            {
+              "icon": "desert",
+              "text": "Sand"
+            }
+          ],
+          "answer": 2,
+          "hint": "Sand",
+          "praise": "Yes! Sand!"
+        }
+      ],
+      "zone": 9
+    },
+    {
+      "id": "en-81",
+      "title": "Level 82 Music Time",
+      "subtitle": "音乐时间",
+      "steps": [
+        {
+          "id": "en-81-t",
+          "kind": "letter",
+          "letters": [
+            "Speaker"
+          ],
+          "display": "Music Time",
+          "examples": [
+            {
+              "icon": "speaker",
+              "text": "Speaker 喇叭",
+              "say": "Speaker"
+            },
+            {
+              "icon": "speaker",
+              "text": "Sing 唱歌",
+              "say": "Sing"
+            },
+            {
+              "icon": "party",
+              "text": "Party 派对",
+              "say": "Party"
+            }
+          ],
+          "question": "Learn: Music Time 音乐时间"
+        },
+        {
+          "id": "en-81-q0",
+          "kind": "quiz",
+          "question": "Which one is 「喇叭」?",
+          "options": [
+            {
+              "icon": "speaker",
+              "text": "Sing"
+            },
+            {
+              "icon": "party",
+              "text": "Party"
+            },
+            {
+              "icon": "speaker",
+              "text": "Speaker"
+            }
+          ],
+          "answer": 2,
+          "hint": "Speaker",
+          "praise": "Yes! Speaker!"
+        },
+        {
+          "id": "en-81-q1",
+          "kind": "quiz",
+          "question": "Which one is 「唱歌」?",
+          "options": [
+            {
+              "icon": "speaker",
+              "text": "Speaker"
+            },
+            {
+              "icon": "party",
+              "text": "Party"
+            },
+            {
+              "icon": "speaker",
+              "text": "Sing"
+            }
+          ],
+          "answer": 2,
+          "hint": "Sing",
+          "praise": "Yes! Sing!"
+        },
+        {
+          "id": "en-81-q2",
+          "kind": "quiz",
+          "question": "Which one is 「派对」?",
+          "options": [
+            {
+              "icon": "speaker",
+              "text": "Speaker"
+            },
+            {
+              "icon": "speaker",
+              "text": "Sing"
+            },
+            {
+              "icon": "party",
+              "text": "Party"
+            }
+          ],
+          "answer": 2,
+          "hint": "Party",
+          "praise": "Yes! Party!"
+        }
+      ],
+      "zone": 9
+    },
+    {
+      "id": "en-82",
+      "title": "Level 83 Wear This",
+      "subtitle": "穿搭",
+      "steps": [
+        {
+          "id": "en-82-t",
+          "kind": "letter",
+          "letters": [
+            "Hanger"
+          ],
+          "display": "Wear This",
+          "examples": [
+            {
+              "icon": "hanger",
+              "text": "Hanger 衣架",
+              "say": "Hanger"
+            },
+            {
+              "icon": "shoe",
+              "text": "Shoe 鞋",
+              "say": "Shoe"
+            },
+            {
+              "icon": "hat",
+              "text": "Hat 帽子",
+              "say": "Hat"
+            }
+          ],
+          "question": "Learn: Wear This 穿搭"
+        },
+        {
+          "id": "en-82-q0",
+          "kind": "quiz",
+          "question": "Which one is 「衣架」?",
+          "options": [
+            {
+              "icon": "shoe",
+              "text": "Shoe"
+            },
+            {
+              "icon": "hat",
+              "text": "Hat"
+            },
+            {
+              "icon": "hanger",
+              "text": "Hanger"
+            }
+          ],
+          "answer": 2,
+          "hint": "Hanger",
+          "praise": "Yes! Hanger!"
+        },
+        {
+          "id": "en-82-q1",
+          "kind": "quiz",
+          "question": "Which one is 「鞋」?",
+          "options": [
+            {
+              "icon": "hanger",
+              "text": "Hanger"
+            },
+            {
+              "icon": "hat",
+              "text": "Hat"
+            },
+            {
+              "icon": "shoe",
+              "text": "Shoe"
+            }
+          ],
+          "answer": 2,
+          "hint": "Shoe",
+          "praise": "Yes! Shoe!"
+        },
+        {
+          "id": "en-82-q2",
+          "kind": "quiz",
+          "question": "Which one is 「帽子」?",
+          "options": [
+            {
+              "icon": "hanger",
+              "text": "Hanger"
+            },
+            {
+              "icon": "shoe",
+              "text": "Shoe"
+            },
+            {
+              "icon": "hat",
+              "text": "Hat"
+            }
+          ],
+          "answer": 2,
+          "hint": "Hat",
+          "praise": "Yes! Hat!"
+        }
+      ],
+      "zone": 9
+    },
+    {
+      "id": "en-83",
+      "title": "Level 84 Go Go Go",
+      "subtitle": "出行",
+      "steps": [
+        {
+          "id": "en-83-t",
+          "kind": "letter",
+          "letters": [
+            "Car"
+          ],
+          "display": "Go Go Go",
+          "examples": [
+            {
+              "icon": "car",
+              "text": "Car 汽车",
+              "say": "Car"
+            },
+            {
+              "icon": "bus",
+              "text": "Bus 公交",
+              "say": "Bus"
+            },
+            {
+              "icon": "rocket",
+              "text": "Rocket 火箭",
+              "say": "Rocket"
+            }
+          ],
+          "question": "Learn: Go Go Go 出行"
+        },
+        {
+          "id": "en-83-q0",
+          "kind": "quiz",
+          "question": "Which one is 「汽车」?",
+          "options": [
+            {
+              "icon": "bus",
+              "text": "Bus"
+            },
+            {
+              "icon": "rocket",
+              "text": "Rocket"
+            },
+            {
+              "icon": "car",
+              "text": "Car"
+            }
+          ],
+          "answer": 2,
+          "hint": "Car",
+          "praise": "Yes! Car!"
+        },
+        {
+          "id": "en-83-q1",
+          "kind": "quiz",
+          "question": "Which one is 「公交」?",
+          "options": [
+            {
+              "icon": "car",
+              "text": "Car"
+            },
+            {
+              "icon": "rocket",
+              "text": "Rocket"
+            },
+            {
+              "icon": "bus",
+              "text": "Bus"
+            }
+          ],
+          "answer": 2,
+          "hint": "Bus",
+          "praise": "Yes! Bus!"
+        },
+        {
+          "id": "en-83-q2",
+          "kind": "quiz",
+          "question": "Which one is 「火箭」?",
+          "options": [
+            {
+              "icon": "car",
+              "text": "Car"
+            },
+            {
+              "icon": "bus",
+              "text": "Bus"
+            },
+            {
+              "icon": "rocket",
+              "text": "Rocket"
+            }
+          ],
+          "answer": 2,
+          "hint": "Rocket",
+          "praise": "Yes! Rocket!"
+        }
+      ],
+      "zone": 9
+    },
+    {
+      "id": "en-84",
+      "title": "Level 85 My Family",
+      "subtitle": "我的家",
+      "steps": [
+        {
+          "id": "en-84-t",
+          "kind": "letter",
+          "letters": [
+            "Me"
+          ],
+          "display": "My Family",
+          "examples": [
+            {
+              "icon": "girl",
+              "text": "Me 我",
+              "say": "Me"
+            },
+            {
+              "icon": "girl",
+              "text": "Teacher 老师",
+              "say": "Teacher"
+            },
+            {
+              "icon": "fox",
+              "text": "Fox 狐狸",
+              "say": "Fox"
+            }
+          ],
+          "question": "Learn: My Family 我的家"
+        },
+        {
+          "id": "en-84-q0",
+          "kind": "quiz",
+          "question": "Which one is 「我」?",
+          "options": [
+            {
+              "icon": "girl",
+              "text": "Teacher"
+            },
+            {
+              "icon": "fox",
+              "text": "Fox"
+            },
+            {
+              "icon": "girl",
+              "text": "Me"
+            }
+          ],
+          "answer": 2,
+          "hint": "Me",
+          "praise": "Yes! Me!"
+        },
+        {
+          "id": "en-84-q1",
+          "kind": "quiz",
+          "question": "Which one is 「老师」?",
+          "options": [
+            {
+              "icon": "girl",
+              "text": "Me"
+            },
+            {
+              "icon": "fox",
+              "text": "Fox"
+            },
+            {
+              "icon": "girl",
+              "text": "Teacher"
+            }
+          ],
+          "answer": 2,
+          "hint": "Teacher",
+          "praise": "Yes! Teacher!"
+        },
+        {
+          "id": "en-84-q2",
+          "kind": "quiz",
+          "question": "Which one is 「狐狸」?",
+          "options": [
+            {
+              "icon": "girl",
+              "text": "Me"
+            },
+            {
+              "icon": "girl",
+              "text": "Teacher"
+            },
+            {
+              "icon": "fox",
+              "text": "Fox"
+            }
+          ],
+          "answer": 2,
+          "hint": "Fox",
+          "praise": "Yes! Fox!"
+        }
+      ],
+      "zone": 9
+    },
+    {
+      "id": "en-85",
+      "title": "Level 86 Toy Box",
+      "subtitle": "玩具箱",
+      "steps": [
+        {
+          "id": "en-85-t",
+          "kind": "letter",
+          "letters": [
+            "Balloon"
+          ],
+          "display": "Toy Box",
+          "examples": [
+            {
+              "icon": "balloon",
+              "text": "Balloon 气球",
+              "say": "Balloon"
+            },
+            {
+              "icon": "shield",
+              "text": "Shield 盾牌",
+              "say": "Shield"
+            },
+            {
+              "icon": "gift",
+              "text": "Gift 礼物",
+              "say": "Gift"
+            }
+          ],
+          "question": "Learn: Toy Box 玩具箱"
+        },
+        {
+          "id": "en-85-q0",
+          "kind": "quiz",
+          "question": "Which one is 「气球」?",
+          "options": [
+            {
+              "icon": "shield",
+              "text": "Shield"
+            },
+            {
+              "icon": "gift",
+              "text": "Gift"
+            },
+            {
+              "icon": "balloon",
+              "text": "Balloon"
+            }
+          ],
+          "answer": 2,
+          "hint": "Balloon",
+          "praise": "Yes! Balloon!"
+        },
+        {
+          "id": "en-85-q1",
+          "kind": "quiz",
+          "question": "Which one is 「盾牌」?",
+          "options": [
+            {
+              "icon": "balloon",
+              "text": "Balloon"
+            },
+            {
+              "icon": "gift",
+              "text": "Gift"
+            },
+            {
+              "icon": "shield",
+              "text": "Shield"
+            }
+          ],
+          "answer": 2,
+          "hint": "Shield",
+          "praise": "Yes! Shield!"
+        },
+        {
+          "id": "en-85-q2",
+          "kind": "quiz",
+          "question": "Which one is 「礼物」?",
+          "options": [
+            {
+              "icon": "balloon",
+              "text": "Balloon"
+            },
+            {
+              "icon": "shield",
+              "text": "Shield"
+            },
+            {
+              "icon": "gift",
+              "text": "Gift"
+            }
+          ],
+          "answer": 2,
+          "hint": "Gift",
+          "praise": "Yes! Gift!"
+        }
+      ],
+      "zone": 9
+    },
+    {
+      "id": "en-86",
+      "title": "Level 87 Night Sky",
+      "subtitle": "夜空",
+      "steps": [
+        {
+          "id": "en-86-t",
+          "kind": "letter",
+          "letters": [
+            "Comet"
+          ],
+          "display": "Night Sky",
+          "examples": [
+            {
+              "icon": "comet",
+              "text": "Comet 彗星",
+              "say": "Comet"
+            },
+            {
+              "icon": "rainbow",
+              "text": "Rainbow 彩虹",
+              "say": "Rainbow"
+            },
+            {
+              "icon": "blackhole",
+              "text": "Black Hole 黑洞",
+              "say": "Black Hole"
+            }
+          ],
+          "question": "Learn: Night Sky 夜空"
+        },
+        {
+          "id": "en-86-q0",
+          "kind": "quiz",
+          "question": "Which one is 「彗星」?",
+          "options": [
+            {
+              "icon": "rainbow",
+              "text": "Rainbow"
+            },
+            {
+              "icon": "blackhole",
+              "text": "Black Hole"
+            },
+            {
+              "icon": "comet",
+              "text": "Comet"
+            }
+          ],
+          "answer": 2,
+          "hint": "Comet",
+          "praise": "Yes! Comet!"
+        },
+        {
+          "id": "en-86-q1",
+          "kind": "quiz",
+          "question": "Which one is 「彩虹」?",
+          "options": [
+            {
+              "icon": "comet",
+              "text": "Comet"
+            },
+            {
+              "icon": "blackhole",
+              "text": "Black Hole"
+            },
+            {
+              "icon": "rainbow",
+              "text": "Rainbow"
+            }
+          ],
+          "answer": 2,
+          "hint": "Rainbow",
+          "praise": "Yes! Rainbow!"
+        },
+        {
+          "id": "en-86-q2",
+          "kind": "quiz",
+          "question": "Which one is 「黑洞」?",
+          "options": [
+            {
+              "icon": "comet",
+              "text": "Comet"
+            },
+            {
+              "icon": "rainbow",
+              "text": "Rainbow"
+            },
+            {
+              "icon": "blackhole",
+              "text": "Black Hole"
+            }
+          ],
+          "answer": 2,
+          "hint": "Black Hole",
+          "praise": "Yes! Black Hole!"
+        }
+      ],
+      "zone": 9
+    },
+    {
+      "id": "en-87",
+      "title": "Level 88 Dinosaur 1",
+      "subtitle": "恐龙·霸王龙",
+      "steps": [
+        {
+          "id": "en-87-t",
+          "kind": "letter",
+          "letters": [
+            "T-Rex"
+          ],
+          "display": "Dinosaur 1",
+          "examples": [
+            {
+              "icon": "dino",
+              "text": "T-Rex 霸王龙",
+              "say": "T-Rex"
+            },
+            {
+              "icon": "dino",
+              "text": "Roar 吼",
+              "say": "Roar"
+            },
+            {
+              "icon": "dino",
+              "text": "Long Neck 长脖子",
+              "say": "Long Neck"
+            }
+          ],
+          "question": "Learn: Dinosaur 1 恐龙·霸王龙"
+        },
+        {
+          "id": "en-87-q0",
+          "kind": "quiz",
+          "question": "Which one is 「霸王龙」?",
+          "options": [
+            {
+              "icon": "dino",
+              "text": "Roar"
+            },
+            {
+              "icon": "dino",
+              "text": "Long Neck"
+            },
+            {
+              "icon": "dino",
+              "text": "T-Rex"
+            }
+          ],
+          "answer": 2,
+          "hint": "T-Rex",
+          "praise": "Yes! T-Rex!"
+        },
+        {
+          "id": "en-87-q1",
+          "kind": "quiz",
+          "question": "Which one is 「吼」?",
+          "options": [
+            {
+              "icon": "dino",
+              "text": "T-Rex"
+            },
+            {
+              "icon": "dino",
+              "text": "Long Neck"
+            },
+            {
+              "icon": "dino",
+              "text": "Roar"
+            }
+          ],
+          "answer": 2,
+          "hint": "Roar",
+          "praise": "Yes! Roar!"
+        },
+        {
+          "id": "en-87-q2",
+          "kind": "quiz",
+          "question": "Which one is 「长脖子」?",
+          "options": [
+            {
+              "icon": "dino",
+              "text": "T-Rex"
+            },
+            {
+              "icon": "dino",
+              "text": "Roar"
+            },
+            {
+              "icon": "dino",
+              "text": "Long Neck"
+            }
+          ],
+          "answer": 2,
+          "hint": "Long Neck",
+          "praise": "Yes! Long Neck!"
+        }
+      ],
+      "zone": 9
+    },
+    {
+      "id": "en-88",
+      "title": "Level 89 Dinosaur 2",
+      "subtitle": "恐龙·长脖子",
+      "steps": [
+        {
+          "id": "en-88-t",
+          "kind": "letter",
+          "letters": [
+            "Long Neck"
+          ],
+          "display": "Dinosaur 2",
+          "examples": [
+            {
+              "icon": "dino",
+              "text": "Long Neck 长脖子",
+              "say": "Long Neck"
+            },
+            {
+              "icon": "leaf",
+              "text": "Eats Leaves 吃叶子",
+              "say": "Eats Leaves"
+            },
+            {
+              "icon": "dino",
+              "text": "T-Rex 霸王龙",
+              "say": "T-Rex"
+            }
+          ],
+          "question": "Learn: Dinosaur 2 恐龙·长脖子"
+        },
+        {
+          "id": "en-88-q0",
+          "kind": "quiz",
+          "question": "Which one is 「长脖子」?",
+          "options": [
+            {
+              "icon": "leaf",
+              "text": "Eats Leaves"
+            },
+            {
+              "icon": "dino",
+              "text": "T-Rex"
+            },
+            {
+              "icon": "dino",
+              "text": "Long Neck"
+            }
+          ],
+          "answer": 2,
+          "hint": "Long Neck",
+          "praise": "Yes! Long Neck!"
+        },
+        {
+          "id": "en-88-q1",
+          "kind": "quiz",
+          "question": "Which one is 「吃叶子」?",
+          "options": [
+            {
+              "icon": "dino",
+              "text": "Long Neck"
+            },
+            {
+              "icon": "dino",
+              "text": "T-Rex"
+            },
+            {
+              "icon": "leaf",
+              "text": "Eats Leaves"
+            }
+          ],
+          "answer": 2,
+          "hint": "Eats Leaves",
+          "praise": "Yes! Eats Leaves!"
+        },
+        {
+          "id": "en-88-q2",
+          "kind": "quiz",
+          "question": "Which one is 「霸王龙」?",
+          "options": [
+            {
+              "icon": "dino",
+              "text": "Long Neck"
+            },
+            {
+              "icon": "leaf",
+              "text": "Eats Leaves"
+            },
+            {
+              "icon": "dino",
+              "text": "T-Rex"
+            }
+          ],
+          "answer": 2,
+          "hint": "T-Rex",
+          "praise": "Yes! T-Rex!"
+        }
+      ],
+      "zone": 10
+    },
+    {
       "id": "english-r2",
       "title": "复习关 三",
       "subtitle": "旧题开盲盒 · 混排复习",
@@ -4320,7 +8428,707 @@
         ]
       },
       "review": true,
-      "zone": 5
+      "zone": 10
+    },
+    {
+      "id": "en-89",
+      "title": "Level 90 Fruit Mix",
+      "subtitle": "水果混合",
+      "steps": [
+        {
+          "id": "en-89-t",
+          "kind": "letter",
+          "letters": [
+            "Apple"
+          ],
+          "display": "Fruit Mix",
+          "examples": [
+            {
+              "icon": "apple",
+              "text": "Apple 苹果",
+              "say": "Apple"
+            },
+            {
+              "icon": "banana",
+              "text": "Banana 香蕉",
+              "say": "Banana"
+            },
+            {
+              "icon": "candy",
+              "text": "Sweet 甜",
+              "say": "Sweet"
+            }
+          ],
+          "question": "Learn: Fruit Mix 水果混合"
+        },
+        {
+          "id": "en-89-q0",
+          "kind": "quiz",
+          "question": "Which one is 「苹果」?",
+          "options": [
+            {
+              "icon": "banana",
+              "text": "Banana"
+            },
+            {
+              "icon": "candy",
+              "text": "Sweet"
+            },
+            {
+              "icon": "apple",
+              "text": "Apple"
+            }
+          ],
+          "answer": 2,
+          "hint": "Apple",
+          "praise": "Yes! Apple!"
+        },
+        {
+          "id": "en-89-q1",
+          "kind": "quiz",
+          "question": "Which one is 「香蕉」?",
+          "options": [
+            {
+              "icon": "apple",
+              "text": "Apple"
+            },
+            {
+              "icon": "candy",
+              "text": "Sweet"
+            },
+            {
+              "icon": "banana",
+              "text": "Banana"
+            }
+          ],
+          "answer": 2,
+          "hint": "Banana",
+          "praise": "Yes! Banana!"
+        },
+        {
+          "id": "en-89-q2",
+          "kind": "quiz",
+          "question": "Which one is 「甜」?",
+          "options": [
+            {
+              "icon": "apple",
+              "text": "Apple"
+            },
+            {
+              "icon": "banana",
+              "text": "Banana"
+            },
+            {
+              "icon": "candy",
+              "text": "Sweet"
+            }
+          ],
+          "answer": 2,
+          "hint": "Sweet",
+          "praise": "Yes! Sweet!"
+        }
+      ],
+      "zone": 10
+    },
+    {
+      "id": "en-90",
+      "title": "Level 91 Drink Up",
+      "subtitle": "喝的",
+      "steps": [
+        {
+          "id": "en-90-t",
+          "kind": "letter",
+          "letters": [
+            "Milk"
+          ],
+          "display": "Drink Up",
+          "examples": [
+            {
+              "icon": "milk",
+              "text": "Milk 牛奶",
+              "say": "Milk"
+            },
+            {
+              "icon": "cup",
+              "text": "Cup 杯子",
+              "say": "Cup"
+            },
+            {
+              "icon": "jar",
+              "text": "Jar 罐子",
+              "say": "Jar"
+            }
+          ],
+          "question": "Learn: Drink Up 喝的"
+        },
+        {
+          "id": "en-90-q0",
+          "kind": "quiz",
+          "question": "Which one is 「牛奶」?",
+          "options": [
+            {
+              "icon": "cup",
+              "text": "Cup"
+            },
+            {
+              "icon": "jar",
+              "text": "Jar"
+            },
+            {
+              "icon": "milk",
+              "text": "Milk"
+            }
+          ],
+          "answer": 2,
+          "hint": "Milk",
+          "praise": "Yes! Milk!"
+        },
+        {
+          "id": "en-90-q1",
+          "kind": "quiz",
+          "question": "Which one is 「杯子」?",
+          "options": [
+            {
+              "icon": "milk",
+              "text": "Milk"
+            },
+            {
+              "icon": "jar",
+              "text": "Jar"
+            },
+            {
+              "icon": "cup",
+              "text": "Cup"
+            }
+          ],
+          "answer": 2,
+          "hint": "Cup",
+          "praise": "Yes! Cup!"
+        },
+        {
+          "id": "en-90-q2",
+          "kind": "quiz",
+          "question": "Which one is 「罐子」?",
+          "options": [
+            {
+              "icon": "milk",
+              "text": "Milk"
+            },
+            {
+              "icon": "cup",
+              "text": "Cup"
+            },
+            {
+              "icon": "jar",
+              "text": "Jar"
+            }
+          ],
+          "answer": 2,
+          "hint": "Jar",
+          "praise": "Yes! Jar!"
+        }
+      ],
+      "zone": 10
+    },
+    {
+      "id": "en-91",
+      "title": "Level 92 Animal Babies",
+      "subtitle": "动物宝宝",
+      "steps": [
+        {
+          "id": "en-91-t",
+          "kind": "letter",
+          "letters": [
+            "Baby Paw"
+          ],
+          "display": "Animal Babies",
+          "examples": [
+            {
+              "icon": "paw",
+              "text": "Baby Paw 小脚丫",
+              "say": "Baby Paw"
+            },
+            {
+              "icon": "duck",
+              "text": "Duckling 小鸭",
+              "say": "Duckling"
+            },
+            {
+              "icon": "bear",
+              "text": "Cub 小熊",
+              "say": "Cub"
+            }
+          ],
+          "question": "Learn: Animal Babies 动物宝宝"
+        },
+        {
+          "id": "en-91-q0",
+          "kind": "quiz",
+          "question": "Which one is 「小脚丫」?",
+          "options": [
+            {
+              "icon": "duck",
+              "text": "Duckling"
+            },
+            {
+              "icon": "bear",
+              "text": "Cub"
+            },
+            {
+              "icon": "paw",
+              "text": "Baby Paw"
+            }
+          ],
+          "answer": 2,
+          "hint": "Baby Paw",
+          "praise": "Yes! Baby Paw!"
+        },
+        {
+          "id": "en-91-q1",
+          "kind": "quiz",
+          "question": "Which one is 「小鸭」?",
+          "options": [
+            {
+              "icon": "paw",
+              "text": "Baby Paw"
+            },
+            {
+              "icon": "bear",
+              "text": "Cub"
+            },
+            {
+              "icon": "duck",
+              "text": "Duckling"
+            }
+          ],
+          "answer": 2,
+          "hint": "Duckling",
+          "praise": "Yes! Duckling!"
+        },
+        {
+          "id": "en-91-q2",
+          "kind": "quiz",
+          "question": "Which one is 「小熊」?",
+          "options": [
+            {
+              "icon": "paw",
+              "text": "Baby Paw"
+            },
+            {
+              "icon": "duck",
+              "text": "Duckling"
+            },
+            {
+              "icon": "bear",
+              "text": "Cub"
+            }
+          ],
+          "answer": 2,
+          "hint": "Cub",
+          "praise": "Yes! Cub!"
+        }
+      ],
+      "zone": 10
+    },
+    {
+      "id": "en-92",
+      "title": "Level 93 Hot and Cold",
+      "subtitle": "热和冷",
+      "steps": [
+        {
+          "id": "en-92-t",
+          "kind": "letter",
+          "letters": [
+            "Hot"
+          ],
+          "display": "Hot and Cold",
+          "examples": [
+            {
+              "icon": "sun",
+              "text": "Hot 热",
+              "say": "Hot"
+            },
+            {
+              "icon": "snowflake",
+              "text": "Cold 冷",
+              "say": "Cold"
+            },
+            {
+              "icon": "ice",
+              "text": "Ice 冰",
+              "say": "Ice"
+            }
+          ],
+          "question": "Learn: Hot and Cold 热和冷"
+        },
+        {
+          "id": "en-92-q0",
+          "kind": "quiz",
+          "question": "Which one is 「热」?",
+          "options": [
+            {
+              "icon": "snowflake",
+              "text": "Cold"
+            },
+            {
+              "icon": "ice",
+              "text": "Ice"
+            },
+            {
+              "icon": "sun",
+              "text": "Hot"
+            }
+          ],
+          "answer": 2,
+          "hint": "Hot",
+          "praise": "Yes! Hot!"
+        },
+        {
+          "id": "en-92-q1",
+          "kind": "quiz",
+          "question": "Which one is 「冷」?",
+          "options": [
+            {
+              "icon": "sun",
+              "text": "Hot"
+            },
+            {
+              "icon": "ice",
+              "text": "Ice"
+            },
+            {
+              "icon": "snowflake",
+              "text": "Cold"
+            }
+          ],
+          "answer": 2,
+          "hint": "Cold",
+          "praise": "Yes! Cold!"
+        },
+        {
+          "id": "en-92-q2",
+          "kind": "quiz",
+          "question": "Which one is 「冰」?",
+          "options": [
+            {
+              "icon": "sun",
+              "text": "Hot"
+            },
+            {
+              "icon": "snowflake",
+              "text": "Cold"
+            },
+            {
+              "icon": "ice",
+              "text": "Ice"
+            }
+          ],
+          "answer": 2,
+          "hint": "Ice",
+          "praise": "Yes! Ice!"
+        }
+      ],
+      "zone": 10
+    },
+    {
+      "id": "en-93",
+      "title": "Level 94 Little Helpers",
+      "subtitle": "小帮手",
+      "steps": [
+        {
+          "id": "en-93-t",
+          "kind": "letter",
+          "letters": [
+            "Robot"
+          ],
+          "display": "Little Helpers",
+          "examples": [
+            {
+              "icon": "robot",
+              "text": "Robot 机器人",
+              "say": "Robot"
+            },
+            {
+              "icon": "flask",
+              "text": "Science 科学",
+              "say": "Science"
+            },
+            {
+              "icon": "magnet",
+              "text": "Magnet 磁铁",
+              "say": "Magnet"
+            }
+          ],
+          "question": "Learn: Little Helpers 小帮手"
+        },
+        {
+          "id": "en-93-q0",
+          "kind": "quiz",
+          "question": "Which one is 「机器人」?",
+          "options": [
+            {
+              "icon": "flask",
+              "text": "Science"
+            },
+            {
+              "icon": "magnet",
+              "text": "Magnet"
+            },
+            {
+              "icon": "robot",
+              "text": "Robot"
+            }
+          ],
+          "answer": 2,
+          "hint": "Robot",
+          "praise": "Yes! Robot!"
+        },
+        {
+          "id": "en-93-q1",
+          "kind": "quiz",
+          "question": "Which one is 「科学」?",
+          "options": [
+            {
+              "icon": "robot",
+              "text": "Robot"
+            },
+            {
+              "icon": "magnet",
+              "text": "Magnet"
+            },
+            {
+              "icon": "flask",
+              "text": "Science"
+            }
+          ],
+          "answer": 2,
+          "hint": "Science",
+          "praise": "Yes! Science!"
+        },
+        {
+          "id": "en-93-q2",
+          "kind": "quiz",
+          "question": "Which one is 「磁铁」?",
+          "options": [
+            {
+              "icon": "robot",
+              "text": "Robot"
+            },
+            {
+              "icon": "flask",
+              "text": "Science"
+            },
+            {
+              "icon": "magnet",
+              "text": "Magnet"
+            }
+          ],
+          "answer": 2,
+          "hint": "Magnet",
+          "praise": "Yes! Magnet!"
+        }
+      ],
+      "zone": 10
+    },
+    {
+      "id": "en-94",
+      "title": "Level 95 Fun Fair",
+      "subtitle": "游乐场",
+      "steps": [
+        {
+          "id": "en-94-t",
+          "kind": "letter",
+          "letters": [
+            "Fun"
+          ],
+          "display": "Fun Fair",
+          "examples": [
+            {
+              "icon": "party",
+              "text": "Fun 欢乐",
+              "say": "Fun"
+            },
+            {
+              "icon": "dice",
+              "text": "Game 游戏",
+              "say": "Game"
+            },
+            {
+              "icon": "balloon",
+              "text": "Balloon 气球",
+              "say": "Balloon"
+            }
+          ],
+          "question": "Learn: Fun Fair 游乐场"
+        },
+        {
+          "id": "en-94-q0",
+          "kind": "quiz",
+          "question": "Which one is 「欢乐」?",
+          "options": [
+            {
+              "icon": "dice",
+              "text": "Game"
+            },
+            {
+              "icon": "balloon",
+              "text": "Balloon"
+            },
+            {
+              "icon": "party",
+              "text": "Fun"
+            }
+          ],
+          "answer": 2,
+          "hint": "Fun",
+          "praise": "Yes! Fun!"
+        },
+        {
+          "id": "en-94-q1",
+          "kind": "quiz",
+          "question": "Which one is 「游戏」?",
+          "options": [
+            {
+              "icon": "party",
+              "text": "Fun"
+            },
+            {
+              "icon": "balloon",
+              "text": "Balloon"
+            },
+            {
+              "icon": "dice",
+              "text": "Game"
+            }
+          ],
+          "answer": 2,
+          "hint": "Game",
+          "praise": "Yes! Game!"
+        },
+        {
+          "id": "en-94-q2",
+          "kind": "quiz",
+          "question": "Which one is 「气球」?",
+          "options": [
+            {
+              "icon": "party",
+              "text": "Fun"
+            },
+            {
+              "icon": "dice",
+              "text": "Game"
+            },
+            {
+              "icon": "balloon",
+              "text": "Balloon"
+            }
+          ],
+          "answer": 2,
+          "hint": "Balloon",
+          "praise": "Yes! Balloon!"
+        }
+      ],
+      "zone": 10
+    },
+    {
+      "id": "en-95",
+      "title": "Level 96 Time to Eat",
+      "subtitle": "吃饭啦",
+      "steps": [
+        {
+          "id": "en-95-t",
+          "kind": "letter",
+          "letters": [
+            "Bread"
+          ],
+          "display": "Time to Eat",
+          "examples": [
+            {
+              "icon": "bread",
+              "text": "Bread 面包",
+              "say": "Bread"
+            },
+            {
+              "icon": "candy",
+              "text": "Candy 糖果",
+              "say": "Candy"
+            },
+            {
+              "icon": "cake",
+              "text": "Cake 蛋糕",
+              "say": "Cake"
+            }
+          ],
+          "question": "Learn: Time to Eat 吃饭啦"
+        },
+        {
+          "id": "en-95-q0",
+          "kind": "quiz",
+          "question": "Which one is 「面包」?",
+          "options": [
+            {
+              "icon": "candy",
+              "text": "Candy"
+            },
+            {
+              "icon": "cake",
+              "text": "Cake"
+            },
+            {
+              "icon": "bread",
+              "text": "Bread"
+            }
+          ],
+          "answer": 2,
+          "hint": "Bread",
+          "praise": "Yes! Bread!"
+        },
+        {
+          "id": "en-95-q1",
+          "kind": "quiz",
+          "question": "Which one is 「糖果」?",
+          "options": [
+            {
+              "icon": "bread",
+              "text": "Bread"
+            },
+            {
+              "icon": "cake",
+              "text": "Cake"
+            },
+            {
+              "icon": "candy",
+              "text": "Candy"
+            }
+          ],
+          "answer": 2,
+          "hint": "Candy",
+          "praise": "Yes! Candy!"
+        },
+        {
+          "id": "en-95-q2",
+          "kind": "quiz",
+          "question": "Which one is 「蛋糕」?",
+          "options": [
+            {
+              "icon": "bread",
+              "text": "Bread"
+            },
+            {
+              "icon": "candy",
+              "text": "Candy"
+            },
+            {
+              "icon": "cake",
+              "text": "Cake"
+            }
+          ],
+          "answer": 2,
+          "hint": "Cake",
+          "praise": "Yes! Cake!"
+        }
+      ],
+      "zone": 10
     },
     {
       "id": "english-boss",
@@ -4525,7 +9333,7 @@
         ]
       },
       "boss": true,
-      "zone": 5
+      "zone": 10
     }
   ]
 }

@@ -17,10 +17,10 @@ final class ContentIntegrityTests: XCTestCase {
     struct Fixture: Codable { let icons: [String] }
 
     func testSubjectFilesDecodeAndValid() throws {
-        // v0.11：五科各 50 关（5 星区）、天文 100 关（10 星区），末关均为 boss
-        for (name, subject, expected) in [("cn_levels", "cn", 50), ("math_levels", "math", 50),
-                                          ("pinyin_levels", "pinyin", 50), ("english_levels", "english", 50),
-                                          ("astro_levels", "astro", 100), ("geo_levels", "geo", 50)] {
+        // v0.12：六科各 100 关（10 星区），末关均为 boss
+        for (name, subject, expected) in [("cn_levels", "cn", 100), ("math_levels", "math", 100),
+                                          ("pinyin_levels", "pinyin", 100), ("english_levels", "english", 100),
+                                          ("astro_levels", "astro", 100), ("geo_levels", "geo", 100)] {
             let file = ContentLoader.load(SubjectFile.self, name)
             XCTAssertEqual(file.subject, subject)
             XCTAssertEqual(file.levels.count, expected, "\(name) 应有 \(expected) 关")
@@ -379,7 +379,7 @@ final class ContentIntegrityTests: XCTestCase {
         for name in ["cn_levels", "math_levels", "pinyin_levels", "english_levels", "geo_levels"] {
             let file = ContentLoader.load(SubjectFile.self, name)
             let zones = try XCTUnwrap(file.zones, "\(name) 缺 zones")
-            XCTAssertEqual(zones.count, 5, "\(name) 应 5 个星区")
+            XCTAssertEqual(zones.count, 10, "\(name) 应 10 个星区")
             XCTAssertTrue(zones.allSatisfy { $0.icon != nil }, "\(name) 星区应带代表图标")
             try assertZoneLayout(file)
         }

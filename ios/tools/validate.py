@@ -79,8 +79,8 @@ ANIM_IDS = {"sunrise", "daynight", "orbit", "satellite", "moonphases", "rocket",
             "walk", "rainbow", "countpop", "fall", "heartbeat", "train",
             "river", "wall", "mountain", "panda", "drift", "windmill"}
 
-SUBJECTS = [("cn_levels", 50), ("math_levels", 50), ("pinyin_levels", 50),
-            ("english_levels", 50), ("astro_levels", 100), ("geo_levels", 50)]
+SUBJECTS = [("cn_levels", 100), ("math_levels", 100), ("pinyin_levels", 100),
+            ("english_levels", 100), ("astro_levels", 100), ("geo_levels", 100)]
 subject_docs = {name: load_json(os.path.join(RES, name + ".json")) for name, _ in SUBJECTS}
 exps = load_json(os.path.join(RES, "experiments.json"))
 coll = load_json(os.path.join(RES, "collection.json"))

@@ -111,10 +111,10 @@ def shadow_step(sid, q, shadow, options, ans, hint, praise="猜对啦！"):
 # (字, 拼音, 象形源图标 morphFrom, 词卡[(icon,text)], 找一找(target,d1,d2), 找一找答案位)
 CN = [
     ("日","rì","sunface",[("sunrise","日出"),("cake","生日"),("calendar","日子")],("sunrise","moon","cake"),0),
-    ("月","yuè","moon",[("moon","月亮"),("starface","星星"),("cake","月饼")],("moon","sun","star"),2),
-    ("水","shuǐ","wave",[("wave","海浪"),("crystal","泉水"),("leaf","露珠")],("wave","sun","crystal"),0),
+    ("月","yuè","moon",[("moon","月亮"),("moon","月牙"),("cake","月饼")],("moon","sun","star"),2),
+    ("水","shuǐ","wave",[("wave","海水"),("crystal","泉水"),("leaf","水珠")],("wave","sun","crystal"),0),
     ("山","shān","volcano",[("school","上山"),("leaf","山林")],("volcano","rocket","home"),1),
-    ("木","mù","sprout",[("leaf","树叶"),("flower","花木")],("sprout","flower","rock"),0),
+    ("木","mù","sprout",[("leaf","树木"),("flower","花木")],("sprout","flower","rock"),0),
     ("人","rén","girl",[("heart","大人"),("party","人们")],("girl","duck","sun"),2),
     ("口","kǒu","speaker",[("speaker","开口"),("heart","口水")],("speaker","clock","moon"),0),
     ("天","tiān","sunrays",[("sun","天空"),("sunrise","今天")],("sun","banana","rocket"),1),
@@ -144,20 +144,71 @@ CN = [
     # —— 部编一年级常用字再补 16 字（v0.11，50 关扩容；图标取自现有资产）——
     ("目","mù","calendar",[("girl","目光"),("book","目录")],("girl","duck","calendar"),0),
     ("耳","ěr","speaker",[("speaker","耳机"),("girl","耳朵")],("speaker","calendar","star"),0),
-    ("足","zú","ball",[("ball","足球"),("paw","脚印")],("ball","paw","train"),1),
+    ("足","zú","ball",[("ball","足球"),("paw","手足")],("ball","paw","train"),1),
     ("云","yún","milk",[("milk","白云"),("rainbow","彩云")],("milk","sun","moon"),2),
-    ("雨","yǔ","wave",[("wave","雨水"),("crystal","水滴")],("wave","milk","crystal"),0),
-    ("风","fēng","windmill",[("windmill","风车 fēngchē"),("leaf","吹树叶")],("windmill","leaf","flag"),1),
-    ("禾","hé","sprout",[("sprout","禾苗"),("leaf","叶子")],("sprout","flower","leaf"),0),
-    ("虫","chóng","bee",[("bee","蜜蜂"),("fish","鱼虫")],("bee","duck","fish"),2),
-    ("贝","bèi","coin",[("coin","宝贝"),("gift","宝物")],("coin","rock","gift"),0),
+    ("雨","yǔ","wave",[("wave","下雨"),("wave","雨水")],("wave","milk","crystal"),0),
+    ("风","fēng","windmill",[("windmill","风车"),("windmill","风车转")],("windmill","leaf","flag"),1),
+    ("禾","hé","sprout",[("sprout","禾苗"),("sprout","禾田")],("sprout","flower","leaf"),0),
+    ("虫","chóng","bee",[("bee","虫子"),("bee","虫虫")],("bee","duck","fish"),2),
+    ("贝","bèi","coin",[("coin","宝贝"),("gift","宝贝蛋")],("coin","rock","gift"),0),
     ("见","jiàn","girl",[("girl","看见"),("book","再见")],("girl","book","star"),1),
     ("白","bái","egg",[("egg","雪白"),("milk","白牛奶")],("egg","milk","star"),2),
     ("牛","niú","cow",[("cow","小牛"),("milk","牛奶")],("cow","milk","bear"),1),
     ("羊","yáng","polarbear",[("polarbear","小羊"),("milk","羊毛")],("polarbear","milk","duck"),2),
-    ("果","guǒ","apple",[("apple","果子"),("leaf","树叶")],("apple","banana","leaf"),0),
+    ("果","guǒ","apple",[("apple","果子"),("leaf","果树")],("apple","banana","leaf"),0),
     ("车","chē","car",[("car","汽车"),("train","火车")],("car","train","bus"),1),
-    ("糖","táng","candy",[("candy","糖果"),("cake","甜心")],("candy","cake","gift"),2),
+    ("糖","táng","candy",[("candy","糖果"),("sugar","糖水")],("candy","cake","gift"),2),
+    # —— v0.12 部编二年级识字表 +50 字（100 关扩容；图标取自现有资产）——
+    ("塘","táng","wave",[("wave","池塘"),("wave","水塘")],("wave","milk","sprout"),0),
+    ("迎","yíng","party",[("party","欢迎"),("flag","迎面")],("party","flag","book"),1),
+    ("姨","yí","girl",[("girl","阿姨"),("heart","姨妈")],("girl","home","party"),0),
+    ("变","biàn","sparkle",[("sparkle","变化"),("milk","白云变")],("sparkle","egg","milk"),2),
+    ("极","jí","polarbear",[("polarbear","北极"),("magnet","南北极")],("polarbear","star","magnet"),1),
+    ("傍","bàng","sunrise",[("sunrise","傍晚"),("moon","傍晚上灯")],("sunrise","moon","star"),1),
+    ("海","hǎi","wave",[("wave","大海"),("fish","海边")],("wave","fish","milk"),2),
+    ("洋","yáng","wave",[("wave","海洋"),("fish","大洋")],("wave","fish","sun"),0),
+    ("植","zhí","sprout",[("sprout","植物"),("leaf","种植")],("sprout","flower","leaf"),1),
+    ("旅","lǚ","rocket",[("rocket","旅行"),("train","旅途")],("rocket","train","bus"),2),
+    ("识","shí","book",[("book","认识"),("girl","识字")],("book","girl","star"),0),
+    ("园","yuán","flower",[("flower","花园"),("sprout","园子")],("flower","sprout","home"),1),
+    ("队","duì","party",[("party","排队"),("flag","队伍")],("party","flag","train"),0),
+    ("旗","qí","flag",[("flag","红旗"),("flag","升旗")],("flag","party","book"),1),
+    ("号","hào","speaker",[("speaker","吹号"),("clock","号码")],("speaker","clock","flag"),2),
+    ("杨","yáng","tree",[("tree","杨树"),("leaf","白杨")],("tree","maple","leaf"),0),
+    ("桐","tóng","tree",[("tree","梧桐"),("leaf","桐叶")],("tree","leaf","maple"),1),
+    ("枫","fēng","maple",[("maple","枫叶"),("tree","枫树")],("maple","tree","flower"),2),
+    ("松","sōng","tree",[("tree","松树"),("sprout","松果")],("tree","sprout","maple"),0),
+    ("柏","bǎi","tree",[("tree","柏树"),("tree","松柏")],("tree","maple","leaf"),1),
+    ("桂","guì","flower",[("flower","桂花"),("tree","桂树")],("flower","tree","sparkle"),2),
+    ("雀","què","bird",[("bird","麻雀"),("bird","孔雀")],("bird","duck","bee"),0),
+    ("鹰","yīng","bird",[("bird","老鹰"),("bird","雄鹰")],("bird","star","flag"),1),
+    ("季","jì","calendar",[("calendar","四季"),("flower","季节")],("calendar","flower","sun"),2),
+    ("农","nóng","sprout",[("sprout","农民"),("sprout","农田")],("sprout","apple","home"),0),
+    ("麦","mài","sprout",[("sprout","麦苗"),("bread","麦子")],("sprout","bread","leaf"),1),
+    ("象","xiàng","elephant",[("elephant","大象"),("bear","印象")],("elephant","bear","duck"),2),
+    ("楼","lóu","castle",[("castle","高楼"),("castle","楼房")],("castle","home","shop"),0),
+    ("闻","wén","speaker",[("speaker","新闻"),("girl","闻名")],("speaker","book","star"),1),
+    ("峰","fēng","everest",[("everest","山峰"),("everest","高峰")],("everest","tree","sun"),2),
+    ("潭","tán","wave",[("wave","日月潭"),("wave","水潭")],("wave","moon","fish"),0),
+    ("城","chéng","castle",[("castle","城市"),("greatwall","长城")],("castle","greatwall","shop"),1),
+    ("市","shì","shop",[("shop","市场"),("shop","城市")],("shop","home","school"),2),
+    ("井","jǐng","jar",[("jar","水井"),("jar","井水")],("jar","cup","rock"),0),
+    ("观","guān","telescope",[("telescope","观星"),("telescope","观看")],("telescope","star","book"),1),
+    ("喝","hē","cup",[("cup","喝水"),("milk","喝奶")],("cup","milk","jar"),2),
+    ("灯","dēng","bulb",[("bulb","电灯"),("bulb","红灯")],("bulb","star","moon"),0),
+    ("娃","wá","girl",[("girl","娃娃"),("frog","蛙娃")],("girl","frog","party"),1),
+    ("蛙","wā","frog",[("frog","青蛙"),("frog","蛙声")],("frog","duck","bee"),2),
+    ("猫","māo","cat",[("cat","小猫"),("cat","熊猫")],("cat","dog","duck"),0),
+    ("狗","gǒu","dog",[("dog","小狗"),("dog","看家狗")],("dog","cat","bear"),1),
+    ("猪","zhū","pig",[("pig","小猪"),("pig","肥猪")],("pig","cow","duck"),2),
+    ("鸡","jī","bird",[("bird","母鸡"),("bird","小鸡")],("bird","duck","cat"),0),
+    ("熊","xióng","bear",[("bear","小狗熊"),("polarbear","白熊")],("bear","polarbear","cat"),1),
+    ("狮","shī","lion",[("lion","狮子"),("lion","雄狮")],("lion","tiger","bear"),2),
+    ("猴","hóu","monkey",[("monkey","猴子"),("monkey","猴山")],("monkey","bear","dog"),0),
+    ("晴","qíng","sun",[("sun","晴天"),("sun","雨过天晴")],("sun","moon","star"),1),
+    ("晚","wǎn","moon",[("moon","晚上"),("moon","晚霞")],("moon","sun","star"),2),
+    ("雪","xuě","snowflake",[("snowflake","下雪"),("snowflake","雪人")],("snowflake","ice","milk"),0),
+    ("冰","bīng","ice",[("ice","结冰"),("ice","冰淇淋")],("ice","snowflake","crystal"),1),
 ]
 
 WORD_POOL = [(ic, tx, ch) for (ch, py, mf, words, lo, la) in CN for (ic, tx) in words]
@@ -217,6 +268,59 @@ STROKES = {
  "果": ["M26 30 L74 30", "M50 14 L50 60", "M50 44 Q38 58 26 66", "M50 44 Q62 58 74 66", "M34 74 L66 74"],
  "车": ["M30 28 L70 28", "M50 18 L50 56", "M26 44 L50 56", "M50 56 L36 74", "M36 74 L64 74"],
  "糖": ["M30 24 L30 72", "M44 30 L58 30", "M52 30 L52 46", "M62 58 L74 58", "M56 54 L62 74", "M40 58 L52 58"],
+ # —— v0.12 二年级 50 字笔顺（教学简化版）——
+ "塘": ["M28 70 L72 70", "M50 24 L50 70", "M34 24 L66 24", "M38 42 Q50 36 62 42", "M36 54 L64 54", "M36 62 L64 62"],
+ "迎": ["M40 24 L40 60", "M40 36 L58 36", "M58 30 L58 44", "M30 74 Q44 62 62 68", "M62 68 L74 58"],
+ "姨": ["M40 24 Q32 44 28 72", "M40 38 L54 46", "M28 46 Q40 54 52 58", "M58 26 L72 26", "M58 40 L72 40", "M65 26 L65 40", "M58 56 L72 72"],
+ "变": ["M50 16 L50 30", "M32 34 L68 34", "M30 48 Q50 56 70 48", "M42 60 L32 74", "M58 60 L68 74"],
+ "极": ["M30 26 L30 72", "M30 42 L48 42", "M48 26 Q44 50 36 66", "M62 28 Q56 50 62 66", "M62 44 Q72 54 68 70"],
+ "片": ["M34 18 L34 74", "M46 28 L46 74", "M46 28 L66 40", "M46 48 Q60 60 64 74"],
+ "傍": ["M32 24 Q26 48 24 72", "M32 38 L44 46", "M56 24 L72 24", "M50 40 Q64 34 74 42", "M50 54 L72 54", "M54 66 L68 66"],
+ "海": ["M30 28 Q26 36 30 42", "M42 26 Q38 34 42 40", "M56 28 L56 70", "M40 46 Q58 38 68 48", "M40 60 Q58 52 68 62"],
+ "洋": ["M30 28 Q26 36 30 42", "M42 26 Q38 34 42 40", "M32 40 L70 40", "M36 54 L64 54", "M50 28 L50 72", "M50 54 Q42 64 34 70", "M50 54 Q58 64 66 70"],
+ "植": ["M30 26 L30 72", "M30 42 L46 42", "M54 26 L54 66", "M54 26 L72 26 L72 66", "M54 46 L72 46", "M54 66 L72 66", "M60 74 L66 60"],
+ "旅": ["M32 24 Q26 48 24 72", "M32 38 L44 46", "M56 22 L56 40", "M48 40 L72 40", "M48 40 Q44 62 36 72", "M56 52 L72 66", "M60 44 L70 58"],
+ "识": ["M30 24 Q26 34 30 40", "M38 30 L48 30", "M44 24 L44 36", "M56 26 L56 60", "M56 26 L70 26 L70 60", "M56 60 L42 74", "M62 62 L72 74"],
+ "园": ["M26 22 L74 22", "M74 22 L74 76", "M74 76 L26 76", "M26 76 L26 22", "M42 36 L42 58", "M42 36 Q54 30 60 38", "M60 44 L60 58", "M46 48 L62 48"],
+ "群": ["M34 24 Q30 40 30 56", "M34 38 L50 38", "M30 56 L54 56", "M42 30 L42 56", "M62 24 L78 24", "M62 36 L78 36", "M70 24 L70 60", "M62 48 Q70 42 78 48", "M58 72 Q70 66 80 72"],
+ "队": ["M34 22 L34 72", "M34 44 L46 54", "M46 30 Q56 50 66 70", "M56 34 Q60 44 68 48"],
+ "旗": ["M34 22 L34 74", "M28 34 L40 34", "M46 26 L70 26 L70 56", "M46 56 L70 56", "M58 26 L58 56", "M46 42 L70 42"],
+ "号": ["M36 26 L62 26 L62 48 L36 48", "M36 38 L62 38", "M62 56 Q62 70 46 74", "M62 56 L74 46"],
+ "杨": ["M30 26 L30 72", "M30 42 L48 42", "M48 26 Q44 50 36 66", "M60 24 L60 66", "M60 30 L74 38", "M60 44 L74 52", "M60 58 L72 66"],
+ "桐": ["M30 26 L30 72", "M30 42 L48 42", "M48 26 Q44 50 36 66", "M60 24 Q54 44 60 66", "M60 30 L74 40", "M60 44 L74 54", "M60 56 L72 64"],
+ "枫": ["M30 26 L30 72", "M30 42 L48 42", "M48 26 Q44 50 36 66", "M60 24 Q52 44 60 66", "M60 32 L74 42", "M60 46 L72 58", "M56 52 Q62 58 70 56"],
+ "松": ["M30 26 L30 72", "M30 42 L48 42", "M48 26 Q44 50 36 66", "M60 26 L60 70", "M52 40 L68 40", "M50 54 L70 54", "M60 40 L60 54"],
+ "柏": ["M30 26 L30 72", "M30 42 L48 42", "M48 26 Q44 50 36 66", "M60 24 L60 70", "M52 34 L68 34", "M52 48 L68 48", "M52 60 L68 60"],
+ "桂": ["M30 26 L30 72", "M30 42 L48 42", "M48 26 Q44 50 36 66", "M58 22 L58 40", "M58 40 L74 40", "M74 22 Q78 32 74 40", "M58 52 L74 52", "M58 52 Q64 64 74 70", "M58 64 L72 72"],
+ "雀": ["M36 24 L36 46", "M36 24 L58 24 L58 46", "M36 36 L58 36", "M26 54 L68 54", "M68 54 L48 40", "M26 54 L44 74", "M68 54 L56 74"],
+ "鹰": ["M32 22 L64 22", "M48 10 L48 22", "M36 28 L60 28", "M40 34 L56 50", "M56 34 L40 50", "M30 56 L66 56", "M36 62 L44 74", "M60 62 L52 74"],
+ "季": ["M50 20 L50 40", "M34 30 L66 30", "M50 40 Q42 50 34 56", "M50 40 Q58 50 66 56", "M36 60 L62 60", "M36 60 Q40 72 52 74", "M62 60 Q60 70 52 74"],
+ "农": ["M42 22 Q36 40 30 52", "M30 40 L52 40", "M52 30 Q62 40 70 44", "M36 54 L66 54", "M42 62 L58 62", "M50 54 L50 74", "M36 72 L64 72"],
+ "麦": ["M50 16 L50 38", "M32 26 L68 26", "M28 40 Q50 32 72 40", "M50 40 Q40 58 28 68", "M50 40 Q60 58 72 68", "M30 72 Q50 66 70 72"],
+ "象": ["M50 20 Q30 28 28 48 Q26 66 38 72", "M50 20 Q68 26 70 46", "M70 46 L72 66", "M38 72 L66 72", "M44 40 Q48 44 44 48", "M28 52 Q20 56 18 62", "M72 52 Q80 56 82 62"],
+ "楼": ["M30 24 L30 74", "M30 24 L44 24 L44 74", "M30 48 L44 48", "M30 74 L44 74", "M52 26 L72 26 L72 72", "M52 44 L72 44", "M60 56 L66 56", "M52 72 L72 72"],
+ "闻": ["M30 22 L70 22 L70 76", "M30 22 L30 76", "M30 76 L70 76", "M34 32 L66 32", "M42 42 L58 42", "M42 56 L58 56", "M48 32 L48 66"],
+ "峰": ["M26 60 L42 24 L54 46", "M42 24 L42 70", "M28 70 L58 70", "M66 28 L66 70", "M66 34 Q74 40 78 34", "M60 48 Q70 44 78 50", "M66 60 Q74 58 80 64"],
+ "潭": ["M30 28 Q26 36 30 42", "M42 26 Q38 34 42 40", "M54 28 L54 70", "M40 44 L68 44", "M40 58 L68 58", "M42 70 L66 70", "M54 44 Q60 50 54 58"],
+ "城": ["M28 24 L28 74", "M28 38 L44 38", "M28 60 L44 60", "M52 26 Q46 48 50 66", "M52 30 Q66 26 74 32", "M58 44 Q66 42 74 46", "M54 58 L70 58"],
+ "市": ["M26 26 L74 26", "M50 14 L50 26", "M32 40 L68 40", "M50 40 L50 74", "M32 58 L50 74", "M50 58 L68 58"],
+ "井": ["M28 32 L72 32", "M28 52 L72 52", "M40 20 Q36 48 30 74", "M62 20 Q66 48 70 74"],
+ "观": ["M32 26 Q26 40 24 54", "M32 38 L46 46", "M50 30 L62 42", "M62 30 L50 42", "M36 54 L36 68", "M36 54 L64 54", "M64 42 L64 74", "M38 74 L62 74"],
+ "喝": ["M34 24 L34 66", "M34 40 L48 40", "M34 66 L48 66", "M58 24 Q52 40 58 50", "M66 22 Q62 40 68 50", "M50 58 L72 58", "M52 70 L70 70", "M62 58 L62 70"],
+ "灯": ["M42 24 Q34 44 28 66", "M42 36 L56 44", "M28 46 Q38 54 50 58", "M62 40 L62 70", "M50 58 L74 58"],
+ "娃": ["M40 24 Q32 44 28 72", "M40 38 L54 46", "M28 46 Q40 54 52 58", "M60 22 L60 44", "M60 22 L76 22 L76 44", "M76 44 Q60 42 52 56", "M66 50 Q72 54 78 54"],
+ "蛙": ["M40 32 L58 32 L58 54 L40 54", "M49 18 L49 32", "M30 44 L40 44", "M49 54 L44 70", "M49 54 Q58 62 64 66", "M60 22 L60 44", "M60 22 L76 22 L76 44", "M76 44 Q60 42 52 56"],
+ "猫": ["M34 24 Q28 46 24 70", "M34 38 L46 46", "M24 46 Q32 54 42 58", "M60 22 L60 46", "M60 22 L76 22 L76 46", "M76 46 Q62 42 52 58", "M58 52 Q64 46 70 52", "M62 58 L62 70", "M54 70 L72 70"],
+ "狗": ["M34 24 Q28 46 24 70", "M34 38 L46 46", "M24 46 Q32 54 42 58", "M60 24 L60 44", "M60 24 L74 24 Q80 34 74 44", "M74 44 Q60 42 54 58", "M56 66 L72 66"],
+ "猪": ["M34 24 Q28 46 24 70", "M34 38 L46 46", "M24 46 Q32 54 42 58", "M58 22 L58 44", "M58 22 L76 22 L76 44", "M58 34 L76 34", "M76 44 Q62 42 54 56", "M52 68 L74 68"],
+ "鸡": ["M32 26 Q28 40 24 50", "M32 38 L44 46", "M58 22 Q52 40 58 54", "M58 54 L44 54 Q56 60 66 54", "M66 54 L66 22", "M44 66 L72 66", "M66 40 L58 40"],
+ "熊": ["M32 22 L54 22", "M42 22 L42 34", "M28 34 L58 34 L58 58", "M28 58 Q43 52 58 58", "M64 26 Q60 46 66 62", "M74 30 L74 72", "M60 72 L86 72", "M50 66 L54 78"],
+ "狮": ["M34 24 Q28 46 24 70", "M34 38 L46 46", "M24 46 Q32 54 42 58", "M58 22 L58 46", "M58 22 L74 22", "M74 22 L74 46", "M58 34 L74 34", "M58 46 Q62 42 66 46", "M52 66 L76 66"],
+ "猴": ["M34 24 Q28 46 24 70", "M34 38 L46 46", "M24 46 Q32 54 42 58", "M58 22 Q52 36 58 46", "M58 28 L74 28 L74 60", "M58 44 L74 44", "M64 52 Q60 62 52 70", "M74 52 Q70 64 62 72"],
+ "晴": ["M34 22 L34 68", "M34 22 L58 22 L58 44", "M34 40 L58 40", "M34 68 L58 68", "M70 26 Q64 44 70 60", "M52 54 Q64 48 76 56", "M56 66 L76 66"],
+ "晚": ["M34 22 L34 68", "M34 22 L58 22 L58 44", "M34 40 L58 40", "M34 68 L58 68", "M70 22 Q62 46 70 68", "M70 40 Q78 46 84 40", "M64 52 Q76 52 82 58"],
+ "雪": ["M28 22 L72 22", "M50 22 L50 34", "M22 40 Q50 30 78 40", "M32 48 L32 58", "M48 48 L48 58", "M64 48 L64 58", "M30 62 L42 70", "M58 70 L70 62", "M38 72 L50 74"],
+ "冰": ["M30 20 L34 46", "M26 34 L38 32", "M56 24 Q48 46 56 72", "M44 52 Q56 62 68 52", "M68 40 Q64 50 68 58"],
 }
 
 def other_words(ch, k, start):
@@ -380,25 +484,36 @@ def apply_anims(levels, mapping):
         assert st["kind"] == "letter", f"apply_anims: {lid} 首步不是 letter"
         st["anim"] = anim
 
-def finish_50(levels, sub):
-    """v0.11 五科 50 关收尾：46 正则 + 复习@19/39/48 + Boss@49（5 星区每区恰好 10 关）。
-    复习题从之前所有正则关轮询采样，互动新题型同样会进复习/Boss。"""
-    assert len(levels) == 46, f"{sub} 50 关布局需 46 正则关，实际 {len(levels)}"
+def finish_levels(levels, sub, total):
+    """关卡收尾（通用）：正则关 + 复习@各星区段末 + Boss（每星区恰好 10 关）。
+    50 关：复习@19/39/48；100 关：复习@29/59/89。复习题从之前所有正则关轮询采样。"""
+    n_reg = {50: 46, 100: 96}[total]
+    poses = {50: [19, 39, 48], 100: [29, 59, 89]}[total]
+    assert len(levels) == n_reg, f"{sub} {total} 关布局需 {n_reg} 正则关，实际 {len(levels)}"
     q_by_level = [[st for st in lv["steps"] if st["kind"] not in ("teach", "letter")] for lv in levels]
     reviews = []
-    for k, pos in enumerate([19, 39, 48]):
+    for k, pos in enumerate(poses):
         qs = sample_questions(q_by_level[:pos], 6, f"{sub}-r{k}")
         reviews.append({"id": f"{sub}-r{k}", "title": f"复习关 {'一二三'[k]}",
                         "subtitle": "旧题开盲盒 · 混排复习", "steps": qs,
                         "board": build_board([q["id"] for q in qs],
                                              ["coin", "coin"] + REVIEW_EVENTS[k % len(REVIEW_EVENTS)], k),
                         "review": True})
-    levels[:] = (levels[:19] + [reviews[0]] + levels[19:38] + [reviews[1]]
-                 + levels[38:46] + [reviews[2]])
+    out = []
+    prev = 0
+    for k, pos in enumerate(poses):
+        out += levels[prev:pos] + [reviews[k]]
+        prev = pos
+    out += levels[prev:]
+    out.append(None)
+    levels[:] = out[:-1]
     add_boss_level(levels, sub)
-    assert len(levels) == 50
+    assert len(levels) == total, f"{sub} 收尾后 {len(levels)} != {total}"
     for i, lv in enumerate(levels):
         lv["zone"] = i // 10 + 1
+
+def finish_50(levels, sub):
+    finish_levels(levels, sub, 50)
 
 def zones_meta(titles, icons):
     return [{"n": i + 1, "title": t, "subtitle": st, "icon": ic}
@@ -416,7 +531,7 @@ for i, (ch, py, mfrom, words, lo, lans) in enumerate(CN):
               "words": [{"icon": w, "text": t, "say": t} for w, t in words]}] + q_steps
     cn_levels.append({"id": f"cn-{i}", "title": f"第 {i+1} 关 识字写字", "subtitle": f"认识并会写「{ch}」",
                       "steps": steps, "board": cn_board(i, [s["id"] for s in q_steps])})
-finish_50(cn_levels, "cn")
+finish_levels(cn_levels, "cn", 100)
 append_extras(cn_levels, [
     ("cn-0", match_step("cn-x1", "连一连：字和它变成的东西",
                         [("sun","日","太阳"),("moon","月","月亮"),("volcano","山","大山")])),
@@ -429,9 +544,12 @@ append_extras(cn_levels, [
     ("cn-14", sequence_step("cn-x4", "按顺序点：一 → 二 → 三", ["一","二","三"], praise="汉字火车开动啦！")),
 ])
 W("cn_levels.json", {"subject": "cn", "title": "识字村", "guide": "panda",
-                    "zones": zones_meta(["自然万象", "数字启蒙", "生活常用", "身边事物", "汉字大挑战"],
-                                        (["sun", "dice", "girl", "home", "medal"],
-                                         ["日月水火山石田禾", "一二三四五六七八九十", "大小上下星手糖车", "目耳足云雨风虫贝见", "白牛羊果 · 总复习"])),
+                    "zones": zones_meta(["自然万象", "动物朋友", "数字启蒙", "身体与动作", "生活器物",
+                                          "植物园地", "家庭称谓", "山川湖海", "城市建筑", "汉字大挑战"],
+                                        (["sun", "duck", "dice", "girl", "hanger",
+                                          "sprout", "home", "wave", "castle", "medal"],
+                                         ["日月水火山石", "花鸟虫鱼猫狗", "一二三四…十", "目耳手足见", "车灯杯井旗",
+                                          "木杨桐松柏桂植", "娃姨迎群变", "海湖潭江河", "城市场楼峰", "雪冰 · 总复习"])),
                     "levels": cn_levels})
 
 # ================= 数学 34 关 =================
@@ -490,7 +608,7 @@ def neighbor_step(nid, a, b, opts=None):
     correct = a + 1
     options = opts or sorted({correct, correct - 1, correct + 1})
     return {"id": nid, "kind": "neighbor", "nums": [a, 0, a + 2],
-            "question": "想一想：藏起来的数字是几？",
+            "question": f"想一想：{a} 和 {a + 2} 中间藏起来的数字是几？",
             "arithOptions": options, "answer": options.index(correct),
             "hint": f"{a} 的后面是几？{a + 2} 的前面是几？",
             "praise": f"是 {correct}！{a} 和 {a + 2} 的中间是 {correct}！"}
@@ -759,7 +877,7 @@ math_levels += [
     ]},
     {"id": "math-41", "title": "第 42 找规律", "subtitle": "变化规律", "steps": [
         pattern_step("math-41-p1", ["star", "moon", "star", "moon", "star"], ["moon", "sun", "comet"], 0, "找规律：下一个是谁？"),
-        pattern_step("math-41-p2", ["apple", "apple", "banana", "apple", "apple"], ["banana", "apple", "cake"], 0, "找规律：下一个是谁？"),
+        pattern_step("math-41-p2", ["apple", "apple", "banana", "apple", "apple"], ["banana", "apple", "cake"], 0, "再找一次规律：下一个是谁？"),
     ]},
     {"id": "math-42", "title": "第 43 相邻数", "subtitle": "数的邻居", "steps": [
         neighbor_step("math-42-n1", 6, 7),
@@ -775,10 +893,193 @@ math_levels += [
         money_step("math-44-m", 8, "买 8 角的橡皮，刚好付清"),
     ]},
     {"id": "math-45", "title": "第 46 整点复习", "subtitle": "钟表", "steps": [
-        clock_step("math-44-c1", "read", 8, 0, ["3:00", "8:00", "5:30"], 1),
-        clock_step("math-45-c2", "read", 3, 30, ["3:00", "3:30", "6:00"], 1),
+        clock_step("math-44-c1", "read", 8, 0, ["3:00", "8:00", "5:30"], 1,
+                   "看钟面：时针指 8、分针指 12，是几点？"),
+        clock_step("math-45-c2", "read", 3, 30, ["3:00", "3:30", "6:00"], 1,
+                   "再看：分针指 6，是几点半？"),
     ]},
 ]
+
+# —— v0.12 二年级数学 +50 关（人教二上：乘法口诀/长度/角/观察物体；二下：除法/克千克/万以内）——
+def mul_step(i, groups, per, icon):
+    return {"id": f"math-x{ i }-m", "kind": "muldiv", "op": "×", "mode": "groups",
+            "groups": groups, "per": per, "icon": icon,
+            "question": f"{groups} 个 {per} 是多少？",
+            "options": sorted({groups * per - 2, groups * per - 1, groups * per, groups * per + 1, groups * per + 2})[:3] + [groups * per] if groups * per not in sorted({groups * per - 2, groups * per - 1, groups * per, groups * per + 1, groups * per + 2})[:3] else sorted({groups * per - 2, groups * per - 1, groups * per, groups * per + 1, groups * per + 2})[:3],
+            "answer": 3, "hint": f"{groups}×{per}={groups*per}，口诀别忘掉", "praise": f"对，{groups*per}！"}
+
+def mulq_step(qid, a, b, opts, ans):
+    return {"id": qid, "kind": "quiz",
+            "question": f"{a} × {b} = ?（想口诀）",
+            "options": [{"text": str(v)} for v in opts], "answer": ans,
+            "hint": f"{a}{b} 的口诀", "praise": f"对，{a*b}！"}
+
+def div_step(qid, total, groups, icon, variant=0):
+    per = total // groups
+    # variant：同关两题的题面要能区分（0=平均分 / 1=按每份分），
+    # 否则同关出现两句完全相同的题面，孩子会以为题目卡住了（v0.12 修）。
+    if variant == 1:
+        q = f"每 {groups} 个一份，{total} 个能分成几份？"
+        hint = f"几个一份几个一份地数：{groups}、{groups*2}…"
+    else:
+        q = f"{total} 个{icon}平均分成 {groups} 组，每组几个？"
+        hint = "平均分，每份一样多"
+    return {"id": qid, "kind": "muldiv", "op": "÷", "mode": "average",
+            "total": total, "groups": groups, "icon": icon,
+            "question": q,
+            "options": [per - 1, per, per + 1], "answer": 1,
+            "hint": hint, "praise": f"对，每组 {per} 个！"}
+
+MUL_TABLE = [
+    ("math-46", "乘法口诀·2", "二二得四起步", [("ball","皮球成对"),("dice","2 的口诀")], 2, [1,2,3,4,5]),
+    ("math-47", "乘法口诀·3", "三七二十一", [("train","3 节车厢")], 3, [1,3,5,6,7]),
+    ("math-48", "乘法口诀·4", "四四十六", [("apple","4 个苹果")], 4, [2,4,6,8]),
+    ("math-49", "乘法口诀·5", "三五十五", [("starface","5 角星")], 5, [1,3,5,7]),
+    ("math-50", "乘法口诀·6", "六六三十六", [("dice","骰子六面")], 6, [2,4,6]),
+    ("math-51", "乘法口诀·7", "七七四十九", [("calendar","一周七天")], 7, [3,5,7]),
+    ("math-52", "乘法口诀·8", "八八六十四", [("block","8 块积木"),("flag","8 面旗")], 8, [2,4,8]),
+    ("math-53", "乘法口诀·9", "九九八十一", [("flower","九宫格花瓣")], 9, [3,6,9]),
+]
+for gi, (mid, title, subtitle, icons, base, mults) in enumerate(MUL_TABLE):
+    steps = [{"id": f"{mid}-t", "kind": "letter", "letters": [f"{base} 的乘法口诀"], "display": f"{base} 的口诀",
+              "examples": [{"text": f"{base}×{m}={base*m}"} for m in mults[:2]],
+              "question": f"背一背：{base} 的乘法口诀"}]
+    for k, m in enumerate(mults):
+        opts = sorted({base*m-3, base*m-1, base*m, base*m+3})[:3] if base*m % 2 == 0 else sorted({base*m+3, base*m+1, base*m})
+        steps.append(mulq_step(f"{mid}-q{k}", base, m, opts, opts.index(base*m)))
+    math_levels.append({"id": mid, "title": f"第 {47+gi} 关 {title}", "subtitle": subtitle, "steps": steps[:4]})
+
+DIV_NEW = [
+    ("math-54", "认识除法·平均分", [("apple","12 个苹果")], 12, 4),
+    ("math-55", "除法·分一分", [("star","15 颗星")], 15, 3),
+    ("math-56", "除法·分组", [("duck","10 只鸭")], 10, 5),
+    ("math-57", "口诀求商", [("ball","12 个球")], 12, 6),
+    ("math-58", "除法·装袋", [("candy","16 颗糖")], 16, 4),
+]
+for gi, (mid, title, icons, total, groups) in enumerate(DIV_NEW):
+    math_levels.append({"id": mid, "title": f"第 {55+gi} 关 {title}", "subtitle": "平均分 · 口诀求商", "steps": [
+        {"id": f"{mid}-t", "kind": "letter", "letters": ["除法"], "display": "除法",
+         "examples": [{"icon": ic, "text": t} for ic, t in icons],
+         "question": f"学一学：把 {total} 平均分成 {groups} 份"},
+        div_step(f"{mid}-d1", total, groups, icons[0][0] if icons else "apple"),
+        div_step(f"{mid}-d2", min(total, 12), groups, icons[0][0] if icons else "apple", variant=1),
+    ]})
+
+# 长度单位（厘米/米）
+LENGTH = [
+    ("math-59", "认识厘米", "厘米 cm", [("book","铅笔和课本")], "量短东西用厘米", "量铅笔长度用——", [(None,"厘米"),(None,"米"),(None,"千克")], 0),
+    ("math-60", "认识米", "米 m", [("home","教室门高约 2 米")], "量长东西/身高用米", "教室的门高约 2——", [(None,"米"),(None,"厘米"),(None,"克")], 0),
+    ("math-61", "厘米和米", "1 米 = 100 厘米", [("train","操场跑道")], "1 米 = 100 厘米", "1 米 = ? 厘米", [(None,"100"),(None,"10"),(None,"1000")], 0),
+    ("math-62", "选单位", "填 cm 还是 m", [("girl","小明身高 128 厘米")], "结合生活选单位", "小猫尾巴长约 30——", [(None,"厘米"),(None,"米"),(None,"克")], 0),
+    ("math-63", "估一估", "先估再量", [("book","课本长约 26 厘米")], "估一估课本文长度", "课本长约——", [(None,"26 厘米"),(None,"26 米"),(None,"26 克")], 0),
+    ("math-64", "比长短", "拉直再比", [("hanger","衣架拉直比")], "比长短要拉直、一端对齐", "比两条绳子长短，要先——", [(None,"拉直对齐"),(None,"随便放"),(None,"数颜色")], 0),
+]
+for gi, (mid, title, subtitle, icons, fact, q, opts, ans) in enumerate(LENGTH):
+    math_levels.append({"id": mid, "title": f"第 {60+gi} 关 {title}", "subtitle": subtitle, "steps": [
+        {"id": f"{mid}-t", "kind": "letter", "letters": ["长度"], "display": title,
+         "examples": [{"icon": ic, "text": t} for ic, t in icons],
+         "question": f"学一学：{fact}"},
+        quiz_step(f"{mid}-q1", q, opts, ans, subtitle, "量一量小能手！"),
+    ]})
+
+# 角的初步认识
+ANGLE = [
+    ("math-65", "认识角", "一个顶点两条边", [("triangle","三角有角"),("square","方角")], "角有一个顶点和两条直边", "角有——", [(None,"一个顶点两条边"),(None,"两条弯边"),(None,"没有顶点")], 0),
+    ("math-66", "直角", "方方正正直角", [("square","正方形四个直角"),("clock","钟面直角")], "正方形的四个角都是直角", "哪个图形有直角？", [("square","正方形"),("circle","圆"),("ball","球")], 0),
+    ("math-67", "找角", "生活里的角", [("book","书角"),("home","门角")], "书本、门框都有角", "下面哪里有角？", [(None,"书的角上"),(None,"圆球上"),(None,"月亮上")], 0),
+]
+for gi, (mid, title, subtitle, icons, fact, q, opts, ans) in enumerate(ANGLE):
+    math_levels.append({"id": mid, "title": f"第 {66+gi} 关 {title}", "subtitle": subtitle, "steps": [
+        {"id": f"{mid}-t", "kind": "letter", "letters": ["角"], "display": title,
+         "examples": [{"icon": ic, "text": t} for ic, t in icons],
+         "question": f"学一学：{fact}"},
+        quiz_step(f"{mid}-q1", q, opts, ans, subtitle, "火眼金睛找到角！"),
+    ]})
+
+# 克与千克
+WEIGHT = [
+    ("math-68", "认识克", "克 g", [("coin","一枚硬币约 3 克")], "很轻的东西用克", "一枚硬币约重 3——", [(None,"克"),(None,"千克"),(None,"米")], 0),
+    ("math-69", "认识千克", "千克 kg", [("cup","两杯水约 1 千克")], "较重的用千克", "1 千克 = ? 克", [(None,"1000"),(None,"100"),(None,"10")], 0),
+    ("math-70", "选重量单位", "克还是千克", [("elephant","大象约 4 吨"),("apple","苹果约 200 克")], "大象用吨，苹果用克", "一个苹果约重——", [(None,"200 克"),(None,"200 千克"),(None,"2 克")], 0),
+]
+for gi, (mid, title, subtitle, icons, fact, q, opts, ans) in enumerate(WEIGHT):
+    math_levels.append({"id": mid, "title": f"第 {69+gi} 关 {title}", "subtitle": subtitle, "steps": [
+        {"id": f"{mid}-t", "kind": "letter", "letters": ["克 千克"], "display": title,
+         "examples": [{"icon": ic, "text": t} for ic, t in icons],
+         "question": f"学一学：{fact}"},
+        balance_step(f"{mid}-b1", "天平秤一秤：西瓜和苹果，哪边更重？", ("ball","大西瓜"), ("apple","苹果"), "left",
+                     "大的瓜比苹果重好几倍"),
+        quiz_step(f"{mid}-q1", q, opts, ans, subtitle, "重量小达人！"),
+    ]})
+
+# 笔算加减（100 以内）+ 万以内 + 应用
+CALC = [
+    ("math-71", "笔算加法", "相同数位对齐", 35, 24, "+"),
+    ("math-72", "笔算加法·进位", "满十进一", 47, 28, "+"),
+    ("math-73", "笔算减法", "相同数位对齐", 68, 25, "-"),
+    ("math-74", "笔算减法·退位", "退一当十", 82, 47, "-"),
+    ("math-75", "连加连减", "从左往右算", 30, 18, "+"),
+]
+for gi, (mid, title, tip, a, b, op) in enumerate(CALC):
+    correct = a + b if op == "+" else a - b
+    math_levels.append({"id": mid, "title": f"第 {72+gi} 关 {title}", "subtitle": "100 以内", "steps": [
+        {"id": f"{mid}-t", "kind": "letter", "letters": ["竖式"], "display": title,
+         "examples": [{"text": f"{a} {op} {b} = {correct}"}],
+         "question": f"学一学：{tip}"},
+        arith_step(7100 + gi, op, a, b, sorted({correct - 2, correct - 1, correct, correct + 1, correct + 2})[:3] + [correct] if correct not in sorted({correct - 2, correct - 1, correct, correct + 1, correct + 2})[:3] else sorted({correct - 2, correct - 1, correct, correct + 1, correct + 2})[:3],
+                   "star", "颗", f"{a} {op} {b} = ?"),
+    ]})
+
+WAN = [
+    ("math-76", "万以内数·数位", "个十百千万", [("dice","数位表")], "从右往左：个十百千万", "「3」在 3456 的哪一位？", [(None,"千位"),(None,"十位"),(None,"个位")], 0),
+    ("math-77", "万以内数·读写", "读数从高位起", [("chart","3020 读作")], "中间有 0 要读零", "3020 读作——", [(None,"三千零二十"),(None,"三千二十"),(None,"三十二十")], 0),
+    ("math-78", "比大小", "先比数位", [("equal","1000 和 999")], "位数多的大", "1000 和 999 谁大？", [(None,"1000"),(None,"999"),(None,"一样大")], 0),
+    ("math-79", "近似数", "接近的整数", [("school","全校约 2000 人")], "接近整千的数", "1987 接近——", [(None,"2000"),(None,"1000"),(None,"3000")], 0),
+]
+for gi, (mid, title, subtitle, icons, fact, q, opts, ans) in enumerate(WAN):
+    math_levels.append({"id": mid, "title": f"第 {77+gi} 关 {title}", "subtitle": subtitle, "steps": [
+        {"id": f"{mid}-t", "kind": "letter", "letters": ["万以内"], "display": title,
+         "examples": [{"icon": ic, "text": t} for ic, t in icons],
+         "question": f"学一学：{fact}"},
+        quiz_step(f"{mid}-q1", q, opts, ans, subtitle, "数的嗅灵敏！"),
+    ]})
+
+APP = [
+    ("math-80", "应用·乘车", "够不够坐", [("bus","45 座大巴")], "二(1)班 38 人坐 45 座车", "45 座车坐 38 人，座位——", [(None,"够，还剩 7 个"),(None,"不够"),(None,"正好")], 0),
+    ("math-81", "应用·买文具", "付钱算找零", [("m-yuan10","付 10 元")], "10 - 6 = 4", "10 元买 6 元的笔，找——", [(None,"4 元"),(None,"5 元"),(None,"6 元")], 0),
+    ("math-82", "应用·分苹果", "每人几个", [("apple","12 个苹果分给 4 人")], "12 ÷ 4 = 3", "12 个苹果平均分给 4 人，每人——", [(None,"3 个"),(None,"4 个"),(None,"2 个")], 0),
+    ("math-83", "应用·排队伍", "前后位置", [("train","15 人排队")], "小猴前面 5 人后面 9 人", "队伍一共几人？", [(None,"15 人"),(None,"14 人"),(None,"16 人")], 0),
+    ("math-84", "应用·量身高", "厘米记录", [("girl","身高 132 厘米")], "去年 125，今年 132", "长高了——", [(None,"7 厘米"),(None,"17 厘米"),(None,"70 厘米")], 0),
+]
+for gi, (mid, title, subtitle, icons, fact, q, opts, ans) in enumerate(APP):
+    math_levels.append({"id": mid, "title": f"第 {82+gi} 关 {title}", "subtitle": subtitle, "steps": [
+        {"id": f"{mid}-t", "kind": "letter", "letters": ["应用题"], "display": title,
+         "examples": [{"icon": ic, "text": t} for ic, t in icons],
+         "question": f"学一学：{fact}"},
+        quiz_step(f"{mid}-q1", q, opts, ans, subtitle, "应用题小能手！"),
+    ]})
+
+# —— v0.12 补充：观察物体 / 口诀巩固 / 除法应用 / 米尺练习（凑足 96 正则）——
+MATH_EXTRA = [
+    ("math-85", "观察物体·前面", [("robot","小机器人的前面")], "从前看机器人，看到的是正脸", "从前面看，看到——", [(None,"正脸"),(None,"后脑勺"),(None,"侧面")], 0),
+    ("math-86", "观察物体·后面", [("robot","机器人的后面")], "从后面看，看到的是后脑勺", "从后面看，看到——", [(None,"后脑勺"),(None,"正脸"),(None,"脚底")], 0),
+    ("math-87", "观察物体·侧面", [("dino","小恐龙的侧面")], "从侧面看，只看到半边", "从侧面看，看到——", [(None,"半边身体"),(None,"正脸"),(None,"全身两面")], 0),
+    ("math-88", "口诀巩固·连线", [("train","3×4=?")], "三七二十一", "3×4=——", [(None,"12"),(None,"7"),(None,"14")], 0),
+    ("math-89", "口诀巩固·五五", [("starface","五五二十五")], "五五二十五", "5×5=——", [(None,"25"),(None,"10"),(None,"55")], 0),
+    ("math-90", "除法应用·装盒", [("egg","18 个鸡蛋")], "18 个鸡蛋每盒装 6 个", "需要几个盒子？", [(None,"3 个"),(None,"6 个"),(None,"2 个")], 0),
+    ("math-91", "除法应用·分书", [("book","24 本书")], "24 本书分给 6 个小组", "每组几本？", [(None,"4 本"),(None,"6 本"),(None,"3 本")], 0),
+    ("math-92", "米尺应用·跳远", [("frog","小青蛙跳远")], "小青蛙跳了 95 厘米", "95 厘米 接近——", [(None,"1 米"),(None,"1 厘米"),(None,"10 米")], 0),
+    ("math-93", "米尺应用·身高", [("girl","兄妹比身高")], "哥哥 130 厘米，妹妹 120 厘米", "哥哥比妹妹高——", [(None,"10 厘米"),(None,"100 厘米"),(None,"1 厘米")], 0),
+    ("math-94", "角练习·数角", [("triangle","三角形"),("square","正方形")], "三角形 3 个角，正方形 4 个角", "正方形有几个角？", [(None,"4 个"),(None,"3 个"),(None,"5 个")], 0),
+    ("math-95", "克千克·比轻重", [("cup","1 千克水"),("coin","3 克硬币")], "1 千克 = 1000 克", "1 千克和 3 克谁重？", [(None,"1 千克"),(None,"3 克"),(None,"一样重")], 0),
+]
+for gi, (mid, title, icons, fact, q, opts, ans) in enumerate(MATH_EXTRA):
+    math_levels.append({"id": mid, "title": f"第 {86+gi} 关 {title}", "subtitle": "二年级数学", "steps": [
+        {"id": f"{mid}-t", "kind": "letter", "letters": ["数学"], "display": title,
+         "examples": [{"icon": ic, "text": t} for ic, t in icons],
+         "question": f"学一学：{fact}"},
+        quiz_step(f"{mid}-q1", q, opts, ans, fact, "数学小达人！"),
+    ]})
 
 append_extras(math_levels, [
     ("math-0", balance_step("math-x1", "天平秤一秤：大象和小鸟，哪边更重？",
@@ -793,11 +1094,14 @@ append_extras(math_levels, [
     ("math-33", match_step("math-x4", "连一连：形状和它的特点",
                            [("circle","圆形","没有角，滚滚圆"),("triangle","三角形","有三条边"),("square","正方形","四条边一样长")])),
 ])
-finish_50(math_levels, "math")
+finish_levels(math_levels, "math", 100)
 W("math_levels.json", {"subject": "math", "title": "思维镇", "guide": "fox",
-                      "zones": zones_meta(["数与数数", "加减法", "乘除法", "图形与钟表", "思维大挑战"],
-                                          (["dice", "equal", "starface", "clock", "medal"],
-                                           ["点数 · 比较 · 序数", "凑十 · 破十 · 连加连减", "口诀 · 平均分 · 凑十牌", "图形 · 数独 · 钟表 · 人民币", "规律 · 分类 · 看图列式"])),
+                      "zones": zones_meta(["数与数数", "加减法", "乘法口诀", "除法初步", "长度单位",
+                                           "角的初步认识", "克与千克", "图形与钟表", "万以内数", "思维大挑战"],
+                                          (["dice", "equal", "train", "block", "hanger",
+                                            "triangle", "cup", "clock", "chart", "medal"],
+                                           ["点数 · 比较 · 序数", "凑十 · 破十 · 笔算", "二二得四…九九八十一", "平均分 · 口诀求商", "厘米和米",
+                                            "顶点 · 边 · 直角", "克 · 千克 · 比轻重", "数独 · 钟表 · 人民币", "数位 · 读写 · 比大小", "应用题 · 总复习"])),
                       "levels": math_levels})
 
 # ================= 拼音 16 关 =================
@@ -1023,7 +1327,7 @@ py_level_full(41, "标调小规则", "标调口诀", "ā á ǎ à", ["a"],
               [quiz_step("py-41-q", "标调口诀：a 母出现不放过——", [(None,"有 a 给 a 戴"),(None,"随便戴"),(None,"都戴")], 0, "没 a 找 o e，i u 并排标在后", "答对啦！"),
                quiz_step("py-41-q2", "hǎo（好）的声调戴在——", [(None,"a 上"),(None,"o 上"),(None,"h 上")], 0, "有 a 给 a 戴", "对，戴在 a 上！")])
 py_level_full(42, "三拼音节", "声母+介母+韵母", "gua", ["g","u","a"],
-              [(None,"瓜 guā"), ("home","花 huā")], "merge",
+              [(None,"瓜 guā"), ("home","锅 guō")], "merge",
               [quiz_step("py-42-q", "guā（瓜）是几拼音节？", [(None,"三拼：g-u-a"),(None,"两拼：g-a"),(None,"不用拼")], 0, "声母+介母+韵母，三音相连", "答对啦，三拼！")])
 py_level_full(43, "拼读巩固一", "声母+复韵母", "bai fei hui", ["b","f","h"],
               [("egg","白 bái"), ("speaker","飞 fēi")], "merge",
@@ -1034,10 +1338,10 @@ py_level_full(43, "拼读巩固一", "声母+复韵母", "bai fei hui", ["b","f"
                 "question": "拼一拼：h — ui = ?", "options": [{"text": t} for t in ["hui","hai","hu"]], "answer": 0,
                 "hint": "回 huí", "praise": "拼对了，huí！"}])
 py_level_full(44, "拼读巩固二", "声母+鼻韵母", "shan men ling", ["sh","m","l"],
-              [("everest","山 shān"), ("bulb","铃 líng")], "merge",
+              [("everest","闪 shǎn"), ("bulb","铃 líng")], "merge",
               [{"id": "py-44-b", "kind": "blend", "parts": ["sh","an"],
                 "question": "拼一拼：sh — an = ?", "options": [{"text": t} for t in ["shan","sha","sheng"]], "answer": 0,
-                "hint": "高山 shān", "praise": "拼对了，shān！"}])
+                "hint": "闪 shǎn 一闪一闪", "praise": "拼对了，shǎn！"}])
 py_level_full(45, "韵母大复习", "24 韵母一家亲", "a o e … ong", ["a","o","e","ong"],
               [("star","韵母大家族")], "merge",
               [quiz_step("py-45-q", "汉语拼音一共有几个单韵母？", [(None,"6 个：a o e i u ü"),(None,"3 个"),(None,"23 个")], 0, "六个兄弟排队站", "对，6 个单韵母！"),
@@ -1100,7 +1404,143 @@ pinyin_levels.append({"id": "py-15", "title": "第 16 关 拼读大挑战", "sub
     letter_write("py-15-wo", "o", LETTER_STROKES["o"], "描一描字母 o：从右上起笔画个圆", "字母 o 描圆啦！"),
 ]})
 
-finish_50(pinyin_levels, "pinyin")
+# —— v0.12 二年级拼音 +50 关：大写字母·音序查字 / 多音字 / 轻声 / 儿化 / 变调 / 平翘舌（部编二上二下）——
+def py_abc_level(i, gid, title, letters, ex_pairs, practice):
+    steps = []
+    if letters:
+        st = {"id": f"py-{gid}-t", "kind": "letter", "letters": letters, "display": " ".join(letters[:4]),
+              "examples": [{"icon": ic, "text": t, "say": t} if ic else {"text": t} for ic, t in ex_pairs],
+              "question": f"学一学：{title}", "anim": "pydraw"}
+        steps.append(st)
+    pinyin_levels.append({"id": f"py-{gid}", "title": f"第 {i+1} 关 {title}", "subtitle": title, "steps": steps + practice})
+
+def py_polyphonic(i, gid, word, disp, examples, quiz_q, opts, ans, hint):
+    pinyin_levels.append({"id": f"py-{gid}", "title": f"第 {i+1} 关 多音字·{word}", "subtitle": disp, "steps": [
+        {"id": f"py-{gid}-t", "kind": "letter", "letters": [word], "display": disp,
+         "examples": [{"icon": ic, "text": t, "say": t} if ic else {"text": t} for ic, t in examples],
+         "question": f"学一学多音字：「{word}」"},
+        quiz_step(f"py-{gid}-q1", quiz_q, opts, ans, hint, f"答对啦，{disp}！"),
+        quiz_step(f"py-{gid}-q2", f"「{word}」的两个读音你都记住了吗？",
+                  [(None, disp.split(" / ")[0]), (None, disp.split(" / ")[1]), (None, disp.split(" / ")[0] + disp.split(" / ")[1])], 0,
+                  "一字两读，意思不同", "都记住啦！"),
+    ]})
+
+ABC_GROUPS = [
+    ("py-a1", "大写字母 A B C D", ["A","B","C","D"], [("apple","A 像 Apple 山尖"),("block","B 像积木"),("cat","C 像弯月"),("dice","D 像半圆")]),
+    ("py-a2", "大写字母 E F G H", ["E","F","G","H"], [("egg","E 蛋 Egg"),("flame","F 火 Fire"),("gift","G 礼 Gift"),("heart","H 心 Heart")]),
+    ("py-a3", "大写字母 I J K L", ["I","J","K","L"], [("ice","I 冰 Ice"),("jar","J 罐 Jar"),("key","K 钥 Key"),("lion","L 狮 Lion")]),
+    ("py-a4", "大写字母 M N O P", ["M","N","O","P"], [("moon","M 月 Moon"),("newmoon","N 月牙"),("circle","O 圆圈"),("panda","P 熊猫 Panda")]),
+    ("py-a5", "大写字母 Q R S T", ["Q","R","S","T"], [("question","Q 问题"),("rocket","R 火箭 Rocket"),("sun","S 太阳 Sun"),("train","T 火车 Train")]),
+    ("py-a6", "大写字母 U V W", ["U","V","W"], [("cup","U 像杯子"),("volcano","V 山谷"),("wave","W 浪 Wave")]),
+    ("py-a7", "大写字母 X Y Z", ["X","Y","Z"], [("star","X 星星闪烁"),("flag","Y 像树杈"),("crystal","Z 闪 Crystal")]),
+    ("py-a8", "大小写对照", ["A a","B b","C c"], [("apple","A a 苹果"),("ball","B b 球"),("cat","C c 猫")]),
+]
+for k, (gid, title, letters, exs) in enumerate(ABC_GROUPS):
+    py_abc_level(50 + k, gid, title, letters, exs, [
+        quiz_step(f"py-{gid}-q1", f"「{letters[0]}」的小写是哪个？",
+                  [(None, letters[0].lower()), (None, letters[0].upper()), (None, letters[1].lower())], 0,
+                  "大写小写长得像", "答对啦！"),
+        quiz_step(f"py-{gid}-q2", "字母表里谁排在最前面？",
+                  [(None, letters[0]), (None, letters[1]), (None, letters[2])], 0,
+                  "按 A B C D 顺序", "对，排在最前！"),
+    ])
+
+# 音序查字法（4 关）
+for k, (gid, title, q, opts, ans, hint) in enumerate([
+    ("py-xd1", "音序查字：查「花」", "用音序查字法查「花」，先查大写字母——", [("flower","H"),("sun","S"),("moon","M")], 0, "花 huā，音序 H"),
+    ("py-xd2", "音序查字：查「星」", "查「星 xīng」，先查——", [("star","X"),("moon","M"),("flag","F")], 0, "星 xīng，音序 X"),
+    ("py-xd3", "音序查字典步骤", "音序查字法第一步是——", [(None,"找音序（第一个大写字母）"),(None,"直接翻书"),(None,"问别人")], 0, "先定音序，再查页码"),
+    ("py-xd4", "音序查字：查「城」", "查「城 chéng」，先查——", [("castle","C"),("cat","K"),("book","B")], 0, "城 chéng，音序 C"),
+]):
+    py_abc_level(58 + k, gid, title, [], [], [
+        quiz_step(f"py-{gid}-q", q, opts, ans, hint, "音序查字小能手！")])
+
+# 多音字（8 个，部编二上）
+POLY = [
+    ("py-d1", "长", "cháng / zhǎng", [("train","长 cháng 长城"),("sprout","长 zhǎng 长大")],
+     "「长城」的长读——", [(None,"cháng"),(None,"zhǎng"),(None,"cáng")], 0, "长城很长 cháng"),
+    ("py-d2", "乐", "lè / yuè", [("party","快乐 lè"),("speaker","音乐 yuè")],
+     "「音乐」的乐读——", [(None,"yuè"),(None,"lè"),(None,"yuē")], 0, "音乐 yuè"),
+    ("py-d3", "行", "xíng / háng", [("rocket","行走 xíng"),("train","银行 háng")],
+     "「银行」的行读——", [(None,"háng"),(None,"xíng"),(None,"hàng")], 0, "银行 háng"),
+    ("py-d4", "只", "zhī / zhǐ", [("bird","一只 zhī"),(None,"只有 zhǐ")],
+     "「一只鸟」的只读——", [(None,"zhī"),(None,"zhǐ"),(None,"zī")], 0, "一只 zhī"),
+    ("py-d5", "好", "hǎo / hào", [("heart","好人 hǎo"),(None,"爱好 hào")],
+     "「爱好」的好读——", [(None,"hào"),(None,"hǎo"),(None,"háo")], 0, "爱好 hào"),
+    ("py-d6", "都", "dōu / dū", [("party","都是 dōu"),("castle","首都 dū")],
+     "「首都」的都读——", [(None,"dū"),(None,"dōu"),(None,"dú")], 0, "首都 dū"),
+    ("py-d7", "种", "zhǒng / zhòng", [("sprout","种子 zhǒng"),("sprout","种树 zhòng")],
+     "「种树」的种读——", [(None,"zhòng"),(None,"zhǒng"),(None,"chóng")], 0, "种树 zhòng"),
+    ("py-d8", "教", "jiāo / jiào", [("girl","教书 jiāo"),("book,"  if False else "book","教室 jiào")],
+     "「教室」的教读——", [(None,"jiào"),(None,"jiāo"),(None,"jiē")], 0, "教室 jiàoshì"),
+]
+for k, (gid, word, disp, exs, q, opts, ans, hint) in enumerate(POLY):
+    py_polyphonic(66 + k, gid, word, disp, exs, q, opts, ans, hint)
+
+# 轻声（3）· 儿化（3）· 变调（4）· 平翘舌（4）· 前后鼻音（3）· 整体认读巩固（3）· 拼读儿歌（8）
+LIGHT = [
+    ("py-q1", "轻声·叠词", "妈妈 māma / 爸爸 bàba", "叠词第二个字读轻声", "妈妈 的 妈 读——", [(None,"mā"),(None,"ma 轻声"),(None,"mà")], 1),
+    ("py-q2", "轻声·词尾", "东西 dōngxi / 地方 dìfang", "词尾的字常读轻声", "「地方」的方读——", [(None,"fāng"),(None,"fang 轻声"),(None,"fáng")], 1),
+    ("py-q3", "轻声·助词", "走了 zǒu le / 好吗 hǎo ma", "吗、了、呢 读轻声", "「好吗」的吗读——", [(None,"má"),(None,"ma 轻声"),(None,"mǎ")], 1),
+]
+ERHUA = [
+    ("py-e1", "儿化·花儿", "花儿 huār", "花儿连读，r 别分开", "「花儿」读——", [(None,"huā ér 分开"),(None,"huār 连读"),(None,"huǒ")], 1),
+    ("py-e2", "儿化·鸟儿", "鸟儿 niǎor", "鸟儿 r 轻轻带上", "「鸟儿」读——", [(None,"niǎo èr"),(None,"niǎor 连读"),(None,"niǎo")], 1),
+    ("py-e3", "儿化·一点儿", "一点儿 yìdiǎnr", "一点儿 带上小 r", "「一点儿」读——", [(None,"yìdiǎnr 连读"),(None,"yī diǎn"),(None,"yìdiǎn ér")], 0),
+]
+SANDHI = [
+    ("py-b1", "「一」的变调", "一个 yí gè", "一 在四声前读 yí", "「一个」读——", [(None,"yí gè"),(None,"yī gè"),(None,"yì gè")], 0),
+    ("py-b2", "「一」的变调", "一天 yì tiān", "一 在一声前读 yì", "「一天」读——", [(None,"yì tiān"),(None,"yī tiān"),(None,"yí tiān")], 0),
+    ("py-b3", "「不」的变调", "不是 bú shì", "不 在四声前读 bú", "「不是」读——", [(None,"bú shì"),(None,"bù shì"),(None,"bū shì")], 0),
+    ("py-b4", "三声变调", "你好 nǐ hǎo", "两个三声相连，前变二声", "「你好」实际读——", [(None,"ní hǎo"),(None,"nǐ hǎo"),(None,"nì hǎo")], 0),
+]
+FLATS = [
+    ("py-f1", "平舌 z c s", "自 zì / 从 cóng / 四 sì", "舌尖放平：z c s", "「四」的声母是——", [(None,"s 平舌"),(None,"sh 翘舌"),(None,"c")], 0),
+    ("py-f2", "翘舌 zh ch sh", "知 zhī / 吃 chī / 狮 shī", "舌尖翘起：zh ch sh", "「狮」的声母是——", [(None,"sh 翘舌"),(None,"s 平舌"),(None,"x")], 0),
+    ("py-f3", "z c s vs zh ch sh", "早 zǎo vs 找 zhǎo", "平翘不同，意思不同", "「早」的声母是——", [(None,"z"),(None,"zh"),(None,"c")], 0),
+    ("py-f4", "r 声母", "日 rì / 热 rè", "r 也是翘舌", "「日」的声母是——", [(None,"r"),(None,"l"),(None,"y")], 0),
+]
+NASALS = [
+    ("py-n1", "前鼻 an en", "山 shān / 人 rén", "前鼻收尾 n", "「山」的韵母是——", [(None,"an 前鼻"),(None,"ang 后鼻"),(None,"ai")], 0),
+    ("py-n2", "后鼻 ang eng", "亮 liàng / 灯 dēng", "后鼻收尾 ng，声音响", "「灯」的韵母是——", [(None,"eng 后鼻"),(None,"en 前鼻"),(None,"ei")], 0),
+    ("py-n3", "前后鼻对比", "陈 chén vs 城 chéng", "n 舌尖、ng 舌根", "「城」的韵母是——", [(None,"eng 后鼻"),(None,"en 前鼻"),(None,"un")], 0),
+]
+WHOLE = [
+    ("py-w1", "整体认读复习", "zhi chi shi ri", "一口读出不拆开", "下面哪个是整体认读？", [(None,"shi"),(None,"sh"),(None,"sha")], 0),
+    ("py-w2", "整体认读复习", "yi wu yu", "y 和 w 开头也整体读", "下面哪个是整体认读？", [(None,"yu"),(None,"y+u 拼读"),(None,"iu")], 0),
+    ("py-w3", "整体认读复习", "yuan yin yun ying", "16 个整体认读要记牢", "「音 yīn」是——", [(None,"整体认读"),(None,"声母"),(None,"三拼")], 0),
+]
+EXTRA2 = [
+    ("py-e4", "儿化·画儿", "画儿 huàr", "画儿 也带小 r", "「画儿」读——", [(None,"huàr 连读"),(None,"huà ér"),(None,"huà")], 0),
+    ("py-d9", "多音字·地", "土地 dì / 慢慢地 de", "词尾的「地」读轻声 de", "「慢慢地」的地读——", [(None,"de 轻声"),(None,"dì"),(None,"dí")], 0),
+]
+for group in [EXTRA2]:
+    for k, (gid, title, disp, tip, q, opts, ans) in enumerate(group):
+        pinyin_levels.append({"id": f"py-{gid}", "title": f"第 {title}", "subtitle": disp, "steps": [
+            {"id": f"py-{gid}-t", "kind": "letter", "letters": [disp], "display": disp,
+             "examples": [{"text": disp}], "question": f"学一学：{title}"},
+            quiz_step(f"py-{gid}-q", q, opts, ans, tip, "拼音小达人！"),
+        ]})
+
+SONGS = [
+    ("py-g1", "拼读儿歌·数字", "四是四，十是十", "sì shí 分清平翘舌", "「十」读——", [(None,"shí 翘舌"),(None,"sí 平舌"),(None,"sì")], 0),
+    ("py-g2", "拼读儿歌·四季", "春季夏天秋冬", "四季 jì 韵母 i", "「春 chūn」的韵母是——", [(None,"un"),(None,"ong"),(None,"uan")], 0),
+    ("py-g3", "拼读儿歌·动物", "小熊熊，爬树丛", "熊 xióng 是三拼音节? i ong", "「熊 xióng」是——", [(None,"两拼 xi-ong"),(None,"三拼 x-i-ong"),(None,"整体认读")], 1),
+    ("py-g4", "拼读儿歌·自然", "白云飘，太阳照", "飘 piāo 三拼音节", "「飘 piāo」是——", [(None,"三拼 p-i-ao"),(None,"两拼 p-ao"),(None,"整体认读")], 0),
+    ("py-g5", "拼读儿歌·校园", "背着书包上学校", "书 shū 包 bāo", "「书 shū」的声母是——", [(None,"sh"),(None,"s"),(None,"x")], 0),
+    ("py-g6", "拼读儿歌·问答", "谁的耳朵长？驴的耳朵长", "驴 lǘ 帽点 ü", "「驴 lǘ」遇到 j q x 会——", [(None,"去点变 ju"),(None,"保留两点"),(None,"变 u")], 0),
+    ("py-g7", "拼读儿歌·反思", "拼读要看声调号", "声调标在韵母头上", "声调标在哪里？", [(None,"韵母上"),(None,"声母上"),(None,"随便")], 0),
+    ("py-g8", "拼读总复习", "拼音学好了，识字本领高", "音序查字典也要用拼音", "拼音帮我们——", [(None,"识字和查字典"),(None,"只做游戏"),(None,"画画")], 0),
+]
+for group in [LIGHT, ERHUA, SANDHI, FLATS, NASALS, WHOLE, SONGS]:
+    for k, (gid, title, disp, tip, q, opts, ans) in enumerate(group):
+        pinyin_levels.append({"id": f"py-{gid}", "title": f"第 {title}", "subtitle": disp, "steps": [
+            {"id": f"py-{gid}-t", "kind": "letter", "letters": [disp], "display": disp,
+             "examples": [{"text": disp}], "question": f"学一学：{title}"},
+            quiz_step(f"py-{gid}-q", q, opts, ans, tip, "拼音小达人！"),
+        ]})
+
+finish_levels(pinyin_levels, "pinyin", 100)
 apply_anims(pinyin_levels, {
     **{f"py-{i}": "pydraw" for i in range(11)},          # 声母/单韵母：铅笔描画字母
     "py-12": "tone",                                      # 四声小帽子：声调符号逐个戴帽
@@ -1117,9 +1557,12 @@ append_extras(pinyin_levels, [
     ("py-10", sequence_step("py-x3", "按顺序点：a → o → e", ["a","o","e"], praise="单韵母排好队！")),
 ])
 W("pinyin_levels.json", {"subject": "pinyin", "title": "拼音谷", "guide": "panda",
-                         "zones": zones_meta(["声母起步", "声母进阶", "韵母家族", "整体认读", "拼读大挑战"],
-                                             (["speaker", "book", "star", "sparkle", "medal"],
-                                              ["b p m f d t n l g k", "h j q x zh ch sh r z c s y w", "单韵母 · 复韵母 · 鼻韵母", "16 个整体认读音节", "标调 · 三拼 · 拼读"])),
+                         "zones": zones_meta(["字母启蒙", "声母闯关", "韵母家族", "整体认读", "音序查字",
+                                              "多音字", "轻声与儿化", "变调妙用", "平翘与前后鼻", "拼读大挑战"],
+                                             (["book", "speaker", "star", "sparkle", "school",
+                                               "equal", "hanger", "bulb", "question", "medal"],
+                                              ["A-J 字母与发音", "23 个声母逐关", "单韵母 · 复韵母 · 鼻韵母", "16 个整体认读音节",
+                                               "大写字母与查字典", "一字两读", "词尾轻读 · 连读小 r", "一和不的变调", "平翘舌 · 前后鼻", "儿歌拼读总复习"])),
                          "levels": pinyin_levels})
 
 # ================= 英语 24 关 =================
@@ -1232,15 +1675,15 @@ english_levels.append({"id": "en-11", "title": "Level 12 Review", "subtitle": "�
 EN_TOPICS = [
     ("en-12","Level 13 Animals","动物",[("cat","Cat","猫"),("duck","Duck","鸭"),("rabbit","Rabbit","兔"),("bear","Bear","熊")]),
     ("en-13","Level 14 Colors","颜色",[("apple","Red","红"),("banana","Yellow","黄"),("wave","Blue","蓝"),("leaf","Green","绿")]),
-    ("en-14","Level 15 Numbers","数字",[("starface","One","一"),("star","Two","二"),("moon","Three","三"),("sun","Four","四")]),
-    ("en-15","Level 16 Fruits","水果",[("apple","Apple","苹果"),("banana","Banana","香蕉"),("heart","Peach","桃"),("candy","Grape","葡萄")]),
-    ("en-16","Level 17 Family","家庭",[("girl","Mom","妈妈"),("fox","Dad","爸爸"),("paw","Baby","宝宝"),("home","Home","家")]),
-    ("en-17","Level 18 Body","身体",[("starface","Eye","眼睛"),("paw","Hand","手"),("crystal","Nose","鼻子"),("speaker","Mouth","嘴")]),
-    ("en-18","Level 19 Stationery","文具",[("book","Book","书"),("gift","Bag","书包"),("key","Pen","笔"),("school","School","学校")]),
+    ("en-14","Level 15 Numbers","数字",[(None,"One","一"),(None,"Two","二"),(None,"Three","三"),(None,"Four","四")]),
+    ("en-15","Level 16 Fruits","水果",[("apple","Apple","苹果"),("banana","Banana","香蕉"),("candy","Sweet","甜"),("bread","Bread","面包")]),
+    ("en-16","Level 17 Family","家庭",[("girl","Me","我"),("girl","Teacher","老师"),("fox","Fox","狐狸"),("home","Home","家")]),
+    ("en-17","Level 18 Body","身体",[("paw","Foot","脚"),("paw","Baby Paw","小脚丫"),("speaker","Mouth","嘴"),("girl","Me","我")]),
+    ("en-18","Level 19 Stationery","文具",[("book","Book","书"),("clip","Clip","夹子"),("school","School","学校"),("chart","Chart","图表")]),
     ("en-19","Level 20 Food","食物",[("cake","Cake","蛋糕"),("candy","Candy","糖"),("bread","Bread","面包"),("milk","Milk","牛奶")]),
-    ("en-20","Level 21 Clothes","衣物",[("hanger","Shirt","衬衫"),("shoe","Shoe","鞋"),("hat","Hat","帽子"),("bear","Coat","外套")]),
-    ("en-21","Level 22 Transport","交通",[("train","Train","火车"),("rocket","Rocket","火箭"),("wave","Boat","船"),("balloon","Plane","飞机")]),
-    ("en-22","Level 23 Actions","动作",[("girl","Run","跑"),("rabbit","Jump","跳"),("fish","Swim","游"),("bird","Fly","飞")]),
+    ("en-20","Level 21 Clothes","衣物",[("shoe","Shoe","鞋"),("hat","Hat","帽子"),("hanger","Hanger","衣架"),("gift","Gift","礼物")]),
+    ("en-21","Level 22 Transport","交通",[("train","Train","火车"),("rocket","Rocket","火箭"),("wave","Wave","浪"),("bus","Bus","公交")]),
+    ("en-22","Level 23 Actions","动作",[("girl","Run","跑"),("rabbit","Jump","跳"),("fish","Swim","游"),("apple","Eat","吃")]),
     # —— v0.11 剑桥 Starters 主题词场补 13 个（50 关扩容）——
     ("en-33","Level 34 Toys","玩具",[("ball","Ball","球"),("block","Block","积木"),("dice","Dice","骰子"),("gift","Gift","礼物")]),
     ("en-34","Level 35 Home","家",[("home","Home","家"),("bed","Bed","床"),("cup","Cup","杯子"),("key","Key","钥匙")]),
@@ -1260,20 +1703,32 @@ EN_REVIEW_WORDS = [("cat","Cat","猫"),("apple","Apple","苹果"),("train","Trai
 
 def en_topic_level(lid, title, subtitle, words):
     li = int(lid.split("-")[1])
-    examples = [{"icon": ic, "text": f"{en} {cn}", "say": en} for ic, en, cn in words]
+    def _opt(ic, en):
+        # ⚠️ 有图标时也必须带 text：关卡页按 examples[0].text 记单词卡，
+        #    缺 text 会让 renderLevel 读 undefined.split 崩掉、整关弹回地图（v0.12 修）。
+        o = {"text": en}
+        if ic:
+            o = {"icon": ic, "text": en}
+        return o
+    examples = [dict(_opt(ic, f"{en} {cn}"), say=en) for ic, en, cn in words]
     steps = [{"id": f"{lid}-t", "kind": "letter", "letters": [words[0][1][0]], "display": words[0][1],
               "examples": examples, "question": f"Learn: {subtitle} 主题单词"}]
     # 听选图：第 1 个词（options 元素为 (text, icon)）
+    # ⚠️ 干扰项按索引取，不能按 icon 去重——None 图标的词（星期/月份/数字）会有多个相同 icon，
+    #    按 icon 过滤会把它们全删光导致越界（v0.12 修）。
     ic0, en0, cn0 = words[0]
-    others = [w for w in words if w[0] != ic0]
+    others = list(words[1:])
+    while len(others) < 2:
+        others.append(FALLBACK_POOL[len(others) % len(FALLBACK_POOL)])
     d1, d2 = others[0], others[1]
     opts, ans = rot([(en0, ic0), (d1[1], d1[0]), (d2[1], d2[0])], 0, li % 3)
     steps.append({"id": f"{lid}-q1", "kind": "quiz",
                   "question": f"Which one is {en0}? {cn0} 是哪一个？",
-                  "options": [{"icon": ic, "text": tx} for tx, ic in opts], "answer": ans,
+                  "options": [_opt(ic, tx) for tx, ic in opts], "answer": ans,
                   "hint": en0, "praise": f"Yes! It's {en0}!"})
-    # 翻牌复习
-    pairs = [(w[1], w[0], None, None, w[1]) for w in words[:3]]
+    # 翻牌复习：数字等无图标的词场，图片侧退化用主题代表图，
+    # ⚠️ 不能直接给 None：memory 牌 icon/text 至少一项（v0.12 validate 会 FAIL）
+    pairs = [(w[1], (w[0] or "dice"), None, None, w[1]) for w in words[:3]]
     steps.append(memory_step(f"{lid}-m", "翻翻牌：单词和图片配成对", pairs))
     return {"id": lid, "title": title, "subtitle": subtitle, "steps": steps}
 
@@ -1289,7 +1744,112 @@ english_levels.append({"id": "en-23", "title": "Level 24 Word Review", "subtitle
     word_quiz("en-23-q2","Which one is the train? 火车是哪一个？",[("Rocket","rocket"),("Boat","wave"),("Train","train")],2,"Train 火车","Yes! Train!"),
 ]})
 
-finish_50(english_levels, "english")
+# —— v0.12 剑桥 Starters/Movers +50 关：星期/月份/动词/季节/职业/句型——
+FALLBACK_POOL = [("ball","Ball"),("apple","Apple"),("cat","Cat"),("star","Star"),("cup","Cup")]
+def en_topic_level(i, gid, title, cn, words):
+    # icon 为 None 的词（星期/月份/数字词本身画不出来）：走纯文字选项，
+    # 由渲染层按字数自适应字号——不硬配近似图标（孩子会学错）。
+    def opt(ic, en):
+        o = {"text": en}
+        if ic:
+            o = {"icon": ic, "text": en}
+        return o
+    steps = [{"id": f"{gid}-t", "kind": "letter", "letters": [w[1] for w in words[:1]], "display": title,
+              "examples": [dict(opt(ic, f"{en} {c}"), say=en) for ic, en, c in words],
+              "question": f"Learn: {title} {cn}"}]
+    for k, w in enumerate(words[:3]):
+        others = [x for x in words if x is not w][:2]
+        pads = [x for x in FALLBACK_POOL if all(x[0] != o[0] for o in others) and x[0] != w[0]]
+        opts = [opt(x[0], x[1]) for x in others] + [opt(p[0], p[1]) for p in pads[:2 - len(others)]] + [opt(w[0], w[1])]
+        steps.append({"id": f"{gid}-q{k}", "kind": "quiz",
+                      "question": f"Which one is 「{w[2]}」?",
+                      "options": opts, "answer": 2,
+                      "hint": w[1], "praise": f"Yes! {w[1]}!"})
+    english_levels.append({"id": gid, "title": f"Level {i+1} {title}", "subtitle": cn, "steps": steps})
+
+NEW_TOPICS = [
+    ("en-46", "Days 1", "星期一至三", [(None,"Monday","星期一"),(None,"Tuesday","星期二"),(None,"Wednesday","星期三")]),
+    ("en-47", "Days 2", "星期四至五", [(None,"Thursday","星期四"),(None,"Friday","星期五"),(None,"Monday","星期一")]),
+    ("en-48", "Days 3", "周末", [(None,"Saturday","星期六"),(None,"Sunday","星期日"),(None,"Monday","星期一")]),
+    ("en-49", "Months 1", "一至四月", [(None,"March","三月"),(None,"April","四月"),(None,"May","五月")]),
+    ("en-50", "Months 2", "六至九月", [(None,"June","六月"),(None,"July","七月"),(None,"September","九月")]),
+    ("en-51", "Months 3", "十至十二月", [(None,"October","十月"),(None,"November","十一月"),(None,"December","十二月")]),
+    ("en-52", "Seasons", "四季", [("flower","Spring","春天"),("sun","Summer","夏天"),("maple","Autumn","秋天"),("snowflake","Winter","冬天")]),
+    ("en-53", "Verbs 1", "动作·吃跑睡", [("apple","Eat","吃"),("girl","Run","跑"),("bed","Sleep","睡觉")]),
+    ("en-54", "Verbs 2", "动作·读画唱", [("book","Read","读"),("chart","Draw","画"),("speaker","Sing","唱")]),
+    ("en-55", "Jobs", "职业", [("robot","Robot Maker","造机器人"),("girl","Teacher","老师"),("flask","Scientist","科学家")]),
+    ("en-56", "Feelings", "心情", [("heart","Happy","开心"),("heart","Love","爱"),("party","Excited","兴奋")]),
+    ("en-57", "Places", "场所", [("school","School","学校"),("shop","Shop","商店"),("castle","Castle","城堡")]),
+    ("en-58", "Big and Small", "大小", [("elephant","Big","大"),("duck","Small","小"),("bear","Bear","熊")]),
+    ("en-59", "Fast and Slow", "快慢", [("rocket","Fast","快"),("train","Train","火车"),("comet","Comet","彗星")]),
+    ("en-60", "Breakfast", "早餐", [("bread","Bread","面包"),("milk","Milk","牛奶"),("egg","Egg","蛋")]),
+    ("en-61", "Fruit Bowl", "水果盘", [("apple","Apple","苹果"),("banana","Banana","香蕉"),("candy","Sweet","甜食")]),
+    ("en-62", "On the Farm", "农场", [("cow","Cow","奶牛"),("pig","Pig","猪"),("duck","Duck","鸭")]),
+    ("en-63", "Pets", "宠物", [("cat","Cat","猫"),("dog","Dog","狗"),("rabbit","Rabbit","兔子")]),
+    ("en-64", "Wild Animals", "野生动物", [("lion","Lion","狮子"),("fox","Fox","狐狸"),("polarbear","Polar Bear","北极熊")]),
+    ("en-65", "Sea Friends", "海洋", [("fish","Fish","鱼"),("penguin","Penguin","企鹅"),("wave","Wave","海浪")]),
+    ("en-66", "Sky", "天空", [("star","Star","星星"),("moon","Moon","月亮"),("sunface","Sun","太阳")]),
+    ("en-67", "At Home", "在家里", [("home","House","房子"),("bed","Bed","床"),("clock","Clock","钟")]),
+    ("en-68", "Play Time", "游戏", [("dice","Dice","骰子"),("block","Block","积木"),("ball","Ball","球")]),
+    ("en-69", "Body Power", "身体本领", [("paw","Foot","脚"),("paw","Baby Paw","小脚丫"),("girl","Me","我")]),
+    ("en-70", "Colours Again", "颜色", [("rainbow","Rainbow","彩虹"),("apple","Red","红"),("leaf","Green","绿")]),
+    ("en-71", "Numbers 5-8", "数字五到八", [(None,"Five","五"),(None,"Six","六"),(None,"Seven","七"),(None,"Eight","八")]),
+    ("en-72", "Greetings", "打招呼", [("girl","Hello","你好"),("party","Bye","再见"),("heart","Thank you","谢谢")]),
+    ("en-73", "On the Table", "桌上", [("cup","Cup","杯子"),("book","Book","书"),("jar","Jar","罐")]),
+]
+for k, t in enumerate(NEW_TOPICS):
+    en_topic_level(46 + k, *t)
+
+# 词场复习 2 关 + 句型 2 关 + 总复习 1 关
+english_levels.append({"id": "en-74", "title": "Level 75 Week Review", "subtitle": "星期复习", "steps": [
+    {"id": "en-74-t", "kind": "letter", "letters": ["Monday"], "display": "Week",
+     "examples": [{"text": "Monday 星期一"}, {"text": "Sunday 星期日"}], "question": "复习：一周七天"},
+    quiz_step("en-74-q1", "The first day of school is——", [(None,"Monday"),(None,"Saturday"),(None,"Sunday")], 0, "上学第一天", "Yes! Monday!"),
+    quiz_step("en-74-q2", "Which day is on the weekend?", [(None,"Saturday"),(None,"Monday"),(None,"Thursday")], 0, "周末两天", "Yes! Weekend!"),
+]})
+english_levels.append({"id": "en-75", "title": "Level 76 Seasons Review", "subtitle": "四季复习", "steps": [
+    {"id": "en-75-t", "kind": "letter", "letters": ["Spring"], "display": "Seasons",
+     "examples": [{"icon": "flower", "text": "Spring 春"}, {"icon": "snowflake", "text": "Winter 冬"}], "question": "复习：四季"},
+    quiz_step("en-75-q1", "Snow falls in——", [("snowflake","Winter"),("sun","Summer"),("flower","Spring")], 0, "冬天下雪", "Yes! Winter!"),
+    quiz_step("en-75-q2", "Flowers bloom in——", [("flower","Spring"),("snowflake","Winter"),("maple","Autumn")], 0, "春天开花", "Yes! Spring!"),
+]})
+english_levels.append({"id": "en-76", "title": "Level 77 I can...", "subtitle": "句型·我会", "steps": [
+    {"id": "en-76-t", "kind": "letter", "letters": ["I can"], "display": "I can…",
+     "examples": [{"icon": "girl", "text": "I can run 我会跑"}, {"icon": "fish", "text": "I can swim 我会游"}], "question": "句型：I can… 我会……"},
+    quiz_step("en-76-q1", "「我会游泳」是——", [(None,"I can swim"),(None,"I can run"),(None,"I can sing")], 0, "swim 游泳", "Yes! I can swim!"),
+    quiz_step("en-76-q2", "「我会读书」是——", [(None,"I can read"),(None,"I can jump"),(None,"I can fly")], 0, "read 读书", "Yes! I can read!"),
+]})
+english_levels.append({"id": "en-77", "title": "Level 78 I like...", "subtitle": "句型·我喜欢", "steps": [
+    {"id": "en-77-t", "kind": "letter", "letters": ["I like"], "display": "I like…",
+     "examples": [{"icon": "apple", "text": "I like apples 我喜欢苹果"}, {"icon": "cat", "text": "I like cats 我喜欢猫"}], "question": "句型：I like… 我喜欢……"},
+    quiz_step("en-77-q1", "「我喜欢小猫」是——", [(None,"I like cats"),(None,"I like dogs"),(None,"I like cake")], 0, "cats 小猫复数", "Yes! I like cats!"),
+]})
+
+# —— v0.12 补充 18 个主题词场（凑足 96 正则）——
+MORE_TOPICS = [
+    ("en-78", "School Things", "学习用品", [("book","Book","书"),("chart","Chart","图表"),("clip","Clip","夹子"),("school","School","学校")]),
+    ("en-79", "In the Park", "公园", [("tree","Tree","树"),("flower","Flower","花"),("bush","Bush","灌木"),("duck","Duck","鸭")]),
+    ("en-80", "On the Beach", "海滩", [("wave","Wave","海浪"),("palm","Palm","椰树"),("desert","Sand","沙"),("penguin","Penguin","企鹅")]),
+    ("en-81", "Music Time", "音乐时间", [("speaker","Speaker","喇叭"),("speaker","Sing","唱歌"),("party","Party","派对")]),
+    ("en-82", "Wear This", "穿搭", [("hanger","Hanger","衣架"),("shoe","Shoe","鞋"),("hat","Hat","帽子")]),
+    ("en-83", "Go Go Go", "出行", [("car","Car","汽车"),("bus","Bus","公交"),("rocket","Rocket","火箭")]),
+    ("en-84", "My Family", "我的家", [("girl","Me","我"),("girl","Teacher","老师"),("fox","Fox","狐狸")]),
+    ("en-85", "Toy Box", "玩具箱", [("balloon","Balloon","气球"),("shield","Shield","盾牌"),("gift","Gift","礼物")]),
+    ("en-86", "Night Sky", "夜空", [("comet","Comet","彗星"),("rainbow","Rainbow","彩虹"),("blackhole","Black Hole","黑洞")]),
+    ("en-87", "Dinosaur 1", "恐龙·霸王龙", [("dino","T-Rex","霸王龙"),("dino","Roar","吼"),("dino","Long Neck","长脖子")]),
+    ("en-88", "Dinosaur 2", "恐龙·长脖子", [("dino","Long Neck","长脖子"),("leaf","Eats Leaves","吃叶子"),("dino","T-Rex","霸王龙")]),
+    ("en-89", "Fruit Mix", "水果混合", [("apple","Apple","苹果"),("banana","Banana","香蕉"),("candy","Sweet","甜")]),
+    ("en-90", "Drink Up", "喝的", [("milk","Milk","牛奶"),("cup","Cup","杯子"),("jar","Jar","罐子")]),
+    ("en-91", "Animal Babies", "动物宝宝", [("paw","Baby Paw","小脚丫"),("duck","Duckling","小鸭"),("bear","Cub","小熊")]),
+    ("en-92", "Hot and Cold", "热和冷", [("sun","Hot","热"),("snowflake","Cold","冷"),("ice","Ice","冰")]),
+    ("en-93", "Little Helpers", "小帮手", [("robot","Robot","机器人"),("flask","Science","科学"),("magnet","Magnet","磁铁")]),
+    ("en-94", "Fun Fair", "游乐场", [("party","Fun","欢乐"),("dice","Game","游戏"),("balloon","Balloon","气球")]),
+    ("en-95", "Time to Eat", "吃饭啦", [("bread","Bread","面包"),("candy","Candy","糖果"),("cake","Cake","蛋糕")]),
+]
+for k, t in enumerate(MORE_TOPICS):
+    en_topic_level(78 + k, *t)
+
+finish_levels(english_levels, "english", 100)
 apply_anims(english_levels, {
     "en-12": "walk",        # Animals：小猫散步
     "en-13": "rainbow",     # Colors：彩虹逐条扫入
@@ -1311,9 +1871,12 @@ append_extras(english_levels, [
                          [("apple","Apple","苹果"),("banana","Banana","香蕉"),("cake","Cake","蛋糕")])),
 ])
 W("english_levels.json", {"subject": "english", "title": "英语王国", "guide": "robot",
-                         "zones": zones_meta(["字母启蒙", "动物与食物", "生活词汇", "多彩世界", "词汇大挑战"],
-                                             (["book", "cat", "home", "world-map", "medal"],
-                                              ["A-J 字母与发音", "动物 · 水果 · 食物", "家 · 城市 · 自然", "动物园 · 海洋 · 天气", "主题词大闯关"])),
+                         "zones": zones_meta(["字母启蒙", "动物与食物", "生活词汇", "星期月份", "多彩世界",
+                                              "动作与职业", "主题词场", "四季与自然", "恐龙与朋友", "词汇大挑战"],
+                                             (["book", "cat", "home", "star", "world-map",
+                                               "girl", "block", "snowflake", "dino", "medal"],
+                                              ["A-T 字母与发音", "Starters 动物食物", "家 · 城市 · 自然", "Days · Months · Seasons", "动物园 · 海洋 · 天气",
+                                               "动作 · 职业 · 心情", "玩具 · 工具 · 花园", "四季 · 晚会 · 冬天", "恐龙 · 朋友 · 大小快慢", "句型 · 复习 · 大闯关"])),
                          "levels": english_levels})
 
 # ================= 天文台 100 关（10 星区，知识点取材天文童书） =================
@@ -2553,7 +3116,119 @@ for g in GEO_NEW:
         print("BAD GEO ENTRY:", g[0], "argc:", len(g))
         raise
 
-finish_50(geo_levels, "geo")
+# —— v0.12 地理二阶 +54 关（DK 儿童地理百科 / 国家地理少儿版）——
+GEO2 = [
+    # 中国各地（8）
+    ("geo-46", "第 47 关 广州", "千年商都", "广州", [("shop","商贸之都"),("tower","小蛮腰")],
+     "学一学：广州是中国南方的商贸大城", "「千年商都」是——", [("shop","广州"),("castle","莫斯科"),("torii","东京")], 0, "南方大港口"),
+    ("geo-47", "第 48 关 杭州", "西湖龙井", "杭州", [("wave","西湖"),("sprout","龙井茶")],
+     "学一学：杭州有西湖和龙井茶", "西湖在哪座城市？", [("wave","杭州"),("palm","海南"),("everest","西藏")], 0, "上有天堂下有苏杭"),
+    ("geo-48", "第 49 关 成都", "天府之国", "成都", [("panda","大熊猫基地"),("sprout","天府沃野")],
+     "学一学：成都是大熊猫的老家", "大熊猫基地在——", [("panda","成都"),("kangaroo","澳大利亚"),("lion","非洲")], 0, "四川成都"),
+    ("geo-49", "第 50 关 甘肃", "敦煌莫高窟", "甘肃", [("desert","敦煌沙漠"),("flag","丝路")],
+     "学一学：敦煌有莫高窟壁画", "莫高窟在哪一省？", [("desert","甘肃"),("wave","浙江"),("palm","海南")], 0, "丝绸之路重镇"),
+    ("geo-50", "第 51 关 青海湖", "中国最大湖", "青海湖", [("wave","青海湖"),("sprout","油菜花")],
+     "学一学：青海湖是中国最大的湖", "中国最大的湖是——", [("wave","青海湖"),("river","长江"),("wave","死海")], 0, "高原蓝宝石"),
+    ("geo-51", "第 52 关 西藏", "世界屋脊", "西藏", [("everest","珠穆朗玛峰"),("flag","布达拉宫")],
+     "学一学：西藏被称为世界屋脊", "「世界屋脊」是——", [("everest","西藏"),("wave","上海"),("castle","俄罗斯")], 0, "最高的高原"),
+    ("geo-52", "第 53 关 内蒙古", "大草原", "内蒙古", [("sprout","大草原"),("flag","那达慕赛马")],
+     "学一学：内蒙古有一望无际的草原", "内蒙古的代表风景是——", [("sprout","大草原"),("wave","大海"),("desert","沙漠")], 0, "风吹草低见牛羊"),
+    ("geo-53", "第 54 关 香港", "东方之珠", "香港", [("tower","高楼"),("flag","紫荆花")],
+     "学一学：香港被称为东方之珠", "「东方之珠」是——", [("tower","香港"),("palm","海南"),("torii","东京")], 0, "夜景最亮"),
+    # 世界国家（14）
+    ("geo-54", "第 55 关 荷兰", "风车王国", "荷兰", [("windmill","大风车"),("flower","郁金香")],
+     "学一学：荷兰有风车和郁金香", "风车王国是——", [("windmill","荷兰"),("maple","加拿大"),("torii","日本")], 0, "低地之国"),
+    ("geo-55", "第 56 关 瑞士", "雪山之国", "瑞士", [("everest","阿尔卑斯雪山"),("snowflake","滑雪")],
+     "学一学：瑞士的阿尔卑斯雪山很有名", "雪山之国是——", [("everest","瑞士"),("desert","埃及"),("palm","海南")], 0, "滑雪胜地"),
+    ("geo-56", "第 57 关 南非", "钻石之国", "南非", [("crystal","钻石"),("elephant","大象")],
+     "学一学：南非出产钻石", "钻石之国是——", [("crystal","南非"),("pisa","意大利"),("torii","日本")], 0, "非洲最南端"),
+    ("geo-57", "第 58 关 芬兰", "圣诞老人的家", "芬兰", [("snowflake","冰雪"),("party","圣诞老人村")],
+     "学一学：传说圣诞老人住在芬兰", "圣诞老人村在——", [("party","芬兰"),("palm","海南"),("desert","埃及")], 0, "北欧千湖之国"),
+    ("geo-58", "第 59 关 丹麦", "童话王国", "丹麦", [("book","安徒生童话"),("castle","美人鱼像")],
+     "学一学：童话作家安徒生是丹麦人", "童话王国是——", [("book","丹麦"),("bigben","英国"),("eiffel","法国")], 0, "丑小鸭和小美人鱼"),
+    ("geo-59", "第 60 关 印度扩展", "恒河与纱丽", "印度", [("taj","泰姬陵"),("wave","恒河")],
+     "学一学：恒河是印度的圣河", "恒河流经——", [("taj","印度"),("bigben","英国"),("castle","俄罗斯")], 0, "南亚文明古国"),
+    ("geo-60", "第 61 关 新西兰", "长白云之乡", "新西兰", [("sprout","绿地"),("wave","海湾")],
+     "学一学：新西兰被称为长白云之乡", "长白云之乡是——", [("sprout","新西兰"),("kangaroo","澳大利亚"),("polarbear","北极")], 0, "大洋洲岛国"),
+    ("geo-61", "第 62 关 挪威", "峡湾之国", "挪威", [("everest","峡湾陡壁"),("snowflake","极夜")],
+     "学一学：挪威有美丽的峡湾", "峡湾之国是——", [("everest","挪威"),("windmill","荷兰"),("taj","印度")], 0, "北欧海盗国度"),
+    ("geo-62", "第 63 关 希腊", "奥运发源地", "希腊", [("flag","奥林匹克"),("castle","神庙")],
+     "学一学：奥林匹克运动会起源于希腊", "奥运会发源于——", [("flag","希腊"),("bigben","英国"),("pisa","意大利")], 0, "雅典卫城"),
+    ("geo-63", "第 64 关 阿根廷", "探戈与足球", "阿根廷", [("ball","足球"),("party","探戈舞")],
+     "学一学：阿根廷足球和探戈舞都很有名", "梅西的祖国是——", [("ball","阿根廷"),("torii","日本"),("pisa","意大利")], 0, "南美银之国"),
+    ("geo-64", "第 65 关 肯尼亚", "动物大迁徙", "肯尼亚", [("lion","草原狮"),("elephant","象群")],
+     "学一学：肯尼亚有动物大迁徙", "动物大迁徙在——", [("lion","肯尼亚"),("penguin","南极"),("kangaroo","澳大利亚")], 0, "非洲草原壮景"),
+    ("geo-65", "第 66 关 智利", "最狭长的国家", "智利", [("everest","安第斯山"),("wave","太平洋")],
+     "学一学：智利是世界上最狭长的国家", "最狭长的国家是——", [("everest","智利"),("ball","巴西"),("tower","上海")], 0, "安第斯山下"),
+    ("geo-66", "第 67 关 冰岛", "冰与火之国", "冰岛", [("volcano","火山"),("snowflake","冰川")],
+     "学一学：冰岛有冰川也有火山", "「冰与火之国」是——", [("volcano","冰岛"),("palm","海南"),("desert","埃及")], 0, "冰川火山共存"),
+    ("geo-67", "第 68 关 秘鲁", "印加古道", "秘鲁", [("everest","安第斯古城"),("flag","马丘比丘")],
+     "学一学：秘鲁有神秘的马丘比丘古城", "马丘比丘在——", [("everest","秘鲁"),("pyramid","埃及"),("taj","印度")], 0, "天空之城"),
+    # 自然纪录（12）
+    ("geo-68", "第 69 关 马里亚纳海沟", "最深的海", "马里亚纳海沟", [("wave","深深的海沟"),("fish","深海鱼")],
+     "学一学：马里亚纳海沟是海洋最深的地方", "海洋最深处在——", [("wave","马里亚纳海沟"),("river","长江"),("desert","撒哈拉")], 0, "深过最高的山"),
+    ("geo-69", "第 70 贝加尔湖", "最深的湖", "贝加尔湖", [("wave","清澈湖水"),("snowflake","蓝冰")],
+     "学一学：贝加尔湖是最深的淡水湖", "最深的淡水湖是——", [("wave","贝加尔湖"),("river","尼罗河"),("wave","青海湖")], 0, "西伯利亚蓝眼睛"),
+    ("geo-70", "第 71 死海", "最咸的湖", "死海", [("wave","死海漂浮"),("sun","烈日")],
+     "学一学：死海太咸，人能浮在水面", "人能躺在水上看书的湖是——", [("wave","死海"),("river","尼罗河"),("wave","太平洋")], 0, "盐分超级高"),
+    ("geo-71", "第 72 格陵兰岛", "最大的岛", "格陵兰", [("snowflake","冰雪大岛"),("polarbear","北极动物")],
+     "学一学：格陵兰是世界最大的岛", "世界最大的岛是——", [("snowflake","格陵兰"),("wave","太平洋"),("tree","海南")], 0, "满岛冰川"),
+    ("geo-72", "第 73 夏威夷", "火山群岛", "夏威夷", [("volcano","活火山"),("palm","草裙舞")],
+     "学一学：夏威夷是火山喷出的群岛", "夏威夷群岛由什么组成？", [(None,"火山岛"),(None,"冰川岛"),(None,"珊瑚岛")], 0, "基拉韦厄活火山"),
+    ("geo-73", "第 74 恐龙时代", "侏罗纪", "恐龙", [("dino","霸王龙"),("dino","梁龙")],
+     "学一学：恐龙生活在几千万年前", "恐龙生活在——", [(None,"几千万年前"),(None,"去年"),(None,"明天")], 0, "史前巨兽"),
+    ("geo-74", "第 75 恐龙灭绝", "大灭绝之谜", "恐龙灭绝", [("meteorite","陨石撞击"),("volcano","火山喷发")],
+     "学一学：陨石撞击可能是恐龙灭绝的原因", "恐龙为什么灭绝？", [(None,"可能因陨石撞击"),(None,"被人类吃光"),(None,"去旅游了")], 0, "科学家仍在研究"),
+    ("geo-75", "第 76 化石", "远古的脚印", "化石", [("rock","岩石里的化石"),("dino","恐龙化石")],
+     "学一学：化石记录了远古生命", "化石藏在哪里？", [("rock","岩石里"),("wave","海水里"),("cake","蛋糕里")], 0, "地球的历史书"),
+    ("geo-76", "第 77 陨石", "天外来客", "陨石", [("meteorite","陨石"),("comet","彗星")],
+     "学一学：陨石是从太空掉落的石头", "陨石来自——", [(None,"太空"),(None,"地底"),(None,"大海")], 0, "太空访客"),
+    ("geo-77", "第 78 彗星", "哈雷彗星", "哈雷彗星", [("comet","彗星"),("star","星空")],
+     "学一学：哈雷彗星约 76 年回来一次", "哈雷彗星绕谁转？", [(None,"太阳"),(None,"月亮"),(None,"地球")], 0, "拖着尾巴的访客"),
+    ("geo-78", "第 79 极昼极夜", "太阳不落山", "极昼极夜", [("polarbear","北极极昼"),("snowflake","极夜")],
+     "学一学：极地夏天太阳不落，冬天不见太阳", "极昼是——", [(None,"太阳整日不落"),(None,"整天黑夜"),(None,"下雪")], 0, "南北极才有的奇景"),
+    ("geo-79", "第 80 珊瑚礁", "海底热带雨林", "珊瑚礁", [("crystal","珊瑚"),("fish","鱼群")],
+     "学一学：珊瑚礁养着四分之一的海洋生物", "珊瑚礁在——", [(None,"温暖浅海"),(None,"深海底"),(None,"沙漠里")], 0, "海洋生命摇篮"),
+    # 节日文化（6）
+    ("geo-80", "第 81 春节", "中国新年", "春节", [("party","贴春联放鞭炮"),("flag","红旗灯笼")],
+     "学一学：春节是中国最重要的节日", "中国最重要的传统节日是——", [("party","春节"),("party","圣诞"),("cake","生日")], 0, "全家团圆过年"),
+    ("geo-81", "第 82 中秋节", "月圆人团圆", "中秋节", [("moon","圆月"),("cake","月饼")],
+     "学一学：中秋吃月饼、赏明月", "中秋节吃什么？", [("cake","月饼"),("candy","糖"),("bread","面包")], 0, "八月十五月儿圆"),
+    ("geo-82", "第 83 端午节", "龙舟粽子", "端午节", [("wave","赛龙舟"),("leaf","粽叶")],
+     "学一学：端午赛龙舟、吃粽子", "端午节纪念——", [(None,"屈原"),(None,"牛郎"),(None,"嫦娥")], 0, "五月初五"),
+    ("geo-83", "第 84 圣诞节", "圣诞快乐", "圣诞节", [("snowflake","雪花"),("party","圣诞树")],
+     "学一学：圣诞节是西方重要节日", "圣诞节在哪一天？", [(None,"12 月 25 日"),(None,"1 月 1 日"),(None,"8 月 15 日")], 0, "圣诞老人传说"),
+    ("geo-84", "第 85 万圣节", "南瓜灯", "万圣节", [("party","南瓜灯"),("hat","化装舞会")],
+     "学一学：万圣节孩子会讨糖果", "万圣节的标志是——", [("party","南瓜灯"),("moon","月亮"),("flag","国旗")], 0, "10 月 31 日"),
+    ("geo-85", "第 86 感恩节", "火鸡大餐", "感恩节", [("cake","节日大餐"),("party","家人团聚")],
+     "学一学：感恩节家人团聚吃火鸡", "感恩节流行于——", [(None,"美国和加拿大"),(None,"中国"),(None,"日本")], 0, "11 月第四个星期四"),
+    # 地图技能与常识（10）
+    ("geo-86", "第 87 认方向", "东南西北", "方向", [("flag","指南针"),("sun","早晨太阳在东")],
+     "学一学：早晨太阳在东边", "太阳升起的方向是——", [(None,"东方"),(None,"西方"),(None,"北方")], 0, "面对太阳前东后西"),
+    ("geo-87", "第 88 指南针", "中国四大发明", "指南针", [("flag","指南针"),("rock","司南")],
+     "学一学：指南针是中国四大发明之一", "指南针的指针指向——", [(None,"南北"),(None,"东西"),(None,"上下")], 0, "四大发明还有造纸印刷火药"),
+    ("geo-88", "第 89 七大洲", "七个大洲", "七大洲", [("world-map","世界地图"),("earth","地球")],
+     "学一学：亚洲最大，大洋洲最小", "最大的洲是——", [(None,"亚洲"),(None,"欧洲"),(None,"南极洲")], 0, "我们就住在亚洲"),
+    ("geo-89", "第 90 四大洋", "四个大洋", "四大洋", [("wave","太平洋"),("wave","大西洋")],
+     "学一学：太平洋最大，北冰洋最小", "最小的洋是——", [(None,"北冰洋"),(None,"太平洋"),(None,"印度洋")], 0, "都在南极洲周围"),
+    ("geo-90", "第 91 地球仪", "会转的地球", "地球仪", [("earth","地球仪"),("circle","圆圆的")],
+     "学一学：地球仪是地球的模型", "地球仪上蓝色代表——", [(None,"海洋"),(None,"陆地"),(None,"云朵")], 0, "地球大部分是海"),
+    ("geo-91", "第 92 国旗", "每个国家有国旗", "国旗", [("flag","五星红旗"),("flag","各国国旗")],
+     "学一学：每个国家都有自己的国旗", "中国的国旗是——", [(None,"五星红旗"),(None,"枫叶旗"),(None,"米字旗")], 0, "升国旗要敬礼"),
+    ("geo-92", "第 93 人种与语言", "说不同的话", "语言", [("speaker","各种语言"),("world-map","世界语言")],
+     "学一学：世界上有几千种语言", "世界上说人数最多的母语是——", [(None,"汉语"),(None,"英语"),(None,"法语")], 0, "我们说普通话"),
+    ("geo-93", "第 94 保护地球", "爱护环境", "环保", [("sprout","种树"),("earth","爱护地球")],
+     "学一学：垃圾分类保护地球", "保护地球可以——", [(None,"垃圾分类、节约用水"),(None,"多扔垃圾"),(None,"浪费水")], 0, "地球是我们共同的家"),
+    ("geo-94", "第 95 环球旅行家", "带地图出发", "环球旅行", [("world-map","世界地图"),("rocket","出发")],
+     "学一学：看地图能找到想去的地方", "去陌生地方旅行要带上——", [(None,"地图"),(None,"玩具"),(None,"零食")], 0, "小小环球旅行家"),
+    ("geo-95", "第 96 时差", "地球那边天黑了", "时差", [("earth","地球自转"),("moon","夜晚")],
+     "学一学：地球自转，各地白天黑夜不同时", "我们白天时，地球另一边可能——", [(None,"正是黑夜"),(None,"也是白天"),(None,"没有时间")], 0, "地球转呀转，昼夜轮流来"),
+]
+
+for g in GEO2:
+    geo_levels.append(geo_new(*g))
+
+finish_levels(geo_levels, "geo", 100)
 apply_anims(geo_levels, {
     "geo-2": "river",       # 长江黄河：江河奔流
     "geo-3": "wall",        # 万里长城：城墙绵延
@@ -2576,9 +3251,12 @@ append_extras(geo_levels, [
                              "windmill", ["lion","elephant","penguin"])),
 ])
 W("geo_levels.json", {"subject": "geo", "title": "环球号", "guide": "panda",
-                     "zones": zones_meta(["中国风貌", "中国各地", "环游世界", "首都名城", "自然与纪录"],
-                                         (["china-map", "greatwall", "world-map", "castle", "medal"],
-                                          ["地图 · 北京 · 江河长城", "各地风光", "国家与地标", "六国首都", "海洋 · 沙漠 · 雨林"])),
+                     "zones": zones_meta(["中国风貌", "中国各地", "世界国家", "首都名城", "自然纪录",
+                                          "恐龙与化石", "节日文化", "地图技能", "世界常识", "环球大挑战"],
+                                         (["china-map", "greatwall", "world-map", "castle", "wave",
+                                           "dino", "party", "flag", "earth", "medal"],
+                                          ["地图 · 北京 · 长城珠峰", "上海杭州成都甘肃", "日泰埃法英俄", "六国首都巡礼",
+                                           "海沟 · 湖泊 · 岛屿", "恐龙化石陨石彗星", "春节中秋圣诞", "方向 · 指南针 · 地球仪", "大洲大洋 · 语言环保", "总复习"])),
                      "levels": geo_levels})
 
 # ================= 收集册 8 组 =================

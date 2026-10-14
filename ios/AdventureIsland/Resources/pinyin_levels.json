@@ -5,15 +5,15 @@
   "zones": [
     {
       "n": 1,
-      "title": "声母起步",
-      "subtitle": "b p m f d t n l g k",
-      "icon": "speaker"
+      "title": "字母启蒙",
+      "subtitle": "A-J 字母与发音",
+      "icon": "book"
     },
     {
       "n": 2,
-      "title": "声母进阶",
-      "subtitle": "h j q x zh ch sh r z c s y w",
-      "icon": "book"
+      "title": "声母闯关",
+      "subtitle": "23 个声母逐关",
+      "icon": "speaker"
     },
     {
       "n": 3,
@@ -29,8 +29,38 @@
     },
     {
       "n": 5,
+      "title": "音序查字",
+      "subtitle": "大写字母与查字典",
+      "icon": "school"
+    },
+    {
+      "n": 6,
+      "title": "多音字",
+      "subtitle": "一字两读",
+      "icon": "equal"
+    },
+    {
+      "n": 7,
+      "title": "轻声与儿化",
+      "subtitle": "词尾轻读 · 连读小 r",
+      "icon": "hanger"
+    },
+    {
+      "n": 8,
+      "title": "变调妙用",
+      "subtitle": "一和不的变调",
+      "icon": "bulb"
+    },
+    {
+      "n": 9,
+      "title": "平翘与前后鼻",
+      "subtitle": "平翘舌 · 前后鼻",
+      "icon": "question"
+    },
+    {
+      "n": 10,
       "title": "拼读大挑战",
-      "subtitle": "标调 · 三拼 · 拼读",
+      "subtitle": "儿歌拼读总复习",
       "icon": "medal"
     }
   ],
@@ -1525,182 +1555,6 @@
       "zone": 2
     },
     {
-      "id": "pinyin-r0",
-      "title": "复习关 一",
-      "subtitle": "旧题开盲盒 · 混排复习",
-      "steps": [
-        {
-          "id": "pinyin-r0-0",
-          "kind": "listen",
-          "prompt": "b",
-          "speakText": "b",
-          "question": "找一找：哪个是「b」？",
-          "options": [
-            {
-              "text": "d"
-            },
-            {
-              "text": "p"
-            },
-            {
-              "text": "b"
-            }
-          ],
-          "answer": 2,
-          "hint": "想一想它的样子",
-          "praise": "「b」找对啦！"
-        },
-        {
-          "id": "pinyin-r0-1",
-          "kind": "listen",
-          "promptIcon": "volcano",
-          "speakText": "p",
-          "question": "看一看：「山坡」的开头是哪个声母？",
-          "options": [
-            {
-              "text": "f"
-            },
-            {
-              "text": "p"
-            },
-            {
-              "text": "t"
-            }
-          ],
-          "answer": 1,
-          "hint": "山坡 的第一个音",
-          "praise": "对！山坡 开头是 p"
-        },
-        {
-          "id": "pinyin-r0-2",
-          "kind": "quiz",
-          "question": "拼一拼 m — a：哪张图是「妈妈」？",
-          "options": [
-            {
-              "icon": "girl",
-              "text": "妈妈"
-            },
-            {
-              "icon": "candy"
-            },
-            {
-              "icon": "heart"
-            }
-          ],
-          "answer": 0,
-          "hint": "m 碰 a",
-          "praise": "拼读小能手：妈妈！"
-        },
-        {
-          "id": "pinyin-r0-3",
-          "kind": "blend",
-          "parts": [
-            "f",
-            "a"
-          ],
-          "question": "拼一拼：f — a = ?",
-          "options": [
-            {
-              "text": "fa"
-            },
-            {
-              "text": "fo"
-            },
-            {
-              "text": "fu"
-            }
-          ],
-          "answer": 0,
-          "hint": "f 碰上 a",
-          "praise": "拼对了，fa！"
-        },
-        {
-          "id": "pinyin-r0-4",
-          "kind": "listen",
-          "prompt": "d",
-          "speakText": "d",
-          "question": "找一找：哪个是「d」？",
-          "options": [
-            {
-              "text": "p"
-            },
-            {
-              "text": "m"
-            },
-            {
-              "text": "d"
-            }
-          ],
-          "answer": 2,
-          "hint": "想一想它的样子",
-          "praise": "「d」找对啦！"
-        },
-        {
-          "id": "pinyin-r0-5",
-          "kind": "listen",
-          "promptIcon": "train",
-          "speakText": "t",
-          "question": "看一看：「太阳」的开头是哪个声母？",
-          "options": [
-            {
-              "text": "p"
-            },
-            {
-              "text": "m"
-            },
-            {
-              "text": "t"
-            }
-          ],
-          "answer": 2,
-          "hint": "太阳 的第一个音",
-          "praise": "对！太阳 开头是 t"
-        }
-      ],
-      "board": {
-        "spaces": [
-          {
-            "type": "question",
-            "step": "pinyin-r0-0"
-          },
-          {
-            "type": "question",
-            "step": "pinyin-r0-1"
-          },
-          {
-            "type": "coin"
-          },
-          {
-            "type": "question",
-            "step": "pinyin-r0-2"
-          },
-          {
-            "type": "question",
-            "step": "pinyin-r0-3"
-          },
-          {
-            "type": "coin"
-          },
-          {
-            "type": "question",
-            "step": "pinyin-r0-4"
-          },
-          {
-            "type": "chest"
-          },
-          {
-            "type": "question",
-            "step": "pinyin-r0-5"
-          },
-          {
-            "type": "mushroom"
-          }
-        ]
-      },
-      "review": true,
-      "zone": 2
-    },
-    {
       "id": "py-23",
       "title": "第 24 关 声母",
       "subtitle": "认识「r」",
@@ -1769,7 +1623,7 @@
           "praise": "拼读小能手：日出！"
         }
       ],
-      "zone": 3
+      "zone": 2
     },
     {
       "id": "py-24",
@@ -2427,6 +2281,182 @@
       "zone": 3
     },
     {
+      "id": "pinyin-r0",
+      "title": "复习关 一",
+      "subtitle": "旧题开盲盒 · 混排复习",
+      "steps": [
+        {
+          "id": "pinyin-r0-0",
+          "kind": "listen",
+          "prompt": "b",
+          "speakText": "b",
+          "question": "找一找：哪个是「b」？",
+          "options": [
+            {
+              "text": "d"
+            },
+            {
+              "text": "p"
+            },
+            {
+              "text": "b"
+            }
+          ],
+          "answer": 2,
+          "hint": "想一想它的样子",
+          "praise": "「b」找对啦！"
+        },
+        {
+          "id": "pinyin-r0-1",
+          "kind": "listen",
+          "promptIcon": "volcano",
+          "speakText": "p",
+          "question": "看一看：「山坡」的开头是哪个声母？",
+          "options": [
+            {
+              "text": "f"
+            },
+            {
+              "text": "p"
+            },
+            {
+              "text": "t"
+            }
+          ],
+          "answer": 1,
+          "hint": "山坡 的第一个音",
+          "praise": "对！山坡 开头是 p"
+        },
+        {
+          "id": "pinyin-r0-2",
+          "kind": "quiz",
+          "question": "拼一拼 m — a：哪张图是「妈妈」？",
+          "options": [
+            {
+              "icon": "girl",
+              "text": "妈妈"
+            },
+            {
+              "icon": "candy"
+            },
+            {
+              "icon": "heart"
+            }
+          ],
+          "answer": 0,
+          "hint": "m 碰 a",
+          "praise": "拼读小能手：妈妈！"
+        },
+        {
+          "id": "pinyin-r0-3",
+          "kind": "blend",
+          "parts": [
+            "f",
+            "a"
+          ],
+          "question": "拼一拼：f — a = ?",
+          "options": [
+            {
+              "text": "fa"
+            },
+            {
+              "text": "fo"
+            },
+            {
+              "text": "fu"
+            }
+          ],
+          "answer": 0,
+          "hint": "f 碰上 a",
+          "praise": "拼对了，fa！"
+        },
+        {
+          "id": "pinyin-r0-4",
+          "kind": "listen",
+          "prompt": "d",
+          "speakText": "d",
+          "question": "找一找：哪个是「d」？",
+          "options": [
+            {
+              "text": "p"
+            },
+            {
+              "text": "m"
+            },
+            {
+              "text": "d"
+            }
+          ],
+          "answer": 2,
+          "hint": "想一想它的样子",
+          "praise": "「d」找对啦！"
+        },
+        {
+          "id": "pinyin-r0-5",
+          "kind": "listen",
+          "promptIcon": "train",
+          "speakText": "t",
+          "question": "看一看：「太阳」的开头是哪个声母？",
+          "options": [
+            {
+              "text": "p"
+            },
+            {
+              "text": "m"
+            },
+            {
+              "text": "t"
+            }
+          ],
+          "answer": 2,
+          "hint": "太阳 的第一个音",
+          "praise": "对！太阳 开头是 t"
+        }
+      ],
+      "board": {
+        "spaces": [
+          {
+            "type": "question",
+            "step": "pinyin-r0-0"
+          },
+          {
+            "type": "question",
+            "step": "pinyin-r0-1"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "pinyin-r0-2"
+          },
+          {
+            "type": "question",
+            "step": "pinyin-r0-3"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "pinyin-r0-4"
+          },
+          {
+            "type": "chest"
+          },
+          {
+            "type": "question",
+            "step": "pinyin-r0-5"
+          },
+          {
+            "type": "mushroom"
+          }
+        ]
+      },
+      "review": true,
+      "zone": 3
+    },
+    {
       "id": "py-33",
       "title": "第 34 关 复韵母 ao ou iu",
       "subtitle": "ao ou iu",
@@ -2988,182 +3018,6 @@
       "zone": 4
     },
     {
-      "id": "pinyin-r1",
-      "title": "复习关 二",
-      "subtitle": "旧题开盲盒 · 混排复习",
-      "steps": [
-        {
-          "id": "pinyin-r1-0",
-          "kind": "listen",
-          "prompt": "b",
-          "speakText": "b",
-          "question": "找一找：哪个是「b」？",
-          "options": [
-            {
-              "text": "d"
-            },
-            {
-              "text": "p"
-            },
-            {
-              "text": "b"
-            }
-          ],
-          "answer": 2,
-          "hint": "想一想它的样子",
-          "praise": "「b」找对啦！"
-        },
-        {
-          "id": "pinyin-r1-1",
-          "kind": "listen",
-          "promptIcon": "volcano",
-          "speakText": "p",
-          "question": "看一看：「山坡」的开头是哪个声母？",
-          "options": [
-            {
-              "text": "f"
-            },
-            {
-              "text": "p"
-            },
-            {
-              "text": "t"
-            }
-          ],
-          "answer": 1,
-          "hint": "山坡 的第一个音",
-          "praise": "对！山坡 开头是 p"
-        },
-        {
-          "id": "pinyin-r1-2",
-          "kind": "quiz",
-          "question": "拼一拼 m — a：哪张图是「妈妈」？",
-          "options": [
-            {
-              "icon": "girl",
-              "text": "妈妈"
-            },
-            {
-              "icon": "candy"
-            },
-            {
-              "icon": "heart"
-            }
-          ],
-          "answer": 0,
-          "hint": "m 碰 a",
-          "praise": "拼读小能手：妈妈！"
-        },
-        {
-          "id": "pinyin-r1-3",
-          "kind": "blend",
-          "parts": [
-            "f",
-            "a"
-          ],
-          "question": "拼一拼：f — a = ?",
-          "options": [
-            {
-              "text": "fa"
-            },
-            {
-              "text": "fo"
-            },
-            {
-              "text": "fu"
-            }
-          ],
-          "answer": 0,
-          "hint": "f 碰上 a",
-          "praise": "拼对了，fa！"
-        },
-        {
-          "id": "pinyin-r1-4",
-          "kind": "listen",
-          "prompt": "d",
-          "speakText": "d",
-          "question": "找一找：哪个是「d」？",
-          "options": [
-            {
-              "text": "p"
-            },
-            {
-              "text": "m"
-            },
-            {
-              "text": "d"
-            }
-          ],
-          "answer": 2,
-          "hint": "想一想它的样子",
-          "praise": "「d」找对啦！"
-        },
-        {
-          "id": "pinyin-r1-5",
-          "kind": "listen",
-          "promptIcon": "train",
-          "speakText": "t",
-          "question": "看一看：「太阳」的开头是哪个声母？",
-          "options": [
-            {
-              "text": "p"
-            },
-            {
-              "text": "m"
-            },
-            {
-              "text": "t"
-            }
-          ],
-          "answer": 2,
-          "hint": "太阳 的第一个音",
-          "praise": "对！太阳 开头是 t"
-        }
-      ],
-      "board": {
-        "spaces": [
-          {
-            "type": "question",
-            "step": "pinyin-r1-1"
-          },
-          {
-            "type": "question",
-            "step": "pinyin-r1-2"
-          },
-          {
-            "type": "coin"
-          },
-          {
-            "type": "question",
-            "step": "pinyin-r1-3"
-          },
-          {
-            "type": "question",
-            "step": "pinyin-r1-4"
-          },
-          {
-            "type": "coin"
-          },
-          {
-            "type": "question",
-            "step": "pinyin-r1-5"
-          },
-          {
-            "type": "chest"
-          },
-          {
-            "type": "question",
-            "step": "pinyin-r1-0"
-          },
-          {
-            "type": "rest"
-          }
-        ]
-      },
-      "review": true,
-      "zone": 4
-    },
-    {
       "id": "py-42",
       "title": "第 43 关 三拼音节",
       "subtitle": "声母+介母+韵母",
@@ -3183,8 +3037,8 @@
             },
             {
               "icon": "home",
-              "text": "花 huā",
-              "say": "花"
+              "text": "锅 guō",
+              "say": "锅"
             }
           ],
           "question": "学一学：gua",
@@ -3210,7 +3064,7 @@
           "praise": "答对啦，三拼！"
         }
       ],
-      "zone": 5
+      "zone": 4
     },
     {
       "id": "py-43",
@@ -3307,8 +3161,8 @@
           "examples": [
             {
               "icon": "everest",
-              "text": "山 shān",
-              "say": "山"
+              "text": "闪 shǎn",
+              "say": "闪"
             },
             {
               "icon": "bulb",
@@ -3339,8 +3193,8 @@
             }
           ],
           "answer": 0,
-          "hint": "高山 shān",
-          "praise": "拼对了，shān！"
+          "hint": "闪 shǎn 一闪一闪",
+          "praise": "拼对了，shǎn！"
         }
       ],
       "zone": 5
@@ -3740,6 +3594,2404 @@
       "zone": 5
     },
     {
+      "id": "py-py-a1",
+      "title": "第 51 关 大写字母 A B C D",
+      "subtitle": "大写字母 A B C D",
+      "steps": [
+        {
+          "id": "py-py-a1-t",
+          "kind": "letter",
+          "letters": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "display": "A B C D",
+          "examples": [
+            {
+              "icon": "apple",
+              "text": "A 像 Apple 山尖",
+              "say": "A 像 Apple 山尖"
+            },
+            {
+              "icon": "block",
+              "text": "B 像积木",
+              "say": "B 像积木"
+            },
+            {
+              "icon": "cat",
+              "text": "C 像弯月",
+              "say": "C 像弯月"
+            },
+            {
+              "icon": "dice",
+              "text": "D 像半圆",
+              "say": "D 像半圆"
+            }
+          ],
+          "question": "学一学：大写字母 A B C D",
+          "anim": "pydraw"
+        },
+        {
+          "id": "py-py-a1-q1",
+          "kind": "quiz",
+          "question": "「A」的小写是哪个？",
+          "options": [
+            {
+              "text": "a"
+            },
+            {
+              "text": "A"
+            },
+            {
+              "text": "b"
+            }
+          ],
+          "answer": 0,
+          "hint": "大写小写长得像",
+          "praise": "答对啦！"
+        },
+        {
+          "id": "py-py-a1-q2",
+          "kind": "quiz",
+          "question": "字母表里谁排在最前面？",
+          "options": [
+            {
+              "text": "A"
+            },
+            {
+              "text": "B"
+            },
+            {
+              "text": "C"
+            }
+          ],
+          "answer": 0,
+          "hint": "按 A B C D 顺序",
+          "praise": "对，排在最前！"
+        }
+      ],
+      "zone": 5
+    },
+    {
+      "id": "py-py-a2",
+      "title": "第 52 关 大写字母 E F G H",
+      "subtitle": "大写字母 E F G H",
+      "steps": [
+        {
+          "id": "py-py-a2-t",
+          "kind": "letter",
+          "letters": [
+            "E",
+            "F",
+            "G",
+            "H"
+          ],
+          "display": "E F G H",
+          "examples": [
+            {
+              "icon": "egg",
+              "text": "E 蛋 Egg",
+              "say": "E 蛋 Egg"
+            },
+            {
+              "icon": "flame",
+              "text": "F 火 Fire",
+              "say": "F 火 Fire"
+            },
+            {
+              "icon": "gift",
+              "text": "G 礼 Gift",
+              "say": "G 礼 Gift"
+            },
+            {
+              "icon": "heart",
+              "text": "H 心 Heart",
+              "say": "H 心 Heart"
+            }
+          ],
+          "question": "学一学：大写字母 E F G H",
+          "anim": "pydraw"
+        },
+        {
+          "id": "py-py-a2-q1",
+          "kind": "quiz",
+          "question": "「E」的小写是哪个？",
+          "options": [
+            {
+              "text": "e"
+            },
+            {
+              "text": "E"
+            },
+            {
+              "text": "f"
+            }
+          ],
+          "answer": 0,
+          "hint": "大写小写长得像",
+          "praise": "答对啦！"
+        },
+        {
+          "id": "py-py-a2-q2",
+          "kind": "quiz",
+          "question": "字母表里谁排在最前面？",
+          "options": [
+            {
+              "text": "E"
+            },
+            {
+              "text": "F"
+            },
+            {
+              "text": "G"
+            }
+          ],
+          "answer": 0,
+          "hint": "按 A B C D 顺序",
+          "praise": "对，排在最前！"
+        }
+      ],
+      "zone": 5
+    },
+    {
+      "id": "py-py-a3",
+      "title": "第 53 关 大写字母 I J K L",
+      "subtitle": "大写字母 I J K L",
+      "steps": [
+        {
+          "id": "py-py-a3-t",
+          "kind": "letter",
+          "letters": [
+            "I",
+            "J",
+            "K",
+            "L"
+          ],
+          "display": "I J K L",
+          "examples": [
+            {
+              "icon": "ice",
+              "text": "I 冰 Ice",
+              "say": "I 冰 Ice"
+            },
+            {
+              "icon": "jar",
+              "text": "J 罐 Jar",
+              "say": "J 罐 Jar"
+            },
+            {
+              "icon": "key",
+              "text": "K 钥 Key",
+              "say": "K 钥 Key"
+            },
+            {
+              "icon": "lion",
+              "text": "L 狮 Lion",
+              "say": "L 狮 Lion"
+            }
+          ],
+          "question": "学一学：大写字母 I J K L",
+          "anim": "pydraw"
+        },
+        {
+          "id": "py-py-a3-q1",
+          "kind": "quiz",
+          "question": "「I」的小写是哪个？",
+          "options": [
+            {
+              "text": "i"
+            },
+            {
+              "text": "I"
+            },
+            {
+              "text": "j"
+            }
+          ],
+          "answer": 0,
+          "hint": "大写小写长得像",
+          "praise": "答对啦！"
+        },
+        {
+          "id": "py-py-a3-q2",
+          "kind": "quiz",
+          "question": "字母表里谁排在最前面？",
+          "options": [
+            {
+              "text": "I"
+            },
+            {
+              "text": "J"
+            },
+            {
+              "text": "K"
+            }
+          ],
+          "answer": 0,
+          "hint": "按 A B C D 顺序",
+          "praise": "对，排在最前！"
+        }
+      ],
+      "zone": 5
+    },
+    {
+      "id": "py-py-a4",
+      "title": "第 54 关 大写字母 M N O P",
+      "subtitle": "大写字母 M N O P",
+      "steps": [
+        {
+          "id": "py-py-a4-t",
+          "kind": "letter",
+          "letters": [
+            "M",
+            "N",
+            "O",
+            "P"
+          ],
+          "display": "M N O P",
+          "examples": [
+            {
+              "icon": "moon",
+              "text": "M 月 Moon",
+              "say": "M 月 Moon"
+            },
+            {
+              "icon": "newmoon",
+              "text": "N 月牙",
+              "say": "N 月牙"
+            },
+            {
+              "icon": "circle",
+              "text": "O 圆圈",
+              "say": "O 圆圈"
+            },
+            {
+              "icon": "panda",
+              "text": "P 熊猫 Panda",
+              "say": "P 熊猫 Panda"
+            }
+          ],
+          "question": "学一学：大写字母 M N O P",
+          "anim": "pydraw"
+        },
+        {
+          "id": "py-py-a4-q1",
+          "kind": "quiz",
+          "question": "「M」的小写是哪个？",
+          "options": [
+            {
+              "text": "m"
+            },
+            {
+              "text": "M"
+            },
+            {
+              "text": "n"
+            }
+          ],
+          "answer": 0,
+          "hint": "大写小写长得像",
+          "praise": "答对啦！"
+        },
+        {
+          "id": "py-py-a4-q2",
+          "kind": "quiz",
+          "question": "字母表里谁排在最前面？",
+          "options": [
+            {
+              "text": "M"
+            },
+            {
+              "text": "N"
+            },
+            {
+              "text": "O"
+            }
+          ],
+          "answer": 0,
+          "hint": "按 A B C D 顺序",
+          "praise": "对，排在最前！"
+        }
+      ],
+      "zone": 6
+    },
+    {
+      "id": "py-py-a5",
+      "title": "第 55 关 大写字母 Q R S T",
+      "subtitle": "大写字母 Q R S T",
+      "steps": [
+        {
+          "id": "py-py-a5-t",
+          "kind": "letter",
+          "letters": [
+            "Q",
+            "R",
+            "S",
+            "T"
+          ],
+          "display": "Q R S T",
+          "examples": [
+            {
+              "icon": "question",
+              "text": "Q 问题",
+              "say": "Q 问题"
+            },
+            {
+              "icon": "rocket",
+              "text": "R 火箭 Rocket",
+              "say": "R 火箭 Rocket"
+            },
+            {
+              "icon": "sun",
+              "text": "S 太阳 Sun",
+              "say": "S 太阳 Sun"
+            },
+            {
+              "icon": "train",
+              "text": "T 火车 Train",
+              "say": "T 火车 Train"
+            }
+          ],
+          "question": "学一学：大写字母 Q R S T",
+          "anim": "pydraw"
+        },
+        {
+          "id": "py-py-a5-q1",
+          "kind": "quiz",
+          "question": "「Q」的小写是哪个？",
+          "options": [
+            {
+              "text": "q"
+            },
+            {
+              "text": "Q"
+            },
+            {
+              "text": "r"
+            }
+          ],
+          "answer": 0,
+          "hint": "大写小写长得像",
+          "praise": "答对啦！"
+        },
+        {
+          "id": "py-py-a5-q2",
+          "kind": "quiz",
+          "question": "字母表里谁排在最前面？",
+          "options": [
+            {
+              "text": "Q"
+            },
+            {
+              "text": "R"
+            },
+            {
+              "text": "S"
+            }
+          ],
+          "answer": 0,
+          "hint": "按 A B C D 顺序",
+          "praise": "对，排在最前！"
+        }
+      ],
+      "zone": 6
+    },
+    {
+      "id": "py-py-a6",
+      "title": "第 56 关 大写字母 U V W",
+      "subtitle": "大写字母 U V W",
+      "steps": [
+        {
+          "id": "py-py-a6-t",
+          "kind": "letter",
+          "letters": [
+            "U",
+            "V",
+            "W"
+          ],
+          "display": "U V W",
+          "examples": [
+            {
+              "icon": "cup",
+              "text": "U 像杯子",
+              "say": "U 像杯子"
+            },
+            {
+              "icon": "volcano",
+              "text": "V 山谷",
+              "say": "V 山谷"
+            },
+            {
+              "icon": "wave",
+              "text": "W 浪 Wave",
+              "say": "W 浪 Wave"
+            }
+          ],
+          "question": "学一学：大写字母 U V W",
+          "anim": "pydraw"
+        },
+        {
+          "id": "py-py-a6-q1",
+          "kind": "quiz",
+          "question": "「U」的小写是哪个？",
+          "options": [
+            {
+              "text": "u"
+            },
+            {
+              "text": "U"
+            },
+            {
+              "text": "v"
+            }
+          ],
+          "answer": 0,
+          "hint": "大写小写长得像",
+          "praise": "答对啦！"
+        },
+        {
+          "id": "py-py-a6-q2",
+          "kind": "quiz",
+          "question": "字母表里谁排在最前面？",
+          "options": [
+            {
+              "text": "U"
+            },
+            {
+              "text": "V"
+            },
+            {
+              "text": "W"
+            }
+          ],
+          "answer": 0,
+          "hint": "按 A B C D 顺序",
+          "praise": "对，排在最前！"
+        }
+      ],
+      "zone": 6
+    },
+    {
+      "id": "py-py-a7",
+      "title": "第 57 关 大写字母 X Y Z",
+      "subtitle": "大写字母 X Y Z",
+      "steps": [
+        {
+          "id": "py-py-a7-t",
+          "kind": "letter",
+          "letters": [
+            "X",
+            "Y",
+            "Z"
+          ],
+          "display": "X Y Z",
+          "examples": [
+            {
+              "icon": "star",
+              "text": "X 星星闪烁",
+              "say": "X 星星闪烁"
+            },
+            {
+              "icon": "flag",
+              "text": "Y 像树杈",
+              "say": "Y 像树杈"
+            },
+            {
+              "icon": "crystal",
+              "text": "Z 闪 Crystal",
+              "say": "Z 闪 Crystal"
+            }
+          ],
+          "question": "学一学：大写字母 X Y Z",
+          "anim": "pydraw"
+        },
+        {
+          "id": "py-py-a7-q1",
+          "kind": "quiz",
+          "question": "「X」的小写是哪个？",
+          "options": [
+            {
+              "text": "x"
+            },
+            {
+              "text": "X"
+            },
+            {
+              "text": "y"
+            }
+          ],
+          "answer": 0,
+          "hint": "大写小写长得像",
+          "praise": "答对啦！"
+        },
+        {
+          "id": "py-py-a7-q2",
+          "kind": "quiz",
+          "question": "字母表里谁排在最前面？",
+          "options": [
+            {
+              "text": "X"
+            },
+            {
+              "text": "Y"
+            },
+            {
+              "text": "Z"
+            }
+          ],
+          "answer": 0,
+          "hint": "按 A B C D 顺序",
+          "praise": "对，排在最前！"
+        }
+      ],
+      "zone": 6
+    },
+    {
+      "id": "py-py-a8",
+      "title": "第 58 关 大小写对照",
+      "subtitle": "大小写对照",
+      "steps": [
+        {
+          "id": "py-py-a8-t",
+          "kind": "letter",
+          "letters": [
+            "A a",
+            "B b",
+            "C c"
+          ],
+          "display": "A a B b C c",
+          "examples": [
+            {
+              "icon": "apple",
+              "text": "A a 苹果",
+              "say": "A a 苹果"
+            },
+            {
+              "icon": "ball",
+              "text": "B b 球",
+              "say": "B b 球"
+            },
+            {
+              "icon": "cat",
+              "text": "C c 猫",
+              "say": "C c 猫"
+            }
+          ],
+          "question": "学一学：大小写对照",
+          "anim": "pydraw"
+        },
+        {
+          "id": "py-py-a8-q1",
+          "kind": "quiz",
+          "question": "「A a」的小写是哪个？",
+          "options": [
+            {
+              "text": "a a"
+            },
+            {
+              "text": "A A"
+            },
+            {
+              "text": "b b"
+            }
+          ],
+          "answer": 0,
+          "hint": "大写小写长得像",
+          "praise": "答对啦！"
+        },
+        {
+          "id": "py-py-a8-q2",
+          "kind": "quiz",
+          "question": "字母表里谁排在最前面？",
+          "options": [
+            {
+              "text": "A a"
+            },
+            {
+              "text": "B b"
+            },
+            {
+              "text": "C c"
+            }
+          ],
+          "answer": 0,
+          "hint": "按 A B C D 顺序",
+          "praise": "对，排在最前！"
+        }
+      ],
+      "zone": 6
+    },
+    {
+      "id": "py-py-xd1",
+      "title": "第 59 关 音序查字：查「花」",
+      "subtitle": "音序查字：查「花」",
+      "steps": [
+        {
+          "id": "py-py-xd1-q",
+          "kind": "quiz",
+          "question": "用音序查字法查「花」，先查大写字母——",
+          "options": [
+            {
+              "icon": "flower",
+              "text": "H"
+            },
+            {
+              "icon": "sun",
+              "text": "S"
+            },
+            {
+              "icon": "moon",
+              "text": "M"
+            }
+          ],
+          "answer": 0,
+          "hint": "花 huā，音序 H",
+          "praise": "音序查字小能手！"
+        }
+      ],
+      "zone": 6
+    },
+    {
+      "id": "py-py-xd2",
+      "title": "第 60 关 音序查字：查「星」",
+      "subtitle": "音序查字：查「星」",
+      "steps": [
+        {
+          "id": "py-py-xd2-q",
+          "kind": "quiz",
+          "question": "查「星 xīng」，先查——",
+          "options": [
+            {
+              "icon": "star",
+              "text": "X"
+            },
+            {
+              "icon": "moon",
+              "text": "M"
+            },
+            {
+              "icon": "flag",
+              "text": "F"
+            }
+          ],
+          "answer": 0,
+          "hint": "星 xīng，音序 X",
+          "praise": "音序查字小能手！"
+        }
+      ],
+      "zone": 6
+    },
+    {
+      "id": "py-py-xd3",
+      "title": "第 61 关 音序查字典步骤",
+      "subtitle": "音序查字典步骤",
+      "steps": [
+        {
+          "id": "py-py-xd3-q",
+          "kind": "quiz",
+          "question": "音序查字法第一步是——",
+          "options": [
+            {
+              "text": "找音序（第一个大写字母）"
+            },
+            {
+              "text": "直接翻书"
+            },
+            {
+              "text": "问别人"
+            }
+          ],
+          "answer": 0,
+          "hint": "先定音序，再查页码",
+          "praise": "音序查字小能手！"
+        }
+      ],
+      "zone": 6
+    },
+    {
+      "id": "py-py-xd4",
+      "title": "第 62 关 音序查字：查「城」",
+      "subtitle": "音序查字：查「城」",
+      "steps": [
+        {
+          "id": "py-py-xd4-q",
+          "kind": "quiz",
+          "question": "查「城 chéng」，先查——",
+          "options": [
+            {
+              "icon": "castle",
+              "text": "C"
+            },
+            {
+              "icon": "cat",
+              "text": "K"
+            },
+            {
+              "icon": "book",
+              "text": "B"
+            }
+          ],
+          "answer": 0,
+          "hint": "城 chéng，音序 C",
+          "praise": "音序查字小能手！"
+        }
+      ],
+      "zone": 6
+    },
+    {
+      "id": "py-py-d1",
+      "title": "第 67 关 多音字·长",
+      "subtitle": "cháng / zhǎng",
+      "steps": [
+        {
+          "id": "py-py-d1-t",
+          "kind": "letter",
+          "letters": [
+            "长"
+          ],
+          "display": "cháng / zhǎng",
+          "examples": [
+            {
+              "icon": "train",
+              "text": "长 cháng 长城",
+              "say": "长 cháng 长城"
+            },
+            {
+              "icon": "sprout",
+              "text": "长 zhǎng 长大",
+              "say": "长 zhǎng 长大"
+            }
+          ],
+          "question": "学一学多音字：「长」"
+        },
+        {
+          "id": "py-py-d1-q1",
+          "kind": "quiz",
+          "question": "「长城」的长读——",
+          "options": [
+            {
+              "text": "cháng"
+            },
+            {
+              "text": "zhǎng"
+            },
+            {
+              "text": "cáng"
+            }
+          ],
+          "answer": 0,
+          "hint": "长城很长 cháng",
+          "praise": "答对啦，cháng / zhǎng！"
+        },
+        {
+          "id": "py-py-d1-q2",
+          "kind": "quiz",
+          "question": "「长」的两个读音你都记住了吗？",
+          "options": [
+            {
+              "text": "cháng"
+            },
+            {
+              "text": "zhǎng"
+            },
+            {
+              "text": "chángzhǎng"
+            }
+          ],
+          "answer": 0,
+          "hint": "一字两读，意思不同",
+          "praise": "都记住啦！"
+        }
+      ],
+      "zone": 6
+    },
+    {
+      "id": "pinyin-r1",
+      "title": "复习关 二",
+      "subtitle": "旧题开盲盒 · 混排复习",
+      "steps": [
+        {
+          "id": "pinyin-r1-0",
+          "kind": "listen",
+          "prompt": "b",
+          "speakText": "b",
+          "question": "找一找：哪个是「b」？",
+          "options": [
+            {
+              "text": "d"
+            },
+            {
+              "text": "p"
+            },
+            {
+              "text": "b"
+            }
+          ],
+          "answer": 2,
+          "hint": "想一想它的样子",
+          "praise": "「b」找对啦！"
+        },
+        {
+          "id": "pinyin-r1-1",
+          "kind": "listen",
+          "promptIcon": "volcano",
+          "speakText": "p",
+          "question": "看一看：「山坡」的开头是哪个声母？",
+          "options": [
+            {
+              "text": "f"
+            },
+            {
+              "text": "p"
+            },
+            {
+              "text": "t"
+            }
+          ],
+          "answer": 1,
+          "hint": "山坡 的第一个音",
+          "praise": "对！山坡 开头是 p"
+        },
+        {
+          "id": "pinyin-r1-2",
+          "kind": "quiz",
+          "question": "拼一拼 m — a：哪张图是「妈妈」？",
+          "options": [
+            {
+              "icon": "girl",
+              "text": "妈妈"
+            },
+            {
+              "icon": "candy"
+            },
+            {
+              "icon": "heart"
+            }
+          ],
+          "answer": 0,
+          "hint": "m 碰 a",
+          "praise": "拼读小能手：妈妈！"
+        },
+        {
+          "id": "pinyin-r1-3",
+          "kind": "blend",
+          "parts": [
+            "f",
+            "a"
+          ],
+          "question": "拼一拼：f — a = ?",
+          "options": [
+            {
+              "text": "fa"
+            },
+            {
+              "text": "fo"
+            },
+            {
+              "text": "fu"
+            }
+          ],
+          "answer": 0,
+          "hint": "f 碰上 a",
+          "praise": "拼对了，fa！"
+        },
+        {
+          "id": "pinyin-r1-4",
+          "kind": "listen",
+          "prompt": "d",
+          "speakText": "d",
+          "question": "找一找：哪个是「d」？",
+          "options": [
+            {
+              "text": "p"
+            },
+            {
+              "text": "m"
+            },
+            {
+              "text": "d"
+            }
+          ],
+          "answer": 2,
+          "hint": "想一想它的样子",
+          "praise": "「d」找对啦！"
+        },
+        {
+          "id": "pinyin-r1-5",
+          "kind": "listen",
+          "promptIcon": "train",
+          "speakText": "t",
+          "question": "看一看：「太阳」的开头是哪个声母？",
+          "options": [
+            {
+              "text": "p"
+            },
+            {
+              "text": "m"
+            },
+            {
+              "text": "t"
+            }
+          ],
+          "answer": 2,
+          "hint": "太阳 的第一个音",
+          "praise": "对！太阳 开头是 t"
+        }
+      ],
+      "board": {
+        "spaces": [
+          {
+            "type": "question",
+            "step": "pinyin-r1-1"
+          },
+          {
+            "type": "question",
+            "step": "pinyin-r1-2"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "pinyin-r1-3"
+          },
+          {
+            "type": "question",
+            "step": "pinyin-r1-4"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "pinyin-r1-5"
+          },
+          {
+            "type": "chest"
+          },
+          {
+            "type": "question",
+            "step": "pinyin-r1-0"
+          },
+          {
+            "type": "rest"
+          }
+        ]
+      },
+      "review": true,
+      "zone": 7
+    },
+    {
+      "id": "py-py-d2",
+      "title": "第 68 关 多音字·乐",
+      "subtitle": "lè / yuè",
+      "steps": [
+        {
+          "id": "py-py-d2-t",
+          "kind": "letter",
+          "letters": [
+            "乐"
+          ],
+          "display": "lè / yuè",
+          "examples": [
+            {
+              "icon": "party",
+              "text": "快乐 lè",
+              "say": "快乐 lè"
+            },
+            {
+              "icon": "speaker",
+              "text": "音乐 yuè",
+              "say": "音乐 yuè"
+            }
+          ],
+          "question": "学一学多音字：「乐」"
+        },
+        {
+          "id": "py-py-d2-q1",
+          "kind": "quiz",
+          "question": "「音乐」的乐读——",
+          "options": [
+            {
+              "text": "yuè"
+            },
+            {
+              "text": "lè"
+            },
+            {
+              "text": "yuē"
+            }
+          ],
+          "answer": 0,
+          "hint": "音乐 yuè",
+          "praise": "答对啦，lè / yuè！"
+        },
+        {
+          "id": "py-py-d2-q2",
+          "kind": "quiz",
+          "question": "「乐」的两个读音你都记住了吗？",
+          "options": [
+            {
+              "text": "lè"
+            },
+            {
+              "text": "yuè"
+            },
+            {
+              "text": "lèyuè"
+            }
+          ],
+          "answer": 0,
+          "hint": "一字两读，意思不同",
+          "praise": "都记住啦！"
+        }
+      ],
+      "zone": 7
+    },
+    {
+      "id": "py-py-d3",
+      "title": "第 69 关 多音字·行",
+      "subtitle": "xíng / háng",
+      "steps": [
+        {
+          "id": "py-py-d3-t",
+          "kind": "letter",
+          "letters": [
+            "行"
+          ],
+          "display": "xíng / háng",
+          "examples": [
+            {
+              "icon": "rocket",
+              "text": "行走 xíng",
+              "say": "行走 xíng"
+            },
+            {
+              "icon": "train",
+              "text": "银行 háng",
+              "say": "银行 háng"
+            }
+          ],
+          "question": "学一学多音字：「行」"
+        },
+        {
+          "id": "py-py-d3-q1",
+          "kind": "quiz",
+          "question": "「银行」的行读——",
+          "options": [
+            {
+              "text": "háng"
+            },
+            {
+              "text": "xíng"
+            },
+            {
+              "text": "hàng"
+            }
+          ],
+          "answer": 0,
+          "hint": "银行 háng",
+          "praise": "答对啦，xíng / háng！"
+        },
+        {
+          "id": "py-py-d3-q2",
+          "kind": "quiz",
+          "question": "「行」的两个读音你都记住了吗？",
+          "options": [
+            {
+              "text": "xíng"
+            },
+            {
+              "text": "háng"
+            },
+            {
+              "text": "xíngháng"
+            }
+          ],
+          "answer": 0,
+          "hint": "一字两读，意思不同",
+          "praise": "都记住啦！"
+        }
+      ],
+      "zone": 7
+    },
+    {
+      "id": "py-py-d4",
+      "title": "第 70 关 多音字·只",
+      "subtitle": "zhī / zhǐ",
+      "steps": [
+        {
+          "id": "py-py-d4-t",
+          "kind": "letter",
+          "letters": [
+            "只"
+          ],
+          "display": "zhī / zhǐ",
+          "examples": [
+            {
+              "icon": "bird",
+              "text": "一只 zhī",
+              "say": "一只 zhī"
+            },
+            {
+              "text": "只有 zhǐ"
+            }
+          ],
+          "question": "学一学多音字：「只」"
+        },
+        {
+          "id": "py-py-d4-q1",
+          "kind": "quiz",
+          "question": "「一只鸟」的只读——",
+          "options": [
+            {
+              "text": "zhī"
+            },
+            {
+              "text": "zhǐ"
+            },
+            {
+              "text": "zī"
+            }
+          ],
+          "answer": 0,
+          "hint": "一只 zhī",
+          "praise": "答对啦，zhī / zhǐ！"
+        },
+        {
+          "id": "py-py-d4-q2",
+          "kind": "quiz",
+          "question": "「只」的两个读音你都记住了吗？",
+          "options": [
+            {
+              "text": "zhī"
+            },
+            {
+              "text": "zhǐ"
+            },
+            {
+              "text": "zhīzhǐ"
+            }
+          ],
+          "answer": 0,
+          "hint": "一字两读，意思不同",
+          "praise": "都记住啦！"
+        }
+      ],
+      "zone": 7
+    },
+    {
+      "id": "py-py-d5",
+      "title": "第 71 关 多音字·好",
+      "subtitle": "hǎo / hào",
+      "steps": [
+        {
+          "id": "py-py-d5-t",
+          "kind": "letter",
+          "letters": [
+            "好"
+          ],
+          "display": "hǎo / hào",
+          "examples": [
+            {
+              "icon": "heart",
+              "text": "好人 hǎo",
+              "say": "好人 hǎo"
+            },
+            {
+              "text": "爱好 hào"
+            }
+          ],
+          "question": "学一学多音字：「好」"
+        },
+        {
+          "id": "py-py-d5-q1",
+          "kind": "quiz",
+          "question": "「爱好」的好读——",
+          "options": [
+            {
+              "text": "hào"
+            },
+            {
+              "text": "hǎo"
+            },
+            {
+              "text": "háo"
+            }
+          ],
+          "answer": 0,
+          "hint": "爱好 hào",
+          "praise": "答对啦，hǎo / hào！"
+        },
+        {
+          "id": "py-py-d5-q2",
+          "kind": "quiz",
+          "question": "「好」的两个读音你都记住了吗？",
+          "options": [
+            {
+              "text": "hǎo"
+            },
+            {
+              "text": "hào"
+            },
+            {
+              "text": "hǎohào"
+            }
+          ],
+          "answer": 0,
+          "hint": "一字两读，意思不同",
+          "praise": "都记住啦！"
+        }
+      ],
+      "zone": 7
+    },
+    {
+      "id": "py-py-d6",
+      "title": "第 72 关 多音字·都",
+      "subtitle": "dōu / dū",
+      "steps": [
+        {
+          "id": "py-py-d6-t",
+          "kind": "letter",
+          "letters": [
+            "都"
+          ],
+          "display": "dōu / dū",
+          "examples": [
+            {
+              "icon": "party",
+              "text": "都是 dōu",
+              "say": "都是 dōu"
+            },
+            {
+              "icon": "castle",
+              "text": "首都 dū",
+              "say": "首都 dū"
+            }
+          ],
+          "question": "学一学多音字：「都」"
+        },
+        {
+          "id": "py-py-d6-q1",
+          "kind": "quiz",
+          "question": "「首都」的都读——",
+          "options": [
+            {
+              "text": "dū"
+            },
+            {
+              "text": "dōu"
+            },
+            {
+              "text": "dú"
+            }
+          ],
+          "answer": 0,
+          "hint": "首都 dū",
+          "praise": "答对啦，dōu / dū！"
+        },
+        {
+          "id": "py-py-d6-q2",
+          "kind": "quiz",
+          "question": "「都」的两个读音你都记住了吗？",
+          "options": [
+            {
+              "text": "dōu"
+            },
+            {
+              "text": "dū"
+            },
+            {
+              "text": "dōudū"
+            }
+          ],
+          "answer": 0,
+          "hint": "一字两读，意思不同",
+          "praise": "都记住啦！"
+        }
+      ],
+      "zone": 7
+    },
+    {
+      "id": "py-py-d7",
+      "title": "第 73 关 多音字·种",
+      "subtitle": "zhǒng / zhòng",
+      "steps": [
+        {
+          "id": "py-py-d7-t",
+          "kind": "letter",
+          "letters": [
+            "种"
+          ],
+          "display": "zhǒng / zhòng",
+          "examples": [
+            {
+              "icon": "sprout",
+              "text": "种子 zhǒng",
+              "say": "种子 zhǒng"
+            },
+            {
+              "icon": "sprout",
+              "text": "种树 zhòng",
+              "say": "种树 zhòng"
+            }
+          ],
+          "question": "学一学多音字：「种」"
+        },
+        {
+          "id": "py-py-d7-q1",
+          "kind": "quiz",
+          "question": "「种树」的种读——",
+          "options": [
+            {
+              "text": "zhòng"
+            },
+            {
+              "text": "zhǒng"
+            },
+            {
+              "text": "chóng"
+            }
+          ],
+          "answer": 0,
+          "hint": "种树 zhòng",
+          "praise": "答对啦，zhǒng / zhòng！"
+        },
+        {
+          "id": "py-py-d7-q2",
+          "kind": "quiz",
+          "question": "「种」的两个读音你都记住了吗？",
+          "options": [
+            {
+              "text": "zhǒng"
+            },
+            {
+              "text": "zhòng"
+            },
+            {
+              "text": "zhǒngzhòng"
+            }
+          ],
+          "answer": 0,
+          "hint": "一字两读，意思不同",
+          "praise": "都记住啦！"
+        }
+      ],
+      "zone": 7
+    },
+    {
+      "id": "py-py-d8",
+      "title": "第 74 关 多音字·教",
+      "subtitle": "jiāo / jiào",
+      "steps": [
+        {
+          "id": "py-py-d8-t",
+          "kind": "letter",
+          "letters": [
+            "教"
+          ],
+          "display": "jiāo / jiào",
+          "examples": [
+            {
+              "icon": "girl",
+              "text": "教书 jiāo",
+              "say": "教书 jiāo"
+            },
+            {
+              "icon": "book",
+              "text": "教室 jiào",
+              "say": "教室 jiào"
+            }
+          ],
+          "question": "学一学多音字：「教」"
+        },
+        {
+          "id": "py-py-d8-q1",
+          "kind": "quiz",
+          "question": "「教室」的教读——",
+          "options": [
+            {
+              "text": "jiào"
+            },
+            {
+              "text": "jiāo"
+            },
+            {
+              "text": "jiē"
+            }
+          ],
+          "answer": 0,
+          "hint": "教室 jiàoshì",
+          "praise": "答对啦，jiāo / jiào！"
+        },
+        {
+          "id": "py-py-d8-q2",
+          "kind": "quiz",
+          "question": "「教」的两个读音你都记住了吗？",
+          "options": [
+            {
+              "text": "jiāo"
+            },
+            {
+              "text": "jiào"
+            },
+            {
+              "text": "jiāojiào"
+            }
+          ],
+          "answer": 0,
+          "hint": "一字两读，意思不同",
+          "praise": "都记住啦！"
+        }
+      ],
+      "zone": 7
+    },
+    {
+      "id": "py-py-e4",
+      "title": "第 儿化·画儿",
+      "subtitle": "画儿 huàr",
+      "steps": [
+        {
+          "id": "py-py-e4-t",
+          "kind": "letter",
+          "letters": [
+            "画儿 huàr"
+          ],
+          "display": "画儿 huàr",
+          "examples": [
+            {
+              "text": "画儿 huàr"
+            }
+          ],
+          "question": "学一学：儿化·画儿"
+        },
+        {
+          "id": "py-py-e4-q",
+          "kind": "quiz",
+          "question": "「画儿」读——",
+          "options": [
+            {
+              "text": "huàr 连读"
+            },
+            {
+              "text": "huà ér"
+            },
+            {
+              "text": "huà"
+            }
+          ],
+          "answer": 0,
+          "hint": "画儿 也带小 r",
+          "praise": "拼音小达人！"
+        }
+      ],
+      "zone": 7
+    },
+    {
+      "id": "py-py-d9",
+      "title": "第 多音字·地",
+      "subtitle": "土地 dì / 慢慢地 de",
+      "steps": [
+        {
+          "id": "py-py-d9-t",
+          "kind": "letter",
+          "letters": [
+            "土地 dì / 慢慢地 de"
+          ],
+          "display": "土地 dì / 慢慢地 de",
+          "examples": [
+            {
+              "text": "土地 dì / 慢慢地 de"
+            }
+          ],
+          "question": "学一学：多音字·地"
+        },
+        {
+          "id": "py-py-d9-q",
+          "kind": "quiz",
+          "question": "「慢慢地」的地读——",
+          "options": [
+            {
+              "text": "de 轻声"
+            },
+            {
+              "text": "dì"
+            },
+            {
+              "text": "dí"
+            }
+          ],
+          "answer": 0,
+          "hint": "词尾的「地」读轻声 de",
+          "praise": "拼音小达人！"
+        }
+      ],
+      "zone": 7
+    },
+    {
+      "id": "py-py-q1",
+      "title": "第 轻声·叠词",
+      "subtitle": "妈妈 māma / 爸爸 bàba",
+      "steps": [
+        {
+          "id": "py-py-q1-t",
+          "kind": "letter",
+          "letters": [
+            "妈妈 māma / 爸爸 bàba"
+          ],
+          "display": "妈妈 māma / 爸爸 bàba",
+          "examples": [
+            {
+              "text": "妈妈 māma / 爸爸 bàba"
+            }
+          ],
+          "question": "学一学：轻声·叠词"
+        },
+        {
+          "id": "py-py-q1-q",
+          "kind": "quiz",
+          "question": "妈妈 的 妈 读——",
+          "options": [
+            {
+              "text": "mā"
+            },
+            {
+              "text": "ma 轻声"
+            },
+            {
+              "text": "mà"
+            }
+          ],
+          "answer": 1,
+          "hint": "叠词第二个字读轻声",
+          "praise": "拼音小达人！"
+        }
+      ],
+      "zone": 8
+    },
+    {
+      "id": "py-py-q2",
+      "title": "第 轻声·词尾",
+      "subtitle": "东西 dōngxi / 地方 dìfang",
+      "steps": [
+        {
+          "id": "py-py-q2-t",
+          "kind": "letter",
+          "letters": [
+            "东西 dōngxi / 地方 dìfang"
+          ],
+          "display": "东西 dōngxi / 地方 dìfang",
+          "examples": [
+            {
+              "text": "东西 dōngxi / 地方 dìfang"
+            }
+          ],
+          "question": "学一学：轻声·词尾"
+        },
+        {
+          "id": "py-py-q2-q",
+          "kind": "quiz",
+          "question": "「地方」的方读——",
+          "options": [
+            {
+              "text": "fāng"
+            },
+            {
+              "text": "fang 轻声"
+            },
+            {
+              "text": "fáng"
+            }
+          ],
+          "answer": 1,
+          "hint": "词尾的字常读轻声",
+          "praise": "拼音小达人！"
+        }
+      ],
+      "zone": 8
+    },
+    {
+      "id": "py-py-q3",
+      "title": "第 轻声·助词",
+      "subtitle": "走了 zǒu le / 好吗 hǎo ma",
+      "steps": [
+        {
+          "id": "py-py-q3-t",
+          "kind": "letter",
+          "letters": [
+            "走了 zǒu le / 好吗 hǎo ma"
+          ],
+          "display": "走了 zǒu le / 好吗 hǎo ma",
+          "examples": [
+            {
+              "text": "走了 zǒu le / 好吗 hǎo ma"
+            }
+          ],
+          "question": "学一学：轻声·助词"
+        },
+        {
+          "id": "py-py-q3-q",
+          "kind": "quiz",
+          "question": "「好吗」的吗读——",
+          "options": [
+            {
+              "text": "má"
+            },
+            {
+              "text": "ma 轻声"
+            },
+            {
+              "text": "mǎ"
+            }
+          ],
+          "answer": 1,
+          "hint": "吗、了、呢 读轻声",
+          "praise": "拼音小达人！"
+        }
+      ],
+      "zone": 8
+    },
+    {
+      "id": "py-py-e1",
+      "title": "第 儿化·花儿",
+      "subtitle": "花儿 huār",
+      "steps": [
+        {
+          "id": "py-py-e1-t",
+          "kind": "letter",
+          "letters": [
+            "花儿 huār"
+          ],
+          "display": "花儿 huār",
+          "examples": [
+            {
+              "text": "花儿 huār"
+            }
+          ],
+          "question": "学一学：儿化·花儿"
+        },
+        {
+          "id": "py-py-e1-q",
+          "kind": "quiz",
+          "question": "「花儿」读——",
+          "options": [
+            {
+              "text": "huā ér 分开"
+            },
+            {
+              "text": "huār 连读"
+            },
+            {
+              "text": "huǒ"
+            }
+          ],
+          "answer": 1,
+          "hint": "花儿连读，r 别分开",
+          "praise": "拼音小达人！"
+        }
+      ],
+      "zone": 8
+    },
+    {
+      "id": "py-py-e2",
+      "title": "第 儿化·鸟儿",
+      "subtitle": "鸟儿 niǎor",
+      "steps": [
+        {
+          "id": "py-py-e2-t",
+          "kind": "letter",
+          "letters": [
+            "鸟儿 niǎor"
+          ],
+          "display": "鸟儿 niǎor",
+          "examples": [
+            {
+              "text": "鸟儿 niǎor"
+            }
+          ],
+          "question": "学一学：儿化·鸟儿"
+        },
+        {
+          "id": "py-py-e2-q",
+          "kind": "quiz",
+          "question": "「鸟儿」读——",
+          "options": [
+            {
+              "text": "niǎo èr"
+            },
+            {
+              "text": "niǎor 连读"
+            },
+            {
+              "text": "niǎo"
+            }
+          ],
+          "answer": 1,
+          "hint": "鸟儿 r 轻轻带上",
+          "praise": "拼音小达人！"
+        }
+      ],
+      "zone": 8
+    },
+    {
+      "id": "py-py-e3",
+      "title": "第 儿化·一点儿",
+      "subtitle": "一点儿 yìdiǎnr",
+      "steps": [
+        {
+          "id": "py-py-e3-t",
+          "kind": "letter",
+          "letters": [
+            "一点儿 yìdiǎnr"
+          ],
+          "display": "一点儿 yìdiǎnr",
+          "examples": [
+            {
+              "text": "一点儿 yìdiǎnr"
+            }
+          ],
+          "question": "学一学：儿化·一点儿"
+        },
+        {
+          "id": "py-py-e3-q",
+          "kind": "quiz",
+          "question": "「一点儿」读——",
+          "options": [
+            {
+              "text": "yìdiǎnr 连读"
+            },
+            {
+              "text": "yī diǎn"
+            },
+            {
+              "text": "yìdiǎn ér"
+            }
+          ],
+          "answer": 0,
+          "hint": "一点儿 带上小 r",
+          "praise": "拼音小达人！"
+        }
+      ],
+      "zone": 8
+    },
+    {
+      "id": "py-py-b1",
+      "title": "第 「一」的变调",
+      "subtitle": "一个 yí gè",
+      "steps": [
+        {
+          "id": "py-py-b1-t",
+          "kind": "letter",
+          "letters": [
+            "一个 yí gè"
+          ],
+          "display": "一个 yí gè",
+          "examples": [
+            {
+              "text": "一个 yí gè"
+            }
+          ],
+          "question": "学一学：「一」的变调"
+        },
+        {
+          "id": "py-py-b1-q",
+          "kind": "quiz",
+          "question": "「一个」读——",
+          "options": [
+            {
+              "text": "yí gè"
+            },
+            {
+              "text": "yī gè"
+            },
+            {
+              "text": "yì gè"
+            }
+          ],
+          "answer": 0,
+          "hint": "一 在四声前读 yí",
+          "praise": "拼音小达人！"
+        }
+      ],
+      "zone": 8
+    },
+    {
+      "id": "py-py-b2",
+      "title": "第 「一」的变调",
+      "subtitle": "一天 yì tiān",
+      "steps": [
+        {
+          "id": "py-py-b2-t",
+          "kind": "letter",
+          "letters": [
+            "一天 yì tiān"
+          ],
+          "display": "一天 yì tiān",
+          "examples": [
+            {
+              "text": "一天 yì tiān"
+            }
+          ],
+          "question": "学一学：「一」的变调"
+        },
+        {
+          "id": "py-py-b2-q",
+          "kind": "quiz",
+          "question": "「一天」读——",
+          "options": [
+            {
+              "text": "yì tiān"
+            },
+            {
+              "text": "yī tiān"
+            },
+            {
+              "text": "yí tiān"
+            }
+          ],
+          "answer": 0,
+          "hint": "一 在一声前读 yì",
+          "praise": "拼音小达人！"
+        }
+      ],
+      "zone": 8
+    },
+    {
+      "id": "py-py-b3",
+      "title": "第 「不」的变调",
+      "subtitle": "不是 bú shì",
+      "steps": [
+        {
+          "id": "py-py-b3-t",
+          "kind": "letter",
+          "letters": [
+            "不是 bú shì"
+          ],
+          "display": "不是 bú shì",
+          "examples": [
+            {
+              "text": "不是 bú shì"
+            }
+          ],
+          "question": "学一学：「不」的变调"
+        },
+        {
+          "id": "py-py-b3-q",
+          "kind": "quiz",
+          "question": "「不是」读——",
+          "options": [
+            {
+              "text": "bú shì"
+            },
+            {
+              "text": "bù shì"
+            },
+            {
+              "text": "bū shì"
+            }
+          ],
+          "answer": 0,
+          "hint": "不 在四声前读 bú",
+          "praise": "拼音小达人！"
+        }
+      ],
+      "zone": 8
+    },
+    {
+      "id": "py-py-b4",
+      "title": "第 三声变调",
+      "subtitle": "你好 nǐ hǎo",
+      "steps": [
+        {
+          "id": "py-py-b4-t",
+          "kind": "letter",
+          "letters": [
+            "你好 nǐ hǎo"
+          ],
+          "display": "你好 nǐ hǎo",
+          "examples": [
+            {
+              "text": "你好 nǐ hǎo"
+            }
+          ],
+          "question": "学一学：三声变调"
+        },
+        {
+          "id": "py-py-b4-q",
+          "kind": "quiz",
+          "question": "「你好」实际读——",
+          "options": [
+            {
+              "text": "ní hǎo"
+            },
+            {
+              "text": "nǐ hǎo"
+            },
+            {
+              "text": "nì hǎo"
+            }
+          ],
+          "answer": 0,
+          "hint": "两个三声相连，前变二声",
+          "praise": "拼音小达人！"
+        }
+      ],
+      "zone": 8
+    },
+    {
+      "id": "py-py-f1",
+      "title": "第 平舌 z c s",
+      "subtitle": "自 zì / 从 cóng / 四 sì",
+      "steps": [
+        {
+          "id": "py-py-f1-t",
+          "kind": "letter",
+          "letters": [
+            "自 zì / 从 cóng / 四 sì"
+          ],
+          "display": "自 zì / 从 cóng / 四 sì",
+          "examples": [
+            {
+              "text": "自 zì / 从 cóng / 四 sì"
+            }
+          ],
+          "question": "学一学：平舌 z c s"
+        },
+        {
+          "id": "py-py-f1-q",
+          "kind": "quiz",
+          "question": "「四」的声母是——",
+          "options": [
+            {
+              "text": "s 平舌"
+            },
+            {
+              "text": "sh 翘舌"
+            },
+            {
+              "text": "c"
+            }
+          ],
+          "answer": 0,
+          "hint": "舌尖放平：z c s",
+          "praise": "拼音小达人！"
+        }
+      ],
+      "zone": 9
+    },
+    {
+      "id": "py-py-f2",
+      "title": "第 翘舌 zh ch sh",
+      "subtitle": "知 zhī / 吃 chī / 狮 shī",
+      "steps": [
+        {
+          "id": "py-py-f2-t",
+          "kind": "letter",
+          "letters": [
+            "知 zhī / 吃 chī / 狮 shī"
+          ],
+          "display": "知 zhī / 吃 chī / 狮 shī",
+          "examples": [
+            {
+              "text": "知 zhī / 吃 chī / 狮 shī"
+            }
+          ],
+          "question": "学一学：翘舌 zh ch sh"
+        },
+        {
+          "id": "py-py-f2-q",
+          "kind": "quiz",
+          "question": "「狮」的声母是——",
+          "options": [
+            {
+              "text": "sh 翘舌"
+            },
+            {
+              "text": "s 平舌"
+            },
+            {
+              "text": "x"
+            }
+          ],
+          "answer": 0,
+          "hint": "舌尖翘起：zh ch sh",
+          "praise": "拼音小达人！"
+        }
+      ],
+      "zone": 9
+    },
+    {
+      "id": "py-py-f3",
+      "title": "第 z c s vs zh ch sh",
+      "subtitle": "早 zǎo vs 找 zhǎo",
+      "steps": [
+        {
+          "id": "py-py-f3-t",
+          "kind": "letter",
+          "letters": [
+            "早 zǎo vs 找 zhǎo"
+          ],
+          "display": "早 zǎo vs 找 zhǎo",
+          "examples": [
+            {
+              "text": "早 zǎo vs 找 zhǎo"
+            }
+          ],
+          "question": "学一学：z c s vs zh ch sh"
+        },
+        {
+          "id": "py-py-f3-q",
+          "kind": "quiz",
+          "question": "「早」的声母是——",
+          "options": [
+            {
+              "text": "z"
+            },
+            {
+              "text": "zh"
+            },
+            {
+              "text": "c"
+            }
+          ],
+          "answer": 0,
+          "hint": "平翘不同，意思不同",
+          "praise": "拼音小达人！"
+        }
+      ],
+      "zone": 9
+    },
+    {
+      "id": "py-py-f4",
+      "title": "第 r 声母",
+      "subtitle": "日 rì / 热 rè",
+      "steps": [
+        {
+          "id": "py-py-f4-t",
+          "kind": "letter",
+          "letters": [
+            "日 rì / 热 rè"
+          ],
+          "display": "日 rì / 热 rè",
+          "examples": [
+            {
+              "text": "日 rì / 热 rè"
+            }
+          ],
+          "question": "学一学：r 声母"
+        },
+        {
+          "id": "py-py-f4-q",
+          "kind": "quiz",
+          "question": "「日」的声母是——",
+          "options": [
+            {
+              "text": "r"
+            },
+            {
+              "text": "l"
+            },
+            {
+              "text": "y"
+            }
+          ],
+          "answer": 0,
+          "hint": "r 也是翘舌",
+          "praise": "拼音小达人！"
+        }
+      ],
+      "zone": 9
+    },
+    {
+      "id": "py-py-n1",
+      "title": "第 前鼻 an en",
+      "subtitle": "山 shān / 人 rén",
+      "steps": [
+        {
+          "id": "py-py-n1-t",
+          "kind": "letter",
+          "letters": [
+            "山 shān / 人 rén"
+          ],
+          "display": "山 shān / 人 rén",
+          "examples": [
+            {
+              "text": "山 shān / 人 rén"
+            }
+          ],
+          "question": "学一学：前鼻 an en"
+        },
+        {
+          "id": "py-py-n1-q",
+          "kind": "quiz",
+          "question": "「山」的韵母是——",
+          "options": [
+            {
+              "text": "an 前鼻"
+            },
+            {
+              "text": "ang 后鼻"
+            },
+            {
+              "text": "ai"
+            }
+          ],
+          "answer": 0,
+          "hint": "前鼻收尾 n",
+          "praise": "拼音小达人！"
+        }
+      ],
+      "zone": 9
+    },
+    {
+      "id": "py-py-n2",
+      "title": "第 后鼻 ang eng",
+      "subtitle": "亮 liàng / 灯 dēng",
+      "steps": [
+        {
+          "id": "py-py-n2-t",
+          "kind": "letter",
+          "letters": [
+            "亮 liàng / 灯 dēng"
+          ],
+          "display": "亮 liàng / 灯 dēng",
+          "examples": [
+            {
+              "text": "亮 liàng / 灯 dēng"
+            }
+          ],
+          "question": "学一学：后鼻 ang eng"
+        },
+        {
+          "id": "py-py-n2-q",
+          "kind": "quiz",
+          "question": "「灯」的韵母是——",
+          "options": [
+            {
+              "text": "eng 后鼻"
+            },
+            {
+              "text": "en 前鼻"
+            },
+            {
+              "text": "ei"
+            }
+          ],
+          "answer": 0,
+          "hint": "后鼻收尾 ng，声音响",
+          "praise": "拼音小达人！"
+        }
+      ],
+      "zone": 9
+    },
+    {
+      "id": "py-py-n3",
+      "title": "第 前后鼻对比",
+      "subtitle": "陈 chén vs 城 chéng",
+      "steps": [
+        {
+          "id": "py-py-n3-t",
+          "kind": "letter",
+          "letters": [
+            "陈 chén vs 城 chéng"
+          ],
+          "display": "陈 chén vs 城 chéng",
+          "examples": [
+            {
+              "text": "陈 chén vs 城 chéng"
+            }
+          ],
+          "question": "学一学：前后鼻对比"
+        },
+        {
+          "id": "py-py-n3-q",
+          "kind": "quiz",
+          "question": "「城」的韵母是——",
+          "options": [
+            {
+              "text": "eng 后鼻"
+            },
+            {
+              "text": "en 前鼻"
+            },
+            {
+              "text": "un"
+            }
+          ],
+          "answer": 0,
+          "hint": "n 舌尖、ng 舌根",
+          "praise": "拼音小达人！"
+        }
+      ],
+      "zone": 9
+    },
+    {
+      "id": "py-py-w1",
+      "title": "第 整体认读复习",
+      "subtitle": "zhi chi shi ri",
+      "steps": [
+        {
+          "id": "py-py-w1-t",
+          "kind": "letter",
+          "letters": [
+            "zhi chi shi ri"
+          ],
+          "display": "zhi chi shi ri",
+          "examples": [
+            {
+              "text": "zhi chi shi ri"
+            }
+          ],
+          "question": "学一学：整体认读复习"
+        },
+        {
+          "id": "py-py-w1-q",
+          "kind": "quiz",
+          "question": "下面哪个是整体认读？",
+          "options": [
+            {
+              "text": "shi"
+            },
+            {
+              "text": "sh"
+            },
+            {
+              "text": "sha"
+            }
+          ],
+          "answer": 0,
+          "hint": "一口读出不拆开",
+          "praise": "拼音小达人！"
+        }
+      ],
+      "zone": 9
+    },
+    {
+      "id": "py-py-w2",
+      "title": "第 整体认读复习",
+      "subtitle": "yi wu yu",
+      "steps": [
+        {
+          "id": "py-py-w2-t",
+          "kind": "letter",
+          "letters": [
+            "yi wu yu"
+          ],
+          "display": "yi wu yu",
+          "examples": [
+            {
+              "text": "yi wu yu"
+            }
+          ],
+          "question": "学一学：整体认读复习"
+        },
+        {
+          "id": "py-py-w2-q",
+          "kind": "quiz",
+          "question": "下面哪个是整体认读？",
+          "options": [
+            {
+              "text": "yu"
+            },
+            {
+              "text": "y+u 拼读"
+            },
+            {
+              "text": "iu"
+            }
+          ],
+          "answer": 0,
+          "hint": "y 和 w 开头也整体读",
+          "praise": "拼音小达人！"
+        }
+      ],
+      "zone": 9
+    },
+    {
+      "id": "py-py-w3",
+      "title": "第 整体认读复习",
+      "subtitle": "yuan yin yun ying",
+      "steps": [
+        {
+          "id": "py-py-w3-t",
+          "kind": "letter",
+          "letters": [
+            "yuan yin yun ying"
+          ],
+          "display": "yuan yin yun ying",
+          "examples": [
+            {
+              "text": "yuan yin yun ying"
+            }
+          ],
+          "question": "学一学：整体认读复习"
+        },
+        {
+          "id": "py-py-w3-q",
+          "kind": "quiz",
+          "question": "「音 yīn」是——",
+          "options": [
+            {
+              "text": "整体认读"
+            },
+            {
+              "text": "声母"
+            },
+            {
+              "text": "三拼"
+            }
+          ],
+          "answer": 0,
+          "hint": "16 个整体认读要记牢",
+          "praise": "拼音小达人！"
+        }
+      ],
+      "zone": 9
+    },
+    {
+      "id": "py-py-g1",
+      "title": "第 拼读儿歌·数字",
+      "subtitle": "四是四，十是十",
+      "steps": [
+        {
+          "id": "py-py-g1-t",
+          "kind": "letter",
+          "letters": [
+            "四是四，十是十"
+          ],
+          "display": "四是四，十是十",
+          "examples": [
+            {
+              "text": "四是四，十是十"
+            }
+          ],
+          "question": "学一学：拼读儿歌·数字"
+        },
+        {
+          "id": "py-py-g1-q",
+          "kind": "quiz",
+          "question": "「十」读——",
+          "options": [
+            {
+              "text": "shí 翘舌"
+            },
+            {
+              "text": "sí 平舌"
+            },
+            {
+              "text": "sì"
+            }
+          ],
+          "answer": 0,
+          "hint": "sì shí 分清平翘舌",
+          "praise": "拼音小达人！"
+        }
+      ],
+      "zone": 10
+    },
+    {
       "id": "pinyin-r2",
       "title": "复习关 三",
       "subtitle": "旧题开盲盒 · 混排复习",
@@ -3913,7 +6165,294 @@
         ]
       },
       "review": true,
-      "zone": 5
+      "zone": 10
+    },
+    {
+      "id": "py-py-g2",
+      "title": "第 拼读儿歌·四季",
+      "subtitle": "春季夏天秋冬",
+      "steps": [
+        {
+          "id": "py-py-g2-t",
+          "kind": "letter",
+          "letters": [
+            "春季夏天秋冬"
+          ],
+          "display": "春季夏天秋冬",
+          "examples": [
+            {
+              "text": "春季夏天秋冬"
+            }
+          ],
+          "question": "学一学：拼读儿歌·四季"
+        },
+        {
+          "id": "py-py-g2-q",
+          "kind": "quiz",
+          "question": "「春 chūn」的韵母是——",
+          "options": [
+            {
+              "text": "un"
+            },
+            {
+              "text": "ong"
+            },
+            {
+              "text": "uan"
+            }
+          ],
+          "answer": 0,
+          "hint": "四季 jì 韵母 i",
+          "praise": "拼音小达人！"
+        }
+      ],
+      "zone": 10
+    },
+    {
+      "id": "py-py-g3",
+      "title": "第 拼读儿歌·动物",
+      "subtitle": "小熊熊，爬树丛",
+      "steps": [
+        {
+          "id": "py-py-g3-t",
+          "kind": "letter",
+          "letters": [
+            "小熊熊，爬树丛"
+          ],
+          "display": "小熊熊，爬树丛",
+          "examples": [
+            {
+              "text": "小熊熊，爬树丛"
+            }
+          ],
+          "question": "学一学：拼读儿歌·动物"
+        },
+        {
+          "id": "py-py-g3-q",
+          "kind": "quiz",
+          "question": "「熊 xióng」是——",
+          "options": [
+            {
+              "text": "两拼 xi-ong"
+            },
+            {
+              "text": "三拼 x-i-ong"
+            },
+            {
+              "text": "整体认读"
+            }
+          ],
+          "answer": 1,
+          "hint": "熊 xióng 是三拼音节? i ong",
+          "praise": "拼音小达人！"
+        }
+      ],
+      "zone": 10
+    },
+    {
+      "id": "py-py-g4",
+      "title": "第 拼读儿歌·自然",
+      "subtitle": "白云飘，太阳照",
+      "steps": [
+        {
+          "id": "py-py-g4-t",
+          "kind": "letter",
+          "letters": [
+            "白云飘，太阳照"
+          ],
+          "display": "白云飘，太阳照",
+          "examples": [
+            {
+              "text": "白云飘，太阳照"
+            }
+          ],
+          "question": "学一学：拼读儿歌·自然"
+        },
+        {
+          "id": "py-py-g4-q",
+          "kind": "quiz",
+          "question": "「飘 piāo」是——",
+          "options": [
+            {
+              "text": "三拼 p-i-ao"
+            },
+            {
+              "text": "两拼 p-ao"
+            },
+            {
+              "text": "整体认读"
+            }
+          ],
+          "answer": 0,
+          "hint": "飘 piāo 三拼音节",
+          "praise": "拼音小达人！"
+        }
+      ],
+      "zone": 10
+    },
+    {
+      "id": "py-py-g5",
+      "title": "第 拼读儿歌·校园",
+      "subtitle": "背着书包上学校",
+      "steps": [
+        {
+          "id": "py-py-g5-t",
+          "kind": "letter",
+          "letters": [
+            "背着书包上学校"
+          ],
+          "display": "背着书包上学校",
+          "examples": [
+            {
+              "text": "背着书包上学校"
+            }
+          ],
+          "question": "学一学：拼读儿歌·校园"
+        },
+        {
+          "id": "py-py-g5-q",
+          "kind": "quiz",
+          "question": "「书 shū」的声母是——",
+          "options": [
+            {
+              "text": "sh"
+            },
+            {
+              "text": "s"
+            },
+            {
+              "text": "x"
+            }
+          ],
+          "answer": 0,
+          "hint": "书 shū 包 bāo",
+          "praise": "拼音小达人！"
+        }
+      ],
+      "zone": 10
+    },
+    {
+      "id": "py-py-g6",
+      "title": "第 拼读儿歌·问答",
+      "subtitle": "谁的耳朵长？驴的耳朵长",
+      "steps": [
+        {
+          "id": "py-py-g6-t",
+          "kind": "letter",
+          "letters": [
+            "谁的耳朵长？驴的耳朵长"
+          ],
+          "display": "谁的耳朵长？驴的耳朵长",
+          "examples": [
+            {
+              "text": "谁的耳朵长？驴的耳朵长"
+            }
+          ],
+          "question": "学一学：拼读儿歌·问答"
+        },
+        {
+          "id": "py-py-g6-q",
+          "kind": "quiz",
+          "question": "「驴 lǘ」遇到 j q x 会——",
+          "options": [
+            {
+              "text": "去点变 ju"
+            },
+            {
+              "text": "保留两点"
+            },
+            {
+              "text": "变 u"
+            }
+          ],
+          "answer": 0,
+          "hint": "驴 lǘ 帽点 ü",
+          "praise": "拼音小达人！"
+        }
+      ],
+      "zone": 10
+    },
+    {
+      "id": "py-py-g7",
+      "title": "第 拼读儿歌·反思",
+      "subtitle": "拼读要看声调号",
+      "steps": [
+        {
+          "id": "py-py-g7-t",
+          "kind": "letter",
+          "letters": [
+            "拼读要看声调号"
+          ],
+          "display": "拼读要看声调号",
+          "examples": [
+            {
+              "text": "拼读要看声调号"
+            }
+          ],
+          "question": "学一学：拼读儿歌·反思"
+        },
+        {
+          "id": "py-py-g7-q",
+          "kind": "quiz",
+          "question": "声调标在哪里？",
+          "options": [
+            {
+              "text": "韵母上"
+            },
+            {
+              "text": "声母上"
+            },
+            {
+              "text": "随便"
+            }
+          ],
+          "answer": 0,
+          "hint": "声调标在韵母头上",
+          "praise": "拼音小达人！"
+        }
+      ],
+      "zone": 10
+    },
+    {
+      "id": "py-py-g8",
+      "title": "第 拼读总复习",
+      "subtitle": "拼音学好了，识字本领高",
+      "steps": [
+        {
+          "id": "py-py-g8-t",
+          "kind": "letter",
+          "letters": [
+            "拼音学好了，识字本领高"
+          ],
+          "display": "拼音学好了，识字本领高",
+          "examples": [
+            {
+              "text": "拼音学好了，识字本领高"
+            }
+          ],
+          "question": "学一学：拼读总复习"
+        },
+        {
+          "id": "py-py-g8-q",
+          "kind": "quiz",
+          "question": "拼音帮我们——",
+          "options": [
+            {
+              "text": "识字和查字典"
+            },
+            {
+              "text": "只做游戏"
+            },
+            {
+              "text": "画画"
+            }
+          ],
+          "answer": 0,
+          "hint": "音序查字典也要用拼音",
+          "praise": "拼音小达人！"
+        }
+      ],
+      "zone": 10
     },
     {
       "id": "pinyin-boss",
@@ -4128,7 +6667,7 @@
         ]
       },
       "boss": true,
-      "zone": 5
+      "zone": 10
     }
   ]
 }

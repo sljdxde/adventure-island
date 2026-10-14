@@ -6,31 +6,61 @@
     {
       "n": 1,
       "title": "中国风貌",
-      "subtitle": "地图 · 北京 · 江河长城",
+      "subtitle": "地图 · 北京 · 长城珠峰",
       "icon": "china-map"
     },
     {
       "n": 2,
       "title": "中国各地",
-      "subtitle": "各地风光",
+      "subtitle": "上海杭州成都甘肃",
       "icon": "greatwall"
     },
     {
       "n": 3,
-      "title": "环游世界",
-      "subtitle": "国家与地标",
+      "title": "世界国家",
+      "subtitle": "日泰埃法英俄",
       "icon": "world-map"
     },
     {
       "n": 4,
       "title": "首都名城",
-      "subtitle": "六国首都",
+      "subtitle": "六国首都巡礼",
       "icon": "castle"
     },
     {
       "n": 5,
-      "title": "自然与纪录",
-      "subtitle": "海洋 · 沙漠 · 雨林",
+      "title": "自然纪录",
+      "subtitle": "海沟 · 湖泊 · 岛屿",
+      "icon": "wave"
+    },
+    {
+      "n": 6,
+      "title": "恐龙与化石",
+      "subtitle": "恐龙化石陨石彗星",
+      "icon": "dino"
+    },
+    {
+      "n": 7,
+      "title": "节日文化",
+      "subtitle": "春节中秋圣诞",
+      "icon": "party"
+    },
+    {
+      "n": 8,
+      "title": "地图技能",
+      "subtitle": "方向 · 指南针 · 地球仪",
+      "icon": "flag"
+    },
+    {
+      "n": 9,
+      "title": "世界常识",
+      "subtitle": "大洲大洋 · 语言环保",
+      "icon": "earth"
+    },
+    {
+      "n": 10,
+      "title": "环球大挑战",
+      "subtitle": "总复习",
       "icon": "medal"
     }
   ],
@@ -1398,298 +1428,6 @@
       "zone": 2
     },
     {
-      "id": "geo-r0",
-      "title": "复习关 一",
-      "subtitle": "旧题开盲盒 · 混排复习",
-      "steps": [
-        {
-          "id": "geo-r0-0",
-          "kind": "mappuzzle",
-          "map": "china",
-          "regions": [
-            {
-              "id": "cn-north",
-              "label": "东北",
-              "color": "#8AB8E8",
-              "points": [
-                [
-                  60,
-                  8
-                ],
-                [
-                  80,
-                  10
-                ],
-                [
-                  78,
-                  22
-                ],
-                [
-                  62,
-                  20
-                ]
-              ]
-            },
-            {
-              "id": "cn-west",
-              "label": "西部",
-              "color": "#F4A259",
-              "points": [
-                [
-                  40,
-                  10
-                ],
-                [
-                  60,
-                  8
-                ],
-                [
-                  62,
-                  20
-                ],
-                [
-                  44,
-                  24
-                ]
-              ]
-            },
-            {
-              "id": "cn-central",
-              "label": "中部",
-              "color": "#7FC6A4",
-              "points": [
-                [
-                  44,
-                  24
-                ],
-                [
-                  62,
-                  20
-                ],
-                [
-                  66,
-                  34
-                ],
-                [
-                  48,
-                  36
-                ]
-              ]
-            },
-            {
-              "id": "cn-east",
-              "label": "东部",
-              "color": "#E07A5F",
-              "points": [
-                [
-                  62,
-                  20
-                ],
-                [
-                  78,
-                  22
-                ],
-                [
-                  80,
-                  38
-                ],
-                [
-                  66,
-                  34
-                ]
-              ]
-            },
-            {
-              "id": "cn-south",
-              "label": "南方",
-              "color": "#F2C14E",
-              "points": [
-                [
-                  48,
-                  36
-                ],
-                [
-                  66,
-                  34
-                ],
-                [
-                  70,
-                  48
-                ],
-                [
-                  52,
-                  50
-                ]
-              ]
-            },
-            {
-              "id": "cn-island",
-              "label": "海岛",
-              "color": "#9B8CE8",
-              "points": [
-                [
-                  52,
-                  50
-                ],
-                [
-                  62,
-                  48
-                ],
-                [
-                  60,
-                  56
-                ],
-                [
-                  50,
-                  55
-                ]
-              ]
-            }
-          ],
-          "question": "拼一拼：把中国地图的六块拖回雄鸡轮廓",
-          "praise": "拼好啦，地图在你手里！"
-        },
-        {
-          "id": "geo-r0-1",
-          "kind": "quiz",
-          "question": "中国的首都是哪座城市？",
-          "options": [
-            {
-              "icon": "tiananmen",
-              "text": "北京"
-            },
-            {
-              "icon": "castle"
-            },
-            {
-              "icon": "school"
-            }
-          ],
-          "answer": 0,
-          "hint": "天安门在北京",
-          "praise": "北京是首都！"
-        },
-        {
-          "id": "geo-r0-2",
-          "kind": "quiz",
-          "question": "长江和黄河是中国的什么河？",
-          "options": [
-            {
-              "icon": "river"
-            },
-            {
-              "icon": "moon"
-            },
-            {
-              "icon": "comet"
-            }
-          ],
-          "answer": 0,
-          "hint": "母亲河",
-          "praise": "母亲河记住啦！"
-        },
-        {
-          "id": "geo-r0-3",
-          "kind": "quiz",
-          "question": "万里长城像一条卧在山上的什么？",
-          "options": [
-            {
-              "icon": "greatwall"
-            },
-            {
-              "icon": "rocket"
-            },
-            {
-              "icon": "moon"
-            }
-          ],
-          "answer": 0,
-          "hint": "长龙",
-          "praise": "长城真雄伟！"
-        },
-        {
-          "id": "geo-r0-4",
-          "kind": "quiz",
-          "question": "世界第一高峰是哪座山？",
-          "options": [
-            {
-              "icon": "everest"
-            },
-            {
-              "icon": "volcano"
-            },
-            {
-              "icon": "castle"
-            }
-          ],
-          "answer": 0,
-          "hint": "最高最高",
-          "praise": "珠峰真高！"
-        },
-        {
-          "id": "geo-r0-5",
-          "kind": "quiz",
-          "question": "中国的国宝、爱吃竹子的动物是谁？",
-          "options": [
-            {
-              "icon": "bear"
-            },
-            {
-              "icon": "panda"
-            },
-            {
-              "icon": "rabbit"
-            }
-          ],
-          "answer": 1,
-          "hint": "黑白毛、圆滚滚",
-          "praise": "大熊猫真可爱！"
-        }
-      ],
-      "board": {
-        "spaces": [
-          {
-            "type": "question",
-            "step": "geo-r0-0"
-          },
-          {
-            "type": "question",
-            "step": "geo-r0-1"
-          },
-          {
-            "type": "coin"
-          },
-          {
-            "type": "question",
-            "step": "geo-r0-2"
-          },
-          {
-            "type": "question",
-            "step": "geo-r0-3"
-          },
-          {
-            "type": "coin"
-          },
-          {
-            "type": "question",
-            "step": "geo-r0-4"
-          },
-          {
-            "type": "chest"
-          },
-          {
-            "type": "question",
-            "step": "geo-r0-5"
-          },
-          {
-            "type": "mushroom"
-          }
-        ]
-      },
-      "review": true,
-      "zone": 2
-    },
-    {
       "id": "geo-19",
       "title": "第 20 关 黄山",
       "subtitle": "奇松怪石",
@@ -1738,7 +1476,7 @@
           "praise": "迎客松答对啦！"
         }
       ],
-      "zone": 3
+      "zone": 2
     },
     {
       "id": "geo-20",
@@ -2197,6 +1935,298 @@
           "praise": "加拿大答对啦！"
         }
       ],
+      "zone": 3
+    },
+    {
+      "id": "geo-r0",
+      "title": "复习关 一",
+      "subtitle": "旧题开盲盒 · 混排复习",
+      "steps": [
+        {
+          "id": "geo-r0-0",
+          "kind": "mappuzzle",
+          "map": "china",
+          "regions": [
+            {
+              "id": "cn-north",
+              "label": "东北",
+              "color": "#8AB8E8",
+              "points": [
+                [
+                  60,
+                  8
+                ],
+                [
+                  80,
+                  10
+                ],
+                [
+                  78,
+                  22
+                ],
+                [
+                  62,
+                  20
+                ]
+              ]
+            },
+            {
+              "id": "cn-west",
+              "label": "西部",
+              "color": "#F4A259",
+              "points": [
+                [
+                  40,
+                  10
+                ],
+                [
+                  60,
+                  8
+                ],
+                [
+                  62,
+                  20
+                ],
+                [
+                  44,
+                  24
+                ]
+              ]
+            },
+            {
+              "id": "cn-central",
+              "label": "中部",
+              "color": "#7FC6A4",
+              "points": [
+                [
+                  44,
+                  24
+                ],
+                [
+                  62,
+                  20
+                ],
+                [
+                  66,
+                  34
+                ],
+                [
+                  48,
+                  36
+                ]
+              ]
+            },
+            {
+              "id": "cn-east",
+              "label": "东部",
+              "color": "#E07A5F",
+              "points": [
+                [
+                  62,
+                  20
+                ],
+                [
+                  78,
+                  22
+                ],
+                [
+                  80,
+                  38
+                ],
+                [
+                  66,
+                  34
+                ]
+              ]
+            },
+            {
+              "id": "cn-south",
+              "label": "南方",
+              "color": "#F2C14E",
+              "points": [
+                [
+                  48,
+                  36
+                ],
+                [
+                  66,
+                  34
+                ],
+                [
+                  70,
+                  48
+                ],
+                [
+                  52,
+                  50
+                ]
+              ]
+            },
+            {
+              "id": "cn-island",
+              "label": "海岛",
+              "color": "#9B8CE8",
+              "points": [
+                [
+                  52,
+                  50
+                ],
+                [
+                  62,
+                  48
+                ],
+                [
+                  60,
+                  56
+                ],
+                [
+                  50,
+                  55
+                ]
+              ]
+            }
+          ],
+          "question": "拼一拼：把中国地图的六块拖回雄鸡轮廓",
+          "praise": "拼好啦，地图在你手里！"
+        },
+        {
+          "id": "geo-r0-1",
+          "kind": "quiz",
+          "question": "中国的首都是哪座城市？",
+          "options": [
+            {
+              "icon": "tiananmen",
+              "text": "北京"
+            },
+            {
+              "icon": "castle"
+            },
+            {
+              "icon": "school"
+            }
+          ],
+          "answer": 0,
+          "hint": "天安门在北京",
+          "praise": "北京是首都！"
+        },
+        {
+          "id": "geo-r0-2",
+          "kind": "quiz",
+          "question": "长江和黄河是中国的什么河？",
+          "options": [
+            {
+              "icon": "river"
+            },
+            {
+              "icon": "moon"
+            },
+            {
+              "icon": "comet"
+            }
+          ],
+          "answer": 0,
+          "hint": "母亲河",
+          "praise": "母亲河记住啦！"
+        },
+        {
+          "id": "geo-r0-3",
+          "kind": "quiz",
+          "question": "万里长城像一条卧在山上的什么？",
+          "options": [
+            {
+              "icon": "greatwall"
+            },
+            {
+              "icon": "rocket"
+            },
+            {
+              "icon": "moon"
+            }
+          ],
+          "answer": 0,
+          "hint": "长龙",
+          "praise": "长城真雄伟！"
+        },
+        {
+          "id": "geo-r0-4",
+          "kind": "quiz",
+          "question": "世界第一高峰是哪座山？",
+          "options": [
+            {
+              "icon": "everest"
+            },
+            {
+              "icon": "volcano"
+            },
+            {
+              "icon": "castle"
+            }
+          ],
+          "answer": 0,
+          "hint": "最高最高",
+          "praise": "珠峰真高！"
+        },
+        {
+          "id": "geo-r0-5",
+          "kind": "quiz",
+          "question": "中国的国宝、爱吃竹子的动物是谁？",
+          "options": [
+            {
+              "icon": "bear"
+            },
+            {
+              "icon": "panda"
+            },
+            {
+              "icon": "rabbit"
+            }
+          ],
+          "answer": 1,
+          "hint": "黑白毛、圆滚滚",
+          "praise": "大熊猫真可爱！"
+        }
+      ],
+      "board": {
+        "spaces": [
+          {
+            "type": "question",
+            "step": "geo-r0-0"
+          },
+          {
+            "type": "question",
+            "step": "geo-r0-1"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "geo-r0-2"
+          },
+          {
+            "type": "question",
+            "step": "geo-r0-3"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "geo-r0-4"
+          },
+          {
+            "type": "chest"
+          },
+          {
+            "type": "question",
+            "step": "geo-r0-5"
+          },
+          {
+            "type": "mushroom"
+          }
+        ]
+      },
+      "review": true,
       "zone": 3
     },
     {
@@ -2659,298 +2689,6 @@
       "zone": 4
     },
     {
-      "id": "geo-r1",
-      "title": "复习关 二",
-      "subtitle": "旧题开盲盒 · 混排复习",
-      "steps": [
-        {
-          "id": "geo-r1-0",
-          "kind": "mappuzzle",
-          "map": "china",
-          "regions": [
-            {
-              "id": "cn-north",
-              "label": "东北",
-              "color": "#8AB8E8",
-              "points": [
-                [
-                  60,
-                  8
-                ],
-                [
-                  80,
-                  10
-                ],
-                [
-                  78,
-                  22
-                ],
-                [
-                  62,
-                  20
-                ]
-              ]
-            },
-            {
-              "id": "cn-west",
-              "label": "西部",
-              "color": "#F4A259",
-              "points": [
-                [
-                  40,
-                  10
-                ],
-                [
-                  60,
-                  8
-                ],
-                [
-                  62,
-                  20
-                ],
-                [
-                  44,
-                  24
-                ]
-              ]
-            },
-            {
-              "id": "cn-central",
-              "label": "中部",
-              "color": "#7FC6A4",
-              "points": [
-                [
-                  44,
-                  24
-                ],
-                [
-                  62,
-                  20
-                ],
-                [
-                  66,
-                  34
-                ],
-                [
-                  48,
-                  36
-                ]
-              ]
-            },
-            {
-              "id": "cn-east",
-              "label": "东部",
-              "color": "#E07A5F",
-              "points": [
-                [
-                  62,
-                  20
-                ],
-                [
-                  78,
-                  22
-                ],
-                [
-                  80,
-                  38
-                ],
-                [
-                  66,
-                  34
-                ]
-              ]
-            },
-            {
-              "id": "cn-south",
-              "label": "南方",
-              "color": "#F2C14E",
-              "points": [
-                [
-                  48,
-                  36
-                ],
-                [
-                  66,
-                  34
-                ],
-                [
-                  70,
-                  48
-                ],
-                [
-                  52,
-                  50
-                ]
-              ]
-            },
-            {
-              "id": "cn-island",
-              "label": "海岛",
-              "color": "#9B8CE8",
-              "points": [
-                [
-                  52,
-                  50
-                ],
-                [
-                  62,
-                  48
-                ],
-                [
-                  60,
-                  56
-                ],
-                [
-                  50,
-                  55
-                ]
-              ]
-            }
-          ],
-          "question": "拼一拼：把中国地图的六块拖回雄鸡轮廓",
-          "praise": "拼好啦，地图在你手里！"
-        },
-        {
-          "id": "geo-r1-1",
-          "kind": "quiz",
-          "question": "中国的首都是哪座城市？",
-          "options": [
-            {
-              "icon": "tiananmen",
-              "text": "北京"
-            },
-            {
-              "icon": "castle"
-            },
-            {
-              "icon": "school"
-            }
-          ],
-          "answer": 0,
-          "hint": "天安门在北京",
-          "praise": "北京是首都！"
-        },
-        {
-          "id": "geo-r1-2",
-          "kind": "quiz",
-          "question": "长江和黄河是中国的什么河？",
-          "options": [
-            {
-              "icon": "river"
-            },
-            {
-              "icon": "moon"
-            },
-            {
-              "icon": "comet"
-            }
-          ],
-          "answer": 0,
-          "hint": "母亲河",
-          "praise": "母亲河记住啦！"
-        },
-        {
-          "id": "geo-r1-3",
-          "kind": "quiz",
-          "question": "万里长城像一条卧在山上的什么？",
-          "options": [
-            {
-              "icon": "greatwall"
-            },
-            {
-              "icon": "rocket"
-            },
-            {
-              "icon": "moon"
-            }
-          ],
-          "answer": 0,
-          "hint": "长龙",
-          "praise": "长城真雄伟！"
-        },
-        {
-          "id": "geo-r1-4",
-          "kind": "quiz",
-          "question": "世界第一高峰是哪座山？",
-          "options": [
-            {
-              "icon": "everest"
-            },
-            {
-              "icon": "volcano"
-            },
-            {
-              "icon": "castle"
-            }
-          ],
-          "answer": 0,
-          "hint": "最高最高",
-          "praise": "珠峰真高！"
-        },
-        {
-          "id": "geo-r1-5",
-          "kind": "quiz",
-          "question": "中国的国宝、爱吃竹子的动物是谁？",
-          "options": [
-            {
-              "icon": "bear"
-            },
-            {
-              "icon": "panda"
-            },
-            {
-              "icon": "rabbit"
-            }
-          ],
-          "answer": 1,
-          "hint": "黑白毛、圆滚滚",
-          "praise": "大熊猫真可爱！"
-        }
-      ],
-      "board": {
-        "spaces": [
-          {
-            "type": "question",
-            "step": "geo-r1-1"
-          },
-          {
-            "type": "question",
-            "step": "geo-r1-2"
-          },
-          {
-            "type": "coin"
-          },
-          {
-            "type": "question",
-            "step": "geo-r1-3"
-          },
-          {
-            "type": "question",
-            "step": "geo-r1-4"
-          },
-          {
-            "type": "coin"
-          },
-          {
-            "type": "question",
-            "step": "geo-r1-5"
-          },
-          {
-            "type": "chest"
-          },
-          {
-            "type": "question",
-            "step": "geo-r1-0"
-          },
-          {
-            "type": "rest"
-          }
-        ]
-      },
-      "review": true,
-      "zone": 4
-    },
-    {
       "id": "geo-38",
       "title": "第 39 关 撒哈拉沙漠",
       "subtitle": "最大的沙漠",
@@ -2999,7 +2737,7 @@
           "praise": "撒哈拉答对啦！"
         }
       ],
-      "zone": 5
+      "zone": 4
     },
     {
       "id": "geo-39",
@@ -3353,6 +3091,2452 @@
       "zone": 5
     },
     {
+      "id": "geo-46",
+      "title": "第 47 关 广州",
+      "subtitle": "千年商都",
+      "steps": [
+        {
+          "id": "geo-46-t",
+          "kind": "letter",
+          "letters": [
+            "广州"
+          ],
+          "display": "广州",
+          "examples": [
+            {
+              "icon": "shop",
+              "text": "商贸之都",
+              "say": "商贸之都"
+            },
+            {
+              "icon": "tower",
+              "text": "小蛮腰",
+              "say": "小蛮腰"
+            }
+          ],
+          "question": "学一学：广州是中国南方的商贸大城"
+        },
+        {
+          "id": "geo-46-q1",
+          "kind": "quiz",
+          "question": "「千年商都」是——",
+          "options": [
+            {
+              "icon": "shop",
+              "text": "广州"
+            },
+            {
+              "icon": "castle",
+              "text": "莫斯科"
+            },
+            {
+              "icon": "torii",
+              "text": "东京"
+            }
+          ],
+          "answer": 0,
+          "hint": "南方大港口",
+          "praise": "广州答对啦！"
+        }
+      ],
+      "zone": 5
+    },
+    {
+      "id": "geo-47",
+      "title": "第 48 关 杭州",
+      "subtitle": "西湖龙井",
+      "steps": [
+        {
+          "id": "geo-47-t",
+          "kind": "letter",
+          "letters": [
+            "杭州"
+          ],
+          "display": "杭州",
+          "examples": [
+            {
+              "icon": "wave",
+              "text": "西湖",
+              "say": "西湖"
+            },
+            {
+              "icon": "sprout",
+              "text": "龙井茶",
+              "say": "龙井茶"
+            }
+          ],
+          "question": "学一学：杭州有西湖和龙井茶"
+        },
+        {
+          "id": "geo-47-q1",
+          "kind": "quiz",
+          "question": "西湖在哪座城市？",
+          "options": [
+            {
+              "icon": "wave",
+              "text": "杭州"
+            },
+            {
+              "icon": "palm",
+              "text": "海南"
+            },
+            {
+              "icon": "everest",
+              "text": "西藏"
+            }
+          ],
+          "answer": 0,
+          "hint": "上有天堂下有苏杭",
+          "praise": "杭州答对啦！"
+        }
+      ],
+      "zone": 5
+    },
+    {
+      "id": "geo-48",
+      "title": "第 49 关 成都",
+      "subtitle": "天府之国",
+      "steps": [
+        {
+          "id": "geo-48-t",
+          "kind": "letter",
+          "letters": [
+            "成都"
+          ],
+          "display": "成都",
+          "examples": [
+            {
+              "icon": "panda",
+              "text": "大熊猫基地",
+              "say": "大熊猫基地"
+            },
+            {
+              "icon": "sprout",
+              "text": "天府沃野",
+              "say": "天府沃野"
+            }
+          ],
+          "question": "学一学：成都是大熊猫的老家"
+        },
+        {
+          "id": "geo-48-q1",
+          "kind": "quiz",
+          "question": "大熊猫基地在——",
+          "options": [
+            {
+              "icon": "panda",
+              "text": "成都"
+            },
+            {
+              "icon": "kangaroo",
+              "text": "澳大利亚"
+            },
+            {
+              "icon": "lion",
+              "text": "非洲"
+            }
+          ],
+          "answer": 0,
+          "hint": "四川成都",
+          "praise": "成都答对啦！"
+        }
+      ],
+      "zone": 5
+    },
+    {
+      "id": "geo-49",
+      "title": "第 50 关 甘肃",
+      "subtitle": "敦煌莫高窟",
+      "steps": [
+        {
+          "id": "geo-49-t",
+          "kind": "letter",
+          "letters": [
+            "甘肃"
+          ],
+          "display": "甘肃",
+          "examples": [
+            {
+              "icon": "desert",
+              "text": "敦煌沙漠",
+              "say": "敦煌沙漠"
+            },
+            {
+              "icon": "flag",
+              "text": "丝路",
+              "say": "丝路"
+            }
+          ],
+          "question": "学一学：敦煌有莫高窟壁画"
+        },
+        {
+          "id": "geo-49-q1",
+          "kind": "quiz",
+          "question": "莫高窟在哪一省？",
+          "options": [
+            {
+              "icon": "desert",
+              "text": "甘肃"
+            },
+            {
+              "icon": "wave",
+              "text": "浙江"
+            },
+            {
+              "icon": "palm",
+              "text": "海南"
+            }
+          ],
+          "answer": 0,
+          "hint": "丝绸之路重镇",
+          "praise": "甘肃答对啦！"
+        }
+      ],
+      "zone": 6
+    },
+    {
+      "id": "geo-50",
+      "title": "第 51 关 青海湖",
+      "subtitle": "中国最大湖",
+      "steps": [
+        {
+          "id": "geo-50-t",
+          "kind": "letter",
+          "letters": [
+            "青海湖"
+          ],
+          "display": "青海湖",
+          "examples": [
+            {
+              "icon": "wave",
+              "text": "青海湖",
+              "say": "青海湖"
+            },
+            {
+              "icon": "sprout",
+              "text": "油菜花",
+              "say": "油菜花"
+            }
+          ],
+          "question": "学一学：青海湖是中国最大的湖"
+        },
+        {
+          "id": "geo-50-q1",
+          "kind": "quiz",
+          "question": "中国最大的湖是——",
+          "options": [
+            {
+              "icon": "wave",
+              "text": "青海湖"
+            },
+            {
+              "icon": "river",
+              "text": "长江"
+            },
+            {
+              "icon": "wave",
+              "text": "死海"
+            }
+          ],
+          "answer": 0,
+          "hint": "高原蓝宝石",
+          "praise": "青海湖答对啦！"
+        }
+      ],
+      "zone": 6
+    },
+    {
+      "id": "geo-51",
+      "title": "第 52 关 西藏",
+      "subtitle": "世界屋脊",
+      "steps": [
+        {
+          "id": "geo-51-t",
+          "kind": "letter",
+          "letters": [
+            "西藏"
+          ],
+          "display": "西藏",
+          "examples": [
+            {
+              "icon": "everest",
+              "text": "珠穆朗玛峰",
+              "say": "珠穆朗玛峰"
+            },
+            {
+              "icon": "flag",
+              "text": "布达拉宫",
+              "say": "布达拉宫"
+            }
+          ],
+          "question": "学一学：西藏被称为世界屋脊"
+        },
+        {
+          "id": "geo-51-q1",
+          "kind": "quiz",
+          "question": "「世界屋脊」是——",
+          "options": [
+            {
+              "icon": "everest",
+              "text": "西藏"
+            },
+            {
+              "icon": "wave",
+              "text": "上海"
+            },
+            {
+              "icon": "castle",
+              "text": "俄罗斯"
+            }
+          ],
+          "answer": 0,
+          "hint": "最高的高原",
+          "praise": "西藏答对啦！"
+        }
+      ],
+      "zone": 6
+    },
+    {
+      "id": "geo-52",
+      "title": "第 53 关 内蒙古",
+      "subtitle": "大草原",
+      "steps": [
+        {
+          "id": "geo-52-t",
+          "kind": "letter",
+          "letters": [
+            "内蒙古"
+          ],
+          "display": "内蒙古",
+          "examples": [
+            {
+              "icon": "sprout",
+              "text": "大草原",
+              "say": "大草原"
+            },
+            {
+              "icon": "flag",
+              "text": "那达慕赛马",
+              "say": "那达慕赛马"
+            }
+          ],
+          "question": "学一学：内蒙古有一望无际的草原"
+        },
+        {
+          "id": "geo-52-q1",
+          "kind": "quiz",
+          "question": "内蒙古的代表风景是——",
+          "options": [
+            {
+              "icon": "sprout",
+              "text": "大草原"
+            },
+            {
+              "icon": "wave",
+              "text": "大海"
+            },
+            {
+              "icon": "desert",
+              "text": "沙漠"
+            }
+          ],
+          "answer": 0,
+          "hint": "风吹草低见牛羊",
+          "praise": "大草原答对啦！"
+        }
+      ],
+      "zone": 6
+    },
+    {
+      "id": "geo-53",
+      "title": "第 54 关 香港",
+      "subtitle": "东方之珠",
+      "steps": [
+        {
+          "id": "geo-53-t",
+          "kind": "letter",
+          "letters": [
+            "香港"
+          ],
+          "display": "香港",
+          "examples": [
+            {
+              "icon": "tower",
+              "text": "高楼",
+              "say": "高楼"
+            },
+            {
+              "icon": "flag",
+              "text": "紫荆花",
+              "say": "紫荆花"
+            }
+          ],
+          "question": "学一学：香港被称为东方之珠"
+        },
+        {
+          "id": "geo-53-q1",
+          "kind": "quiz",
+          "question": "「东方之珠」是——",
+          "options": [
+            {
+              "icon": "tower",
+              "text": "香港"
+            },
+            {
+              "icon": "palm",
+              "text": "海南"
+            },
+            {
+              "icon": "torii",
+              "text": "东京"
+            }
+          ],
+          "answer": 0,
+          "hint": "夜景最亮",
+          "praise": "香港答对啦！"
+        }
+      ],
+      "zone": 6
+    },
+    {
+      "id": "geo-54",
+      "title": "第 55 关 荷兰",
+      "subtitle": "风车王国",
+      "steps": [
+        {
+          "id": "geo-54-t",
+          "kind": "letter",
+          "letters": [
+            "荷兰"
+          ],
+          "display": "荷兰",
+          "examples": [
+            {
+              "icon": "windmill",
+              "text": "大风车",
+              "say": "大风车"
+            },
+            {
+              "icon": "flower",
+              "text": "郁金香",
+              "say": "郁金香"
+            }
+          ],
+          "question": "学一学：荷兰有风车和郁金香"
+        },
+        {
+          "id": "geo-54-q1",
+          "kind": "quiz",
+          "question": "风车王国是——",
+          "options": [
+            {
+              "icon": "windmill",
+              "text": "荷兰"
+            },
+            {
+              "icon": "maple",
+              "text": "加拿大"
+            },
+            {
+              "icon": "torii",
+              "text": "日本"
+            }
+          ],
+          "answer": 0,
+          "hint": "低地之国",
+          "praise": "荷兰答对啦！"
+        }
+      ],
+      "zone": 6
+    },
+    {
+      "id": "geo-55",
+      "title": "第 56 关 瑞士",
+      "subtitle": "雪山之国",
+      "steps": [
+        {
+          "id": "geo-55-t",
+          "kind": "letter",
+          "letters": [
+            "瑞士"
+          ],
+          "display": "瑞士",
+          "examples": [
+            {
+              "icon": "everest",
+              "text": "阿尔卑斯雪山",
+              "say": "阿尔卑斯雪山"
+            },
+            {
+              "icon": "snowflake",
+              "text": "滑雪",
+              "say": "滑雪"
+            }
+          ],
+          "question": "学一学：瑞士的阿尔卑斯雪山很有名"
+        },
+        {
+          "id": "geo-55-q1",
+          "kind": "quiz",
+          "question": "雪山之国是——",
+          "options": [
+            {
+              "icon": "everest",
+              "text": "瑞士"
+            },
+            {
+              "icon": "desert",
+              "text": "埃及"
+            },
+            {
+              "icon": "palm",
+              "text": "海南"
+            }
+          ],
+          "answer": 0,
+          "hint": "滑雪胜地",
+          "praise": "瑞士答对啦！"
+        }
+      ],
+      "zone": 6
+    },
+    {
+      "id": "geo-56",
+      "title": "第 57 关 南非",
+      "subtitle": "钻石之国",
+      "steps": [
+        {
+          "id": "geo-56-t",
+          "kind": "letter",
+          "letters": [
+            "南非"
+          ],
+          "display": "南非",
+          "examples": [
+            {
+              "icon": "crystal",
+              "text": "钻石",
+              "say": "钻石"
+            },
+            {
+              "icon": "elephant",
+              "text": "大象",
+              "say": "大象"
+            }
+          ],
+          "question": "学一学：南非出产钻石"
+        },
+        {
+          "id": "geo-56-q1",
+          "kind": "quiz",
+          "question": "钻石之国是——",
+          "options": [
+            {
+              "icon": "crystal",
+              "text": "南非"
+            },
+            {
+              "icon": "pisa",
+              "text": "意大利"
+            },
+            {
+              "icon": "torii",
+              "text": "日本"
+            }
+          ],
+          "answer": 0,
+          "hint": "非洲最南端",
+          "praise": "南非答对啦！"
+        }
+      ],
+      "zone": 6
+    },
+    {
+      "id": "geo-57",
+      "title": "第 58 关 芬兰",
+      "subtitle": "圣诞老人的家",
+      "steps": [
+        {
+          "id": "geo-57-t",
+          "kind": "letter",
+          "letters": [
+            "芬兰"
+          ],
+          "display": "芬兰",
+          "examples": [
+            {
+              "icon": "snowflake",
+              "text": "冰雪",
+              "say": "冰雪"
+            },
+            {
+              "icon": "party",
+              "text": "圣诞老人村",
+              "say": "圣诞老人村"
+            }
+          ],
+          "question": "学一学：传说圣诞老人住在芬兰"
+        },
+        {
+          "id": "geo-57-q1",
+          "kind": "quiz",
+          "question": "圣诞老人村在——",
+          "options": [
+            {
+              "icon": "party",
+              "text": "芬兰"
+            },
+            {
+              "icon": "palm",
+              "text": "海南"
+            },
+            {
+              "icon": "desert",
+              "text": "埃及"
+            }
+          ],
+          "answer": 0,
+          "hint": "北欧千湖之国",
+          "praise": "芬兰答对啦！"
+        }
+      ],
+      "zone": 6
+    },
+    {
+      "id": "geo-58",
+      "title": "第 59 关 丹麦",
+      "subtitle": "童话王国",
+      "steps": [
+        {
+          "id": "geo-58-t",
+          "kind": "letter",
+          "letters": [
+            "丹麦"
+          ],
+          "display": "丹麦",
+          "examples": [
+            {
+              "icon": "book",
+              "text": "安徒生童话",
+              "say": "安徒生童话"
+            },
+            {
+              "icon": "castle",
+              "text": "美人鱼像",
+              "say": "美人鱼像"
+            }
+          ],
+          "question": "学一学：童话作家安徒生是丹麦人"
+        },
+        {
+          "id": "geo-58-q1",
+          "kind": "quiz",
+          "question": "童话王国是——",
+          "options": [
+            {
+              "icon": "book",
+              "text": "丹麦"
+            },
+            {
+              "icon": "bigben",
+              "text": "英国"
+            },
+            {
+              "icon": "eiffel",
+              "text": "法国"
+            }
+          ],
+          "answer": 0,
+          "hint": "丑小鸭和小美人鱼",
+          "praise": "丹麦答对啦！"
+        }
+      ],
+      "zone": 6
+    },
+    {
+      "id": "geo-r1",
+      "title": "复习关 二",
+      "subtitle": "旧题开盲盒 · 混排复习",
+      "steps": [
+        {
+          "id": "geo-r1-0",
+          "kind": "mappuzzle",
+          "map": "china",
+          "regions": [
+            {
+              "id": "cn-north",
+              "label": "东北",
+              "color": "#8AB8E8",
+              "points": [
+                [
+                  60,
+                  8
+                ],
+                [
+                  80,
+                  10
+                ],
+                [
+                  78,
+                  22
+                ],
+                [
+                  62,
+                  20
+                ]
+              ]
+            },
+            {
+              "id": "cn-west",
+              "label": "西部",
+              "color": "#F4A259",
+              "points": [
+                [
+                  40,
+                  10
+                ],
+                [
+                  60,
+                  8
+                ],
+                [
+                  62,
+                  20
+                ],
+                [
+                  44,
+                  24
+                ]
+              ]
+            },
+            {
+              "id": "cn-central",
+              "label": "中部",
+              "color": "#7FC6A4",
+              "points": [
+                [
+                  44,
+                  24
+                ],
+                [
+                  62,
+                  20
+                ],
+                [
+                  66,
+                  34
+                ],
+                [
+                  48,
+                  36
+                ]
+              ]
+            },
+            {
+              "id": "cn-east",
+              "label": "东部",
+              "color": "#E07A5F",
+              "points": [
+                [
+                  62,
+                  20
+                ],
+                [
+                  78,
+                  22
+                ],
+                [
+                  80,
+                  38
+                ],
+                [
+                  66,
+                  34
+                ]
+              ]
+            },
+            {
+              "id": "cn-south",
+              "label": "南方",
+              "color": "#F2C14E",
+              "points": [
+                [
+                  48,
+                  36
+                ],
+                [
+                  66,
+                  34
+                ],
+                [
+                  70,
+                  48
+                ],
+                [
+                  52,
+                  50
+                ]
+              ]
+            },
+            {
+              "id": "cn-island",
+              "label": "海岛",
+              "color": "#9B8CE8",
+              "points": [
+                [
+                  52,
+                  50
+                ],
+                [
+                  62,
+                  48
+                ],
+                [
+                  60,
+                  56
+                ],
+                [
+                  50,
+                  55
+                ]
+              ]
+            }
+          ],
+          "question": "拼一拼：把中国地图的六块拖回雄鸡轮廓",
+          "praise": "拼好啦，地图在你手里！"
+        },
+        {
+          "id": "geo-r1-1",
+          "kind": "quiz",
+          "question": "中国的首都是哪座城市？",
+          "options": [
+            {
+              "icon": "tiananmen",
+              "text": "北京"
+            },
+            {
+              "icon": "castle"
+            },
+            {
+              "icon": "school"
+            }
+          ],
+          "answer": 0,
+          "hint": "天安门在北京",
+          "praise": "北京是首都！"
+        },
+        {
+          "id": "geo-r1-2",
+          "kind": "quiz",
+          "question": "长江和黄河是中国的什么河？",
+          "options": [
+            {
+              "icon": "river"
+            },
+            {
+              "icon": "moon"
+            },
+            {
+              "icon": "comet"
+            }
+          ],
+          "answer": 0,
+          "hint": "母亲河",
+          "praise": "母亲河记住啦！"
+        },
+        {
+          "id": "geo-r1-3",
+          "kind": "quiz",
+          "question": "万里长城像一条卧在山上的什么？",
+          "options": [
+            {
+              "icon": "greatwall"
+            },
+            {
+              "icon": "rocket"
+            },
+            {
+              "icon": "moon"
+            }
+          ],
+          "answer": 0,
+          "hint": "长龙",
+          "praise": "长城真雄伟！"
+        },
+        {
+          "id": "geo-r1-4",
+          "kind": "quiz",
+          "question": "世界第一高峰是哪座山？",
+          "options": [
+            {
+              "icon": "everest"
+            },
+            {
+              "icon": "volcano"
+            },
+            {
+              "icon": "castle"
+            }
+          ],
+          "answer": 0,
+          "hint": "最高最高",
+          "praise": "珠峰真高！"
+        },
+        {
+          "id": "geo-r1-5",
+          "kind": "quiz",
+          "question": "中国的国宝、爱吃竹子的动物是谁？",
+          "options": [
+            {
+              "icon": "bear"
+            },
+            {
+              "icon": "panda"
+            },
+            {
+              "icon": "rabbit"
+            }
+          ],
+          "answer": 1,
+          "hint": "黑白毛、圆滚滚",
+          "praise": "大熊猫真可爱！"
+        }
+      ],
+      "board": {
+        "spaces": [
+          {
+            "type": "question",
+            "step": "geo-r1-1"
+          },
+          {
+            "type": "question",
+            "step": "geo-r1-2"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "geo-r1-3"
+          },
+          {
+            "type": "question",
+            "step": "geo-r1-4"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "geo-r1-5"
+          },
+          {
+            "type": "chest"
+          },
+          {
+            "type": "question",
+            "step": "geo-r1-0"
+          },
+          {
+            "type": "rest"
+          }
+        ]
+      },
+      "review": true,
+      "zone": 7
+    },
+    {
+      "id": "geo-59",
+      "title": "第 60 关 印度扩展",
+      "subtitle": "恒河与纱丽",
+      "steps": [
+        {
+          "id": "geo-59-t",
+          "kind": "letter",
+          "letters": [
+            "印度"
+          ],
+          "display": "印度",
+          "examples": [
+            {
+              "icon": "taj",
+              "text": "泰姬陵",
+              "say": "泰姬陵"
+            },
+            {
+              "icon": "wave",
+              "text": "恒河",
+              "say": "恒河"
+            }
+          ],
+          "question": "学一学：恒河是印度的圣河"
+        },
+        {
+          "id": "geo-59-q1",
+          "kind": "quiz",
+          "question": "恒河流经——",
+          "options": [
+            {
+              "icon": "taj",
+              "text": "印度"
+            },
+            {
+              "icon": "bigben",
+              "text": "英国"
+            },
+            {
+              "icon": "castle",
+              "text": "俄罗斯"
+            }
+          ],
+          "answer": 0,
+          "hint": "南亚文明古国",
+          "praise": "印度答对啦！"
+        }
+      ],
+      "zone": 7
+    },
+    {
+      "id": "geo-60",
+      "title": "第 61 关 新西兰",
+      "subtitle": "长白云之乡",
+      "steps": [
+        {
+          "id": "geo-60-t",
+          "kind": "letter",
+          "letters": [
+            "新西兰"
+          ],
+          "display": "新西兰",
+          "examples": [
+            {
+              "icon": "sprout",
+              "text": "绿地",
+              "say": "绿地"
+            },
+            {
+              "icon": "wave",
+              "text": "海湾",
+              "say": "海湾"
+            }
+          ],
+          "question": "学一学：新西兰被称为长白云之乡"
+        },
+        {
+          "id": "geo-60-q1",
+          "kind": "quiz",
+          "question": "长白云之乡是——",
+          "options": [
+            {
+              "icon": "sprout",
+              "text": "新西兰"
+            },
+            {
+              "icon": "kangaroo",
+              "text": "澳大利亚"
+            },
+            {
+              "icon": "polarbear",
+              "text": "北极"
+            }
+          ],
+          "answer": 0,
+          "hint": "大洋洲岛国",
+          "praise": "新西兰答对啦！"
+        }
+      ],
+      "zone": 7
+    },
+    {
+      "id": "geo-61",
+      "title": "第 62 关 挪威",
+      "subtitle": "峡湾之国",
+      "steps": [
+        {
+          "id": "geo-61-t",
+          "kind": "letter",
+          "letters": [
+            "挪威"
+          ],
+          "display": "挪威",
+          "examples": [
+            {
+              "icon": "everest",
+              "text": "峡湾陡壁",
+              "say": "峡湾陡壁"
+            },
+            {
+              "icon": "snowflake",
+              "text": "极夜",
+              "say": "极夜"
+            }
+          ],
+          "question": "学一学：挪威有美丽的峡湾"
+        },
+        {
+          "id": "geo-61-q1",
+          "kind": "quiz",
+          "question": "峡湾之国是——",
+          "options": [
+            {
+              "icon": "everest",
+              "text": "挪威"
+            },
+            {
+              "icon": "windmill",
+              "text": "荷兰"
+            },
+            {
+              "icon": "taj",
+              "text": "印度"
+            }
+          ],
+          "answer": 0,
+          "hint": "北欧海盗国度",
+          "praise": "挪威答对啦！"
+        }
+      ],
+      "zone": 7
+    },
+    {
+      "id": "geo-62",
+      "title": "第 63 关 希腊",
+      "subtitle": "奥运发源地",
+      "steps": [
+        {
+          "id": "geo-62-t",
+          "kind": "letter",
+          "letters": [
+            "希腊"
+          ],
+          "display": "希腊",
+          "examples": [
+            {
+              "icon": "flag",
+              "text": "奥林匹克",
+              "say": "奥林匹克"
+            },
+            {
+              "icon": "castle",
+              "text": "神庙",
+              "say": "神庙"
+            }
+          ],
+          "question": "学一学：奥林匹克运动会起源于希腊"
+        },
+        {
+          "id": "geo-62-q1",
+          "kind": "quiz",
+          "question": "奥运会发源于——",
+          "options": [
+            {
+              "icon": "flag",
+              "text": "希腊"
+            },
+            {
+              "icon": "bigben",
+              "text": "英国"
+            },
+            {
+              "icon": "pisa",
+              "text": "意大利"
+            }
+          ],
+          "answer": 0,
+          "hint": "雅典卫城",
+          "praise": "希腊答对啦！"
+        }
+      ],
+      "zone": 7
+    },
+    {
+      "id": "geo-63",
+      "title": "第 64 关 阿根廷",
+      "subtitle": "探戈与足球",
+      "steps": [
+        {
+          "id": "geo-63-t",
+          "kind": "letter",
+          "letters": [
+            "阿根廷"
+          ],
+          "display": "阿根廷",
+          "examples": [
+            {
+              "icon": "ball",
+              "text": "足球",
+              "say": "足球"
+            },
+            {
+              "icon": "party",
+              "text": "探戈舞",
+              "say": "探戈舞"
+            }
+          ],
+          "question": "学一学：阿根廷足球和探戈舞都很有名"
+        },
+        {
+          "id": "geo-63-q1",
+          "kind": "quiz",
+          "question": "梅西的祖国是——",
+          "options": [
+            {
+              "icon": "ball",
+              "text": "阿根廷"
+            },
+            {
+              "icon": "torii",
+              "text": "日本"
+            },
+            {
+              "icon": "pisa",
+              "text": "意大利"
+            }
+          ],
+          "answer": 0,
+          "hint": "南美银之国",
+          "praise": "阿根廷答对啦！"
+        }
+      ],
+      "zone": 7
+    },
+    {
+      "id": "geo-64",
+      "title": "第 65 关 肯尼亚",
+      "subtitle": "动物大迁徙",
+      "steps": [
+        {
+          "id": "geo-64-t",
+          "kind": "letter",
+          "letters": [
+            "肯尼亚"
+          ],
+          "display": "肯尼亚",
+          "examples": [
+            {
+              "icon": "lion",
+              "text": "草原狮",
+              "say": "草原狮"
+            },
+            {
+              "icon": "elephant",
+              "text": "象群",
+              "say": "象群"
+            }
+          ],
+          "question": "学一学：肯尼亚有动物大迁徙"
+        },
+        {
+          "id": "geo-64-q1",
+          "kind": "quiz",
+          "question": "动物大迁徙在——",
+          "options": [
+            {
+              "icon": "lion",
+              "text": "肯尼亚"
+            },
+            {
+              "icon": "penguin",
+              "text": "南极"
+            },
+            {
+              "icon": "kangaroo",
+              "text": "澳大利亚"
+            }
+          ],
+          "answer": 0,
+          "hint": "非洲草原壮景",
+          "praise": "肯尼亚答对啦！"
+        }
+      ],
+      "zone": 7
+    },
+    {
+      "id": "geo-65",
+      "title": "第 66 关 智利",
+      "subtitle": "最狭长的国家",
+      "steps": [
+        {
+          "id": "geo-65-t",
+          "kind": "letter",
+          "letters": [
+            "智利"
+          ],
+          "display": "智利",
+          "examples": [
+            {
+              "icon": "everest",
+              "text": "安第斯山",
+              "say": "安第斯山"
+            },
+            {
+              "icon": "wave",
+              "text": "太平洋",
+              "say": "太平洋"
+            }
+          ],
+          "question": "学一学：智利是世界上最狭长的国家"
+        },
+        {
+          "id": "geo-65-q1",
+          "kind": "quiz",
+          "question": "最狭长的国家是——",
+          "options": [
+            {
+              "icon": "everest",
+              "text": "智利"
+            },
+            {
+              "icon": "ball",
+              "text": "巴西"
+            },
+            {
+              "icon": "tower",
+              "text": "上海"
+            }
+          ],
+          "answer": 0,
+          "hint": "安第斯山下",
+          "praise": "智利答对啦！"
+        }
+      ],
+      "zone": 7
+    },
+    {
+      "id": "geo-66",
+      "title": "第 67 关 冰岛",
+      "subtitle": "冰与火之国",
+      "steps": [
+        {
+          "id": "geo-66-t",
+          "kind": "letter",
+          "letters": [
+            "冰岛"
+          ],
+          "display": "冰岛",
+          "examples": [
+            {
+              "icon": "volcano",
+              "text": "火山",
+              "say": "火山"
+            },
+            {
+              "icon": "snowflake",
+              "text": "冰川",
+              "say": "冰川"
+            }
+          ],
+          "question": "学一学：冰岛有冰川也有火山"
+        },
+        {
+          "id": "geo-66-q1",
+          "kind": "quiz",
+          "question": "「冰与火之国」是——",
+          "options": [
+            {
+              "icon": "volcano",
+              "text": "冰岛"
+            },
+            {
+              "icon": "palm",
+              "text": "海南"
+            },
+            {
+              "icon": "desert",
+              "text": "埃及"
+            }
+          ],
+          "answer": 0,
+          "hint": "冰川火山共存",
+          "praise": "冰岛答对啦！"
+        }
+      ],
+      "zone": 7
+    },
+    {
+      "id": "geo-67",
+      "title": "第 68 关 秘鲁",
+      "subtitle": "印加古道",
+      "steps": [
+        {
+          "id": "geo-67-t",
+          "kind": "letter",
+          "letters": [
+            "秘鲁"
+          ],
+          "display": "秘鲁",
+          "examples": [
+            {
+              "icon": "everest",
+              "text": "安第斯古城",
+              "say": "安第斯古城"
+            },
+            {
+              "icon": "flag",
+              "text": "马丘比丘",
+              "say": "马丘比丘"
+            }
+          ],
+          "question": "学一学：秘鲁有神秘的马丘比丘古城"
+        },
+        {
+          "id": "geo-67-q1",
+          "kind": "quiz",
+          "question": "马丘比丘在——",
+          "options": [
+            {
+              "icon": "everest",
+              "text": "秘鲁"
+            },
+            {
+              "icon": "pyramid",
+              "text": "埃及"
+            },
+            {
+              "icon": "taj",
+              "text": "印度"
+            }
+          ],
+          "answer": 0,
+          "hint": "天空之城",
+          "praise": "秘鲁答对啦！"
+        }
+      ],
+      "zone": 7
+    },
+    {
+      "id": "geo-68",
+      "title": "第 69 关 马里亚纳海沟",
+      "subtitle": "最深的海",
+      "steps": [
+        {
+          "id": "geo-68-t",
+          "kind": "letter",
+          "letters": [
+            "马里亚纳海沟"
+          ],
+          "display": "马里亚纳海沟",
+          "examples": [
+            {
+              "icon": "wave",
+              "text": "深深的海沟",
+              "say": "深深的海沟"
+            },
+            {
+              "icon": "fish",
+              "text": "深海鱼",
+              "say": "深海鱼"
+            }
+          ],
+          "question": "学一学：马里亚纳海沟是海洋最深的地方"
+        },
+        {
+          "id": "geo-68-q1",
+          "kind": "quiz",
+          "question": "海洋最深处在——",
+          "options": [
+            {
+              "icon": "wave",
+              "text": "马里亚纳海沟"
+            },
+            {
+              "icon": "river",
+              "text": "长江"
+            },
+            {
+              "icon": "desert",
+              "text": "撒哈拉"
+            }
+          ],
+          "answer": 0,
+          "hint": "深过最高的山",
+          "praise": "马里亚纳海沟答对啦！"
+        }
+      ],
+      "zone": 8
+    },
+    {
+      "id": "geo-69",
+      "title": "第 70 贝加尔湖",
+      "subtitle": "最深的湖",
+      "steps": [
+        {
+          "id": "geo-69-t",
+          "kind": "letter",
+          "letters": [
+            "贝加尔湖"
+          ],
+          "display": "贝加尔湖",
+          "examples": [
+            {
+              "icon": "wave",
+              "text": "清澈湖水",
+              "say": "清澈湖水"
+            },
+            {
+              "icon": "snowflake",
+              "text": "蓝冰",
+              "say": "蓝冰"
+            }
+          ],
+          "question": "学一学：贝加尔湖是最深的淡水湖"
+        },
+        {
+          "id": "geo-69-q1",
+          "kind": "quiz",
+          "question": "最深的淡水湖是——",
+          "options": [
+            {
+              "icon": "wave",
+              "text": "贝加尔湖"
+            },
+            {
+              "icon": "river",
+              "text": "尼罗河"
+            },
+            {
+              "icon": "wave",
+              "text": "青海湖"
+            }
+          ],
+          "answer": 0,
+          "hint": "西伯利亚蓝眼睛",
+          "praise": "贝加尔湖答对啦！"
+        }
+      ],
+      "zone": 8
+    },
+    {
+      "id": "geo-70",
+      "title": "第 71 死海",
+      "subtitle": "最咸的湖",
+      "steps": [
+        {
+          "id": "geo-70-t",
+          "kind": "letter",
+          "letters": [
+            "死海"
+          ],
+          "display": "死海",
+          "examples": [
+            {
+              "icon": "wave",
+              "text": "死海漂浮",
+              "say": "死海漂浮"
+            },
+            {
+              "icon": "sun",
+              "text": "烈日",
+              "say": "烈日"
+            }
+          ],
+          "question": "学一学：死海太咸，人能浮在水面"
+        },
+        {
+          "id": "geo-70-q1",
+          "kind": "quiz",
+          "question": "人能躺在水上看书的湖是——",
+          "options": [
+            {
+              "icon": "wave",
+              "text": "死海"
+            },
+            {
+              "icon": "river",
+              "text": "尼罗河"
+            },
+            {
+              "icon": "wave",
+              "text": "太平洋"
+            }
+          ],
+          "answer": 0,
+          "hint": "盐分超级高",
+          "praise": "死海答对啦！"
+        }
+      ],
+      "zone": 8
+    },
+    {
+      "id": "geo-71",
+      "title": "第 72 格陵兰岛",
+      "subtitle": "最大的岛",
+      "steps": [
+        {
+          "id": "geo-71-t",
+          "kind": "letter",
+          "letters": [
+            "格陵兰"
+          ],
+          "display": "格陵兰",
+          "examples": [
+            {
+              "icon": "snowflake",
+              "text": "冰雪大岛",
+              "say": "冰雪大岛"
+            },
+            {
+              "icon": "polarbear",
+              "text": "北极动物",
+              "say": "北极动物"
+            }
+          ],
+          "question": "学一学：格陵兰是世界最大的岛"
+        },
+        {
+          "id": "geo-71-q1",
+          "kind": "quiz",
+          "question": "世界最大的岛是——",
+          "options": [
+            {
+              "icon": "snowflake",
+              "text": "格陵兰"
+            },
+            {
+              "icon": "wave",
+              "text": "太平洋"
+            },
+            {
+              "icon": "tree",
+              "text": "海南"
+            }
+          ],
+          "answer": 0,
+          "hint": "满岛冰川",
+          "praise": "格陵兰答对啦！"
+        }
+      ],
+      "zone": 8
+    },
+    {
+      "id": "geo-72",
+      "title": "第 73 夏威夷",
+      "subtitle": "火山群岛",
+      "steps": [
+        {
+          "id": "geo-72-t",
+          "kind": "letter",
+          "letters": [
+            "夏威夷"
+          ],
+          "display": "夏威夷",
+          "examples": [
+            {
+              "icon": "volcano",
+              "text": "活火山",
+              "say": "活火山"
+            },
+            {
+              "icon": "palm",
+              "text": "草裙舞",
+              "say": "草裙舞"
+            }
+          ],
+          "question": "学一学：夏威夷是火山喷出的群岛"
+        },
+        {
+          "id": "geo-72-q1",
+          "kind": "quiz",
+          "question": "夏威夷群岛由什么组成？",
+          "options": [
+            {
+              "text": "火山岛"
+            },
+            {
+              "text": "冰川岛"
+            },
+            {
+              "text": "珊瑚岛"
+            }
+          ],
+          "answer": 0,
+          "hint": "基拉韦厄活火山",
+          "praise": "火山岛答对啦！"
+        }
+      ],
+      "zone": 8
+    },
+    {
+      "id": "geo-73",
+      "title": "第 74 恐龙时代",
+      "subtitle": "侏罗纪",
+      "steps": [
+        {
+          "id": "geo-73-t",
+          "kind": "letter",
+          "letters": [
+            "恐龙"
+          ],
+          "display": "恐龙",
+          "examples": [
+            {
+              "icon": "dino",
+              "text": "霸王龙",
+              "say": "霸王龙"
+            },
+            {
+              "icon": "dino",
+              "text": "梁龙",
+              "say": "梁龙"
+            }
+          ],
+          "question": "学一学：恐龙生活在几千万年前"
+        },
+        {
+          "id": "geo-73-q1",
+          "kind": "quiz",
+          "question": "恐龙生活在——",
+          "options": [
+            {
+              "text": "几千万年前"
+            },
+            {
+              "text": "去年"
+            },
+            {
+              "text": "明天"
+            }
+          ],
+          "answer": 0,
+          "hint": "史前巨兽",
+          "praise": "几千万年前答对啦！"
+        }
+      ],
+      "zone": 8
+    },
+    {
+      "id": "geo-74",
+      "title": "第 75 恐龙灭绝",
+      "subtitle": "大灭绝之谜",
+      "steps": [
+        {
+          "id": "geo-74-t",
+          "kind": "letter",
+          "letters": [
+            "恐龙灭绝"
+          ],
+          "display": "恐龙灭绝",
+          "examples": [
+            {
+              "icon": "meteorite",
+              "text": "陨石撞击",
+              "say": "陨石撞击"
+            },
+            {
+              "icon": "volcano",
+              "text": "火山喷发",
+              "say": "火山喷发"
+            }
+          ],
+          "question": "学一学：陨石撞击可能是恐龙灭绝的原因"
+        },
+        {
+          "id": "geo-74-q1",
+          "kind": "quiz",
+          "question": "恐龙为什么灭绝？",
+          "options": [
+            {
+              "text": "可能因陨石撞击"
+            },
+            {
+              "text": "被人类吃光"
+            },
+            {
+              "text": "去旅游了"
+            }
+          ],
+          "answer": 0,
+          "hint": "科学家仍在研究",
+          "praise": "可能因陨石撞击答对啦！"
+        }
+      ],
+      "zone": 8
+    },
+    {
+      "id": "geo-75",
+      "title": "第 76 化石",
+      "subtitle": "远古的脚印",
+      "steps": [
+        {
+          "id": "geo-75-t",
+          "kind": "letter",
+          "letters": [
+            "化石"
+          ],
+          "display": "化石",
+          "examples": [
+            {
+              "icon": "rock",
+              "text": "岩石里的化石",
+              "say": "岩石里的化石"
+            },
+            {
+              "icon": "dino",
+              "text": "恐龙化石",
+              "say": "恐龙化石"
+            }
+          ],
+          "question": "学一学：化石记录了远古生命"
+        },
+        {
+          "id": "geo-75-q1",
+          "kind": "quiz",
+          "question": "化石藏在哪里？",
+          "options": [
+            {
+              "icon": "rock",
+              "text": "岩石里"
+            },
+            {
+              "icon": "wave",
+              "text": "海水里"
+            },
+            {
+              "icon": "cake",
+              "text": "蛋糕里"
+            }
+          ],
+          "answer": 0,
+          "hint": "地球的历史书",
+          "praise": "岩石里答对啦！"
+        }
+      ],
+      "zone": 8
+    },
+    {
+      "id": "geo-76",
+      "title": "第 77 陨石",
+      "subtitle": "天外来客",
+      "steps": [
+        {
+          "id": "geo-76-t",
+          "kind": "letter",
+          "letters": [
+            "陨石"
+          ],
+          "display": "陨石",
+          "examples": [
+            {
+              "icon": "meteorite",
+              "text": "陨石",
+              "say": "陨石"
+            },
+            {
+              "icon": "comet",
+              "text": "彗星",
+              "say": "彗星"
+            }
+          ],
+          "question": "学一学：陨石是从太空掉落的石头"
+        },
+        {
+          "id": "geo-76-q1",
+          "kind": "quiz",
+          "question": "陨石来自——",
+          "options": [
+            {
+              "text": "太空"
+            },
+            {
+              "text": "地底"
+            },
+            {
+              "text": "大海"
+            }
+          ],
+          "answer": 0,
+          "hint": "太空访客",
+          "praise": "太空答对啦！"
+        }
+      ],
+      "zone": 8
+    },
+    {
+      "id": "geo-77",
+      "title": "第 78 彗星",
+      "subtitle": "哈雷彗星",
+      "steps": [
+        {
+          "id": "geo-77-t",
+          "kind": "letter",
+          "letters": [
+            "哈雷彗星"
+          ],
+          "display": "哈雷彗星",
+          "examples": [
+            {
+              "icon": "comet",
+              "text": "彗星",
+              "say": "彗星"
+            },
+            {
+              "icon": "star",
+              "text": "星空",
+              "say": "星空"
+            }
+          ],
+          "question": "学一学：哈雷彗星约 76 年回来一次"
+        },
+        {
+          "id": "geo-77-q1",
+          "kind": "quiz",
+          "question": "哈雷彗星绕谁转？",
+          "options": [
+            {
+              "text": "太阳"
+            },
+            {
+              "text": "月亮"
+            },
+            {
+              "text": "地球"
+            }
+          ],
+          "answer": 0,
+          "hint": "拖着尾巴的访客",
+          "praise": "太阳答对啦！"
+        }
+      ],
+      "zone": 8
+    },
+    {
+      "id": "geo-78",
+      "title": "第 79 极昼极夜",
+      "subtitle": "太阳不落山",
+      "steps": [
+        {
+          "id": "geo-78-t",
+          "kind": "letter",
+          "letters": [
+            "极昼极夜"
+          ],
+          "display": "极昼极夜",
+          "examples": [
+            {
+              "icon": "polarbear",
+              "text": "北极极昼",
+              "say": "北极极昼"
+            },
+            {
+              "icon": "snowflake",
+              "text": "极夜",
+              "say": "极夜"
+            }
+          ],
+          "question": "学一学：极地夏天太阳不落，冬天不见太阳"
+        },
+        {
+          "id": "geo-78-q1",
+          "kind": "quiz",
+          "question": "极昼是——",
+          "options": [
+            {
+              "text": "太阳整日不落"
+            },
+            {
+              "text": "整天黑夜"
+            },
+            {
+              "text": "下雪"
+            }
+          ],
+          "answer": 0,
+          "hint": "南北极才有的奇景",
+          "praise": "太阳整日不落答对啦！"
+        }
+      ],
+      "zone": 9
+    },
+    {
+      "id": "geo-79",
+      "title": "第 80 珊瑚礁",
+      "subtitle": "海底热带雨林",
+      "steps": [
+        {
+          "id": "geo-79-t",
+          "kind": "letter",
+          "letters": [
+            "珊瑚礁"
+          ],
+          "display": "珊瑚礁",
+          "examples": [
+            {
+              "icon": "crystal",
+              "text": "珊瑚",
+              "say": "珊瑚"
+            },
+            {
+              "icon": "fish",
+              "text": "鱼群",
+              "say": "鱼群"
+            }
+          ],
+          "question": "学一学：珊瑚礁养着四分之一的海洋生物"
+        },
+        {
+          "id": "geo-79-q1",
+          "kind": "quiz",
+          "question": "珊瑚礁在——",
+          "options": [
+            {
+              "text": "温暖浅海"
+            },
+            {
+              "text": "深海底"
+            },
+            {
+              "text": "沙漠里"
+            }
+          ],
+          "answer": 0,
+          "hint": "海洋生命摇篮",
+          "praise": "温暖浅海答对啦！"
+        }
+      ],
+      "zone": 9
+    },
+    {
+      "id": "geo-80",
+      "title": "第 81 春节",
+      "subtitle": "中国新年",
+      "steps": [
+        {
+          "id": "geo-80-t",
+          "kind": "letter",
+          "letters": [
+            "春节"
+          ],
+          "display": "春节",
+          "examples": [
+            {
+              "icon": "party",
+              "text": "贴春联放鞭炮",
+              "say": "贴春联放鞭炮"
+            },
+            {
+              "icon": "flag",
+              "text": "红旗灯笼",
+              "say": "红旗灯笼"
+            }
+          ],
+          "question": "学一学：春节是中国最重要的节日"
+        },
+        {
+          "id": "geo-80-q1",
+          "kind": "quiz",
+          "question": "中国最重要的传统节日是——",
+          "options": [
+            {
+              "icon": "party",
+              "text": "春节"
+            },
+            {
+              "icon": "party",
+              "text": "圣诞"
+            },
+            {
+              "icon": "cake",
+              "text": "生日"
+            }
+          ],
+          "answer": 0,
+          "hint": "全家团圆过年",
+          "praise": "春节答对啦！"
+        }
+      ],
+      "zone": 9
+    },
+    {
+      "id": "geo-81",
+      "title": "第 82 中秋节",
+      "subtitle": "月圆人团圆",
+      "steps": [
+        {
+          "id": "geo-81-t",
+          "kind": "letter",
+          "letters": [
+            "中秋节"
+          ],
+          "display": "中秋节",
+          "examples": [
+            {
+              "icon": "moon",
+              "text": "圆月",
+              "say": "圆月"
+            },
+            {
+              "icon": "cake",
+              "text": "月饼",
+              "say": "月饼"
+            }
+          ],
+          "question": "学一学：中秋吃月饼、赏明月"
+        },
+        {
+          "id": "geo-81-q1",
+          "kind": "quiz",
+          "question": "中秋节吃什么？",
+          "options": [
+            {
+              "icon": "cake",
+              "text": "月饼"
+            },
+            {
+              "icon": "candy",
+              "text": "糖"
+            },
+            {
+              "icon": "bread",
+              "text": "面包"
+            }
+          ],
+          "answer": 0,
+          "hint": "八月十五月儿圆",
+          "praise": "月饼答对啦！"
+        }
+      ],
+      "zone": 9
+    },
+    {
+      "id": "geo-82",
+      "title": "第 83 端午节",
+      "subtitle": "龙舟粽子",
+      "steps": [
+        {
+          "id": "geo-82-t",
+          "kind": "letter",
+          "letters": [
+            "端午节"
+          ],
+          "display": "端午节",
+          "examples": [
+            {
+              "icon": "wave",
+              "text": "赛龙舟",
+              "say": "赛龙舟"
+            },
+            {
+              "icon": "leaf",
+              "text": "粽叶",
+              "say": "粽叶"
+            }
+          ],
+          "question": "学一学：端午赛龙舟、吃粽子"
+        },
+        {
+          "id": "geo-82-q1",
+          "kind": "quiz",
+          "question": "端午节纪念——",
+          "options": [
+            {
+              "text": "屈原"
+            },
+            {
+              "text": "牛郎"
+            },
+            {
+              "text": "嫦娥"
+            }
+          ],
+          "answer": 0,
+          "hint": "五月初五",
+          "praise": "屈原答对啦！"
+        }
+      ],
+      "zone": 9
+    },
+    {
+      "id": "geo-83",
+      "title": "第 84 圣诞节",
+      "subtitle": "圣诞快乐",
+      "steps": [
+        {
+          "id": "geo-83-t",
+          "kind": "letter",
+          "letters": [
+            "圣诞节"
+          ],
+          "display": "圣诞节",
+          "examples": [
+            {
+              "icon": "snowflake",
+              "text": "雪花",
+              "say": "雪花"
+            },
+            {
+              "icon": "party",
+              "text": "圣诞树",
+              "say": "圣诞树"
+            }
+          ],
+          "question": "学一学：圣诞节是西方重要节日"
+        },
+        {
+          "id": "geo-83-q1",
+          "kind": "quiz",
+          "question": "圣诞节在哪一天？",
+          "options": [
+            {
+              "text": "12 月 25 日"
+            },
+            {
+              "text": "1 月 1 日"
+            },
+            {
+              "text": "8 月 15 日"
+            }
+          ],
+          "answer": 0,
+          "hint": "圣诞老人传说",
+          "praise": "12 月 25 日答对啦！"
+        }
+      ],
+      "zone": 9
+    },
+    {
+      "id": "geo-84",
+      "title": "第 85 万圣节",
+      "subtitle": "南瓜灯",
+      "steps": [
+        {
+          "id": "geo-84-t",
+          "kind": "letter",
+          "letters": [
+            "万圣节"
+          ],
+          "display": "万圣节",
+          "examples": [
+            {
+              "icon": "party",
+              "text": "南瓜灯",
+              "say": "南瓜灯"
+            },
+            {
+              "icon": "hat",
+              "text": "化装舞会",
+              "say": "化装舞会"
+            }
+          ],
+          "question": "学一学：万圣节孩子会讨糖果"
+        },
+        {
+          "id": "geo-84-q1",
+          "kind": "quiz",
+          "question": "万圣节的标志是——",
+          "options": [
+            {
+              "icon": "party",
+              "text": "南瓜灯"
+            },
+            {
+              "icon": "moon",
+              "text": "月亮"
+            },
+            {
+              "icon": "flag",
+              "text": "国旗"
+            }
+          ],
+          "answer": 0,
+          "hint": "10 月 31 日",
+          "praise": "南瓜灯答对啦！"
+        }
+      ],
+      "zone": 9
+    },
+    {
+      "id": "geo-85",
+      "title": "第 86 感恩节",
+      "subtitle": "火鸡大餐",
+      "steps": [
+        {
+          "id": "geo-85-t",
+          "kind": "letter",
+          "letters": [
+            "感恩节"
+          ],
+          "display": "感恩节",
+          "examples": [
+            {
+              "icon": "cake",
+              "text": "节日大餐",
+              "say": "节日大餐"
+            },
+            {
+              "icon": "party",
+              "text": "家人团聚",
+              "say": "家人团聚"
+            }
+          ],
+          "question": "学一学：感恩节家人团聚吃火鸡"
+        },
+        {
+          "id": "geo-85-q1",
+          "kind": "quiz",
+          "question": "感恩节流行于——",
+          "options": [
+            {
+              "text": "美国和加拿大"
+            },
+            {
+              "text": "中国"
+            },
+            {
+              "text": "日本"
+            }
+          ],
+          "answer": 0,
+          "hint": "11 月第四个星期四",
+          "praise": "美国和加拿大答对啦！"
+        }
+      ],
+      "zone": 9
+    },
+    {
+      "id": "geo-86",
+      "title": "第 87 认方向",
+      "subtitle": "东南西北",
+      "steps": [
+        {
+          "id": "geo-86-t",
+          "kind": "letter",
+          "letters": [
+            "方向"
+          ],
+          "display": "方向",
+          "examples": [
+            {
+              "icon": "flag",
+              "text": "指南针",
+              "say": "指南针"
+            },
+            {
+              "icon": "sun",
+              "text": "早晨太阳在东",
+              "say": "早晨太阳在东"
+            }
+          ],
+          "question": "学一学：早晨太阳在东边"
+        },
+        {
+          "id": "geo-86-q1",
+          "kind": "quiz",
+          "question": "太阳升起的方向是——",
+          "options": [
+            {
+              "text": "东方"
+            },
+            {
+              "text": "西方"
+            },
+            {
+              "text": "北方"
+            }
+          ],
+          "answer": 0,
+          "hint": "面对太阳前东后西",
+          "praise": "东方答对啦！"
+        }
+      ],
+      "zone": 9
+    },
+    {
+      "id": "geo-87",
+      "title": "第 88 指南针",
+      "subtitle": "中国四大发明",
+      "steps": [
+        {
+          "id": "geo-87-t",
+          "kind": "letter",
+          "letters": [
+            "指南针"
+          ],
+          "display": "指南针",
+          "examples": [
+            {
+              "icon": "flag",
+              "text": "指南针",
+              "say": "指南针"
+            },
+            {
+              "icon": "rock",
+              "text": "司南",
+              "say": "司南"
+            }
+          ],
+          "question": "学一学：指南针是中国四大发明之一"
+        },
+        {
+          "id": "geo-87-q1",
+          "kind": "quiz",
+          "question": "指南针的指针指向——",
+          "options": [
+            {
+              "text": "南北"
+            },
+            {
+              "text": "东西"
+            },
+            {
+              "text": "上下"
+            }
+          ],
+          "answer": 0,
+          "hint": "四大发明还有造纸印刷火药",
+          "praise": "南北答对啦！"
+        }
+      ],
+      "zone": 9
+    },
+    {
+      "id": "geo-88",
+      "title": "第 89 七大洲",
+      "subtitle": "七个大洲",
+      "steps": [
+        {
+          "id": "geo-88-t",
+          "kind": "letter",
+          "letters": [
+            "七大洲"
+          ],
+          "display": "七大洲",
+          "examples": [
+            {
+              "icon": "world-map",
+              "text": "世界地图",
+              "say": "世界地图"
+            },
+            {
+              "icon": "earth",
+              "text": "地球",
+              "say": "地球"
+            }
+          ],
+          "question": "学一学：亚洲最大，大洋洲最小"
+        },
+        {
+          "id": "geo-88-q1",
+          "kind": "quiz",
+          "question": "最大的洲是——",
+          "options": [
+            {
+              "text": "亚洲"
+            },
+            {
+              "text": "欧洲"
+            },
+            {
+              "text": "南极洲"
+            }
+          ],
+          "answer": 0,
+          "hint": "我们就住在亚洲",
+          "praise": "亚洲答对啦！"
+        }
+      ],
+      "zone": 10
+    },
+    {
       "id": "geo-r2",
       "title": "复习关 三",
       "subtitle": "旧题开盲盒 · 混排复习",
@@ -3642,7 +5826,343 @@
         ]
       },
       "review": true,
-      "zone": 5
+      "zone": 10
+    },
+    {
+      "id": "geo-89",
+      "title": "第 90 四大洋",
+      "subtitle": "四个大洋",
+      "steps": [
+        {
+          "id": "geo-89-t",
+          "kind": "letter",
+          "letters": [
+            "四大洋"
+          ],
+          "display": "四大洋",
+          "examples": [
+            {
+              "icon": "wave",
+              "text": "太平洋",
+              "say": "太平洋"
+            },
+            {
+              "icon": "wave",
+              "text": "大西洋",
+              "say": "大西洋"
+            }
+          ],
+          "question": "学一学：太平洋最大，北冰洋最小"
+        },
+        {
+          "id": "geo-89-q1",
+          "kind": "quiz",
+          "question": "最小的洋是——",
+          "options": [
+            {
+              "text": "北冰洋"
+            },
+            {
+              "text": "太平洋"
+            },
+            {
+              "text": "印度洋"
+            }
+          ],
+          "answer": 0,
+          "hint": "都在南极洲周围",
+          "praise": "北冰洋答对啦！"
+        }
+      ],
+      "zone": 10
+    },
+    {
+      "id": "geo-90",
+      "title": "第 91 地球仪",
+      "subtitle": "会转的地球",
+      "steps": [
+        {
+          "id": "geo-90-t",
+          "kind": "letter",
+          "letters": [
+            "地球仪"
+          ],
+          "display": "地球仪",
+          "examples": [
+            {
+              "icon": "earth",
+              "text": "地球仪",
+              "say": "地球仪"
+            },
+            {
+              "icon": "circle",
+              "text": "圆圆的",
+              "say": "圆圆的"
+            }
+          ],
+          "question": "学一学：地球仪是地球的模型"
+        },
+        {
+          "id": "geo-90-q1",
+          "kind": "quiz",
+          "question": "地球仪上蓝色代表——",
+          "options": [
+            {
+              "text": "海洋"
+            },
+            {
+              "text": "陆地"
+            },
+            {
+              "text": "云朵"
+            }
+          ],
+          "answer": 0,
+          "hint": "地球大部分是海",
+          "praise": "海洋答对啦！"
+        }
+      ],
+      "zone": 10
+    },
+    {
+      "id": "geo-91",
+      "title": "第 92 国旗",
+      "subtitle": "每个国家有国旗",
+      "steps": [
+        {
+          "id": "geo-91-t",
+          "kind": "letter",
+          "letters": [
+            "国旗"
+          ],
+          "display": "国旗",
+          "examples": [
+            {
+              "icon": "flag",
+              "text": "五星红旗",
+              "say": "五星红旗"
+            },
+            {
+              "icon": "flag",
+              "text": "各国国旗",
+              "say": "各国国旗"
+            }
+          ],
+          "question": "学一学：每个国家都有自己的国旗"
+        },
+        {
+          "id": "geo-91-q1",
+          "kind": "quiz",
+          "question": "中国的国旗是——",
+          "options": [
+            {
+              "text": "五星红旗"
+            },
+            {
+              "text": "枫叶旗"
+            },
+            {
+              "text": "米字旗"
+            }
+          ],
+          "answer": 0,
+          "hint": "升国旗要敬礼",
+          "praise": "五星红旗答对啦！"
+        }
+      ],
+      "zone": 10
+    },
+    {
+      "id": "geo-92",
+      "title": "第 93 人种与语言",
+      "subtitle": "说不同的话",
+      "steps": [
+        {
+          "id": "geo-92-t",
+          "kind": "letter",
+          "letters": [
+            "语言"
+          ],
+          "display": "语言",
+          "examples": [
+            {
+              "icon": "speaker",
+              "text": "各种语言",
+              "say": "各种语言"
+            },
+            {
+              "icon": "world-map",
+              "text": "世界语言",
+              "say": "世界语言"
+            }
+          ],
+          "question": "学一学：世界上有几千种语言"
+        },
+        {
+          "id": "geo-92-q1",
+          "kind": "quiz",
+          "question": "世界上说人数最多的母语是——",
+          "options": [
+            {
+              "text": "汉语"
+            },
+            {
+              "text": "英语"
+            },
+            {
+              "text": "法语"
+            }
+          ],
+          "answer": 0,
+          "hint": "我们说普通话",
+          "praise": "汉语答对啦！"
+        }
+      ],
+      "zone": 10
+    },
+    {
+      "id": "geo-93",
+      "title": "第 94 保护地球",
+      "subtitle": "爱护环境",
+      "steps": [
+        {
+          "id": "geo-93-t",
+          "kind": "letter",
+          "letters": [
+            "环保"
+          ],
+          "display": "环保",
+          "examples": [
+            {
+              "icon": "sprout",
+              "text": "种树",
+              "say": "种树"
+            },
+            {
+              "icon": "earth",
+              "text": "爱护地球",
+              "say": "爱护地球"
+            }
+          ],
+          "question": "学一学：垃圾分类保护地球"
+        },
+        {
+          "id": "geo-93-q1",
+          "kind": "quiz",
+          "question": "保护地球可以——",
+          "options": [
+            {
+              "text": "垃圾分类、节约用水"
+            },
+            {
+              "text": "多扔垃圾"
+            },
+            {
+              "text": "浪费水"
+            }
+          ],
+          "answer": 0,
+          "hint": "地球是我们共同的家",
+          "praise": "垃圾分类、节约用水答对啦！"
+        }
+      ],
+      "zone": 10
+    },
+    {
+      "id": "geo-94",
+      "title": "第 95 环球旅行家",
+      "subtitle": "带地图出发",
+      "steps": [
+        {
+          "id": "geo-94-t",
+          "kind": "letter",
+          "letters": [
+            "环球旅行"
+          ],
+          "display": "环球旅行",
+          "examples": [
+            {
+              "icon": "world-map",
+              "text": "世界地图",
+              "say": "世界地图"
+            },
+            {
+              "icon": "rocket",
+              "text": "出发",
+              "say": "出发"
+            }
+          ],
+          "question": "学一学：看地图能找到想去的地方"
+        },
+        {
+          "id": "geo-94-q1",
+          "kind": "quiz",
+          "question": "去陌生地方旅行要带上——",
+          "options": [
+            {
+              "text": "地图"
+            },
+            {
+              "text": "玩具"
+            },
+            {
+              "text": "零食"
+            }
+          ],
+          "answer": 0,
+          "hint": "小小环球旅行家",
+          "praise": "地图答对啦！"
+        }
+      ],
+      "zone": 10
+    },
+    {
+      "id": "geo-95",
+      "title": "第 96 时差",
+      "subtitle": "地球那边天黑了",
+      "steps": [
+        {
+          "id": "geo-95-t",
+          "kind": "letter",
+          "letters": [
+            "时差"
+          ],
+          "display": "时差",
+          "examples": [
+            {
+              "icon": "earth",
+              "text": "地球自转",
+              "say": "地球自转"
+            },
+            {
+              "icon": "moon",
+              "text": "夜晚",
+              "say": "夜晚"
+            }
+          ],
+          "question": "学一学：地球自转，各地白天黑夜不同时"
+        },
+        {
+          "id": "geo-95-q1",
+          "kind": "quiz",
+          "question": "我们白天时，地球另一边可能——",
+          "options": [
+            {
+              "text": "正是黑夜"
+            },
+            {
+              "text": "也是白天"
+            },
+            {
+              "text": "没有时间"
+            }
+          ],
+          "answer": 0,
+          "hint": "地球转呀转，昼夜轮流来",
+          "praise": "正是黑夜答对啦！"
+        }
+      ],
+      "zone": 10
     },
     {
       "id": "geo-boss",
@@ -4135,7 +6655,7 @@
         ]
       },
       "boss": true,
-      "zone": 5
+      "zone": 10
     }
   ]
 }

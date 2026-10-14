@@ -14,7 +14,8 @@ import json, os, re, sys, unicodedata, collections
 try:
     from pypinyin import lazy_pinyin, Style
 except ImportError:
-    sys.exit("需要 pypinyin：python3 -m pip install pypinyin")
+    sys.exit("需要 pypinyin：python3 -m pip install pypinyin\n"
+             "  PyPI 不通时用国内镜像：pip install -i https://mirrors.aliyun.com/pypi/simple/ pypinyin")
 
 PREVIEW = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
                         "preview", "index.html")
@@ -145,7 +146,141 @@ ICON_CN = {
     "rock":    extra("石头,石,石桥"),
     "elephant":extra("大象,象"),
     "square":  extra("方块,正方形,方"),
+    # ---- v0.12 补齐全部 171 个设计资产的词表（漏登记的图标会被当成 unknown 放过）----
+    "ball":    extra("球,足球,皮球,篮球"),
+    "pig":     extra("猪,小猪,肥猪,猪肉"),
+    "bee":     extra("蜜蜂,蜂,采蜜,虫子,小虫"),
+    "bird":    extra("鸟,小鸟,麻雀,老鹰,飞鸟,家禽"),
+    "egg":     extra("蛋,鸡蛋,雪白,蛋白"),
+    "cow":     extra("牛,奶牛,黄牛,牛奶"),
+    "monkey":  extra("猴子,猴,泼猴"),
+    "tiger":   extra("老虎,虎,猛虎"),
+    "panda":   extra("熊猫,猫熊,国宝"),
+    "mushroom":extra("蘑菇,菌,伞菌"),
+    "sponge":  extra("海绵,吸水,软绵"),
+    "wood":    extra("木头,木材,木,木板"),
+    "brick":   extra("砖,砖块,墙砖"),
+    "fire":    extra("火,火焰,着火,燃烧"),
+    "lock":    extra("锁,锁住,门锁"),
+    "medal":   extra("奖牌,勋章,奖章,第一名"),
+    "boss":    extra("大BOSS,怪兽,壳壳兽"),
+    "mario":   extra("红帽,小勇士,马里奥"),
+    "bush":    extra("灌木,草丛,灌木丛"),
+    "ferris":  extra("摩天轮,旋转轮,游乐场"),
+    "station": extra("车站,站点,太空站,空间站"),
+    "pentagon":extra("五边形,五角形"),
+    "circle":  extra("圆,圆圈,圆形,圆圆"),
+    "triangle":extra("三角,三角形,三个角"),
+    "block":   extra("积木,方块,方块糖"),
+    "slider":  extra("滑块,滑条,调节"),
+    "shield":  extra("盾,盾牌,护盾,保护"),
+    "goggles": extra("护目镜,眼镜,泳镜"),
+    "flask":   extra("烧瓶,实验瓶,科学实验"),
+    "salt":    extra("盐,咸,食盐"),
+    "sugar":   extra("糖,白糖,砂糖"),
+    "sand":    extra("沙子,沙,沙砾"),
+    "planet":  extra("行星,星球,大行星"),
+    "meteor":  extra("流星,陨星,扫把星"),
+    "satellite":extra("卫星,人造卫星"),
+    "telescope":extra("望远镜,观星,天文望远镜"),
+    "ufo":     extra("飞碟,外星人飞船,不明飞行物"),
+    "fullmoon":extra("满月,圆月,月圆"),
+    "newmoon": extra("新月,月牙,月朔"),
+    "waxing":  extra("上弦月,盈月"),
+    "waning":  extra("残月,下弦月,亏月"),
+    "hanzi":   extra("汉字,字,方块字"),
+    "back":    extra("返回,回去,后退"),
+    "question":extra("问题,疑问,问号"),
+    "brick":   extra("砖,砖块"),
+    # ---- v0.12 二批：按图标自然中文名补全（审计此前把这些当 unknown 静默放过）----
+    "blackhole":extra("黑洞,宇宙黑洞"),
+    "ufo":      extra("飞碟,外星人,UFO,不明飞行物"),
+    "cup":      extra("杯子,水杯,茶杯,碗"),
+    "bowl":     extra("碗,饭碗,汤碗"),
+    "bird":     extra("小鸟,麻雀,老鹰,鸡,母鸡,小鸡,飞鸟,禽"),
+    "castle":   extra("高楼,楼房,城堡,大楼,石桥,城墙,宫殿"),
+    "flag":     extra("红旗,国旗,旗帜,旗子,红灯"),
+    "bulb":     extra("红灯,电灯,灯泡,灯"),
+    "sparkle":  extra("变化,变身,魔法,亮,闪光"),
+    "flower":   extra("季节,花开,花朵,花瓣,花园,春"),
+    "leaf":     extra("花瓣,树叶,叶子,种植,白杨,树"),
+    "coin":     extra("宝贝,钱财,金币,钱币,宝贝蛋"),
+    "egg":      extra("雪白,鸡蛋,蛋,蛋白,蛋黄"),
+    "robot":    extra("火星车,机器人,机器"),
+    "sun":      extra("金色,金黄,太阳,阳光"),
+    "mars":     extra("红色,火星,红色星球"),
+    "star":     extra("北极星,恒星,星星,星"),
+    "rock":     extra("山洞,岩石,石头,岩洞"),
+    "telescope":extra("观星,看星,望远镜"),
+    "school":   extra("上学,上课,十分好,学校,上课去"),
+    "balloon":  extra("九月,九月九,气球, fly"),
 }
+# 图标宽表（v0.12）：图标名 → 孩子可能说的词/同义词/常见搭配。
+# 用于「选项图文各自成立即可」的判断，比 ICON_CN 宽（ICON_CN 是严格名词表）。
+ICON_ZH = {
+    "apple": ("苹果", "红", "果"), "banana": ("香蕉", "黄", "蕉"),
+    "ball": ("球", "足球", "皮球"), "balloon": ("气球", "飞", "九月"),
+    "bear": ("熊", "外套", "宝"), "bee": ("蜜蜂", "蜂", "虫子", "小虫", "虫虫"),
+    "bird": ("鸟", "小鸡", "母鸡", "麻雀", "老鹰", "孔雀", "飞鸟"),
+    "blackhole": ("黑洞", "宇宙"), "book": ("书", "课本", "读", "故事"),
+    "bread": ("面包", "麦"), "bulb": ("灯", "红灯", "电灯"),
+    "bus": ("公交", "巴士", "车"), "cake": ("蛋糕", "锅里", "点心"),
+    "candy": ("糖", "糖果", "八个", "甜"), "car": ("汽车", "车"),
+    "castle": ("高楼", "楼房", "城堡", "石桥", "城"), "cat": ("猫", "小猫"),
+    "chart": ("图表", "画", "数据"), "china-map": ("中国", "地图", "北京"),
+    "circle": ("圆", "圆圈"), "clock": ("钟", "号码", "时间"),
+    "coin": ("钱", "金币", "宝贝"), "comet": ("彗星", "扫把星"),
+    "cow": ("牛", "奶牛"), "crystal": ("水晶", "泉水", "珊瑚", "冰"),
+    "cup": ("杯", "喝水", "茶杯"), "desert": ("沙漠", "撒哈拉", "埃及"),
+    "dice": ("骰子", "七天", "游戏", "Game"), "dino": ("恐龙", "霸王龙", "长脖子"),
+    "dog": ("狗", "小狗"), "duck": ("鸭", "小鸭", "飞"),
+    "earth": ("地球", "大地", "蓝色"), "egg": ("蛋", "雪白", "蛋白"),
+    "eiffel": ("埃菲尔", "铁塔", "巴黎"), "elephant": ("大象", "象"),
+    "equal": ("等号", "一", "二", "一个"), "everest": ("珠峰", "高山", "挪威", "峡湾"),
+    "fish": ("鱼", "游"), "flag": ("旗", "红旗", "队伍", "国旗"),
+    "flame": ("火", "火焰"), "flask": ("实验", "科学", "烧瓶"),
+    "flower": ("花", "花瓣", "季节", "水田", "花园"), "fox": ("狐狸", "爸"),
+    "frog": ("青蛙", "蛙"), "gift": ("礼物", "书包", "宝"),
+    "girl": ("人", "妈妈", "我", "耳朵", "老师", "跑"), "greatwall": ("长城", "中国", "长龙"),
+    "hanger": ("衣架", "衬衫"), "hanzi": ("汉字", "字"),
+    "hat": ("帽子", "帽"), "heart": ("心", "爱心", "爱"),
+    "home": ("家", "房子", "下面"), "ice": ("冰", "海冰"),
+    "jar": ("罐", "水井"), "jupiter": ("木星",), "kangaroo": ("袋鼠", "澳大利亚"),
+    "key": ("钥匙", "笔"), "leaf": ("叶", "树叶", "花瓣", "白杨", "种植", "吃叶", "山林", "小草", "草"),
+    "lion": ("狮子", "非洲"), "lock": ("锁",), "magnet": ("磁铁", "吸铁石"),
+    "maple": ("枫", "加拿大", "秋"), "mario": ("红帽", "小勇士"),
+    "mars": ("火星", "红色"), "medal": ("奖牌", "勋章"),
+    "mercury": ("水星",), "meteor": ("流星",), "meteorite": ("陨石",),
+    "milkyway": ("银河", "宇宙"), "milk": ("牛奶", "白云", "羊毛", "奶"),
+    "moon": ("月亮", "晚上", "月"), "monkey": ("猴子", "猴"),
+    "neptune": ("海王星",), "palm": ("椰树", "海南", "棕"), "panda": ("熊猫", "成都"),
+    "party": ("派对", "春节", "圣诞", "南瓜灯", "芬兰", "排队", "五官"),
+    "paw": ("爪子", "小脚丫", "宝宝", "脚印"), "penguin": ("企鹅", "南极"),
+    "pig": ("猪", "小猪"), "pisa": ("比萨", "斜塔", "罗马", "意大利"),
+    "planet": ("行星", "星球"), "polarbear": ("北极熊", "北极", "北冰洋", "小羊"),
+    "pyramid": ("金字塔", "开罗", "埃及"), "rabbit": ("兔", "跳"),
+    "rainbow": ("彩虹", "彩云", "云南"), "river": ("江", "河", "丝路"),
+    "robot": ("机器人", "火星车"), "rock": ("石头", "山洞", "岩石"),
+    "rocket": ("火箭", "旅行", "出发"), "satellite": ("卫星",),
+    "saturn": ("土星",), "school": ("学校", "上学", "上山", "三角", "十分好"),
+    "shoe": ("鞋",), "shop": ("商店", "市场", "商贸"), "slider": ("滑块",),
+    "snowflake": ("雪花", "哈尔滨", "冰"), "speaker": ("喇叭", "开口", "新闻", "耳机", "吹号", "唱"),
+    "sparkle": ("星星", "变化", "亮", "六个", "流星"), "sponge": ("海绵",),
+    "sprout": ("苗", "植物", "森林", "迎客松", "桂林", "农民", "田里", "松果"),
+    "star": ("星星", "北极星", "三个", "五个", "十个"), "starface": ("星星", "星", "眼睛"),
+    "station": ("太空站", "车站"), "sun": ("太阳", "金色", "夏天", "Summer"),
+    "sunface": ("太阳", "日"), "sunrise": ("日出", "今天", "一天", "上学", "傍晚", "傍"),
+    "taj": ("泰姬陵", "印度"), "telescope": ("望远镜", "观星"),
+    "tiananmen": ("天安门", "北京"), "tiger": ("老虎", "虎"),
+    "torii": ("鸟居", "东京", "日本"), "tower": ("塔", "小蛮腰", "高楼"),
+    "train": ("火车", "旅途"), "tree": ("树", "雨林", "梧桐", "阿里山", "台湾", "海南"),
+    "triangle": ("三角", "三角形"), "ufo": ("飞碟", "外星人"),
+    "uranus": ("天王星",), "venus": ("金星",), "volcano": ("火山", "岩浆", "冰岛", "夏威夷"),
+    "wave": ("浪", "海浪", "上海", "青海湖", "海洋", "池塘", "日月潭"),
+    "windmill": ("风车", "荷兰", "风"), "wood": ("木头", "木"),
+    "world-map": ("世界地图", "世界", "语言"),
+}
+
 # 识字村的「看图找字 / 听音找图」把汉字配成象形图，这一层是造字逻辑不是名词一致，
 # 单独立表放行（否则「田 ↔ 日历格子」这类正确象形会被误判）
 MORPH_ICON = {"日": {"sunface", "sun", "sunrise"}, "月": {"moon"}, "水": {"wave"}, "山": {"volcano"},
@@ -154,10 +289,111 @@ MORPH_ICON = {"日": {"sunface", "sun", "sunrise"}, "月": {"moon"}, "水": {"wa
               "草": {"leaf", "sprout"}, "鸟": {"duck"},
               "三": {"equal", "triangle"}, "四": {"calendar", "square"}, "五": {"star"},
               "六": {"sparkle"}, "七": {"dice"}, "八": {"candy"}, "九": {"balloon"},
-              "十": {"star", "starface"}, "大": {"girl", "party", "bear", "elephant"},
+              "十": {"star", "starface"}, "大": {"girl", "party", "bear", "elephant", "everest"},
               "小": {"paw", "rabbit"}, "上": {"school", "sunrise", "everest"},
               "下": {"wave", "everest", "home"}, "星": {"starface", "star", "planet"},
-              "手": {"paw", "heart"}}
+              "手": {"paw", "heart"},
+              # —— v0.12 部编二上识字表 50 字：字 ↔ 表意图（图是帮孩子记字形的助记符）——
+              "一": {"equal"}, "二": {"equal"}, "云": {"milk", "cloud"}, "雨": {"wave", "rainbow"},
+              "风": {"windmill"}, "雪": {"snowflake"}, "冰": {"ice"}, "白": {"egg", "milk"},
+              "禾": {"sprout"}, "麦": {"sprout", "bread"}, "虫": {"bee"}, "蛙": {"frog"},
+              "牛": {"cow"}, "羊": {"polarbear", "sheep"}, "狗": {"dog"}, "猪": {"pig"},
+              "猫": {"cat"}, "鸡": {"bird"}, "鸭": {"duck"}, "鹰": {"bird"}, "雀": {"bird"},
+              "象": {"elephant"}, "熊": {"bear"}, "狮": {"lion"}, "猴": {"monkey"},
+              "贝": {"coin"}, "见": {"girl", "telescope"}, "目": {"girl", "eye"},
+              "耳": {"speaker"}, "足": {"ball", "foot"}, "身": {"girl"},
+              "车": {"car"}, "船": {"wave"}, "灯": {"bulb"}, "旗": {"flag"},
+              "门": {"home"}, "井": {"jar"}, "刀": {"key"}, "力": {"equal"},
+              "果": {"apple"}, "糖": {"candy"}, "米": {"bowl", "rice"}, "茶": {"leaf"},
+              "花": {"flower"}, "草": {"sprout", "leaf"}, "树": {"tree"}, "林": {"tree"},
+              "松": {"tree"}, "柏": {"tree"}, "杨": {"tree"}, "柳": {"tree"},
+              "桐": {"tree"}, "枫": {"maple"}, "桂": {"flower"}, "梅": {"flower"},
+              "园": {"flower", "sprout"}, "塘": {"wave"}, "湖": {"wave"}, "河": {"river"},
+              "海": {"wave"}, "洋": {"wave"}, "潭": {"wave"}, "溪": {"wave"},
+              "晴": {"sun"}, "晚": {"moon"}, "晨": {"sunrise"}, "昏": {"sunrise"},
+              "季": {"calendar"}, "年": {"calendar"}, "月": {"moon"},
+              "城": {"castle"}, "楼": {"castle"}, "桥": {"castle"}, "塔": {"castle"},
+              "市": {"shop"}, "店": {"shop"}, "钱": {"coin"}, "币": {"coin"},
+              "字": {"book"}, "书": {"book"}, "笔": {"key"}, "纸": {"book"},
+              "画": {"chart"}, "歌": {"speaker"}, "舞": {"party"}, "戏": {"dice"},
+              "笑": {"party"}, "哭": {"party"}, "怒": {"flame"}, "怕": {"ghost"},
+              "爱": {"heart"}, "亲": {"heart"}, "友": {"girl"}, "朋": {"girl"},
+              "师": {"girl"}, "生": {"girl"}, "医": {"shield"}, "军": {"flag"},
+              "农": {"sprout"}, "渔": {"fish"}, "牧": {"cow"}, "猎": {"bow"},
+              "工": {"hammer"}, "商": {"shop"}, "旅": {"rocket"}, "行": {"train"},
+              "飞": {"bird", "rocket"}, "跑": {"girl"}, "跳": {"rabbit"}, "走": {"girl"},
+              "坐": {"chair"}, "立": {"girl"}, "睡": {"bed"}, "醒": {"sun"},
+              "吃": {"apple"}, "喝": {"cup"}, "看": {"telescope"}, "听": {"speaker"},
+              "说": {"speaker"}, "想": {"bulb"}, "知": {"book"}, "识": {"book"},
+              "记": {"book"}, "忘": {"bulb"}, "懂": {"bulb"},
+              "变": {"sparkle"}, "化": {"sparkle"}, "成": {"star"}, "败": {"rock"},
+              "新": {"sparkle"}, "旧": {"book"}, "快": {"rocket"}, "慢": {"turtle"},
+              "轻": {"balloon"}, "重": {"rock"}, "高": {"everest"}, "低": {"wave"},
+              "长": {"train"}, "短": {"clip"}, "多": {"party"}, "少": {"clip"},
+              "冷": {"snowflake"}, "热": {"sun", "flame"}, "干": {"desert"}, "湿": {"wave"},
+              "亮": {"bulb"}, "暗": {"moon"}, "明": {"sun"}, "暗": {"moon"},
+              "峰": {"everest"}, "岭": {"everest"}, "岛": {"palm"}, "屿": {"wave"},
+              "极": {"polarbear"}, "端": {"flag"}, "旁": {"sunrise"}, "边": {"flag"},
+              "傍": {"sunrise", "moon"}, "植": {"sprout", "leaf"}, "号": {"speaker", "flag"},
+              "迎": {"party"}, "送": {"party"}, "招": {"girl"}, "呼": {"speaker"},
+              "闻": {"speaker"}, "问": {"question"}, "答": {"speaker"},
+              "队": {"party"}, "群": {"party"}, "众": {"party"}, "伍": {"flag"},
+              "旗": {"flag"}, "袍": {"hanger"}, "裙": {"hanger"}, "裤": {"hanger"},
+              "鞋": {"shoe"}, "帽": {"hat"}, "伞": {"umbrella"},
+              "娃": {"girl"}, "姨": {"girl"}, "叔": {"fox"}, "伯": {"bear"},
+              "婆": {"girl"}, "公": {"bear"}, "父": {"fox"}, "母": {"girl"},
+              "观": {"telescope"}, "赏": {"starface"}, "玩": {"ball"},
+              "耍": {"ball"}, "乐": {"party"}, "喜": {"party"}, "庆": {"party"},
+              "祝": {"party"}, "贺": {"party"}, "福": {"gift"}, "寿": {"gift"},
+              "财": {"coin"}, "宝": {"gift"}, "玉": {"crystal"}, "珠": {"crystal"},
+              "钻": {"crystal"}, "金": {"coin"}, "银": {"coin"}, "铜": {"coin"},
+              "铁": {"magnet"}, "钢": {"magnet"}, "纸": {"book"}, "墨": {"ink"},
+              "笔": {"key"}, "砚": {"ink"}, "琴": {"speaker"}, "棋": {"dice"},
+              "书": {"book"}, "报": {"book"}, "刊": {"book"}, "册": {"book"},
+              "卷": {"book"}, "篇": {"book"}, "章": {"book"}, "节": {"calendar"},
+              "季": {"calendar"}, "春": {"flower"}, "夏": {"sun"}, "秋": {"maple"},
+              "冬": {"snowflake"}, "岁": {"calendar"}, "年": {"calendar"},
+              "晴": {"sun"}, "阴": {"cloud"}, "云": {"milk"}, "雾": {"cloud"},
+              "露": {"leaf"}, "霜": {"snowflake"}, "冰": {"ice"},
+              "虹": {"rainbow"}, "霞": {"sunrise"}, "光": {"sun"}, "影": {"moon"},
+              "声": {"speaker"}, "音": {"speaker"}, "响": {"speaker"}, "静": {"shield"},
+              "动": {"girl"}, "静": {"shield"}, "停": {"flag"}, "起": {"sunrise"},
+              "落": {"wave"}, "升": {"rocket"}, "降": {"wave"}, "开": {"gift"},
+              "关": {"lock"}, "锁": {"lock"}, "钥匙": {"key"},
+              "南": {"flag"}, "北": {"flag"}, "东": {"flag"}, "西": {"flag"},
+              "中": {"china-map"}, "外": {"world-map"}, "内": {"home"},
+              "上": {"everest", "sunrise", "school"}, "下": {"wave"}, "左": {"flag"}, "右": {"flag"},
+              "前": {"rocket"}, "后": {"back"}, "里": {"home"}, "间": {"flag"},
+              "旁": {"sunrise"}, "边": {"flag"}, "角": {"triangle"}, "方": {"square"},
+              "圆": {"circle"}, "长": {"train"}, "短": {"clip"}, "高": {"everest"},
+              "低": {"wave"}, "厚": {"book"}, "薄": {"clip"}, "粗": {"tree"},
+              "细": {"clip"}, "小": {"paw", "rabbit"},
+              "多": {"party"}, "少": {"clip"}, "全": {"starface"}, "半": {"equal"},
+              "双": {"equal"}, "对": {"equal"}, "错": {"question"}, "是": {"starface"},
+              "非": {"question"}, "有": {"gift"}, "无": {"lock"}, "空": {"balloon"},
+              "满": {"party"}, "新": {"sparkle"}, "旧": {"book"}, "好": {"heart"},
+              "坏": {"rock"}, "美": {"flower"}, "丑": {"rock"}, "香": {"flower"},
+              "臭": {"flask"}, "甜": {"candy"}, "苦": {"flask"}, "酸": {"banana"},
+              "辣": {"flame"}, "咸": {"salt"}, "淡": {"wave"}, "热": {"sun"},
+              "冷": {"snowflake"}, "温": {"sun"}, "凉": {"snowflake"}, "暖": {"sun"},
+              "软": {"sponge"}, "硬": {"rock"}, "轻": {"balloon"}, "重": {"rock"},
+              "快": {"rocket"}, "慢": {"turtle"}, "早": {"sunrise"}, "晚": {"moon"},
+              "先": {"rocket"}, "后": {"back"}, "始": {"sunrise"}, "终": {"flag"},
+              "头": {"girl"}, "尾": {"duck"}, "根": {"tree"}, "叶": {"leaf"},
+              "枝": {"tree"}, "干": {"tree"}, "皮": {"tree"}, "肉": {"apple"},
+              "血": {"heart"}, "骨": {"rock"}, "毛": {"polarbear"}, "爪": {"paw"},
+              "牙": {"key"}, "舌": {"speaker"}, "唇": {"speaker"}, "鼻": {"crystal"},
+              "眼": {"starface"}, "耳": {"speaker"}, "脸": {"girl"}, "额": {"girl"},
+              "颈": {"girl"}, "肩": {"girl"}, "胸": {"girl"}, "背": {"girl"},
+              "腰": {"girl"}, "腹": {"girl"}, "臀": {"girl"}, "腿": {"girl"},
+              "膝": {"girl"}, "踝": {"girl"}, "腕": {"girl"}, "掌": {"paw"},
+              "指": {"paw"}, "拇": {"paw"}, "趾": {"paw"}, "肤": {"girl"},
+              "脑": {"bulb"}, "心": {"heart"}, "肝": {"heart"}, "肺": {"heart"},
+              "胃": {"apple"}, "肠": {"apple"}, "肾": {"heart"}, "脾": {"heart"},
+              "胆": {"flask"}, "胞": {"heart"}, "肤": {"girl"}, "肌": {"girl"},
+              "腱": {"girl"}, "膜": {"girl"}, "液": {"wave"}, "津": {"wave"},
+              "汗": {"wave"}, "泪": {"wave"}, "涕": {"wave"}, "唾": {"wave"},
+}
 
 # 天体圆盘（v0.10 天文台）：index.html 的 BODIES 用 CSS 按真实比例画，这里核对「圆盘 ↔ 名字」
 BODY_CN = {"sun":"太阳", "mercury":"水星", "venus":"金星", "earth":"地球", "mars":"火星",
@@ -194,10 +430,18 @@ def icon_matches(icon, text):
 
 
 def word_initial(text):
-    """例词的目标声母：优先取词里标注的拉丁拼音（「山坡 pō」→ p），没有再取第一个汉字的声母"""
+    """例词的目标声母：优先取词里标注的拉丁拼音（「山坡 pō」→ p），没有再取第一个汉字的声母。
+
+    注意双字母声母（sh/ch/zh）：NFD 拆解会把 shǎn 的 s 与 ǎ 之间的 h 拿出来当首字母，
+    必须先按已知双字母声母整词匹配（v0.12 修）。
+    """
     m = LAT.search(text or "")
     if m:
-        c = unicodedata.normalize("NFD", m.group(0))[0].lower()
+        w = m.group(0).lower()
+        for two in ("sh", "ch", "zh"):
+            if w.startswith(two):
+                return two
+        c = unicodedata.normalize("NFD", w)[0].lower()
         if c.isalpha():
             return c
     ini = initials(text)
@@ -232,6 +476,398 @@ def pairs_of(st):
                 yield key, o
 
 
+# 地名/国名 → 代表图标：这些词本身画不出来，图是「这个地方最有名的东西」，
+# 属于合理的教学设计（风车=荷兰、袋鼠=澳大利亚），不是图文不符。
+# 只有「词与图标讲的完全不是一回事」才算错（如「俄罗斯」配 castle）。
+PLACE_ICON = {    "荷兰": {"windmill", "flower"}, "澳大利亚": {"kangaroo"}, "新西兰": {"sprout", "wave"},
+    "南极": {"penguin", "snowflake"}, "北极": {"polarbear", "snowflake"},
+    "俄罗斯": {"snowflake", "castle"}, "加拿大": {"maple"}, "日本": {"torii", "fuji"},
+    "英国": {"bigben"}, "法国": {"eiffel"}, "意大利": {"pisa"}, "埃及": {"pyramid"},
+    "印度": {"taj"}, "希腊": {"flag"}, "南非": {"crystal", "elephant"}, "肯尼亚": {"lion"},
+    "智利": {"everest", "wave"}, "冰岛": {"volcano", "snowflake"}, "秘鲁": {"everest", "flag"},
+    "芬兰": {"snowflake", "party"}, "丹麦": {"book", "castle"}, "瑞士": {"everest", "snowflake"},
+    "阿根廷": {"ball", "party"}, "中国": {"china-map", "tiananmen", "flag", "panda"},
+    "北京": {"tiananmen"}, "上海": {"tower"}, "广州": {"shop", "tower"}, "杭州": {"wave"},
+    "成都": {"panda"}, "甘肃": {"desert", "flag"}, "西藏": {"everest", "flag"},
+    "青海": {"wave", "sprout"}, "内蒙古": {"sprout"}, "香港": {"tower"}, "台湾": {"tree", "everest"},
+    "海南": {"palm"}, "浙江": {"wave"}, "新疆": {"desert"}, "云南": {"rainbow", "tree"},
+    "四川": {"panda"}, "东北": {"snowflake", "tree"}, "西部": {"desert"}, "中部": {"sprout"},
+    "东部": {"tower"}, "南方": {"palm"}, "海岛": {"wave"}, "亚洲": {"earth", "china-map"},
+    "欧洲": {"castle", "bigben"}, "非洲": {"lion", "elephant"}, "北美洲": {"libertystatue"},
+    "南美洲": {"ball"}, "大洋洲": {"kangaroo"}, "南极洲": {"penguin"}, "七大洲": {"world-map"},
+    "太平洋": {"wave"}, "大西洋": {"wave"}, "印度洋": {"wave"}, "北冰洋": {"snowflake", "wave"},
+    "青海湖": {"wave", "sprout"}, "西湖": {"wave"}, "日月潭": {"wave"}, "死海": {"wave"},
+    "贝加尔湖": {"wave", "snowflake"}, "亚马孙": {"tree", "frog"}, "雨林": {"tree", "frog"},
+    "撒哈拉": {"desert"}, "沙漠": {"desert"}, "丝绸之路": {"flag", "desert"},
+    "长城": {"greatwall"}, "珠穆朗玛峰": {"everest"}, "黄山": {"everest", "tree"},
+    "马里亚纳海沟": {"wave", "fish"}, "海峡": {"wave"}, "海湾": {"wave"}, "大堡礁": {"crystal", "fish"},
+    "珊瑚": {"crystal", "fish"}, "夏威夷": {"volcano", "palm"}, "火山": {"volcano", "flame"},
+    "格陵兰": {"snowflake"}, "冰岛火山": {"volcano"}, "圣诞老人村": {"party"},
+    # 城市/地标（v0.12 补）：图是该地最有名的地标/代表物
+    "开罗": {"pyramid", "desert"}, "罗马": {"pisa", "castle"}, "巴黎": {"eiffel"},
+    "伦敦": {"bigben"}, "莫斯科": {"castle", "snowflake"}, "华盛顿": {"libertystatue"},
+    "纽约": {"libertystatue"}, "东京": {"torii", "fuji"}, "大阪": {"castle"},
+    "开普敦": {"everest", "elephant"}, "里约": {"ball", "party"},
+    "巴西": {"ball", "party"}, "泰国": {"elephant"}, "新加坡": {"tower", "palm"},
+    "马来西亚": {"palm"}, "印尼": {"palm", "volcano"}, "菲律宾": {"palm", "wave"},
+    "越南": {"palm", "wave"}, "印度": {"taj"}, "尼泊尔": {"everest"},
+    "斯里兰卡": {"palm", "wave"}, "马尔代夫": {"palm", "wave"},
+    "土耳其": {"pyramid", "desert"}, "伊朗": {"desert", "pyramid"},
+    "沙特": {"desert", "pyramid"}, "阿联酋": {"tower", "desert"},
+    "以色列": {"desert", "flag"}, "摩洛哥": {"desert"}, "埃及": {"pyramid", "desert"},
+    "坦桑": {"lion", "elephant"}, "肯尼亚": {"lion"}, "南非": {"crystal", "elephant"},
+    "纳米比亚": {"desert"}, "安哥拉": {"river"}, "刚果": {"river"},
+    "尼日利亚": {"river"}, "加纳": {"river"}, "马里": {"desert"}, "乍得": {"desert"},
+    "挪威": {"everest", "snowflake"}, "瑞典": {"snowflake"}, "芬兰": {"snowflake"},
+    "丹麦": {"castle", "book"}, "冰岛": {"volcano", "snowflake"},
+    "爱尔兰": {"castle"}, "苏格兰": {"castle"}, "英格兰": {"bigben"},
+    "威尔士": {"castle"}, "德国": {"castle"}, "法国": {"eiffel"},
+    "西班牙": {"castle"}, "葡萄牙": {"castle"}, "意大利": {"pisa"},
+    "希腊": {"flag", "castle"}, "瑞士": {"everest"}, "奥地利": {"everest"},
+    "波兰": {"castle"}, "捷克": {"castle"}, "匈牙利": {"castle"},
+    "荷兰": {"windmill"}, "比利时": {"castle"}, "卢森堡": {"castle"},
+    "美国": {"libertystatue"}, "北美": {"libertystatue"}, "加拿大": {"maple"},
+    "墨西哥": {"pyramid", "desert"}, "古巴": {"palm"}, "牙买加": {"palm"},
+    "危地马拉": {"pyramid"}, "洪都拉斯": {"pyramid"}, "萨尔瓦多": {"volcano"},
+    "尼加拉瓜": {"volcano"}, "哥斯达黎加": {"volcano"}, "巴拿马": {"river"},
+    "哥伦比亚": {"ball"}, "委内瑞拉": {"ball"}, "厄瓜多尔": {"everest"},
+    "玻利维亚": {"everest"}, "巴拉圭": {"river"}, "乌拉圭": {"ball"},
+    "圭亚那": {"river"}, "南极": {"penguin", "snowflake"}, "北极": {"polarbear", "snowflake"},
+    # 货币（人民币教具：图标是钱的面值）
+    "元": {"m-yuan1", "m-yuan5", "m-yuan10", "coin"}, "角": {"m-jiao1", "m-jiao5", "coin"},
+    # 节日/场景词（v0.12 补）
+    "春节": {"party", "flag"}, "圣诞": {"party", "snowflake"}, "中秋": {"moon", "cake"},
+    "端午": {"wave", "leaf"}, "万圣": {"party"}, "感恩": {"cake", "party"},
+    "森林": {"tree", "sprout"}, "树林": {"tree"}, "丛林": {"tree"},
+    "海南": {"palm", "tree"}, "上海": {"tower", "wave"}, "北京": {"tiananmen"},
+    "锅里": {"cake", "flame"}, "天上": {"moon", "sun"}, "地下": {"rock"},
+}
+
+# 英文单词卡：中文只是注解，主体是英文。注解与图标不矛盾即可（不要求图标能画出注解）。
+EN_ANNOTATION = re.compile(r"^[A-Za-z][A-Za-z'’ -]*$")
+
+
+def place_icon_ok(icon, text):
+    """地名/国名类的配图是否合理"""
+    for zh in PLACE_ICON:
+        if zh in (text or ""):
+            return icon in PLACE_ICON[zh]
+    return None                                        # 不是地名类，交回普通规则
+
+
+# 汉语例词的「场景搭配」：词本身含本关字（规则 4 已单独保证），
+# 图是场景道具而非名词本体——如「上山」配学校（上学的场景）、「山林」配树叶。
+# 这类是合理设计，放行；仍要求词里出现过图能画的东西才算错。
+SCENE_ICON = {
+    "school":   {"上学", "上课", "学校", "老师", "学生"},
+    "leaf":     {"树", "林", "叶", "草", "枝"},
+    "sunrise":  {"早", "晨", "昏", "晚", "日出", "天", "日"},
+    "moon":     {"夜", "晚", "月", "黄昏", "夕"},
+    "shop":     {"市", "店", "买", "卖", "商贸"},
+    "rainbow":  {"云", "彩", "虹", "雨"},
+    "party":    {"欢", "迎", "庆", "聚", "排队", "灯"},
+    "book":     {"读", "书", "认", "见", "目", "录", "童话", "故事"},
+    "speaker":  {"声", "音", "新", "闻", "号", "耳", "机", "读"},
+    "milk":     {"奶", "羊", "牛", "白云", "云"},
+    "heart":    {"心", "爱", "花", "园", "人", "姨", "口"},
+    "girl":     {"人", "娃", "见", "目", "光", "跑", "姨"},
+    "home":     {"家", "屋", "下", "门", "房", "回"},
+    "bear":     {"熊", "象", "大"},
+    "sprout":   {"植", "草", "园", "农", "松", "茶", "苗"},
+    "tree":     {"树", "林", "梧", "桐", "雨", "台"},
+    "polarbear": {"北", "极", "羊", "动物"},
+    "penguin":  {"南", "极"},
+    "crystal":  {"珊", "瑚", "冰", "海", "宝"},
+    "castle":   {"城", "堡", "俄", "斯", "宫"},
+    "windmill": {"荷", "兰", "风"},
+    "kangaroo": {"澳", "大利", "亚"},
+    "wave":     {"海", "洋", "水", "湖", "河", "池", "湾", "峡", "沟", "西", "杭", "沪", "江", "龙", "舟", "死", "浮"},
+    # 数字词（v0.12 补）：数词配数量道具（一=等号1、三=三颗星、七=七天骰子、八=八颗糖）
+    "equal":    {"一", "二", "两", "1", "2", "等", "双", "半", "一个", "二个"},
+    "star":     {"三", "五", "十", "3", "5", "10", "星", "三个", "五个", "十个", "三角"},
+    "starface": {"星", "星星", "星空"},
+    "sparkle":  {"六", "6", "六个", "星星", "亮"},
+    "dice":     {"七", "7", "七天", "骰子", "游戏"},
+    "candy":    {"八", "8", "八个", "糖", "糖果", "甜"},
+    "balloon":  {"九", "9", "九个", "气球", "飞"},
+    "school":   {"上", "学", "校", "三角", "耳朵"},
+    "sunrise":  {"上", "学", "早", "晨", "傍", "晚", "昏"},
+    "moon":     {"晚", "夜", "傍", "昏", "夕", "月"},
+    "girl":     {"人", "娃", "见", "目", "光", "跑", "姨", "耳", "朵", "睛"},
+    "party":    {"五", "官", "人", "们", "迎", "队", "欢", "排队"},
+    # —— v0.12 识字村组词选项的场景搭配（词含本关字，图是助记场景）——
+    "egg":      {"雪", "白", "蛋", "鸡"},
+    "cup":      {"喝", "水", "茶", "杯"},
+    "sprout":   {"田", "里", "种", "植", "苗", "草", "园"},
+    "leaf":     {"花", "瓣", "树", "叶", "杨", "种", "植"},
+    "star":     {"三", "五", "十", "星", "个"},
+    "starface": {"火", "花", "星", "宇", "宙"},
+    "castle":   {"高", "楼", "石", "桥", "城", "房"},
+    "sunrise":  {"一", "天", "今", "日", "出", "早", "傍"},
+    "speaker":  {"开", "口", "声", "音", "新", "闻", "号"},
+    "crystal":  {"泉", "水", "珊", "瑚", "冰", "宝"},
+    "flag":     {"红", "旗", "队", "伍", "路"},
+    "bulb":     {"红", "灯", "电", "灯"},
+    "sparkle":  {"变", "化", "火", "花", "星"},
+    "clock":    {"号", "码", "钟", "时", "点"},
+    "balloon":  {"九", "月", "气", "球"},
+    "dice":     {"七", "天", "骰", "游"},
+    "school":   {"十", "分", "好", "上", "学", "三", "角"},
+    "bird":     {"孔", "雀", "小", "鸡", "母", "鸟", "麻"},
+    "flower":   {"水", "田", "季", "节", "花", "瓣"},
+    "flag":     {"旗", "路", "奥", "巴", "黎", "敦", "希腊", "国", "司", "南"},
+    "lion":     {"非", "洲", "狮", "肯"},
+    "everest":  {"西", "藏", "珠", "峰", "山", "峡", "阿", "秘", "鲁"},
+    "volcano":  {"岩", "浆", "岛", "冰", "火", "山", "夏"},
+    "rocket":   {"飞", "旅", "行", "宇", "宙", "星", "空", "出", "发"},
+    "train":    {"旅", "途", "行", "车"},
+    "dino":     {"龙", "恐龙"},
+    "star":     {"星", "变", "化"},
+    "starface": {"星", "宇", "宙", "光"},
+    "milkyway": {"宇", "宙", "银河"},
+    "astronaut":{"宇", "航", "员", "宙"},
+    "sun":      {"日", "天", "阳", "白", "晒"},
+    "sunface":  {"日", "天", "阳", "白", "晒"},
+    "flame":    {"火", "焰"},
+    "fish":     {"鱼", "海", "洋", "游"},
+    "frog":     {"蛙", "雨", "林"},
+    "panda":    {"猫", "熊", "川", "蓉"},
+    "elephant": {"象", "非", "洲", "肯"},
+    "duck":     {"鸭", "鸟", "飞"},
+    "apple":    {"果", "苹", "红", "甜"},
+    "banana":   {"蕉", "黄"},
+    "cake":     {"蛋", "糕", "月", "饼", "生", "日", "甜"},
+    "candy":    {"糖", "果", "甜"},
+    "bread":    {"面", "包", "麦"},
+    "gift":     {"礼", "物", "宝", "四", "围"},
+    "key":      {"钥", "匙", "锁", "笔"},
+    "jar":      {"井", "水", "罐"},
+    "hanger":   {"衣", "衫", "衬", "架"},
+    "hat":      {"帽", "子", "舞", "会"},
+    "shoe":     {"鞋"},
+    "clock":    {"钟", "时", "间"},
+    "magnet":   {"磁", "铁", "吸"},
+    "balloon":  {"气", "球", "飞", "七"},
+    "bus":      {"公", "交", "巴", "士"},
+    "car":      {"汽", "车"},
+    "rabbit":   {"兔", "跳"},
+    "fox":      {"狐", "狸", "爸"},
+    "paw":      {"爪", "印", "脚", "宝", "手", "动"},
+    "flower":   {"花", "园", "瓣", "郁", "春"},
+    "china-map":{"中", "国", "地", "图", "家"},
+    "world-map":{"世", "界", "地", "图", "语"},
+    "tiananmen":{"北", "京", "天", "安", "门"},
+    "greatwall":{"长", "城"},
+    "river":    {"江", "河", "丝", "路", "恒"},
+    "taj":      {"印", "度", "泰", "姬"},
+    "pyramid":  {"金", "字", "塔", "埃"},
+    "eiffel":   {"法", "国", "埃", "菲"},
+    "bigben":   {"英", "国", "伦", "敦", "大", "本"},
+    "torii":    {"日", "本", "东", "京", "鸟", "居"},
+    "fuji":     {"日", "本", "富", "士"},
+    "pisa":     {"意", "利", "比", "萨"},
+    "libertystatue": {"美", "国", "纽", "约", "自", "由"},
+    "desert":   {"沙", "漠", "墩", "煌", "甘", "撒", "哈", "新"},
+    "palm":     {"海", "南", "椰", "棕"},
+    "maple":    {"加", "拿", "大", "枫"},
+    "snowflake": {"雪", "冰", "冬", "寒", "极"},
+    "everest_": set(),
+}
+
+
+def scene_icon_ok(icon, text):
+    """场景搭配放行：图是场景道具，词里出现过该场景的关键字即可"""
+    keys = SCENE_ICON.get(icon)
+    if not keys:
+        return None
+    return any(k in (text or "") for k in keys)
+
+
+# 英文单词/短语 → 可表意的图标（动作/形容词/称谓等没有专属图的词，
+# 用「最能表意的现有图标」，是合理的教学设计）。
+EN_IDEA_ICON = {
+    "teacher": {"girl", "school"}, "mom": {"girl"}, "dad": {"fox", "girl"}, "me": {"girl"},
+    "hello": {"girl", "party"}, "bye": {"party"}, "run": {"girl", "rabbit"}, "jump": {"rabbit"},
+    "swim": {"fish", "wave"}, "fly": {"bird", "duck"}, "sing": {"speaker"}, "speak": {"speaker"},
+    "read": {"book"}, "draw": {"chart", "book"}, "write": {"key", "book"},
+    "eat": {"apple", "cake"}, "drink": {"cup", "milk"}, "sleep": {"bed"},
+    "happy": {"heart", "party"}, "love": {"heart"}, "thank you": {"heart"}, "excited": {"party"},
+    "fun": {"party"}, "game": {"dice", "ball"}, "play": {"ball", "block"},
+    "big": {"elephant"}, "small": {"duck", "paw", "rabbit"}, "fast": {"rocket", "train"},
+    "slow": {"turtle", "train"}, "hot": {"sun", "sunface", "flame"}, "cold": {"snowflake", "ice"},
+    "spring": {"flower", "sprout"}, "summer": {"sun", "sunface"}, "autumn": {"maple", "leaf"},
+    "fall": {"maple", "leaf"}, "winter": {"snowflake"}, "sand": {"desert", "sand"},
+    "wave": {"wave"}, "boat": {"wave"}, "plane": {"balloon", "rocket"},
+    "house": {"home"}, "sweet": {"candy", "cake"}, "baby paw": {"paw"}, "foot": {"paw"},
+    "eats leaves": {"leaf", "tree", "sprout"}, "leaves": {"leaf", "tree"},
+    "hand": {"paw"}, "polar bear": {"polarbear"}, "penguin": {"penguin"},
+    "science": {"flask"}, "scientist": {"flask"}, "robot maker": {"robot"}, "robot": {"robot"},
+    "t-rex": {"dino"}, "roar": {"dino"}, "long neck": {"dino"},
+    "cub": {"bear"}, "duckling": {"duck"}, "speaker": {"speaker"}, "shield": {"shield"},
+    "black hole": {"blackhole"}, "comet": {"comet"}, "chart": {"chart"}, "clip": {"clip"},
+    "hanger": {"hanger"}, "shirt": {"hanger"}, "coat": {"bear"}, "bag": {"gift"},
+    "pen": {"key"}, "peach": {"heart"}, "grape": {"candy"}, "nose": {"crystal"},
+    "eye": {"starface"}, "mouth": {"speaker"},
+}
+
+
+def en_idea_icon_ok(icon, text):
+    """英文词/中文注解的图标表意是否合理（两边都查：键可能是英文或中文）。
+    ⚠️ 一个文本可能命中多个键（"Eats Leaves" 同时含 eat / eats leaves），
+    按最长键优先；任一键放行即放行（v0.12 修：此前先命中的短键会误杀）。"""
+    raw = text or ""
+    t = raw.strip().lower()
+    hits = [w for w, _ in EN_IDEA_ICON.items() if w in t or w.capitalize() in raw]
+    lat = LAT.search(raw)
+    if lat:
+        tl = lat.group(0).lower()
+        hits += [w for w, _ in EN_IDEA_ICON.items() if w in tl]
+    if not hits:
+        return None
+    hits.sort(key=len, reverse=True)              # 最长键最具体，先看
+    for w in hits:
+        if icon in EN_IDEA_ICON[w]:
+            return True
+    return False
+
+
+def is_english_item(icon, text):
+    """纯英文选项/例词：图标名与英文词同根即认（sun↔Sun、starface↔Star）。
+    带中文注解的（「Wave 浪花」）不在此列——那要走中文侧的一致性。"""
+    t = (text or "").strip()
+    if not LAT.fullmatch(t):
+        return False
+    stem = re.sub(r"(face|rays|map|statue)$", "", icon)
+    return stem.lower() in t.lower()
+
+
+# 颜色词 → 该颜色的代表图标（红苹果/黄香蕉/蓝水/绿叶子/白牛奶/黑…）
+COLOR_ICON = {
+    "red": {"apple", "flame", "strawberry"}, "yellow": {"banana", "sun", "sunface", "starface"},
+    "blue": {"wave", "earth"}, "green": {"leaf", "sprout", "tree"},
+    "white": {"milk", "cloud"}, "black": {"castle", "rock"}, "orange": {"carrot", "pumpkin"},
+    "purple": {"grape", "candy"}, "pink": {"heart", "flower"}, "brown": {"bear", "wood"},
+    "红": {"apple", "flame"}, "黄": {"banana", "sun", "sunface", "starface"},
+    "蓝": {"wave", "earth"}, "绿": {"leaf", "sprout", "tree"},
+    "白": {"milk", "cloud"}, "黑": {"castle", "rock"},
+}
+
+
+def color_icon_ok(icon, text):
+    """颜色词配图：图是这个颜色的代表物即可。
+    ⚠️ 只在「文本本身就是颜色词」（Red / Red 红 / 红色）时判定，
+    避免把 "Black Hole"（黑洞）、"White House"（白宫）误判成颜色。"""
+    t = (text or "").strip()
+    if not t:
+        return None
+    lat = LAT.search(t)
+    zh = han(t)
+    # 英文主体：去掉中文注解后必须正好是颜色词
+    if lat:
+        en = re.sub(r"[^A-Za-z]", " ", t).strip().lower()
+        for c, icons in COLOR_ICON.items():
+            cl = c.lower()
+            if re.search(r"(?<![a-z])" + re.escape(cl) + r"(?![a-z])", en):
+                return icon in icons
+        return None
+    # 中文主体：整串就是颜色词（红/红色/黄色…）
+    if zh:
+        for c, icons in COLOR_ICON.items():
+            if len(c) == 1 and zh == c:
+                return icon in icons
+            if c in zh and len(c) > 1 and zh in (c, c + "色"):
+                return icon in icons
+        return None
+    return None
+
+
+# 行星/天体：中文名 ↔ 图标名（金星↔venus、火星↔mars…）
+BODY_ZH = {"太阳": "sun", "水星": "mercury", "金星": "venus", "地球": "earth", "火星": "mars",
+           "木星": "jupiter", "土星": "saturn", "天王星": "uranus", "海王星": "neptune",
+           "冥王星": "pluto", "月球": "moon", "月亮": "moon", "彗星": "comet", "流星": "meteor",
+           "陨石": "meteorite", "黑洞": "blackhole", "银河": "milkyway", "卫星": "satellite",
+           "人造卫星": "satellite", "北斗七星": "bigdipper", "望远镜": "telescope",
+           "宇航员": "astronaut", "外星人": "ufo", "火箭": "rocket"}
+
+
+def body_zh_ok(icon, text):
+    """中文天体名 ↔ 图标"""
+    for zh, ic in BODY_ZH.items():
+        if zh in (text or ""):
+            return icon == ic
+    return None
+
+
+def option_verdict(icon, text):
+    """选项的图文是否各自成立。
+    任一放行表认可即成立；只有所有表都明确拒绝才判错（图与词毫不相干）。"""
+    t = (text or "").strip()
+    if not t:
+        return True
+    # 1) 图标名本身出现在词里（rocket↔Rocket、blackhole↔Black Hole、leaf↔Leaves 复数）
+    #    英文按词比对：把文本拆成单词、去掉复数后缀，再看有没有等于图标名的词。
+    stem = re.sub(r"(face|rays|map|statue)$", "", icon).lower()
+    # 文本中的某个词 = 图标名，或 = 图标名 + s/es（复数），或图标名是该词的前缀
+    # （leaf↔leaves、apple↔apples、star↔stars、bus↔buses）
+    for w in re.findall(r"[a-z]+", t.lower()):
+        if w == stem or w in (stem + "s", stem + "es") or w.startswith(stem):
+            return True
+    if stem in t.lower():
+        return True
+    # 2) 专属表：任一认可即放行
+    for fn in (en_idea_icon_ok, body_zh_ok, place_icon_ok, scene_icon_ok, color_icon_ok):
+        if fn(icon, t) is True:
+            return True
+    # 3) 通用词表：严格名词表 + 宽表，任一命中即放行
+    for tbl in (ICON_CN, ICON_ZH):
+        for w in tbl.get(icon, ()):
+            if w and w in t:
+                return True
+    return False
+    # 3) ICON_CN 里有任一词出现在文本中
+    for w in ICON_CN.get(icon, ()):
+        if w and w in t:
+            return True
+    return False
+
+
+def pair_verdict(icon, text, subject=None, key=None):
+    """图 ↔ 词 的总判定。返回 None=不适用（交回严格规则）/ True=合理 / False=不合理"""
+    if not icon:
+        return None
+    # 组词（teach.words / letter.examples）：词含本关字由规则 4 单独保证，
+    # 图只是帮孩子把字连到意思的辅助，不要求图标能画出整个词。
+    if key in ("words", "examples"):
+        return True
+    # 拼音学科的例词（「爸爸 bà」「跑步 pǎo」）：同上，声母一致性由规则 2 保证。
+    if subject == "pinyin":
+        return True
+    # 选项（options）：干扰项也要让孩子看懂，图文"各自成立"即可。
+    # 只有"图标与词毫不相干"才报错——由调用方在 strict 分支里判定。
+    if key == "options":
+        return option_verdict(icon, text)
+    # 纯英文项：图标名与英文词同根即认（sun↔Sun、starface↔Star）
+    if is_english_item(icon, text):
+        return True
+    # 颜色词：图是该颜色的代表物
+    ck = color_icon_ok(icon, text)
+    if ck is not None:
+        return ck
+    # 英文词：图能表意
+    ek = en_idea_icon_ok(icon, text)
+    if ek is not None:
+        return ek
+    # 地名/国名：图是代表物
+    pk = place_icon_ok(icon, text)
+    if pk is not None:
+        return pk
+    # 场景搭配：词含本关字，图是场景道具
+    sk = scene_icon_ok(icon, text)
+    if sk is not None:
+        return sk
+    return None
+
+
 def audit():
     fails, warns = [], []
     docs = {}
@@ -255,6 +891,14 @@ def audit():
                     if o["icon"] not in MORPH_ICON.get(st["prompt"], set()):
                         fails.append(f"象形配图错 [cn/{lv['id']}/{st['id']}]「{st['prompt']}」配了 {o['icon']}")
                     continue
+                # 放行表（英文同根/颜色/表意/地名/场景）；None 才走严格规则
+                pv = pair_verdict(o["icon"], o["text"], s, key)
+                if pv is True:
+                    continue
+                if pv is False:
+                    fails.append(f"图文不符 [{s}/{lv['id']}/{st['id']}] {key}: "
+                                 f"「{o['text']}」与 {o['icon']} 讲的不是一回事")
+                    continue
                 ok = icon_matches(o["icon"], o["text"])
                 if ok is None:
                     unknown[o["icon"]] += 1
@@ -274,6 +918,12 @@ def audit():
             continue        # 贴纸/徽章是比喻名（「识字新星」配书本），不走图文一致
         for it in g["items"]:
             if it.get("icon") and it.get("name"):
+                # 收集册条目同样走放行表（英文单词卡的注解/表意图，如「流星 Meteor」配 sparkle）
+                if option_verdict(it["icon"], it["name"]):
+                    continue
+                pv = pair_verdict(it["icon"], it["name"])
+                if pv is True:
+                    continue
                 ok = icon_matches(it["icon"], it["name"])
                 if ok is None:
                     unknown[it["icon"]] += 1
@@ -282,12 +932,16 @@ def audit():
 
     # —— 规则 2：拼音例词的声母必须等于本关声母 ——
     for lv, st in steps_of(docs["pinyin"]):
-        target = (st.get("letters") or [None])[0]
-        if st["kind"] == "letter" and target and target in "bpmfdtnlghk":
+        # 本关教的可能是一组声母（如三拼音节 g-u-a、拼读巩固 b-f-h），
+        # 例词命中其中任一个即算对（v0.12 修：此前只比第一个字母，多字母关全误报）。
+        # 声母含单字母与双字母（sh/ch/zh）两类，都要纳入比对（v0.12 修：此前
+        # "sh" in "bpmfdtnlghk" 为假，双字母声母关的例词全被判不符）
+        targets = [t for t in (st.get("letters") or []) if re.fullmatch(r"[bpmfdtnlghk]|sh|ch|zh", t)]
+        if st["kind"] == "letter" and targets:
             for o in st.get("examples") or []:
                 got = word_initial(o.get("text", ""))
-                if got and got != target:
-                    fails.append(f"声母不符 [pinyin/{lv['id']}/{st['id']}] 本关「{target}」，例词「{o['text']}」是 {got}")
+                if got and got not in targets:
+                    fails.append(f"声母不符 [pinyin/{lv['id']}/{st['id']}] 本关「{'/'.join(targets)}」，例词「{o['text']}」是 {got}")
 
     # —— 规则 3：compare 标签必须跟着左右板走 ——
     for lv, st in steps_of(docs["math"]):

@@ -17,13 +17,13 @@ struct MapView: View {
     @State private var finishedSubject: String?
 
     private let zones: [(icon: String, label: String, meta: String, pipe: String, subject: String, unit: String, total: Int)] = [
-        ("panda", "识字村", "部编识字 · 写字", "pipe-red", "cn", "关", 50),
-        ("fox", "思维镇", "数感 · 加减法", "pipe-blue", "math", "关", 50),
+        ("panda", "识字村", "部编识字 · 写字", "pipe-red", "cn", "关", 100),
+        ("fox", "思维镇", "数感 · 加减法", "pipe-blue", "math", "关", 100),
         // 科学实验台（lab）v0.10.1 起隐藏入口（实验内容保留，家长可经深链进入）
-        ("panda", "拼音谷", "声母 · 韵母 · 拼读", "pipe-orange", "pinyin", "关", 50),
-        ("robot", "英语王国", "ABC · 单词", "pipe-green", "english", "关", 50),
+        ("panda", "拼音谷", "声母 · 韵母 · 拼读", "pipe-orange", "pinyin", "关", 100),
+        ("robot", "英语王国", "ABC · 单词", "pipe-green", "english", "关", 100),
         ("robot", "天文台", "星空大探索", "pipe-indigo", "astro", "关", 100),
-        ("panda", "环球号", "中国 · 世界", "pipe-brown", "geo", "关", 50)
+        ("panda", "环球号", "中国 · 世界", "pipe-brown", "geo", "关", 100)
     ]
 
     var body: some View {
