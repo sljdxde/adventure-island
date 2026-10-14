@@ -20,6 +20,7 @@
 
 依赖：本机 Chrome（macOS 默认路径）+ 本地 http 服务（脚本自己起，随机端口）。
 """
+import argparse
 import json
 import os
 import re
@@ -34,6 +35,8 @@ import socketserver
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))       # ios/
 REPO = os.path.dirname(ROOT)                                            # 仓库根
 PREVIEW = os.path.join(ROOT, "preview", "index.html")
+
+ALL_SUBJECTS = ["cn", "math", "pinyin", "english", "astro", "geo"]
 
 CHROME_CANDIDATES = [
     "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
@@ -131,7 +134,6 @@ def render(chrome, url, profile, budget=2600):
     """headless 渲染一页，dump DOM 后跑测量脚本并回传 JSON"""
     # Chrome 的 --dump-dom 不执行我们的返回值；用 --headless=new + --virtual-time-budget
     # 并把结果写进 DOM 的一个隐藏节点，再从 dump 里取。
-    probe = os.path.join(tempfile.gettempdir(), "dsh_sweep_probe.html")
     with open(PREVIEW, encoding="utf-8") as f:
         html = f.read()
     html = html.replace(
@@ -139,8 +141,6 @@ def render(chrome, url, profile, budget=2600):
         "<script>setTimeout(function(){var d=document.createElement('div');"
         "d.id='__sweep';d.textContent=JSON.stringify(" + MEASURE_JS + ");"
         "document.body.appendChild(d);},900);</script></body>")
-    with open(probe, "w", encoding="utf-8") as f:
-        f.write(html)
     # probe 放在 preview 目录下，相对资源路径不变
     probe_in_preview = os.path.join(ROOT, "preview", "__sweep_probe.html")
     with open(probe_in_preview, "w", encoding="utf-8") as f:
@@ -168,17 +168,32 @@ def render(chrome, url, profile, budget=2600):
                 "screen": "?parse:" + str(e)[:40]}
 
 
+def build_parser():
+    p = argparse.ArgumentParser(
+        description="用 headless Chrome 逐关逐题渲染，量元素盒模型，"
+                    "收集 overflow / missingIcon / textHeavy / bounce 缺陷")
+    p.add_argument("subjects", nargs="*", default=[],
+                   help="只扫指定学科；缺省扫全部：" + " ".join(ALL_SUBJECTS))
+    p.add_argument("--steps", type=int, default=None, metavar="N",
+                   help="每关最多扫前 N 步（快查）；缺省扫全部步")
+    return p
+
+
+def parse_args(argv):
+    """解析命令行；--steps 3 与 --steps=3 等价（argparse 天然支持两种写法）"""
+    ns = build_parser().parse_args(argv)
+    ns.subjects = ns.subjects or list(ALL_SUBJECTS)
+    return ns
+
+
 def main():
-    args = [a for a in sys.argv[1:] if not a.startswith("--")]
-    max_steps = None
-    for a in sys.argv[1:]:
-        if a.startswith("--steps"):
-            max_steps = int(a.split("=")[-1]) if "=" in a else 3
+    opts = parse_args(sys.argv[1:])
+    subjects = opts.subjects
+    max_steps = opts.steps
     chrome = find_chrome()
     if not chrome:
         sys.exit("找不到 Chrome/Chromium；本 sweep 需要本机浏览器")
     content = load_levels()
-    subjects = args or ["cn", "math", "pinyin", "english", "astro", "geo"]
 
     httpd, port = serve(REPO)
     base = f"http://127.0.0.1:{port}/ios/preview/__sweep_probe.html?route=level:"
