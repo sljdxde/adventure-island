@@ -172,7 +172,7 @@ def build_parser():
     p = argparse.ArgumentParser(
         description="用 headless Chrome 逐关逐题渲染，量元素盒模型，"
                     "收集 overflow / missingIcon / textHeavy / bounce 缺陷")
-    p.add_argument("subjects", nargs="*", default=[],
+    p.add_argument("subjects", nargs="*", default=list(ALL_SUBJECTS),
                    help="只扫指定学科；缺省扫全部：" + " ".join(ALL_SUBJECTS))
     p.add_argument("--steps", type=int, default=None, metavar="N",
                    help="每关最多扫前 N 步（快查）；缺省扫全部步")
@@ -181,9 +181,7 @@ def build_parser():
 
 def parse_args(argv):
     """解析命令行；--steps 3 与 --steps=3 等价（argparse 天然支持两种写法）"""
-    ns = build_parser().parse_args(argv)
-    ns.subjects = ns.subjects or list(ALL_SUBJECTS)
-    return ns
+    return build_parser().parse_args(argv)
 
 
 def main():
