@@ -4364,7 +4364,8 @@
               "say": "长 zhǎng 长大"
             }
           ],
-          "question": "学一学多音字：「长」"
+          "question": "学一学多音字：「长」",
+          "anim": "flip"
         },
         {
           "id": "py-py-d1-q1",
@@ -4607,7 +4608,8 @@
               "say": "音乐 yuè"
             }
           ],
-          "question": "学一学多音字：「乐」"
+          "question": "学一学多音字：「乐」",
+          "anim": "flip"
         },
         {
           "id": "py-py-d2-q1",
@@ -4674,7 +4676,8 @@
               "say": "银行 háng"
             }
           ],
-          "question": "学一学多音字：「行」"
+          "question": "学一学多音字：「行」",
+          "anim": "flip"
         },
         {
           "id": "py-py-d3-q1",
@@ -4739,7 +4742,8 @@
               "text": "只有 zhǐ"
             }
           ],
-          "question": "学一学多音字：「只」"
+          "question": "学一学多音字：「只」",
+          "anim": "flip"
         },
         {
           "id": "py-py-d4-q1",
@@ -4804,7 +4808,8 @@
               "text": "爱好 hào"
             }
           ],
-          "question": "学一学多音字：「好」"
+          "question": "学一学多音字：「好」",
+          "anim": "flip"
         },
         {
           "id": "py-py-d5-q1",
@@ -4871,7 +4876,8 @@
               "say": "首都 dū"
             }
           ],
-          "question": "学一学多音字：「都」"
+          "question": "学一学多音字：「都」",
+          "anim": "flip"
         },
         {
           "id": "py-py-d6-q1",
@@ -4938,7 +4944,8 @@
               "say": "种树 zhòng"
             }
           ],
-          "question": "学一学多音字：「种」"
+          "question": "学一学多音字：「种」",
+          "anim": "flip"
         },
         {
           "id": "py-py-d7-q1",
@@ -5005,7 +5012,8 @@
               "say": "教室 jiào"
             }
           ],
-          "question": "学一学多音字：「教」"
+          "question": "学一学多音字：「教」",
+          "anim": "flip"
         },
         {
           "id": "py-py-d8-q1",
@@ -5065,7 +5073,8 @@
               "text": "画儿 huàr"
             }
           ],
-          "question": "学一学：儿化·画儿"
+          "question": "学一学：儿化·画儿",
+          "anim": "curl"
         },
         {
           "id": "py-py-e4-q",
@@ -5106,7 +5115,8 @@
               "text": "土地 dì / 慢慢地 de"
             }
           ],
-          "question": "学一学：多音字·地"
+          "question": "学一学：多音字·地",
+          "anim": "flip"
         },
         {
           "id": "py-py-d9-q",
@@ -5147,7 +5157,8 @@
               "text": "妈妈 māma / 爸爸 bàba"
             }
           ],
-          "question": "学一学：轻声·叠词"
+          "question": "学一学：轻声·叠词",
+          "anim": "soft"
         },
         {
           "id": "py-py-q1-q",
@@ -5188,7 +5199,8 @@
               "text": "东西 dōngxi / 地方 dìfang"
             }
           ],
-          "question": "学一学：轻声·词尾"
+          "question": "学一学：轻声·词尾",
+          "anim": "soft"
         },
         {
           "id": "py-py-q2-q",
@@ -5229,7 +5241,8 @@
               "text": "走了 zǒu le / 好吗 hǎo ma"
             }
           ],
-          "question": "学一学：轻声·助词"
+          "question": "学一学：轻声·助词",
+          "anim": "soft"
         },
         {
           "id": "py-py-q3-q",
@@ -5270,7 +5283,8 @@
               "text": "花儿 huār"
             }
           ],
-          "question": "学一学：儿化·花儿"
+          "question": "学一学：儿化·花儿",
+          "anim": "curl"
         },
         {
           "id": "py-py-e1-q",
@@ -5311,7 +5325,8 @@
               "text": "鸟儿 niǎor"
             }
           ],
-          "question": "学一学：儿化·鸟儿"
+          "question": "学一学：儿化·鸟儿",
+          "anim": "curl"
         },
         {
           "id": "py-py-e2-q",
@@ -5352,7 +5367,8 @@
               "text": "一点儿 yìdiǎnr"
             }
           ],
-          "question": "学一学：儿化·一点儿"
+          "question": "学一学：儿化·一点儿",
+          "anim": "curl"
         },
         {
           "id": "py-py-e3-q",
@@ -5393,7 +5409,8 @@
               "text": "一个 yí gè"
             }
           ],
-          "question": "学一学：「一」的变调"
+          "question": "学一学：「一」的变调",
+          "anim": "tone"
         },
         {
           "id": "py-py-b1-q",
@@ -5434,7 +5451,8 @@
               "text": "一天 yì tiān"
             }
           ],
-          "question": "学一学：「一」的变调"
+          "question": "学一学：「一」的变调",
+          "anim": "tone"
         },
         {
           "id": "py-py-b2-q",
@@ -5475,7 +5493,8 @@
               "text": "不是 bú shì"
             }
           ],
-          "question": "学一学：「不」的变调"
+          "question": "学一学：「不」的变调",
+          "anim": "tone"
         },
         {
           "id": "py-py-b3-q",
@@ -5516,7 +5535,8 @@
               "text": "你好 nǐ hǎo"
             }
           ],
-          "question": "学一学：三声变调"
+          "question": "学一学：三声变调",
+          "anim": "tone"
         },
         {
           "id": "py-py-b4-q",
@@ -5557,7 +5577,8 @@
               "text": "自 zì / 从 cóng / 四 sì"
             }
           ],
-          "question": "学一学：平舌 z c s"
+          "question": "学一学：平舌 z c s",
+          "anim": "merge"
         },
         {
           "id": "py-py-f1-q",
@@ -5598,7 +5619,8 @@
               "text": "知 zhī / 吃 chī / 狮 shī"
             }
           ],
-          "question": "学一学：翘舌 zh ch sh"
+          "question": "学一学：翘舌 zh ch sh",
+          "anim": "merge"
         },
         {
           "id": "py-py-f2-q",
@@ -5639,7 +5661,8 @@
               "text": "早 zǎo vs 找 zhǎo"
             }
           ],
-          "question": "学一学：z c s vs zh ch sh"
+          "question": "学一学：z c s vs zh ch sh",
+          "anim": "pydraw"
         },
         {
           "id": "py-py-f3-q",
@@ -5680,7 +5703,8 @@
               "text": "日 rì / 热 rè"
             }
           ],
-          "question": "学一学：r 声母"
+          "question": "学一学：r 声母",
+          "anim": "merge"
         },
         {
           "id": "py-py-f4-q",
@@ -5721,7 +5745,8 @@
               "text": "山 shān / 人 rén"
             }
           ],
-          "question": "学一学：前鼻 an en"
+          "question": "学一学：前鼻 an en",
+          "anim": "merge"
         },
         {
           "id": "py-py-n1-q",
@@ -5762,7 +5787,8 @@
               "text": "亮 liàng / 灯 dēng"
             }
           ],
-          "question": "学一学：后鼻 ang eng"
+          "question": "学一学：后鼻 ang eng",
+          "anim": "merge"
         },
         {
           "id": "py-py-n2-q",
@@ -5803,7 +5829,8 @@
               "text": "陈 chén vs 城 chéng"
             }
           ],
-          "question": "学一学：前后鼻对比"
+          "question": "学一学：前后鼻对比",
+          "anim": "merge"
         },
         {
           "id": "py-py-n3-q",
@@ -5844,7 +5871,8 @@
               "text": "zhi chi shi ri"
             }
           ],
-          "question": "学一学：整体认读复习"
+          "question": "学一学：整体认读复习",
+          "anim": "tone"
         },
         {
           "id": "py-py-w1-q",
@@ -5885,7 +5913,8 @@
               "text": "yi wu yu"
             }
           ],
-          "question": "学一学：整体认读复习"
+          "question": "学一学：整体认读复习",
+          "anim": "tone"
         },
         {
           "id": "py-py-w2-q",
@@ -5926,7 +5955,8 @@
               "text": "yuan yin yun ying"
             }
           ],
-          "question": "学一学：整体认读复习"
+          "question": "学一学：整体认读复习",
+          "anim": "tone"
         },
         {
           "id": "py-py-w3-q",
@@ -5967,7 +5997,8 @@
               "text": "四是四，十是十"
             }
           ],
-          "question": "学一学：拼读儿歌·数字"
+          "question": "学一学：拼读儿歌·数字",
+          "anim": "pydraw"
         },
         {
           "id": "py-py-g1-q",
@@ -6184,7 +6215,8 @@
               "text": "春季夏天秋冬"
             }
           ],
-          "question": "学一学：拼读儿歌·四季"
+          "question": "学一学：拼读儿歌·四季",
+          "anim": "pydraw"
         },
         {
           "id": "py-py-g2-q",
@@ -6225,7 +6257,8 @@
               "text": "小熊熊，爬树丛"
             }
           ],
-          "question": "学一学：拼读儿歌·动物"
+          "question": "学一学：拼读儿歌·动物",
+          "anim": "pydraw"
         },
         {
           "id": "py-py-g3-q",
@@ -6266,7 +6299,8 @@
               "text": "白云飘，太阳照"
             }
           ],
-          "question": "学一学：拼读儿歌·自然"
+          "question": "学一学：拼读儿歌·自然",
+          "anim": "pydraw"
         },
         {
           "id": "py-py-g4-q",
@@ -6307,7 +6341,8 @@
               "text": "背着书包上学校"
             }
           ],
-          "question": "学一学：拼读儿歌·校园"
+          "question": "学一学：拼读儿歌·校园",
+          "anim": "pydraw"
         },
         {
           "id": "py-py-g5-q",
@@ -6348,7 +6383,8 @@
               "text": "谁的耳朵长？驴的耳朵长"
             }
           ],
-          "question": "学一学：拼读儿歌·问答"
+          "question": "学一学：拼读儿歌·问答",
+          "anim": "pydraw"
         },
         {
           "id": "py-py-g6-q",
@@ -6389,7 +6425,8 @@
               "text": "拼读要看声调号"
             }
           ],
-          "question": "学一学：拼读儿歌·反思"
+          "question": "学一学：拼读儿歌·反思",
+          "anim": "pydraw"
         },
         {
           "id": "py-py-g7-q",
@@ -6430,7 +6467,8 @@
               "text": "拼音学好了，识字本领高"
             }
           ],
-          "question": "学一学：拼读总复习"
+          "question": "学一学：拼读总复习",
+          "anim": "pydraw"
         },
         {
           "id": "py-py-g8-q",

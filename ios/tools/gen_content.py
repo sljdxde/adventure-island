@@ -484,6 +484,67 @@ def apply_anims(levels, mapping):
         assert st["kind"] == "letter", f"apply_anims: {lid} 首步不是 letter"
         st["anim"] = anim
 
+# —— v0.12.1 动画第二批：数学/英语/环球/拼音教学卡按知识点关键词补动画 ——
+# 规则按序匹配（关卡标题 + display + question），都不中用该科 default；已配 anim 的一律不动。
+# 新增 26 个 id（groups…soft），与 index.html 的 ANIM_IDS、validate.py 的 ANIM_IDS 三处同步。
+LETTER_ANIM_RULES = {
+    "math": [
+        (("口诀",), "groups"),
+        (("除法", "平均", "求商", "装盒", "分书", "分一分", "分组"), "share"),
+        (("厘米", "米尺", "长度", "比长短", "估一估", "选单位", "认识米", "跳远", "身高"), "ruler"),
+        (("角",), "angle"),
+        (("克", "千克", "重量", "轻重"), "scale"),
+        (("笔算", "连加连减", "万以内", "数位", "读写", "比大小", "近似数"), "column"),
+        (("观察物体", "前面", "后面", "侧面"), "viewcube"),
+        (("应用", "乘车", "买文具", "分苹果", "排队伍"), "story"),
+    ],
+    "english": [
+        (("Learn letter",), "abc"),
+        (("Lion", "Fish", "Bee", "Fox", "Farm", "Pets", "Wild Animals", "Sea Friends",
+          "Animal Babies", "Dinosaur"), "paw"),
+        (("Days", "Months", "Seasons", "Week"), "calendar"),
+        (("Cake", "Breakfast", "Fruit", "Drink", "Time to Eat", "On the Table"), "yummy"),
+        (("Run", "Verbs", "Go Go Go", "I can", "Play Time", "Body Power"), "jump"),
+    ],
+    "geo": [
+        (("哈尔滨", "冰岛", "格陵兰", "南极", "北极", "极地", "极昼极夜", "北冰洋", "芬兰", "雪"), "snow"),
+        (("海南", "台湾", "夏威夷", "大堡礁", "珊瑚", "太平洋", "海沟", "马里亚纳"), "wave"),
+        (("新疆", "撒哈拉", "沙漠"), "camel"),
+        (("云南",), "bloom"),
+        (("火山",), "volcano"),
+        (("恐龙", "化石"), "dino"),
+        (("春节", "中秋", "端午", "圣诞", "万圣", "感恩"), "festival"),
+        (("长江", "黄河", "尼罗河", "贝加尔湖", "死海", "青海湖", "亚马孙"), "river"),
+        (("陨石", "彗星"), "meteor"),
+        (("桂林", "黄山"), "mountain"),
+        (("七大洲", "四大洋", "地球仪", "时差", "环球", "认方向", "指南针", "世界",
+          "亚洲", "非洲", "欧洲", "美洲", "环保", "人种", "语言"), "globe"),
+    ],
+    "pinyin": [
+        (("多音字",), "flip"),
+        (("儿化",), "curl"),
+        (("轻声",), "soft"),
+        (("变调", "三声", "整体认读复习"), "tone"),
+        (("平舌", "翘舌", "前后鼻", "前鼻", "后鼻", "r 声母"), "merge"),
+        (("拼读儿歌", "总复习"), "pydraw"),
+    ],
+}
+
+
+def assign_letter_anims(levels, sub, default):
+    """给还没有 anim 的 letter 步骤按知识点关键词补动画（v0.12.1）。
+    只补空位，不动 apply_anims/工厂已配好的 anim；规则都不中时用该科 default，保证教学卡 100% 有动画。"""
+    rules = LETTER_ANIM_RULES[sub]
+    n = 0
+    for lv in levels:
+        for st in lv["steps"]:
+            if st.get("kind") != "letter" or st.get("anim"):
+                continue
+            text = f'{lv["title"]} {st.get("display", "")} {st.get("question", "")}'
+            st["anim"] = next((a for kws, a in rules if any(k in text for k in kws)), default)
+            n += 1
+    return n
+
 def finish_levels(levels, sub, total):
     """关卡收尾（通用）：正则关 + 复习@各星区段末 + Boss（每星区恰好 10 关）。
     50 关：复习@19/39/48；100 关：复习@29/59/89。复习题从之前所有正则关轮询采样。"""
@@ -1095,6 +1156,7 @@ append_extras(math_levels, [
                            [("circle","圆形","没有角，滚滚圆"),("triangle","三角形","有三条边"),("square","正方形","四条边一样长")])),
 ])
 finish_levels(math_levels, "math", 100)
+assign_letter_anims(math_levels, "math", "story")
 W("math_levels.json", {"subject": "math", "title": "思维镇", "guide": "fox",
                       "zones": zones_meta(["数与数数", "加减法", "乘法口诀", "除法初步", "长度单位",
                                            "角的初步认识", "克与千克", "图形与钟表", "万以内数", "思维大挑战"],
@@ -1547,6 +1609,7 @@ apply_anims(pinyin_levels, {
     "py-13": "merge",                                     # 复韵母：两音相拼
     "py-14": "merge",                                     # 前鼻韵母：韵母+n 相拼
 })
+assign_letter_anims(pinyin_levels, "pinyin", "pydraw")   # v0.12.1：多音字/儿化/轻声等补位
 append_extras(pinyin_levels, [
     ("py-1", match_step("py-x1", "连一连：声母和词语",
                         [("cat","m","小猫 māo"),("egg","d","鸡蛋 dàn"),("fish","y","小鱼 yú")])),
@@ -1858,6 +1921,7 @@ apply_anims(english_levels, {
     "en-17": "heartbeat",   # Body：心跳扑通
     "en-21": "train",       # Transport：小火车喷烟
 })
+assign_letter_anims(english_levels, "english", "wordpop")   # v0.12.1：字母卡/词场卡补位
 append_extras(english_levels, [
     ("en-0", sequence_step("en-x1", "Tap in order: A → B → C 按字母顺序点", ["A","B","C"],
                            praise="Great job! 字母小达人！")),
@@ -3237,6 +3301,7 @@ apply_anims(geo_levels, {
     "geo-6": "drift",       # 七大洲：大陆漂移拼合
     "geo-9": "windmill",    # 欧洲：风车转动
 })
+assign_letter_anims(geo_levels, "geo", "pin")   # v0.12.1：国家城市/大洲/自然奇观补位
 append_extras(geo_levels, [
     ("geo-1", shadow_step("geo-x1", "看影子猜猜：这是北京哪里？", "tiananmen",
                           [("tiananmen","天安门"),("castle","城堡"),("school","学校")], 0,

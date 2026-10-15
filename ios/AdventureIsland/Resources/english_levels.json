@@ -84,7 +84,8 @@
               "say": "Apple"
             }
           ],
-          "question": "Learn letter Aa"
+          "question": "Learn letter Aa",
+          "anim": "abc"
         },
         {
           "id": "en-0-l",
@@ -160,7 +161,8 @@
               "say": "Banana"
             }
           ],
-          "question": "Learn letter Bb"
+          "question": "Learn letter Bb",
+          "anim": "abc"
         },
         {
           "id": "en-1-c",
@@ -224,7 +226,8 @@
               "say": "Cake"
             }
           ],
-          "question": "Learn letter Cc"
+          "question": "Learn letter Cc",
+          "anim": "abc"
         },
         {
           "id": "en-2-l",
@@ -293,7 +296,8 @@
               "say": "Duck"
             }
           ],
-          "question": "Learn letter Dd"
+          "question": "Learn letter Dd",
+          "anim": "abc"
         },
         {
           "id": "en-3-q",
@@ -355,7 +359,8 @@
               "say": "Sun"
             }
           ],
-          "question": "Learn letter Ss"
+          "question": "Learn letter Ss",
+          "anim": "abc"
         },
         {
           "id": "en-4-l",
@@ -419,7 +424,8 @@
               "say": "Moon"
             }
           ],
-          "question": "Learn letter Mm"
+          "question": "Learn letter Mm",
+          "anim": "abc"
         },
         {
           "id": "en-5-c",
@@ -483,7 +489,8 @@
               "say": "Flower"
             }
           ],
-          "question": "Learn letter Ff"
+          "question": "Learn letter Ff",
+          "anim": "abc"
         },
         {
           "id": "en-6-l",
@@ -552,7 +559,8 @@
               "say": "Leaf"
             }
           ],
-          "question": "Learn letter Ll"
+          "question": "Learn letter Ll",
+          "anim": "abc"
         },
         {
           "id": "en-7-q",
@@ -614,7 +622,8 @@
               "say": "Rainbow"
             }
           ],
-          "question": "Learn letter Rr"
+          "question": "Learn letter Rr",
+          "anim": "abc"
         },
         {
           "id": "en-8-c",
@@ -676,7 +685,8 @@
               "say": "Gift"
             }
           ],
-          "question": "Learn letter Gg"
+          "question": "Learn letter Gg",
+          "anim": "abc"
         },
         {
           "id": "en-9-c",
@@ -738,7 +748,8 @@
               "say": "Egg"
             }
           ],
-          "question": "Learn letter Ee"
+          "question": "Learn letter Ee",
+          "anim": "abc"
         },
         {
           "id": "en-24-c",
@@ -800,7 +811,8 @@
               "say": "Train"
             }
           ],
-          "question": "Learn letter Tt"
+          "question": "Learn letter Tt",
+          "anim": "abc"
         },
         {
           "id": "en-25-c",
@@ -862,7 +874,8 @@
               "say": "Panda"
             }
           ],
-          "question": "Learn letter Pp"
+          "question": "Learn letter Pp",
+          "anim": "abc"
         },
         {
           "id": "en-26-c",
@@ -924,7 +937,8 @@
               "say": "Ice"
             }
           ],
-          "question": "Learn letter Ii"
+          "question": "Learn letter Ii",
+          "anim": "abc"
         },
         {
           "id": "en-27-c",
@@ -986,7 +1000,8 @@
               "say": "O"
             }
           ],
-          "question": "Learn letter Oo"
+          "question": "Learn letter Oo",
+          "anim": "abc"
         },
         {
           "id": "en-28-c",
@@ -1048,7 +1063,8 @@
               "say": "N"
             }
           ],
-          "question": "Learn letter Nn"
+          "question": "Learn letter Nn",
+          "anim": "abc"
         },
         {
           "id": "en-29-c",
@@ -1110,7 +1126,8 @@
               "say": "Question"
             }
           ],
-          "question": "Learn letter Qq"
+          "question": "Learn letter Qq",
+          "anim": "abc"
         },
         {
           "id": "en-30-c",
@@ -1172,7 +1189,8 @@
               "say": "Wave"
             }
           ],
-          "question": "Learn letter Ww"
+          "question": "Learn letter Ww",
+          "anim": "abc"
         },
         {
           "id": "en-31-c",
@@ -1234,7 +1252,8 @@
               "say": "Jar"
             }
           ],
-          "question": "Learn letter Jj"
+          "question": "Learn letter Jj",
+          "anim": "abc"
         },
         {
           "id": "en-32-c",
@@ -1907,7 +1926,8 @@
               "say": "Home"
             }
           ],
-          "question": "Learn: 家庭 主题单词"
+          "question": "Learn: 家庭 主题单词",
+          "anim": "wordpop"
         },
         {
           "id": "en-16-q1",
@@ -2092,7 +2112,8 @@
               "say": "Chart"
             }
           ],
-          "question": "Learn: 文具 主题单词"
+          "question": "Learn: 文具 主题单词",
+          "anim": "wordpop"
         },
         {
           "id": "en-18-q1",
@@ -2184,7 +2205,8 @@
               "say": "Milk"
             }
           ],
-          "question": "Learn: 食物 主题单词"
+          "question": "Learn: 食物 主题单词",
+          "anim": "yummy"
         },
         {
           "id": "en-19-q1",
@@ -2480,7 +2502,8 @@
               "say": "Gift"
             }
           ],
-          "question": "Learn: 衣物 主题单词"
+          "question": "Learn: 衣物 主题单词",
+          "anim": "wordpop"
         },
         {
           "id": "en-20-q1",
@@ -2665,7 +2688,8 @@
               "say": "Eat"
             }
           ],
-          "question": "Learn: 动作 主题单词"
+          "question": "Learn: 动作 主题单词",
+          "anim": "jump"
         },
         {
           "id": "en-22-q1",
@@ -2757,7 +2781,8 @@
               "say": "Gift"
             }
           ],
-          "question": "Learn: 玩具 主题单词"
+          "question": "Learn: 玩具 主题单词",
+          "anim": "wordpop"
         },
         {
           "id": "en-33-q1",
@@ -2849,7 +2874,8 @@
               "say": "Key"
             }
           ],
-          "question": "Learn: 家 主题单词"
+          "question": "Learn: 家 主题单词",
+          "anim": "wordpop"
         },
         {
           "id": "en-34-q1",
@@ -2941,7 +2967,8 @@
               "say": "Windmill"
             }
           ],
-          "question": "Learn: 天气 主题单词"
+          "question": "Learn: 天气 主题单词",
+          "anim": "wordpop"
         },
         {
           "id": "en-35-q1",
@@ -3038,7 +3065,8 @@
               "say": "Castle"
             }
           ],
-          "question": "Learn: 城市 主题单词"
+          "question": "Learn: 城市 主题单词",
+          "anim": "wordpop"
         },
         {
           "id": "en-36-q1",
@@ -3130,7 +3158,8 @@
               "say": "Sprout"
             }
           ],
-          "question": "Learn: 自然 主题单词"
+          "question": "Learn: 自然 主题单词",
+          "anim": "wordpop"
         },
         {
           "id": "en-37-q1",
@@ -3222,7 +3251,8 @@
               "say": "Elephant"
             }
           ],
-          "question": "Learn: 动物园 主题单词"
+          "question": "Learn: 动物园 主题单词",
+          "anim": "paw"
         },
         {
           "id": "en-38-q1",
@@ -3314,7 +3344,8 @@
               "say": "Ice"
             }
           ],
-          "question": "Learn: 海洋 主题单词"
+          "question": "Learn: 海洋 主题单词",
+          "anim": "paw"
         },
         {
           "id": "en-39-q1",
@@ -3406,7 +3437,8 @@
               "say": "Candy"
             }
           ],
-          "question": "Learn: 派对 主题单词"
+          "question": "Learn: 派对 主题单词",
+          "anim": "wordpop"
         },
         {
           "id": "en-40-q1",
@@ -3498,7 +3530,8 @@
               "say": "Star"
             }
           ],
-          "question": "Learn: 奇妙 主题单词"
+          "question": "Learn: 奇妙 主题单词",
+          "anim": "wordpop"
         },
         {
           "id": "en-41-q1",
@@ -3590,7 +3623,8 @@
               "say": "Clip"
             }
           ],
-          "question": "Learn: 工具 主题单词"
+          "question": "Learn: 工具 主题单词",
+          "anim": "wordpop"
         },
         {
           "id": "en-42-q1",
@@ -3682,7 +3716,8 @@
               "say": "Tree"
             }
           ],
-          "question": "Learn: 花园 主题单词"
+          "question": "Learn: 花园 主题单词",
+          "anim": "paw"
         },
         {
           "id": "en-43-q1",
@@ -3774,7 +3809,8 @@
               "say": "Penguin"
             }
           ],
-          "question": "Learn: 冬天 主题单词"
+          "question": "Learn: 冬天 主题单词",
+          "anim": "wordpop"
         },
         {
           "id": "en-44-q1",
@@ -3866,7 +3902,8 @@
               "say": "Dino"
             }
           ],
-          "question": "Learn: 朋友 主题单词"
+          "question": "Learn: 朋友 主题单词",
+          "anim": "paw"
         },
         {
           "id": "en-45-q1",
@@ -4033,7 +4070,8 @@
               "say": "Wednesday"
             }
           ],
-          "question": "Learn: Days 1 星期一至三"
+          "question": "Learn: Days 1 星期一至三",
+          "anim": "calendar"
         },
         {
           "id": "en-46-q0",
@@ -4121,7 +4159,8 @@
               "say": "Monday"
             }
           ],
-          "question": "Learn: Days 2 星期四至五"
+          "question": "Learn: Days 2 星期四至五",
+          "anim": "calendar"
         },
         {
           "id": "en-47-q0",
@@ -4209,7 +4248,8 @@
               "say": "Monday"
             }
           ],
-          "question": "Learn: Days 3 周末"
+          "question": "Learn: Days 3 周末",
+          "anim": "calendar"
         },
         {
           "id": "en-48-q0",
@@ -4297,7 +4337,8 @@
               "say": "May"
             }
           ],
-          "question": "Learn: Months 1 一至四月"
+          "question": "Learn: Months 1 一至四月",
+          "anim": "calendar"
         },
         {
           "id": "en-49-q0",
@@ -4385,7 +4426,8 @@
               "say": "September"
             }
           ],
-          "question": "Learn: Months 2 六至九月"
+          "question": "Learn: Months 2 六至九月",
+          "anim": "calendar"
         },
         {
           "id": "en-50-q0",
@@ -4473,7 +4515,8 @@
               "say": "December"
             }
           ],
-          "question": "Learn: Months 3 十至十二月"
+          "question": "Learn: Months 3 十至十二月",
+          "anim": "calendar"
         },
         {
           "id": "en-51-q0",
@@ -4569,7 +4612,8 @@
               "say": "Winter"
             }
           ],
-          "question": "Learn: Seasons 四季"
+          "question": "Learn: Seasons 四季",
+          "anim": "calendar"
         },
         {
           "id": "en-52-q0",
@@ -4669,7 +4713,8 @@
               "say": "Sleep"
             }
           ],
-          "question": "Learn: Verbs 1 动作·吃跑睡"
+          "question": "Learn: Verbs 1 动作·吃跑睡",
+          "anim": "jump"
         },
         {
           "id": "en-53-q0",
@@ -4769,7 +4814,8 @@
               "say": "Sing"
             }
           ],
-          "question": "Learn: Verbs 2 动作·读画唱"
+          "question": "Learn: Verbs 2 动作·读画唱",
+          "anim": "jump"
         },
         {
           "id": "en-54-q0",
@@ -4869,7 +4915,8 @@
               "say": "Scientist"
             }
           ],
-          "question": "Learn: Jobs 职业"
+          "question": "Learn: Jobs 职业",
+          "anim": "wordpop"
         },
         {
           "id": "en-55-q0",
@@ -4969,7 +5016,8 @@
               "say": "Excited"
             }
           ],
-          "question": "Learn: Feelings 心情"
+          "question": "Learn: Feelings 心情",
+          "anim": "wordpop"
         },
         {
           "id": "en-56-q0",
@@ -5069,7 +5117,8 @@
               "say": "Castle"
             }
           ],
-          "question": "Learn: Places 场所"
+          "question": "Learn: Places 场所",
+          "anim": "wordpop"
         },
         {
           "id": "en-57-q0",
@@ -5169,7 +5218,8 @@
               "say": "Bear"
             }
           ],
-          "question": "Learn: Big and Small 大小"
+          "question": "Learn: Big and Small 大小",
+          "anim": "wordpop"
         },
         {
           "id": "en-58-q0",
@@ -5438,7 +5488,8 @@
               "say": "Comet"
             }
           ],
-          "question": "Learn: Fast and Slow 快慢"
+          "question": "Learn: Fast and Slow 快慢",
+          "anim": "wordpop"
         },
         {
           "id": "en-59-q0",
@@ -5538,7 +5589,8 @@
               "say": "Egg"
             }
           ],
-          "question": "Learn: Breakfast 早餐"
+          "question": "Learn: Breakfast 早餐",
+          "anim": "yummy"
         },
         {
           "id": "en-60-q0",
@@ -5638,7 +5690,8 @@
               "say": "Sweet"
             }
           ],
-          "question": "Learn: Fruit Bowl 水果盘"
+          "question": "Learn: Fruit Bowl 水果盘",
+          "anim": "yummy"
         },
         {
           "id": "en-61-q0",
@@ -5738,7 +5791,8 @@
               "say": "Duck"
             }
           ],
-          "question": "Learn: On the Farm 农场"
+          "question": "Learn: On the Farm 农场",
+          "anim": "paw"
         },
         {
           "id": "en-62-q0",
@@ -5838,7 +5892,8 @@
               "say": "Rabbit"
             }
           ],
-          "question": "Learn: Pets 宠物"
+          "question": "Learn: Pets 宠物",
+          "anim": "paw"
         },
         {
           "id": "en-63-q0",
@@ -5938,7 +5993,8 @@
               "say": "Polar Bear"
             }
           ],
-          "question": "Learn: Wild Animals 野生动物"
+          "question": "Learn: Wild Animals 野生动物",
+          "anim": "paw"
         },
         {
           "id": "en-64-q0",
@@ -6038,7 +6094,8 @@
               "say": "Wave"
             }
           ],
-          "question": "Learn: Sea Friends 海洋"
+          "question": "Learn: Sea Friends 海洋",
+          "anim": "paw"
         },
         {
           "id": "en-65-q0",
@@ -6138,7 +6195,8 @@
               "say": "Sun"
             }
           ],
-          "question": "Learn: Sky 天空"
+          "question": "Learn: Sky 天空",
+          "anim": "wordpop"
         },
         {
           "id": "en-66-q0",
@@ -6238,7 +6296,8 @@
               "say": "Clock"
             }
           ],
-          "question": "Learn: At Home 在家里"
+          "question": "Learn: At Home 在家里",
+          "anim": "wordpop"
         },
         {
           "id": "en-67-q0",
@@ -6338,7 +6397,8 @@
               "say": "Ball"
             }
           ],
-          "question": "Learn: Play Time 游戏"
+          "question": "Learn: Play Time 游戏",
+          "anim": "jump"
         },
         {
           "id": "en-68-q0",
@@ -6438,7 +6498,8 @@
               "say": "Me"
             }
           ],
-          "question": "Learn: Body Power 身体本领"
+          "question": "Learn: Body Power 身体本领",
+          "anim": "jump"
         },
         {
           "id": "en-69-q0",
@@ -6538,7 +6599,8 @@
               "say": "Green"
             }
           ],
-          "question": "Learn: Colours Again 颜色"
+          "question": "Learn: Colours Again 颜色",
+          "anim": "wordpop"
         },
         {
           "id": "en-70-q0",
@@ -6639,7 +6701,8 @@
               "say": "Eight"
             }
           ],
-          "question": "Learn: Numbers 5-8 数字五到八"
+          "question": "Learn: Numbers 5-8 数字五到八",
+          "anim": "wordpop"
         },
         {
           "id": "en-71-q0",
@@ -6730,7 +6793,8 @@
               "say": "Thank you"
             }
           ],
-          "question": "Learn: Greetings 打招呼"
+          "question": "Learn: Greetings 打招呼",
+          "anim": "wordpop"
         },
         {
           "id": "en-72-q0",
@@ -6830,7 +6894,8 @@
               "say": "Jar"
             }
           ],
-          "question": "Learn: On the Table 桌上"
+          "question": "Learn: On the Table 桌上",
+          "anim": "yummy"
         },
         {
           "id": "en-73-q0",
@@ -6921,7 +6986,8 @@
               "text": "Sunday 星期日"
             }
           ],
-          "question": "复习：一周七天"
+          "question": "复习：一周七天",
+          "anim": "calendar"
         },
         {
           "id": "en-74-q1",
@@ -6986,7 +7052,8 @@
               "text": "Winter 冬"
             }
           ],
-          "question": "复习：四季"
+          "question": "复习：四季",
+          "anim": "calendar"
         },
         {
           "id": "en-75-q1",
@@ -7057,7 +7124,8 @@
               "text": "I can swim 我会游"
             }
           ],
-          "question": "句型：I can… 我会……"
+          "question": "句型：I can… 我会……",
+          "anim": "jump"
         },
         {
           "id": "en-76-q1",
@@ -7122,7 +7190,8 @@
               "text": "I like cats 我喜欢猫"
             }
           ],
-          "question": "句型：I like… 我喜欢……"
+          "question": "句型：I like… 我喜欢……",
+          "anim": "wordpop"
         },
         {
           "id": "en-77-q1",
@@ -7180,7 +7249,8 @@
               "say": "School"
             }
           ],
-          "question": "Learn: School Things 学习用品"
+          "question": "Learn: School Things 学习用品",
+          "anim": "wordpop"
         },
         {
           "id": "en-78-q0",
@@ -7285,7 +7355,8 @@
               "say": "Duck"
             }
           ],
-          "question": "Learn: In the Park 公园"
+          "question": "Learn: In the Park 公园",
+          "anim": "wordpop"
         },
         {
           "id": "en-79-q0",
@@ -7390,7 +7461,8 @@
               "say": "Penguin"
             }
           ],
-          "question": "Learn: On the Beach 海滩"
+          "question": "Learn: On the Beach 海滩",
+          "anim": "wordpop"
         },
         {
           "id": "en-80-q0",
@@ -7490,7 +7562,8 @@
               "say": "Party"
             }
           ],
-          "question": "Learn: Music Time 音乐时间"
+          "question": "Learn: Music Time 音乐时间",
+          "anim": "wordpop"
         },
         {
           "id": "en-81-q0",
@@ -7590,7 +7663,8 @@
               "say": "Hat"
             }
           ],
-          "question": "Learn: Wear This 穿搭"
+          "question": "Learn: Wear This 穿搭",
+          "anim": "wordpop"
         },
         {
           "id": "en-82-q0",
@@ -7690,7 +7764,8 @@
               "say": "Rocket"
             }
           ],
-          "question": "Learn: Go Go Go 出行"
+          "question": "Learn: Go Go Go 出行",
+          "anim": "jump"
         },
         {
           "id": "en-83-q0",
@@ -7790,7 +7865,8 @@
               "say": "Fox"
             }
           ],
-          "question": "Learn: My Family 我的家"
+          "question": "Learn: My Family 我的家",
+          "anim": "wordpop"
         },
         {
           "id": "en-84-q0",
@@ -7890,7 +7966,8 @@
               "say": "Gift"
             }
           ],
-          "question": "Learn: Toy Box 玩具箱"
+          "question": "Learn: Toy Box 玩具箱",
+          "anim": "wordpop"
         },
         {
           "id": "en-85-q0",
@@ -7990,7 +8067,8 @@
               "say": "Black Hole"
             }
           ],
-          "question": "Learn: Night Sky 夜空"
+          "question": "Learn: Night Sky 夜空",
+          "anim": "wordpop"
         },
         {
           "id": "en-86-q0",
@@ -8090,7 +8168,8 @@
               "say": "Long Neck"
             }
           ],
-          "question": "Learn: Dinosaur 1 恐龙·霸王龙"
+          "question": "Learn: Dinosaur 1 恐龙·霸王龙",
+          "anim": "paw"
         },
         {
           "id": "en-87-q0",
@@ -8190,7 +8269,8 @@
               "say": "T-Rex"
             }
           ],
-          "question": "Learn: Dinosaur 2 恐龙·长脖子"
+          "question": "Learn: Dinosaur 2 恐龙·长脖子",
+          "anim": "paw"
         },
         {
           "id": "en-88-q0",
@@ -8459,7 +8539,8 @@
               "say": "Sweet"
             }
           ],
-          "question": "Learn: Fruit Mix 水果混合"
+          "question": "Learn: Fruit Mix 水果混合",
+          "anim": "yummy"
         },
         {
           "id": "en-89-q0",
@@ -8559,7 +8640,8 @@
               "say": "Jar"
             }
           ],
-          "question": "Learn: Drink Up 喝的"
+          "question": "Learn: Drink Up 喝的",
+          "anim": "yummy"
         },
         {
           "id": "en-90-q0",
@@ -8659,7 +8741,8 @@
               "say": "Cub"
             }
           ],
-          "question": "Learn: Animal Babies 动物宝宝"
+          "question": "Learn: Animal Babies 动物宝宝",
+          "anim": "paw"
         },
         {
           "id": "en-91-q0",
@@ -8759,7 +8842,8 @@
               "say": "Ice"
             }
           ],
-          "question": "Learn: Hot and Cold 热和冷"
+          "question": "Learn: Hot and Cold 热和冷",
+          "anim": "wordpop"
         },
         {
           "id": "en-92-q0",
@@ -8859,7 +8943,8 @@
               "say": "Magnet"
             }
           ],
-          "question": "Learn: Little Helpers 小帮手"
+          "question": "Learn: Little Helpers 小帮手",
+          "anim": "wordpop"
         },
         {
           "id": "en-93-q0",
@@ -8959,7 +9044,8 @@
               "say": "Balloon"
             }
           ],
-          "question": "Learn: Fun Fair 游乐场"
+          "question": "Learn: Fun Fair 游乐场",
+          "anim": "wordpop"
         },
         {
           "id": "en-94-q0",
@@ -9059,7 +9145,8 @@
               "say": "Cake"
             }
           ],
-          "question": "Learn: Time to Eat 吃饭啦"
+          "question": "Learn: Time to Eat 吃饭啦",
+          "anim": "yummy"
         },
         {
           "id": "en-95-q0",

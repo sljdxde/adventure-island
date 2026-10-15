@@ -73,11 +73,16 @@ manifest_icons = {p.split("/")[1].replace(".svg", "") for p in manifest["icons"]
                  {p.split("/")[1].replace(".svg", "") for p in manifest["bg"]}
 
 # v0.10.1 学一学动画 id 全集（letter.anim 枚举校验；两端 AstroAnimView/animHTML 各自实现）
+# v0.12.1 新增 26 个：数学 8 / 英语 6 / 环球 9 / 拼音 3，与 index.html 的 ANIM_IDS、gen_content.py 三处同步
 ANIM_IDS = {"sunrise", "daynight", "orbit", "satellite", "moonphases", "rocket", "float",
             "meteor", "bigdipper", "blackhole", "galaxy", "bigbang", "tide",
             "pydraw", "tone", "merge",
             "walk", "rainbow", "countpop", "fall", "heartbeat", "train",
-            "river", "wall", "mountain", "panda", "drift", "windmill"}
+            "river", "wall", "mountain", "panda", "drift", "windmill",
+            "groups", "share", "ruler", "angle", "scale", "column", "story", "viewcube",
+            "abc", "paw", "calendar", "yummy", "jump", "wordpop",
+            "pin", "globe", "snow", "wave", "camel", "bloom", "volcano", "dino", "festival",
+            "flip", "curl", "soft"}
 
 SUBJECTS = [("cn_levels", 100), ("math_levels", 100), ("pinyin_levels", 100),
             ("english_levels", 100), ("astro_levels", 100), ("geo_levels", 100)]

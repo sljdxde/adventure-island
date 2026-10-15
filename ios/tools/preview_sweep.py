@@ -152,6 +152,9 @@ def render(chrome, url, profile, budget=2600):
             [chrome, "--headless", "--disable-gpu", "--user-data-dir=" + profile,
              "--dump-dom", "--virtual-time-budget=" + str(budget), url],
             capture_output=True, timeout=90).stdout.decode("utf-8", "replace")
+    except subprocess.TimeoutExpired:
+        # 单页挂起（偶发 Chrome 卡死/资源饥饿）记为弹回继续扫，不能让一步超时杀死全量 sweep
+        return {"overflow": [], "textHeavy": [], "missing": [], "blank": True, "screen": "?timeout"}
     finally:
         try:
             os.remove(probe_in_preview)
