@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<!-- PROTOTYPE（丢弃用）v2：探险岛主页 3 个设计方向，?variant=soft|doodle|dusk + 底部悬浮条 + ←/→ 键。
+     问题：「探险岛主页应该长什么样才好看？」
+     设计依据：web-design-engineer（ConardLi/garden-skills）Warm Humanist 配方
+     （headspace-meditation / mailchimp-freddie）+ anthropics frontend-design 反模板流程。
+     数据为演示假数据；结构对齐真实 renderMap()：六科 + 继续闯关 + 收集/商店/任务/家长。 -->
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>PROTOTYPE v2 · 探险岛主页设计方向</title>
+<style>
+:root{--f-round:"Yuanti SC","YouYuan","PingFang SC",system-ui,sans-serif;
+      --f-hand:"Kaiti SC","STKaiti","Yuanti SC",serif}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{height:100%}
+body{font-family:var(--f-round);overflow:hidden;background:#FFEDD5}
+/* 固定设计舞台 1024×768（iPad 横屏），JS 等比缩放居中 */
+#app{position:absolute;left:50%;top:50%;width:1024px;height:768px;
+  transform:translate(-50%,-50%) scale(var(--s,1))}
+.var{display:none;height:100%;position:relative;overflow:hidden}
+body[data-v="soft"]   #vSoft{display:block}
+body[data-v="doodle"] #vDoodle{display:block}
+body[data-v="dusk"]   #vDusk{display:block}
+body[data-v="ninja"]  #vNinja{display:block}
+#proto-tag{position:fixed;top:10px;left:10px;z-index:99;background:#111;color:#FFD24D;
+  font-size:11px;font-weight:700;padding:4px 10px;border-radius:99px;opacity:.85}
+
+/* 真实数据的小徽章：名字+金币+等级（三变体共用结构、各自样式覆盖） */
+.hud-name{font-weight:800}
+.hud-coin{display:inline-flex;align-items:center;gap:6px;font-weight:800}
+svg{display:block}
+
+/* ================= soft · 软糖浮岛（Headspace 配方） ================= */
+#vSoft{background:linear-gradient(180deg,#FFEDD5,#FFE2C5 70%,#FFDDB8)}
+#vSoft .drift{position:absolute;inset:0;background:
+  radial-gradient(560px 360px at 82% 18%,rgba(176,165,209,.28),transparent 70%),
+  radial-gradient(620px 420px at 12% 82%,rgba(157,182,122,.25),transparent 70%);
+  animation:softdrift 9s ease-in-out infinite alternate}
+@keyframes softdrift{from{opacity:.55;transform:translateY(0)}to{opacity:1;transform:translateY(-14px)}}
+#vSoft .hud{position:absolute;top:0;left:0;right:0;display:flex;justify-content:space-between;
+  align-items:center;padding:18px 24px;z-index:5}
+#vSoft .hud .chip{background:rgba(255,255,255,.75);color:#1B3A47;border-radius:99px;padding:8px 16px;
+  font-weight:800;font-size:15px;box-shadow:0 8px 24px rgba(244,165,115,.2)}
+#vSoft .title{position:absolute;top:44px;left:0;right:0;text-align:center;font-weight:900;
+  font-size:44px;color:#1B3A47;letter-spacing:14px;z-index:4}
+#vSoft .title small{display:block;font-size:14px;letter-spacing:2px;color:#5C6B7A;font-weight:700;margin-top:6px}
+/* 吉祥物：Headspace 式大圆角色 */
+#vSoft .mascot{position:absolute;left:96px;top:238px;width:196px;height:196px;border-radius:50%;
+  background:radial-gradient(circle at 34% 30%,#FFC9A8,#F4A573 68%);
+  box-shadow:0 18px 40px rgba(244,165,115,.35),inset 0 -14px 0 rgba(27,58,71,.07);
+  animation:breathe 4s ease-in-out infinite;z-index:3}
+@keyframes breathe{0%,100%{transform:scale(1)}50%{transform:scale(1.035)}}
+#vSoft .mascot .sprout{position:absolute;top:-22px;left:50%;margin-left:-14px;width:28px;height:30px}
+#vSoft .mascot .face{position:absolute;inset:0}
+#vSoft .say{position:absolute;left:318px;top:262px;background:#fff;color:#1B3A47;font-weight:800;
+  font-size:17px;padding:14px 20px;border-radius:24px 24px 24px 6px;
+  box-shadow:0 8px 24px rgba(244,165,115,.25);z-index:3;max-width:250px;line-height:1.5}
+#vSoft .isles{position:absolute;right:44px;top:126px;width:560px;height:520px;z-index:2}
+#vSoft .isle{position:absolute;width:172px;padding:14px 14px 12px;cursor:pointer;text-align:center;
+  border-radius:34px 38px 32px 40px;transition:transform .25s}
+#vSoft .isle:active{transform:scale(.96)}
+#vSoft .isle .disc{width:64px;height:64px;border-radius:50%;margin:0 auto;display:flex;
+  align-items:center;justify-content:center;box-shadow:inset 0 -6px 0 rgba(27,58,71,.08)}
+#vSoft .isle .nm{font-weight:900;font-size:17px;color:#1B3A47;margin-top:8px}
+#vSoft .isle .mt{font-size:12px;font-weight:800;color:#5C6B7A;margin-top:2px}
+#vSoft .isle .pill{height:10px;border-radius:99px;background:rgba(27,58,71,.1);margin-top:8px;overflow:hidden}
+#vSoft .isle .pill i{display:block;height:100%;border-radius:99px}
+#vSoft .isle.cur{outline:5px solid rgba(255,255,255,.9);box-shadow:0 16px 34px rgba(244,165,115,.4)}
+#vSoft .float{animation:floaty 4.5s ease-in-out infinite}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+#vSoft .cta{position:absolute;left:96px;bottom:64px;background:#F4A573;color:#fff;border:none;
+  font-family:inherit;font-weight:900;font-size:21px;padding:18px 52px;border-radius:99px;cursor:pointer;
+  box-shadow:0 10px 0 rgba(27,58,71,.12),0 16px 34px rgba(244,165,115,.45);z-index:4}
+#vSoft .dock{position:absolute;right:44px;bottom:52px;display:flex;gap:14px;z-index:4}
+#vSoft .dock .d{width:58px;text-align:center;font-size:12px;font-weight:800;color:#5C6B7A;cursor:pointer}
+#vSoft .dock .d i{display:flex;width:52px;height:52px;border-radius:50%;background:rgba(255,255,255,.8);
+  align-items:center;justify-content:center;margin:0 auto 4px;font-style:normal;font-size:22px;
+  box-shadow:0 8px 20px rgba(244,165,115,.25)}
+
+/* ================= doodle · 涂鸦贴纸簿（Mailchimp 配方） ================= */
+#vDoodle{background:#FBEFE3;color:#241C15}
+#vDoodle .sun{position:absolute;top:98px;right:36px}
+#vDoodle .topbar{display:flex;align-items:center;gap:14px;padding:20px 28px 0}
+#vDoodle .t-wrap{position:relative;display:inline-block}
+#vDoodle .t-hl{position:absolute;inset:6px -8px;background:#FFE01B;border-radius:14px 4px 12px 5px;
+  transform:rotate(-1.2deg);z-index:0}
+#vDoodle .t{position:relative;font-weight:900;font-size:40px;letter-spacing:10px;z-index:1;color:#241C15}
+#vDoodle .slogan{font-family:var(--f-hand);font-size:17px;color:#6B6259;font-weight:700;transform:rotate(-1deg)}
+#vDoodle .hud{margin-left:auto;display:flex;gap:10px}
+#vDoodle .hud .chip{background:#fff;border:3px solid #241C15;border-radius:99px;padding:6px 14px;
+  font-weight:800;font-size:14px;box-shadow:3px 3px 0 #241C15}
+#vDoodle .board{position:relative;margin:10px 28px 0;height:470px}
+#vDoodle .sticker{position:absolute;width:224px;background:#fff;border:3px solid #241C15;border-radius:18px;
+  padding:14px 14px 12px;cursor:pointer;box-shadow:5px 6px 0 rgba(36,28,21,.16)}
+#vDoodle .sticker:active{transform:scale(.97) rotate(0deg) !important}
+#vDoodle .sticker .tape{position:absolute;top:-12px;left:50%;margin-left:-34px;width:68px;height:20px;
+  background:rgba(255,224,27,.85);border:2px solid rgba(36,28,21,.25);transform:rotate(-3deg)}
+#vDoodle .sticker .row{display:flex;align-items:center;gap:10px}
+#vDoodle .sticker .ic{width:52px;height:52px;flex:none}
+#vDoodle .sticker .nm{font-weight:900;font-size:18px}
+#vDoodle .sticker .mt{font-size:12px;font-weight:700;color:#88837C}
+#vDoodle .sticker .hbar{margin-top:10px;height:14px;border:2.5px solid #241C15;border-radius:99px;
+  background:repeating-linear-gradient(45deg,#fff 0 7px,#FBEFE3 7px 14px);overflow:hidden}
+#vDoodle .sticker .hbar i{display:block;height:100%;background:#FF4D74;border-right:2.5px solid #241C15}
+#vDoodle .sticker.cur{box-shadow:6px 8px 0 rgba(255,77,116,.4)}
+#vDoodle .flood{position:absolute;left:0;right:0;bottom:0;height:150px;background:#FFE01B;
+  border-top:3px solid #241C15;padding:16px 28px;display:flex;align-items:center;gap:22px}
+#vDoodle .flood .task{font-weight:900;font-size:18px}
+#vDoodle .flood .task small{display:block;font-family:var(--f-hand);font-weight:700;font-size:14px;color:#6B5A1F;margin-top:2px}
+#vDoodle .cta{margin-left:auto;background:#fff;color:#241C15;border:3.5px solid #241C15;
+  font-family:inherit;font-weight:900;font-size:21px;padding:15px 44px;border-radius:99px;cursor:pointer;
+  box-shadow:0 5px 0 #241C15;transition:transform .12s}
+#vDoodle .cta:active{transform:translateY(4px);box-shadow:0 1px 0 #241C15}
+#vDoodle .doodle{position:absolute;pointer-events:none}
+#vDoodle .hint{font-family:var(--f-hand);font-size:16px;font-weight:700;color:#6B5A1F;transform:rotate(-2deg)}
+
+/* ================= dusk · 灯火登山径（场景主导） ================= */
+#vDusk{background:#35275E}
+#vDusk svg.scene{position:absolute;inset:0;width:100%;height:100%}
+#vDusk .hud{position:absolute;top:0;left:0;right:0;display:flex;justify-content:space-between;
+  padding:16px 22px;z-index:5}
+#vDusk .hud .chip{background:rgba(20,14,40,.55);color:#FFF4E0;border-radius:99px;padding:7px 15px;
+  font-weight:800;font-size:14px;backdrop-filter:blur(4px)}
+#vDusk .title{position:absolute;top:36px;left:0;right:0;text-align:center;z-index:4;
+  font-weight:900;font-size:40px;color:#FFF4E0;letter-spacing:16px;text-shadow:0 0 26px rgba(255,217,138,.45)}
+#vDusk .title small{display:block;font-size:13px;letter-spacing:3px;color:#E8D9FF;font-weight:700;margin-top:6px;opacity:.85}
+#vDusk .hut{position:absolute;width:104px;text-align:center;cursor:pointer;z-index:3;transition:transform .2s}
+#vDusk .hut:active{transform:scale(.95)}
+#vDusk .hut .nm{font-weight:900;font-size:14px;color:#FFF4E0;text-shadow:0 2px 8px rgba(0,0,0,.45)}
+#vDusk .hut .mt{font-size:11px;font-weight:800;color:#D8C8F0}
+#vDusk .hut.cur .nm{color:#FFD98A}
+#vDusk .go{position:absolute;right:56px;bottom:96px;z-index:5;background:linear-gradient(180deg,#FFD98A,#F4B860);
+  color:#4A2E10;border:none;font-family:inherit;font-weight:900;font-size:20px;padding:16px 42px;
+  border-radius:99px;cursor:pointer;box-shadow:0 0 34px rgba(255,217,138,.5),0 8px 0 rgba(74,46,16,.3)}
+#vDusk .dock{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);display:flex;gap:8px;z-index:5;
+  background:rgba(20,14,40,.55);border-radius:99px;padding:8px 14px;backdrop-filter:blur(4px)}
+#vDusk .dock .d{color:#C8B8E8;font-size:12px;font-weight:800;padding:6px 14px;border-radius:99px;cursor:pointer}
+#vDusk .dock .d:hover{background:rgba(255,217,138,.18);color:#FFD98A}
+@keyframes twinkle{0%,100%{opacity:.25}50%{opacity:1}}
+@keyframes glowpulse{0%,100%{opacity:.55}50%{opacity:1}}
+
+/* ================= ninja · 切切岛（Fruit Ninja 式手势导航） ================= */
+#vNinja{background:
+  repeating-linear-gradient(90deg,rgba(0,0,0,.06) 0 3px,transparent 3px 128px),
+  linear-gradient(180deg,#D9A05B,#C0803F 55%,#9A6631)}
+#vNinja canvas{position:absolute;inset:0;touch-action:none;cursor:crosshair}
+#vNinja .nj-title{position:absolute;top:34px;left:0;right:0;text-align:center;z-index:3;pointer-events:none;
+  font-weight:900;font-size:44px;color:#FFF4E0;letter-spacing:12px;
+  text-shadow:0 4px 0 rgba(74,46,16,.4),0 0 30px rgba(255,220,150,.25)}
+#vNinja .nj-title small{display:block;font-size:14px;letter-spacing:3px;color:#FFE8C2;font-weight:700;margin-top:6px}
+#vNinja .nj-hud{position:absolute;top:0;left:0;right:0;display:flex;justify-content:space-between;
+  padding:16px 22px;z-index:4;pointer-events:none}
+#vNinja .nj-hud .chip{background:rgba(60,38,18,.55);color:#FFE8C2;border-radius:99px;padding:7px 15px;
+  font-weight:800;font-size:14px}
+#vNinja .nj-entry{position:absolute;top:118px;left:50%;transform:translateX(-50%) scale(.6);z-index:5;
+  display:flex;align-items:center;gap:10px;background:#fff;border-radius:99px;padding:12px 26px;
+  font-weight:900;font-size:20px;box-shadow:0 12px 30px rgba(40,20,5,.35);
+  opacity:0;pointer-events:none;transition:transform .25s cubic-bezier(.34,1.56,.64,1),opacity .25s}
+#vNinja .nj-entry.on{opacity:1;transform:translateX(-50%) scale(1);pointer-events:auto}
+#vNinja .nj-entry .dot{width:16px;height:16px;border-radius:50%}
+#vNinja .nj-entry .go{color:#fff;border-radius:99px;padding:7px 18px;font-size:16px}
+#vNinja .nj-tip{position:absolute;left:0;right:0;bottom:86px;text-align:center;z-index:3;pointer-events:none;
+  font-family:var(--f-hand);font-size:18px;font-weight:700;color:#FFE8C2;opacity:.9}
+@keyframes twinkle{0%,100%{opacity:.25}50%{opacity:1}}
+@keyframes glowpulse{0%,100%{opacity:.55}50%{opacity:1}}
+
+/* ---------- 悬浮切换条（不属于被评审的设计） ---------- */
+#switcher{position:fixed;left:50%;bottom:14px;transform:translateX(-50%);z-index:98;
+  background:#111;color:#fff;border-radius:99px;display:flex;align-items:center;gap:4px;
+  padding:6px 8px;box-shadow:0 6px 20px rgba(0,0,0,.35);user-select:none}
+#switcher button{background:none;border:none;color:#fff;font-size:18px;padding:6px 14px;cursor:pointer}
+#switcher .lab{min-width:190px;text-align:center;font-weight:700;font-size:13px}
+#switcher .lab b{color:#FFD24D}
+</style>
+</head>
+<body data-v="soft">
+<div id="proto-tag">PROTOTYPE · 用完即弃</div>
+<div id="app">
+
+<!-- ============ soft · 软糖浮岛 ============ -->
+<section class="var" id="vSoft">
+  <div class="drift"></div>
+  <div class="hud">
+    <span class="chip hud-name">👧 小冒险家 · Lv.7</span>
+    <span class="chip hud-coin">🪙 128</span>
+  </div>
+  <div class="title">探 险 岛<small>每天玩一小会儿 · 养成好习惯</small></div>
+  <div class="mascot">
+    <svg class="sprout" viewBox="0 0 28 30"><path d="M14 30 C13 20 10 12 3 8 C12 6 18 10 19 20" fill="#9DB67A"/><path d="M14 30 C15 22 20 16 26 14 C24 22 20 26 15 28" fill="#7FA25E"/></svg>
+    <svg class="face" viewBox="0 0 196 196">
+      <circle cx="66" cy="88" r="9" fill="#1B3A47"/><circle cx="130" cy="88" r="9" fill="#1B3A47"/>
+      <circle cx="69" cy="84" r="3" fill="#fff"/><circle cx="133" cy="84" r="3" fill="#fff"/>
+      <path d="M72 122 Q98 142 124 122" stroke="#1B3A47" stroke-width="7" fill="none" stroke-linecap="round"/>
+      <circle cx="46" cy="112" r="11" fill="#F5867B" opacity=".55"/><circle cx="150" cy="112" r="11" fill="#F5867B" opacity=".55"/>
+    </svg>
+  </div>
+  <div class="say">今天先去拼音谷吧，<br>那儿的小旗子就快插满啦！</div>
+  <div class="isles" id="soft-isles"></div>
+  <button class="cta">继续闯关</button>
+  <div class="dock">
+    <div class="d"><i>🏅</i>收集册</div>
+    <div class="d"><i>🛒</i>商店</div>
+    <div class="d"><i>📋</i>任务 2/3</div>
+    <div class="d"><i>🔒</i>家长</div>
+  </div>
+</section>
+
+<!-- ============ doodle · 涂鸦贴纸簿 ============ -->
+<section class="var" id="vDoodle">
+  <svg class="sun" width="92" height="92" viewBox="0 0 92 92" fill="none" stroke="#241C15" stroke-width="3" stroke-linecap="round">
+    <circle cx="46" cy="46" r="20" fill="#FFE01B"/>
+    <path d="M46 14v8M46 70v8M14 46h8M70 46h8M24 24l6 6M62 62l6 6M68 24l-6 6M30 62l-6 6"/>
+  </svg>
+  <div class="topbar">
+    <div class="t-wrap"><span class="t-hl"></span><span class="t">探 险 岛</span></div>
+    <span class="slogan">每天玩一小会儿，养成好习惯～</span>
+    <div class="hud">
+      <span class="chip">👧 小冒险家 · Lv.7</span>
+      <span class="chip">🪙 128</span>
+      <span class="chip">🔒</span>
+    </div>
+  </div>
+  <div class="board" id="doodle-board"></div>
+  <div class="flood">
+    <div class="task">今日任务 2 / 3<small>还差「读一课」没打卡，加油！</small></div>
+    <span class="hint">↓ 从拼音谷的旗子那儿接着走</span>
+    <button class="cta">继续闯关</button>
+  </div>
+  <svg class="doodle" style="left:36px;bottom:170px" width="70" height="46" viewBox="0 0 70 46" fill="none" stroke="#241C15" stroke-width="2.5" stroke-linecap="round">
+    <path d="M4 40 C20 34 40 26 62 10"/><path d="M52 8l12 0-2 12"/>
+  </svg>
+  <svg class="doodle" style="right:40px;top:120px" width="60" height="30" viewBox="0 0 60 30" fill="none" stroke="#88837C" stroke-width="2.5" stroke-linecap="round">
+    <path d="M4 26 C18 8 30 24 44 6"/><path d="M6 6c1 6-1 10-4 12M20 4c1 5-1 9-3 11"/>
+  </svg>
+</section>
+
+<!-- ============ dusk · 灯火登山径 ============ -->
+<section class="var" id="vDusk">
+  <svg class="scene" viewBox="0 0 1024 768" preserveAspectRatio="xMidYMid slice">
+    <defs>
+      <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#35275E"/><stop offset=".45" stop-color="#6C4E8C"/>
+        <stop offset=".72" stop-color="#C86B5A"/><stop offset="1" stop-color="#F4B860"/>
+      </linearGradient>
+      <linearGradient id="m4" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8A5F9E"/><stop offset="1" stop-color="#6C4E8C"/></linearGradient>
+      <linearGradient id="m3" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5E3F7E"/><stop offset="1" stop-color="#4A3468"/></linearGradient>
+      <linearGradient id="m2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#42305E"/><stop offset="1" stop-color="#33254A"/></linearGradient>
+      <linearGradient id="m1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2B1F42"/><stop offset="1" stop-color="#221838"/></linearGradient>
+    </defs>
+    <rect width="1024" height="768" fill="url(#sky)"/>
+    <g fill="#FFE9B8">
+      <circle class="tw" cx="120" cy="90" r="2.4"/><circle class="tw" cx="240" cy="60" r="1.8" style="animation-delay:-1s"/>
+      <circle class="tw" cx="380" cy="120" r="2.2" style="animation-delay:-2s"/><circle class="tw" cx="520" cy="70" r="1.6" style="animation-delay:-.5s"/>
+      <circle class="tw" cx="660" cy="130" r="2.4" style="animation-delay:-1.6s"/><circle class="tw" cx="800" cy="80" r="2" style="animation-delay:-2.4s"/>
+      <circle class="tw" cx="920" cy="150" r="2.6" style="animation-delay:-.8s"/><circle class="tw" cx="60" cy="200" r="1.8" style="animation-delay:-1.9s"/>
+    </g>
+    <g style="animation:twinkle 5s ease-in-out infinite">
+      <path d="M836 96 l10 22 24 3 -17 17 4 24 -21-11 -21 11 4-24 -17-17 24-3 Z" fill="#FFD98A" opacity=".92"/>
+    </g>
+    <circle cx="908" cy="210" r="34" fill="#FFF0C9"/>
+    <circle cx="896" cy="200" r="29" fill="#6C4E8C" opacity=".38"/>
+    <path d="M0 356 L140 300 L300 356 L470 282 L640 356 L820 296 L1024 350 V520 H0 Z" fill="url(#m4)"/>
+    <path d="M0 428 L180 366 L360 428 L560 350 L760 428 L900 380 L1024 424 V600 H0 Z" fill="url(#m3)"/>
+    <path d="M0 508 L220 440 L420 508 L640 432 L840 508 L1024 452 V660 H0 Z" fill="url(#m2)"/>
+    <path d="M0 596 L260 528 L520 596 L780 524 L1024 588 V768 H0 Z" fill="url(#m1)"/>
+    <path d="M60 726 C220 700 300 668 470 664 C640 660 760 620 900 560" stroke="#FFD98A" stroke-width="3.4"
+      stroke-dasharray="1 16" stroke-linecap="round" fill="none" opacity=".85"/>
+  </svg>
+  <div class="hud">
+    <span class="chip hud-name">👧 小冒险家 · Lv.7</span>
+    <span class="chip hud-coin">🪙 128</span>
+  </div>
+  <div class="title">探 险 岛<small>把灯一盏一盏点亮，走到山顶</small></div>
+  <div id="dusk-huts"></div>
+  <button class="go">继续上山 ▸</button>
+  <div class="dock">
+    <span class="d">🏅 收集册</span><span class="d">🛒 商店</span>
+    <span class="d">📋 今日 2/3</span><span class="d">🔒 家长</span>
+  </div>
+</section>
+
+<!-- ============ ninja · 切切岛 ============ -->
+<section class="var" id="vNinja">
+  <canvas id="nj-cv" width="1024" height="768"></canvas>
+  <div class="nj-hud">
+    <span class="chip">👧 小冒险家 · Lv.7</span>
+    <span class="chip" id="nj-count">已切 0 个</span>
+    <span class="chip">🪙 128</span>
+  </div>
+  <div class="nj-title">切 切 岛<small>像切水果一样切开关卡 · 切到哪个学哪个</small></div>
+  <div class="nj-entry" id="nj-entry"><span class="dot"></span><span id="nj-entry-t">拼音谷</span><span class="go">进入 ▸</span></div>
+  <div class="nj-tip">按住手指划过去，就能切开水果！切到灰色的炸弹就是「休息一下」，不用怕～</div>
+</section>
+</div>
+
+<div id="switcher">
+  <button onclick="cycle(-1)" aria-label="上一个">◀</button>
+  <span class="lab" id="sw-lab"></span>
+  <button onclick="cycle(1)" aria-label="下一个">▶</button>
+</div>
+
+<script>
+/* 真实数据骨架（进度为演示值；科名与 CONTENT 一致） */
+const SUBS=[
+ {k:"cn",name:"识字村",done:37, total:100,color:"#F4A573",dark:"#E08A5A",next:"木杨桐松柏"},
+ {k:"math",name:"思维镇",done:21, total:100,color:"#B0A5D1",dark:"#8F7FBE",next:"乘法口诀·6"},
+ {k:"pinyin",name:"拼音谷",done:68, total:100,color:"#F5867B",dark:"#E06858",next:"儿化音"},
+ {k:"english",name:"英语王国",done:12, total:100,color:"#9DB67A",dark:"#7FA25E",next:"Months 2"},
+ {k:"astro",name:"天文台",done:100,total:100,color:"#7FB8C9",dark:"#5E97AB",next:"已通关！"},
+ {k:"geo",name:"环球号",done:45, total:100,color:"#F0C05A",dark:"#D9A238",next:"极昼极夜"},
+];
+/* 六科小图标：统一圆角几何风（每变体同构不同配色画法） */
+function glyph(kind,ink,accent){
+  const S=`stroke="${ink}" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill="none"`;
+  const map={
+    cn:`<path d="M8 14 Q16 9 24 14 V40 Q16 35 8 40 Z" fill="${accent}" stroke="${ink}" stroke-width="3.4" stroke-linejoin="round"/><path d="M24 14 Q32 9 40 14 V40 Q32 35 24 40" ${S}/>`,
+    math:`<rect x="9" y="8" width="30" height="32" rx="5" fill="${accent}" stroke="${ink}" stroke-width="3.4"/><path d="M15 16h6M27 16h6M15 24h6M27 24h6M15 32h6M27 32h6" ${S}/>`,
+    pinyin:`<circle cx="24" cy="30" r="10" fill="${accent}" stroke="${ink}" stroke-width="3.4"/><path d="M34 30 V10 l6 4" ${S}/><path d="M14 44 q10 6 20 0" ${S}/>`,
+    english:`<path d="M10 12 a7 7 0 1 1 8 7 H10 Z" fill="${accent}" stroke="${ink}" stroke-width="3.4"/><path d="M28 40 h10 M33 40 V14 a7 7 0 1 1 8 7 h-8" ${S}/>`,
+    astro:`<path d="M36 12 L20 28" ${S}/><circle cx="38" cy="10" r="5" fill="${accent}" stroke="${ink}" stroke-width="3.4"/><path d="M18 30 l-6 10 M24 34 l-10 4" ${S}/>`,
+    geo:`<path d="M10 34 L26 10 l8 8 -14 18 Z" fill="${accent}" stroke="${ink}" stroke-width="3.4"/><path d="M34 18 q8 4 4 14" ${S}/><path d="M8 44 h32" ${S}/>`
+  };
+  return `<svg width="48" height="48" viewBox="0 0 48 48">${map[kind]}</svg>`;
+}
+
+/* ---- soft：软糖浮岛（围绕吉祥物的错落三列，全部落在容器内） ---- */
+(function(){
+  const spots={cn:[388,10],math:[194,34],english:[0,58],pinyin:[388,204],astro:[194,228],geo:[0,252]};
+  document.getElementById("soft-isles").innerHTML=SUBS.map(s=>{
+    const [x,y]=spots[s.k];
+    return `<div class="isle float${s.k==="pinyin"?" cur":""}" style="left:${x}px;top:${y}px;background:${s.color}22;
+      animation-delay:-${x*0.011}s;box-shadow:0 14px 30px ${s.color}44">
+      <div class="disc" style="background:${s.color}">${glyph(s.k,"#1B3A47","rgba(255,255,255,.92)")}</div>
+      <div class="nm">${s.name}</div><div class="mt">${s.done} / ${s.total} 关</div>
+      <div class="pill"><i style="width:${s.done}%;background:${s.dark}"></i></div></div>`;
+  }).join("");
+})();
+
+/* ---- doodle：歪斜贴纸（不对称拼贴，铺满画板） ---- */
+(function(){
+  const spots={cn:[26,34],math:[302,92],pinyin:[576,26],english:[128,262],astro:[452,276],geo:[706,186]};
+  const tilts={cn:-2.4,math:1.8,pinyin:-1.2,english:2.2,astro:-1.8,geo:1.4};
+  document.getElementById("doodle-board").innerHTML=SUBS.map(s=>{
+    const [x,y]=spots[s.k];
+    return `<div class="sticker${s.k==="pinyin"?" cur":""}" style="left:${x}px;top:${y}px;transform:rotate(${tilts[s.k]}deg)">
+      <span class="tape"></span>
+      <div class="row"><span class="ic">${glyph(s.k,"#241C15",s.k==="pinyin"?"#FFE01B":"#FBEFE3")}</span>
+        <div><div class="nm">${s.name}</div><div class="mt">${s.done} / ${s.total} 关</div></div></div>
+      <div class="hbar"><i style="width:${s.done}%"></i></div></div>`;
+  }).join("");
+})();
+
+/* ---- dusk：登山径上的灯笼小屋 ---- */
+(function(){
+  const spots=[[112,592],[238,552],[380,592],[520,544],[664,566],[766,498]];
+  document.getElementById("dusk-huts").innerHTML=SUBS.map((s,i)=>{
+    const [x,y]=spots[i], cur=i===2;
+    const lit=s.done>=s.total?"#FFD98A":"rgba(255,217,138,.35)";
+    return `<div class="hut${cur?" cur":""}" style="left:${x}px;top:${y}px">
+      <svg width="84" height="72" viewBox="0 0 84 72">
+        <path d="M12 30 L42 8 L72 30 Z" fill="#241A3E" stroke="#6C4E8C" stroke-width="2"/>
+        <rect x="20" y="30" width="44" height="34" rx="3" fill="#33254A" stroke="#6C4E8C" stroke-width="2"/>
+        <rect x="${cur?34:36}" y="${cur?38:40}" width="16" height="14" rx="2" fill="${lit}"
+          style="${cur?"animation:glowpulse 2.6s ease-in-out infinite;filter:drop-shadow(0 0 10px rgba(255,217,138,.9))":""}"/>
+        ${s.done>=s.total?`<path d="M62 6 v12 M58 10 h8" stroke="#FFD98A" stroke-width="3" stroke-linecap="round"/>`:""}
+      </svg>
+      <div class="nm">${s.name}</div><div class="mt">${s.done} / ${s.total}</div></div>`;
+  }).join("");
+})();
+
+/* ---- ninja：切切岛（Fruit Ninja 式） ---- */
+window.NJ=(function(){
+  const cv=document.getElementById("nj-cv"), ctx=cv.getContext("2d");
+  const W=1024,H=768,G=0.2;
+  const FRUITS=[
+   {s:SUBS[0],type:"apple", body:"#FF6B6B",dark:"#E04848",leaf:"#51CF66"},
+   {s:SUBS[1],type:"melon", body:"#8CE99A",dark:"#37B24D",rind:"#2F9E44"},
+   {s:SUBS[2],type:"peach", body:"#FFA8C5",dark:"#F06595",leaf:"#51CF66"},
+   {s:SUBS[3],type:"lemon", body:"#FFD43B",dark:"#F59F00"},
+   {s:SUBS[4],type:"star",  body:"#B197FC",dark:"#845EF7"},
+   {s:SUBS[5],type:"orange",body:"#FFA94D",dark:"#E8590C",leaf:"#51CF66"},
+  ];
+  let fruits=[],halves=[],parts=[],stains=[],pops=[],trail=[];
+  let running=false,raf=null,count=0,lastSlice=0,combo=0,flash=0,spawnAt=0;
+  const R=44;
+  const rnd=(a,b)=>a+Math.random()*(b-a);
+  const pick=()=>Math.random()<0.14?{bomb:true}:FRUITS[Math.floor(Math.random()*FRUITS.length)];
+
+  function sprite(o){                     /* 预渲染水果精灵（含科名绶带） */
+    const c=document.createElement("canvas");c.width=c.height=R*2+8;
+    const x=c.getContext("2d"),m=R+4;
+    x.translate(m,m);
+    if(o.bomb){ x.fillStyle="#4A4A52";x.beginPath();x.arc(0,0,R-6,0,7);x.fill();
+      x.strokeStyle="#2E2E34";x.lineWidth=5;
+      for(let i=0;i<8;i++){const a=i*Math.PI/4;x.beginPath();x.moveTo(Math.cos(a)*(R-6),Math.sin(a)*(R-6));x.lineTo(Math.cos(a)*(R+2),Math.sin(a)*(R+2));x.stroke();}
+      x.fillStyle="#FFD43B";x.beginPath();x.arc(0,-R+8,5,0,7);x.fill();
+    }else{
+      const f=o.type;
+      const g=x.createRadialGradient(-R*0.35,-R*0.35,4,0,0,R);
+      g.addColorStop(0,"#ffffffcc");g.addColorStop(.25,o.body);g.addColorStop(1,o.dark);
+      x.fillStyle=g;x.beginPath();
+      if(f==="lemon")x.ellipse(0,0,R,R*0.8,0.5,0,7); else if(f==="star"){x.beginPath();for(let i=0;i<10;i++){const rr=i%2?R*0.55:R,a=-Math.PI/2+i*Math.PI/5;x.lineTo(Math.cos(a)*rr,Math.sin(a)*rr);}x.closePath();}
+      else x.arc(0,0,R-3,0,7);
+      x.fill();
+      x.strokeStyle="rgba(74,46,16,.25)";x.lineWidth=3;x.stroke();
+      if(f==="melon"){x.strokeStyle=o.rind;x.lineWidth=5;x.lineCap="round";
+        for(let i=-1;i<=1;i++){x.beginPath();x.arc(i*18,0,R-9,Math.PI*0.25,Math.PI*0.75);x.stroke();}}
+      if(f==="peach"){x.strokeStyle=o.dark;x.lineWidth=3;x.beginPath();x.moveTo(0,-R+6);x.quadraticCurveTo(6,0,2,R-10);x.stroke();}
+      if(o.leaf){x.fillStyle=o.leaf;x.beginPath();x.ellipse(R*0.42,-R*0.72,12,6,-0.6,0,7);x.fill();
+        x.strokeStyle="#2F9E44";x.lineWidth=3;x.beginPath();x.moveTo(0,-R+4);x.quadraticCurveTo(8,-R*0.9,16,-R*0.68);x.stroke();}
+      x.fillStyle="rgba(255,255,255,.5)";x.beginPath();x.ellipse(-R*0.38,-R*0.42,9,14,-0.7,0,7);x.fill();
+    }
+    return c;                             /* 绶带在屏幕空间另画（不随水果旋转，转过去字会反） */
+  }
+
+  function spawn(init,forceO){
+    const o=forceO||pick(),sp=sprite(o);
+    fruits.push({o,sp,r:o.bomb?R-2:R,
+      x:rnd(140,W-140),y:init?rnd(H*0.35,H*0.8):H+R,
+      vx:rnd(-2.6,2.6),vy:init?rnd(-3,-1):rnd(-15.2,-12.6),
+      rot:rnd(0,6.28),vr:rnd(-0.06,0.06)});
+  }
+  function juice(x,y,color,n){for(let i=0;i<n;i++)parts.push({x,y,vx:rnd(-5,5),vy:rnd(-7,2),r:rnd(3,7),c:color,life:1});}
+  function pop(x,y,t,c){pops.push({x,y,t,c:c||"#fff",life:1});}
+  function sliceF(f,a){
+    if(f.o.bomb){flash=1;pop(f.x,f.y,"休息一下～","#FFE8C2");juice(f.x,f.y,"#9A6631",10);return;}
+    const nx=Math.cos(a),ny=Math.sin(a);
+    for(const side of[-1,1])halves.push({sp:f.sp,r:f.r,a,side,
+      x:f.x,y:f.y,vx:f.vx+nx*2.6*side,vy:f.vy-1.6+ny*1.2*side,rot:f.rot,vr:f.vr+0.09*side});
+    juice(f.x,f.y,f.o.body,13);juice(f.x,f.y,f.o.dark,7);
+    stains.push({x:f.x,y:f.y,c:f.o.body,s:rnd(0.8,1.2),life:1});
+    count++;document.getElementById("nj-count").textContent="已切 "+count+" 个";
+    const now=performance.now();
+    combo=now-lastSlice<320?combo+1:1;lastSlice=now;
+    pop(f.x,f.y-30,(combo>1?`连击 x${combo}！`:"")+f.o.s.name+" +1",f.o.dark);
+    const e=document.getElementById("nj-entry");
+    document.querySelector("#nj-entry .dot").style.background=f.o.body;
+    document.getElementById("nj-entry-t").textContent=f.o.s.name+" · "+f.o.s.done+" / "+f.o.s.total+" 关";
+    document.querySelector("#nj-entry .go").style.background=f.o.dark;
+    e.classList.add("on");clearTimeout(e._t);e._t=setTimeout(()=>e.classList.remove("on"),2600);
+  }
+  function segHit(p1,p2,c,r){
+    const dx=p2.x-p1.x,dy=p2.y-p1.y,L=dx*dx+dy*dy||1;
+    let t=((c.x-p1.x)*dx+(c.y-p1.y)*dy)/L;t=Math.max(0,Math.min(1,t));
+    const ex=p1.x+dx*t-c.x,ey=p1.y+dy*t-c.y;
+    return ex*ex+ey*ey<(r+16)*(r+16);
+  }
+  function tick(){
+    if(!running)return;
+    if(performance.now()>spawnAt){spawn(false);if(Math.random()<0.4)spawn(false);spawnAt=performance.now()+rnd(850,1400);}
+    ctx.clearRect(0,0,W,H);
+    if(flash>0){ctx.fillStyle=`rgba(255,244,224,${flash*0.75})`;ctx.fillRect(0,0,W,H);flash-=0.06;}
+    for(const s of stains){s.life-=1/240;ctx.globalAlpha=Math.max(0,s.life)*0.4;ctx.fillStyle=s.c;
+      ctx.beginPath();ctx.ellipse(s.x,s.y,60*s.s,44*s.s,0.4,0,7);ctx.fill();
+      ctx.beginPath();ctx.ellipse(s.x+30*s.s,s.y-14*s.s,26*s.s,20*s.s,0,0,7);ctx.fill();}
+    ctx.globalAlpha=1;
+    for(const arr of[fruits,halves]){
+      for(let i=arr.length-1;i>=0;i--){const f=arr[i];
+        f.x+=f.vx;f.y+=f.vy;f.vy+=G;f.rot+=f.vr;
+        if(f.y>H+140||f.x<-120||f.x>W+120){arr.splice(i,1);continue;}
+        ctx.save();ctx.translate(f.x,f.y);ctx.rotate(f.rot);
+        if(arr===halves){ctx.rotate(f.a-f.rot);ctx.beginPath();
+          if(f.side<0)ctx.rect(-f.r*2.2,-f.r*2.2,f.r*2.2,f.r*4.4);else ctx.rect(0,-f.r*2.2,f.r*2.2,f.r*4.4);
+          ctx.clip();}
+        ctx.drawImage(f.sp,-f.r-4,-f.r-4);ctx.restore();
+        if(arr===fruits&&!f.o.bomb){        /* 绶带保持水平 */
+          ctx.save();ctx.translate(f.x,f.y);
+          ctx.fillStyle="rgba(255,255,255,.94)";ctx.beginPath();ctx.roundRect(-48,R*0.42,96,26,13);ctx.fill();
+          ctx.fillStyle="#4A2E10";ctx.font="800 15px "+getComputedStyle(document.body).fontFamily;
+          ctx.textAlign="center";ctx.textBaseline="middle";ctx.fillText(f.o.s.name,0,R*0.42+14);ctx.restore();}
+      }
+    }
+    for(let i=parts.length-1;i>=0;i--){const p=parts[i];
+      p.x+=p.vx;p.y+=p.vy;p.vy+=0.28;p.life-=0.022;
+      if(p.life<=0){parts.splice(i,1);continue;}
+      ctx.globalAlpha=p.life;ctx.fillStyle=p.c;ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,7);ctx.fill();}
+    ctx.globalAlpha=1;
+    for(let i=pops.length-1;i>=0;i--){const p=pops[i];p.y-=1.1;p.life-=0.014;
+      if(p.life<=0){pops.splice(i,1);continue;}
+      ctx.globalAlpha=Math.min(1,p.life*1.6);ctx.fillStyle=p.c;
+      ctx.font="900 24px "+getComputedStyle(document.body).fontFamily;
+      ctx.textAlign="center";ctx.fillText(p.t,p.x,p.y);}
+    ctx.globalAlpha=1;
+    const now=performance.now();
+    trail=trail.filter(p=>now-p.t<170);
+    if(trail.length>1){
+      for(let i=1;i<trail.length;i++){
+        const a=trail[i-1],b=trail[i],k=1-(now-b.t)/170;
+        ctx.strokeStyle=`rgba(255,244,224,${0.85*k})`;ctx.lineWidth=3+11*k;ctx.lineCap="round";
+        ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();
+        ctx.strokeStyle=`rgba(255,217,138,${0.9*k})`;ctx.lineWidth=2+4*k;
+        ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();
+      }
+      for(let i=fruits.length-1;i>=0;i--){const f=fruits[i];
+        if(segHit(trail[trail.length-2],trail[trail.length-1],f,f.r)){
+          sliceF(f,Math.atan2(trail[trail.length-1].y-trail[trail.length-2].y,trail[trail.length-1].x-trail[trail.length-2].x));
+          fruits.splice(i,1);}}
+    }
+    raf=requestAnimationFrame(tick);
+  }
+  function toStage(e){const r=cv.getBoundingClientRect();
+    return{x:(e.clientX-r.left)/r.width*W,y:(e.clientY-r.top)/r.height*H};}
+  let down=false;
+  cv.addEventListener("pointerdown",e=>{down=true;trail.push({...toStage(e),t:performance.now()});cv.setPointerCapture(e.pointerId);});
+  cv.addEventListener("pointermove",e=>{if(!down)return;const p=toStage(e);
+    const prev=trail[trail.length-1];
+    if(prev){for(const f of fruits)if(segHit(prev,p,f,f.r)){sliceF(f,Math.atan2(p.y-prev.y,p.x-prev.x));fruits.splice(fruits.indexOf(f),1);}}
+    trail.push({...p,t:performance.now()});});
+  addEventListener("pointerup",()=>down=false);addEventListener("pointercancel",()=>down=false);
+  document.getElementById("nj-entry").addEventListener("click",()=>{      /* 原型桩：真机这里 enterZone(sub) */
+    const e=document.getElementById("nj-entry");
+    e.style.transform="translateX(-50%) scale(.92)";setTimeout(()=>e.style.transform="",140);
+  });
+  return{
+    set(on){
+      if(on&&!running){running=true;fruits=[];halves=[];parts=[];stains=[];trail=[];
+        const firsts=[...FRUITS].sort(()=>Math.random()-.5).slice(0,3);
+        firsts.forEach(f=>spawn(true,f));      /* 首屏必出三种不同水果 */
+        spawnAt=performance.now()+1200;raf=requestAnimationFrame(tick);}
+      if(!on&&running){running=false;cancelAnimationFrame(raf);}
+    }
+  };
+})();
+
+/* ---- 变体切换 ---- */
+const VARIANTS=[
+ {k:"soft",  name:"soft · 软糖浮岛（Headspace 柔和粉彩）"},
+ {k:"doodle",name:"doodle · 涂鸦贴纸簿（Mailchimp 手绘）"},
+ {k:"dusk",  name:"dusk · 灯火登山径（黄昏场景）"},
+ {k:"ninja", name:"ninja · 切切岛（Fruit Ninja 手势导航）"},
+];
+function idxFromURL(){
+  const v=(new URLSearchParams(location.search).get("variant")||"soft").toLowerCase();
+  const i=VARIANTS.findIndex(x=>x.k===v); return i<0?0:i;
+}
+let cur=idxFromURL();
+function apply(){
+  document.body.dataset.v=VARIANTS[cur].k;
+  document.getElementById("sw-lab").innerHTML=`变体 <b>${VARIANTS[cur].name}</b>`;
+  const u=new URL(location); u.searchParams.set("variant",VARIANTS[cur].k);
+  history.replaceState(null,"",u);
+  NJ.set(VARIANTS[cur].k==="ninja");   /* 只在 ninja 激活时跑动画循环（省 CPU） */
+}
+function cycle(d){ cur=(cur+d+VARIANTS.length)%VARIANTS.length; apply(); }
+document.addEventListener("keydown",e=>{
+  const t=document.activeElement;
+  if(t&&(t.tagName==="INPUT"||t.tagName==="TEXTAREA"||t.isContentEditable))return;
+  if(e.key==="ArrowLeft")cycle(-1);
+  if(e.key==="ArrowRight")cycle(1);
+});
+/* 舞台等比缩放 */
+function fit(){
+  const s=Math.min(innerWidth/1024, innerHeight/768);
+  document.documentElement.style.setProperty("--s", s);
+}
+addEventListener("resize",fit); fit();
+apply();
+</script>
+</body>
+</html>
