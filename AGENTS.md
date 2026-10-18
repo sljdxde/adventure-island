@@ -29,15 +29,27 @@
 ```bash
 python3 ios/tools/gen_content.py      # 重新生成 Resources/*.json
 python3 ios/tools/gen_preview_data.py # 把数据注入 preview/index.html 的 DATA 段
-python3 ios/tools/validate.py         # 结构闸门：应 147 通过 / 0 失败
-python3 ios/tools/audit_preview.py    # 语义闸门：图文一致/声母一致/题面去重（应 0 FAIL）
+python3 ios/tools/check_registry.py   # 注册表闸门：题型/动画/图标清单与渲染器是否对得上（<1 秒）
+python3 ios/tools/validate.py         # 结构闸门：应 147 通过 / 1 已知警告 / 0 失败
+python3 ios/tools/audit_preview.py    # 语义闸门：图文一致/声母一致/题面去重（应 0 项不一致）
 ```
 
-- `gen_preview_data.py` 只替换 `/* === DATA-BEGIN === */ ~ /* === DATA-END === */` 之间的段落；
+- `gen_preview_data.py` 只替换 `/* === DATA-BEGIN === */` 到 `/* === DATA-END === */` 之间的段落；
   `CHINA_MAP` / `WORLD_MAP`（地图轮廓）住在独立的 MAPS 段，不会被覆盖——同样也不要把地图轮廓写进 DATA 段。
-- 两个闸门（validate / audit）必须同时为绿才算完成；只跑一个不算。
+- **三个闸门必须同时为绿**：check_registry（清单一致）/ validate（结构）/ audit（语义）。
+  改了渲染或动画再加 `preview_sweep.py`（六科全量约 20 分钟，`--steps=2` 快查）。
+- `validate.py` 的 1 条警告是 `PinyinSpeech.swift` 圆括号启发式（字符串里的半角括号），属基线，不是新增问题。
 
 ## 3. 收尾口径
 
-- 内容或 `ios/preview/index.html` 有变动 → 重打离线包（zip 命令见交接文档第五节），并核对与仓库逐字节一致。
+- 内容或 `ios/preview/index.html` 有变动 → 重打离线包并核对逐字节一致（**先删旧包**，否则改名/删除的文件会留成残条）：
+
+  ```bash
+  rm -f 探险岛-HTML离线包.zip
+  zip -rq 探险岛-HTML离线包.zip design ios/preview/index.html \
+      -x "design/.DS_Store" "ios/preview/.DS_Store" "*/__pycache__/*" "*.pyc"
+  unzip -p 探险岛-HTML离线包.zip ios/preview/index.html | md5   # 应与下一条相同
+  md5 -q ios/preview/index.html
+  ```
+
 - 改完更新 `ios/docs/工作进展与待办-*.md`，把「已完成」与「仍待办」写清，**不要留下虚假的已完成声明**。

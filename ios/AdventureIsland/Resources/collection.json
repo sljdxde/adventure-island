@@ -936,11 +936,6 @@
           "icon": "cat"
         },
         {
-          "id": "en-duck",
-          "name": "Duck 鸭",
-          "icon": "duck"
-        },
-        {
           "id": "en-rabbit",
           "name": "Rabbit 兔",
           "icon": "rabbit"
@@ -985,16 +980,6 @@
         {
           "id": "en-four",
           "name": "Four 四"
-        },
-        {
-          "id": "en-apple",
-          "name": "Apple 苹果",
-          "icon": "apple"
-        },
-        {
-          "id": "en-banana",
-          "name": "Banana 香蕉",
-          "icon": "banana"
         },
         {
           "id": "en-sweet",
@@ -1042,11 +1027,6 @@
           "icon": "speaker"
         },
         {
-          "id": "en-me",
-          "name": "Me 我",
-          "icon": "girl"
-        },
-        {
           "id": "en-book",
           "name": "Book 书",
           "icon": "book"
@@ -1067,19 +1047,9 @@
           "icon": "chart"
         },
         {
-          "id": "en-cake",
-          "name": "Cake 蛋糕",
-          "icon": "cake"
-        },
-        {
           "id": "en-candy",
           "name": "Candy 糖",
           "icon": "candy"
-        },
-        {
-          "id": "en-bread",
-          "name": "Bread 面包",
-          "icon": "bread"
         },
         {
           "id": "en-milk",
@@ -1100,11 +1070,6 @@
           "id": "en-hanger",
           "name": "Hanger 衣架",
           "icon": "hanger"
-        },
-        {
-          "id": "en-gift",
-          "name": "Gift 礼物",
-          "icon": "gift"
         },
         {
           "id": "en-train",
@@ -1162,16 +1127,6 @@
           "icon": "dice"
         },
         {
-          "id": "en-gift",
-          "name": "Gift 礼物",
-          "icon": "gift"
-        },
-        {
-          "id": "en-home",
-          "name": "Home 家",
-          "icon": "home"
-        },
-        {
           "id": "en-bed",
           "name": "Bed 床",
           "icon": "bed"
@@ -1182,26 +1137,6 @@
           "icon": "cup"
         },
         {
-          "id": "en-key",
-          "name": "Key 钥匙",
-          "icon": "key"
-        },
-        {
-          "id": "en-sun",
-          "name": "Sun 太阳",
-          "icon": "sun"
-        },
-        {
-          "id": "en-moon",
-          "name": "Moon 月亮",
-          "icon": "moon"
-        },
-        {
-          "id": "en-rainbow",
-          "name": "Rainbow 彩虹",
-          "icon": "rainbow"
-        },
-        {
           "id": "en-windmill",
           "name": "Windmill 风车",
           "icon": "windmill"
@@ -1210,16 +1145,6 @@
           "id": "en-car",
           "name": "Car 汽车",
           "icon": "car"
-        },
-        {
-          "id": "en-bus",
-          "name": "Bus 公交",
-          "icon": "bus"
-        },
-        {
-          "id": "en-school",
-          "name": "School 学校",
-          "icon": "school"
         },
         {
           "id": "en-shop",
@@ -1235,16 +1160,6 @@
           "id": "en-tree",
           "name": "Tree 树",
           "icon": "tree"
-        },
-        {
-          "id": "en-flower",
-          "name": "Flower 花",
-          "icon": "flower"
-        },
-        {
-          "id": "en-leaf",
-          "name": "Leaf 叶子",
-          "icon": "leaf"
         },
         {
           "id": "en-sprout",
@@ -1277,11 +1192,6 @@
           "icon": "fish"
         },
         {
-          "id": "en-wave",
-          "name": "Wave 浪",
-          "icon": "wave"
-        },
-        {
           "id": "en-penguin",
           "name": "Penguin 企鹅",
           "icon": "penguin"
@@ -1295,21 +1205,6 @@
           "id": "en-party",
           "name": "Party 派对",
           "icon": "party"
-        },
-        {
-          "id": "en-gift",
-          "name": "Gift 礼物",
-          "icon": "gift"
-        },
-        {
-          "id": "en-cake",
-          "name": "Cake 蛋糕",
-          "icon": "cake"
-        },
-        {
-          "id": "en-candy",
-          "name": "Candy 糖果",
-          "icon": "candy"
         },
         {
           "id": "en-bulb",
@@ -1332,24 +1227,9 @@
           "icon": "starface"
         },
         {
-          "id": "en-key",
-          "name": "Key 钥匙",
-          "icon": "key"
-        },
-        {
-          "id": "en-magnet",
-          "name": "Magnet 磁铁",
-          "icon": "magnet"
-        },
-        {
           "id": "en-slider",
           "name": "Slider 滑块",
           "icon": "slider"
-        },
-        {
-          "id": "en-clip",
-          "name": "Clip 夹子",
-          "icon": "clip"
         },
         {
           "id": "en-bee",
@@ -1357,29 +1237,9 @@
           "icon": "bee"
         },
         {
-          "id": "en-flower",
-          "name": "Flower 花",
-          "icon": "flower"
-        },
-        {
-          "id": "en-leaf",
-          "name": "Leaf 叶",
-          "icon": "leaf"
-        },
-        {
-          "id": "en-tree",
-          "name": "Tree 树",
-          "icon": "tree"
-        },
-        {
           "id": "en-snowflake",
           "name": "Snowflake 雪花",
           "icon": "snowflake"
-        },
-        {
-          "id": "en-ice",
-          "name": "Ice 冰",
-          "icon": "ice"
         },
         {
           "id": "en-polar bear",
@@ -1387,44 +1247,14 @@
           "icon": "polarbear"
         },
         {
-          "id": "en-penguin",
-          "name": "Penguin 企鹅",
-          "icon": "penguin"
-        },
-        {
-          "id": "en-fox",
-          "name": "Fox 狐狸",
-          "icon": "fox"
-        },
-        {
           "id": "en-frog",
           "name": "Frog 青蛙",
           "icon": "frog"
         },
         {
-          "id": "en-bear",
-          "name": "Bear 熊",
-          "icon": "bear"
-        },
-        {
           "id": "en-dino",
           "name": "Dino 恐龙",
           "icon": "dino"
-        },
-        {
-          "id": "en-run",
-          "name": "Run 跑",
-          "icon": "girl"
-        },
-        {
-          "id": "en-jump",
-          "name": "Jump 跳",
-          "icon": "rabbit"
-        },
-        {
-          "id": "en-swim",
-          "name": "Swim 游",
-          "icon": "wave"
         },
         {
           "id": "en-fly",

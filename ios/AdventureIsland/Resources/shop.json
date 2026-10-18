@@ -43,7 +43,7 @@
     {
       "id": "std",
       "name": "经典红点",
-      "icon": "dot",
+      "icon": "circle",
       "price": 0,
       "default": true
     },

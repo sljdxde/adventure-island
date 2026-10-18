@@ -3341,18 +3341,24 @@ HZ_ITEMS = []
 for ch, py, *_ in CN:
     HZ_ITEMS.append(C(f"hz-{ch}", ch, text=ch, pinyin=py))
 
-# 单词卡（字母 12 + 主题约 48）
-EN_CARDS = [
+# 单词卡（字母 12 + 主题词表约 97）。v0.12.2：改为「先手写、再按主题补、最后统一去重」。
+# 此前手写 12 张与 EN_TOPICS 撞车 + 主题词表内部同一个单词出现在多关，
+# 一共产出 28 个重复 id（en-gift ×4）；收集册按 id 判点亮，重复 id = 点亮一张解锁多张。
+_EN_CARD_SEED = [
     C("en-apple","Apple","apple"), C("en-banana","Banana","banana"), C("en-cake","Cake","cake"),
     C("en-duck","Duck","duck"), C("en-sun","Sun","sun"), C("en-moon","Moon","moon"),
     C("en-flower","Flower","flower"), C("en-leaf","Leaf","leaf"), C("en-key","Key","key"),
     C("en-heart","Heart","heart"), C("en-rainbow","Rainbow","rainbow"), C("en-gift","Gift","gift"),
 ]
+EN_CARDS = list(_EN_CARD_SEED)
 for lid, title, subtitle, words in EN_TOPICS:
     for ic, en, cn in words:
         EN_CARDS.append(C(f"en-{en.lower()}", f"{en} {cn}", ic))
 EN_CARDS.append(C("en-run","Run 跑","girl")); EN_CARDS.append(C("en-jump","Jump 跳","rabbit"))
 EN_CARDS.append(C("en-swim","Swim 游","wave")); EN_CARDS.append(C("en-fly","Fly 飞","duck"))
+# 去重：同 id 只保留首次出现（手写卡优先，主题词表按关卡顺序）。同 id 必然同词，只影响数量不影响内容。
+_seen_en = set()
+EN_CARDS = [c for c in EN_CARDS if not (c["id"] in _seen_en or _seen_en.add(c["id"]))]
 
 # 星空卡 25（v0.10：16 + 9 新；卡名首词 = letter 关 display，闯到即点亮）
 ASTRO_CARDS = [
@@ -3454,7 +3460,7 @@ shop = {
         shop_item("penguin", "小企鹅", "penguin", 120),
     ],
     "dice": [
-        shop_item("std", "经典红点", "dot", 0, True),
+        shop_item("std", "经典红点", "circle", 0, True),
         shop_item("fruit", "水果骰", "apple", 50),
         shop_item("star", "星星骰", "starface", 70),
         shop_item("paw", "脚印骰", "paw", 90),
