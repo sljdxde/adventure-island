@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PROTOTYPE · 朗读稿样张（v0.13 票 03）</title>
+<style>
+  body{margin:0;padding:24px 20px 60px;font-family:"PingFang SC","Yuanti SC",sans-serif;background:#17120D;color:#F4E9D8}
+  .proto{max-width:860px;margin:0 auto}
+  .tag{display:inline-block;background:#E84838;color:#fff;font-weight:900;font-size:12px;padding:4px 10px;border-radius:999px;letter-spacing:.06em}
+  h1{font-size:22px;margin:14px 0 6px}
+  .sub{color:#A08A76;font-size:14px;line-height:1.7;margin-bottom:18px}
+  .knobs{display:flex;gap:22px;flex-wrap:wrap;background:#241C14;border:2px solid #3A2E22;border-radius:16px;padding:14px 16px;margin-bottom:20px}
+  .knob{display:flex;align-items:center;gap:10px;font-size:14px}
+  .knob output{font-variant-numeric:tabular-nums;color:#FFD34D;font-weight:800;min-width:42px}
+  input[type=range]{width:150px}
+  .card{background:#241C14;border:2px solid #3A2E22;border-radius:18px;padding:16px 18px;margin-bottom:16px}
+  .card h2{font-size:15px;margin:0 0 4px;color:#FFD34D}
+  .meta{font-size:12px;color:#7E6A58;margin-bottom:12px}
+  .line{display:flex;gap:10px;align-items:flex-start;padding:7px 0;border-top:1px dashed #3A2E22}
+  .line:first-of-type{border-top:none}
+  .line button{flex:0 0 auto;background:#3A2E22;color:#F4E9D8;border:none;border-radius:10px;padding:6px 10px;font-size:13px;font-weight:700;cursor:pointer}
+  .line button:hover{background:#4A3A2A}
+  .line .txt{font-size:15px;line-height:1.8;padding-top:4px}
+  .line .txt em{color:#7E6A58;font-style:normal;font-size:12px;margin-left:6px}
+  .playall{margin-top:12px;background:linear-gradient(180deg,#FFC53D,#D98A0F);color:#7A4A10;border:none;border-radius:12px;padding:9px 16px;font-size:14px;font-weight:900;cursor:pointer}
+  .note{font-size:12px;color:#A08A76;line-height:1.8;border-left:3px solid #3A2E22;padding-left:12px;margin-top:12px}
+</style>
+</head>
+<body>
+<div class="proto">
+  <span class="tag">PROTOTYPE · 一次性</span>
+  <h1>朗读稿样张：孩子到底会听到什么</h1>
+  <div class="sub">
+    用途：在动手改 <code>index.html</code> 之前，先听一遍「每个题型念什么」。<br>
+    操作：点每行左边 ▶ 单听一句，或点卡片底部「整段念一遍」。上面两个旋钮调语速和句间停顿，调到你满意记下数值。<br>
+    这不是正式功能：没有界面、不存档、不进离线包。
+  </div>
+
+  <div class="knobs">
+    <label class="knob">语速 <input id="rate" type="range" min="0.6" max="1" step="0.05" value="0.8"><output id="rateOut">0.80</output></label>
+    <label class="knob">句间停顿 <input id="gap" type="range" min="0" max="800" step="50" value="250"><output id="gapOut">250ms</output></label>
+  </div>
+
+  <div id="cards"></div>
+
+  <div class="note">
+    听的时候重点判这四件事：<br>
+    ①「第 1 张、第 2 张」孩子能不能对上手指要点的位置<br>
+    ②数一数题里「选项：2，3，4」会不会把孩子带偏（他本来只要数小鸭）<br>
+    ③英语题的中英混排顺不顺<br>
+    ④找规律那道只念题面 + 序号，够不够孩子判断
+  </div>
+</div>
+
+<script>
+/* PROTOTYPE：朗读调度刻意做成"一次只播一句"，并且 cancel 后延时 80ms 再开口
+   —— 对应票 01 查到的 WebKit bug（cancel 后紧跟 speak 会被吞）。 */
+var RATE=0.8, GAP=250, chainTimer=null, gapTimer=null;
+
+var SAMPLES=[
+  {id:"cn-0-t", label:"学一学卡（识字村）", meta:"字 + 拼音 + 例词，不念卡片上那句书面语",
+   lines:[
+     {t:"日。", why:"字"},
+     {t:"日出，生日，日子。", why:"例词"}
+   ]},
+  {id:"cn-0-l", label:"听音找图（listen）", meta:"选项内容就是答案，只念序号",
+   lines:[
+     {t:"找一找，哪张图片是「日」？", why:"题面"},
+     {t:"第 1 张，第 2 张，第 3 张。", why:"选项（只念序号）"},
+     {t:"想一想，再点。", why:"收尾"}
+   ]},
+  {id:"math-0-c", label:"数一数（count）", meta:"题面长、要动手点；选项是三个数字",
+   lines:[
+     {t:"池塘里有几只小鸭？", why:"题面"},
+     {t:"点一点，数一数。", why:"动作提示"},
+     {t:"2，3，4。", why:"选项（裸数字）"}
+   ]},
+  {id:"en-0-q", label:"看图选（英语）", meta:"中英混排：题面走 en-US，序号走中文",
+   lines:[
+     {t:"Which picture starts with Aa?", why:"题面"},
+     {t:"第一张，第二张，第三张。", why:"选项（只念序号）"}
+   ]},
+  {id:"geo-1-q1", label:"选择题（有文字的选项）", meta:"选项有中文就念中文",
+   lines:[
+     {t:"中国的首都是哪座城市？", why:"题面"},
+     {t:"北京，城堡，学校。", why:"选项"},
+     {t:"想一想，再点。", why:"收尾"}
+   ]},
+  {id:"math-29-cl1", label:"认识时钟（clock）", meta:"3:00 要转写成「3 点」，不能念冒号",
+   lines:[
+     {t:"看钟面：现在是几点？", why:"题面"},
+     {t:"3 点，4 点，2 点。", why:"选项（转写后）"}
+   ]},
+  {id:"math-8-p1", label:"找规律（pattern）· 风险项", meta:"序列是图标 id 念不出，只能题面 + 序号",
+   lines:[
+     {t:"找规律：下一个是哪个？", why:"题面"},
+     {t:"第 1 张，第 2 张，第 3 张。", why:"选项（只念序号）"}
+   ]}
+];
+
+function el(tag,cls,html){ var e=document.createElement(tag); if(cls) e.className=cls; if(html!=null) e.innerHTML=html; return e; }
+
+function render(){
+  var box=document.getElementById("cards");
+  SAMPLES.forEach(function(sp){
+    var c=el("div","card");
+    c.appendChild(el("h2",null,sp.label));
+    c.appendChild(el("div","meta",sp.id+" · "+sp.meta));
+    sp.lines.forEach(function(ln){
+      var row=el("div","line");
+      var b=el("button",null,"▶ 念");
+      b.onclick=function(){ stopAll(); speakOne(ln.t); };
+      row.appendChild(b);
+      row.appendChild(el("div","txt", ln.t + "<em>"+ln.why+"</em>"));
+      c.appendChild(row);
+    });
+    var all=el("button","playall","▶▶ 整段念一遍");
+    all.onclick=function(){ playAll(sp); };
+    c.appendChild(all);
+    box.appendChild(c);
+  });
+}
+
+function pickVoice(lang){
+  try{
+    var vs=speechSynthesis.getVoices()||[];
+    for(var i=0;i<vs.length;i++){ if(vs[i].lang&&vs[i].lang.toLowerCase()===lang.toLowerCase()) return vs[i]; }
+  }catch(e){}
+  return null;
+}
+
+function say(text, lang){
+  var u=new SpeechSynthesisUtterance(text);
+  u.lang=lang||"zh-CN"; u.rate=RATE; u.pitch=1.15;
+  var v=pickVoice(u.lang); if(v) u.voice=v;
+  speechSynthesis.speak(u);
+  return u;
+}
+
+/* 中英混排分段（对应 index.html 的 speakSeg） */
+function speakOne(text){
+  var parts=text.match(/[A-Za-z]+|[^A-Za-z]+/g)||[];
+  parts.forEach(function(p){
+    say(p, /^[A-Za-z]+$/.test(p) ? "en-US" : "zh-CN");
+  });
+}
+
+function stopAll(){
+  clearTimeout(chainTimer); clearTimeout(gapTimer);
+  try{ speechSynthesis.cancel(); }catch(e){}
+}
+
+/* 串行播放：cancel → 等 80ms → 逐句靠 onend 推进（onend 不来就用看门狗兜底） */
+function playAll(sp){
+  stopAll();
+  var i=0;
+  function next(){
+    if(i>=sp.lines.length) return;
+    var text=sp.lines[i++].t;
+    var parts=text.match(/[A-Za-z]+|[^A-Za-z]+/g)||[text];
+    var last=null;
+    parts.forEach(function(p){
+      last=say(p, /^[A-Za-z]+$/.test(p) ? "en-US" : "zh-CN");
+    });
+    var fired=false;
+    function advance(){ if(fired) return; fired=true; gapTimer=setTimeout(next, GAP); }
+    if(last) last.onend=advance;
+    chainTimer=setTimeout(advance, 1200 + text.length*260);
+  }
+  gapTimer=setTimeout(next, 80);
+}
+
+document.getElementById("rate").oninput=function(){ RATE=parseFloat(this.value); document.getElementById("rateOut").textContent=RATE.toFixed(2); };
+document.getElementById("gap").oninput=function(){ GAP=parseInt(this.value,10); document.getElementById("gapOut").textContent=GAP+"ms"; };
+render();
+/* iOS：首次 getVoices() 常常是空的，voiceschanged 后再取一次 */
+try{ speechSynthesis.onvoiceschanged=function(){}; }catch(e){}
+</script>
+</body>
+</html>
