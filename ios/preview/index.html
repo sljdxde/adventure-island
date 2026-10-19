@@ -162,6 +162,9 @@ img.ic{display:inline-block;vertical-align:middle}
 .hud{position:absolute;top:0;left:0;right:0;height:92px;display:flex;align-items:center;justify-content:space-between;padding:16px 22px 0;z-index:40;pointer-events:none}
 .hud-l,.hud-r{display:flex;align-items:center;gap:12px;pointer-events:auto}
 .sqbtn{width:62px;height:62px;border:none;cursor:pointer;border-radius:21px;background:linear-gradient(180deg,#FFFDF6,#FFF3DC);box-shadow:0 4px 0 #E8D5AE,0 8px 14px rgba(84,66,58,.12);display:grid;place-items:center;transition:transform .08s}
+/* v0.13 票 14：朗读看门狗——800ms 没出声就把「再念一遍」亮出来 */
+#vbtn.vpulse{animation:vPulse .9s ease-in-out 3;box-shadow:0 0 0 4px #FFD34D,0 4px 0 #E8D5AE}
+@keyframes vPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.14)}}
 .sqbtn:active{transform:translateY(3px);box-shadow:0 1px 0 #E8D5AE}
 /* 关卡页「重玩本关」按钮（v0.12.4）：用户两次反馈「找不到关卡重置按钮」。
    一开始放进 HUD 左侧，但 HUD 左侧已是「返回键 + 两行标题」、右侧是「步骤条 + 金币条」，
@@ -1197,12 +1200,13 @@ const S = {
   playSec:0, daySec:0, dayKey:"",                    /* 工单10：本次时长(秒)/今日总量(秒)——随 save() 持久化，刷新不清零 */
   restPending:false, resting:false,                  /* 工单10：待休息持久化；resting 不持久化（刷新后由计时器重新触发，见 load） */
   settings:{once:15, daily:45, rest:15, diff:"auto", name:"糖糖"},
+  voice:{on:true, rate:0.8},        /* v0.13 票 15：题目自动朗读的总开关与语速（家长中心可调） */
   lv:{subject:null, index:0, step:0, wrong:0, counted:[], finished:false},
   lab:{phase:"guess", guess:null, sel:null, chip:null, settled:[], floats:[], raf:null},
   collTab:"sticker",
   timers:[], timeouts:[],
 };
-function save(){ try{ localStorage.setItem("adventure-sim", JSON.stringify({coins:S.coins,ledger:S.ledger,brick:S.brick,mushroom:S.mushroom,stars:S.stars,tested:S.tested,science:S.science,stickers:S.stickers,hanzi:S.hanzi,learnedPinyin:S.learnedPinyin,learnedEnglish:S.learnedEnglish,learnedAstro:S.learnedAstro,learnedGeo:S.learnedGeo,daily:S.daily,ownedChars:S.ownedChars,ownedTitles:S.ownedTitles,activeChar:S.activeChar,activeTitle:S.activeTitle,settings:S.settings,playSec:S.playSec,daySec:S.daySec,dayKey:S.dayKey,restPending:S.restPending})); }catch(e){ saveBroken("写入失败"); } }
+function save(){ try{ localStorage.setItem("adventure-sim", JSON.stringify({coins:S.coins,ledger:S.ledger,brick:S.brick,mushroom:S.mushroom,stars:S.stars,tested:S.tested,science:S.science,stickers:S.stickers,hanzi:S.hanzi,learnedPinyin:S.learnedPinyin,learnedEnglish:S.learnedEnglish,learnedAstro:S.learnedAstro,learnedGeo:S.learnedGeo,daily:S.daily,ownedChars:S.ownedChars,ownedTitles:S.ownedTitles,activeChar:S.activeChar,activeTitle:S.activeTitle,settings:S.settings,voice:S.voice,playSec:S.playSec,daySec:S.daySec,dayKey:S.dayKey,restPending:S.restPending})); }catch(e){ saveBroken("写入失败"); } }
 /* v0.12.2：存档失败此前是空 catch —— iPad 上既没有控制台也没有报错，孩子拿到的星星会静默丢掉。
    现在失败只提示一次，并记一个标志（家长中心可见），不打断答题。 */
 function saveBroken(why){
@@ -1444,6 +1448,131 @@ function speak(t,sub){
   if(sub==="pinyin") t=pyConvert(t);
   try{ const u=new SpeechSynthesisUtterance(t); u.lang='zh-CN'; u.rate=.8; u.pitch=1.15; speechSynthesis.cancel(); speechSynthesis.speak(u);}catch(e){}
 }
+
+/* ================= v0.13 自动朗读（票 10-16） =================
+   约束来自 .scratch/v0.13-narration/research/01-ipad-tts-behavior.md：
+   · iPad WebKit 只在「用户手势的同步栈」里解禁朗读，setTimeout 里的 speak() 会被静默丢弃
+     → 进关那一下的 click 里必须同步开口（见 enterLevel / restartLevel 的 voiceSpeakStep(true)）；
+   · cancel() 后紧跟 speak() 会被吞（WebKit bug 191745）→ 打断与重念之间留 90ms；
+   · onend 在 cancel 后可能永不触发（bug 238189）→ 每题合成一句话，节奏交给标点，不串接多段；
+   · 静音开关会掐掉朗读且 JS 检测不到 → 一律静默降级，不弹错；
+   · 自动批跑（?AISolve=1）全程静音，否则 preview_sweep 会对着 2102 步开念。 */
+const VOICE={key:null,timer:null,gap:null,watch:null,unlocked:false};
+const VOICE_ORD=["第 1 张","第 2 张","第 3 张","第 4 张","第 5 张","第 6 张","第 7 张","第 8 张"];
+function voiceEnabled(){ return typeof speechSynthesis!=="undefined" && !!(S.voice&&S.voice.on!==false) && !S.autoSolve; }
+function voiceRate(){ const r=S.voice&&+S.voice.rate; return (r&&r>=0.5&&r<=1.2)?r:0.8; }
+function voiceBtn(){ return document.getElementById("vbtn"); }
+function voiceMark(on){ const b=voiceBtn(); if(b) b.classList.toggle("vpulse",!!on); }
+function voiceClearTimers(){ clearTimeout(VOICE.timer); clearTimeout(VOICE.gap); clearTimeout(VOICE.watch); VOICE.timer=VOICE.gap=VOICE.watch=null; }
+function voiceCancel(){ voiceClearTimers(); try{ speechSynthesis.cancel(); }catch(e){} }
+function voiceUtter(text,lang){
+  const u=new SpeechSynthesisUtterance(text);
+  u.lang=lang; u.rate=voiceRate(); u.pitch=1.15;
+  try{ const vs=speechSynthesis.getVoices()||[];
+    for(const v of vs){ if(v.lang&&v.lang.toLowerCase().indexOf(lang.slice(0,2).toLowerCase())===0){ u.voice=v; break; } }
+  }catch(e){}
+  try{ speechSynthesis.speak(u); }catch(e){}
+}
+/* 学科语音路由：与 speak() 同口径，但**不 cancel**（打断时机由调用方掌握） */
+function voiceSay(text){
+  const sub=S.lv&&S.lv.subject;
+  let t=String(text||""); if(!t) return;
+  if(sub==="pinyin") t=pyConvert(t);          /* 拼音转同音字，别让系统逐字母念 */
+  const latin=(sub==="english"||sub==="astro");
+  const parts=t.match(/[A-Za-z]+|[^A-Za-z]+/g)||[t];
+  parts.forEach(p=>voiceUtter(p,(latin&&/^[A-Za-z]+$/.test(p))?"en-US":"zh-CN"));
+}
+function voiceOrdinals(n){ const out=[]; for(let i=0;i<n;i++) out.push(VOICE_ORD[i]||("第 "+(i+1)+" 张")); return out.join("，"); }
+function voiceClock(x){ return String(x).replace(/(\d{1,2}):00/,"$1 点").replace(/(\d{1,2}):30/,"$1 点半").replace(/(\d{1,2}):(\d{2})/,"$1 点 $2 分"); }
+/* 选项怎么念：有文字念文字，图标只念位置。选项内容本身就是答案的题型一律不念内容。 */
+function voiceOptionText(st){
+  const k=st.kind;
+  if(k==="listen"||k==="shadow"||k==="spotlight"||k==="pattern") return "";
+  if(Array.isArray(st.compareOptions)){ const l=st.compareOptions.map(o=>o&&o.label).filter(Boolean); if(l.length) return l.join("，"); }
+  if(Array.isArray(st.countOptions)&&st.countOptions.length) return st.countOptions.join("，");
+  if(Array.isArray(st.options)&&st.options.length){
+    const labels=st.options.map(o=>{
+      if(o&&typeof o==="object") return o.text||o.say||o.label||"";
+      if(typeof o==="number") return String(o);
+      if(typeof o==="string") return voiceClock(o);
+      return "";
+    });
+    if(labels.some(Boolean)) return labels.map((l,i)=>l||(VOICE_ORD[i]||("第 "+(i+1)+" 张"))).join("，");
+    return voiceOrdinals(st.options.length);
+  }
+  return "";
+}
+/* 每类题的朗读稿：票 12/13 的口径都在这里，改念法只改这一处 */
+function voiceScript(sub,st){
+  if(!st) return "";
+  const k=st.kind;
+  if(k==="teach"){
+    const w=(st.words||[]).map(x=>x&&(x.say||x.text)).filter(Boolean);
+    return [st.char||st.display||"",w.join("，")].filter(Boolean).join("。");
+  }
+  if(k==="letter"){
+    const head=st.display||((st.letters||[]).join(""))||"";
+    const ex=(st.examples||[]).map(x=>x&&(x.say||x.text)).filter(Boolean).join("，");
+    return [head,ex].filter(Boolean).join("。");
+  }
+  if(k==="write") return "跟着笔画写一遍："+(st.char||st.display||"");
+  const parts=[];
+  if(st.question) parts.push(st.question);
+  if(k==="sudoku") parts.push("这一格该放什么？");
+  if(k==="pattern") parts.push("看上面的图片。");
+  if(k==="count") parts.push("点一点，数一数。");
+  const opt=voiceOptionText(st);
+  if(opt) parts.push(opt);
+  if(k==="listen"||k==="quiz"||k==="pattern"||k==="shadow"||k==="spotlight"){
+    if(!opt && Array.isArray(st.options) && st.options.length) parts.push(voiceOrdinals(st.options.length));
+    parts.push("想一想，再点。");
+  }
+  return parts.filter(Boolean).join("。");
+}
+function voiceStep(){
+  const L=S.lv,lv=curLevelObj(); if(!lv||!lv.steps||!lv.steps.length) return null;
+  if(lv.boss&&L.boss) return lv.steps[Math.min(L.boss.qi||0,lv.steps.length-1)]||null;   /* currentStepObj 对 boss 关取错步 */
+  return currentStepObj();
+}
+function voiceKey(){
+  const L=S.lv,lv=curLevelObj(); if(!lv) return null; const st=voiceStep(); if(!st) return null;
+  const pos=lv.boss?("b"+(L.boss?L.boss.qi:0)):(L.bd&&L.bd.mode==="question"?("q"+L.bd.q):("s"+L.step));
+  return (lv.subject||"")+"|"+(lv.id||"")+"|"+st.id+"|"+pos;
+}
+function voiceWatch(){
+  clearTimeout(VOICE.watch);
+  VOICE.watch=setTimeout(()=>{
+    try{ if(speechSynthesis.speaking||speechSynthesis.pending){ voiceMark(false); return; } }catch(e){ return; }
+    voiceMark(true);        /* 800ms 还没出声：把 🔊 亮出来，让孩子自己点 */
+  },800);
+}
+/* force=true 只用在「进关点击」与「再念一遍」：都是用户手势，能解禁朗读 */
+function voiceSpeakStep(force){
+  if(!voiceEnabled()) return;
+  const st=voiceStep(); if(!st) return;
+  const key=voiceKey(); if(!force&&key===VOICE.key) return;
+  VOICE.key=key;
+  const text=voiceScript(S.lv.subject,st); if(!text) return;
+  voiceMark(false);
+  if(force&&!VOICE.unlocked){
+    try{ speechSynthesis.cancel(); }catch(e){}
+    voiceSay(text); VOICE.unlocked=true; voiceWatch(); return;    /* 同步开口 = 解禁 */
+  }
+  voiceCancel();
+  VOICE.gap=setTimeout(()=>{ voiceSay(text); voiceWatch(); },90);
+  (S.timeouts||(S.timeouts=[])).push(VOICE.gap);
+}
+function voiceNarrateSoon(){
+  if(!voiceEnabled()) return;
+  const st=voiceStep(); if(!st) return;
+  if(voiceKey()===VOICE.key) return;                 /* 同一道题只念一次 */
+  clearTimeout(VOICE.timer);
+  VOICE.timer=setTimeout(()=>voiceSpeakStep(false),400);
+  (S.timeouts||(S.timeouts=[])).push(VOICE.timer);
+}
+function voiceReplay(){ voiceSpeakStep(true); }
+/* 点任何地方就闭嘴（孩子点选项立刻停）——挂在捕获阶段，不用改 30 个 pick 函数 */
+document.addEventListener("pointerdown",function(){ voiceCancel(); voiceMark(false); },true);
 function levelIds(sub){ return (CONTENT[sub]?CONTENT[sub].levels:[]).map(function(l){return l.id;}); }
 function doneCount(sub){ let n=0; for(const id of levelIds(sub)){ if((S.stars[id]||0)>0) n++; } return n; }
 /* 星级按关卡 id 记账（工单05 平移迁移）；复习关跟随前一个正式关解锁、不挡正式关；
@@ -1695,6 +1824,8 @@ function enterLevel(sub,i){
   S.lastSubject=sub;
   boardState.rolling=boardState.hopping=false;   /* 骰子立方体的累计姿态（turns/pose）跨关保留：换关不闪回原点 */
   route("level");
+  /* 票 10：这是 iPad 上唯一能解禁朗读的时机——必须在这次点击的同步栈里开口 */
+  voiceSpeakStep(true);
 }
 /* v0.12.5：模块级重玩（用户原话「重玩应该针对每个不同的模块，比如天文馆是一个，
    识字的也有，点击后就从头开始了」「其他的都不用动，就从头开始玩就行」）。
@@ -1748,6 +1879,7 @@ function restartLevel(){
   Object.assign(L,{step:0,wrong:0,counted:[],finished:false,bd:null,boss:null,rain:0,cerStars:0,ceremony:null});
   boardState={rolling:false,hopping:false,turnsX:0,turnsY:0,pose:{x:90,y:0}};
   renderLevel();
+  voiceSpeakStep(true);                 /* 重玩也是点击进来的，同样在同步栈里开口 */
   toast("本关重新开始啦 🔄");
 }
 function curLevelObj(){ return CONTENT[S.lv.subject].levels[S.lv.index]; }
@@ -1868,6 +2000,7 @@ function renderLevel(){
         <div class="hud-sub">${lv.subtitle||""}</div></div>
       </div>
       <div class="hud-r">
+        <button id="vbtn" class="sqbtn" title="再念一遍" onclick="voiceReplay()">🔊</button>
         ${hudRight}
       </div>
     </div>
@@ -4354,6 +4487,7 @@ function moneyAuto(){
 
 function afterStepRender(){
   const st=currentStepObj(); if(!st) return;
+  voiceNarrateSoon();          /* 票 10：普通题 / 棋盘题 / boss 内嵌题都从这一处进入 */
   if(st.kind==="write") writeSetup(st);
   else if(st.kind==="clock"&&st.mode==="set") clockSetSetup(st);
   else if(st.kind==="mappuzzle") mapSetup(st);
@@ -4838,6 +4972,11 @@ function renderParent(){
         ${seg("单次使用时长",[10,15,20,25],S.settings.once,v=>v+" 分钟",v=>{S.settings.once=v;save()})}
         ${seg("每日使用上限",[30,45,60],S.settings.daily,v=>v+" 分钟",v=>{S.settings.daily=v;save()})}
         ${seg("休息间隔提醒",[15,30,0],S.settings.rest,v=>v===0?"关闭":`每 ${v} 分钟`,v=>{S.settings.rest=v;save()})}
+      </div>
+      <div class="panel"><h3><span class="icw">${ic("speaker",18)}</span>朗读（题目和选项）</h3>
+        ${seg("题目自动朗读",[1,0],(S.voice&&S.voice.on===false)?0:1,v=>v?"开启":"关闭",v=>{S.voice=S.voice||{};S.voice.on=!!v;save();if(!v){voiceCancel();voiceMark(false);}else{voiceReplay();}})}
+        ${seg("朗读语速",[60,70,80,90,100],Math.round(voiceRate()*100),v=>(v/100).toFixed(1),v=>{S.voice=S.voice||{};S.voice.rate=v/100;save();voiceReplay();})}
+        <div style="margin-top:10px;background:linear-gradient(180deg,#FFF3D8,#FFE9BC);border-radius:12px;padding:9px 13px;font-size:13.5px;font-weight:900;color:#9A6B00;line-height:1.75">🔇 没声音时，先看一眼 iPad 侧边的静音开关（它会连朗读一起掐掉）。<br> 🔊 关卡右上角那个喇叭，孩子可以自己点一下重听。</div>
       </div>
       <div class="panel"><h3><span class="icw">${ic("chart",18)}</span>学习进度</h3>
         ${pRow("book","识字村",doneCount("cn")/cnT,`${doneCount("cn")}/${cnT} 关`)}

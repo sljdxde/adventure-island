@@ -1,5 +1,5 @@
 Type: task
-Status: open
+Status: resolved
 Blocked by: 10
 Parent: 05
 
@@ -16,3 +16,8 @@ Parent: 05
 - [ ] 快速连点 5 次后仍然能出声（不会永久哑掉）
 - [ ] 800ms 没进入发声状态就把按钮显眼化，出声后恢复常态
 - [ ] 按钮位置不压选项、不挡角色，横屏竖屏都够得着
+
+## Answer
+
+HUD 右上角 `#vbtn`（`onclick="voiceReplay()"`）常驻；`voiceWatch()` 在 800ms 内没进入 speaking 就给它加 `vpulse`
+（3 次脉冲后停，点任何位置清除）。重念走 `voiceSpeakStep(true)`：先 cancel 再 90ms 后开口，不会叠加也不会永久哑掉。

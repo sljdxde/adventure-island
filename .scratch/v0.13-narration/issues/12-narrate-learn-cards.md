@@ -1,5 +1,5 @@
 Type: task
-Status: open
+Status: resolved
 Blocked by: 10
 Parent: 05
 
@@ -16,3 +16,8 @@ Parent: 05
 - [ ] 例词优先用数据里的读音字段，没有才退回显示文本
 - [ ] 拼音谷的读音仍走同音字转换，不出现「念字母」的机器腔
 - [ ] 卡片停留期间不重复念；下一题不被打断
+
+## Answer
+
+`voiceScript()` 的 `teach` / `letter` 分支：字/卡片标题 + 例词的 `say` 优先，退回 `text`。
+拼音谷的拉丁串仍走 `pyConvert` 转同音字。识字村卡片只念字与例词，不念拼音串（TTS 会把 `rì` 念成字母，已记在票 06 待实听确认）。

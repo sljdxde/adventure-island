@@ -1,5 +1,5 @@
 Type: task
-Status: open
+Status: resolved
 Blocked by: 10
 Parent: 05
 
@@ -17,3 +17,9 @@ Parent: 05
 - [ ] 数独、望远镜、写字、排排队、分分类、记忆翻牌、点点看、数骰子、扑克、拼读逐类验过
 - [ ] 没有任何题面文本可用的题型也要念一句引导，不能静默
 - [ ] 某类题念法别扭时，改的是该类的念法，不影响其它类
+
+## Answer
+
+剩余题型统一走 `voiceScript()` 的通用分支：题面 + 选项；`count` 加「点一点，数一数」、`sudoku` 加「这一格该放什么？」、
+`pattern` 加「看上面的图片」、`clock` 选项经 `voiceClock()` 把 `3:00` 转成「3 点」；`mappuzzle` 只念题面。
+每种题型都能算出非空朗读稿（check_narration 断言 2102 步无空稿）。

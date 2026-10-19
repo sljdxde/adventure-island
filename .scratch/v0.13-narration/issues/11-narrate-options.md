@@ -1,5 +1,5 @@
 Type: task
-Status: open
+Status: resolved
 Blocked by: 10
 Parent: 05
 
@@ -16,3 +16,9 @@ Parent: 05
 - [ ] 图标选项绝不念出内容——听音找图题的选项就是答案，念了等于报答案
 - [ ] 裸数字、字符串形态的选项（`2 3 4`、`3:00`）也能念，不报错
 - [ ] 答错只念一句提示，答对保持安静（有音效，不抢）
+
+## Answer
+
+`voiceOptionText()`：有文字的选项照念，图标选项落成「第 N 张」；`listen / shadow / spotlight / pattern`
+四类直接返回空（选项内容就是答案）。裸数字、字符串（含 `3:00` 转写）、`compareOptions.label` 都覆盖。
+验证：check_narration 逐条断言「答案型选项一个字都不进朗读稿」「普通题每个有文字的选项都被念到」。
