@@ -3898,21 +3898,28 @@ function currentStepObj(){
   return lv.steps[L.step]||null;
 }
 
-let writeState={done:false,cur:0,sampled:[],covered:[],drawing:false,svg:null};
+let writeState={done:false,cur:0,sampled:[],covered:[],len:[],drawing:false,svg:null};
 
 function writeHTML(sub,st){
-  writeState={done:false,cur:0,sampled:[],covered:[],drawing:false,svg:null};
+  writeState={done:false,cur:0,sampled:[],covered:[],len:[],drawing:false,svg:null};
   window._w={sub:sub,st:st};
   const strokes=st.strokes||[];
   const grid=`<rect x="8" y="8" width="84" height="84" fill="none" stroke="#E7C9A0" stroke-width="1.2"/>
     <line x1="50" y1="8" x2="50" y2="92" stroke="#E7C9A0" stroke-width="1" stroke-dasharray="3 3"/>
     <line x1="8" y1="50" x2="92" y2="50" stroke="#E7C9A0" stroke-width="1" stroke-dasharray="3 3"/>`;
   const ghost=`<text x="50" y="50" text-anchor="middle" dominant-baseline="central" font-size="70" font-weight="900" fill="#F3E2C6">${st.char}</text>`;
-  const paths=strokes.map((s,i)=>`<path id="wpath${i}" d="${s.d}" fill="none" stroke="#E9D7BE" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>`).join("");
+  /* 三层同路径叠放（v0.13 修「描不上」）：
+       wpath = 淡米色引导笔画（一直都在，孩子知道这一笔在哪）
+       wdemo = 红色演示笔画（动画描出来的目标，要跟着它描）
+       wink  = 绿色笔迹（手指描过的部分，按描到的比例显出来）
+     旧版只有一层 wpath，描的时候把红色演示那条 path 的 dashoffset 反向改回去，
+     于是「手指一碰笔画反而消失」，看不出自己在写哪。 */
+  const strokePaths=(id,color)=>strokes.map((s,i)=>`<path id="${id}${i}" d="${s.d}" fill="none" stroke="${color}" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>`).join("");
+  const layers=strokePaths("wpath","#E9D7BE")+strokePaths("wdemo","#C94A3A")+strokePaths("wink","#5CB444");
   return `<div style="height:100%;display:flex;gap:26px;align-items:center;justify-content:center" class="sticker">
     <div style="display:flex;flex-direction:column;align-items:center;gap:12px">
       <div class="q-pill">${st.question||"写一写"}</div>
-      <svg id="wsvg" viewBox="0 0 100 100" style="width:300px;height:300px;touch-action:none;cursor:crosshair;background:linear-gradient(180deg,#FFFDF6,#FFF3DC);border-radius:18px;border:4px solid #F0DCAC">${grid}${ghost}${paths}</svg>
+      <svg id="wsvg" viewBox="0 0 100 100" style="width:300px;height:300px;touch-action:none;cursor:crosshair;user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent;background:linear-gradient(180deg,#FFFDF6,#FFF3DC);border-radius:18px;border:4px solid #F0DCAC">${grid}${ghost}${layers}</svg>
       <div id="wfb" style="min-height:26px;font-size:16px;font-weight:900;color:var(--ink-soft)">先看一遍演示，再用手指描红色那一笔</div>
       <button class="speakopt" onclick="wReplay()">▶️ 再看一遍演示</button>
     </div>
@@ -3926,53 +3933,145 @@ function writeHTML(sub,st){
 
 function writeSetup(st){
   const svg=$("#wsvg"); if(!svg) return;
-  writeState.svg=svg; writeState.cur=0; writeState.done=false;
-  writeState.sampled=[]; writeState.covered=[];
+  writeState.svg=svg; writeState.cur=0; writeState.done=false; writeState.drawing=false;
+  writeState.sampled=[]; writeState.covered=[]; writeState.len=[];
   (st.strokes||[]).forEach((s,i)=>{
     const p=svg.querySelector("#wpath"+i); if(!p) return;
     const L=p.getTotalLength(); const pts=[];
     for(let d=0;d<=L;d+=1.5){ const pt=p.getPointAtLength(Math.min(d,L)); pts.push({x:pt.x,y:pt.y}); }
     writeState.sampled.push(pts); writeState.covered.push(new Array(pts.length).fill(false));
-    p.style.strokeDasharray=L; p.style.strokeDashoffset=L;
+    writeState.len.push(L);
+    const ink=svg.querySelector("#wink"+i), dm=svg.querySelector("#wdemo"+i);
+    if(ink){ ink.style.strokeDasharray=L; ink.style.strokeDashoffset=L; }
+    if(dm){ dm.style.strokeDasharray=L; dm.style.strokeDashoffset=L; }
   });
-  svg.addEventListener("pointerdown",e=>wTraceStart(e));
-  svg.addEventListener("pointermove",e=>wTraceMove(e));
-  svg.addEventListener("pointerup",e=>wTraceEnd(e));
-  svg.addEventListener("pointercancel",e=>wTraceEnd(e));
+  /* 有 Pointer Events 就用它（iPadOS 13+/Chrome）；老 WebView 退回 touch/mouse，
+     否则标签页里点上去一点反应都没有。重复 setup 不重复绑（同一个 svg 只绑一次） */
+  if(svg.__wBound) { wDemo(); return; }
+  svg.__wBound=true;
+  if(window.PointerEvent){
+    svg.addEventListener("pointerdown",wTraceStart);
+    svg.addEventListener("pointermove",wTraceMove);
+    svg.addEventListener("pointerup",wTraceEnd);
+    svg.addEventListener("pointercancel",wTraceEnd);
+    svg.addEventListener("pointerleave",wTraceEnd);
+  } else {
+    svg.addEventListener("touchstart",e=>{ if(e.cancelable) e.preventDefault(); wTraceStart(e); },{passive:false});
+    svg.addEventListener("touchmove",e=>{ if(e.cancelable) e.preventDefault(); wTraceMove(e); },{passive:false});
+    svg.addEventListener("touchend",wTraceEnd);
+    svg.addEventListener("touchcancel",wTraceEnd);
+    svg.addEventListener("mousedown",wTraceStart);
+    svg.addEventListener("mousemove",wTraceMove);
+    svg.addEventListener("mouseup",wTraceEnd);
+    svg.addEventListener("mouseleave",wTraceEnd);
+  }
   wDemo();
 }
 
-function wTraceStart(e){ if(writeState.done) return; writeState.svg.setPointerCapture(e.pointerId); writeState.drawing=true; wTraceMove(e); }
+/* 统一取坐标：PointerEvent 直接有 clientX/Y，TouchEvent 要取触点 */
+function wPt(e){
+  if(!e) return null;
+  if(e.touches&&e.touches.length) return e.touches[0];
+  if(e.changedTouches&&e.changedTouches.length) return e.changedTouches[0];
+  return e;
+}
+
+/* 屏幕坐标 → viewBox(0-100) 坐标。.frame 被 fitFrame 整体 scale 过，
+   所以必须用 getBoundingClientRect 的实测宽高换算，不能按 300px 写死。 */
+function wTracePos(e){
+  const svg=writeState.svg; if(!svg) return null;
+  const p=wPt(e); if(!p||p.clientX===undefined||p.clientY===undefined) return null;
+  const r=svg.getBoundingClientRect(); if(!r.width||!r.height) return null;
+  return {x:(p.clientX-r.left)/r.width*100, y:(p.clientY-r.top)/r.height*100};
+}
+
+function wTraceStart(e){
+  if(writeState.done||!writeState.svg) return;
+  if(e&&e.pointerType==="mouse"&&e.button!==undefined&&e.button!==0) return;   /* 只认左键 */
+  /* 真指针事件才做捕获（touch/mouse 回退路径没有 pointerId）；合成事件捕获会抛，不能让整段挂掉 */
+  if(e&&e.pointerId!==undefined){ try{ writeState.svg.setPointerCapture(e.pointerId); }catch(err){} }
+  writeState.drawing=true; wTraceMove(e);
+}
 
 function wTraceMove(e){
   if(!writeState.drawing||writeState.done) return;
-  const i=writeState.cur; if(i>=writeState.sampled.length) return;
-  const pos=wTracePos(e), pts=writeState.sampled[i], cov=writeState.covered[i], TOL=13;
-  for(let k=0;k<pts.length;k++){ const dx=pts[k].x-pos.x, dy=pts[k].y-pos.y; if(dx*dx+dy*dy<=TOL*TOL) cov[k]=true; }
-  const frac=cov.filter(Boolean).length/pts.length;
-  if(frac>0.12){ const p=writeState.svg.querySelector("#wpath"+i); const L=p.getTotalLength(); p.style.transition="none"; p.style.strokeDashoffset=L*(1-frac); }
+  const i=writeState.cur;
+  if(i>=writeState.sampled.length) return;
+  const pos=wTracePos(e); if(!pos) return;
+  const pts=writeState.sampled[i], cov=writeState.covered[i];
+  if(!pts||!pts.length) return;
+  const TOL=13;   /* viewBox 单位：约 13% 字格，够宽容也不至于糊到别的笔画上 */
+  let hit=0;
+  for(let k=0;k<pts.length;k++){
+    const dx=pts[k].x-pos.x, dy=pts[k].y-pos.y;
+    if(dx*dx+dy*dy<=TOL*TOL){ cov[k]=true; }
+    if(cov[k]) hit++;
+  }
+  const frac=hit/pts.length;
+  /* 绿色笔迹按已描比例显出来。cov 只增不减，所以手指滑出笔画走廊时不会倒回去 */
+  const ink=writeState.svg.querySelector("#wink"+i);
+  if(ink&&frac>0.01){
+    const L=writeState.len[i]||ink.getTotalLength();
+    ink.style.transition="none"; ink.style.strokeDashoffset=L*(1-frac);
+  }
   if(frac>=0.85) wStrokeDone();
 }
 
 function wTraceEnd(e){ writeState.drawing=false; }
 
+/* 演示当前这一笔：红色演示层从笔头走一遍；已经描绿的笔迹不受影响 */
 function wDemo(){
-  if(writeState.done) return;
-  const i=writeState.cur; if(i>=writeState.sampled.length) return;
-  const p=writeState.svg.querySelector("#wpath"+i); if(!p) return;
-  const L=p.getTotalLength();
-  p.setAttribute("stroke","#C94A3A");
-  p.style.transition="none"; p.style.strokeDashoffset=L; void p.getBBox();
-  p.style.transition="stroke-dashoffset .8s ease"; p.style.strokeDashoffset=0;
+  if(writeState.done||!writeState.svg) return;
+  const i=writeState.cur;
+  if(i>=writeState.sampled.length) return;
+  const dm=writeState.svg.querySelector("#wdemo"+i);
+  if(!dm) return;
+  const L=writeState.len[i]||dm.getTotalLength();
+  dm.style.transition="none"; dm.style.strokeDashoffset=L;
+  void dm.getBBox().width;                                   /* 强制 reflow，否则第二次演示不动 */
+  dm.style.transition="stroke-dashoffset .8s ease"; dm.style.strokeDashoffset=0;
+}
+
+/* 「▶️ 再看一遍演示」：只重播当前笔，不动已描的绿笔迹 */
+function wReplay(){
+  if(writeState.done||!writeState.svg) return;
+  writeState.drawing=false;
+  wDemo();
+}
+
+/* 一笔描够 85% → 落笔定色、等下一笔；全部描完 → 过关 */
+function wStrokeDone(){
+  if(writeState.done||!writeState.svg) return;
+  const i=writeState.cur;
+  if(i>=writeState.sampled.length) return;
+  const ink=writeState.svg.querySelector("#wink"+i), dm=writeState.svg.querySelector("#wdemo"+i);
+  if(ink){ ink.style.transition="none"; ink.style.strokeDashoffset=0; }
+  if(dm) dm.style.opacity=0;
+  writeState.drawing=false;
+  writeState.cur++;
+  const st=window._w&&window._w.st;
+  const fb=$("#wfb");
+  if(writeState.cur>=writeState.sampled.length){
+    writeState.done=true;
+    if(fb){ fb.style.color="var(--green-dk)"; fb.textContent="写好「"+(st&&st.char||"")+"」啦！"; }
+    if(window._w&&window._w.sub==="cn"&&st) learnHanzi(st.char);   /* 写完才入汉字册 */
+    winStep(st&&st.praise);
+    return;
+  }
+  if(fb){ fb.style.color="var(--green-dk)"; fb.textContent="写对啦！接着描第 "+(writeState.cur+1)+" 笔"; }
+  wDemo();
 }
 
 function writeAuto(st){
   writeState.cur=0; writeState.done=false;
+  if(!writeState.svg) return;
   const n=(st.strokes||[]).length;
   const stepOne=()=>{
     if(writeState.cur>=n){ if(window._w.sub==="cn") learnHanzi(st.char); winStep(st.praise,300); return; }
-    const p=writeState.svg.querySelector("#wpath"+writeState.cur);
-    if(p){ p.style.transition="stroke-dashoffset .3s"; p.style.strokeDashoffset=0; p.setAttribute("stroke","#5CB444"); }
+    const i=writeState.cur;
+    const ink=writeState.svg.querySelector("#wink"+i), dm=writeState.svg.querySelector("#wdemo"+i);
+    if(ink){ ink.style.transition="stroke-dashoffset .3s"; ink.style.strokeDashoffset=0; }
+    if(dm) dm.style.opacity=0;
     writeState.cur++; setTimeout(stepOne,340);
   };
   setTimeout(stepOne,200);
@@ -4092,6 +4191,33 @@ function sudCellTap(r,c){
   $("#sdpalette").innerHTML=Sd.symbols.map((s,i)=>`<div class="sud-pick" onclick="sudPlace(${i})">${ic(s,46)}</div>`).join("");
 }
 
+/* sudPlace / sudBounce（v0.13 补回）：v0.11 合并时和写字三件套一起被删，
+   但 onclick 里的调用还在——点图标抛 ReferenceError，格子永远填不上。
+   下面是 d838b8e 的原实现，状态与元素 id（sudokuState / #sd{r}_{c} / #sdpalette）至今没变。 */
+function sudPlace(v){
+  const Sd=sudokuState; if(!Sd.pending) return;
+  const r=Sd.pending[0], c=Sd.pending[1], size=Sd.size;
+  for(let i=0;i<size;i++){ if((Sd.grid[r][i]===v&&i!==c)||(Sd.grid[i][c]===v&&i!==r)){ sudBounce(); return; } }
+  const br=r<2?0:2, bc=c<2?0:2;
+  for(let dr=0;dr<2;dr++) for(let dc=0;dc<2;dc++){ const rr=br+dr, cc=bc+dc;
+    if((rr!==r||cc!==c)&&Sd.grid[rr][cc]===v){ sudBounce(); return; } }
+  Sd.grid[r][c]=v;
+  const el=$("#sd"+r+"_"+c);
+  if(el){ el.innerHTML=ic(Sd.symbols[v],44); el.classList.add("filled"); }
+  $("#sdpalette").innerHTML=""; Sd.pending=null;
+  for(let rr=0;rr<size;rr++) for(let cc=0;cc<size;cc++) if(Sd.grid[rr][cc]<0) return;
+  let ok=true; for(let rr=0;rr<size;rr++) for(let cc=0;cc<size;cc++) if(Sd.grid[rr][cc]!==Sd.solution[rr][cc]) ok=false;
+  if(ok){ Sd.solved=true; winStep(window._sud.praise); }
+  else nudge("再检查一下，每行每列不能重复哦");
+}
+
+function sudBounce(){
+  const p=sudokuState.pending; if(!p) return;
+  const el=$("#sd"+p[0]+"_"+p[1]);
+  if(el){ el.classList.remove("shakeit"); void el.offsetWidth; el.classList.add("shakeit"); }
+  toast("这一行/列/小宫已经有它啦（不扣分）",1.8);
+}
+
 function sudokuAuto(){
   const Sd=sudokuState;
   for(let r=0;r<Sd.size;r++) for(let c=0;c<Sd.size;c++){
@@ -4152,6 +4278,11 @@ function clockHTML(st){
 
 function clockSetSetup(st){ clockSet={h:12,m:0,solved:false,targetH:st.hour,targetM:st.minute}; ckRenderFace(); }
 
+/* ckHour / ckMin（v0.13 补回）：拨钟的两个按钮 onclick 一直在，实现被 v0.11 合并删掉，
+   点「＋ 时 / － 时 / 整点 / 半点」全都没反应，认钟表「拨一拨」那一关永远拨不到目标时间。 */
+function ckHour(d){ if(clockSet.solved) return; clockSet.h=((clockSet.h-1+d+12)%12)+1; ckRenderFace(); }
+function ckMin(m){ if(clockSet.solved) return; clockSet.m=m; ckRenderFace(); }
+
 function ckRenderFace(){
   const f=$("#ckface"); if(f) f.innerHTML=clockFaceSVG(clockSet.h,clockSet.m,210);
   const h=$("#ckhour"); if(h) h.textContent=clockSet.h;
@@ -4191,6 +4322,10 @@ function moneyHTML(st){
 }
 
 function moneyAdd(i){ if(moneyState.solved) return; moneyState.sel.push(i); moneyRenderPaid(); }
+
+/* moneyRemove（v0.13 补回）：已付钱币的「✕」点了没反应，多付了退不回来，
+   而 moneyConfirm 的提示语还写着「点一点已选的钱币去掉一些」。 */
+function moneyRemove(idx){ if(moneyState.solved) return; moneyState.sel.splice(idx,1); moneyRenderPaid(); }
 
 function moneyConfirm(){
   const st=window._money.st; if(moneyState.solved) return;
@@ -4863,7 +4998,9 @@ try{
       }
       const wantId=lv.steps[b.step]&&lv.steps[b.step].id;
       const qi=lv.board.spaces.findIndex(sp=>sp.step===wantId);
-      if(qi>=0){ S.lv.bd.q=qi; S.lv.bd.mode="question"; }
+      /* pos 也要跟着落到这一格：landBoard(pos) 会读 spaces[pos].type，
+         pos=-1 时直接抛 TypeError，答完深链那一题整关卡死（v0.13 修写字时一并补） */
+      if(qi>=0){ S.lv.bd.q=qi; S.lv.bd.mode="question"; S.lv.bd.pos=qi; }
       /* boss 关的题号走 L.boss.qi（不看 L.step），深链也要把它对齐，否则永远停在第 1 题 */
       if(lv.boss&&qi>=0) S.lv.boss={bh:3,ph:3,qi:qi,outcome:"fighting",rewarded:false};
       renderLevel();
