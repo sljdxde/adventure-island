@@ -550,6 +550,8 @@ img.ic{display:inline-block;vertical-align:middle}
 .tcard{min-width:168px;height:112px;padding:0 30px;border-radius:24px;background:linear-gradient(180deg,#FFE58A,#F7B32B);border:4px solid #fff;box-shadow:0 6px 0 #B8770A88;display:grid;place-items:center;font-weight:900;color:#fff;text-shadow:1px 3px 0 #B8770A}
 .optrow{display:flex;gap:26px}
 .speakopt{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.9);border:2.5px solid #F2E2C4;border-radius:999px;padding:11px 20px;font-size:15px;font-weight:800;color:var(--ink-soft);cursor:pointer;font-family:inherit}
+/* 拨钟「整点/半点」当前选中态（v1.0.1）：原来用 style.background 写成非法值 "#"，取消选中时颜色不还原 */
+.speakopt.ck-on{background:#C6F0A0;border-color:#9BD46A;color:#3E6B14}
 /* 熊猫引导气泡（还原 design/02 答题卡底部的 mascot-row） */
 .mascot-row{display:flex;align-items:center;gap:10px;background:linear-gradient(180deg,#FFF7E4,#FFEDC9);border-radius:18px;padding:7px 14px;max-width:660px}
 .mascot-row .m{line-height:1;filter:drop-shadow(0 3px 4px rgba(84,66,58,.18))}
@@ -4362,28 +4364,22 @@ function sudokuAuto(){
 }
 
 let clockSet={h:12,m:0,solved:false,targetH:3,targetM:0};
-
-function clockFaceSVG(hour,minute,size){
-  const mAng=minute/60*360, hAng=((hour%12)+minute/60)/12*360;
-  const hand=(ang,len,w)=>{ const a=ang*Math.PI/180; return `<line x1="50" y1="50" x2="${(50+Math.sin(a)*len).toFixed(1)}" y2="${(50-Math.cos(a)*len).toFixed(1)}" stroke="#57433A" stroke-width="${w}" stroke-linecap="round"/>`; };
-  let nums="";
-  for(let n=1;n<=12;n++){ const a=n/12*360*Math.PI/180;
-    nums+=`<text x="${(50+Math.sin(a)*38).toFixed(1)}" y="${(50-Math.cos(a)*38+3).toFixed(1)}" text-anchor="middle" font-size="9" font-weight="900" fill="#57433A">${n}</text>`; }
-  return `<svg viewBox="0 0 100 100" style="width:${size}px;height:${size}px">
-    <circle cx="50" cy="50" r="47" fill="#FFFDF6" stroke="#D8CBAF" stroke-width="2.5"/>
-    ${nums}${hand(hAng,22,4)}${hand(mAng,34,2.5)}<circle cx="50" cy="50" r="3" fill="#C94A3A"/></svg>`;
-}
+let clockDrag=null;          /* "h" = 抓的是短针（小时），"m" = 抓的是长针（分钟）；null = 没在拖 */
 
 function clockLabel(h,m){ return h+":"+(m===0?"00":"30"); }
+
+/* 指针带 id（v1.0.1）：拖动时只改这两条线的 x2/y2，不重刷整个 svg，
+   否则 pointer capture 会跟着被替换掉的节点一起丢，拖到一半就断。 */
 function clockFaceSVG(hour,minute,size){
   const mAng=minute/60*360, hAng=((hour%12)+minute/60)/12*360;
-  const hand=(ang,len,w)=>{ const a=ang*Math.PI/180; return `<line x1="50" y1="50" x2="${(50+Math.sin(a)*len).toFixed(1)}" y2="${(50-Math.cos(a)*len).toFixed(1)}" stroke="#57433A" stroke-width="${w}" stroke-linecap="round"/>`; };
+  const hand=(ang,len,w,id)=>{ const a=ang*Math.PI/180;
+    return `<line${id?` id="${id}"`:""} x1="50" y1="50" x2="${(50+Math.sin(a)*len).toFixed(1)}" y2="${(50-Math.cos(a)*len).toFixed(1)}" stroke="#57433A" stroke-width="${w}" stroke-linecap="round"/>`; };
   let nums="";
   for(let n=1;n<=12;n++){ const a=n/12*360*Math.PI/180;
     nums+=`<text x="${(50+Math.sin(a)*38).toFixed(1)}" y="${(50-Math.cos(a)*38+3).toFixed(1)}" text-anchor="middle" font-size="9" font-weight="900" fill="#57433A">${n}</text>`; }
   return `<svg viewBox="0 0 100 100" style="width:${size}px;height:${size}px">
     <circle cx="50" cy="50" r="47" fill="#FFFDF6" stroke="#D8CBAF" stroke-width="2.5"/>
-    ${nums}${hand(hAng,22,4)}${hand(mAng,34,2.5)}<circle cx="50" cy="50" r="3" fill="#C94A3A"/></svg>`;
+    ${nums}${hand(hAng,22,4,"ckhandh")}${hand(mAng,34,2.5,"ckhandm")}<circle cx="50" cy="50" r="3" fill="#C94A3A"/></svg>`;
 }
 
 function clockHTML(st){
@@ -4394,13 +4390,16 @@ function clockHTML(st){
       ${clockFaceSVG(st.hour,st.minute,210)}
       <div style="display:flex;flex-direction:column;gap:14px">${(st.options||[]).map((o,i)=>`<button class="numblock" style="width:auto;min-width:150px;padding:0 26px;font-size:26px" id="ck${i}" onclick="clockReadPick(${i})">${o}</button>`).join("")}</div></div>`;
   } else {
-    body=`<div style="display:flex;gap:30px;align-items:center;justify-content:center">
-      <div id="ckface">${clockFaceSVG(12,0,210)}</div>
-      <div style="display:flex;flex-direction:column;gap:12px;align-items:center">
-        <div style="font-size:19px;font-weight:900">拨到 <b style="color:var(--coral-dk)">${clockLabel(st.hour,st.minute)}</b></div>
-        <div style="display:flex;gap:10px;align-items:center"><button class="speakopt" onclick="ckHour(-1)">－ 时</button><span id="ckhour" style="font-size:30px;font-weight:900;width:40px;text-align:center">12</span><button class="speakopt" onclick="ckHour(1)">＋ 时</button></div>
+    body=`<div style="display:flex;gap:26px;align-items:center;justify-content:center">
+      <div id="ckface" style="touch-action:none;cursor:grab">${clockFaceSVG(12,0,210)}</div>
+      <div style="display:flex;flex-direction:column;gap:10px;align-items:center">
+        <div style="display:flex;gap:22px;font-size:15px;font-weight:900;color:var(--ink-soft);align-items:baseline">
+          <span>当前 <b id="cknow" style="font-size:23px;color:var(--ink)">12:00</b></span>
+          <span>目标 <b style="font-size:23px;color:var(--coral-dk)">${clockLabel(st.hour,st.minute)}</b></span></div>
+        <div style="font-size:14.5px;font-weight:800;color:var(--ink-soft)">手指拨指针：外圈长针拨分钟，中间短针拨小时</div>
+        <div style="display:flex;gap:10px;align-items:center"><button class="speakopt" onclick="ckHour(-1)">－ 时</button><span id="ckhour" style="font-size:28px;font-weight:900;width:40px;text-align:center">12</span><button class="speakopt" onclick="ckHour(1)">＋ 时</button></div>
         <div style="display:flex;gap:10px">
-          <button class="speakopt" id="ckm0" onclick="ckMin(0)">整点 :00</button>
+          <button class="speakopt ck-on" id="ckm0" onclick="ckMin(0)">整点 :00</button>
           <button class="speakopt" id="ckm30" onclick="ckMin(30)">半点 :30</button></div>
         <button class="jbtn j-green" onclick="ckConfirm()">拨好啦 ✓</button></div></div>`;
   }
@@ -4409,19 +4408,99 @@ function clockHTML(st){
     <div id="stepfb" style="min-height:28px;font-size:20px;font-weight:900"></div></div>`;
 }
 
-function clockSetSetup(st){ clockSet={h:12,m:0,solved:false,targetH:st.hour,targetM:st.minute}; ckRenderFace(); }
+function clockSetSetup(st){
+  clockSet={h:12,m:0,solved:false,targetH:st.hour,targetM:st.minute};
+  ckRenderFace(); ckBindDrag();
+}
 
 /* ckHour / ckMin（v0.13 补回）：拨钟的两个按钮 onclick 一直在，实现被 v0.11 合并删掉，
    点「＋ 时 / － 时 / 整点 / 半点」全都没反应，认钟表「拨一拨」那一关永远拨不到目标时间。 */
 function ckHour(d){ if(clockSet.solved) return; clockSet.h=((clockSet.h-1+d+12)%12)+1; ckRenderFace(); }
 function ckMin(m){ if(clockSet.solved) return; clockSet.m=m; ckRenderFace(); }
 
+/* 指针拖拽（v1.0.1）：原来钟面只能靠「－ 时 / ＋ 时」加减，试玩反馈「这个没法拨动指针」——
+   孩子以为指针能拖，点按钮又像在做加法，和「拨钟」对不上。现在两根针都能用手指拖：
+     外圈（半径 ≥26/50）抓长针 → 定分钟（吸附 0/30，与「整点/半点」两档一致）
+     里圈抓短针        → 定小时（12 格吸附，短针随分钟偏半格）
+   坐标用 svg 的 getBoundingClientRect() 实测换算：.frame 被 fitFrame() 整体 scale()，写死像素会偏。
+   拖动期间只改两条针线的 x2/y2（ckPaint），不重刷 svg——重刷会让 pointer capture 跟着失效。 */
+function ckBindDrag(){
+  if(!window.__ckMoveBound){
+    window.__ckMoveBound=1;
+    const move=e=>{ if(clockDrag) ckMove(e); };
+    const up=()=>{ clockDrag=null; };
+    if(window.PointerEvent){
+      window.addEventListener("pointermove",move,{passive:false});
+      window.addEventListener("pointerup",up); window.addEventListener("pointercancel",up);
+    }else{
+      window.addEventListener("touchmove",move,{passive:false});
+      window.addEventListener("touchend",up); window.addEventListener("touchcancel",up);
+      window.addEventListener("mousemove",move); window.addEventListener("mouseup",up);
+    }
+  }
+  const face=$("#ckface"); if(!face||face.dataset.ckbound) return;
+  face.dataset.ckbound="1";
+  if(window.PointerEvent) face.addEventListener("pointerdown",ckDown);
+  else { face.addEventListener("touchstart",ckDown,{passive:false}); face.addEventListener("mousedown",ckDown); }
+}
+
+function ckPt(e){
+  const t=(e.touches&&e.touches[0])||(e.changedTouches&&e.changedTouches[0])||e;
+  return {x:t.clientX,y:t.clientY};
+}
+function ckAngle(e){
+  const svg=$("#ckface svg"); if(!svg) return null;
+  const r=svg.getBoundingClientRect(), p=ckPt(e);
+  if(!r.width||!r.height) return null;
+  const dx=(p.x-r.left)/r.width*100-50, dy=(p.y-r.top)/r.height*100-50;
+  let deg=Math.atan2(dx,-dy)*180/Math.PI; if(deg<0) deg+=360;
+  return {deg:deg,rad:Math.hypot(dx,dy)};
+}
+function ckDown(e){
+  if(clockSet.solved) return;
+  const g=ckAngle(e); if(!g) return;
+  if(g.rad>50){ clockDrag=null; return; }            /* 点在钟面外不抓 */
+  clockDrag = g.rad>=26 ? "m" : "h";
+  if(e.cancelable&&e.preventDefault) e.preventDefault();
+  try{ if(e.target&&e.target.setPointerCapture&&e.pointerId!=null) e.target.setPointerCapture(e.pointerId); }catch(_){}
+  ckMove(e);
+}
+function ckMove(e){
+  if(!clockDrag||clockSet.solved) return;
+  const g=ckAngle(e); if(!g||g.rad<9) return;        /* 太靠圆点不判方向 */
+  if(e.cancelable&&e.preventDefault) e.preventDefault();
+  if(clockDrag==="h"){
+    /* 短针角度 = 30h + 0.5m，所以先减掉分钟带来的半格再四舍五入 */
+    let h=Math.round((g.deg-clockSet.m/2)/30)%12; if(h<=0) h+=12;
+    clockSet.h=h;
+  }else{
+    clockSet.m = (g.deg<=90||g.deg>=270) ? 0 : 30;
+  }
+  ckPaint();
+}
+
 function ckRenderFace(){
-  const f=$("#ckface"); if(f) f.innerHTML=clockFaceSVG(clockSet.h,clockSet.m,210);
+  const f=$("#ckface"); if(!f) return;
+  if(f.querySelector("svg")) f.innerHTML=clockFaceSVG(clockSet.h,clockSet.m,210);
+  ckPaint();
+}
+
+/* 只刷「显示层」：两根针的角度、小时数字、当前时间、整点/半点选中态 */
+function ckPaint(){
+  const svg=$("#ckface svg");
+  if(svg){
+    const put=(id,ang,len)=>{ const el=svg.querySelector("#"+id); if(!el) return;
+      const a=ang*Math.PI/180;
+      el.setAttribute("x2",(50+Math.sin(a)*len).toFixed(1));
+      el.setAttribute("y2",(50-Math.cos(a)*len).toFixed(1)); };
+    put("ckhandh",((clockSet.h%12)+clockSet.m/60)/12*360,22);
+    put("ckhandm",clockSet.m/60*360,34);
+  }
   const h=$("#ckhour"); if(h) h.textContent=clockSet.h;
+  const c=$("#cknow"); if(c) c.textContent=clockLabel(clockSet.h,clockSet.m);
   const m0=$("#ckm0"), m30=$("#ckm30");
-  if(m0) m0.style.background=clockSet.m===0?"#C6F0A0":"#";
-  if(m30) m30.style.background=clockSet.m===30?"#C6F0A0":"#";
+  if(m0) m0.classList.toggle("ck-on",clockSet.m===0);
+  if(m30) m30.classList.toggle("ck-on",clockSet.m===30);
 }
 
 function ckConfirm(){

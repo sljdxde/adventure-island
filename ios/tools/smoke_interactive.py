@@ -16,7 +16,8 @@ v0.11 的「双线合并」把 5 个函数定义整段删掉（调用它的 oncl
 本脚本用 headless Chrome 真派发事件 / 真点按钮，在每一类交互上走完整条通关路径：
 
   write  逐关：轻点不算写 → 重播演示不报错 → 逐笔描红 → done=true → 过关反馈出现
-  clock  拨钟：按 ＋时/－时 拨到目标小时 → 点整点/半点 → 「拨好啦 ✓」→ solved=true
+  clock  拨钟：＋时/－时 往返各一次 → 拖长针定分钟 → 拖短针定小时
+         → 「拨好啦 ✓」→ solved=true（v1.0.1 起同时覆盖指针拖拽）
   money  付钱：按面额凑出标价 → 多付一枚 → 点 chip 退掉 → 「确认付钱 ✓」→ solved=true
   sudoku 数独：逐格点空格 → 点调色板图标 → 全部填满 → solved=true
 
@@ -35,6 +36,7 @@ import argparse
 import concurrent.futures as futures
 import http.server
 import json
+import math
 import os
 import re
 import shutil
@@ -128,7 +130,7 @@ function drag(svg,pts){
 })();
 """
 
-# 认钟表「拨一拨」：点真按钮，不许直接调函数
+# 认钟表「拨一拨」（v1.0.1）：按钮往返 + 真派发指针拖拽，不许直接调函数
 CLOCK_JS = BASE_JS + r"""
 (async function(){
   try{
@@ -137,18 +139,40 @@ CLOCK_JS = BASE_JS + r"""
     const byText=t=>btns().find(b=>(b.textContent||'').includes(t));
     const th=clockSet.targetH, tm=clockSet.targetM;
     window.__out.target=[th,tm];
-    window.__out.h0=clockSet.h;
-    let guard=0;
-    while(clockSet.h!==th&&guard++<30){
-      const b=byText(clockSet.h<th?'＋ 时':'－ 时');
-      if(!b) throw new Error('找不到拨小时的按钮');
-      b.click(); await sleep(10);
-    }
-    window.__out.hAfter=clockSet.h; window.__out.hClicks=guard;
-    const mb=byText(tm===0?'整点 :00':'半点 :30');
-    if(!mb) throw new Error('找不到拨分钟的按钮');
-    mb.click(); await sleep(10);
-    window.__out.mAfter=clockSet.m;
+    window.__out.h0=clockSet.h; window.__out.m0=clockSet.m;
+
+    /* ① 按钮这条老路径不许坏：＋时 一次、－时 一次，回到原处 */
+    const plus=byText('＋ 时'), minus=byText('－ 时');
+    if(!plus||!minus) throw new Error('找不到拨小时的按钮');
+    plus.click(); await sleep(20); window.__out.hAfterPlus=clockSet.h;
+    minus.click(); await sleep(20); window.__out.hAfterMinus=clockSet.h;
+
+    /* ② 拖指针：外圈（半径 40）抓长针定分钟，里圈（半径 18）抓短针定小时 */
+    const svg=document.querySelector('#ckface svg');
+    if(!svg) throw new Error('找不到钟面 svg');
+    const XY=(deg,rad)=>{ const r=svg.getBoundingClientRect(); const a=deg*Math.PI/180;
+      return {x:r.left+(50+Math.sin(a)*rad)/100*r.width,
+              y:r.top+(50-Math.cos(a)*rad)/100*r.height}; };
+    const fire=(type,pt)=>svg.dispatchEvent(new PointerEvent(type,{bubbles:true,cancelable:true,
+      clientX:pt.x, clientY:pt.y, pointerId:1, pointerType:'touch', isPrimary:true,
+      button:0, buttons:type==='pointerup'?0:1}));
+    const dragHand=(rad,from,to)=>{ fire('pointerdown',XY(from,rad));
+      for(let k=1;k<=6;k++) fire('pointermove',XY(from+(to-from)*k/6,rad));
+      fire('pointerup',XY(to,rad)); };
+
+    dragHand(40,0,tm===0?0:180); await sleep(20);
+    window.__out.mAfterDrag=clockSet.m;
+    const hDeg=(th%12)*30;
+    dragHand(18,0,hDeg); await sleep(20);
+    window.__out.hAfterDrag=clockSet.h;
+
+    /* 图形要真的转过去（不是只改了状态）：长针 y2、短针 x2 都要落在目标角度上 */
+    const mh=document.querySelector('#ckhandm'), hh=document.querySelector('#ckhandh');
+    window.__out.mx2=mh?parseFloat(mh.getAttribute('x2')):null;
+    window.__out.my2=mh?parseFloat(mh.getAttribute('y2')):null;
+    window.__out.hx2=hh?parseFloat(hh.getAttribute('x2')):null;
+    window.__out.current=((document.getElementById('cknow')||{}).textContent||'').trim();
+
     const ok=byText('拨好啦');
     if(!ok) throw new Error('找不到「拨好啦」');
     ok.click(); await sleep(200);
@@ -366,12 +390,33 @@ def judge_clock(out):
     bad = []
     if out.get("phase") != "done":
         return ["未跑完：" + str(out.get("phase")) + " " + str(out.get("err", ""))[:160]]
-    if out.get("hAfter") != (out.get("target") or [None])[0]:
-        bad.append("拨小时没到位：%s → %s" % (out.get("target"), out.get("hAfter")))
-    if out.get("mAfter") != (out.get("target") or [None, None])[1]:
-        bad.append("拨分钟没到位：%s → %s" % (out.get("target"), out.get("mAfter")))
+    th, tm = (out.get("target") or [None, None])
+    h0 = out.get("h0")
+    # 老按钮路径：＋时 要变、－时 要回到原处
+    if out.get("hAfterPlus") == h0:
+        bad.append("点「＋ 时」小时没变（%s）" % h0)
+    if out.get("hAfterMinus") != h0:
+        bad.append("点「－ 时」没回到 %s（%s）" % (h0, out.get("hAfterMinus")))
+    # 新拖拽路径：状态要到位
+    if out.get("mAfterDrag") != tm:
+        bad.append("拖长针没把分钟拨到 %s（%s）" % (tm, out.get("mAfterDrag")))
+    if out.get("hAfterDrag") != th:
+        bad.append("拖短针没把小时拨到 %s（%s）" % (th, out.get("hAfterDrag")))
+    # 图形要真的转过去，不能只改状态
+    mx2, my2, hx2 = out.get("mx2"), out.get("my2"), out.get("hx2")
+    want_my2 = 50 - 34 if tm == 0 else 50 + 34
+    if mx2 is None or abs(mx2 - 50) > 1.5:
+        bad.append("长针图形没转到 %s 分（x2=%s）" % (tm, mx2))
+    if my2 is None or abs(my2 - want_my2) > 1.5:
+        bad.append("长针图形没转到 %s 分（y2=%s，期望 %s）" % (tm, my2, want_my2))
+    want_hx2 = 50 + math.sin((th % 12) * 30 * math.pi / 180) * 22
+    if hx2 is None or abs(hx2 - want_hx2) > 1.5:
+        bad.append("短针图形没转到 %s 点（x2=%s，期望 %.1f）" % (th, hx2, want_hx2))
+    cur = (out.get("current") or "").strip()
+    if cur != "%d:%02d" % (th, tm):
+        bad.append("「当前」没跟着变（%r）" % cur)
     if not out.get("solved"):
-        bad.append("拨到目标时间后按「拨好啦」没过关（solved=false）")
+        bad.append("拖到目标时间后按「拨好啦」没过关（solved=false）")
     return bad
 
 
