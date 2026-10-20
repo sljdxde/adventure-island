@@ -20,6 +20,7 @@ v0.11 的「双线合并」把 5 个函数定义整段删掉（调用它的 oncl
          → 「拨好啦 ✓」→ solved=true（v1.0.1 起同时覆盖指针拖拽）
   money  付钱：按面额凑出标价 → 多付一枚 → 点 chip 退掉 → 「确认付钱 ✓」→ solved=true
   sudoku 数独：逐格点空格 → 点调色板图标 → 全部填满 → solved=true
+  mappuzzle 拼地图：逐块拖到虚线轮廓（v1.0.1 起）→ 每块都要吸附 → 全部归位
 
 用法：
     python3 ios/tools/smoke_interactive.py                 # 全量（约 2-4 分钟）
@@ -262,7 +263,58 @@ SUDOKU_JS = BASE_JS + r"""
 })();
 """
 
-PAYLOADS = {"write": WRITE_JS, "clock": CLOCK_JS, "money": MONEY_JS, "sudoku": SUDOKU_JS}
+# 拼地图（v1.0.1）：托盘卡片逐块拖到虚线轮廓，真派发 pointer 事件
+MAP_JS = BASE_JS + r"""
+(async function(){
+  try{
+    await waitFor(()=>typeof mapState!=='undefined'&&!!document.getElementById('mapwrap'));
+    const st=window._map.st;
+    const cards=[...document.querySelectorAll('.pz-piece')];
+    window.__out.map=st.map;
+    window.__out.n=(st.pieces||[]).length;
+    window.__out.cards=cards.length;
+    /* pieces 为空时卡片为 0——这正是「地图没有可以拖动的」那类缺陷，交给 judge 判 */
+    if(!window.__out.n) throw new Error('pieces 为空：一块都没渲染');
+    if(cards.length!==window.__out.n)
+      throw new Error('托盘卡片数 '+cards.length+' ≠ pieces '+window.__out.n);
+    const wrapEl=document.getElementById('mapwrap');
+    const wrap=wrapEl.getBoundingClientRect();
+    /* pzTarget 用的是布局坐标（clientWidth 口径）；整页被 fitFrame 等比缩放，
+       送指针时要换回屏幕坐标，否则远端块会被判成「没吸住」（测试自己算错，不是渲染错） */
+    const sc=(wrap.width&&wrapEl.clientWidth)?wrap.width/wrapEl.clientWidth:1;
+    const fire=(el,type,x,y)=>el.dispatchEvent(new PointerEvent(type,{bubbles:true,cancelable:true,
+      clientX:x, clientY:y, pointerId:1, pointerType:'touch', isPrimary:true,
+      button:0, buttons:type==='pointerup'?0:1}));
+    const bad=[];
+    for(let i=0;i<window.__out.n;i++){
+      const el=document.getElementById('mb'+i);
+      const t=pzTarget(i);
+      if(!el||!t){ bad.push((i+1)+':找不到卡片或目标'); continue; }
+      const br=el.getBoundingClientRect();
+      const sx=br.left+br.width/2, sy=br.top+br.height/2;
+      const tx=wrap.left+t.cx*sc, ty=wrap.top+t.cy*sc;
+      fire(el,'pointerdown',sx,sy);
+      for(let k=1;k<=6;k++){ fire(el,'pointermove',sx+(tx-sx)*k/6,sy+(ty-sy)*k/6); await sleep(8); }
+      fire(el,'pointerup',tx,ty);
+      await sleep(40);
+      if(!mapState.placed[i]) bad.push((i+1)+'：'+(st.pieces[i]||'?')+' 拖到轮廓前没吸住');
+    }
+    window.__out.bad=bad;
+    window.__out.placed=mapState.placed.filter(Boolean).length;
+    window.__out.fb=((document.getElementById('stepfb')||{}).textContent||'').trim();
+    await sleep(900);
+    window.__out.stepfb=((document.getElementById('stepfb')||{}).textContent||'').trim();
+    window.__out.errs=window.__errs; window.__out.phase='done';
+  }catch(err){
+    window.__out.phase='fail'; window.__out.err=String(err&&err.stack||err);
+    window.__out.errs=window.__errs;
+  }
+  emit();
+})();
+"""
+
+PAYLOADS = {"write": WRITE_JS, "clock": CLOCK_JS, "money": MONEY_JS,
+            "sudoku": SUDOKU_JS, "mappuzzle": MAP_JS}
 
 
 def find_chrome():
@@ -315,6 +367,13 @@ def collect(content, groups, subjects):
                 elif k == "sudoku" and "sudoku" in groups:
                     items.append({"kind": "sudoku", "sub": sub, "li": li, "si": si, "lid": lv["id"],
                                   "label": f"数独 {st.get('size','?')}×{st.get('size','?')}"})
+                elif k == "mappuzzle" and "mappuzzle" in groups:
+                    # 复习关先落棋盘页（要先掷骰子出发），深链直达题面进不去，测了也只是超时；
+                    # Boss 关能直达，而且它走另一条「容器太矮就整体缩放」的渲染分支，必须测。
+                    if lv.get("review"):
+                        continue
+                    items.append({"kind": "mappuzzle", "sub": sub, "li": li, "si": si, "lid": lv["id"],
+                                  "label": f"拼 {st.get('map')} {len(st.get('pieces') or [])} 块"})
     return items
 
 
@@ -450,14 +509,33 @@ def judge_sudoku(out):
     return bad
 
 
-JUDGES = {"write": judge_write, "clock": judge_clock, "money": judge_money, "sudoku": judge_sudoku}
+def judge_mappuzzle(out):
+    bad = []
+    if out.get("phase") != "done":
+        return ["未跑完：" + str(out.get("phase")) + " " + str(out.get("err", ""))[:160]]
+    n, cards = out.get("n") or 0, out.get("cards") or 0
+    if not n:
+        bad.append("pieces 为空：渲染端一块都没有（数据字段与渲染端脱钩）")
+    if cards != n:
+        bad.append("托盘卡片数 %s ≠ pieces %s" % (cards, n))
+    bad.extend(out.get("bad") or [])
+    if (out.get("placed") or 0) != n:
+        bad.append("拖完只有 %s/%s 块吸附上" % (out.get("placed"), n))
+    fb = (out.get("fb") or "").strip()
+    if n and not fb.startswith("✅"):
+        bad.append("全部拖完后没有归位反馈（stepfb=%r）" % fb)
+    return bad
+
+
+JUDGES = {"write": judge_write, "clock": judge_clock, "money": judge_money,
+          "sudoku": judge_sudoku, "mappuzzle": judge_mappuzzle}
 
 
 def main():
-    ap = argparse.ArgumentParser(description="交互冒烟：写字/拨钟/付钱/数独 四类需要点击的步骤逐条走完整条通关路径")
-    ap.add_argument("--groups", nargs="*", default=["write", "clock", "money", "sudoku"],
-                    choices=["write", "clock", "money", "sudoku"])
-    ap.add_argument("--subjects", nargs="*", default=["cn", "pinyin", "math"])
+    ap = argparse.ArgumentParser(description="交互冒烟：写字/拨钟/付钱/数独/拼地图 五类需要点击拖拽的步骤逐条走完整条通关路径")
+    ap.add_argument("--groups", nargs="*", default=["write", "clock", "money", "sudoku", "mappuzzle"],
+                    choices=["write", "clock", "money", "sudoku", "mappuzzle"])
+    ap.add_argument("--subjects", nargs="*", default=["cn", "pinyin", "math", "geo"])
     ap.add_argument("--limit", type=int, default=None, help="每个组只测前 N 项")
     ap.add_argument("--jobs", type=int, default=4, help="并发 Chrome 数（默认 4）")
     ap.add_argument("--budget", type=int, default=22000, help="单个页面虚拟时间预算(ms)")

@@ -3055,9 +3055,13 @@ def geo_letter(gid, display, examples, question):
 def geo_quiz(qid, q, items, ans, hint, praise):
     return quiz_step(qid, q, items, ans, hint, praise)
 
-def mappuzzle_step(mid, the_map, regions, q):
+def mappuzzle_step(mid, the_map, regions, pieces, q):
+    """pieces：省份/大洲名字，必须与 preview 的 CHINA_MAP / WORLD_MAP 里 `n` 完全一致。
+    HTML 端自 v0.11 改成「真地图 + 轮廓块」，只认 pieces；缺了它一块都渲染不出来
+    （2026-10-20 试玩反馈「这里地图没有可以拖动的」就是这个字段没跟上）。
+    regions 是 Swift 冻结点版本的旧假图块，保留字段只为 native 端还能解码。"""
     return {"id": mid, "kind": "mappuzzle", "map": the_map, "regions": regions,
-            "question": q, "praise": "拼好啦，地图在你手里！"}
+            "pieces": list(pieces), "question": q, "praise": "拼好啦，地图在你手里！"}
 
 # 中国章（6 关）
 CHINA_BLOCKS = [
@@ -3068,11 +3072,13 @@ CHINA_BLOCKS = [
     {"id": "cn-south", "label": "南方", "color": "#F2C14E", "points": [[48,36],[66,34],[70,48],[52,50]]},
     {"id": "cn-island", "label": "海岛", "color": "#9B8CE8", "points": [[52,50],[62,48],[60,56],[50,55]]},
 ]
+# 6 块都挑中国地图上面积最大、孩子最容易抓的一批（名字见 preview CHINA_MAP 的 ps[].n）
+CHINA_PIECES = ["新疆", "内蒙古", "黑龙江", "西藏", "四川", "广东"]
 geo_levels.append({"id": "geo-0", "title": "第 1 关 中国地图", "subtitle": "大雄鸡", "steps": [
     geo_letter("geo-0", "中国", [{"icon": "china-map", "text": "中国地图", "say": "中国"},
                                  {"icon": "panda", "text": "我们的家", "say": "中国"}],
                "学一学：中国地图像一只大雄鸡"),
-    mappuzzle_step("geo-0-pz", "china", CHINA_BLOCKS, "拼一拼：把中国地图的六块拖回雄鸡轮廓"),
+    mappuzzle_step("geo-0-pz", "china", CHINA_BLOCKS, CHINA_PIECES, "拼一拼：把中国地图的六块拖回雄鸡轮廓"),
 ]})
 geo_levels.append({"id": "geo-1", "title": "第 2 关 北京", "subtitle": "天安门", "steps": [
     geo_letter("geo-1", "北京", [{"icon": "tiananmen", "text": "天安门", "say": "天安门"},
@@ -3120,11 +3126,12 @@ WORLD_BLOCKS = [
     {"id": "oceania", "label": "大洋洲", "color": "#7FC6A4", "points": [[76,46],[90,44],[92,54],[80,56]]},
     {"id": "antarctica", "label": "南极洲", "color": "#B8D4E8", "points": [[30,56],[70,56],[72,60],[30,60]]},
 ]
+WORLD_PIECES = ["亚洲", "欧洲", "非洲", "北美洲", "南美洲", "大洋洲", "南极洲"]
 geo_levels.append({"id": "geo-6", "title": "第 7 关 七大洲拼图", "subtitle": "世界地图", "steps": [
     geo_letter("geo-6", "世界", [{"icon": "world-map", "text": "世界地图", "say": "世界"},
                                  {"icon": "earth", "text": "地球", "say": "地球"}],
                "学一学：地球上有七大洲，我们住在亚洲"),
-    mappuzzle_step("geo-6-pz", "world", WORLD_BLOCKS, "拼一拼：把七大洲块拖回世界地图轮廓"),
+    mappuzzle_step("geo-6-pz", "world", WORLD_BLOCKS, WORLD_PIECES, "拼一拼：把七大洲块拖回世界地图轮廓"),
 ]})
 geo_levels.append({"id": "geo-7", "title": "第 8 关 亚洲", "subtitle": "我们的家", "steps": [
     geo_letter("geo-7", "亚洲", [{"icon": "earth", "text": "亚洲 Asia", "say": "亚洲"},

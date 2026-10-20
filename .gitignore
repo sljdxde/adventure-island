@@ -21,3 +21,7 @@ build/
 
 # ===== 本地验证截图（体积大，不入库） =====
 .scratch/shots/
+
+# 交互冒烟测试的临时探针页（smoke_interactive.py 运行中写入，跑完自删；中断会残留）
+ios/preview/__smoke_*.html
+ios/preview/__sweep_probe_*.html

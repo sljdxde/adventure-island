@@ -90,6 +90,35 @@ subject_docs = {name: load_json(os.path.join(RES, name + ".json")) for name, _ i
 exps = load_json(os.path.join(RES, "experiments.json"))
 coll = load_json(os.path.join(RES, "collection.json"))
 
+PREVIEW = os.path.join(ROOT, "preview", "index.html")
+
+def load_map_pieces():
+    """从 preview 的 MAPS 段取地图块名字（渲染端唯一真相），返回 {"china": set, "world": set}。
+
+    v1.0.1 新增这个闸门的原因：mappuzzle 自 v0.11 起渲染端改成真地图轮廓，
+    只认 `pieces`（省份/大洲名字）；gen_content 却还在产出旧的 `regions` 多边形，
+    于是整套拼地图关卡「一块都渲染不出来」，而 validate 一路绿灯（regions 非空）。
+    这类「数据字段与渲染端脱钩」静态扫描抓不到，只能拿地图清单对名字。
+    """
+    try:
+        src = open(PREVIEW, encoding="utf-8").read()
+        seg = src[src.index("/* === MAPS-BEGIN"):src.index("/* === MAPS-END")]
+    except (OSError, ValueError):
+        return {}
+    out = {}
+    for key, var, stop in (("china", "CHINA_MAP", "const WORLD_MAP"),
+                           ("world", "WORLD_MAP", None)):
+        m = re.search(var + r"\s*=\s*\{", seg)
+        if not m:
+            continue
+        seg2 = seg[m.end():]
+        if stop and stop in seg2:
+            seg2 = seg2[:seg2.index(stop)]
+        out[key] = set(re.findall(r'"n":"([^"]+)"', seg2))
+    return out
+
+MAP_PIECES = load_map_pieces()
+
 json_icons = set()
 def collect_icons(node):
     if isinstance(node, dict):
@@ -407,6 +436,20 @@ def check_subject(doc, name, expect_levels):
                 for r in regions:
                     if not r.get("points") or len(r["points"]) < 3:
                         err(f"{sid} mappuzzle 块 {r.get('id')} 多边形点数<3")
+                # v1.0.1：HTML 端只认 pieces（名字），必须与 preview 地图里的省/洲名逐字一致
+                the_map = st.get("map")
+                pieces = st.get("pieces") or []
+                names = MAP_PIECES.get(the_map, set())
+                if not pieces:
+                    err(f"{sid} mappuzzle 缺 pieces（HTML 端一块都渲染不出来）")
+                elif len(pieces) != len(set(pieces)):
+                    err(f"{sid} mappuzzle pieces 重复 {pieces}")
+                elif names:
+                    bad = [p for p in pieces if p not in names]
+                    if bad:
+                        err(f"{sid} mappuzzle pieces 不在 {the_map} 地图里：{bad}")
+                if the_map not in ("china", "world"):
+                    err(f"{sid} mappuzzle map 非法 {the_map}")
             elif kind == "balance":
                 # v0.10 天文台：天平比一比（answerKey 复用 left/right 语义）
                 for k in ("left", "right"):
@@ -603,6 +646,17 @@ else_ok = all(key in py for key in ['deploymentTarget', 'iOS: "16.0"', 'TARGETED
                                     'UIRequiresFullScreen: true', 'UIInterfaceOrientationLandscapeLeft',
                                     'bundle.unit-test', 'AdventureIslandTests'])
 if else_ok: ok("project.yml 关键配置齐全（iPad only / iOS16 / 横屏 / 测试目标）")
+
+# ---------- 7. 拼地图 pieces 与渲染端地图清单 ----------
+_map_steps = [st for doc in subject_docs.values() for lv in doc.get("levels", [])
+              for st in lv.get("steps", []) if st.get("kind") == "mappuzzle"]
+if any("mappuzzle" in e for e in errors):
+    pass                                  # 具体错误已在 check_subject 里报
+elif _map_steps and not (MAP_PIECES.get("china") and MAP_PIECES.get("world")):
+    warn("读不到 preview 的 CHINA_MAP/WORLD_MAP，mappuzzle pieces 只做了非空校验")
+else:
+    ok(f"mappuzzle pieces 与地图清单一致（{len(_map_steps)} 步；"
+       f"china {len(MAP_PIECES.get('china', set()))} 块 / world {len(MAP_PIECES.get('world', set()))} 块）")
 
 # ---------- 汇总 ----------
 print("=" * 64)
