@@ -1911,7 +1911,7 @@
               "say": "Me"
             },
             {
-              "icon": "girl",
+              "icon": "teacher",
               "text": "Teacher 老师",
               "say": "Teacher"
             },
@@ -1935,7 +1935,7 @@
           "question": "Which one is Me? 我 是哪一个？",
           "options": [
             {
-              "icon": "girl",
+              "icon": "teacher",
               "text": "Teacher"
             },
             {
@@ -1966,7 +1966,7 @@
             },
             {
               "key": "Teacher",
-              "icon": "girl"
+              "icon": "teacher"
             },
             {
               "key": "Teacher",
@@ -1999,7 +1999,7 @@
           "display": "Foot",
           "examples": [
             {
-              "icon": "paw",
+              "icon": "foot",
               "text": "Foot 脚",
               "say": "Foot"
             },
@@ -2036,7 +2036,7 @@
               "text": "Mouth"
             },
             {
-              "icon": "paw",
+              "icon": "foot",
               "text": "Foot"
             }
           ],
@@ -2051,7 +2051,7 @@
           "cards": [
             {
               "key": "Foot",
-              "icon": "paw"
+              "icon": "foot"
             },
             {
               "key": "Foot",
@@ -4905,7 +4905,7 @@
               "say": "Robot Maker"
             },
             {
-              "icon": "girl",
+              "icon": "teacher",
               "text": "Teacher 老师",
               "say": "Teacher"
             },
@@ -4924,7 +4924,7 @@
           "question": "Which one is 「造机器人」?",
           "options": [
             {
-              "icon": "girl",
+              "icon": "teacher",
               "text": "Teacher"
             },
             {
@@ -4954,7 +4954,7 @@
               "text": "Scientist"
             },
             {
-              "icon": "girl",
+              "icon": "teacher",
               "text": "Teacher"
             }
           ],
@@ -4972,7 +4972,7 @@
               "text": "Robot Maker"
             },
             {
-              "icon": "girl",
+              "icon": "teacher",
               "text": "Teacher"
             },
             {
@@ -5001,7 +5001,7 @@
           "display": "Feelings",
           "examples": [
             {
-              "icon": "heart",
+              "icon": "happy",
               "text": "Happy 开心",
               "say": "Happy"
             },
@@ -5011,7 +5011,7 @@
               "say": "Love"
             },
             {
-              "icon": "party",
+              "icon": "excited",
               "text": "Excited 兴奋",
               "say": "Excited"
             }
@@ -5029,11 +5029,11 @@
               "text": "Love"
             },
             {
-              "icon": "party",
+              "icon": "excited",
               "text": "Excited"
             },
             {
-              "icon": "heart",
+              "icon": "happy",
               "text": "Happy"
             }
           ],
@@ -5047,11 +5047,11 @@
           "question": "Which one is 「爱」?",
           "options": [
             {
-              "icon": "heart",
+              "icon": "happy",
               "text": "Happy"
             },
             {
-              "icon": "party",
+              "icon": "excited",
               "text": "Excited"
             },
             {
@@ -5069,7 +5069,7 @@
           "question": "Which one is 「兴奋」?",
           "options": [
             {
-              "icon": "heart",
+              "icon": "happy",
               "text": "Happy"
             },
             {
@@ -5077,7 +5077,7 @@
               "text": "Love"
             },
             {
-              "icon": "party",
+              "icon": "excited",
               "text": "Excited"
             }
           ],
@@ -6483,7 +6483,7 @@
           "display": "Body Power",
           "examples": [
             {
-              "icon": "paw",
+              "icon": "foot",
               "text": "Foot 脚",
               "say": "Foot"
             },
@@ -6515,7 +6515,7 @@
               "text": "Me"
             },
             {
-              "icon": "paw",
+              "icon": "foot",
               "text": "Foot"
             }
           ],
@@ -6529,7 +6529,7 @@
           "question": "Which one is 「小脚丫」?",
           "options": [
             {
-              "icon": "paw",
+              "icon": "foot",
               "text": "Foot"
             },
             {
@@ -6551,7 +6551,7 @@
           "question": "Which one is 「我」?",
           "options": [
             {
-              "icon": "paw",
+              "icon": "foot",
               "text": "Foot"
             },
             {
@@ -7552,7 +7552,7 @@
               "say": "Speaker"
             },
             {
-              "icon": "speaker",
+              "icon": "sing",
               "text": "Sing 唱歌",
               "say": "Sing"
             },
@@ -7571,7 +7571,7 @@
           "question": "Which one is 「喇叭」?",
           "options": [
             {
-              "icon": "speaker",
+              "icon": "sing",
               "text": "Sing"
             },
             {
@@ -7601,7 +7601,7 @@
               "text": "Party"
             },
             {
-              "icon": "speaker",
+              "icon": "sing",
               "text": "Sing"
             }
           ],
@@ -7619,7 +7619,7 @@
               "text": "Speaker"
             },
             {
-              "icon": "speaker",
+              "icon": "sing",
               "text": "Sing"
             },
             {
@@ -7855,7 +7855,7 @@
               "say": "Me"
             },
             {
-              "icon": "girl",
+              "icon": "teacher",
               "text": "Teacher 老师",
               "say": "Teacher"
             },
@@ -7874,7 +7874,7 @@
           "question": "Which one is 「我」?",
           "options": [
             {
-              "icon": "girl",
+              "icon": "teacher",
               "text": "Teacher"
             },
             {
@@ -7904,7 +7904,7 @@
               "text": "Fox"
             },
             {
-              "icon": "girl",
+              "icon": "teacher",
               "text": "Teacher"
             }
           ],
@@ -7922,7 +7922,7 @@
               "text": "Me"
             },
             {
-              "icon": "girl",
+              "icon": "teacher",
               "text": "Teacher"
             },
             {
@@ -8153,17 +8153,17 @@
           "display": "Dinosaur 1",
           "examples": [
             {
-              "icon": "dino",
+              "icon": "trex",
               "text": "T-Rex 霸王龙",
               "say": "T-Rex"
             },
             {
-              "icon": "dino",
+              "icon": "roar",
               "text": "Roar 吼",
               "say": "Roar"
             },
             {
-              "icon": "dino",
+              "icon": "bronto",
               "text": "Long Neck 长脖子",
               "say": "Long Neck"
             }
@@ -8177,15 +8177,15 @@
           "question": "Which one is 「霸王龙」?",
           "options": [
             {
-              "icon": "dino",
+              "icon": "roar",
               "text": "Roar"
             },
             {
-              "icon": "dino",
+              "icon": "bronto",
               "text": "Long Neck"
             },
             {
-              "icon": "dino",
+              "icon": "trex",
               "text": "T-Rex"
             }
           ],
@@ -8199,15 +8199,15 @@
           "question": "Which one is 「吼」?",
           "options": [
             {
-              "icon": "dino",
+              "icon": "trex",
               "text": "T-Rex"
             },
             {
-              "icon": "dino",
+              "icon": "bronto",
               "text": "Long Neck"
             },
             {
-              "icon": "dino",
+              "icon": "roar",
               "text": "Roar"
             }
           ],
@@ -8221,15 +8221,15 @@
           "question": "Which one is 「长脖子」?",
           "options": [
             {
-              "icon": "dino",
+              "icon": "trex",
               "text": "T-Rex"
             },
             {
-              "icon": "dino",
+              "icon": "roar",
               "text": "Roar"
             },
             {
-              "icon": "dino",
+              "icon": "bronto",
               "text": "Long Neck"
             }
           ],
@@ -8254,7 +8254,7 @@
           "display": "Dinosaur 2",
           "examples": [
             {
-              "icon": "dino",
+              "icon": "bronto",
               "text": "Long Neck 长脖子",
               "say": "Long Neck"
             },
@@ -8264,7 +8264,7 @@
               "say": "Eats Leaves"
             },
             {
-              "icon": "dino",
+              "icon": "trex",
               "text": "T-Rex 霸王龙",
               "say": "T-Rex"
             }
@@ -8282,11 +8282,11 @@
               "text": "Eats Leaves"
             },
             {
-              "icon": "dino",
+              "icon": "trex",
               "text": "T-Rex"
             },
             {
-              "icon": "dino",
+              "icon": "bronto",
               "text": "Long Neck"
             }
           ],
@@ -8300,11 +8300,11 @@
           "question": "Which one is 「吃叶子」?",
           "options": [
             {
-              "icon": "dino",
+              "icon": "bronto",
               "text": "Long Neck"
             },
             {
-              "icon": "dino",
+              "icon": "trex",
               "text": "T-Rex"
             },
             {
@@ -8322,7 +8322,7 @@
           "question": "Which one is 「霸王龙」?",
           "options": [
             {
-              "icon": "dino",
+              "icon": "bronto",
               "text": "Long Neck"
             },
             {
@@ -8330,7 +8330,7 @@
               "text": "Eats Leaves"
             },
             {
-              "icon": "dino",
+              "icon": "trex",
               "text": "T-Rex"
             }
           ],

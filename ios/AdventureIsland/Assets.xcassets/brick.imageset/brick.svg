@@ -1,5 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs><linearGradient id="g-coral" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFA793"/><stop offset="1" stop-color="#F0705F"/></linearGradient></defs>
-  <rect x="6" y="10" width="52" height="44" rx="8" fill="url(#g-coral)"/>
-  <rect x="6" y="10" width="52" height="44" rx="8" fill="none" stroke="#B0402F" stroke-width="3.5"/>
-  <path d="M6 25 L58 25 M6 40 L58 40 M22 10 L22 25 M42 10 L42 25 M14 25 L14 40 M32 25 L32 40 M50 25 L50 40 M22 40 L22 54 M42 40 L42 54" stroke="#B0402F" stroke-width="3"/>
-  <path d="M12 16 Q12 14 15 14 L26 14" stroke="#fff" stroke-width="3.5" fill="none" opacity=".45" stroke-linecap="round"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><style>.st{stroke:#5B4636;stroke-width:2.4;stroke-linejoin:round;stroke-linecap:round}.th{stroke:#5B4636;stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round}</style><rect class="st" x="6" y="12" width="52" height="40" rx="6" fill="#E8654F"/><path class="th" d="M7 25 L57 25 M7 38 L57 38 M22 12 L22 25 M42 12 L42 25 M14 25 L14 38 M32 25 L32 38 M50 25 L50 38 M22 38 L22 52 M42 38 L42 52"/><ellipse cx="16" cy="18" rx="3" ry="2.5" fill="#fff" opacity="0.5"/></svg>

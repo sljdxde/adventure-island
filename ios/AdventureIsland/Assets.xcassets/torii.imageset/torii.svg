@@ -1,7 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs><linearGradient id="g-tor" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E86A4A"/><stop offset="1" stop-color="#C24836"/></linearGradient></defs>
-  <rect x="6" y="10" width="52" height="7" rx="3" fill="url(#g-tor)"/>
-  <rect x="10" y="20" width="44" height="5" rx="2" fill="url(#g-tor)"/>
-  <rect x="14" y="17" width="7" height="41" rx="2" fill="url(#g-tor)"/>
-  <rect x="43" y="17" width="7" height="41" rx="2" fill="url(#g-tor)"/>
-  <rect x="30" y="25" width="4" height="20" rx="1.6" fill="url(#g-tor)"/>
-  <circle cx="47" cy="12" r="1.6" fill="#FFE58A"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs>
+      <linearGradient id="tor-g" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#EC7850"/><stop offset="100%" stop-color="#C2422E"/>
+      </linearGradient>
+    </defs>
+    <path d="M4 9 L60 9 L57 5 L7 5 Z" fill="#3A2A24"/>
+    <rect x="5" y="9" width="54" height="5" rx="1.5" fill="#3A2A24"/>
+    <rect x="9" y="18" width="46" height="4" rx="1.5" fill="url(#tor-g)"/>
+    <rect x="14" y="15" width="7" height="39" rx="2" fill="url(#tor-g)"/>
+    <rect x="43" y="15" width="7" height="39" rx="2" fill="url(#tor-g)"/>
+    <rect x="30" y="22" width="4" height="18" rx="1.5" fill="#D85A3A"/>
+    <rect x="11" y="52" width="13" height="3" rx="1" fill="#9A3022"/>
+    <rect x="40" y="52" width="13" height="3" rx="1" fill="#9A3022"/></svg>

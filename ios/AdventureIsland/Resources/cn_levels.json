@@ -102,8 +102,7 @@
           "question": "找一找：哪张图片是「日」？",
           "options": [
             {
-              "icon": "sunrise",
-              "text": "日"
+              "icon": "sunrise"
             },
             {
               "icon": "moon"
@@ -143,15 +142,12 @@
           "question": "「日」可以组成哪个词？",
           "options": [
             {
-              "icon": "moon",
               "text": "月亮"
             },
             {
-              "icon": "sunrise",
               "text": "日出"
             },
             {
-              "icon": "moon",
               "text": "月牙"
             }
           ],
@@ -189,8 +185,7 @@
               "icon": "moon"
             },
             {
-              "icon": "sunrise",
-              "text": "日"
+              "icon": "sunrise"
             },
             {
               "icon": "cake"
@@ -357,8 +352,7 @@
               "icon": "sun"
             },
             {
-              "icon": "moon",
-              "text": "月"
+              "icon": "moon"
             }
           ],
           "answer": 2,
@@ -392,15 +386,12 @@
           "question": "「月」可以组成哪个词？",
           "options": [
             {
-              "icon": "wave",
               "text": "海水"
             },
             {
-              "icon": "crystal",
               "text": "泉水"
             },
             {
-              "icon": "moon",
               "text": "月亮"
             }
           ],
@@ -435,8 +426,7 @@
           "question": "再找一找：哪张图片是「月」？",
           "options": [
             {
-              "icon": "moon",
-              "text": "月"
+              "icon": "moon"
             },
             {
               "icon": "sun"
@@ -561,8 +551,7 @@
           "question": "找一找：哪张图片是「水」？",
           "options": [
             {
-              "icon": "wave",
-              "text": "水"
+              "icon": "wave"
             },
             {
               "icon": "sun"
@@ -602,15 +591,12 @@
           "question": "「水」可以组成哪个词？",
           "options": [
             {
-              "icon": "wave",
               "text": "海水"
             },
             {
-              "icon": "school",
               "text": "上山"
             },
             {
-              "icon": "leaf",
               "text": "山林"
             }
           ],
@@ -648,8 +634,7 @@
               "icon": "sun"
             },
             {
-              "icon": "wave",
-              "text": "水"
+              "icon": "wave"
             },
             {
               "icon": "crystal"
@@ -772,8 +757,7 @@
               "icon": "rocket"
             },
             {
-              "icon": "volcano",
-              "text": "山"
+              "icon": "volcano"
             },
             {
               "icon": "home"
@@ -810,15 +794,12 @@
           "question": "「山」可以组成哪个词？",
           "options": [
             {
-              "icon": "leaf",
               "text": "树木"
             },
             {
-              "icon": "school",
               "text": "上山"
             },
             {
-              "icon": "flower",
               "text": "花木"
             }
           ],
@@ -859,8 +840,7 @@
               "icon": "home"
             },
             {
-              "icon": "volcano",
-              "text": "山"
+              "icon": "volcano"
             }
           ],
           "answer": 2,
@@ -970,8 +950,7 @@
           "question": "找一找：哪张图片是「木」？",
           "options": [
             {
-              "icon": "sprout",
-              "text": "木"
+              "icon": "sprout"
             },
             {
               "icon": "flower"
@@ -1011,15 +990,12 @@
           "question": "「木」可以组成哪个词？",
           "options": [
             {
-              "icon": "party",
               "text": "人们"
             },
             {
-              "icon": "speaker",
               "text": "开口"
             },
             {
-              "icon": "leaf",
               "text": "树木"
             }
           ],
@@ -1057,8 +1033,7 @@
               "icon": "flower"
             },
             {
-              "icon": "sprout",
-              "text": "木"
+              "icon": "sprout"
             },
             {
               "icon": "rock"
@@ -1187,8 +1162,7 @@
               "icon": "duck"
             },
             {
-              "icon": "girl",
-              "text": "人"
+              "icon": "girl"
             }
           ],
           "answer": 2,
@@ -1222,15 +1196,12 @@
           "question": "「人」可以组成哪个词？",
           "options": [
             {
-              "icon": "heart",
               "text": "大人"
             },
             {
-              "icon": "sun",
               "text": "天空"
             },
             {
-              "icon": "sunrise",
               "text": "今天"
             }
           ],
@@ -1265,8 +1236,7 @@
           "question": "再找一找：哪张图片是「人」？",
           "options": [
             {
-              "icon": "girl",
-              "text": "人"
+              "icon": "girl"
             },
             {
               "icon": "duck"
@@ -1375,8 +1345,7 @@
           "question": "找一找：哪张图片是「口」？",
           "options": [
             {
-              "icon": "speaker",
-              "text": "口"
+              "icon": "speaker"
             },
             {
               "icon": "clock"
@@ -1416,15 +1385,12 @@
           "question": "「口」可以组成哪个词？",
           "options": [
             {
-              "icon": "flower",
               "text": "水田"
             },
             {
-              "icon": "speaker",
               "text": "开口"
             },
             {
-              "icon": "rock",
               "text": "石头"
             }
           ],
@@ -1462,8 +1428,7 @@
               "icon": "clock"
             },
             {
-              "icon": "speaker",
-              "text": "口"
+              "icon": "speaker"
             },
             {
               "icon": "moon"
@@ -1579,8 +1544,7 @@
               "icon": "banana"
             },
             {
-              "icon": "sun",
-              "text": "天"
+              "icon": "sun"
             },
             {
               "icon": "rocket"
@@ -1617,15 +1581,12 @@
           "question": "「天」可以组成哪个词？",
           "options": [
             {
-              "icon": "flame",
               "text": "火焰"
             },
             {
-              "icon": "volcano",
               "text": "火山"
             },
             {
-              "icon": "sun",
               "text": "天空"
             }
           ],
@@ -1666,8 +1627,7 @@
               "icon": "rocket"
             },
             {
-              "icon": "sun",
-              "text": "天"
+              "icon": "sun"
             }
           ],
           "answer": 2,
@@ -1787,8 +1747,7 @@
               "icon": "gift"
             },
             {
-              "icon": "calendar",
-              "text": "田"
+              "icon": "calendar"
             }
           ],
           "answer": 2,
@@ -1822,15 +1781,12 @@
           "question": "「田」可以组成哪个词？",
           "options": [
             {
-              "icon": "sprout",
               "text": "田里"
             },
             {
-              "icon": "flower",
               "text": "花朵"
             },
             {
-              "icon": "leaf",
               "text": "花瓣"
             }
           ],
@@ -1865,8 +1821,7 @@
           "question": "再找一找：哪张图片是「田」？",
           "options": [
             {
-              "icon": "calendar",
-              "text": "田"
+              "icon": "calendar"
             },
             {
               "icon": "gift"
@@ -1996,8 +1951,7 @@
           "question": "找一找：哪张图片是「石」？",
           "options": [
             {
-              "icon": "rock",
-              "text": "石"
+              "icon": "rock"
             },
             {
               "icon": "balloon"
@@ -2037,15 +1991,12 @@
           "question": "「石」可以组成哪个词？",
           "options": [
             {
-              "icon": "leaf",
               "text": "小草"
             },
             {
-              "icon": "rock",
               "text": "石头"
             },
             {
-              "icon": "sprout",
               "text": "草地"
             }
           ],
@@ -2083,8 +2034,7 @@
               "icon": "balloon"
             },
             {
-              "icon": "rock",
-              "text": "石"
+              "icon": "rock"
             },
             {
               "icon": "leaf"
@@ -2216,8 +2166,7 @@
           "question": "找一找：哪张图片是「火」？",
           "options": [
             {
-              "icon": "flame",
-              "text": "火"
+              "icon": "flame"
             },
             {
               "icon": "crystal"
@@ -2257,15 +2206,12 @@
           "question": "「火」可以组成哪个词？",
           "options": [
             {
-              "icon": "equal",
               "text": "一个"
             },
             {
-              "icon": "sunrise",
               "text": "一天"
             },
             {
-              "icon": "flame",
               "text": "火焰"
             }
           ],
@@ -2303,8 +2249,7 @@
               "icon": "crystal"
             },
             {
-              "icon": "flame",
-              "text": "火"
+              "icon": "flame"
             },
             {
               "icon": "key"
@@ -2459,8 +2404,7 @@
               "icon": "star"
             },
             {
-              "icon": "flower",
-              "text": "花"
+              "icon": "flower"
             },
             {
               "icon": "train"
@@ -2497,15 +2441,12 @@
           "question": "「花」可以组成哪个词？",
           "options": [
             {
-              "icon": "flower",
               "text": "花朵"
             },
             {
-              "icon": "calendar",
               "text": "第二"
             },
             {
-              "icon": "star",
               "text": "三个"
             }
           ],
@@ -2546,8 +2487,7 @@
               "icon": "train"
             },
             {
-              "icon": "flower",
-              "text": "花"
+              "icon": "flower"
             }
           ],
           "answer": 2,
@@ -2674,8 +2614,7 @@
               "icon": "cake"
             },
             {
-              "icon": "leaf",
-              "text": "草"
+              "icon": "leaf"
             },
             {
               "icon": "duck"
@@ -2712,15 +2651,12 @@
           "question": "「草」可以组成哪个词？",
           "options": [
             {
-              "icon": "school",
               "text": "三角"
             },
             {
-              "icon": "leaf",
               "text": "小草"
             },
             {
-              "icon": "calendar",
               "text": "四季"
             }
           ],
@@ -2761,8 +2697,7 @@
               "icon": "duck"
             },
             {
-              "icon": "leaf",
-              "text": "草"
+              "icon": "leaf"
             }
           ],
           "answer": 2,
@@ -2893,8 +2828,7 @@
           "question": "找一找：哪张图片是「鸟」？",
           "options": [
             {
-              "icon": "duck",
-              "text": "鸟"
+              "icon": "duck"
             },
             {
               "icon": "apple"
@@ -2934,15 +2868,12 @@
           "question": "「鸟」可以组成哪个词？",
           "options": [
             {
-              "icon": "star",
               "text": "五个"
             },
             {
-              "icon": "party",
               "text": "五官"
             },
             {
-              "icon": "duck",
               "text": "小鸟"
             }
           ],
@@ -2980,8 +2911,7 @@
               "icon": "apple"
             },
             {
-              "icon": "duck",
-              "text": "鸟"
+              "icon": "duck"
             },
             {
               "icon": "rocket"
@@ -3139,8 +3069,7 @@
           "question": "找一找：哪张图片是「一」？",
           "options": [
             {
-              "icon": "equal",
-              "text": "一"
+              "icon": "equal"
             },
             {
               "icon": "sun"
@@ -3180,15 +3109,12 @@
           "question": "「一」可以组成哪个词？",
           "options": [
             {
-              "icon": "equal",
               "text": "一个"
             },
             {
-              "icon": "gift",
               "text": "六一小礼物"
             },
             {
-              "icon": "dice",
               "text": "七天"
             }
           ],
@@ -3226,8 +3152,7 @@
               "icon": "sun"
             },
             {
-              "icon": "equal",
-              "text": "一"
+              "icon": "equal"
             },
             {
               "icon": "moon"
@@ -3342,8 +3267,7 @@
               "icon": "star"
             },
             {
-              "icon": "equal",
-              "text": "二"
+              "icon": "equal"
             },
             {
               "icon": "sun"
@@ -3380,15 +3304,12 @@
           "question": "「二」可以组成哪个词？",
           "options": [
             {
-              "icon": "candy",
               "text": "八个"
             },
             {
-              "icon": "moon",
               "text": "二月"
             },
             {
-              "icon": "flower",
               "text": "八哥花"
             }
           ],
@@ -3429,8 +3350,7 @@
               "icon": "sun"
             },
             {
-              "icon": "equal",
-              "text": "二"
+              "icon": "equal"
             }
           ],
           "answer": 2,
@@ -3539,8 +3459,7 @@
               "icon": "moon"
             },
             {
-              "icon": "equal",
-              "text": "三"
+              "icon": "equal"
             }
           ],
           "answer": 2,
@@ -3574,15 +3493,12 @@
           "question": "「三」可以组成哪个词？",
           "options": [
             {
-              "icon": "star",
               "text": "九颗星"
             },
             {
-              "icon": "star",
               "text": "十个"
             },
             {
-              "icon": "star",
               "text": "三个"
             }
           ],
@@ -3617,8 +3533,7 @@
           "question": "再找一找：哪张图片是「三」？",
           "options": [
             {
-              "icon": "equal",
-              "text": "三"
+              "icon": "equal"
             },
             {
               "icon": "moon"
@@ -3737,8 +3652,7 @@
           "question": "找一找：哪张图片是「四」？",
           "options": [
             {
-              "icon": "calendar",
-              "text": "四"
+              "icon": "calendar"
             },
             {
               "icon": "equal"
@@ -3778,15 +3692,12 @@
           "question": "「四」可以组成哪个词？",
           "options": [
             {
-              "icon": "calendar",
               "text": "四季"
             },
             {
-              "icon": "girl",
               "text": "大人"
             },
             {
-              "icon": "bear",
               "text": "大象"
             }
           ],
@@ -3824,8 +3735,7 @@
               "icon": "equal"
             },
             {
-              "icon": "calendar",
-              "text": "四"
+              "icon": "calendar"
             },
             {
               "icon": "sunrise"
@@ -3948,8 +3858,7 @@
               "icon": "equal"
             },
             {
-              "icon": "star",
-              "text": "五"
+              "icon": "star"
             },
             {
               "icon": "moon"
@@ -3986,15 +3895,12 @@
           "question": "「五」可以组成哪个词？",
           "options": [
             {
-              "icon": "rabbit",
               "text": "小兔子"
             },
             {
-              "icon": "star",
               "text": "五个"
             },
             {
-              "icon": "sunrise",
               "text": "上学"
             }
           ],
@@ -4035,8 +3941,7 @@
               "icon": "moon"
             },
             {
-              "icon": "star",
-              "text": "五"
+              "icon": "star"
             }
           ],
           "answer": 2,
@@ -4159,8 +4064,7 @@
               "icon": "star"
             },
             {
-              "icon": "sparkle",
-              "text": "六"
+              "icon": "sparkle"
             }
           ],
           "answer": 2,
@@ -4194,15 +4098,12 @@
           "question": "「六」可以组成哪个词？",
           "options": [
             {
-              "icon": "wave",
               "text": "下雨"
             },
             {
-              "icon": "home",
               "text": "下面"
             },
             {
-              "icon": "sparkle",
               "text": "六个"
             }
           ],
@@ -4237,8 +4138,7 @@
           "question": "再找一找：哪张图片是「六」？",
           "options": [
             {
-              "icon": "sparkle",
-              "text": "六"
+              "icon": "sparkle"
             },
             {
               "icon": "star"
@@ -4351,8 +4251,7 @@
           "question": "找一找：哪张图片是「七」？",
           "options": [
             {
-              "icon": "dice",
-              "text": "七"
+              "icon": "dice"
             },
             {
               "icon": "star"
@@ -4392,15 +4291,12 @@
           "question": "「七」可以组成哪个词？",
           "options": [
             {
-              "icon": "dice",
               "text": "七天"
             },
             {
-              "icon": "rocket",
               "text": "星空"
             },
             {
-              "icon": "paw",
               "text": "小手"
             }
           ],
@@ -4438,8 +4334,7 @@
               "icon": "star"
             },
             {
-              "icon": "dice",
-              "text": "七"
+              "icon": "dice"
             },
             {
               "icon": "balloon"
@@ -4548,8 +4443,7 @@
               "icon": "balloon"
             },
             {
-              "icon": "candy",
-              "text": "八"
+              "icon": "candy"
             },
             {
               "icon": "star"
@@ -4586,15 +4480,12 @@
           "question": "「八」可以组成哪个词？",
           "options": [
             {
-              "icon": "girl",
               "text": "目光"
             },
             {
-              "icon": "candy",
               "text": "八个"
             },
             {
-              "icon": "book",
               "text": "目录"
             }
           ],
@@ -4635,8 +4526,7 @@
               "icon": "star"
             },
             {
-              "icon": "candy",
-              "text": "八"
+              "icon": "candy"
             }
           ],
           "answer": 2,
@@ -4745,8 +4635,7 @@
               "icon": "candy"
             },
             {
-              "icon": "balloon",
-              "text": "九"
+              "icon": "balloon"
             }
           ],
           "answer": 2,
@@ -4780,15 +4669,12 @@
           "question": "「九」可以组成哪个词？",
           "options": [
             {
-              "icon": "girl",
               "text": "耳朵"
             },
             {
-              "icon": "ball",
               "text": "足球"
             },
             {
-              "icon": "balloon",
               "text": "九月"
             }
           ],
@@ -4823,8 +4709,7 @@
           "question": "再找一找：哪张图片是「九」？",
           "options": [
             {
-              "icon": "balloon",
-              "text": "九"
+              "icon": "balloon"
             },
             {
               "icon": "candy"
@@ -4936,8 +4821,7 @@
           "question": "找一找：哪张图片是「十」？",
           "options": [
             {
-              "icon": "star",
-              "text": "十"
+              "icon": "star"
             },
             {
               "icon": "equal"
@@ -4977,15 +4861,12 @@
           "question": "「十」可以组成哪个词？",
           "options": [
             {
-              "icon": "star",
               "text": "十个"
             },
             {
-              "icon": "milk",
               "text": "白云"
             },
             {
-              "icon": "rainbow",
               "text": "彩云"
             }
           ],
@@ -5023,8 +4904,7 @@
               "icon": "equal"
             },
             {
-              "icon": "star",
-              "text": "十"
+              "icon": "star"
             },
             {
               "icon": "gift"
@@ -5133,8 +5013,7 @@
               "icon": "bear"
             },
             {
-              "icon": "girl",
-              "text": "大"
+              "icon": "girl"
             },
             {
               "icon": "paw"
@@ -5171,15 +5050,12 @@
           "question": "「大」可以组成哪个词？",
           "options": [
             {
-              "icon": "wave",
               "text": "雨水"
             },
             {
-              "icon": "girl",
               "text": "大人"
             },
             {
-              "icon": "windmill",
               "text": "风车"
             }
           ],
@@ -5220,8 +5096,7 @@
               "icon": "paw"
             },
             {
-              "icon": "girl",
-              "text": "大"
+              "icon": "girl"
             }
           ],
           "answer": 2,
@@ -5337,8 +5212,7 @@
               "icon": "bear"
             },
             {
-              "icon": "paw",
-              "text": "小"
+              "icon": "paw"
             }
           ],
           "answer": 2,
@@ -5372,15 +5246,12 @@
           "question": "「小」可以组成哪个词？",
           "options": [
             {
-              "icon": "sprout",
               "text": "禾苗"
             },
             {
-              "icon": "sprout",
               "text": "禾田"
             },
             {
-              "icon": "paw",
               "text": "小手"
             }
           ],
@@ -5415,8 +5286,7 @@
           "question": "再找一找：哪张图片是「小」？",
           "options": [
             {
-              "icon": "paw",
-              "text": "小"
+              "icon": "paw"
             },
             {
               "icon": "bear"
@@ -5529,8 +5399,7 @@
           "question": "找一找：哪张图片是「上」？",
           "options": [
             {
-              "icon": "sunrise",
-              "text": "上"
+              "icon": "sunrise"
             },
             {
               "icon": "wave"
@@ -5570,15 +5439,12 @@
           "question": "「上」可以组成哪个词？",
           "options": [
             {
-              "icon": "sunrise",
               "text": "上学"
             },
             {
-              "icon": "bee",
               "text": "虫虫"
             },
             {
-              "icon": "coin",
               "text": "宝贝"
             }
           ],
@@ -5616,8 +5482,7 @@
               "icon": "wave"
             },
             {
-              "icon": "sunrise",
-              "text": "上"
+              "icon": "sunrise"
             },
             {
               "icon": "rocket"
@@ -5733,8 +5598,7 @@
               "icon": "sunrise"
             },
             {
-              "icon": "wave",
-              "text": "下"
+              "icon": "wave"
             },
             {
               "icon": "moon"
@@ -5771,15 +5635,12 @@
           "question": "「下」可以组成哪个词？",
           "options": [
             {
-              "icon": "girl",
               "text": "看见"
             },
             {
-              "icon": "wave",
               "text": "下雨"
             },
             {
-              "icon": "book",
               "text": "再见"
             }
           ],
@@ -5820,8 +5681,7 @@
               "icon": "moon"
             },
             {
-              "icon": "wave",
-              "text": "下"
+              "icon": "wave"
             }
           ],
           "answer": 2,
@@ -5937,8 +5797,7 @@
               "icon": "moon"
             },
             {
-              "icon": "starface",
-              "text": "星"
+              "icon": "starface"
             }
           ],
           "answer": 2,
@@ -5972,15 +5831,12 @@
           "question": "「星」可以组成哪个词？",
           "options": [
             {
-              "icon": "milk",
               "text": "白牛奶"
             },
             {
-              "icon": "cow",
               "text": "小牛"
             },
             {
-              "icon": "starface",
               "text": "星星"
             }
           ],
@@ -6015,8 +5871,7 @@
           "question": "再找一找：哪张图片是「星」？",
           "options": [
             {
-              "icon": "starface",
-              "text": "星"
+              "icon": "starface"
             },
             {
               "icon": "moon"
@@ -6144,8 +5999,7 @@
           "question": "找一找：哪张图片是「日」？",
           "options": [
             {
-              "icon": "sunrise",
-              "text": "日"
+              "icon": "sunrise"
             },
             {
               "icon": "moon"
@@ -6172,8 +6026,7 @@
               "icon": "sun"
             },
             {
-              "icon": "moon",
-              "text": "月"
+              "icon": "moon"
             }
           ],
           "answer": 2,
@@ -6188,8 +6041,7 @@
           "question": "找一找：哪张图片是「水」？",
           "options": [
             {
-              "icon": "wave",
-              "text": "水"
+              "icon": "wave"
             },
             {
               "icon": "sun"
@@ -6213,8 +6065,7 @@
               "icon": "rocket"
             },
             {
-              "icon": "volcano",
-              "text": "山"
+              "icon": "volcano"
             },
             {
               "icon": "home"
@@ -6232,8 +6083,7 @@
           "question": "找一找：哪张图片是「木」？",
           "options": [
             {
-              "icon": "sprout",
-              "text": "木"
+              "icon": "sprout"
             },
             {
               "icon": "flower"
@@ -6260,8 +6110,7 @@
               "icon": "duck"
             },
             {
-              "icon": "girl",
-              "text": "人"
+              "icon": "girl"
             }
           ],
           "answer": 2,
@@ -6344,8 +6193,7 @@
           "question": "找一找：哪张图片是「手」？",
           "options": [
             {
-              "icon": "paw",
-              "text": "手"
+              "icon": "paw"
             },
             {
               "icon": "girl"
@@ -6385,15 +6233,12 @@
           "question": "「手」可以组成哪个词？",
           "options": [
             {
-              "icon": "paw",
               "text": "小手"
             },
             {
-              "icon": "polarbear",
               "text": "小羊"
             },
             {
-              "icon": "milk",
               "text": "羊毛"
             }
           ],
@@ -6431,8 +6276,7 @@
               "icon": "girl"
             },
             {
-              "icon": "paw",
-              "text": "手"
+              "icon": "paw"
             },
             {
               "icon": "wave"
@@ -6552,8 +6396,7 @@
           "question": "找一找：哪张图片是「目」？",
           "options": [
             {
-              "icon": "girl",
-              "text": "目"
+              "icon": "girl"
             },
             {
               "icon": "duck"
@@ -6593,15 +6436,12 @@
           "question": "「目」可以组成哪个词？",
           "options": [
             {
-              "icon": "leaf",
               "text": "果树"
             },
             {
-              "icon": "girl",
               "text": "目光"
             },
             {
-              "icon": "car",
               "text": "汽车"
             }
           ],
@@ -6639,8 +6479,7 @@
               "icon": "duck"
             },
             {
-              "icon": "girl",
-              "text": "目"
+              "icon": "girl"
             },
             {
               "icon": "calendar"
@@ -6767,8 +6606,7 @@
           "question": "找一找：哪张图片是「耳」？",
           "options": [
             {
-              "icon": "speaker",
-              "text": "耳"
+              "icon": "speaker"
             },
             {
               "icon": "calendar"
@@ -6808,15 +6646,12 @@
           "question": "「耳」可以组成哪个词？",
           "options": [
             {
-              "icon": "candy",
               "text": "糖果"
             },
             {
-              "icon": "sugar",
               "text": "糖水"
             },
             {
-              "icon": "speaker",
               "text": "耳机"
             }
           ],
@@ -6854,8 +6689,7 @@
               "icon": "calendar"
             },
             {
-              "icon": "speaker",
-              "text": "耳"
+              "icon": "speaker"
             },
             {
               "icon": "star"
@@ -6982,8 +6816,7 @@
               "icon": "paw"
             },
             {
-              "icon": "ball",
-              "text": "足"
+              "icon": "ball"
             },
             {
               "icon": "train"
@@ -7020,15 +6853,12 @@
           "question": "「足」可以组成哪个词？",
           "options": [
             {
-              "icon": "ball",
               "text": "足球"
             },
             {
-              "icon": "wave",
               "text": "水塘"
             },
             {
-              "icon": "party",
               "text": "欢迎"
             }
           ],
@@ -7069,8 +6899,7 @@
               "icon": "train"
             },
             {
-              "icon": "ball",
-              "text": "足"
+              "icon": "ball"
             }
           ],
           "answer": 2,
@@ -7193,8 +7022,7 @@
               "icon": "sun"
             },
             {
-              "icon": "milk",
-              "text": "云"
+              "icon": "milk"
             }
           ],
           "answer": 2,
@@ -7228,15 +7056,12 @@
           "question": "「云」可以组成哪个词？",
           "options": [
             {
-              "icon": "girl",
               "text": "阿姨"
             },
             {
-              "icon": "milk",
               "text": "白云"
             },
             {
-              "icon": "heart",
               "text": "姨妈"
             }
           ],
@@ -7271,8 +7096,7 @@
           "question": "再找一找：哪张图片是「云」？",
           "options": [
             {
-              "icon": "milk",
-              "text": "云"
+              "icon": "milk"
             },
             {
               "icon": "sun"
@@ -7395,8 +7219,7 @@
           "question": "找一找：哪张图片是「雨」？",
           "options": [
             {
-              "icon": "wave",
-              "text": "雨"
+              "icon": "wave"
             },
             {
               "icon": "milk"
@@ -7436,15 +7259,12 @@
           "question": "「雨」可以组成哪个词？",
           "options": [
             {
-              "icon": "milk",
               "text": "白云变"
             },
             {
-              "icon": "polarbear",
               "text": "北极"
             },
             {
-              "icon": "wave",
               "text": "下雨"
             }
           ],
@@ -7482,8 +7302,7 @@
               "icon": "milk"
             },
             {
-              "icon": "wave",
-              "text": "雨"
+              "icon": "wave"
             },
             {
               "icon": "crystal"
@@ -7630,8 +7449,7 @@
               "icon": "leaf"
             },
             {
-              "icon": "windmill",
-              "text": "风"
+              "icon": "windmill"
             },
             {
               "icon": "flag"
@@ -7668,15 +7486,12 @@
           "question": "「风」可以组成哪个词？",
           "options": [
             {
-              "icon": "windmill",
               "text": "风车"
             },
             {
-              "icon": "sunrise",
               "text": "傍晚"
             },
             {
-              "icon": "moon",
               "text": "傍晚上灯"
             }
           ],
@@ -7717,8 +7532,7 @@
               "icon": "flag"
             },
             {
-              "icon": "windmill",
-              "text": "风"
+              "icon": "windmill"
             }
           ],
           "answer": 2,
@@ -7835,8 +7649,7 @@
           "question": "找一找：哪张图片是「禾」？",
           "options": [
             {
-              "icon": "sprout",
-              "text": "禾"
+              "icon": "sprout"
             },
             {
               "icon": "flower"
@@ -7876,15 +7689,12 @@
           "question": "「禾」可以组成哪个词？",
           "options": [
             {
-              "icon": "fish",
               "text": "海边"
             },
             {
-              "icon": "sprout",
               "text": "禾苗"
             },
             {
-              "icon": "wave",
               "text": "海洋"
             }
           ],
@@ -7922,8 +7732,7 @@
               "icon": "flower"
             },
             {
-              "icon": "sprout",
-              "text": "禾"
+              "icon": "sprout"
             },
             {
               "icon": "leaf"
@@ -8056,8 +7865,7 @@
               "icon": "duck"
             },
             {
-              "icon": "bee",
-              "text": "虫"
+              "icon": "bee"
             }
           ],
           "answer": 2,
@@ -8091,15 +7899,12 @@
           "question": "「虫」可以组成哪个词？",
           "options": [
             {
-              "icon": "sprout",
               "text": "植物"
             },
             {
-              "icon": "leaf",
               "text": "种植"
             },
             {
-              "icon": "bee",
               "text": "虫子"
             }
           ],
@@ -8134,8 +7939,7 @@
           "question": "再找一找：哪张图片是「虫」？",
           "options": [
             {
-              "icon": "bee",
-              "text": "虫"
+              "icon": "bee"
             },
             {
               "icon": "duck"
@@ -8262,8 +8066,7 @@
           "question": "找一找：哪张图片是「贝」？",
           "options": [
             {
-              "icon": "coin",
-              "text": "贝"
+              "icon": "coin"
             },
             {
               "icon": "rock"
@@ -8303,15 +8106,12 @@
           "question": "「贝」可以组成哪个词？",
           "options": [
             {
-              "icon": "coin",
               "text": "宝贝"
             },
             {
-              "icon": "train",
               "text": "旅途"
             },
             {
-              "icon": "book",
               "text": "认识"
             }
           ],
@@ -8349,8 +8149,7 @@
               "icon": "rock"
             },
             {
-              "icon": "coin",
-              "text": "贝"
+              "icon": "coin"
             },
             {
               "icon": "gift"
@@ -8473,8 +8272,7 @@
               "icon": "book"
             },
             {
-              "icon": "girl",
-              "text": "见"
+              "icon": "girl"
             },
             {
               "icon": "star"
@@ -8511,15 +8309,12 @@
           "question": "「见」可以组成哪个词？",
           "options": [
             {
-              "icon": "flower",
               "text": "花园"
             },
             {
-              "icon": "girl",
               "text": "看见"
             },
             {
-              "icon": "sprout",
               "text": "园子"
             }
           ],
@@ -8560,8 +8355,7 @@
               "icon": "star"
             },
             {
-              "icon": "girl",
-              "text": "见"
+              "icon": "girl"
             }
           ],
           "answer": 2,
@@ -8684,8 +8478,7 @@
               "icon": "milk"
             },
             {
-              "icon": "egg",
-              "text": "白"
+              "icon": "egg"
             }
           ],
           "answer": 2,
@@ -8719,15 +8512,12 @@
           "question": "「白」可以组成哪个词？",
           "options": [
             {
-              "icon": "flag",
               "text": "队伍"
             },
             {
-              "icon": "flag",
               "text": "红旗"
             },
             {
-              "icon": "egg",
               "text": "雪白"
             }
           ],
@@ -8762,8 +8552,7 @@
           "question": "再找一找：哪张图片是「白」？",
           "options": [
             {
-              "icon": "egg",
-              "text": "白"
+              "icon": "egg"
             },
             {
               "icon": "milk"
@@ -8899,8 +8688,7 @@
               "icon": "milk"
             },
             {
-              "icon": "cow",
-              "text": "牛"
+              "icon": "cow"
             },
             {
               "icon": "bear"
@@ -8937,15 +8725,12 @@
           "question": "「牛」可以组成哪个词？",
           "options": [
             {
-              "icon": "cow",
               "text": "小牛"
             },
             {
-              "icon": "speaker",
               "text": "吹号"
             },
             {
-              "icon": "clock",
               "text": "号码"
             }
           ],
@@ -8986,8 +8771,7 @@
               "icon": "bear"
             },
             {
-              "icon": "cow",
-              "text": "牛"
+              "icon": "cow"
             }
           ],
           "answer": 2,
@@ -9110,8 +8894,7 @@
               "icon": "milk"
             },
             {
-              "icon": "polarbear",
-              "text": "羊"
+              "icon": "polarbear"
             }
           ],
           "answer": 2,
@@ -9145,15 +8928,12 @@
           "question": "「羊」可以组成哪个词？",
           "options": [
             {
-              "icon": "leaf",
               "text": "白杨"
             },
             {
-              "icon": "polarbear",
               "text": "小羊"
             },
             {
-              "icon": "tree",
               "text": "梧桐"
             }
           ],
@@ -9188,8 +8968,7 @@
           "question": "再找一找：哪张图片是「羊」？",
           "options": [
             {
-              "icon": "polarbear",
-              "text": "羊"
+              "icon": "polarbear"
             },
             {
               "icon": "milk"
@@ -9319,8 +9098,7 @@
           "question": "找一找：哪张图片是「果」？",
           "options": [
             {
-              "icon": "apple",
-              "text": "果"
+              "icon": "apple"
             },
             {
               "icon": "banana"
@@ -9360,15 +9138,12 @@
           "question": "「果」可以组成哪个词？",
           "options": [
             {
-              "icon": "maple",
               "text": "枫叶"
             },
             {
-              "icon": "tree",
               "text": "枫树"
             },
             {
-              "icon": "apple",
               "text": "果子"
             }
           ],
@@ -9406,8 +9181,7 @@
               "icon": "banana"
             },
             {
-              "icon": "apple",
-              "text": "果"
+              "icon": "apple"
             },
             {
               "icon": "leaf"
@@ -9534,8 +9308,7 @@
               "icon": "train"
             },
             {
-              "icon": "car",
-              "text": "车"
+              "icon": "car"
             },
             {
               "icon": "bus"
@@ -9572,15 +9345,12 @@
           "question": "「车」可以组成哪个词？",
           "options": [
             {
-              "icon": "car",
               "text": "汽车"
             },
             {
-              "icon": "sprout",
               "text": "松果"
             },
             {
-              "icon": "tree",
               "text": "柏树"
             }
           ],
@@ -9621,8 +9391,7 @@
               "icon": "bus"
             },
             {
-              "icon": "car",
-              "text": "车"
+              "icon": "car"
             }
           ],
           "answer": 2,
@@ -9752,8 +9521,7 @@
               "icon": "cake"
             },
             {
-              "icon": "candy",
-              "text": "糖"
+              "icon": "candy"
             }
           ],
           "answer": 2,
@@ -9787,15 +9555,12 @@
           "question": "「糖」可以组成哪个词？",
           "options": [
             {
-              "icon": "flower",
               "text": "桂花"
             },
             {
-              "icon": "candy",
               "text": "糖果"
             },
             {
-              "icon": "tree",
               "text": "桂树"
             }
           ],
@@ -9830,8 +9595,7 @@
           "question": "再找一找：哪张图片是「糖」？",
           "options": [
             {
-              "icon": "candy",
-              "text": "糖"
+              "icon": "candy"
             },
             {
               "icon": "cake"
@@ -9968,8 +9732,7 @@
           "question": "找一找：哪张图片是「塘」？",
           "options": [
             {
-              "icon": "wave",
-              "text": "塘"
+              "icon": "wave"
             },
             {
               "icon": "milk"
@@ -10009,15 +9772,12 @@
           "question": "「塘」可以组成哪个词？",
           "options": [
             {
-              "icon": "bird",
               "text": "孔雀"
             },
             {
-              "icon": "bird",
               "text": "老鹰"
             },
             {
-              "icon": "wave",
               "text": "池塘"
             }
           ],
@@ -10055,8 +9815,7 @@
               "icon": "milk"
             },
             {
-              "icon": "wave",
-              "text": "塘"
+              "icon": "wave"
             },
             {
               "icon": "sprout"
@@ -10196,8 +9955,7 @@
               "icon": "flag"
             },
             {
-              "icon": "party",
-              "text": "迎"
+              "icon": "party"
             },
             {
               "icon": "book"
@@ -10234,15 +9992,12 @@
           "question": "「迎」可以组成哪个词？",
           "options": [
             {
-              "icon": "party",
               "text": "欢迎"
             },
             {
-              "icon": "calendar",
               "text": "四季"
             },
             {
-              "icon": "flower",
               "text": "季节"
             }
           ],
@@ -10283,8 +10038,7 @@
               "icon": "book"
             },
             {
-              "icon": "party",
-              "text": "迎"
+              "icon": "party"
             }
           ],
           "answer": 2,
@@ -10408,8 +10162,7 @@
           "question": "找一找：哪张图片是「姨」？",
           "options": [
             {
-              "icon": "girl",
-              "text": "姨"
+              "icon": "girl"
             },
             {
               "icon": "home"
@@ -10449,15 +10202,12 @@
           "question": "「姨」可以组成哪个词？",
           "options": [
             {
-              "icon": "sprout",
               "text": "农田"
             },
             {
-              "icon": "girl",
               "text": "阿姨"
             },
             {
-              "icon": "sprout",
               "text": "麦苗"
             }
           ],
@@ -10495,8 +10245,7 @@
               "icon": "home"
             },
             {
-              "icon": "girl",
-              "text": "姨"
+              "icon": "girl"
             },
             {
               "icon": "party"
@@ -10643,8 +10392,7 @@
               "icon": "egg"
             },
             {
-              "icon": "sparkle",
-              "text": "变"
+              "icon": "sparkle"
             }
           ],
           "answer": 2,
@@ -10678,15 +10426,12 @@
           "question": "「变」可以组成哪个词？",
           "options": [
             {
-              "icon": "elephant",
               "text": "大象"
             },
             {
-              "icon": "bear",
               "text": "印象"
             },
             {
-              "icon": "sparkle",
               "text": "变化"
             }
           ],
@@ -10721,8 +10466,7 @@
           "question": "再找一找：哪张图片是「变」？",
           "options": [
             {
-              "icon": "sparkle",
-              "text": "变"
+              "icon": "sparkle"
             },
             {
               "icon": "egg"
@@ -10852,8 +10596,7 @@
               "icon": "star"
             },
             {
-              "icon": "polarbear",
-              "text": "极"
+              "icon": "polarbear"
             },
             {
               "icon": "magnet"
@@ -10890,15 +10633,12 @@
           "question": "「极」可以组成哪个词？",
           "options": [
             {
-              "icon": "polarbear",
               "text": "北极"
             },
             {
-              "icon": "castle",
               "text": "楼房"
             },
             {
-              "icon": "speaker",
               "text": "新闻"
             }
           ],
@@ -10939,8 +10679,7 @@
               "icon": "magnet"
             },
             {
-              "icon": "polarbear",
-              "text": "极"
+              "icon": "polarbear"
             }
           ],
           "answer": 2,
@@ -11067,8 +10806,7 @@
               "icon": "moon"
             },
             {
-              "icon": "sunrise",
-              "text": "傍"
+              "icon": "sunrise"
             },
             {
               "icon": "star"
@@ -11105,15 +10843,12 @@
           "question": "「傍」可以组成哪个词？",
           "options": [
             {
-              "icon": "everest",
               "text": "山峰"
             },
             {
-              "icon": "sunrise",
               "text": "傍晚"
             },
             {
-              "icon": "everest",
               "text": "高峰"
             }
           ],
@@ -11154,8 +10889,7 @@
               "icon": "star"
             },
             {
-              "icon": "sunrise",
-              "text": "傍"
+              "icon": "sunrise"
             }
           ],
           "answer": 2,
@@ -11292,8 +11026,7 @@
               "icon": "fish"
             },
             {
-              "icon": "wave",
-              "text": "海"
+              "icon": "wave"
             }
           ],
           "answer": 2,
@@ -11327,15 +11060,12 @@
           "question": "「海」可以组成哪个词？",
           "options": [
             {
-              "icon": "wave",
               "text": "水潭"
             },
             {
-              "icon": "castle",
               "text": "城市"
             },
             {
-              "icon": "wave",
               "text": "大海"
             }
           ],
@@ -11370,8 +11100,7 @@
           "question": "再找一找：哪张图片是「海」？",
           "options": [
             {
-              "icon": "wave",
-              "text": "海"
+              "icon": "wave"
             },
             {
               "icon": "fish"
@@ -11504,8 +11233,7 @@
           "question": "找一找：哪张图片是「洋」？",
           "options": [
             {
-              "icon": "wave",
-              "text": "洋"
+              "icon": "wave"
             },
             {
               "icon": "fish"
@@ -11545,15 +11273,12 @@
           "question": "「洋」可以组成哪个词？",
           "options": [
             {
-              "icon": "wave",
               "text": "海洋"
             },
             {
-              "icon": "shop",
               "text": "市场"
             },
             {
-              "icon": "shop",
               "text": "城市"
             }
           ],
@@ -11591,8 +11316,7 @@
               "icon": "fish"
             },
             {
-              "icon": "wave",
-              "text": "洋"
+              "icon": "wave"
             },
             {
               "icon": "sun"
@@ -11736,8 +11460,7 @@
               "icon": "flower"
             },
             {
-              "icon": "sprout",
-              "text": "植"
+              "icon": "sprout"
             },
             {
               "icon": "leaf"
@@ -11774,15 +11497,12 @@
           "question": "「植」可以组成哪个词？",
           "options": [
             {
-              "icon": "jar",
               "text": "井水"
             },
             {
-              "icon": "sprout",
               "text": "植物"
             },
             {
-              "icon": "telescope",
               "text": "观星"
             }
           ],
@@ -11823,8 +11543,7 @@
               "icon": "leaf"
             },
             {
-              "icon": "sprout",
-              "text": "植"
+              "icon": "sprout"
             }
           ],
           "answer": 2,
@@ -11968,8 +11687,7 @@
               "icon": "train"
             },
             {
-              "icon": "rocket",
-              "text": "旅"
+              "icon": "rocket"
             }
           ],
           "answer": 2,
@@ -12003,15 +11721,12 @@
           "question": "「旅」可以组成哪个词？",
           "options": [
             {
-              "icon": "cup",
               "text": "喝水"
             },
             {
-              "icon": "milk",
               "text": "喝奶"
             },
             {
-              "icon": "rocket",
               "text": "旅行"
             }
           ],
@@ -12046,8 +11761,7 @@
           "question": "再找一找：哪张图片是「旅」？",
           "options": [
             {
-              "icon": "rocket",
-              "text": "旅"
+              "icon": "rocket"
             },
             {
               "icon": "train"
@@ -12188,8 +11902,7 @@
           "question": "找一找：哪张图片是「识」？",
           "options": [
             {
-              "icon": "book",
-              "text": "识"
+              "icon": "book"
             },
             {
               "icon": "girl"
@@ -12229,15 +11942,12 @@
           "question": "「识」可以组成哪个词？",
           "options": [
             {
-              "icon": "book",
               "text": "认识"
             },
             {
-              "icon": "bulb",
               "text": "红灯"
             },
             {
-              "icon": "girl",
               "text": "娃娃"
             }
           ],
@@ -12275,8 +11985,7 @@
               "icon": "girl"
             },
             {
-              "icon": "book",
-              "text": "识"
+              "icon": "book"
             },
             {
               "icon": "star"
@@ -12420,8 +12129,7 @@
               "icon": "sprout"
             },
             {
-              "icon": "flower",
-              "text": "园"
+              "icon": "flower"
             },
             {
               "icon": "home"
@@ -12458,15 +12166,12 @@
           "question": "「园」可以组成哪个词？",
           "options": [
             {
-              "icon": "frog",
               "text": "青蛙"
             },
             {
-              "icon": "flower",
               "text": "花园"
             },
             {
-              "icon": "frog",
               "text": "蛙声"
             }
           ],
@@ -12507,8 +12212,7 @@
               "icon": "home"
             },
             {
-              "icon": "flower",
-              "text": "园"
+              "icon": "flower"
             }
           ],
           "answer": 2,
@@ -12653,8 +12357,7 @@
           "question": "找一找：哪张图片是「队」？",
           "options": [
             {
-              "icon": "party",
-              "text": "队"
+              "icon": "party"
             },
             {
               "icon": "flag"
@@ -12694,15 +12397,12 @@
           "question": "「队」可以组成哪个词？",
           "options": [
             {
-              "icon": "cat",
               "text": "熊猫"
             },
             {
-              "icon": "dog",
               "text": "小狗"
             },
             {
-              "icon": "party",
               "text": "排队"
             }
           ],
@@ -12740,8 +12440,7 @@
               "icon": "flag"
             },
             {
-              "icon": "party",
-              "text": "队"
+              "icon": "party"
             },
             {
               "icon": "train"
@@ -12845,8 +12544,7 @@
           "question": "找一找：哪张图片是「日」？",
           "options": [
             {
-              "icon": "sunrise",
-              "text": "日"
+              "icon": "sunrise"
             },
             {
               "icon": "moon"
@@ -12873,8 +12571,7 @@
               "icon": "sun"
             },
             {
-              "icon": "moon",
-              "text": "月"
+              "icon": "moon"
             }
           ],
           "answer": 2,
@@ -12889,8 +12586,7 @@
           "question": "找一找：哪张图片是「水」？",
           "options": [
             {
-              "icon": "wave",
-              "text": "水"
+              "icon": "wave"
             },
             {
               "icon": "sun"
@@ -12914,8 +12610,7 @@
               "icon": "rocket"
             },
             {
-              "icon": "volcano",
-              "text": "山"
+              "icon": "volcano"
             },
             {
               "icon": "home"
@@ -12933,8 +12628,7 @@
           "question": "找一找：哪张图片是「木」？",
           "options": [
             {
-              "icon": "sprout",
-              "text": "木"
+              "icon": "sprout"
             },
             {
               "icon": "flower"
@@ -12961,8 +12655,7 @@
               "icon": "duck"
             },
             {
-              "icon": "girl",
-              "text": "人"
+              "icon": "girl"
             }
           ],
           "answer": 2,
@@ -13048,8 +12741,7 @@
               "icon": "party"
             },
             {
-              "icon": "flag",
-              "text": "旗"
+              "icon": "flag"
             },
             {
               "icon": "book"
@@ -13086,15 +12778,12 @@
           "question": "「旗」可以组成哪个词？",
           "options": [
             {
-              "icon": "flag",
               "text": "红旗"
             },
             {
-              "icon": "pig",
               "text": "小猪"
             },
             {
-              "icon": "pig",
               "text": "肥猪"
             }
           ],
@@ -13135,8 +12824,7 @@
               "icon": "book"
             },
             {
-              "icon": "flag",
-              "text": "旗"
+              "icon": "flag"
             }
           ],
           "answer": 2,
@@ -13273,8 +12961,7 @@
               "icon": "clock"
             },
             {
-              "icon": "speaker",
-              "text": "号"
+              "icon": "speaker"
             }
           ],
           "answer": 2,
@@ -13308,15 +12995,12 @@
           "question": "「号」可以组成哪个词？",
           "options": [
             {
-              "icon": "bird",
               "text": "小鸡"
             },
             {
-              "icon": "speaker",
               "text": "吹号"
             },
             {
-              "icon": "bear",
               "text": "小狗熊"
             }
           ],
@@ -13351,8 +13035,7 @@
           "question": "再找一找：哪张图片是「号」？",
           "options": [
             {
-              "icon": "speaker",
-              "text": "号"
+              "icon": "speaker"
             },
             {
               "icon": "clock"
@@ -13475,8 +13158,7 @@
           "question": "找一找：哪张图片是「杨」？",
           "options": [
             {
-              "icon": "tree",
-              "text": "杨"
+              "icon": "tree"
             },
             {
               "icon": "maple"
@@ -13516,15 +13198,12 @@
           "question": "「杨」可以组成哪个词？",
           "options": [
             {
-              "icon": "lion",
               "text": "狮子"
             },
             {
-              "icon": "lion",
               "text": "雄狮"
             },
             {
-              "icon": "tree",
               "text": "杨树"
             }
           ],
@@ -13562,8 +13241,7 @@
               "icon": "maple"
             },
             {
-              "icon": "tree",
-              "text": "杨"
+              "icon": "tree"
             },
             {
               "icon": "leaf"
@@ -13704,8 +13382,7 @@
               "icon": "leaf"
             },
             {
-              "icon": "tree",
-              "text": "桐"
+              "icon": "tree"
             },
             {
               "icon": "maple"
@@ -13742,15 +13419,12 @@
           "question": "「桐」可以组成哪个词？",
           "options": [
             {
-              "icon": "tree",
               "text": "梧桐"
             },
             {
-              "icon": "monkey",
               "text": "猴山"
             },
             {
-              "icon": "sun",
               "text": "晴天"
             }
           ],
@@ -13791,8 +13465,7 @@
               "icon": "maple"
             },
             {
-              "icon": "tree",
-              "text": "桐"
+              "icon": "tree"
             }
           ],
           "answer": 2,
@@ -13936,8 +13609,7 @@
               "icon": "tree"
             },
             {
-              "icon": "maple",
-              "text": "枫"
+              "icon": "maple"
             }
           ],
           "answer": 2,
@@ -13971,15 +13643,12 @@
           "question": "「枫」可以组成哪个词？",
           "options": [
             {
-              "icon": "moon",
               "text": "晚上"
             },
             {
-              "icon": "maple",
               "text": "枫叶"
             },
             {
-              "icon": "moon",
               "text": "晚霞"
             }
           ],
@@ -14014,8 +13683,7 @@
           "question": "再找一找：哪张图片是「枫」？",
           "options": [
             {
-              "icon": "maple",
-              "text": "枫"
+              "icon": "maple"
             },
             {
               "icon": "tree"
@@ -14159,8 +13827,7 @@
           "question": "找一找：哪张图片是「松」？",
           "options": [
             {
-              "icon": "tree",
-              "text": "松"
+              "icon": "tree"
             },
             {
               "icon": "sprout"
@@ -14200,15 +13867,12 @@
           "question": "「松」可以组成哪个词？",
           "options": [
             {
-              "icon": "snowflake",
               "text": "雪人"
             },
             {
-              "icon": "ice",
               "text": "结冰"
             },
             {
-              "icon": "tree",
               "text": "松树"
             }
           ],
@@ -14246,8 +13910,7 @@
               "icon": "sprout"
             },
             {
-              "icon": "tree",
-              "text": "松"
+              "icon": "tree"
             },
             {
               "icon": "maple"
@@ -14394,8 +14057,7 @@
               "icon": "maple"
             },
             {
-              "icon": "tree",
-              "text": "柏"
+              "icon": "tree"
             },
             {
               "icon": "leaf"
@@ -14432,15 +14094,12 @@
           "question": "「柏」可以组成哪个词？",
           "options": [
             {
-              "icon": "tree",
               "text": "柏树"
             },
             {
-              "icon": "sunrise",
               "text": "日出"
             },
             {
-              "icon": "cake",
               "text": "生日"
             }
           ],
@@ -14481,8 +14140,7 @@
               "icon": "leaf"
             },
             {
-              "icon": "tree",
-              "text": "柏"
+              "icon": "tree"
             }
           ],
           "answer": 2,
@@ -14626,8 +14284,7 @@
               "icon": "tree"
             },
             {
-              "icon": "flower",
-              "text": "桂"
+              "icon": "flower"
             }
           ],
           "answer": 2,
@@ -14661,15 +14318,12 @@
           "question": "「桂」可以组成哪个词？",
           "options": [
             {
-              "icon": "moon",
               "text": "月亮"
             },
             {
-              "icon": "flower",
               "text": "桂花"
             },
             {
-              "icon": "moon",
               "text": "月牙"
             }
           ],
@@ -14704,8 +14358,7 @@
           "question": "再找一找：哪张图片是「桂」？",
           "options": [
             {
-              "icon": "flower",
-              "text": "桂"
+              "icon": "flower"
             },
             {
               "icon": "tree"
@@ -14863,8 +14516,7 @@
           "question": "找一找：哪张图片是「雀」？",
           "options": [
             {
-              "icon": "bird",
-              "text": "雀"
+              "icon": "bird"
             },
             {
               "icon": "duck"
@@ -14904,15 +14556,12 @@
           "question": "「雀」可以组成哪个词？",
           "options": [
             {
-              "icon": "wave",
               "text": "海水"
             },
             {
-              "icon": "crystal",
               "text": "泉水"
             },
             {
-              "icon": "bird",
               "text": "麻雀"
             }
           ],
@@ -14950,8 +14599,7 @@
               "icon": "duck"
             },
             {
-              "icon": "bird",
-              "text": "雀"
+              "icon": "bird"
             },
             {
               "icon": "bee"
@@ -15092,8 +14740,7 @@
               "icon": "star"
             },
             {
-              "icon": "bird",
-              "text": "鹰"
+              "icon": "bird"
             },
             {
               "icon": "flag"
@@ -15130,15 +14777,12 @@
           "question": "「鹰」可以组成哪个词？",
           "options": [
             {
-              "icon": "bird",
               "text": "老鹰"
             },
             {
-              "icon": "school",
               "text": "上山"
             },
             {
-              "icon": "leaf",
               "text": "山林"
             }
           ],
@@ -15179,8 +14823,7 @@
               "icon": "flag"
             },
             {
-              "icon": "bird",
-              "text": "鹰"
+              "icon": "bird"
             }
           ],
           "answer": 2,
@@ -15331,8 +14974,7 @@
               "icon": "flower"
             },
             {
-              "icon": "calendar",
-              "text": "季"
+              "icon": "calendar"
             }
           ],
           "answer": 2,
@@ -15366,15 +15008,12 @@
           "question": "「季」可以组成哪个词？",
           "options": [
             {
-              "icon": "flower",
               "text": "花木"
             },
             {
-              "icon": "calendar",
               "text": "四季"
             },
             {
-              "icon": "heart",
               "text": "大人"
             }
           ],
@@ -15409,8 +15048,7 @@
           "question": "再找一找：哪张图片是「季」？",
           "options": [
             {
-              "icon": "calendar",
-              "text": "季"
+              "icon": "calendar"
             },
             {
               "icon": "flower"
@@ -15554,8 +15192,7 @@
           "question": "找一找：哪张图片是「农」？",
           "options": [
             {
-              "icon": "sprout",
-              "text": "农"
+              "icon": "sprout"
             },
             {
               "icon": "apple"
@@ -15595,15 +15232,12 @@
           "question": "「农」可以组成哪个词？",
           "options": [
             {
-              "icon": "speaker",
               "text": "开口"
             },
             {
-              "icon": "heart",
               "text": "口水"
             },
             {
-              "icon": "sprout",
               "text": "农民"
             }
           ],
@@ -15641,8 +15275,7 @@
               "icon": "apple"
             },
             {
-              "icon": "sprout",
-              "text": "农"
+              "icon": "sprout"
             },
             {
               "icon": "home"
@@ -15789,8 +15422,7 @@
               "icon": "bread"
             },
             {
-              "icon": "sprout",
-              "text": "麦"
+              "icon": "sprout"
             },
             {
               "icon": "leaf"
@@ -15827,15 +15459,12 @@
           "question": "「麦」可以组成哪个词？",
           "options": [
             {
-              "icon": "sprout",
               "text": "麦苗"
             },
             {
-              "icon": "sunrise",
               "text": "今天"
             },
             {
-              "icon": "sprout",
               "text": "田里"
             }
           ],
@@ -15876,8 +15505,7 @@
               "icon": "leaf"
             },
             {
-              "icon": "sprout",
-              "text": "麦"
+              "icon": "sprout"
             }
           ],
           "answer": 2,
@@ -16014,8 +15642,7 @@
               "icon": "bear"
             },
             {
-              "icon": "elephant",
-              "text": "象"
+              "icon": "elephant"
             }
           ],
           "answer": 2,
@@ -16049,15 +15676,12 @@
           "question": "「象」可以组成哪个词？",
           "options": [
             {
-              "icon": "rock",
               "text": "石头"
             },
             {
-              "icon": "elephant",
               "text": "大象"
             },
             {
-              "icon": "castle",
               "text": "石桥"
             }
           ],
@@ -16092,8 +15716,7 @@
           "question": "再找一找：哪张图片是「象」？",
           "options": [
             {
-              "icon": "elephant",
-              "text": "象"
+              "icon": "elephant"
             },
             {
               "icon": "bear"
@@ -16237,8 +15860,7 @@
           "question": "找一找：哪张图片是「楼」？",
           "options": [
             {
-              "icon": "castle",
-              "text": "楼"
+              "icon": "castle"
             },
             {
               "icon": "home"
@@ -16278,15 +15900,12 @@
           "question": "「楼」可以组成哪个词？",
           "options": [
             {
-              "icon": "volcano",
               "text": "火山"
             },
             {
-              "icon": "starface",
               "text": "火花"
             },
             {
-              "icon": "castle",
               "text": "高楼"
             }
           ],
@@ -16324,8 +15943,7 @@
               "icon": "home"
             },
             {
-              "icon": "castle",
-              "text": "楼"
+              "icon": "castle"
             },
             {
               "icon": "shop"
@@ -16473,8 +16091,7 @@
               "icon": "book"
             },
             {
-              "icon": "speaker",
-              "text": "闻"
+              "icon": "speaker"
             },
             {
               "icon": "star"
@@ -16511,15 +16128,12 @@
           "question": "「闻」可以组成哪个词？",
           "options": [
             {
-              "icon": "speaker",
               "text": "新闻"
             },
             {
-              "icon": "leaf",
               "text": "花瓣"
             },
             {
-              "icon": "heart",
               "text": "花园"
             }
           ],
@@ -16560,8 +16174,7 @@
               "icon": "star"
             },
             {
-              "icon": "speaker",
-              "text": "闻"
+              "icon": "speaker"
             }
           ],
           "answer": 2,
@@ -16705,8 +16318,7 @@
               "icon": "tree"
             },
             {
-              "icon": "everest",
-              "text": "峰"
+              "icon": "everest"
             }
           ],
           "answer": 2,
@@ -16740,15 +16352,12 @@
           "question": "「峰」可以组成哪个词？",
           "options": [
             {
-              "icon": "sprout",
               "text": "草地"
             },
             {
-              "icon": "everest",
               "text": "山峰"
             },
             {
-              "icon": "duck",
               "text": "小鸟"
             }
           ],
@@ -16783,8 +16392,7 @@
           "question": "再找一找：哪张图片是「峰」？",
           "options": [
             {
-              "icon": "everest",
-              "text": "峰"
+              "icon": "everest"
             },
             {
               "icon": "tree"
@@ -16928,8 +16536,7 @@
           "question": "找一找：哪张图片是「潭」？",
           "options": [
             {
-              "icon": "wave",
-              "text": "潭"
+              "icon": "wave"
             },
             {
               "icon": "moon"
@@ -16969,15 +16576,12 @@
           "question": "「潭」可以组成哪个词？",
           "options": [
             {
-              "icon": "equal",
               "text": "一个"
             },
             {
-              "icon": "sunrise",
               "text": "一天"
             },
             {
-              "icon": "wave",
               "text": "日月潭"
             }
           ],
@@ -17015,8 +16619,7 @@
               "icon": "moon"
             },
             {
-              "icon": "wave",
-              "text": "潭"
+              "icon": "wave"
             },
             {
               "icon": "fish"
@@ -17163,8 +16766,7 @@
               "icon": "greatwall"
             },
             {
-              "icon": "castle",
-              "text": "城"
+              "icon": "castle"
             },
             {
               "icon": "shop"
@@ -17201,15 +16803,12 @@
           "question": "「城」可以组成哪个词？",
           "options": [
             {
-              "icon": "castle",
               "text": "城市"
             },
             {
-              "icon": "calendar",
               "text": "第二"
             },
             {
-              "icon": "star",
               "text": "三个"
             }
           ],
@@ -17250,8 +16849,7 @@
               "icon": "shop"
             },
             {
-              "icon": "castle",
-              "text": "城"
+              "icon": "castle"
             }
           ],
           "answer": 2,
@@ -17395,8 +16993,7 @@
               "icon": "home"
             },
             {
-              "icon": "shop",
-              "text": "市"
+              "icon": "shop"
             }
           ],
           "answer": 2,
@@ -17430,15 +17027,12 @@
           "question": "「市」可以组成哪个词？",
           "options": [
             {
-              "icon": "calendar",
               "text": "四季"
             },
             {
-              "icon": "shop",
               "text": "市场"
             },
             {
-              "icon": "gift",
               "text": "四方"
             }
           ],
@@ -17473,8 +17067,7 @@
           "question": "再找一找：哪张图片是「市」？",
           "options": [
             {
-              "icon": "shop",
-              "text": "市"
+              "icon": "shop"
             },
             {
               "icon": "home"
@@ -17611,8 +17204,7 @@
           "question": "找一找：哪张图片是「井」？",
           "options": [
             {
-              "icon": "jar",
-              "text": "井"
+              "icon": "jar"
             },
             {
               "icon": "cup"
@@ -17652,15 +17244,12 @@
           "question": "「井」可以组成哪个词？",
           "options": [
             {
-              "icon": "party",
               "text": "五官"
             },
             {
-              "icon": "sparkle",
               "text": "六个"
             },
             {
-              "icon": "jar",
               "text": "水井"
             }
           ],
@@ -17698,8 +17287,7 @@
               "icon": "cup"
             },
             {
-              "icon": "jar",
-              "text": "井"
+              "icon": "jar"
             },
             {
               "icon": "rock"
@@ -17819,8 +17407,7 @@
               "icon": "star"
             },
             {
-              "icon": "telescope",
-              "text": "观"
+              "icon": "telescope"
             },
             {
               "icon": "book"
@@ -17857,15 +17444,12 @@
           "question": "「观」可以组成哪个词？",
           "options": [
             {
-              "icon": "telescope",
               "text": "观星"
             },
             {
-              "icon": "dice",
               "text": "七天"
             },
             {
-              "icon": "balloon",
               "text": "七彩色"
             }
           ],
@@ -17906,8 +17490,7 @@
               "icon": "book"
             },
             {
-              "icon": "telescope",
-              "text": "观"
+              "icon": "telescope"
             }
           ],
           "answer": 2,
@@ -18058,8 +17641,7 @@
               "icon": "milk"
             },
             {
-              "icon": "cup",
-              "text": "喝"
+              "icon": "cup"
             }
           ],
           "answer": 2,
@@ -18093,15 +17675,12 @@
           "question": "「喝」可以组成哪个词？",
           "options": [
             {
-              "icon": "flower",
               "text": "八哥花"
             },
             {
-              "icon": "cup",
               "text": "喝水"
             },
             {
-              "icon": "balloon",
               "text": "九月"
             }
           ],
@@ -18136,8 +17715,7 @@
           "question": "再找一找：哪张图片是「喝」？",
           "options": [
             {
-              "icon": "cup",
-              "text": "喝"
+              "icon": "cup"
             },
             {
               "icon": "milk"
@@ -18288,8 +17866,7 @@
           "question": "找一找：哪张图片是「灯」？",
           "options": [
             {
-              "icon": "bulb",
-              "text": "灯"
+              "icon": "bulb"
             },
             {
               "icon": "star"
@@ -18329,15 +17906,12 @@
           "question": "「灯」可以组成哪个词？",
           "options": [
             {
-              "icon": "star",
               "text": "十个"
             },
             {
-              "icon": "school",
               "text": "十分好"
             },
             {
-              "icon": "bulb",
               "text": "电灯"
             }
           ],
@@ -18375,8 +17949,7 @@
               "icon": "star"
             },
             {
-              "icon": "bulb",
-              "text": "灯"
+              "icon": "bulb"
             },
             {
               "icon": "moon"
@@ -18509,8 +18082,7 @@
               "icon": "frog"
             },
             {
-              "icon": "girl",
-              "text": "娃"
+              "icon": "girl"
             },
             {
               "icon": "party"
@@ -18547,15 +18119,12 @@
           "question": "「娃」可以组成哪个词？",
           "options": [
             {
-              "icon": "girl",
               "text": "娃娃"
             },
             {
-              "icon": "bear",
               "text": "大象"
             },
             {
-              "icon": "paw",
               "text": "小手"
             }
           ],
@@ -18596,8 +18165,7 @@
               "icon": "party"
             },
             {
-              "icon": "girl",
-              "text": "娃"
+              "icon": "girl"
             }
           ],
           "answer": 2,
@@ -18741,8 +18309,7 @@
               "icon": "duck"
             },
             {
-              "icon": "frog",
-              "text": "蛙"
+              "icon": "frog"
             }
           ],
           "answer": 2,
@@ -18776,15 +18343,12 @@
           "question": "「蛙」可以组成哪个词？",
           "options": [
             {
-              "icon": "sunrise",
               "text": "上学"
             },
             {
-              "icon": "frog",
               "text": "青蛙"
             },
             {
-              "icon": "school",
               "text": "上面"
             }
           ],
@@ -18819,8 +18383,7 @@
           "question": "再找一找：哪张图片是「蛙」？",
           "options": [
             {
-              "icon": "frog",
-              "text": "蛙"
+              "icon": "frog"
             },
             {
               "icon": "duck"
@@ -18971,8 +18534,7 @@
           "question": "找一找：哪张图片是「猫」？",
           "options": [
             {
-              "icon": "cat",
-              "text": "猫"
+              "icon": "cat"
             },
             {
               "icon": "dog"
@@ -19012,15 +18574,12 @@
           "question": "「猫」可以组成哪个词？",
           "options": [
             {
-              "icon": "home",
               "text": "下面"
             },
             {
-              "icon": "starface",
               "text": "星星"
             },
             {
-              "icon": "cat",
               "text": "小猫"
             }
           ],
@@ -19058,8 +18617,7 @@
               "icon": "dog"
             },
             {
-              "icon": "cat",
-              "text": "猫"
+              "icon": "cat"
             },
             {
               "icon": "duck"
@@ -19214,8 +18772,7 @@
               "icon": "cat"
             },
             {
-              "icon": "dog",
-              "text": "狗"
+              "icon": "dog"
             },
             {
               "icon": "bear"
@@ -19252,15 +18809,12 @@
           "question": "「狗」可以组成哪个词？",
           "options": [
             {
-              "icon": "dog",
               "text": "小狗"
             },
             {
-              "icon": "paw",
               "text": "小手"
             },
             {
-              "icon": "heart",
               "text": "手心"
             }
           ],
@@ -19301,8 +18855,7 @@
               "icon": "bear"
             },
             {
-              "icon": "dog",
-              "text": "狗"
+              "icon": "dog"
             }
           ],
           "answer": 2,
@@ -19446,8 +18999,7 @@
               "icon": "cow"
             },
             {
-              "icon": "pig",
-              "text": "猪"
+              "icon": "pig"
             }
           ],
           "answer": 2,
@@ -19481,15 +19033,12 @@
           "question": "「猪」可以组成哪个词？",
           "options": [
             {
-              "icon": "book",
               "text": "目录"
             },
             {
-              "icon": "pig",
               "text": "小猪"
             },
             {
-              "icon": "speaker",
               "text": "耳机"
             }
           ],
@@ -19524,8 +19073,7 @@
           "question": "再找一找：哪张图片是「猪」？",
           "options": [
             {
-              "icon": "pig",
-              "text": "猪"
+              "icon": "pig"
             },
             {
               "icon": "cow"
@@ -19676,8 +19224,7 @@
           "question": "找一找：哪张图片是「鸡」？",
           "options": [
             {
-              "icon": "bird",
-              "text": "鸡"
+              "icon": "bird"
             },
             {
               "icon": "duck"
@@ -19717,15 +19264,12 @@
           "question": "「鸡」可以组成哪个词？",
           "options": [
             {
-              "icon": "ball",
               "text": "足球"
             },
             {
-              "icon": "paw",
               "text": "手足"
             },
             {
-              "icon": "bird",
               "text": "母鸡"
             }
           ],
@@ -19763,8 +19307,7 @@
               "icon": "duck"
             },
             {
-              "icon": "bird",
-              "text": "鸡"
+              "icon": "bird"
             },
             {
               "icon": "cat"
@@ -19889,8 +19432,7 @@
           "question": "找一找：哪张图片是「日」？",
           "options": [
             {
-              "icon": "sunrise",
-              "text": "日"
+              "icon": "sunrise"
             },
             {
               "icon": "moon"
@@ -19917,8 +19459,7 @@
               "icon": "sun"
             },
             {
-              "icon": "moon",
-              "text": "月"
+              "icon": "moon"
             }
           ],
           "answer": 2,
@@ -19933,8 +19474,7 @@
           "question": "找一找：哪张图片是「水」？",
           "options": [
             {
-              "icon": "wave",
-              "text": "水"
+              "icon": "wave"
             },
             {
               "icon": "sun"
@@ -19958,8 +19498,7 @@
               "icon": "rocket"
             },
             {
-              "icon": "volcano",
-              "text": "山"
+              "icon": "volcano"
             },
             {
               "icon": "home"
@@ -19977,8 +19516,7 @@
           "question": "找一找：哪张图片是「木」？",
           "options": [
             {
-              "icon": "sprout",
-              "text": "木"
+              "icon": "sprout"
             },
             {
               "icon": "flower"
@@ -20005,8 +19543,7 @@
               "icon": "duck"
             },
             {
-              "icon": "girl",
-              "text": "人"
+              "icon": "girl"
             }
           ],
           "answer": 2,
@@ -20092,8 +19629,7 @@
               "icon": "polarbear"
             },
             {
-              "icon": "bear",
-              "text": "熊"
+              "icon": "bear"
             },
             {
               "icon": "cat"
@@ -20130,15 +19666,12 @@
           "question": "「熊」可以组成哪个词？",
           "options": [
             {
-              "icon": "bear",
               "text": "小狗熊"
             },
             {
-              "icon": "rainbow",
               "text": "彩云"
             },
             {
-              "icon": "wave",
               "text": "下雨"
             }
           ],
@@ -20179,8 +19712,7 @@
               "icon": "cat"
             },
             {
-              "icon": "bear",
-              "text": "熊"
+              "icon": "bear"
             }
           ],
           "answer": 2,
@@ -20331,8 +19863,7 @@
               "icon": "tiger"
             },
             {
-              "icon": "lion",
-              "text": "狮"
+              "icon": "lion"
             }
           ],
           "answer": 2,
@@ -20366,15 +19897,12 @@
           "question": "「狮」可以组成哪个词？",
           "options": [
             {
-              "icon": "windmill",
               "text": "风车"
             },
             {
-              "icon": "lion",
               "text": "狮子"
             },
             {
-              "icon": "windmill",
               "text": "风车转"
             }
           ],
@@ -20409,8 +19937,7 @@
           "question": "再找一找：哪张图片是「狮」？",
           "options": [
             {
-              "icon": "lion",
-              "text": "狮"
+              "icon": "lion"
             },
             {
               "icon": "tiger"
@@ -20568,8 +20095,7 @@
           "question": "找一找：哪张图片是「猴」？",
           "options": [
             {
-              "icon": "monkey",
-              "text": "猴"
+              "icon": "monkey"
             },
             {
               "icon": "bear"
@@ -20609,15 +20135,12 @@
           "question": "「猴」可以组成哪个词？",
           "options": [
             {
-              "icon": "sprout",
               "text": "禾田"
             },
             {
-              "icon": "bee",
               "text": "虫子"
             },
             {
-              "icon": "monkey",
               "text": "猴子"
             }
           ],
@@ -20655,8 +20178,7 @@
               "icon": "bear"
             },
             {
-              "icon": "monkey",
-              "text": "猴"
+              "icon": "monkey"
             },
             {
               "icon": "dog"
@@ -20804,8 +20326,7 @@
               "icon": "moon"
             },
             {
-              "icon": "sun",
-              "text": "晴"
+              "icon": "sun"
             },
             {
               "icon": "star"
@@ -20842,15 +20363,12 @@
           "question": "「晴」可以组成哪个词？",
           "options": [
             {
-              "icon": "sun",
               "text": "晴天"
             },
             {
-              "icon": "coin",
               "text": "宝贝"
             },
             {
-              "icon": "gift",
               "text": "宝贝蛋"
             }
           ],
@@ -20891,8 +20409,7 @@
               "icon": "star"
             },
             {
-              "icon": "sun",
-              "text": "晴"
+              "icon": "sun"
             }
           ],
           "answer": 2,
@@ -21036,8 +20553,7 @@
               "icon": "sun"
             },
             {
-              "icon": "moon",
-              "text": "晚"
+              "icon": "moon"
             }
           ],
           "answer": 2,
@@ -21071,15 +20587,12 @@
           "question": "「晚」可以组成哪个词？",
           "options": [
             {
-              "icon": "book",
               "text": "再见"
             },
             {
-              "icon": "moon",
               "text": "晚上"
             },
             {
-              "icon": "egg",
               "text": "雪白"
             }
           ],
@@ -21114,8 +20627,7 @@
           "question": "再找一找：哪张图片是「晚」？",
           "options": [
             {
-              "icon": "moon",
-              "text": "晚"
+              "icon": "moon"
             },
             {
               "icon": "sun"
@@ -21259,8 +20771,7 @@
           "question": "找一找：哪张图片是「雪」？",
           "options": [
             {
-              "icon": "snowflake",
-              "text": "雪"
+              "icon": "snowflake"
             },
             {
               "icon": "ice"
@@ -21300,15 +20811,12 @@
           "question": "「雪」可以组成哪个词？",
           "options": [
             {
-              "icon": "cow",
               "text": "小牛"
             },
             {
-              "icon": "milk",
               "text": "牛奶"
             },
             {
-              "icon": "snowflake",
               "text": "下雪"
             }
           ],
@@ -21346,8 +20854,7 @@
               "icon": "ice"
             },
             {
-              "icon": "snowflake",
-              "text": "雪"
+              "icon": "snowflake"
             },
             {
               "icon": "milk"
@@ -21508,8 +21015,7 @@
               "icon": "snowflake"
             },
             {
-              "icon": "ice",
-              "text": "冰"
+              "icon": "ice"
             },
             {
               "icon": "crystal"
@@ -21546,15 +21052,12 @@
           "question": "「冰」可以组成哪个词？",
           "options": [
             {
-              "icon": "ice",
               "text": "结冰"
             },
             {
-              "icon": "milk",
               "text": "羊毛"
             },
             {
-              "icon": "apple",
               "text": "果子"
             }
           ],
@@ -21595,8 +21098,7 @@
               "icon": "crystal"
             },
             {
-              "icon": "ice",
-              "text": "冰"
+              "icon": "ice"
             }
           ],
           "answer": 2,
@@ -21701,8 +21203,7 @@
           "question": "找一找：哪张图片是「日」？",
           "options": [
             {
-              "icon": "sunrise",
-              "text": "日"
+              "icon": "sunrise"
             },
             {
               "icon": "moon"
@@ -21729,8 +21230,7 @@
               "icon": "sun"
             },
             {
-              "icon": "moon",
-              "text": "月"
+              "icon": "moon"
             }
           ],
           "answer": 2,
@@ -21745,8 +21245,7 @@
           "question": "找一找：哪张图片是「水」？",
           "options": [
             {
-              "icon": "wave",
-              "text": "水"
+              "icon": "wave"
             },
             {
               "icon": "sun"
@@ -21770,8 +21269,7 @@
               "icon": "rocket"
             },
             {
-              "icon": "volcano",
-              "text": "山"
+              "icon": "volcano"
             },
             {
               "icon": "home"
@@ -21789,8 +21287,7 @@
           "question": "找一找：哪张图片是「木」？",
           "options": [
             {
-              "icon": "sprout",
-              "text": "木"
+              "icon": "sprout"
             },
             {
               "icon": "flower"
@@ -21817,8 +21314,7 @@
               "icon": "duck"
             },
             {
-              "icon": "girl",
-              "text": "人"
+              "icon": "girl"
             }
           ],
           "answer": 2,
@@ -21833,8 +21329,7 @@
           "question": "找一找：哪张图片是「口」？",
           "options": [
             {
-              "icon": "speaker",
-              "text": "口"
+              "icon": "speaker"
             },
             {
               "icon": "clock"
@@ -21858,8 +21353,7 @@
               "icon": "banana"
             },
             {
-              "icon": "sun",
-              "text": "天"
+              "icon": "sun"
             },
             {
               "icon": "rocket"

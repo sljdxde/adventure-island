@@ -1,7 +1,14 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs><linearGradient id="g-tel" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7B8ADF"/><stop offset="1" stop-color="#4A5AB8"/></linearGradient><linearGradient id="g-tel2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFE58A"/><stop offset="1" stop-color="#F7B32B"/></linearGradient></defs>
-  <path d="M12 46 L26 30 L34 34 L20 50 Z" fill="url(#g-tel2)"/>
-  <rect x="20" y="18" width="14" height="30" rx="4" transform="rotate(38 27 33)" fill="url(#g-tel)"/>
-  <rect x="40" y="8" width="12" height="26" rx="4" transform="rotate(38 46 21)" fill="#333C7A"/>
-  <circle cx="49" cy="12" r="5.4" fill="url(#g-tel2)"/>
-  <path d="M24 40 L18 58 M28 40 L30 58 M22 50 h14" stroke="#8A5B3A" stroke-width="4.6" stroke-linecap="round" fill="none"/>
-  <circle cx="55" cy="30" r="2" fill="#FFE58A"/><circle cx="58" cy="20" r="1.5" fill="#fff"/><circle cx="8" cy="14" r="1.6" fill="#fff" opacity=".8"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs>
+      <linearGradient id="tl-tube" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#7FA8D8"/><stop offset="100%" stop-color="#3A5A96"/>
+      </linearGradient>
+    </defs>
+    <!-- 镜筒（倾斜） -->
+    <g transform="rotate(-32 32 32)">
+      <rect x="22" y="14" width="16" height="30" rx="6" fill="url(#tl-tube)"/>
+      <rect x="20" y="12" width="20" height="8" rx="4" fill="#2E4878"/>
+      <rect x="24" y="16" width="12" height="4" rx="2" fill="#8FB8E8" opacity="0.7"/>
+    </g>
+    <!-- 支架 -->
+    <path d="M32 40 L22 56 M32 40 L42 56 M32 40 L32 54" stroke="#6A5A48" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="32" cy="40" r="3" fill="#8A7A68"/></svg>

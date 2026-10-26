@@ -272,6 +272,85 @@ def icon_calendar():
     return svg("".join(p))
 
 
+# ----------------------------------------------------------------------
+# 情绪 / 动作 / 人物（英语词场：开心、兴奋、唱歌、老师、人脚印）
+# ----------------------------------------------------------------------
+def _spark(cx, cy, r, color):
+    """四角小闪星（兴奋眼、点缀用）。"""
+    q = r * 0.28
+    return (f'<path d="M{cx} {cy-r} Q{cx+q} {cy-q} {cx+r} {cy} Q{cx+q} {cy+q} {cx} {cy+r} '
+            f'Q{cx-q} {cy+q} {cx-r} {cy} Q{cx-q} {cy-q} {cx} {cy-r} Z" fill="{color}"/>')
+
+def icon_happy():
+    """开心：黄色圆脸，弯月笑眼 + 张大的笑嘴。"""
+    p = [style()]
+    p.append(f'<circle class="st" cx="32" cy="32" r="23" fill="{YELLOW}"/>')
+    p.append(f'<path d="M21 27 Q25 22.5 29 27" fill="none" stroke="{INK}" stroke-width="2.8" stroke-linecap="round"/>')
+    p.append(f'<path d="M35 27 Q39 22.5 43 27" fill="none" stroke="{INK}" stroke-width="2.8" stroke-linecap="round"/>')
+    p.append(f'<circle cx="19.5" cy="34" r="3.2" fill="{BLUSH}" opacity="0.65"/>')
+    p.append(f'<circle cx="44.5" cy="34" r="3.2" fill="{BLUSH}" opacity="0.65"/>')
+    p.append(f'<path class="st" d="M22 35 Q32 50 42 35 Z" fill="#B8453A"/>')
+    p.append(f'<path d="M27 43 Q32 47 37 43 Q32 44.5 27 43 Z" fill="#F08A8A"/>')
+    p.append(gloss(23, 20, 4.5, 3, 0.5))
+    return svg("".join(p))
+
+def icon_excited():
+    """兴奋：星星眼 + 张圆的 O 嘴 + 上扬眉。"""
+    p = [style()]
+    p.append(f'<circle class="st" cx="32" cy="32" r="23" fill="{YELLOW}"/>')
+    p.append(f'<path d="M20.5 20 L28 22.5" stroke="{INK}" stroke-width="2.2" stroke-linecap="round"/>')
+    p.append(f'<path d="M43.5 20 L36 22.5" stroke="{INK}" stroke-width="2.2" stroke-linecap="round"/>')
+    p.append(_spark(25, 28, 4.6, "#E8654F"))
+    p.append(_spark(39, 28, 4.6, "#E8654F"))
+    p.append(f'<circle cx="19" cy="36" r="3" fill="{BLUSH}" opacity="0.65"/>')
+    p.append(f'<circle cx="45" cy="36" r="3" fill="{BLUSH}" opacity="0.65"/>')
+    p.append(f'<ellipse class="st" cx="32" cy="41" rx="4.6" ry="5.6" fill="{DARKBROWN}"/>')
+    p.append(gloss(23, 20, 4.5, 3, 0.5))
+    return svg("".join(p))
+
+def icon_sing():
+    """唱歌：八分音符 + 两道音波（区别于喇叭 speaker）。"""
+    p = [style()]
+    p.append(f'<ellipse class="st" cx="18" cy="44" rx="8" ry="6" fill="{PURPLE}" transform="rotate(-20 18 44)"/>')
+    p.append(f'<path class="st" d="M24.5 41 L24.5 13 L29 13 L29 39 Z" fill="{PURPLE}"/>')
+    p.append(f'<path class="st" d="M29 14 Q43 18 40 31 Q37 22 29 23 Z" fill="{PURPLE}"/>')
+    p.append(f'<path d="M44 25 Q47 30 44 35" fill="none" stroke="{BLUE}" stroke-width="2.6" stroke-linecap="round"/>')
+    p.append(f'<path d="M49 21 Q53 30 49 39" fill="none" stroke="{BLUE}" stroke-width="2.6" stroke-linecap="round" opacity="0.55"/>')
+    return svg("".join(p))
+
+def icon_teacher():
+    """老师：戴圆眼镜的笑脸头像 + 底下一本打开的书（区别于 girl）。"""
+    p = [style()]
+    skin, hair = "#FFE3C2", "#5E4A38"
+    p.append(f'<path class="st" d="M32 47 L12 51 L12 58 Q22 54.5 32 56.5 Q42 54.5 52 58 L52 51 Z" fill="{BLUE}"/>')
+    p.append(f'<path d="M32 47 L32 56.5" stroke="{INK}" stroke-width="1.5" stroke-linecap="round"/>')
+    p.append(f'<path d="M16 55 Q24 52.5 30 54 M34 54 Q40 52.5 48 55" fill="none" stroke="{WHITE}" stroke-width="1.3" stroke-linecap="round" opacity="0.8"/>')
+    p.append(f'<circle class="st" cx="32" cy="28" r="17" fill="{hair}"/>')
+    p.append(f'<circle cx="32" cy="32" r="13.5" fill="{skin}"/>')
+    p.append(f'<path d="M16 28 Q17 13 32 13 Q47 13 48 28 Q43 21 38 24 Q34 19 32 20 Q30 19 26 24 Q21 21 16 28 Z" fill="{hair}"/>')
+    p.append(f'<circle class="st" cx="26.5" cy="33" r="4.7" fill="{WHITE}" fill-opacity="0.45"/>')
+    p.append(f'<circle class="st" cx="37.5" cy="33" r="4.7" fill="{WHITE}" fill-opacity="0.45"/>')
+    p.append(f'<path d="M31.2 33 L32.8 33" stroke="{INK}" stroke-width="2" stroke-linecap="round"/>')
+    p.append(f'<circle cx="26.5" cy="33" r="1.7" fill="{INK}"/>')
+    p.append(f'<circle cx="37.5" cy="33" r="1.7" fill="{INK}"/>')
+    p.append(f'<path d="M28 39 Q32 42 36 39" fill="none" stroke="{INK}" stroke-width="2" stroke-linecap="round"/>')
+    p.append(f'<circle cx="20.5" cy="37" r="2.6" fill="{BLUSH}" opacity="0.6"/>')
+    p.append(f'<circle cx="43.5" cy="37" r="2.6" fill="{BLUSH}" opacity="0.6"/>')
+    return svg("".join(p))
+
+def icon_foot():
+    """人的脚印：5 个小脚趾 + 长脚掌（区别于动物爪印 paw）。"""
+    p = [style()]
+    skin = "#FFE3C2"
+    p.append(f'<path class="st" d="M27 58 Q18 42 22 30 Q26 22 34 24 Q43 27 41 40 Q39 52 34 58 Q30 59.5 27 58 Z" fill="{skin}"/>')
+    p.append(f'<circle class="st" cx="37" cy="21" r="4.2" fill="{skin}"/>')
+    p.append(f'<circle class="st" cx="31" cy="18.5" r="3.5" fill="{skin}"/>')
+    p.append(f'<circle class="st" cx="25" cy="19" r="3.1" fill="{skin}"/>')
+    p.append(f'<circle class="st" cx="20" cy="21.5" r="2.7" fill="{skin}"/>')
+    p.append(f'<circle class="st" cx="16" cy="25" r="2.3" fill="{skin}"/>')
+    return svg("".join(p))
+
+
 ICONS = {
     "circle": icon_circle,
     "square": icon_square,
@@ -301,6 +380,11 @@ ICONS = {
     "girl": icon_girl,
     "hanzi": icon_hanzi,
     "calendar": icon_calendar,
+    "happy": icon_happy,
+    "excited": icon_excited,
+    "sing": icon_sing,
+    "teacher": icon_teacher,
+    "foot": icon_foot,
 }
 
 if __name__ == "__main__":

@@ -1,7 +1,22 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs><linearGradient id="g-white" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#E9EDF2"/></linearGradient><linearGradient id="g-coral" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFA793"/><stop offset="1" stop-color="#F0705F"/></linearGradient><linearGradient id="g-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#C9ECFB"/><stop offset="1" stop-color="#8ED8F6"/></linearGradient><linearGradient id="g-gold" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFE58A"/><stop offset="1" stop-color="#F7B32B"/></linearGradient></defs>
-  <path d="M32 4 Q44 16 44 34 L44 46 L20 46 L20 34 Q20 16 32 4 Z" fill="url(#g-white)"/>
-  <path d="M32 4 Q40 12 42 22 L22 22 Q24 12 32 4 Z" fill="url(#g-coral)"/>
-  <circle cx="32" cy="32" r="6.5" fill="url(#g-sky)" stroke="#fff" stroke-width="3"/>
-  <path d="M20 38 L10 52 L20 50 Z" fill="url(#g-coral)"/><path d="M44 38 L54 52 L44 50 Z" fill="url(#g-coral)"/>
-  <rect x="20" y="42" width="24" height="4" fill="url(#g-coral)" opacity=".85"/>
-  <path d="M26 47 Q32 60 38 47 Q35 51 32 50 Q29 51 26 47 Z" fill="url(#g-gold)"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs>
+      <linearGradient id="rk-body" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#fff"/><stop offset="100%" stop-color="#E0E6F0"/>
+      </linearGradient>
+      <linearGradient id="rk-flame" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#FFF3A0"/><stop offset="50" stop-color="#FFB24D"/>
+        <stop offset="100%" stop-color="#FF6B4D" stop-opacity="0"/>
+      </linearGradient>
+    </defs>
+    <!-- 火焰 -->
+    <path d="M26 50 Q28 58 32 62 Q36 58 38 50 Z" fill="url(#rk-flame)"/>
+    <!-- 尾翼 -->
+    <path d="M22 44 L16 54 L24 50 Z" fill="#FF6B6B"/>
+    <path d="M42 44 L48 54 L40 50 Z" fill="#FF6B6B"/>
+    <!-- 主体 -->
+    <path d="M32 8 Q40 18 40 32 L40 50 L24 50 L24 32 Q24 18 32 8 Z" fill="url(#rk-body)"/>
+    <!-- 圆窗 -->
+    <circle cx="32" cy="28" r="6" fill="#4D96FF"/>
+    <circle cx="32" cy="28" r="6" fill="none" stroke="#9B8A6A" stroke-width="2"/>
+    <path d="M29 24 Q30 22 33 23" fill="none" stroke="#fff" stroke-width="1.6" opacity="0.8"/>
+    <!-- 红条纹 -->
+    <rect x="24" y="44" width="16" height="5" fill="#FF6B6B"/></svg>

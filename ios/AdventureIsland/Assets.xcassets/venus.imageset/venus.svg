@@ -1,5 +1,23 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs><linearGradient id="g-gold" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFE58A"/><stop offset="1" stop-color="#F7B32B"/></linearGradient></defs>
-  <circle cx="32" cy="32" r="21" fill="url(#g-gold)"/>
-  <path d="M14 26 Q26 22 40 26 Q48 28 50 26" stroke="#F0C04A" stroke-width="3" fill="none" opacity=".6" stroke-linecap="round"/>
-  <path d="M15 38 Q28 42 46 37" stroke="#F0C04A" stroke-width="3" fill="none" opacity=".5" stroke-linecap="round"/>
-  <ellipse cx="25" cy="20" rx="6" ry="3.5" fill="#fff" opacity=".5" transform="rotate(-20 25 20)"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs><radialGradient id="venus-lit" cx="34%" cy="30%" r="78%">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.92"/>
+      <stop offset="38%" stop-color="#ffffff" stop-opacity="0.18"/>
+      <stop offset="72%" stop-color="#000000" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0.42"/>
+    </radialGradient>
+    <radialGradient id="venus-base" cx="38%" cy="34%" r="75%">
+      <stop offset="0" stop-color="#FBEFC0"/><stop offset="55%" stop-color="#E8C97A"/><stop offset="100%" stop-color="#C99E48"/>
+    </radialGradient><radialGradient id="venus-glow" cx="50%" cy="50%" r="50%">
+          <stop offset="62%" stop-color="#FFE9A8" stop-opacity="0"/>
+          <stop offset="78%" stop-color="#FFE9A8" stop-opacity="0.55"/>
+          <stop offset="92%" stop-color="#FFE9A8" stop-opacity="0.18"/>
+          <stop offset="100%" stop-color="#FFE9A8" stop-opacity="0"/>
+        </radialGradient><clipPath id="venus-clip"><circle cx="32" cy="32" r="23"/></clipPath></defs><circle cx="32" cy="32" r="31" fill="url(#venus-glow)"/><circle cx="32" cy="32" r="23" fill="url(#venus-base)"/><g clip-path="url(#venus-clip)">
+      <g fill="none" stroke="#D9B45A" stroke-width="2.4" opacity="0.6" stroke-linecap="round">
+        <path d="M12 24 Q32 19 52 24"/>
+        <path d="M11 31 Q32 26 53 31"/>
+        <path d="M12 38 Q32 33 52 38"/>
+        <path d="M14 44 Q32 40 50 44"/>
+      </g>
+      <g fill="none" stroke="#FFF6D8" stroke-width="1.6" opacity="0.7" stroke-linecap="round">
+        <path d="M14 22 Q30 18 48 22"/><path d="M13 35 Q32 31 51 35"/>
+      </g></g><circle cx="32" cy="32" r="23" fill="url(#venus-lit)"/><circle cx="32" cy="32" r="23" fill="none" stroke="#000" stroke-opacity="0.18" stroke-width="1.2"/></svg>

@@ -127,7 +127,31 @@ def emit(icons, group=""):
         print("  ✗ XML 失败：")
         for n, e in bad:
             print("   ", n, e)
+    sync_manifest()
     return ok, bad
+
+def sync_manifest():
+    """扫描 icons 目录所有 SVG，重建 manifest.json 的 icons 清单（保留 bg）。
+
+    Python 图标生成器（gen_icons*.py / gen_icons_concept.py）产出的图标都在
+    design/assets/icons 下；资产清单必须与磁盘一致，check_registry 才会通过。
+    不重绘任何 SVG，只更新清单。返回登记的图标数量。
+    """
+    import json
+    mp = os.path.join(os.path.dirname(OUT), "manifest.json")
+    default_bg = ["bg/hills-back.svg", "bg/hills-front.svg"]
+    bg = default_bg
+    if os.path.exists(mp):
+        try:
+            bg = json.load(open(mp, encoding="utf-8")).get("bg", []) or default_bg
+        except Exception:
+            bg = default_bg
+    names = sorted(f for f in os.listdir(OUT) if f.endswith(".svg"))
+    with open(mp, "w", encoding="utf-8") as f:
+        json.dump({"icons": ["icons/" + n for n in names], "bg": bg},
+                  f, ensure_ascii=False, indent=2)
+    print(f"  manifest 已同步：{len(names)} 个图标")
+    return len(names)
 
 # 一个完整范例（苹果），展示手绘物品标准写法
 def icon_apple_demo():

@@ -164,14 +164,16 @@
           "question": "夜晚有时圆圆、有时弯弯的是谁？",
           "options": [
             {
-              "icon": "crystal"
+              "icon": "star",
+              "text": "星星"
             },
             {
               "icon": "moon",
               "text": "月亮"
             },
             {
-              "icon": "sun"
+              "icon": "sun",
+              "text": "太阳"
             }
           ],
           "answer": 1,
@@ -271,14 +273,16 @@
           "question": "夜空里一闪一闪的是谁？",
           "options": [
             {
-              "icon": "balloon"
+              "icon": "balloon",
+              "text": "气球"
             },
             {
               "icon": "star",
               "text": "星星"
             },
             {
-              "icon": "sun"
+              "icon": "sun",
+              "text": "太阳"
             }
           ],
           "answer": 1,
@@ -291,16 +295,16 @@
           "question": "星星为什么像在眨眼睛？",
           "options": [
             {
-              "icon": "windmill",
-              "text": "空气吹动风车"
+              "icon": "airtwinkle",
+              "text": "空气流动，星光闪烁"
             },
             {
               "icon": "starface",
-              "text": "星星自己眨眼"
+              "text": "星星自己在眨眼"
             },
             {
               "icon": "bulb",
-              "text": "星星没电"
+              "text": "星星没电了"
             }
           ],
           "answer": 0,
@@ -451,15 +455,15 @@
           "question": "早上太阳从哪个方向升起？",
           "options": [
             {
-              "icon": "square",
+              "icon": "sunrise",
               "text": "东方"
             },
             {
-              "icon": "wave",
+              "icon": "sunset",
               "text": "西方"
             },
             {
-              "icon": "polarbear",
+              "icon": "compass",
               "text": "北方"
             }
           ],
@@ -784,15 +788,15 @@
           "question": "太阳从哪个方向落下？",
           "options": [
             {
-              "icon": "wave",
+              "icon": "sunset",
               "text": "西方"
             },
             {
-              "icon": "square",
+              "icon": "sunrise",
               "text": "东方"
             },
             {
-              "icon": "flag",
+              "icon": "penguin",
               "text": "南方"
             }
           ],
@@ -962,15 +966,12 @@
           "question": "地球自己转一圈是多久？",
           "options": [
             {
-              "icon": "sunrise",
               "text": "一天"
             },
             {
-              "icon": "clock",
               "text": "一小时"
             },
             {
-              "icon": "equal",
               "text": "一年"
             }
           ],
@@ -1090,15 +1091,12 @@
           "question": "月亮上有没有空气？",
           "options": [
             {
-              "icon": "balloon",
               "text": "没有空气"
             },
             {
-              "text": "和地球一样",
-              "body": "earth"
+              "text": "和地球一样多"
             },
             {
-              "icon": "wave",
               "text": "全是水汽"
             }
           ],
@@ -1571,7 +1569,7 @@
           "question": "在空间站里水珠会飘走，宇航员怎么喝水？",
           "options": [
             {
-              "icon": "cup",
+              "icon": "waterpouch",
               "text": "吸管水袋"
             },
             {
@@ -1675,16 +1673,16 @@
           "question": "空间站里宇航员怎么睡觉？",
           "options": [
             {
-              "icon": "bear",
-              "text": "睡大觉"
+              "icon": "sleepingbag",
+              "text": "睡袋挂墙上"
             },
             {
-              "icon": "home",
-              "text": "家"
+              "icon": "bed",
+              "text": "普通的床上"
             },
             {
-              "icon": "hat",
-              "text": "椅子"
+              "icon": "chair",
+              "text": "椅子上"
             }
           ],
           "answer": 0,
@@ -1853,7 +1851,7 @@
               "text": "小鸟"
             },
             {
-              "icon": "windmill",
+              "icon": "kite",
               "text": "风筝"
             }
           ],
@@ -2152,15 +2150,12 @@
           "question": "地球自己转一圈是多久？",
           "options": [
             {
-              "icon": "sunrise",
               "text": "一天"
             },
             {
-              "icon": "clock",
               "text": "一小时"
             },
             {
-              "icon": "equal",
               "text": "一年"
             }
           ],
@@ -2196,15 +2191,12 @@
           "question": "月亮上有没有空气？",
           "options": [
             {
-              "icon": "balloon",
               "text": "没有空气"
             },
             {
-              "text": "和地球一样",
-              "body": "earth"
+              "text": "和地球一样多"
             },
             {
-              "icon": "wave",
               "text": "全是水汽"
             }
           ],
@@ -2305,15 +2297,12 @@
           "question": "太阳系里有几大行星？",
           "options": [
             {
-              "icon": "planet",
               "text": "八颗行星"
             },
             {
-              "icon": "school",
               "text": "三颗"
             },
             {
-              "icon": "equal",
               "text": "一百颗"
             }
           ],
@@ -2619,8 +2608,8 @@
           "question": "火星为什么是红色的？",
           "options": [
             {
-              "icon": "magnet",
-              "text": "土壤铁锈"
+              "icon": "rustsoil",
+              "text": "铁锈色土壤"
             },
             {
               "icon": "fire",
@@ -2628,7 +2617,7 @@
             },
             {
               "icon": "apple",
-              "text": "红"
+              "text": "红苹果"
             }
           ],
           "answer": 0,
@@ -2973,16 +2962,13 @@
           "question": "行星排队的顺序是按什么排的？",
           "options": [
             {
-              "icon": "libertystatue",
-              "text": "由近到远"
+              "text": "离太阳由近到远"
             },
             {
-              "icon": "girl",
               "text": "谁跑得慢"
             },
             {
-              "icon": "rainbow",
-              "text": "彩色"
+              "text": "谁的颜色好看"
             }
           ],
           "answer": 0,
@@ -3183,12 +3169,12 @@
           "question": "木星上的大红斑是什么？",
           "options": [
             {
-              "icon": "windmill",
-              "text": "几百年风暴"
+              "icon": "storm",
+              "text": "刮了几百年的大风暴"
             },
             {
               "icon": "apple",
-              "text": "红"
+              "text": "红色圆斑"
             },
             {
               "icon": "meteorite",
@@ -3899,15 +3885,12 @@
           "question": "地球绕太阳转一圈是多久？",
           "options": [
             {
-              "icon": "equal",
               "text": "一年"
             },
             {
-              "icon": "sunrise",
               "text": "一天"
             },
             {
-              "icon": "clock",
               "text": "一小时"
             }
           ],
@@ -3929,16 +3912,13 @@
           "question": "太阳其实是一颗什么？",
           "options": [
             {
-              "icon": "sun",
-              "text": "太阳"
+              "text": "恒星"
             },
             {
-              "icon": "planet",
               "text": "行星"
             },
             {
-              "icon": "moon",
-              "text": "大月亮"
+              "text": "卫星"
             }
           ],
           "answer": 0,
@@ -4014,16 +3994,13 @@
           "question": "太阳的肚子里大约能装下多少个地球？",
           "options": [
             {
-              "text": "太阳装百万",
-              "body": "sun"
+              "text": "约 130 万个"
             },
             {
-              "text": "地球十个",
-              "body": "earth"
+              "text": "约 100 个"
             },
             {
-              "text": "地球百个",
-              "body": "earth"
+              "text": "约 10 个"
             }
           ],
           "answer": 0,
@@ -4036,12 +4013,12 @@
           "question": "太阳和地球谁大？",
           "options": [
             {
-              "text": "太阳大多",
-              "body": "sun"
+              "icon": "sun",
+              "text": "太阳大得多"
             },
             {
-              "text": "地球大",
-              "body": "earth"
+              "icon": "earth",
+              "text": "地球大"
             },
             {
               "icon": "equal",
@@ -4083,15 +4060,15 @@
           "options": [
             {
               "icon": "sun",
-              "text": "地球绕日"
+              "text": "地球绕太阳转"
             },
             {
               "icon": "earth",
-              "text": "地球"
+              "text": "太阳绕地球转"
             },
             {
               "icon": "party",
-              "text": "派对"
+              "text": "它们开派对"
             }
           ],
           "answer": 0,
@@ -4112,16 +4089,13 @@
           "question": "太阳光跑到地球要多久？",
           "options": [
             {
-              "icon": "clock",
               "text": "约 8 分钟"
             },
             {
-              "icon": "equal",
-              "text": "1 秒钟"
+              "text": "约一个月"
             },
             {
-              "icon": "calendar",
-              "text": "日历"
+              "text": "约一整天"
             }
           ],
           "answer": 0,
@@ -4219,13 +4193,13 @@
           "display": "极光",
           "examples": [
             {
-              "icon": "rainbow",
-              "text": "极光像彩带",
+              "icon": "aurora",
+              "text": "夜空里舞动的极光",
               "say": "极光"
             },
             {
               "icon": "star",
-              "text": "夜空里舞动",
+              "text": "一闪一闪的星星",
               "say": "星星"
             }
           ],
@@ -4237,7 +4211,7 @@
           "question": "夜空里飘动的彩色光带叫什么？",
           "options": [
             {
-              "icon": "starface",
+              "icon": "aurora",
               "text": "极光"
             },
             {
@@ -4245,7 +4219,7 @@
               "text": "彩虹"
             },
             {
-              "icon": "bulb",
+              "icon": "bolt",
               "text": "闪电"
             }
           ],
@@ -4538,16 +4512,16 @@
           "question": "空间站里宇航员怎么睡觉？",
           "options": [
             {
-              "icon": "bear",
-              "text": "睡大觉"
+              "icon": "sleepingbag",
+              "text": "睡袋挂墙上"
             },
             {
-              "icon": "home",
-              "text": "家"
+              "icon": "bed",
+              "text": "普通的床上"
             },
             {
-              "icon": "hat",
-              "text": "椅子"
+              "icon": "chair",
+              "text": "椅子上"
             }
           ],
           "answer": 0,
@@ -4961,16 +4935,13 @@
           "question": "潮涨潮落一天有几次？",
           "options": [
             {
-              "icon": "equal",
               "text": "两次涨退"
             },
             {
-              "icon": "equal",
-              "text": "一次都没"
+              "text": "一次都没有"
             },
             {
-              "icon": "clock",
-              "text": "每小时百次"
+              "text": "每小时一百次"
             }
           ],
           "answer": 0,
@@ -5396,15 +5367,12 @@
           "question": "北斗七星是由几颗星组成的？",
           "options": [
             {
-              "icon": "balloon",
               "text": "七颗"
             },
             {
-              "icon": "school",
               "text": "三颗"
             },
             {
-              "icon": "equal",
               "text": "一百颗"
             }
           ],
@@ -5465,7 +5433,7 @@
               "text": "北方"
             },
             {
-              "icon": "flag",
+              "icon": "penguin",
               "text": "南方"
             },
             {
@@ -5548,15 +5516,12 @@
           "question": "冬夜里最亮的星座「猎户座」像什么？",
           "options": [
             {
-              "icon": "girl",
               "text": "一位猎人"
             },
             {
-              "icon": "cat",
               "text": "一只小猫"
             },
             {
-              "icon": "car",
               "text": "一辆汽车"
             }
           ],
@@ -5652,16 +5617,13 @@
           "question": "著名的哈雷彗星绕太阳转一圈要多久？",
           "options": [
             {
-              "icon": "calendar",
-              "text": "日历上约76年"
+              "text": "约 76 年"
             },
             {
-              "icon": "sunrise",
               "text": "一天"
             },
             {
-              "icon": "equal",
-              "text": "一万年"
+              "text": "一小时"
             }
           ],
           "answer": 0,
@@ -5974,7 +5936,7 @@
           "question": "北斗七星像什么？",
           "options": [
             {
-              "icon": "hat",
+              "icon": "spoon",
               "text": "勺子"
             },
             {
@@ -6253,15 +6215,12 @@
           "question": "银河系里的星星有多少？",
           "options": [
             {
-              "icon": "school",
               "text": "上千亿颗"
             },
             {
-              "icon": "school",
               "text": "几十颗"
             },
             {
-              "icon": "equal",
               "text": "100 颗"
             }
           ],
@@ -6275,15 +6234,12 @@
           "question": "太阳在银河系里是？",
           "options": [
             {
-              "icon": "sun",
-              "text": "太阳"
+              "text": "普通的一颗星"
             },
             {
-              "icon": "bear",
               "text": "最大的星"
             },
             {
-              "icon": "equal",
               "text": "唯一的星"
             }
           ],
@@ -6349,15 +6305,12 @@
           "question": "为什么需要用「光年」来量星空？",
           "options": [
             {
-              "icon": "hat",
-              "text": "尺子太短"
+              "text": "星星太远，普通尺子太短"
             },
             {
-              "icon": "school",
               "text": "学校太大"
             },
             {
-              "icon": "speaker",
               "text": "声音太响"
             }
           ],
@@ -6528,16 +6481,13 @@
           "question": "宇宙是怎么开始的？",
           "options": [
             {
-              "icon": "dice",
-              "text": "小点爆炸"
+              "text": "一个小点爆炸开"
             },
             {
-              "icon": "rock",
-              "text": "石头"
+              "text": "一块大石头"
             },
             {
-              "icon": "torii",
-              "text": "本来就有"
+              "text": "本来就有的"
             }
           ],
           "answer": 0,
@@ -6916,15 +6866,12 @@
           "question": "谁第一次用望远镜看到了月亮上的环形山？",
           "options": [
             {
-              "icon": "pisa",
               "text": "伽利略"
             },
             {
-              "icon": "astronaut",
               "text": "邮递员"
             },
             {
-              "icon": "bird",
               "text": "小明"
             }
           ],
@@ -7171,15 +7118,12 @@
           "question": "宇航员在月亮上开的车叫？",
           "options": [
             {
-              "icon": "car",
               "text": "月球车"
             },
             {
-              "icon": "car",
               "text": "自行车"
             },
             {
-              "icon": "bus",
               "text": "公交车"
             }
           ],
@@ -7197,7 +7141,7 @@
               "text": "玉兔号"
             },
             {
-              "icon": "speaker",
+              "icon": "bolt",
               "text": "闪电号"
             },
             {
@@ -7383,15 +7327,12 @@
           "question": "宇航员训练时要练习什么？",
           "options": [
             {
-              "icon": "flask",
-              "text": "转椅学科学"
+              "text": "转椅和科学实验"
             },
             {
-              "icon": "girl",
               "text": "只练跑步"
             },
             {
-              "icon": "chart",
               "text": "只练画画"
             }
           ],
@@ -7457,15 +7398,12 @@
           "question": "看星星最好的地方是？",
           "options": [
             {
-              "icon": "star",
-              "text": "星星"
+              "text": "灯光少的郊外"
             },
             {
-              "icon": "castle",
               "text": "商场顶楼"
             },
             {
-              "icon": "bread",
               "text": "KTV 包厢"
             }
           ],
@@ -7487,15 +7425,12 @@
           "question": "太阳系里有几大行星？",
           "options": [
             {
-              "icon": "planet",
               "text": "八颗行星"
             },
             {
-              "icon": "school",
               "text": "三颗"
             },
             {
-              "icon": "equal",
               "text": "一百颗"
             }
           ],

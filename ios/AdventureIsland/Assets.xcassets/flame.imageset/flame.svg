@@ -1,4 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs><linearGradient id="g-orange" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFB25C"/><stop offset="1" stop-color="#F08C1F"/></linearGradient><linearGradient id="g-gold" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFE58A"/><stop offset="1" stop-color="#F7B32B"/></linearGradient></defs>
-  <path d="M32 4 Q46 18 46 34 Q46 50 32 56 Q18 50 18 34 Q18 24 24 16 Q24 26 30 28 Q28 14 32 4 Z" fill="url(#g-orange)"/>
-  <path d="M32 26 Q38 32 38 40 Q38 48 32 51 Q26 48 26 40 Q26 32 32 26 Z" fill="url(#g-gold)"/>
-  <ellipse cx="32" cy="42" rx="4" ry="5" fill="#FFF3C4"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs>
+      <linearGradient id="fl-out" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#FFB25C"/><stop offset="60%" stop-color="#FF8A2A"/><stop offset="100%" stop-color="#F06A18"/>
+      </linearGradient>
+      <linearGradient id="fl-in" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#FFF3A8"/><stop offset="100%" stop-color="#FFD93D"/>
+      </linearGradient>
+    </defs>
+    <path d="M32 4 Q47 18 46 34 Q46 51 32 57 Q18 51 18 34 Q18 24 24 16 Q24 27 30 29 Q28 14 32 4 Z" fill="url(#fl-out)"/>
+    <path d="M32 25 Q39 31 38 40 Q38 49 32 52 Q26 49 26 40 Q26 31 32 25 Z" fill="url(#fl-in)"/>
+    <ellipse cx="32" cy="44" rx="4" ry="6" fill="#FFF8D0"/>
+    <path d="M24 16 Q24 27 30 29" fill="none" stroke="#fff" stroke-width="1.4" opacity="0.5"/></svg>

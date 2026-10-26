@@ -296,6 +296,25 @@ def icon_bed():
     return svg("".join(p))
 
 
+def icon_chair():
+    """小木椅（靠背＋座面＋四条腿）"""
+    p = [style()]
+    W = BROWN
+    # 靠背立柱（兼后腿，竖在座面之后）
+    p.append(f'<rect class="st" x="15" y="10" width="6" height="23" rx="3" fill="{W}"/>')
+    p.append(f'<rect class="st" x="43" y="10" width="6" height="23" rx="3" fill="{W}"/>')
+    # 靠背顶梁
+    p.append(f'<rect class="st" x="13" y="9" width="38" height="8" rx="4" fill="{W}"/>')
+    # 座面
+    p.append(f'<rect class="st" x="11" y="31" width="42" height="9" rx="3.5" fill="{W}"/>')
+    # 两条前腿
+    p.append(f'<rect class="st" x="14" y="40" width="6" height="15" rx="2.5" fill="{W}"/>')
+    p.append(f'<rect class="st" x="44" y="40" width="6" height="15" rx="2.5" fill="{W}"/>')
+    # 座面高光
+    p.append(f'<rect x="15" y="33" width="20" height="2.4" rx="1.2" fill="{WHITE}" opacity="0.55"/>')
+    return svg("".join(p))
+
+
 # ---------------------------------------------------------------- 商店（96x96）
 def icon_shop():
     """商店建筑（96x96，带雨棚招牌）"""
@@ -329,7 +348,7 @@ ICONS = {
     "goggles": icon_goggles, "clip": icon_clip, "hanger": icon_hanger,
     "bus": icon_bus, "car": icon_car, "train": icon_train,
     "castle": icon_castle, "school": icon_school, "home": icon_home,
-    "station": icon_station, "windmill": icon_windmill, "bed": icon_bed,
+    "station": icon_station, "windmill": icon_windmill, "bed": icon_bed, "chair": icon_chair,
     "shop": icon_shop,
 }
 

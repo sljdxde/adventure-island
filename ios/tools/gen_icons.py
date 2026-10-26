@@ -668,6 +668,18 @@ def icon_rainbow():
     <path d="M10 50 Q16 46 20 50" fill="#fff" opacity="0.8"/>'''
     return svg(body)
 
+def icon_bolt():
+    """闪电（手绘黄色锯齿，夜空放电）"""
+    body = (
+      f'<style>.st{{stroke:{INK};stroke-width:2.4;stroke-linejoin:round;stroke-linecap:round}}</style>'
+      f'<circle cx="32" cy="32" r="27" fill="#4A4E8C"/>'
+      f'<path d="M17 19 l1.1 3 3 1.1 -3 1.1 -1.1 3 -1.1 -3 -3 -1.1 3 -1.1 z" fill="#FFF6C8"/>'
+      f'<path d="M47 45 l.9 2.4 2.4.9 -2.4.9 -.9 2.4 -.9 -2.4 -2.4 -.9 2.4 -.9 z" fill="#FFF6C8"/>'
+      f'<path class="st" d="M35 9 L20 34 L29 34 L25 55 L45 25 L35 25 L40 9 Z" fill="#FFD93D"/>'
+      f'<path d="M34 13 L25 31 L31 31 Z" fill="#FFF3A8" opacity="0.85"/>'
+    )
+    return svg(body)
+
 def icon_crystal():
     body = '''<defs>
       <linearGradient id="cr-body" x1="0" y1="0" x2="0" y2="1">
@@ -1035,6 +1047,48 @@ def icon_meteorite():
     <g fill="#382E26" opacity="0.6"><circle cx="38" cy="24" r="2"/><circle cx="44" cy="28" r="1.5"/><circle cx="40" cy="31" r="1.2"/></g>'''
     return svg(body)
 
+def icon_aurora():
+    """极光：深蓝夜空 + 飘动的绿紫光带（窗帘状）+ 星星 + 雪山剪影。"""
+    body = '''<defs>
+      <linearGradient id="au-g1" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#8FFCD0" stop-opacity="0.98"/>
+        <stop offset="0.55" stop-color="#56D9A8" stop-opacity="0.6"/>
+        <stop offset="1" stop-color="#9B7BF5" stop-opacity="0.14"/>
+      </linearGradient>
+      <linearGradient id="au-g2" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#BFF0FF" stop-opacity="0.92"/>
+        <stop offset="0.6" stop-color="#6FB7E8" stop-opacity="0.42"/>
+        <stop offset="1" stop-color="#8A7BE0" stop-opacity="0.12"/>
+      </linearGradient>
+    </defs>
+    <rect x="4" y="4" width="56" height="56" rx="12" fill="#0E1A3D"/>
+    <g fill="#ffffff">
+      <path d="M12 12 l1 2.2 L15.2 15 l-2.2 1 L12 18.2 l-1-2.2 L8.8 15 l2.2-1 Z"/>
+      <circle cx="50" cy="12" r="1.3"/><circle cx="45" cy="21" r="1"/><circle cx="19" cy="24" r="1.1"/>
+    </g>
+    <path d="M9 10 Q20 22 13 46 L26 46 Q30 22 18 10 Z" fill="url(#au-g1)"/>
+    <path d="M24 7 Q40 24 30 48 L45 48 Q52 24 38 7 Z" fill="url(#au-g2)"/>
+    <path d="M40 10 Q52 22 46 44 L57 44 Q59 22 48 10 Z" fill="url(#au-g1)" opacity="0.6"/>
+    <path d="M4 56 L16 42 L24 49 L34 40 L44 51 L52 44 L60 56 Z" fill="#16285C"/>
+    <path d="M4 56 L60 56 L60 60 L4 60 Z" fill="#0C1530"/>'''
+    return svg(body)
+
+def icon_sunset():
+    """日落：太阳半沉到地平线下，橙红暖色天空（与 sunrise 对称）。"""
+    body = '''<defs>
+      <radialGradient id="ss-sun" cx="50%" cy="50%" r="50%">
+        <stop offset="0" stop-color="#FFE39A"/><stop offset="65%" stop-color="#FF9F43"/><stop offset="100%" stop-color="#F06A3C"/>
+      </radialGradient>
+    </defs>
+    <rect x="4" y="16" width="56" height="34" rx="10" fill="#FFB074" opacity="0.5"/>
+    <g stroke="#FF8A4C" stroke-width="3" stroke-linecap="round" opacity="0.85">
+      <path d="M13 28 L18 30 M51 30 L46 28 M20 40 L24 42 M44 42 L40 40"/>
+    </g>
+    <circle cx="32" cy="44" r="14" fill="url(#ss-sun)"/>
+    <path d="M4 44 Q20 40 32 44 Q44 40 60 44 L60 60 L4 60 Z" fill="#7A6A92"/>
+    <path d="M4 44 Q20 40 32 44 Q44 40 60 44" fill="none" stroke="#5E5078" stroke-width="2"/>'''
+    return svg(body)
+
 REAL_ICONS = {
     "sun": icon_sun, "mercury": icon_mercury, "venus": icon_venus, "earth": icon_earth,
     "mars": icon_mars, "jupiter": icon_jupiter, "saturn": icon_saturn,
@@ -1044,7 +1098,7 @@ REAL_ICONS = {
     "rocket": icon_rocket, "satellite": icon_satellite, "telescope": icon_telescope, "ufo": icon_ufo,
     "volcano": icon_volcano, "desert": icon_desert, "wave": icon_wave, "river": icon_river,
     "everest": icon_everest, "fuji": icon_fuji, "rock": icon_rock, "snowflake": icon_snowflake,
-    "ice": icon_ice, "flame": icon_flame, "rainbow": icon_rainbow, "crystal": icon_crystal,
+    "ice": icon_ice, "flame": icon_flame, "rainbow": icon_rainbow, "bolt": icon_bolt, "crystal": icon_crystal,
     "greatwall": icon_greatwall, "pyramid": icon_pyramid, "eiffel": icon_eiffel,
     "bigben": icon_bigben, "libertystatue": icon_libertystatue, "pisa": icon_pisa,
     "taj": icon_taj, "torii": icon_torii, "tiananmen": icon_tiananmen,
@@ -1052,6 +1106,7 @@ REAL_ICONS = {
     "world-map": icon_world_map, "china-map": icon_china_map,
     "fullmoon": icon_fullmoon, "newmoon": icon_newmoon, "waxing": icon_waxing,
     "waning": icon_waning, "sunrise": icon_sunrise, "sunrays": icon_sunrays,
+    "aurora": icon_aurora, "sunset": icon_sunset,
     "planet": icon_planet, "meteorite": icon_meteorite,
 }
 
@@ -1335,6 +1390,89 @@ def icon_dino():
     p.append('<ellipse cx="24" cy="31" rx="3" ry="2" fill="#FF9B8A" opacity="0.5"/>')
     return svg("".join(p), vb=AVB)
 
+# ---- 霸王龙（站立、大张嘴、短手粗尾）----
+def icon_trex():
+    body = "#B07A55"; dark = "#8F5E3C"; belly = "#E8C9A6"
+    p = [_astyle()]
+    # 大尾巴
+    p.append('<path class="st" d="M31 58 Q12 64 6 51 Q17 49 29 48 Z" fill="'+body+'"/>')
+    # 两只粗后腿
+    p.append('<path class="st" d="M29 60 L23 88 L32 88 Q35 76 36 63 Z" fill="'+dark+'"/>')
+    p.append('<path class="st" d="M40 60 L37 88 L49 88 Q51 74 49 62 Z" fill="'+body+'"/>')
+    p.append('<ellipse class="st" cx="27" cy="89" rx="9" ry="4.3" fill="'+dark+'"/>')
+    p.append('<ellipse class="st" cx="44" cy="89" rx="10" ry="4.5" fill="'+dark+'"/>')
+    # 身体
+    p.append('<path class="st" d="M26 45 Q24 62 41 64 Q53 62 51 47 Q49 39 40 39 Q30 39 26 45 Z" fill="'+body+'"/>')
+    p.append('<path d="M39 47 Q49 51 47 62 Q41 60 39 52 Z" fill="'+belly+'"/>')
+    # 小短手
+    p.append('<path class="st" d="M45 47 Q54 48 52 56 Q47 55 46 51 Z" fill="'+body+'"/>')
+    # 脖子
+    p.append('<path class="st" d="M35 40 Q35 27 46 25 Q52 28 49 40 Q45 42 40 42 Z" fill="'+body+'"/>')
+    # 大头（上颚）
+    p.append('<path class="st" d="M41 14 Q62 12 65 26 Q65 33 57 35 Q45 37 41 31 Q37 22 41 14 Z" fill="'+body+'"/>')
+    # 下颚（张开）
+    p.append('<path class="st" d="M44 31 Q54 34 62 31 Q58 41 49 41 Q44 38 44 31 Z" fill="'+dark+'"/>')
+    p.append('<path d="M47 33 Q54 35 59 33 Q56 38.5 50 38.5 Q47 37 47 33 Z" fill="#8E3B2E"/>')
+    # 上牙
+    p.append('<path d="M48 33 L49 37.5 L50 33 M53 33.5 L54 38 L55 33.5 M57.5 33 L58 36.5 L59 33" fill="#fff"/>')
+    # 眼睛
+    p.append('<circle cx="53" cy="23" r="3.2" fill="#fff"/><circle cx="53.6" cy="23.5" r="1.9" fill="#3A2A20"/>')
+    p.append('<circle cx="54.3" cy="22.8" r="0.7" fill="#fff"/>')
+    p.append('<circle cx="60.5" cy="27" r="1.2" fill="#3A2A20"/>')
+    return svg("".join(p), vb=AVB)
+
+# ---- 腕龙（超长脖子、小脑袋、四腿长尾）----
+def icon_bronto():
+    body = "#8AA9B8"; dark = "#6E8A9C"; belly = "#D6E4E8"
+    p = [_astyle()]
+    # 长尾巴
+    p.append('<path class="st" d="M48 55 Q68 51 67 42 Q57 49 50 49 Z" fill="'+body+'"/>')
+    # 四条柱状腿
+    p.append('<path class="st" d="M20 62 L18 88 L26 88 L28 64 Z" fill="'+dark+'"/>')
+    p.append('<path class="st" d="M48 62 L47 88 L54 88 L53 64 Z" fill="'+dark+'"/>')
+    p.append('<path class="st" d="M27 62 L25 88 L34 88 L34 64 Z" fill="'+body+'"/>')
+    p.append('<path class="st" d="M41 62 L40 88 L49 88 L48 64 Z" fill="'+body+'"/>')
+    p.append('<ellipse class="st" cx="25" cy="89" rx="8" ry="4" fill="'+dark+'"/>')
+    p.append('<ellipse class="st" cx="47" cy="89" rx="8" ry="4" fill="'+dark+'"/>')
+    # 圆身体
+    p.append('<ellipse class="st" cx="34" cy="55" rx="20" ry="18" fill="'+body+'"/>')
+    p.append('<ellipse cx="34" cy="62" rx="11" ry="10" fill="'+belly+'"/>')
+    # 超长脖子（向左上方弯起）
+    p.append('<path class="st" d="M23 47 Q11 29 22 11 Q30 9 30 17 Q26 32 32 47 Z" fill="'+body+'"/>')
+    # 小脑袋
+    p.append('<path class="st" d="M17 7 Q31 4 34 12 Q34 18 25 19 Q16 17 17 7 Z" fill="'+body+'"/>')
+    p.append('<circle cx="28" cy="11" r="2.3" fill="#fff"/><circle cx="28.5" cy="11.3" r="1.3" fill="#3A2A20"/>')
+    p.append('<circle cx="21" cy="10" r="1" fill="#3A2A20"/>')
+    p.append('<path class="th" d="M20 15 Q24 17 29 14.5"/>')
+    p.append('<ellipse cx="23" cy="14" rx="2" ry="1.4" fill="#FF9B8A" opacity="0.5"/>')
+    return svg("".join(p), vb=AVB)
+
+# ---- 吼叫（恐龙头部特写，大张嘴 + 声波）----
+def icon_roar():
+    body = "#D8864A"; dark = "#B56A38"
+    p = [_astyle()]
+    # 三道声波（吻前方）
+    p.append('<path d="M57 25 Q64 34 57 43" fill="none" stroke="#F2A65A" stroke-width="3.6" stroke-linecap="round"/>')
+    p.append('<path d="M52 20 Q62 34 52 48" fill="none" stroke="#F2A65A" stroke-width="3.6" stroke-linecap="round" opacity="0.62"/>')
+    p.append('<path d="M47 16 Q59 34 47 52" fill="none" stroke="#F2A65A" stroke-width="3.6" stroke-linecap="round" opacity="0.34"/>')
+    # 上颚 + 头盖（朝右：脑后隆起、头顶平、吻部前突）
+    p.append('<path class="st" d="M11 41 Q8 22 23 16 Q37 11 47 18 Q53 22 52 29 Q51 34 45 34 L17 37 Q11 38 11 41 Z" fill="'+body+'"/>')
+    # 下颚（大张向下）
+    p.append('<path class="st" d="M17 37 L45 34 Q46 49 30 49 Q18 48 17 37 Z" fill="'+dark+'"/>')
+    # 口腔（深红）
+    p.append('<path d="M21 37 L42 35 Q41 45 30 45 Q22 44 21 37 Z" fill="#8E3B2E"/>')
+    # 上牙（向下）
+    p.append('<path d="M24 36 L25 41 L26 36 M29 36 L30 41.5 L31 36 M34 35.6 L35 41 L36 35.6 M39 35 L39.8 39.5 L40.8 35" fill="#fff"/>')
+    # 下牙（向上）
+    p.append('<path d="M26 45 L27 39 L28 45 M32 45.5 L33 39.5 L34 45.5 M37 43.5 L37.8 39.5 L38.8 43.5" fill="#fff"/>')
+    # 怒眉 + 眼睛（头顶靠后）
+    p.append('<path d="M24 19 L33 21" stroke="#3A2A20" stroke-width="2.6" stroke-linecap="round"/>')
+    p.append('<circle cx="29" cy="25.5" r="3.4" fill="#fff"/><circle cx="29.8" cy="26" r="2" fill="#3A2A20"/>')
+    p.append('<circle cx="30.5" cy="25.2" r="0.8" fill="#fff"/>')
+    # 鼻孔（吻端）
+    p.append('<circle cx="46.5" cy="24" r="1.3" fill="#3A2A20"/>')
+    return svg("".join(p), vb=AVB)
+
 # ---- 袋鼠 ----
 def icon_kangaroo():
     body = "#C89858"
@@ -1415,6 +1553,7 @@ CARTOON_ICONS = {
     "lion": icon_lion, "monkey": icon_monkey, "cow": icon_cow, "pig": icon_pig,
     "penguin": icon_penguin, "bee": icon_bee, "bird": icon_bird, "frog": icon_frog,
     "dino": icon_dino, "kangaroo": icon_kangaroo, "elephant": icon_elephant,
+    "trex": icon_trex, "bronto": icon_bronto, "roar": icon_roar,
     "duck": icon_duck, "fish": icon_fish,
 }
 
@@ -1526,11 +1665,12 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--only", nargs="*")
     ap.add_argument("--group", default="all",
-                    help="real|cartoon|object|nature|life|ui|game|all")
+                    help="real|cartoon|object|nature|life|ui|game|concept|all")
     a = ap.parse_args()
     os.makedirs(OUT, exist_ok=True)
     sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
     import gen_icons_nature as gn, gen_icons_life as gl, gen_icons_ui as gu, gen_icons_game as gg
+    import gen_icons_concept as gc
     groups = {
         "real": REAL_ICONS,
         "cartoon": CARTOON_ICONS,
@@ -1539,6 +1679,7 @@ def main():
         "life": gl.ICONS,
         "ui": gu.ICONS,
         "game": gg.ICONS,
+        "concept": gc.ICONS,
     }
     icons = {k: v for d in groups.values() for k, v in d.items()}
     if a.only:
@@ -1557,6 +1698,9 @@ def main():
     # 全部重生成时，连同背景山丘一起重绘
     if a.group == "all" and not a.only:
         gn.write_backgrounds()
+    # 同步资产清单（扫描磁盘，不重绘）
+    import icon_common as ic
+    ic.sync_manifest()
     print("完成，共", len(keys), "个；输出目录：", OUT)
 
 if __name__ == "__main__":
