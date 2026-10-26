@@ -1,7 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs><linearGradient id="g-blue" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7CC4F5"/><stop offset="1" stop-color="#3D8FD1"/></linearGradient><linearGradient id="g-coral" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFA793"/><stop offset="1" stop-color="#F0705F"/></linearGradient></defs>
-  <rect x="8" y="18" width="48" height="6" rx="3" fill="#DCE4EC"/>
-  <rect x="8" y="40" width="48" height="6" rx="3" fill="#DCE4EC"/>
-  <rect x="8" y="18" width="26" height="6" rx="3" fill="url(#g-blue)"/>
-  <rect x="8" y="40" width="36" height="6" rx="3" fill="url(#g-coral)"/>
-  <circle cx="34" cy="21" r="7" fill="#fff" stroke="url(#g-blue)" stroke-width="4"/>
-  <circle cx="44" cy="43" r="7" fill="#fff" stroke="url(#g-coral)" stroke-width="4"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><style>.st{stroke:#5B4636;stroke-width:2.4;stroke-linejoin:round;stroke-linecap:round}.th{stroke:#5B4636;stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round}</style><rect class="st" x="10" y="20" width="44" height="7" rx="3.5" fill="#F7F1E3"/><rect x="11.5" y="21.5" width="22" height="4" rx="2" fill="#6FA8D8"/><circle class="st" cx="34" cy="23.5" r="7" fill="#FFFFFF"/><rect class="st" x="10" y="38" width="44" height="7" rx="3.5" fill="#F7F1E3"/><rect x="11.5" y="39.5" width="30" height="4" rx="2" fill="#F07868"/><circle class="st" cx="42" cy="41.5" r="7" fill="#FFFFFF"/></svg>

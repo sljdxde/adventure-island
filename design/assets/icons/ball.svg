@@ -1,4 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs><linearGradient id="g-orange" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFB25C"/><stop offset="1" stop-color="#F08C1F"/></linearGradient></defs>
-  <circle cx="32" cy="32" r="19" fill="url(#g-orange)"/>
-  <path d="M32 13 L32 51 M13 32 L51 32" stroke="#fff" stroke-width="2.5" opacity=".6"/>
-  <path d="M20 20 Q32 32 44 44 M44 20 Q32 32 20 44" stroke="#fff" stroke-width="2.5" opacity=".5"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><style>.st{stroke:#5B4636;stroke-width:2.4;stroke-linejoin:round;stroke-linecap:round}.th{stroke:#5B4636;stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round}</style><path d="M32 32 L18.6 18.6 A19 19 0 0 1 45.4 18.6 Z" fill="#E8654F"/><path d="M32 32 L45.4 18.6 A19 19 0 0 1 45.4 45.4 Z" fill="#6FA8D8"/><path d="M32 32 L45.4 45.4 A19 19 0 0 1 18.6 45.4 Z" fill="#FFD93D"/><path d="M32 32 L18.6 45.4 A19 19 0 0 1 18.6 18.6 Z" fill="#7FC07F"/><circle class="st" cx="32" cy="32" r="19" fill="none"/><ellipse cx="24" cy="23" rx="3.2" ry="5" fill="#fff" opacity="0.6"/></svg>

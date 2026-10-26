@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>写实天体预览</title>
+<style>
+  body{margin:0;background:radial-gradient(circle at 50% 30%,#141B3A,#070A18);
+    font-family:"YouYuan","幼圆",sans-serif;color:#fff;padding:26px}
+  h2{font-weight:400;letter-spacing:2px;text-align:center}
+  .grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px;max-width:1180px;margin:22px auto}
+  .cell{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:16px;
+    padding:12px 6px;display:flex;flex-direction:column;align-items:center;gap:8px;min-width:0}
+  .cell img{width:88px;height:88px}
+  .cell b{font-size:14px;letter-spacing:1px}
+</style>
+</head>
+<body>
+<h2>写实天文图标（20 个）</h2>
+<div class="grid" id="g"></div>
+<script>
+const names=[["sun","太阳"],["mercury","水星"],["venus","金星"],["earth","地球"],["mars","火星"],
+["jupiter","木星"],["saturn","土星"],["uranus","天王星"],["neptune","海王星"],["moon","月球"],
+["blackhole","黑洞"],["comet","彗星"],["meteor","流星"],["milkyway","星系"],["bigdipper","北斗"],
+["astronaut","宇航员"],["rocket","火箭"],["satellite","卫星"],["telescope","望远镜"],["ufo","UFO"]];
+document.getElementById("g").innerHTML=names.map(([f,n])=>
+ `<div class="cell"><img src="../design/assets/icons/${f}.svg"><b>${n}</b></div>`).join("");
+</script>
+</body>
+</html>

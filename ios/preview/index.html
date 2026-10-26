@@ -25,6 +25,10 @@
   --buy-hi:#FFD76B;--buy:#F5B32E;--buy-dk:#C98A1E;--buy-ink:#7A4A10;
   --use-hi:#5BD47A;--use:#2FB855;--use-dk:#1E9242;
   --ok:#34C759;--ok-bg:#F2FFF5;
+  /* emil-design-eng：自定义缓动曲线（内置 ease 太弱，缺乏设计感） */
+  --ease-out:cubic-bezier(0.23,1,0.32,1);
+  --ease-in-out:cubic-bezier(0.77,0,0.175,1);
+  --ease-drawer:cubic-bezier(0.32,0.72,0,1);
 }
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;user-select:none}
 body{background:#17120D;display:grid;place-items:center;min-height:100vh;height:100vh;font-family:"YouYuan","幼圆","Yuanti SC","PingFang SC","Microsoft YaHei",sans-serif;color:var(--ink);overflow:hidden;padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}
@@ -157,7 +161,7 @@ img.ic{display:inline-block;vertical-align:middle}
 /* 掷骰子 */
 
 /* ---------- 通用组件 ---------- */
-.screen{position:absolute;inset:0;z-index:2;animation:screenIn .28s ease}
+.screen{position:absolute;inset:0;z-index:2;animation:screenIn .26s cubic-bezier(0.23,1,0.32,1)}
 @keyframes screenIn{from{opacity:0;transform:translateX(30px)}to{opacity:1;transform:none}}
 .hud{position:absolute;top:0;left:0;right:0;height:92px;display:flex;align-items:center;justify-content:space-between;padding:16px 22px 0;z-index:40;pointer-events:none}
 .hud-l,.hud-r{display:flex;align-items:center;gap:12px;pointer-events:auto}
@@ -228,7 +232,7 @@ img.ic{display:inline-block;vertical-align:middle}
 .sticker{background:linear-gradient(180deg,#fff,var(--cream));border-radius:30px;border:5px solid #fff;outline:3px solid rgba(84,66,58,.08);box-shadow:0 12px 24px rgba(84,66,58,.16)}
 .track{height:11px;background:rgba(255,255,255,.75);border-radius:999px;overflow:hidden;box-shadow:inset 0 2px 0 rgba(84,66,58,.12)}
 .track i{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,#FFE58A,var(--gold));transition:width .5s}
-.toast{position:absolute;left:50%;bottom:74px;transform:translateX(-50%) translateY(16px);background:rgba(58,45,36,.94);color:#FFF7E8;font-size:20px;font-weight:700;padding:14px 30px;border-radius:999px;opacity:0;transition:all .3s;z-index:90;white-space:nowrap;pointer-events:none}
+.toast{position:absolute;left:50%;bottom:74px;transform:translateX(-50%) translateY(16px);background:rgba(58,45,36,.94);color:#FFF7E8;font-size:20px;font-weight:700;padding:14px 30px;border-radius:999px;opacity:0;transition:opacity .3s var(--ease-out),transform .3s var(--ease-out);z-index:90;white-space:nowrap;pointer-events:none}
 .toast.show{opacity:1;transform:translateX(-50%)}
 .confetti{position:absolute;font-size:28px;z-index:80;pointer-events:none;animation:cfall 1.6s ease-in forwards}
 @keyframes cfall{0%{transform:translateY(-40px) rotate(0) scale(.6);opacity:0}12%{opacity:1}100%{transform:translateY(700px) rotate(330deg) scale(1.15);opacity:0}}
@@ -278,7 +282,7 @@ img.ic{display:inline-block;vertical-align:middle}
 @keyframes rb-bar{0%,100%{transform:scaleY(.25);opacity:.45}50%{transform:scaleY(1);opacity:1}}
 .anim-rainbow .anim-rb{transform-origin:bottom;animation:rb-bar 2.6s ease-in-out infinite}
 /* 英语 countpop：星星逐个蹦出 */
-@keyframes countpop{0%,100%{transform:scale(0);opacity:0}30%,70%{transform:scale(1);opacity:1}90%{transform:scale(1.15);opacity:0}}
+@keyframes countpop{0%,100%{transform:scale(.4);opacity:0}30%,70%{transform:scale(1);opacity:1}90%{transform:scale(1.15);opacity:0}}
 .anim-countpop .anim-pop{animation:countpop 2.8s ease-in-out infinite}
 /* 英语 fall：苹果落地弹跳 */
 @keyframes fall-drop{0%{transform:translateY(-92px)}55%{transform:translateY(56px)}72%{transform:translateY(30px)}100%{transform:translateY(56px)}}
@@ -557,9 +561,9 @@ img.ic{display:inline-block;vertical-align:middle}
 .mascot-row .m{line-height:1;filter:drop-shadow(0 3px 4px rgba(84,66,58,.18))}
 .mascot-row .say{background:#fff;border-radius:13px;padding:7px 14px;font-size:14.5px;font-weight:800;color:var(--ink-soft);line-height:1.45;text-align:left}
 .morph{position:relative;width:300px;height:265px;display:grid;place-items:center}
-.morph .char{position:absolute;font-size:165px;font-weight:900;color:#E2582A;text-shadow:0 5px 0 #FFD9A0;opacity:0;transform:scale(.4);transition:all .5s cubic-bezier(.22,1.2,.36,1)}
+.morph .char{position:absolute;font-size:165px;font-weight:900;color:#E2582A;text-shadow:0 5px 0 #FFD9A0;opacity:0;transform:scale(.4);transition:opacity .5s cubic-bezier(.22,1.2,.36,1),transform .5s cubic-bezier(.22,1.2,.36,1)}
 .morph.play .char{opacity:1;transform:scale(1)}
-.morph .pic{position:absolute;transition:all .5s cubic-bezier(.22,1.2,.36,1)}
+.morph .pic{position:absolute;transition:opacity .5s cubic-bezier(.22,1.2,.36,1),transform .5s cubic-bezier(.22,1.2,.36,1)}
 .morph.play .pic{opacity:0;transform:scale(.4) rotate(30deg)}
 .pinyin{font-size:34px;font-weight:900;color:#fff;background:linear-gradient(180deg,var(--coral),var(--coral-dk));border-radius:16px;padding:5px 26px;box-shadow:inset 0 3px 0 rgba(255,255,255,.35),0 4px 0 #C24836;text-shadow:0 2px 0 rgba(0,0,0,.14)}
 .speakbtn{width:56px;height:56px;border:none;border-radius:50%;background:linear-gradient(180deg,#FFDD7A,var(--yellow-dk));box-shadow:0 4px 0 var(--yellow-ddk);cursor:pointer;display:grid;place-items:center}
@@ -660,7 +664,7 @@ img.ic{display:inline-block;vertical-align:middle}
 /* ---------- 收集册 ---------- */
 .tabs{position:absolute;top:92px;left:26px;display:flex;gap:11px;z-index:20}
 .tab{border:none;background:none;cursor:pointer;font-family:inherit;display:flex;flex-direction:column;align-items:center;gap:3px}
-.tab .icw{width:50px;height:50px;border-radius:18px;background:rgba(255,255,255,.88);box-shadow:0 4px 0 rgba(84,66,58,.15);display:grid;place-items:center;transition:all .12s}
+.tab .icw{width:50px;height:50px;border-radius:18px;background:rgba(255,255,255,.88);box-shadow:0 4px 0 rgba(84,66,58,.15);display:grid;place-items:center;transition:transform .12s var(--ease-out)}
 .tab .t{font-size:14px;font-weight:900;color:#8A6520;text-shadow:0 1px 0 rgba(255,255,255,.6)}
 .tab.active .icw{background:linear-gradient(180deg,#FFDD7A,var(--yellow-dk));box-shadow:inset 0 3px 0 rgba(255,255,255,.5),0 4px 0 var(--yellow-ddk);transform:translateY(-4px) scale(1.08)}
 .board{position:absolute;left:18px;right:18px;top:186px;bottom:14px;background:linear-gradient(180deg,#FFFBF0,var(--cream-dk));border-radius:40px;border:5px solid #fff;box-shadow:0 14px 28px rgba(84,66,58,.15);z-index:15;overflow:hidden;display:flex;flex-direction:column}
@@ -1155,6 +1159,57 @@ body{font-family:var(--font-body)}
 .schip.sel{border-color:#5A7FD6;background:#EEF3FF}
 .schip.used{opacity:.35;pointer-events:none}
 .kbar{min-height:30px;font-size:15px;font-weight:900;color:var(--ink-soft)}
+
+/* ============================================================
+   emil-design-eng 动效精修（v1.0.4）
+   只动 transform/opacity；自定义缓动；桌面 hover 守卫；触屏按压即时反馈；
+   界面反馈动画 ≤300ms；尊重 prefers-reduced-motion
+   ============================================================ */
+/* 主页关卡节点入场：scale(.9)+上移+淡入，70ms 级联；backwards 填充避免播完后盖住 hover */
+@keyframes hbNodeIn{from{opacity:0;transform:scale(.9) translateY(14px)}to{opacity:1;transform:none}}
+/* 交互元素统一强 ease-out（内置 ease 太弱），时长沿用各组件，只改曲线 */
+.jbtn,.sqbtn,.modbtn,.redobtn,.brollbtn,.zl-redo,.hb-node,.zl-card,.slot,.opt,.item,.fcard,.mcard,.lnode,.tab .icw,.sci-opt,.numblock,.dice,.wordchip,.speakopt,.dock-item,.dock-item .icw,.cchip,.sud-cell,.countitem,.schip,.tapcell,.skycell,.pcard,.pipe-zone,.textopt{transition-timing-function:var(--ease-out)}
+
+/* 悬停微放大只在"有鼠标 + 精确指针"设备启用；触屏 tap 会误触发 hover */
+@media (hover:hover) and (pointer:fine){
+  .hb-node:hover{transform:translateY(-6px) scale(1.03)}
+  .zl-card:hover{transform:translateY(-3px) scale(1.02);box-shadow:0 8px 18px rgba(84,66,58,.16)}
+  .slot:hover{transform:translateY(-4px) scale(1.04)}
+  .opt:hover{transform:translateY(-4px) scale(1.04)}
+  .item:hover{transform:translateY(-3px) scale(1.03)}
+  .fcard:hover{transform:translateY(-4px) scale(1.04)}
+  .mcard:hover{transform:translateY(-3px)}
+  .lnode:hover{transform:scale(1.12)}
+  .tab:hover .icw{transform:translateY(-2px) scale(1.05)}
+  .schip:hover{transform:translateY(-3px) scale(1.03)}
+}
+
+/* 触屏：不做悬停位移（tap 误触发），按下瞬间 scale(.96) 给即时反馈；
+   厚底按钮（.jbtn/.sqbtn 等）保留既有 translateY 按压，不重复加 */
+@media (hover:none),(pointer:coarse){
+  /* 触屏 tap 会误触发 hover：把所有悬停位移/缩放复位，避免点过的卡片“浮起”不落下
+     （含厚底按钮 redobtn/modbtn、管道 pipe-zone、点选格 tapcell/skycell、数字块、文本选项、收集物等） */
+  .hb-node:hover,.zl-card:hover,.slot:hover,.opt:hover,.item:hover,.fcard:hover,.mcard:hover,.lnode:hover,.schip:hover,
+  .redobtn:hover,.modbtn:hover,.pipe-zone:hover,.tapcell:hover,.skycell:hover,.numblock:hover,.textopt:hover,.pcard:hover,.countitem:hover{transform:none}
+  /* 按下瞬间 scale(.96) 给即时反馈；厚底按钮（jbtn/sqbtn/modbtn/redobtn/numblock 等）保留既有 translateY 按压 */
+  .hb-node:active,.zl-card:active,.slot:active,.opt:active,.item:active,.fcard:active,.mcard:active,.lnode:active,.tab:active .icw,.sci-opt:active,
+  .tapcell:active,.skycell:active,.pcard:active,.textopt:active,.pipe-zone:active,.speakopt:active,.cchip:active,.sud-cell:active,.wordchip:active,.dock-item:active .icw{transform:scale(.96)}
+}
+
+/* 答对反馈：Q 弹回弹曲线（与结算卡 fin-pop 一致），让正向反馈更有童趣；答错抖动用快速 ease-in-out 收束 */
+.popt,.opt.ok,.finish .card,.guess-card .card,.gate .card{animation-timing-function:cubic-bezier(.34,1.56,.64,1)}
+.opt.no,.shakeit,.tapcell.bad,.skycell.miss{animation-timing-function:cubic-bezier(.77,0,.175,1)}
+
+/* 尊重系统"减少动态效果"：保留最终状态（opacity/color 仍可见），去掉位移/缩放/持续运动 */
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation-duration:.01ms !important;
+    animation-iteration-count:1 !important;
+    animation-delay:0ms !important;
+    transition-duration:.01ms !important;
+    scroll-behavior:auto !important;
+  }
+}
 </style>
 </head>
 <body>
@@ -1659,7 +1714,7 @@ function renderMap(){
     {sub:"__end",x:290,y:row2}
   ];
   const cur=hbCurSub();
-  const nodes=stations.map(st=>{
+  const nodes=stations.map((st,i)=>{
     const isStart=st.sub==="__start", isEnd=st.sub==="__end";
     const cfg=isStart||isEnd?null:SUBJECTS[st.sub];
     const done=cfg?hbDone(st.sub):0, total=cfg?hbTotal(st.sub):0;
@@ -1670,7 +1725,7 @@ function renderMap(){
     const meta=isStart?"从这里开始":(isEnd?(doneCount("cn")+doneCount("math")+doneCount("pinyin")+doneCount("english")+doneCount("astro")+doneCount("geo"))+" 关通关":`${done} / ${total}`);
     const cls=isStart?"hb-node hb-mini":(isEnd?"hb-node hb-mini hb-end":`hb-node${isCur?" cur":""}${full?" full":""}`);
     const mascot=isCur?`<div class="hb-mascot bob">${activeCharIcon(52)}</div>`:"";
-    return `<div class="${cls}" style="left:${st.x-78}px;top:${st.y-64}px" onclick="${isStart||isEnd?`toast('${isStart?"点学科格子开始闯关吧！":"走完全部格子，就是大大的通关！"}')`:`enterZone('${st.sub}')`}">
+    return `<div class="${cls}" style="left:${st.x-78}px;top:${st.y-64}px;animation:hbNodeIn .42s var(--ease-out) backwards;animation-delay:${i*70}ms" onclick="${isStart||isEnd?`toast('${isStart?"点学科格子开始闯关吧！":"走完全部格子，就是大大的通关！"}')`:`enterZone('${st.sub}')`}">
       ${mascot}${full?`<span class="hb-done">✓</span>`:""}
       <div class="hb-ic">${ic(icon,isEnd||isStart?40:42)}</div>
       <div class="hb-name kid-title">${name}</div>
@@ -2768,7 +2823,7 @@ function bossHeartsHtml(rem,size){
   let h="";
   for(let i=0;i<3;i++){
     const lost=i>=rem;
-    h+=`<span style="display:inline-block;${lost?"filter:grayscale(1);opacity:.28;transform:scale(.82)":""};transition:all .25s">${ic("heart",size)}</span>`;
+    h+=`<span style="display:inline-block;${lost?"filter:grayscale(1);opacity:.28;transform:scale(.82)":""};transition:opacity .25s var(--ease-out),filter .25s var(--ease-out),transform .25s var(--ease-out)">${ic("heart",size)}</span>`;
   }
   return h;
 }

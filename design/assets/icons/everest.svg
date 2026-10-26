@@ -1,4 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs><linearGradient id="g-mtn" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#C08552"/><stop offset="1" stop-color="#8F5A33"/></linearGradient></defs>
-  <path d="M10 52 L28 20 L36 34 L42 24 L54 52 Z" fill="url(#g-mtn)"/>
-  <path d="M28 20 L32 28 L25 30 Z" fill="#fff"/>
-  <path d="M42 24 L45 30 L39 31 Z" fill="#fff"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs>
+      <linearGradient id="e-rock" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#A89888"/><stop offset="100%" stop-color="#665646"/>
+      </linearGradient>
+    </defs>
+    <path d="M2 50 L18 28 L30 42 L2 46 Z" fill="#8A8278" opacity="0.7"/>
+    <path d="M14 54 L30 12 L38 30 L46 20 L60 54 Z" fill="url(#e-rock)"/>
+    <path d="M30 12 L34 24 L28 26 L32 30 L25 30 Z" fill="#fff"/>
+    <path d="M46 20 L49 28 L41 29 Z" fill="#fff"/>
+    <path d="M30 26 L35 50 L30 50 Z" fill="#E8F0F8" opacity="0.8"/>
+    <path d="M30 12 L34 24 L32 26 Z" fill="#fff" opacity="0.5"/>
+    <rect x="2" y="52" width="60" height="10" fill="#54453A"/></svg>

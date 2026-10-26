@@ -1,5 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs><linearGradient id="g-blue" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7CC4F5"/><stop offset="1" stop-color="#3D8FD1"/></linearGradient><linearGradient id="g-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#C9ECFB"/><stop offset="1" stop-color="#8ED8F6"/></linearGradient></defs>
-  <path d="M4 40 Q14 28 24 40 Q34 52 44 40 Q52 30 60 38 L60 58 L4 58 Z" fill="url(#g-blue)" opacity=".85"/>
-  <path d="M4 47 Q14 37 24 47 Q34 57 44 47 Q52 39 60 45 L60 58 L4 58 Z" fill="#3D8FD1"/>
-  <circle cx="14" cy="37" r="3.6" fill="#fff" opacity=".95"/><circle cx="44" cy="37" r="3.6" fill="#fff" opacity=".95"/><circle cx="29" cy="44" r="2.6" fill="#fff" opacity=".8"/>
-  <circle cx="50" cy="22" r="7" fill="url(#g-sky)"/><path d="M46 22 Q50 16 55 20" stroke="#fff" stroke-width="2.6" fill="none" stroke-linecap="round"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs>
+      <linearGradient id="w-sea" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#4FB3E8"/><stop offset="100%" stop-color="#1660A0"/>
+      </linearGradient>
+    </defs>
+    <path d="M4 60 L4 44 Q4 28 20 26 Q14 34 22 36 Q30 22 46 28 Q44 34 50 34 Q58 32 60 42 L60 60 Z" fill="url(#w-sea)"/>
+    <path d="M20 26 Q9 24 6 36 Q11 30 19 33 Q12 36 12 43 Q21 35 27 38 Q26 30 20 26 Z" fill="#fff" opacity="0.96"/>
+    <path d="M40 27 Q50 25 57 34 Q50 31 44 35 Q48 38 53 41 Q46 41 40 34 Z" fill="#fff" opacity="0.9"/>
+    <path d="M4 50 Q16 45 28 50 Q42 55 56 48 L60 50 L60 60 L4 60 Z" fill="#fff" opacity="0.85"/>
+    <g fill="#fff" opacity="0.9"><circle cx="30" cy="20" r="1.8"/><circle cx="42" cy="18" r="1.4"/><circle cx="13" cy="22" r="1.2"/><circle cx="38" cy="23" r="1"/></g>
+    <rect x="2" y="56" width="60" height="6" fill="#10507F"/></svg>

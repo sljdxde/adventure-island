@@ -1,5 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs><linearGradient id="g-gold" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFE58A"/><stop offset="1" stop-color="#F7B32B"/></linearGradient><linearGradient id="g-cream" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFDF4"/><stop offset="1" stop-color="#FFE9C2"/></linearGradient></defs>
-  <circle cx="32" cy="32" r="17" fill="url(#g-gold)"/>
-  <ellipse cx="32" cy="32" rx="26" ry="8" fill="none" stroke="url(#g-cream)" stroke-width="4.5" opacity=".9" transform="rotate(-18 32 32)"/>
-  <path d="M16 38 Q32 46 48 38" stroke="#E8C98A" stroke-width="3" fill="none" opacity=".7" transform="rotate(-18 32 32)"/>
-  <ellipse cx="27" cy="26" rx="4.5" ry="2.6" fill="#fff" opacity=".5" transform="rotate(-20 27 26)"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs></defs><ellipse cx="32" cy="32" rx="29" ry="9" fill="none" stroke="#D9BC82" stroke-width="4.4" opacity="0.92" transform="rotate(-16 32 32)" stroke-dasharray="70 100"/><defs><radialGradient id="saturn-lit" cx="34%" cy="30%" r="78%">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.92"/>
+      <stop offset="38%" stop-color="#ffffff" stop-opacity="0.18"/>
+      <stop offset="72%" stop-color="#000000" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0.42"/>
+    </radialGradient>
+    <radialGradient id="saturn-base" cx="38%" cy="34%" r="75%">
+      <stop offset="0" stop-color="#F2E0B0"/><stop offset="55%" stop-color="#E0C084"/><stop offset="100%" stop-color="#B9955A"/>
+    </radialGradient><clipPath id="saturn-clip"><circle cx="32" cy="32" r="20"/></clipPath></defs><circle cx="32" cy="32" r="20" fill="url(#saturn-base)"/><g clip-path="url(#saturn-clip)">
+      <g fill="none" stroke="#C9A868" stroke-width="1.6" opacity="0.6">
+        <path d="M18 26 Q32 23 46 26"/><path d="M17 34 Q32 31 47 34"/><path d="M19 40 Q32 38 45 40"/>
+      </g></g><circle cx="32" cy="32" r="20" fill="url(#saturn-lit)"/><circle cx="32" cy="32" r="20" fill="none" stroke="#000" stroke-opacity="0.18" stroke-width="1.2"/><ellipse cx="32" cy="32" rx="29" ry="9" fill="none" stroke="#EBD29A" stroke-width="4.4" opacity="0.98" transform="rotate(-16 32 32)" stroke-dasharray="100 70" stroke-dashoffset="-70"/><ellipse cx="32" cy="32" rx="29" ry="9" fill="none" stroke="#A88858" stroke-width="0.8" opacity="0.7" transform="rotate(-16 32 32)"/></svg>

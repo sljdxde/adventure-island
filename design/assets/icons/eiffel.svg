@@ -1,6 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs><linearGradient id="g-ef" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8A93A8"/><stop offset="1" stop-color="#5A6378"/></linearGradient></defs>
-  <path d="M32 6 Q30 26 22 40 L26 42 Q31 30 32 24 Q33 30 38 42 L42 40 Q34 26 32 6 Z" fill="url(#g-ef)"/>
-  <rect x="24" y="26" width="16" height="3" rx="1.5" fill="url(#g-ef)"/>
-  <rect x="18" y="40" width="28" height="4" rx="2" fill="url(#g-ef)"/>
-  <path d="M22 44 Q32 56 42 44 L46 56 Q32 62 18 56 Z" fill="url(#g-ef)"/>
-  <rect x="29" y="12" width="6" height="4" rx="1.5" fill="url(#g-ef)"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs>
+      <linearGradient id="ef-g" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#9AA4BA"/><stop offset="100%" stop-color="#4E5668"/>
+      </linearGradient>
+    </defs>
+    <rect x="31" y="6" width="2" height="7" fill="url(#ef-g)"/>
+    <circle cx="32" cy="5" r="1.6" fill="#8A93A8"/>
+    <path d="M30 12 L13 54 L20 54 L31 22 L33 22 L44 54 L51 54 L34 12 Z" fill="url(#ef-g)"/>
+    <rect x="26" y="24" width="12" height="3" rx="1" fill="#5E6878"/>
+    <rect x="17" y="38" width="30" height="4" rx="1.5" fill="#5E6878"/>
+    <path d="M28 28 L36 28 M25 34 L39 34 M22 42 L42 42 M19 48 L45 48" stroke="#3E4654" stroke-width="0.8" opacity="0.7"/>
+    <path d="M20 54 Q32 40 44 54" fill="none" stroke="#5E6878" stroke-width="3"/>
+    <rect x="9" y="54" width="46" height="4" fill="#4E5668"/></svg>

@@ -1,7 +1,22 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs><linearGradient id="g-sand" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F7D98C"/><stop offset="1" stop-color="#E0A952"/></linearGradient><linearGradient id="g-coral" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFA793"/><stop offset="1" stop-color="#F0705F"/></linearGradient></defs>
-  <circle cx="32" cy="32" r="22" fill="url(#g-sand)"/>
-  <path d="M11 26 Q32 22 53 26" stroke="#D9A066" stroke-width="3.5" fill="none" opacity=".7"/>
-  <path d="M11 34 Q32 30 53 34" stroke="#B9854E" stroke-width="3.5" fill="none" opacity=".6"/>
-  <path d="M12 42 Q32 38 52 42" stroke="#D9A066" stroke-width="3.5" fill="none" opacity=".6"/>
-  <ellipse cx="40" cy="38" rx="5.5" ry="3" fill="url(#g-coral)"/>
-  <ellipse cx="25" cy="20" rx="6" ry="3.5" fill="#fff" opacity=".4" transform="rotate(-20 25 20)"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs><radialGradient id="jupiter-lit" cx="34%" cy="30%" r="78%">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.92"/>
+      <stop offset="38%" stop-color="#ffffff" stop-opacity="0.18"/>
+      <stop offset="72%" stop-color="#000000" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0.42"/>
+    </radialGradient>
+    <radialGradient id="jupiter-base" cx="38%" cy="34%" r="75%">
+      <stop offset="0" stop-color="#F2DDB8"/><stop offset="55%" stop-color="#DDB988"/><stop offset="100%" stop-color="#B98F60"/>
+    </radialGradient><clipPath id="jupiter-clip"><circle cx="32" cy="32" r="24"/></clipPath></defs><circle cx="32" cy="32" r="24" fill="url(#jupiter-base)"/><g clip-path="url(#jupiter-clip)">
+      <g>
+        <path d="M10 20 Q32 16 54 20 L54 25 Q32 21 10 25 Z" fill="#E8C99E" opacity="0.8"/>
+        <path d="M10 27 Q32 24 54 27 L54 30 Q32 27 10 30 Z" fill="#B98F60" opacity="0.7"/>
+        <path d="M10 33 Q32 30 54 33 L54 37 Q32 34 10 37 Z" fill="#D9B98A" opacity="0.8"/>
+        <path d="M10 40 Q32 37 54 40 L54 44 Q32 41 10 44 Z" fill="#B98F60" opacity="0.65"/>
+        <!-- 湍流 -->
+        <g fill="none" stroke="#F7E6C8" stroke-width="1.4" opacity="0.6">
+          <path d="M16 22 Q20 20 24 22M30 28 Q34 26 38 28M22 38 Q26 36 30 38"/>
+        </g>
+      </g>
+      <!-- 大红斑 -->
+      <ellipse cx="40" cy="40" rx="6" ry="3.6" fill="#D45A3E"/>
+      <ellipse cx="40" cy="39" rx="4" ry="2" fill="#E88A6A" opacity="0.7"/></g><circle cx="32" cy="32" r="24" fill="url(#jupiter-lit)"/><circle cx="32" cy="32" r="24" fill="none" stroke="#000" stroke-opacity="0.18" stroke-width="1.2"/></svg>
