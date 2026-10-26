@@ -292,11 +292,11 @@
           "options": [
             {
               "icon": "windmill",
-              "text": "风在吹"
+              "text": "空气吹动风车"
             },
             {
               "icon": "starface",
-              "text": "星星眨眼"
+              "text": "星星自己眨眼"
             },
             {
               "icon": "bulb",
@@ -547,8 +547,8 @@
               "text": "星星白天睡觉去了"
             },
             {
-              "icon": "question",
-              "text": "问号"
+              "icon": "moon",
+              "text": "月亮把星星带走了"
             }
           ],
           "answer": 0,
@@ -1189,11 +1189,11 @@
           "options": [
             {
               "icon": "sunrise",
-              "text": "白天"
+              "text": "白天能看到"
             },
             {
               "icon": "lock",
-              "text": "锁"
+              "text": "锁起来看不到"
             },
             {
               "icon": "sunface",
@@ -1698,15 +1698,15 @@
           "options": [
             {
               "icon": "balloon",
-              "text": "气球"
+              "text": "气球飘起来"
             },
             {
               "icon": "home",
-              "text": "家"
+              "text": "掉回家"
             },
             {
               "icon": "everest",
-              "text": "飞走藏起"
+              "text": "飞走藏起来"
             }
           ],
           "answer": 0,
@@ -2437,14 +2437,14 @@
           "options": [
             {
               "icon": "calendar",
-              "text": "日历"
+              "text": "日历上一年很短"
             },
             {
               "icon": "clock",
-              "text": "时间"
+              "text": "时钟上一天很短"
             },
             {
-              "text": "地球一年",
+              "text": "和地球一样长",
               "body": "earth"
             }
           ],
@@ -2672,15 +2672,15 @@
           "options": [
             {
               "icon": "rock",
-              "text": "岩石"
+              "text": "是，岩石星球"
             },
             {
               "icon": "balloon",
-              "text": "地球是气"
+              "text": "是气体星球"
             },
             {
               "icon": "wave",
-              "text": "地球是水"
+              "text": "是水做的星球"
             }
           ],
           "answer": 0,
@@ -3600,8 +3600,8 @@
               "text": "只有一颗月亮"
             },
             {
-              "icon": "question",
-              "text": "问号"
+              "icon": "star",
+              "text": "一颗星星都没有"
             }
           ],
           "answer": 0,
@@ -3959,8 +3959,8 @@
               "text": "星星是灯"
             },
             {
-              "icon": "question",
-              "text": "问号"
+              "icon": "moon",
+              "text": "星星是月亮变的"
             }
           ],
           "answer": 0,
@@ -4135,7 +4135,7 @@
           "options": [
             {
               "icon": "sunrise",
-              "text": "日出"
+              "text": "太阳8分钟前出发"
             },
             {
               "icon": "rocket",
@@ -4165,7 +4165,7 @@
           "options": [
             {
               "icon": "sprout",
-              "text": "苗"
+              "text": "小苗要晒太阳"
             },
             {
               "icon": "sunface",
@@ -4173,7 +4173,7 @@
             },
             {
               "icon": "moon",
-              "text": "月亮"
+              "text": "月亮照它"
             }
           ],
           "answer": 0,
@@ -4289,16 +4289,16 @@
           "question": "能不能用眼睛直接看太阳？",
           "options": [
             {
-              "icon": "starface",
-              "text": "眼睛"
+              "icon": "blocklock",
+              "text": "不能，会伤眼"
             },
             {
               "icon": "sun",
-              "text": "太阳"
+              "text": "太阳很好看"
             },
             {
-              "icon": "sunface",
-              "text": "太阳"
+              "icon": "starface",
+              "text": "星星眨眼就看"
             }
           ],
           "answer": 0,
@@ -4836,11 +4836,11 @@
           "options": [
             {
               "icon": "paw",
-              "text": "脚印"
+              "text": "脚印留很久"
             },
             {
               "icon": "windmill",
-              "text": "风车"
+              "text": "风把脚印吹走"
             },
             {
               "icon": "wave",
@@ -4887,20 +4887,20 @@
           "question": "在月亮上大声喊，能听到吗？",
           "options": [
             {
-              "icon": "speaker",
-              "text": "声音"
+              "icon": "moon",
+              "text": "月亮上听不到"
             },
             {
               "icon": "speaker",
-              "text": "声音"
+              "text": "喇叭能听到，很响"
             },
             {
-              "text": "传到地球",
-              "body": "earth"
+              "icon": "satellite",
+              "text": "卫星传到地球"
             }
           ],
           "answer": 0,
-          "hint": "声音要坐空气的车",
+          "hint": "声音要坐空气的车，月亮上没有空气",
           "praise": "答对啦，月亮上静悄悄！"
         }
       ],
@@ -5013,20 +5013,20 @@
           "question": "看日食的时候可以怎么做？",
           "options": [
             {
-              "icon": "telescope",
-              "text": "望远镜"
+              "icon": "goggles",
+              "text": "护目镜滤镜再看"
             },
             {
               "icon": "starface",
-              "text": "瞪大眼睛"
+              "text": "瞪大眼睛直接看"
             },
             {
-              "icon": "telescope",
-              "text": "望远镜直盯"
+              "icon": "sun",
+              "text": "太阳下戴墨镜看"
             }
           ],
           "answer": 0,
-          "hint": "护眼小卫士提醒你",
+          "hint": "护眼小卫士提醒你，不能直接看",
           "praise": "答对啦，护眼第一！"
         }
       ],
@@ -5169,8 +5169,8 @@
               "text": "细细的月牙"
             },
             {
-              "icon": "question",
-              "text": "问号"
+              "icon": "sun",
+              "text": "方方的太阳"
             }
           ],
           "answer": 0,
@@ -5652,8 +5652,8 @@
           "question": "著名的哈雷彗星绕太阳转一圈要多久？",
           "options": [
             {
-              "icon": "maple",
-              "text": "枫"
+              "icon": "calendar",
+              "text": "日历上约76年"
             },
             {
               "icon": "sunrise",
@@ -5727,11 +5727,11 @@
           "options": [
             {
               "icon": "meteorite",
-              "text": "陨石"
+              "text": "陨石是同一家族"
             },
             {
               "icon": "lock",
-              "text": "锁"
+              "text": "锁起来，没关系"
             },
             {
               "icon": "wave",
@@ -5740,7 +5740,7 @@
           ],
           "answer": 0,
           "hint": "同一家族的不同结局",
-          "praise": "答对啦！"
+          "praise": "答对啦，陨石和流星是亲戚！"
         },
         {
           "id": "astro-73-m3",
@@ -5910,15 +5910,15 @@
           "options": [
             {
               "icon": "rainbow",
-              "text": "彩虹"
+              "text": "彩虹颜色多，不一样"
             },
             {
               "icon": "egg",
               "text": "全都白色"
             },
             {
-              "icon": "lock",
-              "text": "锁"
+              "icon": "star",
+              "text": "星星都一样"
             }
           ],
           "answer": 0,
@@ -6327,21 +6327,21 @@
           "question": "光年是什么的单位？",
           "options": [
             {
-              "icon": "rocket",
-              "text": "火箭"
+              "icon": "sunrays",
+              "text": "阳光跑的距离"
             },
             {
               "icon": "clock",
               "text": "时间"
             },
             {
-              "icon": "rock",
-              "text": "石头"
+              "icon": "rocket",
+              "text": "火箭的速度"
             }
           ],
           "answer": 0,
           "hint": "星星之间实在太远了",
-          "praise": "对，光年是距离！"
+          "praise": "对，光年是距离单位！"
         },
         {
           "id": "astro-79-m2",
@@ -6349,21 +6349,21 @@
           "question": "为什么需要用「光年」来量星空？",
           "options": [
             {
+              "icon": "hat",
+              "text": "尺子太短"
+            },
+            {
               "icon": "school",
-              "text": "学校"
+              "text": "学校太大"
             },
             {
               "icon": "speaker",
-              "text": "声音"
-            },
-            {
-              "icon": "hat",
-              "text": "尺子太短"
+              "text": "声音太响"
             }
           ],
           "answer": 0,
           "hint": "宇宙的尺子要够长",
-          "praise": "答对啦！"
+          "praise": "答对啦，星星太远要用光年！"
         }
       ],
       "zone": 9
@@ -6550,8 +6550,8 @@
           "question": "大爆炸之后，宇宙在？",
           "options": [
             {
-              "icon": "sparkle",
-              "text": "亮"
+              "icon": "balloon",
+              "text": "气球越来越大"
             },
             {
               "icon": "school",
@@ -6564,7 +6564,7 @@
           ],
           "answer": 0,
           "hint": "到今天还在长大",
-          "praise": "答对啦，一直在膨胀！"
+          "praise": "答对啦，宇宙一直在膨胀！"
         }
       ],
       "zone": 9
@@ -6602,16 +6602,16 @@
           "question": "宇宙是什么？",
           "options": [
             {
+              "icon": "sparkle",
+              "text": "闪光的一切"
+            },
+            {
               "icon": "milkyway",
-              "text": "银河"
+              "text": "只有银河系"
             },
             {
               "text": "只有地球",
               "body": "earth"
-            },
-            {
-              "icon": "sun",
-              "text": "只有太阳系"
             }
           ],
           "answer": 0,
@@ -6624,21 +6624,21 @@
           "question": "银河系是宇宙里唯一的星系吗？",
           "options": [
             {
-              "icon": "china-map",
-              "text": "中国"
+              "icon": "milkyway",
+              "text": "银河数不清，不是"
             },
             {
               "icon": "equal",
               "text": "是，就一个"
             },
             {
-              "icon": "question",
-              "text": "问号"
+              "icon": "planet",
+              "text": "只有地球一个星球"
             }
           ],
           "answer": 0,
-          "hint": "星系数也数不完",
-          "praise": "答对啦！"
+          "hint": "星系有很多很多，数也数不完",
+          "praise": "答对啦，星系多得数不清！"
         }
       ],
       "zone": 9
@@ -6821,21 +6821,21 @@
           "question": "光年量的是什么？",
           "options": [
             {
-              "icon": "rocket",
-              "text": "火箭"
+              "icon": "sunrays",
+              "text": "阳光跑的距离"
             },
             {
               "icon": "clock",
               "text": "时间"
             },
             {
-              "icon": "rock",
-              "text": "石头"
+              "icon": "rocket",
+              "text": "火箭的速度"
             }
           ],
           "answer": 0,
           "hint": "光跑一年的路程",
-          "praise": "对，是距离！"
+          "praise": "对，光年量的是距离！"
         },
         {
           "id": "astro-86-m2",
@@ -7097,7 +7097,7 @@
           "options": [
             {
               "icon": "flask",
-              "text": "实验"
+              "text": "做实验探索火星"
             },
             {
               "icon": "fish",
@@ -7110,7 +7110,7 @@
           ],
           "answer": 0,
           "hint": "火星上的科学小侦探",
-          "praise": "对，在探索火星！"
+          "praise": "对，火星车在探索火星！"
         },
         {
           "id": "astro-90-m2",
@@ -7267,21 +7267,21 @@
           "question": "到现在为止，发现外星人了吗？",
           "options": [
             {
-              "icon": "question",
-              "text": "问号"
+              "icon": "telescope",
+              "text": "用望远镜找，还没"
             },
             {
               "icon": "party",
-              "text": "派对"
+              "text": "天天开派对"
             },
             {
               "icon": "home",
-              "text": "家"
+              "text": "就住在家里"
             }
           ],
           "answer": 0,
-          "hint": "保持好奇，大胆想象",
-          "praise": "答对啦，还没发现！"
+          "hint": "保持好奇，大胆想象，科学家还在找",
+          "praise": "答对啦，还没发现，继续找！"
         }
       ],
       "zone": 10

@@ -112,6 +112,8 @@ ICON_CN = {
     "wood":    extra("木头,木材,木,木板"),
     "fire":    extra("火,火焰,着火,燃烧"),
     "lock":    extra("锁,锁住,门锁"),
+    "blocklock": extra("不能,禁止,别,锁住"),
+    "blockok": extra("可以,能,对"),
     "medal":   extra("奖牌,勋章,奖章,第一名"),
     "boss":    extra("大BOSS,怪兽,壳壳兽"),
     "mario":   extra("红帽,小勇士,马里奥"),
