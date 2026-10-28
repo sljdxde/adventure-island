@@ -21,10 +21,22 @@
       "price": 40
     },
     {
+      "id": "frog",
+      "name": "绿青蛙",
+      "icon": "frog",
+      "price": 50
+    },
+    {
       "id": "rabbit",
       "name": "小白兔",
       "icon": "rabbit",
       "price": 60
+    },
+    {
+      "id": "pig",
+      "name": "粉小猪",
+      "icon": "pig",
+      "price": 70
     },
     {
       "id": "bear",
@@ -33,10 +45,85 @@
       "price": 80
     },
     {
+      "id": "fox",
+      "name": "小狐狸",
+      "icon": "fox",
+      "price": 100
+    },
+    {
+      "id": "monkey",
+      "name": "小猴子",
+      "icon": "monkey",
+      "price": 100
+    },
+    {
       "id": "penguin",
       "name": "小企鹅",
       "icon": "penguin",
       "price": 120
+    },
+    {
+      "id": "tiger",
+      "name": "小老虎",
+      "icon": "tiger",
+      "price": 150
+    },
+    {
+      "id": "lion",
+      "name": "小狮子",
+      "icon": "lion",
+      "price": 160
+    }
+  ],
+  "titles": [
+    {
+      "id": "xiaoxian",
+      "name": "小小探险家",
+      "icon": "star",
+      "price": 0,
+      "default": true
+    },
+    {
+      "id": "hantastic",
+      "name": "识字小达人",
+      "icon": "hanzi",
+      "price": 60
+    },
+    {
+      "id": "mathwhiz",
+      "name": "数字小天才",
+      "icon": "chart",
+      "price": 60
+    },
+    {
+      "id": "pypiper",
+      "name": "拼音小喇叭",
+      "icon": "speaker",
+      "price": 70
+    },
+    {
+      "id": "starling",
+      "name": "英语之星",
+      "icon": "book",
+      "price": 80
+    },
+    {
+      "id": "stargazer",
+      "name": "星空瞭望员",
+      "icon": "starface",
+      "price": 90
+    },
+    {
+      "id": "globetrotter",
+      "name": "环球旅行家",
+      "icon": "world-map",
+      "price": 110
+    },
+    {
+      "id": "legend",
+      "name": "探险岛传奇",
+      "icon": "medal",
+      "price": 200
     }
   ],
   "dice": [
@@ -70,6 +157,22 @@
       "name": "爱心骰",
       "icon": "heart",
       "price": 100
+    }
+  ],
+  "items": [
+    {
+      "id": "mushroom",
+      "name": "幸运蘑菇",
+      "icon": "mushroom",
+      "price": 30,
+      "desc": "持有期间答错挡一次，不掉星不扣心"
+    },
+    {
+      "id": "coinboost",
+      "name": "双倍金币卡",
+      "icon": "coin",
+      "price": 40,
+      "desc": "下一关通关金币翻倍，用完为止"
     }
   ]
 }

@@ -3573,9 +3573,25 @@ shop = {
         shop_item("mario", "红帽小勇士", "mario", 0, True),
         shop_item("dino", "绿恐龙", "dino", 0, True),
         shop_item("cat", "橘小猫", "cat", 40),
+        shop_item("frog", "绿青蛙", "frog", 50),
         shop_item("rabbit", "小白兔", "rabbit", 60),
+        shop_item("pig", "粉小猪", "pig", 70),
         shop_item("bear", "棕小熊", "bear", 80),
+        shop_item("fox", "小狐狸", "fox", 100),
+        shop_item("monkey", "小猴子", "monkey", 100),
         shop_item("penguin", "小企鹅", "penguin", 120),
+        shop_item("tiger", "小老虎", "tiger", 150),
+        shop_item("lion", "小狮子", "lion", 160),
+    ],
+    "titles": [
+        shop_item("xiaoxian", "小小探险家", "star", 0, True),
+        shop_item("hantastic", "识字小达人", "hanzi", 60),
+        shop_item("mathwhiz", "数字小天才", "chart", 60),
+        shop_item("pypiper", "拼音小喇叭", "speaker", 70),
+        shop_item("starling", "英语之星", "book", 80),
+        shop_item("stargazer", "星空瞭望员", "starface", 90),
+        shop_item("globetrotter", "环球旅行家", "world-map", 110),
+        shop_item("legend", "探险岛传奇", "medal", 200),
     ],
     "dice": [
         shop_item("std", "经典红点", "circle", 0, True),
@@ -3583,6 +3599,10 @@ shop = {
         shop_item("star", "星星骰", "starface", 70),
         shop_item("paw", "脚印骰", "paw", 90),
         shop_item("heart", "爱心骰", "heart", 100),
+    ],
+    "items": [
+        {**shop_item("mushroom", "幸运蘑菇", "mushroom", 30), "desc": "持有期间答错挡一次，不掉星不扣心"},
+        {**shop_item("coinboost", "双倍金币卡", "coin", 40), "desc": "下一关通关金币翻倍，用完为止"},
     ],
 }
 W("shop.json", shop)
