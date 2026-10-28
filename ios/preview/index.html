@@ -721,9 +721,6 @@ img.ic{display:inline-block;vertical-align:middle}
 /* ---------- 金币商店（工单08） ---------- */
 .shop-wrap{position:absolute;left:24px;right:24px;top:72px;bottom:14px;display:block;overflow-y:auto;padding-top:64px}
 .shop-sec{display:block;margin-bottom:22px}
-.shop-grid{height:242px;grid-auto-rows:242px;align-items:stretch}
-.shop-grid.gdice{height:224px;grid-auto-rows:224px}
-.shop-card{height:100%}
 .shop-sec h2{font-size:19px;font-weight:900;color:#fff;text-shadow:0 2px 0 rgba(0,0,0,.15);margin:0 0 9px 4px;display:flex;align-items:center;gap:8px}
 .shop-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;width:100%;box-sizing:border-box}
 .shop-grid.gdice{grid-template-columns:repeat(5,1fr)}
@@ -732,7 +729,6 @@ img.ic{display:inline-block;vertical-align:middle}
 .shop-ic{width:74px;height:92px;display:grid;place-items:center}
 .shop-ic img{width:100%;height:100%;object-fit:contain}
 .shop-name{font-size:15px;font-weight:900;color:#5A4632;margin:7px 0 8px;text-align:center;line-height:1.15;min-height:34px;display:flex;align-items:center}
-.shop-desc{font-size:12px;font-weight:800;color:var(--ink-soft);line-height:1.35;min-height:32px;margin:0 0 8px;text-align:center;display:flex;align-items:center}
 .shop-btn{width:100%;border:none;border-radius:12px;padding:12px 4px;font-size:15px;font-weight:900;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:5px;font-family:inherit}
 .shop-btn.buy{background:linear-gradient(var(--buy-hi),var(--buy));color:var(--buy-ink);box-shadow:0 3px 0 var(--buy-dk)}
 .shop-btn.buy.poor{background:#E7DFD0;color:#9A8E78;box-shadow:0 3px 0 #C9BFA8}
@@ -904,21 +900,23 @@ body{font-family:var(--font-body)}
 .dock-item .t{color:var(--ink)}
 .dock-item .cnt{border:2px solid #fff}
 .badge-new{background:#fff;color:var(--coral-dk);border:2.5px solid var(--coral);box-shadow:var(--sh-card)}
-/* ---------- 金币商店：两排货架完整入画（旧版 6+6 在 5 列网格里溢出、第二排被帧底裁掉） ---------- */
-.shop-wrap{position:absolute;left:22px;right:22px;top:82px;bottom:16px;padding-top:0;overflow:hidden;
-  display:flex;flex-direction:column;gap:14px}
-.shop-sec{display:flex;flex-direction:column;min-height:0;background:var(--accent-soft);border:3px solid #fff;
-  border-radius:26px;padding:12px 14px 14px;box-shadow:var(--sh-card)}
+/* ---------- 金币商店：v1.0.8 目录扩到 12 角色/8 称号/2 道具，改「可滚动长货架」——
+   旧的一屏挤压布局（overflow:hidden + 1fr 行）会把多排货架压扁互相叠，废弃 ---------- */
+.shop-wrap{position:absolute;left:22px;right:22px;top:82px;bottom:16px;padding:10px 6px 14px;overflow-y:auto;
+  display:block}
+.shop-sec{display:block;background:var(--accent-soft);border:3px solid #fff;
+  border-radius:26px;padding:12px 14px 14px;box-shadow:var(--sh-card);margin-bottom:14px}
 .shop-sec h2{margin:0 0 10px;display:flex;align-items:center;gap:8px;text-shadow:none;color:var(--accent-ink);
   font-family:var(--font-title);font-weight:800;letter-spacing:2px;font-size:21px}
-.shop-grid{display:grid;grid-template-columns:repeat(6,1fr);grid-auto-rows:1fr;gap:12px;height:auto;flex:1;min-height:0;align-items:stretch}
+.shop-grid{display:grid;grid-template-columns:repeat(6,1fr);grid-auto-rows:auto;gap:10px;height:auto;align-items:stretch}
 .shop-grid.gdice{grid-template-columns:repeat(6,1fr)}
 .shop-card{background:#fff;border:2.5px solid var(--line);border-radius:18px;box-shadow:0 3px 0 var(--line);
-  padding:8px 8px 10px;height:100%;min-height:0;overflow:hidden}
+  padding:8px 8px 10px;overflow:hidden}
 .shop-card.active{border-color:#9FDCB0;box-shadow:0 3px 0 #BFE8C9}
-.shop-ic{width:100%;height:auto;flex:1;min-height:0;padding:2px 0}
-.shop-ic img{width:auto;height:100%;max-width:100%;object-fit:contain}
-.shop-name{font-size:14.5px;font-weight:800;color:var(--ink);margin:2px 0 8px;min-height:0;line-height:1.2}
+.shop-ic{width:100%;height:64px;flex:none;padding:2px 0;display:grid;place-items:center}
+.shop-ic img{width:auto;height:auto;max-height:58px;max-width:100%;object-fit:contain}
+.shop-name{font-size:14.5px;font-weight:800;color:var(--ink);margin:5px 0 4px;min-height:18px;line-height:1.2}
+.shop-desc{font-size:12px;font-weight:800;color:var(--ink-soft);line-height:1.35;margin:0 0 6px;text-align:center;min-height:0}
 .shop-btn{border-radius:12px;padding:9px 4px;font-size:15.5px;font-family:var(--font-title);font-weight:800;letter-spacing:1px;text-shadow:none}
 .shop-btn.buy{background:#fff;border:2.5px solid var(--accent);color:var(--accent-ink);box-shadow:0 3px 0 var(--accent-dk)}
 .shop-btn.buy.poor{border-color:var(--line);color:var(--ink-3);box-shadow:0 3px 0 var(--line);background:#FBF8F2}
