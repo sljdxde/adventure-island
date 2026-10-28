@@ -56,12 +56,23 @@ def memory_step(mid, q, pairs):
     return {"id": mid, "kind": "memory", "question": q, "cards": cards}
 
 def quiz_step(qid, q, items, ans, hint, praise):
-    """通用三选一 quiz：items = [(icon|None, text|None), ...]"""
+    """通用三选一 quiz。items 每项两种形态：
+      (icon|None, text|None)                图标 + 小字标签
+      (None, text, "body:<key>")            天体圆盘 + 小字标签
+      (None, text, "phase:<0~1>")           月相图 + 小字标签
+    渲染优先级 body > phase > icon > text（见 index.html 的 optVisual）。"""
     opts = []
-    for ic, tx in items:
+    for it in items:
+        if len(it) == 2:
+            ic, tx, vis = it[0], it[1], None
+        else:
+            ic, tx, vis = it[0], it[1], it[2]
         o = {}
         if ic: o["icon"] = ic
         if tx: o["text"] = tx
+        if vis:
+            kind, _, val = vis.partition(":")
+            o[kind] = float(val) if kind == "phase" else val
         opts.append(o)
     return {"id": qid, "kind": "quiz", "question": q, "options": opts, "answer": ans,
             "hint": hint, "praise": praise}
@@ -335,7 +346,8 @@ def other_words(ch, k, start):
 
 def cn_listen_pic(i, ch, lo, lans):
     tgt, d1, d2 = lo
-    opts = [{"icon": tgt, "text": ch}, {"icon": d1}, {"icon": d2}]
+    # 听音找图题：题干已念出目标字，三个选项全部纯图，不在正确图上标字（否则等于漏答案）
+    opts = [{"icon": tgt}, {"icon": d1}, {"icon": d2}]
     if lans != 0:
         opts[0], opts[lans] = opts[lans], opts[0]
     return {"id": f"cn-{i}-l", "kind": "listen", "prompt": ch, "speakText": ch,
@@ -358,9 +370,11 @@ def cn_word_quiz(i, ch, words):
     correct = words[0]
     dis = other_words(ch, 2, start=i * 3)
     pos = (i + 1) % 3
-    opts, ans = rot([{"icon": correct[0], "text": correct[1]},
-                     {"icon": dis[0][0], "text": dis[0][1]},
-                     {"icon": dis[1][0], "text": dis[1][1]}], 0, pos)
+    # 形近字组词题考的是「哪个词含目标字」，三个词语都用纯文字呈现：
+    # 干扰词往往共享同一个形近字（如「月亮/月牙」都用 moon），配图只会重复误导。
+    opts, ans = rot([{"text": correct[1]},
+                     {"text": dis[0][1]},
+                     {"text": dis[1][1]}], 0, pos)
     return {"id": f"cn-{i}-w", "kind": "quiz",
             "question": f"「{ch}」可以组成哪个词？",
             "options": opts, "answer": ans,
@@ -378,7 +392,8 @@ def cn_char_quiz(i, ch):
 
 def cn_listen_pic2(i, ch, lo, lans):
     tgt, d1, d2 = lo
-    correct = {"icon": tgt, "text": ch}
+    # 再找图：同样三选项全部纯图，正确图不标字
+    correct = {"icon": tgt}
     others = [{"icon": d1}, {"icon": d2}]
     nlans = (lans + 1) % 3
     opts = others[:nlans] + [correct] + others[nlans:]
@@ -448,9 +463,12 @@ def add_review_levels(levels, sub, positions, priors=(5, 10)):
             "review": True,
         })
 
-def add_boss_level(levels, sub):
+def add_boss_level(levels, sub, skip_first=0):
+    """Boss 收官关。skip_first：跳过前 N 层再采样——Boss 是「总复习」，
+    理应取全学科的题，但 sample_questions 按层顺序轮询、每层只取 1 题，
+    不跳过的话 8 题会全落在前 8 关（和复习关大面积重复）。"""
     q_by_level = [[s for s in lv["steps"] if s["kind"] not in ("teach", "letter")] for lv in levels]
-    qs = sample_questions(q_by_level, 8, f"{sub}-boss")
+    qs = sample_questions(q_by_level[skip_first:], 8, f"{sub}-boss")
     levels.append({
         "id": f"{sub}-boss",
         "title": "Boss 大挑战",
@@ -926,8 +944,8 @@ math_levels += [
     ]},
     {"id": "math-39", "title": "第 40 位置·前后", "subtitle": "前和后", "steps": [
         quiz_step("math-39-q1", "排队啦：火箭跑在最前面，谁在它后面？",
-                  [("rocket", "火箭"), ("car", "汽车"), ("train", "火车")], 0,
-                  "朝前看，前面只有一个头", "答对啦，看图找位置！"),
+                  [("rocket", "火箭"), ("car", "汽车"), ("train", "火车")], 1,
+                  "火箭是第一名，紧跟在它后面的就是", "答对啦，汽车在火箭后面！"),
     ]},
     {"id": "math-40", "title": "第 41 第几", "subtitle": "序数", "steps": [
         quiz_step("math-40-q1", "5 只小鸭排队，从前往后数，第 3 只是——",
@@ -1218,7 +1236,8 @@ def py_pic_quiz(i, letter, ex0, b0, b1):
     d1 = dis[(i * 3) % len(dis)]
     d2 = dis[(i * 3 + 2) % len(dis)]
     pos = (i + 1) % 3
-    opts, ans = rot([{"icon": icon, "text": word}, {"icon": d1}, {"icon": d2}], 0, pos)
+    # 听音/拼音选图：题干已念出词，三个选项统一纯图，避免正确答案靠文字直接暴露
+    opts, ans = rot([{"icon": icon}, {"icon": d1}, {"icon": d2}], 0, pos)
     return {"id": f"py-{i}-pq", "kind": "quiz",
             "question": f"拼一拼 {b0} — {b1}：哪张图是「{word}」？",
             "options": opts, "answer": ans,
@@ -1265,7 +1284,7 @@ pinyin_levels.append({"id": "py-11", "title": "第 12 关 复习", "subtitle": "
      "hint": "爸爸的爸", "praise": "拼读小能手！"},
     {"id": "py-11-pq", "kind": "quiz",
      "question": "拼一拼 m — a：哪张图是「妈妈」？",
-     "options": [{"icon": "girl", "text": "妈妈"}, {"icon": "moon"}, {"icon": "train"}], "answer": 0,
+     "options": [{"icon": "girl"}, {"icon": "moon"}, {"icon": "train"}], "answer": 0,
      "hint": "m 碰 a", "praise": "拼读小达人！"},
 ]})
 
@@ -1741,8 +1760,8 @@ EN_TOPICS = [
     ("en-13","Level 14 Colors","颜色",[("apple","Red","红"),("banana","Yellow","黄"),("wave","Blue","蓝"),("leaf","Green","绿")]),
     ("en-14","Level 15 Numbers","数字",[(None,"One","一"),(None,"Two","二"),(None,"Three","三"),(None,"Four","四")]),
     ("en-15","Level 16 Fruits","水果",[("apple","Apple","苹果"),("banana","Banana","香蕉"),("candy","Sweet","甜"),("bread","Bread","面包")]),
-    ("en-16","Level 17 Family","家庭",[("girl","Me","我"),("girl","Teacher","老师"),("fox","Fox","狐狸"),("home","Home","家")]),
-    ("en-17","Level 18 Body","身体",[("paw","Foot","脚"),("paw","Baby Paw","小脚丫"),("speaker","Mouth","嘴"),("girl","Me","我")]),
+    ("en-16","Level 17 Family","家庭",[("girl","Me","我"),("teacher","Teacher","老师"),("fox","Fox","狐狸"),("home","Home","家")]),
+    ("en-17","Level 18 Body","身体",[("foot","Foot","脚"),("paw","Baby Paw","小脚丫"),("speaker","Mouth","嘴"),("girl","Me","我")]),
     ("en-18","Level 19 Stationery","文具",[("book","Book","书"),("clip","Clip","夹子"),("school","School","学校"),("chart","Chart","图表")]),
     ("en-19","Level 20 Food","食物",[("cake","Cake","蛋糕"),("candy","Candy","糖"),("bread","Bread","面包"),("milk","Milk","牛奶")]),
     ("en-20","Level 21 Clothes","衣物",[("shoe","Shoe","鞋"),("hat","Hat","帽子"),("hanger","Hanger","衣架"),("gift","Gift","礼物")]),
@@ -1841,8 +1860,8 @@ NEW_TOPICS = [
     ("en-52", "Seasons", "四季", [("flower","Spring","春天"),("sun","Summer","夏天"),("maple","Autumn","秋天"),("snowflake","Winter","冬天")]),
     ("en-53", "Verbs 1", "动作·吃跑睡", [("apple","Eat","吃"),("girl","Run","跑"),("bed","Sleep","睡觉")]),
     ("en-54", "Verbs 2", "动作·读画唱", [("book","Read","读"),("chart","Draw","画"),("speaker","Sing","唱")]),
-    ("en-55", "Jobs", "职业", [("robot","Robot Maker","造机器人"),("girl","Teacher","老师"),("flask","Scientist","科学家")]),
-    ("en-56", "Feelings", "心情", [("heart","Happy","开心"),("heart","Love","爱"),("party","Excited","兴奋")]),
+    ("en-55", "Jobs", "职业", [("robot","Robot Maker","造机器人"),("teacher","Teacher","老师"),("flask","Scientist","科学家")]),
+    ("en-56", "Feelings", "心情", [("happy","Happy","开心"),("heart","Love","爱"),("excited","Excited","兴奋")]),
     ("en-57", "Places", "场所", [("school","School","学校"),("shop","Shop","商店"),("castle","Castle","城堡")]),
     ("en-58", "Big and Small", "大小", [("elephant","Big","大"),("duck","Small","小"),("bear","Bear","熊")]),
     ("en-59", "Fast and Slow", "快慢", [("rocket","Fast","快"),("train","Train","火车"),("comet","Comet","彗星")]),
@@ -1855,7 +1874,7 @@ NEW_TOPICS = [
     ("en-66", "Sky", "天空", [("star","Star","星星"),("moon","Moon","月亮"),("sunface","Sun","太阳")]),
     ("en-67", "At Home", "在家里", [("home","House","房子"),("bed","Bed","床"),("clock","Clock","钟")]),
     ("en-68", "Play Time", "游戏", [("dice","Dice","骰子"),("block","Block","积木"),("ball","Ball","球")]),
-    ("en-69", "Body Power", "身体本领", [("paw","Foot","脚"),("paw","Baby Paw","小脚丫"),("girl","Me","我")]),
+    ("en-69", "Body Power", "身体本领", [("foot","Foot","脚"),("paw","Baby Paw","小脚丫"),("girl","Me","我")]),
     ("en-70", "Colours Again", "颜色", [("rainbow","Rainbow","彩虹"),("apple","Red","红"),("leaf","Green","绿")]),
     ("en-71", "Numbers 5-8", "数字五到八", [(None,"Five","五"),(None,"Six","六"),(None,"Seven","七"),(None,"Eight","八")]),
     ("en-72", "Greetings", "打招呼", [("girl","Hello","你好"),("party","Bye","再见"),("heart","Thank you","谢谢")]),
@@ -1894,14 +1913,14 @@ MORE_TOPICS = [
     ("en-78", "School Things", "学习用品", [("book","Book","书"),("chart","Chart","图表"),("clip","Clip","夹子"),("school","School","学校")]),
     ("en-79", "In the Park", "公园", [("tree","Tree","树"),("flower","Flower","花"),("bush","Bush","灌木"),("duck","Duck","鸭")]),
     ("en-80", "On the Beach", "海滩", [("wave","Wave","海浪"),("palm","Palm","椰树"),("desert","Sand","沙"),("penguin","Penguin","企鹅")]),
-    ("en-81", "Music Time", "音乐时间", [("speaker","Speaker","喇叭"),("speaker","Sing","唱歌"),("party","Party","派对")]),
+    ("en-81", "Music Time", "音乐时间", [("speaker","Speaker","喇叭"),("sing","Sing","唱歌"),("party","Party","派对")]),
     ("en-82", "Wear This", "穿搭", [("hanger","Hanger","衣架"),("shoe","Shoe","鞋"),("hat","Hat","帽子")]),
     ("en-83", "Go Go Go", "出行", [("car","Car","汽车"),("bus","Bus","公交"),("rocket","Rocket","火箭")]),
-    ("en-84", "My Family", "我的家", [("girl","Me","我"),("girl","Teacher","老师"),("fox","Fox","狐狸")]),
+    ("en-84", "My Family", "我的家", [("girl","Me","我"),("teacher","Teacher","老师"),("fox","Fox","狐狸")]),
     ("en-85", "Toy Box", "玩具箱", [("balloon","Balloon","气球"),("shield","Shield","盾牌"),("gift","Gift","礼物")]),
     ("en-86", "Night Sky", "夜空", [("comet","Comet","彗星"),("rainbow","Rainbow","彩虹"),("blackhole","Black Hole","黑洞")]),
-    ("en-87", "Dinosaur 1", "恐龙·霸王龙", [("dino","T-Rex","霸王龙"),("dino","Roar","吼"),("dino","Long Neck","长脖子")]),
-    ("en-88", "Dinosaur 2", "恐龙·长脖子", [("dino","Long Neck","长脖子"),("leaf","Eats Leaves","吃叶子"),("dino","T-Rex","霸王龙")]),
+    ("en-87", "Dinosaur 1", "恐龙·霸王龙", [("trex","T-Rex","霸王龙"),("roar","Roar","吼"),("bronto","Long Neck","长脖子")]),
+    ("en-88", "Dinosaur 2", "恐龙·长脖子", [("bronto","Long Neck","长脖子"),("leaf","Eats Leaves","吃叶子"),("trex","T-Rex","霸王龙")]),
     ("en-89", "Fruit Mix", "水果混合", [("apple","Apple","苹果"),("banana","Banana","香蕉"),("candy","Sweet","甜")]),
     ("en-90", "Drink Up", "喝的", [("milk","Milk","牛奶"),("cup","Cup","杯子"),("jar","Jar","罐子")]),
     ("en-91", "Animal Babies", "动物宝宝", [("paw","Baby Paw","小脚丫"),("duck","Duckling","小鸭"),("bear","Cub","小熊")]),
@@ -1949,7 +1968,8 @@ W("english_levels.json", {"subject": "english", "title": "英语王国", "guide"
 #       balance 天平比一比（新） / sort 拖一拖分类（新）。不再使用 memory 翻牌配对。
 # move 元组约定（由 astro_compose 装配成 step）：
 #   ("letter",  en, display, chips, question)                chips=[(icon,text,say)]
-#   ("quiz",    q, items, ans, hint, praise)                 items=[(icon|None, text|None)]
+#   ("quiz",    q, items, ans, hint, praise)                 items=[(icon|None, text|None)] 或
+#                                                              [(None, text, "body:<key>")] / [(None, text, "phase:<0~1>")]
 #   ("pattern", seq, opt_icons, ans, q)
 #   ("balance", q, left, right, ansKey, hint)                left/right=(icon, text)
 #   ("sort",    q, bins, items, praise)                      bins=[(id,label,icon)], items=[(id,icon,text,bin)]
@@ -1969,12 +1989,21 @@ ASTRO_ZONES = [
     ("宇宙大探索", "望远镜 · 梦想"),
 ]
 
-def astro_letter(lid, en, display, chips, question, anim=None):
+def astro_letter(lid, en, display, chips, question, anim=None, fact=None, stats=None):
+    """学一学卡。fact/stats 是 v0.12.4 新增的知识点承载位：
+    用户明确要求「先学习知识点，再做题」，所以数值型知识（卫星数量、公转周期、
+    距离……）必须写进这张卡，否则后面那道选择题只能靠猜。
+      fact  一行知识点（渲染成卡片下方的高亮条）
+      stats 一排数字标签 [(value, label)]（渲染成 .statrow）"""
     step = {"id": lid, "kind": "letter", "letters": [en], "display": display,
             "examples": [{"icon": ic, "text": t, "say": s} for ic, t, s in chips],
             "question": question}
     if anim:
         step["anim"] = anim
+    if fact:
+        step["fact"] = fact
+    if stats:
+        step["stats"] = [{"value": v, "label": lb} for v, lb in stats]
     return step
 
 # 学一学动画（v0.10.1）：按关卡名映射动画 id，未映射的关回静态卡
@@ -2022,30 +2051,30 @@ ASTRO_REGULAR = [
         ("letter", "Sun", "太阳", [("sun","太阳 Sun","太阳"),("sunrise","日出 Sunrise","日出")], "学一学：太阳 Sun"),
         ("quiz", "白天挂在天上、发光发热的是谁？", [("sun","太阳"),("moon","月亮"),("star","星星")], 0,
          "太阳是大火球，白天照亮大地","对，太阳发光发热！"),
-        ("pattern", ["sun","moon","sun"], ["moon","sun","star"], 0, "星空规律：下一个是谁？"),
+        ("pattern", ["sun","moon","sun"], ["moon","sun","star"], 0, "星空规律：太阳、月亮、太阳，下一个是谁？"),
     ]),
     ("月亮", [
         ("letter", "Moon", "月亮", [("moon","月亮 Moon","月亮"),("starface","星夜 Night","星夜")], "学一学：月亮 Moon"),
-        ("quiz", "夜晚有时圆圆、有时弯弯的是谁？", [("crystal",None),("moon","月亮"),("sun",None)], 1,
+        ("quiz", "夜晚有时圆圆、有时弯弯的是谁？", [("star","星星"),("moon","月亮"),("sun","太阳")], 1,
          "月亮晚上挂夜空","对，是月亮！"),
         ("quiz", "月亮自己会发光吗？",
-         [(None,"不会，它把太阳的光反射给我们"),(None,"会，它是个小灯泡"),(None,"会，它在燃烧")], 0,
+         [("starface", "不会，反光"), ("bulb", "会，是灯泡"), ("fire", "会，在燃烧")], 0,
          "月亮像一面小镜子","对，月亮反射太阳光！"),
         ("match", "连一连：谁在做什么？",
          [("sun","太阳","自己发光发热"),("moon","月亮","反射太阳的光"),("star","星星","一闪一闪眨眼睛")]),
     ]),
     ("星星", [
         ("letter", "Star", "星星", [("star","星星 Star","星星"),("sparkle","一闪一闪 Twinkle","一闪一闪")], "学一学：星星 Star"),
-        ("quiz", "夜空里一闪一闪的是谁？", [("balloon",None),("star","星星"),("sun",None)], 1,
+        ("quiz", "夜空里一闪一闪的是谁？", [("balloon","气球"),("star","星星"),("sun","太阳")], 1,
          "星星在夜空里眨眼睛","对，是星星！"),
         ("quiz", "星星为什么像在眨眼睛？",
-         [(None,"星光穿过流动的空气，被抖得一闪一闪"),(None,"星星在调皮地眨眼"),(None,"星星没电了")], 0,
+         [("airtwinkle", "空气流动，星光闪烁"), ("starface", "星星自己在眨眼"), ("bulb", "星星没电了")], 0,
          "是空气在动哦","答对啦，是空气让星光闪烁！"),
     ]),
     ("白天和黑夜", [
         ("letter", "Day", "白天和黑夜", [("sun","白天 Day","白天"),("moon","黑夜 Night","黑夜")], "学一学：白天和黑夜 Day and Night"),
         ("quiz", "白天和黑夜轮流出现，是因为？",
-         [(None,"地球在不停地转圈"),(None,"月亮挡住了太阳"),(None,"云太厚了")], 0,
+         [(None, "地球转圈", "body:earth"), ("moon", "月亮挡住"), ("rainbow", "云太厚")], 0,
          "地球转到面向太阳是白天","对，地球转一圈就是一天！"),
         ("sort", "拖一拖：把朋友送回对应的天空",
          [("day","白天",  "sun"),("night","黑夜","moon")],
@@ -2055,44 +2084,56 @@ ASTRO_REGULAR = [
     ]),
     ("日出", [
         ("letter", "Sunrise", "日出", [("sunrise","日出 Sunrise","日出"),("sun","太阳 Sun","太阳")], "学一学：日出 Sunrise"),
-        ("quiz", "早上太阳从哪个方向升起？", [(None,"东方"),(None,"西方"),(None,"北方")], 0,
+        ("quiz", "早上太阳从哪个方向升起？", [("sunrise", "东方"), ("sunset", "西方"), ("compass", "北方")], 0,
          "太阳公公从东边起床","对，从东边升起！"),
         ("quiz", "傍晚太阳落山之后，天空会？",
-         [(None,"慢慢变暗，月亮星星出来"),(None,"马上更亮"),(None,"一直是大中午")], 0,
+         [("moon", "夜晚"), ("sunface", "天亮"), ("sun", "白天")], 0,
          "天黑了星星就出来","对，夜晚来啦！"),
     ]),
+    # 用户原话：「重要的是学习知识，不是找太阳图标之类的。先学习，然后就可以做选择题」
+    # 所以原来「一上来就数星星/找图标」的关卡改成：先一张学一学卡讲知识点，再出题考它。
     ("数星星", [
-        ("count", "夜空里有几颗星星在眨眼？", 6, [5,6,7], "star", "颗"),
-        ("quiz", "白天怎么看不到星星？",
-         [(None,"太阳光太亮，把星光盖住了"),(None,"星星白天睡觉"),(None,"星星被收进盒子")], 0,
-         "星星一直在天上哦","对，星星白天也在！"),
+        ("letter", "Star", "星星",
+         [("star","星星 Star","星星"),("starface","一闪一闪 Twinkle","一闪一闪")],
+         "学一学：星星白天也在天上",
+         "星星其实白天也在天上，只是太阳太亮，把微弱的星光盖住了。夜里天黑了，才看得清它们一闪一闪。",
+         [("白天","也在天上"),("晚上","才看得清"),("空气","让星光闪动")]),
+        ("quiz", "为什么白天看不到星星？",
+         [("sunrays", "太阳光太亮，盖住了星光"), ("starface", "星星白天睡觉去了"), ("moon", "月亮把星星带走了")], 0,
+         "学一学卡上说：星星白天也在，只是看不见","对，被太阳光盖住了！"),
     ]),
     ("找太阳", [
-        ("listen", "太阳", "sun", ["sun","moon","star"], 0, "太阳"),
-        ("quiz", "太阳升起后，天空会？",
-         [(None,"越来越亮"),(None,"越来越黑"),(None,"下起雪来")], 0,
-         "天亮啦，太阳出来了","对，越升越高越亮！"),
+        ("letter", "Sun", "太阳",
+         [("sun","太阳 Sun","太阳"),("sunrise","日出 Sunrise","日出")],
+         "学一学：太阳一升起来，天就亮了",
+         "太阳每天从东边升起、西边落下。它一升起来，天空就越来越亮，大地也暖和起来。",
+         [("东","升起的方向"),("西","落下的方向"),("越来越亮","升起之后")]),
+        ("quiz", "太阳升起后，天空会怎样？",
+         [("sparkle", "越来越亮"), ("moon", "黑夜到月亮"), ("snowflake", "下起雪来")], 0,
+         "学一学卡：太阳升起来，天空越来越亮","对，越升越高越亮！"),
     ]),
     ("秤一秤·太阳和月亮", [
         ("balance", "天平秤一秤：太阳和月亮，哪边更重？",
          ("sun","太阳"), ("moon","月亮"), "left",
          "太阳是巨大的恒星，月亮只是绕地球转的小卫星"),
         ("quiz", "弯弯的月亮像什么？",
-         [(None,"像一只小船"),(None,"像大方块"),(None,"像尖帽子")], 0,
+         [(None, "像小船", "phase:0.12"), ("square", "像方块"), ("hat", "尖帽子")], 0,
          "弯弯月儿像小船","对，像小船！"),
     ]),
     ("影子", [
         ("letter", "Shadow", "影子", [("sun","太阳光 Light","太阳光"),("girl","小影子 Shadow","影子")], "学一学：影子 Shadow"),
         ("quiz", "影子是怎么来的？",
-         [(None,"身体挡住了太阳光，光过不去就留下影子"),(None,"地里长出来的"),(None,"画上去的")], 0,
+         [("sunrays", "太阳光"), ("sprout", "地里长出"), ("chart", "画上去的")], 0,
          "挡住光的地方就是影子","答对啦！"),
         ("quiz", "什么时候影子最长？",
-         [(None,"早上和傍晚，太阳斜斜的时候"),(None,"中午正头顶"),(None,"半夜")], 0,
+         [("sunrise", "早晚太阳斜"), ("sun", "白天"), ("moon", "半夜")], 0,
          "太阳斜射影子长","对，早晚影子最长！"),
     ]),
     ("星区小挑战", [
-        ("pattern", ["sun","star","sun"], ["star","moon","rocket"], 0, "星空规律：下一个是谁？"),
-        ("quiz", "太阳从哪个方向落下？", [(None,"西方"),(None,"东方"),(None,"南方")], 0,
+        ("tapall", "点点看：把白天能看到的东西都点亮",
+         [("sun",None,True),("sunrise",None,True),("rainbow",None,True),
+          ("moon",None,False),("star",None,False)], "白天有太阳，天空亮亮的"),
+        ("quiz", "太阳从哪个方向落下？", [("sunset", "西方"), ("sunrise", "东方"), ("penguin", "南方")], 0,
          "东升西落","对，西边落下！"),
         ("quiz", "谁白天黑夜都在天上，晚上才看得清？",
          [("star","星星"),("car","汽车"),("cake","蛋糕")], 0,
@@ -2104,37 +2145,37 @@ ASTRO_REGULAR = [
         ("quiz", "我们住在哪颗星球上？", [("earth","地球"),("sun","太阳"),("moon","月亮")], 0,
          "蓝蓝的圆圆的是我们的家","对，地球是我们的家！"),
         ("quiz", "从太空看地球，主要是什么颜色？",
-         [(None,"蓝色，大部分是大海"),(None,"红色，全是火"),(None,"绿色，全是树")], 0,
+         [(None, "地球蓝色", "body:earth"), (None, "火星火红", "body:mars"), ("tree", "绿色树木")], 0,
          "海洋比陆地多得多","对，地球是蓝色星球！"),
     ]),
     ("圆圆的地球", [
-        ("quiz", "地球是什么形状？", [(None,"圆圆的球"),(None,"方方的盒子"),(None,"扁扁的盘子")], 0,
+        ("quiz", "地球是什么形状？", [("circle", "圆圆球"), ("square", "方方盒子"), ("block", "方块")], 0,
          "地球是个大圆球","对，圆圆的地球！"),
         ("quiz", "为什么我们跳起来总会落回地面？",
-         [(None,"地球的引力像看不见的手拉着我们"),(None,"地面会吸铁"),(None,"天上有个钩子")], 0,
+         [(None, "地球引力", "body:earth"), ("magnet", "磁铁"), ("hat", "钩子")], 0,
          "引力把万物拉在地面上","答对啦，这就是引力！"),
     ]),
     ("地球在转动", [
         ("quiz", "地球自己转一圈是多久？",
-         [(None,"一天（24小时）"),(None,"一小时"),(None,"一年")], 0,
+         [(None, "一天"), (None, "一小时"), (None, "一年")], 0,
          "自转一圈就是一天","对，转一圈是一天！"),
-        ("pattern", ["earth","moon","earth"], ["moon","star","sun"], 0, "星空规律：下一个是谁？"),
+        ("pattern", ["earth","moon","earth"], ["moon","star","sun"], 0, "地球和月亮：地球、月亮、地球，下一个是谁？"),
     ]),
     ("引力", [
         ("letter", "Gravity", "引力", [("earth","地球 Earth","地球"),("apple","落下的苹果 Apple","苹果")], "学一学：引力 Gravity"),
         ("quiz", "跳起来之后会怎么样？",
-         [(None,"落回地面"),(None,"飘走不回来"),(None,"飞到月亮上")], 0,
+         [("home", "落回地面"), ("balloon", "气球"), (None, "飞到月球", "body:moon")], 0,
          "引力把我们拉回来","对，落回地面！"),
         ("quiz", "月亮为什么不跑丢，一直陪着地球？",
-         [(None,"地球的引力拉着它转圈"),(None,"月亮怕黑"),(None,"月亮没力气走")], 0,
+         [(None, "地球引力", "body:earth"), ("moon", "月亮怕黑"), ("balloon", "气球")], 0,
          "引力像看不见的绳子","对，引力拉着月亮！"),
     ]),
     ("空气", [
         ("quiz", "月亮上有没有空气？",
-         [(None,"没有，所以要背氧气瓶"),(None,"有，和地球一样"),(None,"全是水汽")], 0,
+         [(None, "没有空气"), (None, "和地球一样多"), (None, "全是水汽")], 0,
          "月亮上没有空气","答对啦，所以要带氧气！"),
         ("quiz", "为什么宇航服鼓鼓的、包得严严实实？",
-         [(None,"里面装着空气，像一艘小飞船保护宇航员"),(None,"为了好看"),(None,"冬天冷多穿点")], 0,
+         [("astronaut", "宇航服氧气"), ("flower", "花"), ("snowflake", "冬天冷")], 0,
          "宇航服是小小飞船","对，它保护宇航员！"),
     ]),
     ("秤一秤·地球和月球", [
@@ -2147,30 +2188,35 @@ ASTRO_REGULAR = [
     ]),
     ("白天的月亮", [
         ("quiz", "白天能看到月亮吗？",
-         [(None,"有时能，月亮常常白天也挂着"),(None,"永远看不到"),(None,"月亮怕晒不敢出来")], 0,
+         [("sunrise", "白天能看到"), ("lock", "锁起来看不到"), ("sunface", "月亮怕晒")], 0,
          "《DK儿童太空百科》：月亮白天也常在天上","答对啦，白天也能找月亮！"),
         ("quiz", "月亮离我们有多远？",
-         [(None,"很远很远，火箭要飞好几天"),(None,"隔壁楼那么近"),(None,"一伸手就够到")], 0,
+         [("rocket", "飞好几天"), ("castle", "隔壁楼近"), ("paw", "伸手够到")], 0,
          "月亮是离我们最近的天体","对，虽然近也要飞好几天！"),
     ]),
     ("蓝色的家", [
         ("quiz", "地球上大部分地方是什么？",
-         [(None,"海洋"),(None,"沙漠"),(None,"冰川")], 0,
+         [("wave", "海洋"), ("desert", "沙漠"), ("ice", "冰川")], 0,
          "七分海洋三分陆地","对，大部分是海洋！"),
         ("listen", "地球", "earth", ["earth","mars","moon"], 0, "地球"),
     ]),
     ("找地球", [
-        ("listen", "地球", "earth", ["earth","sun","star"], 0, "地球"),
-        ("quiz", "谁给地球送来光和热？",
+        ("letter", "Earth", "地球",
+         [("earth","地球 Earth","地球"),("sun","太阳 Sun","太阳")],
+         "学一学：太阳是地球的能量站",
+         "地球上的光和热几乎都来自太阳。太阳照着大地，植物才能生长，水才能循环，我们才不会冻着。",
+         [("光和热","来自太阳"),("1 颗","地球只有一个月亮")]),
+        ("quiz", "地球上的光和热主要来自哪里？",
          [("sun","太阳"),("cake","蛋糕"),("rock","石头")], 0,
-         "太阳是地球的能量站","对，是太阳！"),
+         "学一学卡：太阳是地球的能量站","对，是太阳！"),
     ]),
     ("星区小挑战", [
-        ("pattern", ["earth","star","earth"], ["star","moon","comet"], 0, "星空规律：下一个是谁？"),
+        ("match", "连一连：谁绕着谁转？",
+         [("moon","月亮","绕着地球转"),("earth","地球","绕着太阳转"),("satellite","人造卫星","绕着地球飞")]),
         ("quiz", "从太空看地球是什么颜色？", [("earth","蓝色"),("mars","红色"),("sun","金色")], 0,
          "大海是蓝色的","对，蓝色星球！"),
         ("quiz", "把我们拉在地面上不飞走的是？",
-         [(None,"引力"),(None,"磁铁"),(None,"胶水")], 0,
+         [(None, "地球引力", "body:earth"), ("magnet", "磁铁"), ("jar", "胶水")], 0,
          "地球的引力","答对啦，引力无处不在！"),
     ]),
     # ── 星区 3 飞向太空（《揭秘太空》《国家地理少儿版》）──
@@ -2179,34 +2225,34 @@ ASTRO_REGULAR = [
         ("quiz", "谁能把宇航员送上太空？", [("rocket","火箭"),("train","火车"),("car","汽车")], 0,
          "火箭轰隆一声冲上天","对，是火箭！"),
         ("quiz", "火箭点火时，尾巴喷出什么？",
-         [(None,"火焰和强大的气流"),(None,"彩色泡泡"),(None,"花瓣")], 0,
+         [("flame", "火焰气流"), ("rainbow", "彩色泡泡"), ("flower", "花瓣")], 0,
          "喷着火冲上天","答对啦！"),
         ("sequence", "倒计时点火：按 3→2→1 顺序点，发射火箭！", ["3","2","1"]),
     ]),
     ("宇航员", [
         ("letter", "Astronaut", "宇航员", [("astronaut","宇航员 Astronaut","宇航员"),("station","空间站 Station","空间站")], "学一学：宇航员 Astronaut"),
         ("quiz", "开飞船上太空工作的人叫什么？",
-         [(None,"宇航员"),(None,"司机"),(None,"厨师")], 0,
+         [("astronaut", "宇航员"), ("car", "汽车"), ("hat", "帽子")], 0,
          "他们乘火箭上太空","对，宇航员！"),
         ("quiz", "在空间站里水珠会飘走，宇航员怎么喝水？",
-         [(None,"用带吸管的水袋吸着喝"),(None,"用杯子慢慢倒"),(None,"张嘴等雨")], 0,
+         [("waterpouch", "吸管水袋"), ("cup", "杯子倒水"), ("wave", "大海")], 0,
          "太空里的水会飘","对，吸管袋喝水！"),
     ]),
     ("宇航服", [
         ("letter", "Spacesuit", "宇航服", [("astronaut","穿宇航服的宇航员","宇航员"),("rocket","火箭 Rocket","火箭")], "学一学：宇航服 Spacesuit"),
         ("quiz", "太空里没有空气，宇航员靠什么呼吸？",
-         [(None,"宇航服里带的氧气"),(None,"憋气"),(None,"大口吸真空")], 0,
+         [("astronaut", "宇航服氧气"), ("girl", "人"), ("blackhole", "黑洞")], 0,
          "氧气装在宇航服里","对，靠氧气！"),
         ("quiz", "宇航服还能帮宇航员挡住什么？",
-         [(None,"忽冷忽热的温度和小陨石"),(None,"别人的目光"),(None,"数学题")], 0,
+         [("shield", "盾"), ("starface", "别人目光"), ("book", "书")], 0,
          "太空温差特别大","答对啦，宇航服很能干！"),
     ]),
     ("失重", [
         ("quiz", "空间站里宇航员怎么睡觉？",
-         [(None,"钻进睡袋，挂在墙上"),(None,"躺大床上盖被子"),(None,"坐摇椅")], 0,
+         [("sleepingbag", "睡袋挂墙上"), ("bed", "普通的床上"), ("chair", "椅子上")], 0,
          "失重时躺着会飘走","对，睡袋挂墙上！"),
         ("quiz", "在空间站里笔掉了，它会？",
-         [(None,"飘在空中"),(None,"马上掉到地上"),(None,"自己飞走藏起来")], 0,
+         [("balloon", "气球飘起来"), ("home", "掉回家"), ("everest", "飞走藏起来")], 0,
          "失重了，东西会飘","对，飘在空中！"),
     ]),
     ("空间站", [
@@ -2224,9 +2270,9 @@ ASTRO_REGULAR = [
          [("satellite","人造卫星"),("rocket","火箭"),("train","火车")], 0,
          "人造卫星绕地球转","对，人造卫星！"),
         ("quiz", "我们看的电视、用的导航，谁在天上帮忙传信号？",
-         [(None,"人造卫星"),(None,"小鸟"),(None,"风筝")], 0,
+         [("satellite", "人造卫星"), ("bird", "小鸟"), ("kite", "风筝")], 0,
          "卫星是太空信使","答对啦！"),
-        ("shadow", "看影子猜猜：这是谁？", "satellite",
+        ("shadow", "看影子猜猜：这是谁在天上飞？", "satellite",
          [("satellite","人造卫星"),("moon","月亮"),("rocket","火箭")], 0,
          "它张着两片太阳翼，绕着地球转"),
     ]),
@@ -2241,21 +2287,29 @@ ASTRO_REGULAR = [
          "宇航服是保命的小飞船","对，穿好宇航服！"),
     ]),
     ("数火箭", [
-        ("count", "发射场上，等着上天的小火箭有几枚？", 5, [4,5,6], "rocket", "枚"),
-        ("quiz", "空间站里的宇航员在做什么？",
-         [(None,"做实验，研究太空的秘密"),(None,"睡大觉"),(None,"踢足球")], 0,
-         "空间站就是太空实验室","对，做实验！"),
+        ("letter", "Rocket", "火箭",
+         [("rocket","火箭 Rocket","火箭"),("station","空间站 Station","空间站")],
+         "学一学：火箭把人和货物送上太空",
+         "火箭要喷出强大的火焰和气流才能挣脱地球引力。空间站里的宇航员每天做各种实验，研究太空的秘密。",
+         [("3-2-1","发射倒计时"),("1.5 小时","绕地球一圈")]),
+        ("quiz", "空间站里的宇航员主要在做什么？",
+         [("flask", "做科学实验"), ("bear", "睡大觉"), ("ball", "踢足球")], 0,
+         "学一学卡：空间站就是太空实验室","对，做实验！"),
     ]),
     ("找火箭", [
-        ("listen", "火箭", "rocket", ["rocket","earth","star"], 0, "火箭"),
-        ("quiz", "空间站里的宇航员一天能看到很多次日出，因为？",
-         [(None,"空间站绕地球转得飞快"),(None,"太阳跳来跳去"),(None,"表坏了")], 0,
-         "绕地球一圈约一个半小时","答对啦，一天能看十几次日出！"),
+        ("letter", "Rocket", "火箭",
+         [("rocket","火箭 Rocket","火箭"),("station","空间站 Station","空间站")],
+         "学一学：空间站转得飞快",
+         "空间站绕地球一圈只要大约一个半小时，所以宇航员一天能看到十几次日出。",
+         [("90","分钟绕一圈"),("16","次日出/天")]),
+        ("quiz", "宇航员一天能看到很多次日出，为什么？",
+         [("station", "空间站绕地球转得飞快"), ("sun", "太阳自己跳来跳去"), ("clock", "钟表坏了")], 0,
+         "学一学卡：一圈约一个半小时","答对啦，一天能看十几次日出！"),
     ]),
     # ── 星区 4 巡游·岩质行星（《神奇校车·迷失在太阳系》）──
     ("太阳系", [
         ("letter", "Solar System", "太阳系", [("sun","太阳在中间","太阳"),("planet","八颗行星绕着转","行星")], "学一学：太阳系 Solar System"),
-        ("quiz", "太阳系里有几大行星？", [(None,"八颗"),(None,"三颗"),(None,"一百颗")], 0,
+        ("quiz", "太阳系里有几大行星？", [(None,"八颗行星"),(None,"三颗"),(None,"一百颗")], 0,
          "水金地火+木土天海","对，八大行星！"),
         ("quiz", "行星们都绕着谁转？", [("sun","太阳"),("earth","地球"),("moon","月亮")], 0,
          "太阳是太阳系的老大","对，绕太阳转！"),
@@ -2267,7 +2321,7 @@ ASTRO_REGULAR = [
         ("quiz", "跑得最快、离太阳最近的行星是？", [("mercury","水星"),("neptune","海王星"),("saturn","土星")], 0,
          "水星是跑步冠军","对，是水星！"),
         ("quiz", "在水星上过一年（绕太阳一圈）只要 88 天，所以？",
-         [(None,"比地球上的一个暑假还短"),(None,"比 100 年还长"),(None,"和地球一年一样长")], 0,
+         [("calendar", "日历上一年很短"), ("clock", "时钟上一天很短"), (None, "和地球一样长", "body:earth")], 0,
          "水星上一年=88天","对，水星的一年特别短！"),
         ("match", "连一连：行星之最",
          [("mercury","水星","离太阳最近"),("earth","地球","我们的家"),("neptune","海王星","离太阳最远")]),
@@ -2277,7 +2331,7 @@ ASTRO_REGULAR = [
         ("quiz", "清晨东方最亮的那颗星叫？", [("venus","金星"),("mars","火星"),("moon","月亮")], 0,
          "金星也叫启明星","对，金星最亮！"),
         ("quiz", "太阳系最热的行星是？",
-         [(None,"金星，厚厚的云像棉被捂得热"),(None,"水星，因为离太阳最近"),(None,"地球")], 0,
+         [(None, "金星最热", "body:venus"), (None, "水星最近", "body:mercury"), (None, "只有地球", "body:earth")], 0,
          "别看水星更近，金星裹着厚云更热","答对啦，金星是大火炉！"),
     ]),
     ("火星", [
@@ -2285,15 +2339,15 @@ ASTRO_REGULAR = [
         ("quiz", "哪颗行星红红的？", [("mars","火星"),("venus","金星"),("earth","地球")], 0,
          "火星像生了锈","对，红红的火星！"),
         ("quiz", "火星为什么是红色的？",
-         [(None,"土壤里有铁锈"),(None,"被火烤过"),(None,"涂了红色颜料")], 0,
+         [("rustsoil", "铁锈色土壤"), ("fire", "被火烤过"), ("apple", "红苹果")], 0,
          "像铁锈一样的土壤","对，是铁锈色！"),
     ]),
     ("岩质行星", [
         ("quiz", "哪些行星是硬硬的岩石星球（岩质行星）？",
-         [(None,"水星、金星、地球、火星"),(None,"木星、土星"),(None,"月亮和太阳")], 0,
+         [(None, "水星打头", "body:mercury"), (None, "木星土星", "body:jupiter"), ("moon", "月亮太阳")], 0,
          "离太阳近的四颗是岩质行星","对，水金地火！"),
         ("quiz", "我们住的地球是岩质行星吗？",
-         [(None,"是呀，脚下就是岩石"),(None,"不是，地球是气体"),(None,"地球是水做的")], 0,
+         [("rock", "是，岩石星球"), ("balloon", "是气体星球"), ("wave", "是水做的星球")], 0,
          "脚踩大地，当然是","答对啦！"),
         ("tapall", "点点看：把岩质行星都点亮",
          [("mercury",None,True),("venus",None,True),("mars",None,True),("earth",None,True),
@@ -2302,10 +2356,10 @@ ASTRO_REGULAR = [
     ]),
     ("小行星带", [
         ("quiz", "火星和木星之间有一条什么地带？",
-         [(None,"小行星带，许多小石头绕太阳转"),(None,"一条大河"),(None,"一堵大墙")], 0,
+         [("planet", "小行星带"), ("river", "一条大河"), ("greatwall", "长城")], 0,
          "《神奇校车》就从这里穿过！","对，小行星带！"),
         ("quiz", "小行星是什么？",
-         [(None,"绕太阳转圈的小石块"),(None,"小星星的宝宝"),(None,"会飞的小汽车")], 0,
+         [("rock", "石头"), ("starface", "星星宝宝"), ("car", "会飞汽车")], 0,
          "大的像山，小的像石头","对，是太空小石块！"),
         ("tapall", "点点看：把绕着太阳转的都点亮",
          [("earth",None,True),("venus",None,True),("comet",None,True),
@@ -2327,7 +2381,7 @@ ASTRO_REGULAR = [
          ("mercury","水星"), ("earth","地球"), "right",
          "水星是八大行星里最小的，地球比它重得多"),
         ("quiz", "离太阳由近到远排，第三颗是谁？",
-         [(None,"地球"),(None,"水星"),(None,"木星")], 0,
+         [(None, "地球第三颗", "body:earth"), (None, "水星", "body:mercury"), (None, "木星", "body:jupiter")], 0,
          "水金地…第三颗是我们","对，地球排第三！"),
     ]),
     ("排排队", [
@@ -2335,17 +2389,21 @@ ASTRO_REGULAR = [
          [("mercury","水星"),("earth","地球"),("saturn","土星")], 0,
          "水星离太阳最近","对，水星第一！"),
         ("quiz", "行星排队的顺序是按什么排的？",
-         [(None,"离太阳由近到远"),(None,"谁跑得慢"),(None,"颜色好看")], 0,
+         [(None,"离太阳由近到远"),(None,"谁跑得慢"),(None,"谁的颜色好看")], 0,
          "按离太阳远近排","答对啦！"),
         ("lineup", "排排队：按离太阳由近到远",
          [("mercury","水星"),("venus","金星"),("earth","地球"),("mars","火星")]),
     ]),
     ("星区小挑战", [
-        ("pattern", ["mercury","venus","mercury"], ["venus","mars","sun"], 0, "星空规律：下一个是谁？"),
+        ("sort", "拖一拖：把行星送回自己的队伍",
+         [("rocky","岩石行星","rock"),("giant","巨行星","jupiter")],
+         [("p1","mercury","水星","rocky"),("p2","venus","金星","rocky"),("p3","mars","火星","rocky"),
+          ("p4","jupiter","木星","giant"),("p5","saturn","土星","giant"),("p6","neptune","海王星","giant")],
+         "水金地火是岩石，木土天海是巨人！"),
         ("quiz", "红色行星是哪颗？", [("mars","火星"),("venus","金星"),("neptune","海王星")], 0,
          "铁锈色的火星","对，火星！"),
         ("quiz", "小行星带夹在哪两颗行星中间？",
-         [(None,"火星和木星"),(None,"地球和月亮"),(None,"水星和金星")], 0,
+         [(None, "火星木星间", "body:mars"), ("moon", "地球月亮"), (None, "水星金星", "body:mercury")], 0,
          "岩质行星和巨行星的分界线","对，火星和木星之间！"),
     ]),
     # ── 星区 5 巡游·巨行星（《神奇校车》《DK儿童太空百科》）──
@@ -2354,9 +2412,9 @@ ASTRO_REGULAR = [
         ("quiz", "八大行星里最大的是谁？", [("jupiter","木星"),("earth","地球"),("mars","火星")], 0,
          "木星是行星大老大","对，木星最大！"),
         ("quiz", "木星上的大红斑是什么？",
-         [(None,"一场刮了几百年还没停的大风暴"),(None,"颜料点"),(None,"陨石砸的坑")], 0,
+         [("storm", "刮了几百年的大风暴"), ("apple", "红色圆斑"), ("meteorite", "陨石坑")], 0,
          "比地球还大的风暴","答对啦，大红斑是大风暴！"),
-        ("shadow", "看影子猜猜：这是谁？", "jupiter",
+        ("shadow", "看影子猜猜：哪颗行星戴着光环？", "jupiter",
          [("jupiter","木星"),("saturn","土星"),("earth","地球")], 0,
          "它是行星大老大，身上有大红斑"),
     ]),
@@ -2365,7 +2423,7 @@ ASTRO_REGULAR = [
         ("quiz", "谁戴着像草帽一样的光环？", [("saturn","土星"),("mars","火星"),("venus","金星")], 0,
          "土星的光环最美","对，土星戴草帽！"),
         ("quiz", "土星的光环是什么做的？",
-         [(None,"无数小冰块和石头"),(None,"彩虹糖"),(None,"云朵")], 0,
+         [("crystal", "冰块石头"), ("candy", "彩虹糖"), ("milk", "云朵")], 0,
          "光环是冰块石头组成的","答对啦！"),
     ]),
     ("天王星", [
@@ -2374,7 +2432,7 @@ ASTRO_REGULAR = [
          [("uranus","天王星"),("mercury","水星"),("venus","金星")], 0,
          "天王星是躺着的","对，天王星躺着转！"),
         ("quiz", "天王星是什么颜色？",
-         [(None,"蓝绿色"),(None,"火红色"),(None,"黑色")], 0,
+         [(None, "天王星蓝绿", "body:uranus"), (None, "火星火红", "body:mars"), ("rock", "石头")], 0,
          "冰冰的蓝绿色","答对啦，蓝绿色！"),
     ]),
     ("海王星", [
@@ -2382,66 +2440,85 @@ ASTRO_REGULAR = [
         ("quiz", "离太阳最远的行星是？", [("neptune","海王星"),("mercury","水星"),("earth","地球")], 0,
          "海王星在队伍最后","对，海王星最远！"),
         ("quiz", "海王星是什么颜色？",
-         [(None,"深蓝色，像大海"),(None,"绿色"),(None,"五颜六色")], 0,
+         [(None, "海王星深蓝", "body:neptune"), ("leaf", "树叶"), ("rainbow", "彩色")], 0,
          "深蓝的海王星","对，深蓝色！"),
-    ]),
-    ("冥王星", [
-        ("quiz", "冥王星现在还是八大行星之一吗？",
-         [(None,"不是啦，它现在是矮行星"),(None,"是，它最大"),(None,"它变成恒星了")], 0,
-         "个头太小被请出了行星队伍","对，冥王星是矮行星！"),
-        ("quiz", "冥王星为什么被请出行星队伍？",
-         [(None,"个头太小，和别的大行星不一样"),(None,"它太亮了"),(None,"它跑太快")], 0,
-         "科学家重新分了类","答对啦！"),
     ]),
     ("秤一秤·木星和地球", [
         ("balance", "天平秤一秤：木星和地球，哪边更重？",
          ("jupiter","木星"), ("earth","地球"), "left",
          "木星是大块头，一千三百个地球才和它一样大"),
         ("quiz", "土星很轻很轻，如果有个足够大的水池，它会？",
-         [(None,"像皮球一样浮在水面上"),(None,"咕咚沉底"),(None,"把水吸干")], 0,
+         [(None, "土星浮起", "body:saturn"), ("rock", "石头"), ("magnet", "把水吸干")], 0,
          "土星密度比水还小","对，土星能浮起来！"),
     ]),
     ("巨行星", [
         ("quiz", "巨行星（木土天海）和岩质行星最大的不同是？",
-         [(None,"巨行星主要由气体组成，像大气球"),(None,"巨行星是巧克力做的"),(None,"没有不同")], 0,
+         [(None, "木星气体", "body:jupiter"), ("candy", "糖"), ("equal", "等")], 0,
          "没有落脚的硬地面","对，巨行星是气体星球！"),
         ("quiz", "谁自转最快、一天不到10小时？",
          [("jupiter","木星"),("earth","地球"),("moon","月亮")], 0,
          "木星个头大转得快","答对啦，是木星！"),
     ]),
+    # ── v0.12.4 新增：太阳系的卫星（用户第一轮就提过「行星的卫星等相关知识点」）──
+    # 用户原话：「重要的是学习知识……先学习比如卫星数量，然后就可以做选择题」
+    # 所以这两关的学一学卡把答案直接写出来（stats 放数字、fact 放结论），
+    # 后面的选择题考的就是刚才看的这张卡，而不是让孩子瞎猜。
+    ("木星的卫星", [
+        ("letter", "Moon of Jupiter", "木星的卫星",
+         [("jupiter","木星 Jupiter","木星"),("planet","木卫家族 Moons","木卫")],
+         "学一学：木星是太阳系的「卫星大王」",
+         "木星身边已经找到 95 颗以上卫星。伽利略 1610 年用望远镜最先看到其中最大的四颗：木卫一、二、三、四。",
+         [("95+","颗卫星"),("4","颗伽利略卫星"),("1610","年发现")]),
+        ("quiz", "木星身边已经发现了多少颗卫星？",
+         [("satellite","95 颗以上卫星"),("moon","只有一颗月亮"),("star","一颗星星都没有")], 0,
+         "回去看学一学卡上的数字：95+","对，95 颗以上！"),
+        ("quiz", "木星最大的四颗卫星是谁最先看到的？",
+         [("telescope","伽利略 1610 年用望远镜"),("astronaut","宇航员走上去时"),("satellite","卫星自己报名字")], 0,
+         "1610 年，伽利略第一次用望远镜指向木星","对，是伽利略！"),
+        ("match", "连一连：谁的卫星最多？",
+         [("jupiter","木星","95 颗以上，最多"),("saturn","土星","卫星数量排第二"),("earth","地球","只有 1 颗月亮")]),
+    ]),
+    ("土星的卫星", [
+        ("letter", "Moon of Saturn", "土星的卫星",
+         [("saturn","土星 Saturn","土星"),("planet","泰坦 Titan","泰坦")],
+         "学一学：土星最大的一颗卫星叫泰坦",
+         "泰坦（土卫六）是太阳系第二大的卫星，比水星还大。它表面有湖泊，但装的不是水，是液态甲烷。",
+         [("146+","颗卫星"),("2","大卫星（仅次于木卫三）"),("甲烷","湖里的液体")]),
+        ("quiz", "土星最大的一颗卫星叫什么？",
+         [("satellite","泰坦这颗粒卫星"),("fullmoon","一颗满月"),("sun","一颗太阳")], 0,
+         "回去看学一学卡：土星最大的卫星叫泰坦","对，叫泰坦！"),
+        ("quiz", "泰坦表面的湖泊里装的是什么？",
+         [("wave","液态甲烷，不是水"),("fire","一直在着火"),("crystal","全是水晶")], 0,
+         "泰坦很冷，甲烷在那儿变成了液体","对，是液态甲烷！"),
+        ("quiz", "为什么有些卫星被叫作「冰卫星」？",
+         [("ice","表面裹着一层厚厚的冰壳"),("snowflake","雪花一直飘"),("crystal","全是水晶")], 0,
+         "冰块在太空里也是硬邦邦的石头","对，它们裹着冰壳！"),
+    ]),
     ("八大行星点名", [
         ("count", "太阳系八大行星都来点名啦，一共有几颗？", 8, [7,8,9], "planet", "颗"),
         ("quiz", "八大行星里离太阳由近到远，地球排第几？",
-         [(None,"第三颗"),(None,"第一颗"),(None,"最后一名")], 0,
+         [(None, "地球第三颗", "body:earth"), ("sunrise", "第一颗"), ("equal", "最后一名")], 0,
          "水金地…我们排第三","对，第三颗！"),
         ("lineup", "排排队：按个头从大到小",
          [("jupiter","木星"),("saturn","土星"),("uranus","天王星"),("neptune","海王星")]),
     ]),
-    ("拖一拖", [
-        ("sort", "拖一拖：恒星和行星分一分",
-         [("stars","恒星·自己发光","sun"),("planets","行星·绕恒星转","earth")],
-         [("a1","sun","太阳","stars"),("a2","star","夜空里的星星","stars"),("a3","starface","北极星","stars"),
-          ("b1","earth","地球","planets"),("b2","saturn","土星","planets"),("b3","mars","火星","planets")],
-         "恒星行星分得清，真棒！"),
-        ("quiz", "月亮绕着谁转？",
-         [("earth","地球"),("sun","太阳"),("venus","金星")], 0,
-         "月亮是地球的卫星","对，绕着地球转！"),
-    ]),
     ("星区小挑战", [
-        ("pattern", ["saturn","jupiter","saturn"], ["jupiter","uranus","earth"], 0, "星空规律：下一个是谁？"),
+        ("balance", "天平秤一秤：土星和地球，哪边更重？",
+         ("saturn","土星"), ("earth","地球"), "left",
+         "土星是巨行星，能装下七百多个地球"),
         ("quiz", "哪颗行星戴着光环？", [("saturn","土星"),("mars","火星"),("mercury","水星")], 0,
          "土星草帽光环","对，土星！"),
         ("quiz", "地球绕太阳转一圈是多久？",
-         [(None,"一年"),(None,"一天"),(None,"一小时")], 0,
+         [(None, "一年"), (None, "一天"), (None, "一小时")], 0,
          "绕一圈就是一年","答对啦，一年！"),
     ]),
     # ── 星区 6 太阳我们的恒星（《DK儿童太空百科》《国家地理少儿版》）──
     ("恒星", [
         ("quiz", "太阳其实是一颗什么？",
-         [(None,"恒星，自己发光发热"),(None,"行星"),(None,"大月亮")], 0,
+         [(None, "恒星"), (None, "行星"), (None, "卫星")], 0,
          "太阳是离我们最近的恒星","对，太阳是恒星！"),
         ("quiz", "夜晚的星星和太阳是一家人吗？",
-         [(None,"是，都是遥远的恒星"),(None,"不是，星星是灯"),(None,"星星是洞洞")], 0,
+         [("starface", "都是恒星"), ("bulb", "星星是灯"), ("moon", "星星是月亮变的")], 0,
          "每颗星星都是个太阳","答对啦！"),
         ("tapall", "点点看：把恒星都点亮",
          [("sun",None,True),("star",None,True),("starface",None,True),
@@ -2450,10 +2527,10 @@ ASTRO_REGULAR = [
     ]),
     ("巨大的太阳", [
         ("quiz", "太阳的肚子里大约能装下多少个地球？",
-         [(None,"100多万个"),(None,"10个"),(None,"100个")], 0,
+         [(None, "约 130 万个"), (None, "约 100 个"), (None, "约 10 个")], 0,
          "太阳是个超级大胖子","对，100多万个地球！"),
         ("quiz", "太阳和地球谁大？",
-         [(None,"太阳大多啦"),(None,"地球大"),(None,"一样大")], 0,
+         [("sun", "太阳大得多"), ("earth", "地球大"), ("equal", "一样大")], 0,
          "地球在太阳面前像小豆子","答对啦！"),
     ]),
     ("秤一秤·太阳和地球", [
@@ -2461,46 +2538,46 @@ ASTRO_REGULAR = [
          ("sun","太阳"), ("earth","地球"), "left",
          "太阳占整个太阳系绝大部分的重量"),
         ("quiz", "地球绕着太阳转，还是太阳绕着地球转？",
-         [(None,"地球绕太阳转"),(None,"太阳绕地球转"),(None,"互相追着玩")], 0,
+         [("sun", "地球绕太阳转"), ("earth", "太阳绕地球转"), ("party", "它们开派对")], 0,
          "地球是太阳的行星","对，地球绕太阳！"),
     ]),
     ("阳光快递", [
         ("quiz", "太阳光跑到地球要多久？",
-         [(None,"大约8分钟"),(None,"1秒钟"),(None,"一整年")], 0,
+         [(None, "约 8 分钟"), (None, "约一个月"), (None, "约一整天")], 0,
          "光速飞快也要跑一会儿","对，大约8分钟！"),
         ("quiz", "我们晒到的阳光是什么时候出发的？",
-         [(None,"8分钟前从太阳出发"),(None,"刚刚出发"),(None,"昨天出发")], 0,
+         [("sunrise", "太阳8分钟前出发"), ("rocket", "刚刚出发"), ("calendar", "昨天出发")], 0,
          "阳光是位小邮差","答对啦！"),
     ]),
     ("太阳的本领", [
         ("quiz", "小植物为什么朝着太阳长？",
-         [(None,"晒太阳才能制造养分长大"),(None,"太阳会挠痒痒"),(None,"怕黑")], 0,
+         [("sprout", "小苗要晒太阳"), ("sunface", "太阳挠痒"), ("moon", "月亮照它")], 0,
          "阳光是植物的饭菜","对，植物爱太阳！"),
         ("quiz", "太阳还能帮我们做什么？",
-         [(None,"晒干衣服、太阳能发电"),(None,"煮动画片"),(None,"唱歌")], 0,
+         [("hanger", "晒干衣服"), ("chart", "煮动画片"), ("speaker", "唱歌")], 0,
          "太阳能是大本领","答对啦！"),
     ]),
     ("极光", [
-        ("letter", "Aurora", "极光", [("rainbow","极光像彩带","极光"),("star","夜空里舞动","星星")], "学一学：极光 Aurora"),
+        ("letter", "Aurora", "极光", [("aurora","夜空里舞动的极光","极光"),("star","一闪一闪的星星","星星")], "学一学：极光 Aurora"),
         ("quiz", "夜空里飘动的彩色光带叫什么？",
-         [(None,"极光"),(None,"彩虹"),(None,"闪电")], 0,
+         [("aurora", "极光"), ("rainbow", "彩虹"), ("bolt", "闪电")], 0,
          "太阳送来的粒子撞出彩带","对，是极光！"),
         ("quiz", "在哪里最容易看到极光？",
-         [(None,"南北极附近"),(None,"沙漠中间"),(None,"游泳池里")], 0,
+         [("polarbear", "南北极"), ("desert", "沙漠中间"), ("wave", "游泳池")], 0,
          "极地才有极光哦","答对啦！"),
     ]),
     ("保护眼睛", [
         ("quiz", "能不能用眼睛直接看太阳？",
-         [(None,"不能，会伤到眼睛"),(None,"可以，随便看"),(None,"中午可以看")], 0,
+         [("blocklock", "不能，会伤眼"), ("sun", "太阳很好看"), ("starface", "星星眨眼就看")], 0,
          "太阳光太刺眼啦","对，不能直视太阳！"),
         ("quiz", "想看日食要请谁帮忙？",
-         [(None,"专用观察镜（家长陪同）"),(None,"普通墨镜随便看"),(None,"闭上眼睛想象")], 0,
+         [("telescope", "望远镜"), ("goggles", "眼镜"), ("girl", "闭上眼睛")], 0,
          "护眼第一","答对啦，护眼小卫士！"),
     ]),
     ("数星星", [
         ("count", "夜空里有几颗小星星在眨眼？", 7, [6,7,8], "star", "颗"),
         ("quiz", "太阳下山之后，星星会？",
-         [(None,"一颗颗亮起来"),(None,"全部躲起来"),(None,"变成月亮")], 0,
+         [("sparkle", "一颗颗亮"), ("lock", "锁"), ("moon", "变成月亮")], 0,
          "夜幕是星星的舞台","对，星星亮起来！"),
     ]),
     ("找太阳", [
@@ -2511,18 +2588,26 @@ ASTRO_REGULAR = [
     ]),
     # ── 星区 7 月亮变变变（《DK神秘宇宙》《揭秘太空》）──
     ("月相", [
-        ("letter", "New Moon", "月相", [("newmoon","新月 New Moon","新月"),("fullmoon","满月 Full Moon","满月")], "学一学：月亮有时弯弯、有时圆圆"),
-        ("pattern", ["newmoon","fullmoon","newmoon"], ["fullmoon","newmoon","star"], 0,
-         "月相规律：下一个是新月还是满月？"),
+        # v0.12.3：学一学从「只教新月/满月」升级成 8 相全周期，
+        # 配 moonphases 动画（HTML 端按 p 值逐格重绘晨昏线，相名跟着变）。
+        # 图标语义对齐 audit 的 ICON_CN：newmoon=新月 / waxing=上弦月·盈月 /
+        # fullmoon=满月 / waning=残月·下弦月（四个都是真实月相图，不是泛指）。
+        ("letter", "Moon Phase", "月相",
+         [("newmoon","新月 New Moon","看不见月亮"),("waxing","上弦月 First Quarter","半圆的月亮"),
+          ("fullmoon","满月 Full Moon","圆圆的月亮"),("waning","残月 Waning Moon","月牙又变弯")],
+         "学一学：月亮从小月牙长成圆，再变回去"),
         ("quiz", "月亮为什么有时圆、有时弯？",
-         [(None,"太阳照亮的部分在慢慢变"),(None,"月亮真的变大变小"),(None,"被云咬掉了")], 0,
+         [("sun","太阳照亮的部分在慢慢变"),("moon","月亮真的变大变小"),("rock","被太空石头咬掉了")], 0,
          "月亮本身不发光","答对啦，月相在循环！"),
+        ("quiz", "月亮从新月变成满月，亮面在哪一边慢慢长大？",
+         [("sun","太阳照亮的部分在慢慢变多"),("moon","月亮自己被吹大了"),("newmoon","一下子从月牙跳成满月")], 0,
+         "亮面一天天变大，直到满月","对，亮面一点点变大！"),
     ]),
     ("月相顺序", [
-        ("quiz", "细细的月牙慢慢变圆，中间会先变成？",
-         [(None,"半圆"),(None,"方方块"),(None,"三角形")], 0,
-         "月牙→半月→满月","对，先变半圆！"),
-        ("pattern", ["fullmoon","newmoon","fullmoon"], ["newmoon","fullmoon","comet"], 0,
+        ("quiz", "细细的月牙慢慢变圆，中间会先变成半圆的月亮，它叫什么？",
+         [("waxing","上弦月，半圆的时候"),("square","方方块"),("triangle","三角形")], 0,
+         "月牙→上弦月→满月","对，先变成上弦月！"),
+        ("pattern", ["newmoon","waxing","fullmoon"], ["waning","newmoon","comet"], 0,
          "月相规律：下一个是谁？"),
         ("lineup", "排排队：月相从小到圆",
          [("newmoon","新月"),("waxing","上弦月"),("fullmoon","满月")]),
@@ -2530,52 +2615,56 @@ ASTRO_REGULAR = [
     ("环形山", [
         ("letter", "Crater", "环形山", [("moon","月亮上的大圆坑","环形山"),("rock","太空小石头","石头")], "学一学：环形山 Crater"),
         ("quiz", "月亮上圆圆的大坑是怎么来的？",
-         [(None,"太空小石头撞出来的"),(None,"小朋友挖的"),(None,"雨点打出来的")], 0,
+         [("rock", "太空石头"), ("girl", "小朋友挖"), ("rainbow", "雨点打出")], 0,
          "撞击坑也叫环形山","对，撞出来的坑！"),
         ("quiz", "月亮上没有风没有雨，所以脚印会？",
-         [(None,"留很久很久"),(None,"马上被吹走"),(None,"被雨水冲掉")], 0,
+         [("paw", "脚印留很久"), ("windmill", "风把脚印吹走"), ("wave", "雨水冲掉")], 0,
          "没有风帮你擦脚印","答对啦！"),
     ]),
     ("安静的月亮", [
         ("quiz", "月亮上有没有刮风下雨？",
-         [(None,"没有，因为没有空气"),(None,"天天下雨"),(None,"常刮台风")], 0,
+         [("rocket", "没有空气"), ("rainbow", "天天下雨"), ("windmill", "常刮台风")], 0,
          "没有空气就没有天气","对，月亮上没有天气！"),
         ("quiz", "在月亮上大声喊，能听到吗？",
-         [(None,"听不到，没有空气传声音"),(None,"听得到，很响"),(None,"会传到地球")], 0,
-         "声音要坐空气的车","答对啦，月亮上静悄悄！"),
+         [("moon", "月亮上听不到"), ("speaker", "喇叭能听到，很响"), ("satellite", "卫星传到地球")], 0,
+         "声音要坐空气的车，月亮上没有空气","答对啦，月亮上静悄悄！"),
     ]),
     ("潮汐", [
         ("letter", "Tide", "潮汐", [("wave","海水涨了又退","海浪"),("moon","月亮在牵着","月亮")], "学一学：潮汐 Tide"),
         ("quiz", "海水每天涨了又退，是谁在牵着？",
-         [(None,"月亮的引力"),(None,"大鱼在游泳"),(None,"轮船推的")], 0,
+         [("moon", "月亮引力"), ("fish", "大鱼游泳"), ("wave", "大海")], 0,
          "月亮牵海水，一起做运动","对，是月亮的引力！"),
         ("quiz", "潮涨潮落一天有几次？",
-         [(None,"大约两次涨、两次退"),(None,"一次都没有"),(None,"每小时一百次")], 0,
+         [(None,"两次涨退"),(None,"一次都没有"),(None,"每小时一百次")], 0,
          "海水有自己的节拍","答对啦！"),
     ]),
     ("日食和月食", [
         ("quiz", "月亮挡住太阳，白天一下子变暗，这叫？",
-         [(None,"日食"),(None,"月食"),(None,"停电了")], 0,
+         [("sun", "日食"), ("moon", "月食"), ("bulb", "停电了")], 0,
          "《DK神秘宇宙》里的天文奇观","对，是日食！"),
         ("quiz", "看日食的时候可以怎么做？",
-         [(None,"戴专用观察镜，请家长陪着看"),(None,"瞪大眼睛直接看"),(None,"用望远镜直盯太阳")], 0,
-         "护眼小卫士提醒你","答对啦，护眼第一！"),
+         [("goggles", "护目镜滤镜再看"), ("starface", "瞪大眼睛直接看"), ("sun", "太阳下戴墨镜看")], 0,
+         "护眼小卫士提醒你，不能直接看","答对啦，护眼第一！"),
     ]),
     ("登月", [
         ("letter", "Moon Landing", "登月", [("astronaut","宇航员登月","宇航员"),("flag","插上小旗","旗子")], "学一学：登月 Moon Landing"),
         ("quiz", "人类的脚印第一次踩在月亮上，是哪国宇航员？",
-         [(None,"美国（阿姆斯特朗）"),(None,"中国"),(None,"法国")], 0,
+         [("libertystatue", "美国"), ("china-map", "中国"), ("eiffel", "法国")], 0,
          "1969年，全人类的一小步","对，美国宇航员先登月！"),
         ("quiz", "中国的探月车叫什么名字？",
-         [(None,"玉兔号"),(None,"大白号"),(None,"熊猫号")], 0,
+         [("rabbit", "玉兔号"), ("bear", "大白号"), ("panda", "熊猫号")], 0,
          "玉兔住在月亮上，名字正合适","答对啦，玉兔号！"),
         ("sequence", "登月火箭点火：按 3→2→1 顺序点，出发去月亮！", ["3","2","1"]),
     ]),
     ("找月亮", [
-        ("listen", "月亮", "moon", ["moon","sun","earth"], 0, "月亮"),
-        ("quiz", "中秋节的月亮是圆的还是弯的？",
-         [(None,"圆圆的满月"),(None,"细细的月牙"),(None,"看不见")], 0,
-         "八月十五月儿圆","对，圆圆的满月！"),
+        ("letter", "Moon", "月亮",
+         [("fullmoon","满月 Full Moon","满月"),("newmoon","新月 New Moon","新月")],
+         "学一学：中秋节的月亮为什么特别圆",
+         "月亮绕地球转，我们看到亮面的大小会变化。农历八月十五前后正好转到最圆，所以中秋的月亮又圆又亮。",
+         [("八月十五","最圆的时候"),("29.5","天一个循环")]),
+        ("quiz", "中秋节的月亮通常是什么形状？",
+         [("fullmoon", "圆圆的满月"), ("newmoon", "细细的月牙"), ("sun", "方方的太阳")], 0,
+         "学一学卡：八月十五前后最圆","对，圆圆的满月！"),
     ]),
     ("拖一拖", [
         ("sort", "拖一拖：月亮上到底有什么？",
@@ -2584,17 +2673,19 @@ ASTRO_REGULAR = [
           ("b1","wave","大海","no"),("b2","tree","大树","no"),("b3","duck","小鸟","no")],
          "没有空气和水，就没有大海和大树！"),
         ("quiz", "月亮绕地球转一圈大约要多久？",
-         [(None,"一个月"),(None,"一天"),(None,"一小时")], 0,
+         [("moon", "一个月"), ("sunrise", "一天"), ("clock", "一小时")], 0,
          "这就是「月」的由来哦","答对啦，一个月！"),
     ]),
     ("星区小挑战", [
         ("quiz", "今晚是弯弯的月牙，过几天它会？",
-         [(None,"慢慢变圆"),(None,"慢慢变方"),(None,"变成星星")], 0,
+         [("sparkle", "慢慢变圆"), ("square", "慢慢变方"), ("star", "变成星星")], 0,
          "月相在慢慢变化","对，会越来越圆！"),
-        ("pattern", ["newmoon","fullmoon","newmoon"], ["fullmoon","newmoon","earth"], 0,
-         "月相规律：下一个是谁？"),
+        # 用 lineup 而不是 sequence：sequence 的格子是 70px 的 numblock，
+        # 只适合「3 / 2 / 1」这种单字倒计时，三个汉字的月相名会折行溢出卡片。
+        ("lineup", "排排队：月亮从小月牙一天天变圆",
+         [("newmoon","新月"),("waxing","上弦月"),("fullmoon","满月")]),
         ("quiz", "月亮自己会发光吗？",
-         [(None,"不会，反射太阳光"),(None,"会，是灯泡"),(None,"会，在燃烧")], 0,
+         [("starface", "不会，反光"), ("bulb", "会，是灯泡"), ("fire", "会，在燃烧")], 0,
          "月亮是面小镜子","答对啦！"),
     ]),
     # ── 星区 8 星星的世界（《国家地理少儿版》《DK神秘宇宙》）──
@@ -2614,7 +2705,7 @@ ASTRO_REGULAR = [
          [("starface","北极星"),("meteor","流星"),("sun","太阳")], 0,
          "北极星永远在北方","对，找北极星！"),
         ("quiz", "北极星在天空的哪个方向？",
-         [(None,"北方"),(None,"南方"),(None,"一直变来变去")], 0,
+         [("polarbear", "北方"), ("penguin", "南方"), ("sparkle", "变来变去")], 0,
          "迷路时抬头找它","答对啦，在北方！"),
         ("spotlight", "望远镜找一找：北极星在哪里？",
          "starface", ["star","sparkle","comet","moon"]),
@@ -2622,7 +2713,7 @@ ASTRO_REGULAR = [
     ("星座", [
         ("letter", "Constellation", "星座", [("bigdipper","星星连成图案","星座"),("star","讲故事的名字","星星")], "学一学：星座 Constellation"),
         ("quiz", "人们把星星连成图案，起名字讲故事，这就是？",
-         [(None,"星座"),(None,"文字"),(None,"地图")], 0,
+         [("bigdipper", "北斗七星"), ("hanzi", "文字"), ("world-map", "地图")], 0,
          "猎户座、大熊座都是星座","对，是星座！"),
         ("quiz", "冬夜里最亮的星座「猎户座」像什么？",
          [(None,"一位猎人"),(None,"一只小猫"),(None,"一辆汽车")], 0,
@@ -2630,10 +2721,10 @@ ASTRO_REGULAR = [
     ]),
     ("流星", [
         ("quiz", "「唰」地划过夜空的流星是什么？",
-         [(None,"小石块冲进空气里烧出的亮光"),(None,"星星真的掉下来了"),(None,"飞机开灯")], 0,
+         [("rock", "石头"), ("star", "星星掉下"), ("balloon", "飞机开灯")], 0,
          "划亮夜空的小访客","对，是石块在发光！"),
         ("quiz", "看到流星，大家可以？",
-         [(None,"许个愿"),(None,"把它抓回家"),(None,"关灯睡觉不理它")], 0,
+         [("heart", "爱心"), ("home", "抓回家"), ("bulb", "关灯睡觉")], 0,
          "流星很快，愿望要快","答对啦，许个愿吧！"),
     ]),
     ("彗星", [
@@ -2641,7 +2732,7 @@ ASTRO_REGULAR = [
          [("comet","彗星"),("moon","月亮"),("earth","地球")], 0,
          "像一把大扫帚","对，是彗星！"),
         ("quiz", "著名的哈雷彗星绕太阳转一圈要多久？",
-         [(None,"大约76年，一生能看到一次"),(None,"一天"),(None,"一万年")], 0,
+         [(None, "约 76 年"), (None, "一天"), (None, "一小时")], 0,
          "人的一生大约能见到它一次","答对啦，约76年！"),
     ]),
     ("陨石", [
@@ -2650,16 +2741,20 @@ ASTRO_REGULAR = [
          [("meteorite","陨石"),("comet","彗星"),("satellite","卫星")], 0,
          "天上来的石头客人","对，是陨石！"),
         ("quiz", "陨石和流星是亲戚吗？",
-         [(None,"是，流星没烧完掉下来就是陨石"),(None,"完全没关系"),(None,"陨石来自大海")], 0,
-         "同一家族的不同结局","答对啦！"),
+         [("meteorite", "陨石是同一家族"), ("lock", "锁起来，没关系"), ("wave", "来自大海")], 0,
+         "同一家族的不同结局","答对啦，陨石和流星是亲戚！"),
         ("match", "连一连：夜空访客的特征",
          [("comet","彗星","拖着长尾巴绕太阳转"),("sparkle","流星","划过夜空烧出光"),("meteorite","陨石","没烧完掉到地上")]),
     ]),
     ("数流星", [
-        ("count", "流星雨来啦！数一数有几颗流星划过？", 6, [5,6,7], "sparkle", "颗"),
-        ("quiz", "很多流星一起划过夜空叫什么？",
-         [(None,"流星雨"),(None,"大雨"),(None,"流星糖")], 0,
-         "一场太空的烟花","对，流星雨！"),
+        ("letter", "Meteor Shower", "流星雨",
+         [("sparkle","流星 Meteor","流星"),("meteor","流星雨 Shower","流星雨")],
+         "学一学：流星雨是太空的小石头在燃烧",
+         "太空里的小石块冲进地球的空气，摩擦发热、烧出亮光，就是流星。很多颗一起出现，就叫流星雨。",
+         [("小石块","流星的来源"),("空气","让它烧起来")]),
+        ("quiz", "很多流星一起划过夜空，叫什么？",
+         [("meteor", "流星雨"), ("rainbow", "大雨"), ("candy", "流星糖")], 0,
+         "学一学卡：很多颗一起出现就是流星雨","对，流星雨！"),
     ]),
     ("拖一拖", [
         ("sort", "拖一拖：谁在夜晚的天空？谁在白天的天空？",
@@ -2668,16 +2763,17 @@ ASTRO_REGULAR = [
           ("b1","sun","太阳","day"),("b2","sunrise","日出","day"),("b3","rainbow","彩虹","day")],
          "白天黑夜的天空都认识啦！"),
         ("quiz", "星星的颜色都一样吗？",
-         [(None,"不一样，有红有蓝有黄"),(None,"全都是白色"),(None,"星星没有颜色")], 0,
+         [("rainbow", "彩虹颜色多，不一样"), ("egg", "全都白色"), ("star", "星星都一样")], 0,
          "温度不同颜色不同","答对啦！"),
     ]),
     ("星区小挑战", [
         ("quiz", "星星白天还在天上吗？",
-         [(None,"在，只是阳光太亮看不见"),(None,"不在，下班了"),(None,"被太阳吃掉了")], 0,
+         [("sunrays", "阳光太亮"), ("home", "不在，下班"), ("sunface", "被太阳吃")], 0,
          "白天黑夜都在","对，一直都在！"),
-        ("pattern", ["comet","star","comet"], ["star","moon","rocket"], 0, "星空规律：下一个是谁？"),
+        ("spotlight", "望远镜找一找：拖着长尾巴的流星在哪里？",
+         "sparkle", ["star","comet","moon","starface"]),
         ("quiz", "北斗七星像什么？",
-         [(None,"一把大勺子"),(None,"一辆汽车"),(None,"一顶帽子")], 0,
+         [("spoon", "勺子"), ("car", "一辆汽车"), ("hat", "尖帽子")], 0,
          "勺子口对着北极星","答对啦，大勺子！"),
     ]),
     # ── 星区 9 银河和宇宙（《给孩子讲宇宙》（李淼）《时间简史》少儿版）──
@@ -2686,32 +2782,32 @@ ASTRO_REGULAR = [
         ("quiz", "我们的太阳住在哪个星系？", [("milkyway","银河系"),("comet","彗星"),("rocket","火箭")], 0,
          "千千万万颗星星的大城市","对，银河系！"),
         ("quiz", "夏天夜空里那条淡淡的星星带是？",
-         [(None,"银河"),(None,"云彩"),(None,"彩虹")], 0,
+         [("milkyway", "银河"), ("milk", "云彩"), ("rainbow", "彩虹")], 0,
          "从地球看银河系的样子","答对啦，是银河！"),
     ]),
     ("数不清的星星", [
         ("quiz", "银河系里的星星有多少？",
-         [(None,"上千亿颗，数也数不清"),(None,"几十颗"),(None,"100颗")], 0,
+         [(None,"上千亿颗"),(None,"几十颗"),(None,"100 颗")], 0,
          "太阳只是普通的一员","对，多得数不清！"),
         ("quiz", "太阳在银河系里是？",
-         [(None,"普普通通的一颗星"),(None,"最大的星"),(None,"唯一的星")], 0,
+         [(None,"普通的一颗星"),(None,"最大的星"),(None,"唯一的星")], 0,
          "银河系里像太阳的星很多","答对啦！"),
     ]),
     ("光年", [
         ("letter", "Light-year", "光年", [("rocket","光跑得飞快","光"),("star","星星离得特别远","星星")], "学一学：光年 Light-year"),
         ("quiz", "光年是什么的单位？",
-         [(None,"距离（光跑一年的路程）"),(None,"时间"),(None,"重量")], 0,
-         "星星之间实在太远了","对，光年是距离！"),
+         [("sunrays", "阳光跑的距离"), ("clock", "时间"), ("rocket", "火箭的速度")], 0,
+         "星星之间实在太远了","对，光年是距离单位！"),
         ("quiz", "为什么需要用「光年」来量星空？",
-         [(None,"星星之间太远，用米量要写好多0"),(None,"光年听起来好听"),(None,"尺子太短了")], 0,
-         "宇宙的尺子要够长","答对啦！"),
+         [(None,"星星太远，普通尺子太短"),(None,"学校太大"),(None,"声音太响")], 0,
+         "宇宙的尺子要够长","答对啦，星星太远要用光年！"),
     ]),
     ("星云", [
         ("quiz", "新的星星从哪里诞生？",
-         [(None,"星云，星星的摇篮"),(None,"大海里捞出来"),(None,"火山喷出来")], 0,
+         [("milkyway", "银河"), ("wave", "大海里捞"), ("volcano", "火山喷出")], 0,
          "像一朵彩色的大雾","对，从星云诞生！"),
         ("quiz", "星云看上去像什么？",
-         [(None,"彩色的大雾"),(None,"硬邦邦的石头"),(None,"一块黑板")], 0,
+         [("rainbow", "彩色大雾"), ("rock", "石头"), ("equal", "一块黑板")], 0,
          "里面正在孕育新星星","答对啦！"),
     ]),
     ("黑洞", [
@@ -2719,35 +2815,35 @@ ASTRO_REGULAR = [
         ("quiz", "连光都逃不出来的洞是？", [("blackhole","黑洞"),("volcano","火山口"),("rock","山洞")], 0,
          "引力大得把光都拉住","对，是黑洞！"),
         ("quiz", "黑洞为什么看起来黑黑的？",
-         [(None,"光被它拉住跑不出来"),(None,"它涂了黑漆"),(None,"它不开灯")], 0,
+         [("starface", "光被拉住"), ("lock", "锁"), ("bulb", "它不开灯")], 0,
          "没有光出来，就一片黑","答对啦！"),
-        ("shadow", "看影子猜猜：这是谁？", "blackhole",
+        ("shadow", "看影子猜猜：什么能把星星都卷进去？", "blackhole",
          [("blackhole","黑洞"),("volcano","火山口"),("comet","彗星")], 0,
          "超级重，连光都逃不出来"),
     ]),
     ("宇宙大爆炸", [
         ("quiz", "宇宙是怎么开始的？",
-         [(None,"从一个很小很小的点，爆炸膨胀开来"),(None,"从一块大石头"),(None,"本来就全都有")], 0,
+         [(None,"一个小点爆炸开"),(None,"一块大石头"),(None,"本来就有的")], 0,
          "《给孩子讲宇宙》的第一课","对，宇宙大爆炸！"),
         ("quiz", "大爆炸之后，宇宙在？",
-         [(None,"一直膨胀，越来越大"),(None,"马上停住"),(None,"越来越小")], 0,
-         "到今天还在长大","答对啦，一直在膨胀！"),
+         [("balloon", "气球越来越大"), ("school", "马上停住"), ("bird", "越来越小")], 0,
+         "到今天还在长大","答对啦，宇宙一直在膨胀！"),
     ]),
     ("宇宙", [
         ("letter", "Universe", "宇宙", [("milkyway","千万个星系","星系"),("star","所有的空间和时间","星星")], "学一学：宇宙 Universe"),
         ("quiz", "宇宙是什么？",
-         [(None,"所有星星、星系和空间的总和"),(None,"只有地球"),(None,"只有太阳系")], 0,
+         [("sparkle", "闪光的一切"), ("milkyway", "只有银河系"), (None, "只有地球", "body:earth")], 0,
          "万物的家都叫宇宙","对，宇宙是一切！"),
         ("quiz", "银河系是宇宙里唯一的星系吗？",
-         [(None,"不是，银河系只是其中之一"),(None,"是，就这一个"),(None,"星系是传说")], 0,
-         "星系数也数不完","答对啦！"),
+         [("milkyway", "银河数不清，不是"), ("equal", "是，就一个"), ("planet", "只有地球一个星球")], 0,
+         "星系有很多很多，数也数不完","答对啦，星系多得数不清！"),
     ]),
     ("大还是小", [
         ("quiz", "宇宙在变大还是变小？",
-         [(None,"在变大，星系们互相远离"),(None,"在变小"),(None,"不变")], 0,
+         [("sparkle", "在变大"), ("bird", "在变小"), ("star", "不变")], 0,
          "《时间简史》少儿版也讲这个","对，宇宙在膨胀！"),
         ("quiz", "宇宙里的星星，和海边的沙子比？",
-         [(None,"天上的星比沙子还多"),(None,"沙子多"),(None,"一样多")], 0,
+         [("star", "星比沙多"), ("sand", "沙子多"), ("equal", "一样多")], 0,
          "想想都觉得了不起","答对啦，星比沙多！"),
     ]),
     ("拖一拖", [
@@ -2757,13 +2853,14 @@ ASTRO_REGULAR = [
           ("b1","moon","月亮","around-earth"),("b2","satellite","人造卫星","around-earth")],
          "行星绕恒星，卫星绕行星！"),
         ("quiz", "月亮和人造卫星都是谁的卫星？",
-         [(None,"地球"),(None,"太阳"),(None,"月亮")], 0,
+         [(None, "地球", "body:earth"), ("sun", "只有太阳"), ("moon", "月亮")], 0,
          "地球有月亮和好多人造卫星","答对啦，地球！"),
     ]),
     ("星区小挑战", [
-        ("pattern", ["milkyway","star","milkyway"], ["star","moon","comet"], 0, "星空规律：下一个是谁？"),
-        ("quiz", "光年量的是什么？", [(None,"距离"),(None,"时间"),(None,"重量")], 0,
-         "光跑一年的路程","对，是距离！"),
+        ("match", "连一连：谁住在哪里？",
+         [("milkyway","银河系","太阳住在这里"),("earth","地球","我们住在这里"),("moon","月亮","绕着地球转")]),
+        ("quiz", "光年量的是什么？", [("sunrays", "阳光跑的距离"), ("clock", "时间"), ("rocket", "火箭的速度")], 0,
+         "光跑一年的路程","对，光年量的是距离！"),
         ("quiz", "连光都逃不出来的是？", [("blackhole","黑洞"),("comet","彗星"),("moon","月亮")], 0,
          "宇宙最神秘的大胃王","答对啦，黑洞！"),
     ]),
@@ -2773,37 +2870,37 @@ ASTRO_REGULAR = [
         ("quiz", "想看清远处的星星，用什么帮忙？", [("telescope","望远镜"),("cup","杯子"),("shoe","鞋子")], 0,
          "望远镜把远处的光收拢","对，用望远镜！"),
         ("quiz", "谁第一次用望远镜看到了月亮上的环形山？",
-         [(None,"科学家伽利略"),(None,"邮递员"),(None,"小明")], 0,
+         [(None,"伽利略"),(None,"邮递员"),(None,"小明")], 0,
          "四百多年前的第一次","答对啦，是伽利略！"),
     ]),
     ("天文台", [
         ("quiz", "天文台是做什么的地方？",
-         [(None,"看星星、研究星空的房子"),(None,"卖望远镜的商店"),(None,"游乐场")], 0,
+         [("telescope", "看星星的"), ("shop", "卖望远镜"), ("ferris", "游乐场")], 0,
          "圆顶房子里藏着大宝贝","对，看星星的地方！"),
         ("quiz", "天文台的圆顶里通常藏着什么？",
-         [(None,"巨大的望远镜"),(None,"大滑梯"),(None,"游泳池")], 0,
+         [("telescope", "大望远镜"), ("bear", "大滑梯"), ("wave", "游泳池")], 0,
          "圆顶会打开看星星","答对啦，大望远镜！"),
         ("spotlight", "望远镜找一找：戴着光环的土星在哪里？",
          "saturn", ["jupiter","mars","moon","mercury"]),
     ]),
     ("探测器", [
         ("quiz", "替人类飞去遥远行星拍照的机器叫？",
-         [(None,"太空探测器"),(None,"遥控汽车"),(None,"无人机航拍")], 0,
+         [("rocket", "太空探测器"), ("car", "遥控汽车"), ("girl", "无人机")], 0,
          "人类的太空眼睛","对，探测器！"),
         ("quiz", "旅行者号探测器带着一张地球的唱片，是为什么？",
-         [(None,"向宇宙介绍我们的地球"),(None,"在太空听歌跳舞"),(None,"给外星人送快递")], 0,
+         [(None, "介绍地球", "body:earth"), ("speaker", "声音"), ("ufo", "给外星人")], 0,
          "《乔治的宇宙》也讲过它","答对啦，地球的名片！"),
         ("sequence", "探测器发射：按 3→2→1 顺序点，飞向深空！", ["3","2","1"]),
     ]),
     ("火星车", [
         ("letter", "Rover", "火星车", [("robot","火星车 Rover","火星车"),("mars","红色火星 Mars","火星")], "学一学：火星车 Mars Rover"),
         ("quiz", "火星车在火星上做什么？",
-         [(None,"拍照、找水的痕迹、研究石头"),(None,"种菜钓鱼"),(None,"送外卖")], 0,
-         "火星上的科学小侦探","对，在探索火星！"),
+         [("flask", "做实验探索火星"), ("fish", "种菜钓鱼"), ("shop", "送外卖")], 0,
+         "火星上的科学小侦探","对，火星车在探索火星！"),
         ("quiz", "火星车是谁送上火星的？",
-         [(None,"大火箭"),(None,"起重机"),(None,"热气球")], 0,
+         [("rocket", "大火箭"), ("school", "学校"), ("balloon", "热气球")], 0,
          "火箭再立新功","答对啦，火箭送上去！"),
-        ("shadow", "看影子猜猜：这是谁？", "robot",
+        ("shadow", "看影子猜猜：谁在火星上跑来跑去？", "robot",
          [("robot","火星车"),("astronaut","宇航员"),("bear","棕小熊")], 0,
          "它有轮子，在火星上慢慢开"),
     ]),
@@ -2812,44 +2909,44 @@ ASTRO_REGULAR = [
          [(None,"月球车"),(None,"自行车"),(None,"公交车")], 0,
          "月亮上的专用座驾","对，月球车！"),
         ("quiz", "中国的月球车和探月车都叫什么？",
-         [(None,"玉兔号"),(None,"闪电号"),(None,"喷火号")], 0,
+         [("rabbit", "玉兔号"), ("bolt", "闪电号"), ("fire", "喷火号")], 0,
          "月亮上的中国兔子","答对啦，玉兔号！"),
     ]),
     ("外星人", [
         ("letter", "UFO", "外星人", [("ufo","飞碟 UFO","飞碟"),("star","宇宙这么大","星星")], "学一学：外星人和 UFO"),
         ("quiz", "科学家用什么办法找外星生命？",
-         [(None,"用望远镜和天线，倾听宇宙的声音"),(None,"在小区里贴寻人启事"),(None,"等外星人敲门")], 0,
+         [("telescope", "望远镜天线"), ("girl", "贴寻人启事"), ("home", "等它敲门")], 0,
          "《乔治的宇宙》里的寻星之旅","对，倾听宇宙！"),
         ("quiz", "到现在为止，发现外星人了吗？",
-         [(None,"还没有，宇宙这么大也许有各种可能"),(None,"天天见面"),(None,"住在隔壁")], 0,
-         "保持好奇，大胆想象","答对啦，还没发现！"),
+         [("telescope", "用望远镜找，还没"), ("party", "天天开派对"), ("home", "就住在家里")], 0,
+         "保持好奇，大胆想象，科学家还在找","答对啦，还没发现，继续找！"),
     ]),
     ("火星家园", [
         ("quiz", "未来人类最想去哪颗行星安家？",
-         [(None,"火星"),(None,"水星"),(None,"月亮（它不是行星哦）")], 0,
+         [(None, "火星", "body:mars"), (None, "水星", "body:mercury"), ("moon", "月亮")], 0,
          "火星是最像地球的行星","对，目标是火星！"),
         ("quiz", "去火星要坐什么交通工具？",
-         [(None,"大火箭"),(None,"公交车"),(None,"轮船")], 0,
+         [("rocket", "大火箭"), ("bus", "公交车"), ("wave", "大海")], 0,
          "火箭是唯一的天梯","答对啦，大火箭！"),
         ("sequence", "火星移民飞船点火：按 3→2→1 顺序点，出发！", ["3","2","1"]),
     ]),
     ("宇航员训练", [
         ("quiz", "想当宇航员，现在应该？",
-         [(None,"好好吃饭锻炼身体，认真学习"),(None,"天天打游戏"),(None,"熬夜不睡觉")], 0,
+         [("school", "认真学习"), ("dice", "天天打游戏"), ("moon", "熬夜不睡")], 0,
          "身体和知识都要满分","对，从小练本领！"),
         ("quiz", "宇航员训练时要练习什么？",
-         [(None,"转椅训练、穿宇航服、学科学"),(None,"只练跑步"),(None,"只练画画")], 0,
+         [(None,"转椅和科学实验"),(None,"只练跑步"),(None,"只练画画")], 0,
          "太空生活需要很多本领","答对啦！"),
     ]),
     ("星空梦想家", [
         ("quiz", "今晚就能做的观星活动是？",
-         [(None,"抬头找北斗七星和月亮"),(None,"数飞机"),(None,"看路灯")], 0,
+         [("bigdipper", "北斗七星"), ("balloon", "数飞机"), ("bulb", "看路灯")], 0,
          "观星从家门口开始","对，抬头看星空！"),
         ("quiz", "记录看到的星星可以用？",
-         [(None,"观星日记，画下来"),(None,"吃掉"),(None,"扔掉")], 0,
+         [("chart", "画下来"), ("apple", "苹果"), ("gift", "礼物")], 0,
          "好记性不如烂笔头","答对啦，画下来！"),
         ("quiz", "看星星最好的地方是？",
-         [(None,"灯光暗、视野开阔的地方"),(None,"商场顶楼"),(None,"KTV包厢")], 0,
+         [(None,"灯光少的郊外"),(None,"商场顶楼"),(None,"KTV 包厢")], 0,
          "灯光越少星星越亮","答对啦！"),
     ]),
 ]
@@ -2860,9 +2957,13 @@ def astro_compose(idx, name, moves):
     for mi, mv in enumerate(moves):
         kind = mv[0]
         if kind == "letter":
-            _, en, display, chips, question = mv
+            # 可选的第 6/7 位：fact（一行知识点）、stats（一排数字标签）
+            en, display, chips, question = mv[1], mv[2], mv[3], mv[4]
+            fact = mv[5] if len(mv) > 5 else None
+            stats = mv[6] if len(mv) > 6 else None
             steps.append(astro_letter(f"astro-{idx}-t", en, display, chips, question,
-                                      anim=ASTRO_ANIM_BY_LEVEL.get(name)))
+                                      anim=ASTRO_ANIM_BY_LEVEL.get(name),
+                                      fact=fact, stats=stats))
         elif kind == "quiz":
             _, q, items, ans, hint, praise = mv
             steps.append(quiz_step(f"astro-{idx}-m{mi}", q, items, ans, hint, praise))
@@ -2910,23 +3011,33 @@ for i, (name, moves) in enumerate(ASTRO_REGULAR):
                          "subtitle": ASTRO_ZONES[min(i // 10, 9)][0], "steps": astro_compose(i, name, moves)})
 
 # 复习关一/二/三 落在第 3/6/8 星区末（最终第 30/60/80 关），Boss 收官第 100 关
+# v0.12.3 去重：原来是 `sample_questions(q_by_level[:pos], 6, tag)`，
+# 而 sample_questions 按 level 顺序轮询、每层只取 1 题，所以三关复习 + Boss
+# 全部集中在前 6 关（第 1-6 关），导致「白天挂在天上的是谁」等题干出现 5 次、
+# 「星空规律」出现 8 次。改成按相隔窗口采样：复习关 k 只从 [pos*(3k+1)/3, pos) 里取，
+# 三个复习关各管一段，Boss 也从最后 30 关里取，互相不撞题。
 astro_reviews = []
 q_by_level = [[s for s in lv["steps"] if s["kind"] not in ("teach", "letter")] for lv in astro_levels]
 review_positions = [29, 59, 79]
 review_tags = ["astro-r0", "astro-r1", "astro-r2"]
 for k, pos in enumerate(review_positions):
-    qs = sample_questions(q_by_level[:pos], 6, review_tags[k])
+    # 窗口起点：r0 从第 11 关起（1-10 关刚在星区 1/2 玩过，立刻再考一遍就是重复），
+    # r1/r2 同理往后推。三段窗口 [10,29) / [19,59) / [39,79) 互有重叠但不重合
+    lo = [10, 19, 39][k]
+    qs = sample_questions(q_by_level[lo:pos], 6, review_tags[k])
     astro_reviews.append({
         "id": review_tags[k],
         "title": f"复习关 {'一二三'[k]}",
-        "subtitle": "旧题开盲盒 · 混排复习",
+        "subtitle": f"第 {lo + 1}-{pos} 关 · 旧题开盲盒",
         "steps": qs,
         "board": build_board([q["id"] for q in qs], ["coin", "coin"] + REVIEW_EVENTS[k % len(REVIEW_EVENTS)], k),
         "review": True,
     })
 astro_levels = (astro_levels[:29] + [astro_reviews[0]] + astro_levels[29:58] + [astro_reviews[1]]
                 + astro_levels[58:77] + [astro_reviews[2]] + astro_levels[77:])
-add_boss_level(astro_levels, "astro")
+# Boss 从第 31 关起采样（跳过前 30 关）——前 30 关的题三个复习关已经轮过一遍，
+# 再拿进来就是第四次重复；跳过后 Boss 拿的是「行星/恒星/银河/宇宙」的中后段题。
+add_boss_level(astro_levels, "astro", skip_first=30)
 assert len(astro_levels) == 100, f"天文台应 100 关，实际 {len(astro_levels)}"
 
 # 星区编号（保卫萝卜式分章：每星区恰好 10 关，UI 一次只展示一个星区）
@@ -2949,9 +3060,13 @@ def geo_letter(gid, display, examples, question):
 def geo_quiz(qid, q, items, ans, hint, praise):
     return quiz_step(qid, q, items, ans, hint, praise)
 
-def mappuzzle_step(mid, the_map, regions, q):
+def mappuzzle_step(mid, the_map, regions, pieces, q):
+    """pieces：省份/大洲名字，必须与 preview 的 CHINA_MAP / WORLD_MAP 里 `n` 完全一致。
+    HTML 端自 v0.11 改成「真地图 + 轮廓块」，只认 pieces；缺了它一块都渲染不出来
+    （2026-10-20 试玩反馈「这里地图没有可以拖动的」就是这个字段没跟上）。
+    regions 是 Swift 冻结点版本的旧假图块，保留字段只为 native 端还能解码。"""
     return {"id": mid, "kind": "mappuzzle", "map": the_map, "regions": regions,
-            "question": q, "praise": "拼好啦，地图在你手里！"}
+            "pieces": list(pieces), "question": q, "praise": "拼好啦，地图在你手里！"}
 
 # 中国章（6 关）
 CHINA_BLOCKS = [
@@ -2962,46 +3077,48 @@ CHINA_BLOCKS = [
     {"id": "cn-south", "label": "南方", "color": "#F2C14E", "points": [[48,36],[66,34],[70,48],[52,50]]},
     {"id": "cn-island", "label": "海岛", "color": "#9B8CE8", "points": [[52,50],[62,48],[60,56],[50,55]]},
 ]
+# 6 块都挑中国地图上面积最大、孩子最容易抓的一批（名字见 preview CHINA_MAP 的 ps[].n）
+CHINA_PIECES = ["新疆", "内蒙古", "黑龙江", "西藏", "四川", "广东"]
 geo_levels.append({"id": "geo-0", "title": "第 1 关 中国地图", "subtitle": "大雄鸡", "steps": [
     geo_letter("geo-0", "中国", [{"icon": "china-map", "text": "中国地图", "say": "中国"},
                                  {"icon": "panda", "text": "我们的家", "say": "中国"}],
                "学一学：中国地图像一只大雄鸡"),
-    mappuzzle_step("geo-0-pz", "china", CHINA_BLOCKS, "拼一拼：把中国地图的六块拖回雄鸡轮廓"),
+    mappuzzle_step("geo-0-pz", "china", CHINA_BLOCKS, CHINA_PIECES, "拼一拼：把中国地图的六块拖回雄鸡轮廓"),
 ]})
 geo_levels.append({"id": "geo-1", "title": "第 2 关 北京", "subtitle": "天安门", "steps": [
     geo_letter("geo-1", "北京", [{"icon": "tiananmen", "text": "天安门", "say": "天安门"},
                                  {"icon": "flag", "text": "国旗", "say": "国旗"}],
                "学一学：北京是中国的首都，天安门在北京"),
     geo_quiz("geo-1-q1","中国的首都是哪座城市？",
-             [("beijing" if False else "tiananmen","北京"),("castle",None),("school",None)],0,"天安门在北京","北京是首都！"),
+             [("tiananmen","北京"),("tower","上海"),("castle","外国城堡")],0,"天安门在北京","北京是首都！"),
 ]})
 geo_levels.append({"id": "geo-2", "title": "第 3 关 长江黄河", "subtitle": "母亲河", "steps": [
     geo_letter("geo-2", "江河", [{"icon": "river", "text": "长江黄河", "say": "长江"},
                                  {"icon": "wave", "text": "河水", "say": "河"}],
                "学一学：长江和黄河是中国的母亲河，从西向东流"),
     geo_quiz("geo-2-q1","长江和黄河是中国的什么河？",
-             [("river",None),("moon",None),("comet",None)],0,"母亲河","母亲河记住啦！"),
+             [("river","母亲河"),("wave","大海"),("ice","冰川")],0,"母亲河","母亲河记住啦！"),
 ]})
 geo_levels.append({"id": "geo-3", "title": "第 4 关 万里长城", "subtitle": "长城", "steps": [
     geo_letter("geo-3", "长城", [{"icon": "greatwall", "text": "万里长城", "say": "长城"},
                                  {"icon": "castle", "text": "像长龙", "say": "长城"}],
                "学一学：万里长城像一条长龙，卧在山上"),
     geo_quiz("geo-3-q1","万里长城像一条卧在山上的什么？",
-             [("dragon" if False else "greatwall",None),("rocket",None),("moon",None)],0,"长龙","长城真雄伟！"),
+             [("greatwall","万里长城"),("pyramid","金字塔"),("castle","城堡")],0,"长龙","长城真雄伟！"),
 ]})
 geo_levels.append({"id": "geo-4", "title": "第 5 关 珠穆朗玛峰", "subtitle": "世界最高峰", "steps": [
     geo_letter("geo-4", "珠峰", [{"icon": "everest", "text": "珠穆朗玛峰", "say": "珠峰"},
                                  {"icon": "snow" if False else "ice", "text": "山顶积雪", "say": "雪"}],
                "学一学：珠穆朗玛峰是世界第一高峰，山顶盖着白雪"),
     geo_quiz("geo-4-q1","世界第一高峰是哪座山？",
-             [("everest",None),("volcano",None),("castle",None)],0,"最高最高","珠峰真高！"),
+             [("everest","珠穆朗玛峰"),("volcano","火山"),("pine","黄山")],0,"最高最高","珠峰真高！"),
 ]})
 geo_levels.append({"id": "geo-5", "title": "第 6 关 熊猫故乡", "subtitle": "大熊猫", "steps": [
     geo_letter("geo-5", "熊猫", [{"icon": "panda", "text": "大熊猫", "say": "熊猫"},
                                  {"icon": "leaf", "text": "爱吃竹子", "say": "竹子"}],
                "学一学：大熊猫是中国的国宝，最爱吃竹子"),
     geo_quiz("geo-5-q1","中国的国宝、爱吃竹子的动物是谁？",
-             [("bear",None),("panda",None),("rabbit",None)],1,"黑白毛、圆滚滚","大熊猫真可爱！"),
+             [("bear","熊"),("panda","大熊猫"),("rabbit","兔子")],1,"黑白毛、圆滚滚","大熊猫真可爱！"),
 ]})
 
 # 世界章（6 关）
@@ -3014,39 +3131,40 @@ WORLD_BLOCKS = [
     {"id": "oceania", "label": "大洋洲", "color": "#7FC6A4", "points": [[76,46],[90,44],[92,54],[80,56]]},
     {"id": "antarctica", "label": "南极洲", "color": "#B8D4E8", "points": [[30,56],[70,56],[72,60],[30,60]]},
 ]
+WORLD_PIECES = ["亚洲", "欧洲", "非洲", "北美洲", "南美洲", "大洋洲", "南极洲"]
 geo_levels.append({"id": "geo-6", "title": "第 7 关 七大洲拼图", "subtitle": "世界地图", "steps": [
     geo_letter("geo-6", "世界", [{"icon": "world-map", "text": "世界地图", "say": "世界"},
                                  {"icon": "earth", "text": "地球", "say": "地球"}],
                "学一学：地球上有七大洲，我们住在亚洲"),
-    mappuzzle_step("geo-6-pz", "world", WORLD_BLOCKS, "拼一拼：把七大洲块拖回世界地图轮廓"),
+    mappuzzle_step("geo-6-pz", "world", WORLD_BLOCKS, WORLD_PIECES, "拼一拼：把七大洲块拖回世界地图轮廓"),
 ]})
 geo_levels.append({"id": "geo-7", "title": "第 8 关 亚洲", "subtitle": "我们的家", "steps": [
     geo_letter("geo-7", "亚洲", [{"icon": "earth", "text": "亚洲 Asia", "say": "亚洲"},
                                  {"icon": "home", "text": "我们的家", "say": "家"}],
                "学一学：我们住在亚洲，它是最大的大洲"),
     geo_quiz("geo-7-q1", "我们中国在哪个大洲？",
-             [("asia" if False else "earth",None),("moon",None),("comet",None)],0,"最大的大洲","亚洲是我们的家！"),
+             [(None,"亚洲"),(None,"非洲"),(None,"欧洲")],0,"最大的大洲","亚洲是我们的家！"),
 ]})
 geo_levels.append({"id": "geo-8", "title": "第 9 关 非洲", "subtitle": "狮子大象", "steps": [
     geo_letter("geo-8", "非洲", [{"icon": "lion", "text": "狮子 Lion", "say": "狮子"},
                                  {"icon": "elephant", "text": "大象 Elephant", "say": "大象"}],
                "学一学：非洲草原上住着狮子和大象"),
     geo_quiz("geo-8-q1","非洲草原上「万兽之王」是谁？",
-             [("elephant",None),("lion",None),("panda",None)],1,"吼——的大王","狮子是万兽之王！"),
+             [("elephant","大象"),("lion","狮子"),("panda","熊猫")],1,"吼——的大王","狮子是万兽之王！"),
 ]})
 geo_levels.append({"id": "geo-9", "title": "第 10 关 欧洲", "subtitle": "城堡风车", "steps": [
     geo_letter("geo-9", "欧洲", [{"icon": "castle", "text": "城堡 Castle", "say": "城堡"},
                                  {"icon": "windmill", "text": "风车 Windmill", "say": "风车"}],
                "学一学：欧洲有许多古老的城堡和转动的风车"),
     geo_quiz("geo-9-q1","欧洲田野上慢慢转动的是什么？",
-             [("windmill",None),("rocket",None),("comet",None)],0,"转呀转","风车转起来啦！"),
+             [("windmill","风车"),("ferris","摩天轮"),("castle","城堡")],0,"转呀转","风车转起来啦！"),
 ]})
 geo_levels.append({"id": "geo-10", "title": "第 11 关 美洲", "subtitle": "自由女神", "steps": [
     geo_letter("geo-10", "美洲", [{"icon": "libertystatue", "text": "自由女神", "say": "自由女神"},
                                  {"icon": "ferris", "text": "摩天轮", "say": "摩天轮"}],
                "学一学：美洲有举着火炬的自由女神像"),
     geo_quiz("geo-10-q1","举着火炬、站在美国纽约港的是谁？",
-             [("libertystatue",None),("panda",None),("moon",None)],0,"火炬女神","自由女神记住啦！"),
+             [("libertystatue","自由女神像"),("tower","高塔"),("castle","城堡")],0,"火炬女神","自由女神记住啦！"),
 ]})
 geo_levels.append({"id": "geo-11", "title": "第 12 关 大洋洲与极地", "subtitle": "袋鼠企鹅", "steps": [
     geo_letter("geo-11", "大洋洲极地", [{"icon": "kangaroo", "text": "袋鼠 Kangaroo", "say": "袋鼠"},
@@ -3054,9 +3172,9 @@ geo_levels.append({"id": "geo-11", "title": "第 12 关 大洋洲与极地", "su
                                       {"icon": "polarbear", "text": "北极熊", "say": "北极熊"}],
                "学一学：大洋洲有袋鼠，极地有企鹅和北极熊"),
     geo_quiz("geo-11-q1","肚子上有口袋、会跳的动物是谁？",
-             [("rabbit",None),("kangaroo",None),("bear",None)],1,"大口袋","袋鼠跳得高！"),
+             [("rabbit","兔子"),("kangaroo","袋鼠"),("bear","熊")],1,"大口袋","袋鼠跳得高！"),
     geo_quiz("geo-11-q2","冰天雪地里穿黑燕尾服的小鸟是谁？",
-             [("duck",None),("penguin",None),("bird" if False else "cat",None)],1,"冰上绅士","企鹅真可爱！"),
+             [("duck","鸭子"),("penguin","企鹅"),("cat","小猫")],1,"冰上绅士","企鹅真可爱！"),
 ]})
 
 # —— v0.11 地理 50 关扩容（中国 12 · 世界国家 10 · 首都 6 · 自然纪录 6）——
@@ -3085,13 +3203,13 @@ GEO_NEW = [
      [("rainbow","云南"),("lion","非洲"),("windmill","荷兰")], 0, "鲜花四季开"),
     ("geo-17", "第 18 关 台湾", "宝岛", "台湾", [("tree","阿里山"),("wave","海峡")],
      "学一学：台湾是祖国的宝岛", "祖国的宝岛是？",
-     [("tree","台湾"),("kangaroo","澳大利亚"),("penguin","南极")], 0, "海峡对面"),
-    ("geo-18", "第 19 关 桂林山水", "山水如画", "桂林", [("sprout","漓江山水"),("wave","江水")],
+     [("island","台湾"),("kangaroo","澳大利亚"),("penguin","南极")], 0, "海峡对面"),
+    ("geo-18", "第 19 关 桂林山水", "山水如画", "桂林", [("shanshui","漓江山水"),("wave","江水")],
      "学一学：桂林山水甲天下", "「桂林山水甲天下」说的是哪里最美？",
-     [("sprout","桂林山水"),("desert","沙漠"),("castle","城堡")], 0, "山清水秀"),
-    ("geo-19", "第 20 关 黄山", "奇松怪石", "黄山", [("sprout","黄山松"),("volcano","山峰")],
+     [("shanshui","桂林山水"),("desert","沙漠"),("castle","城堡")], 0, "山清水秀"),
+    ("geo-19", "第 20 关 黄山", "奇松怪石", "黄山", [("pine","黄山迎客松"),("volcano","山峰")],
      "学一学：黄山有奇松、怪石和云海", "黄山最出名的是？",
-     [("sprout","迎客松"),("penguin","企鹅"),("bigben","大本钟")], 0, "迎客松有名"),
+     [("pine","迎客松"),("penguin","企鹅"),("bigben","大本钟")], 0, "迎客松有名"),
     ("geo-20", "第 21 关 日本", "樱花和富士山", "日本", [("torii","鸟居"),("fuji","富士山")],
      "学一学：日本有樱花、富士山和鸟居", "富士山在哪国？",
      [("torii","日本"),("greatwall","中国"),("libertystatue","美国")], 0, "樱花之国"),
@@ -3152,16 +3270,16 @@ GEO_NEW = [
     ("geo-39", "第 40 关 亚马孙雨林", "地球之肺", "亚马孙", [("tree","雨林"),("frog","树蛙")],
      "学一学：亚马孙雨林叫「地球之肺」", "「地球之肺」指的是？",
      [("tree","亚马孙雨林"),("desert","撒哈拉"),("wave","大海")], 0, "制造氧气的大森林"),
-    ("geo-40", "第 41 大堡礁", "海底花园", "大堡礁", [("crystal","珊瑚"),("fish","鱼群")],
+    ("geo-40", "第 41 大堡礁", "海底花园", "大堡礁", [("coral","珊瑚"),("fish","鱼群")],
      "学一学：大堡礁是最大的珊瑚礁群", "最大的珊瑚礁群是？",
-     [("crystal","大堡礁"),("greatwall","长城"),("pyramid","金字塔")], 0, "澳大利亚的海底花园"),
+     [("coral","大堡礁"),("greatwall","长城"),("pyramid","金字塔")], 0, "澳大利亚的海底花园"),
     ("geo-41", "第 42 尼罗河", "最长的河流", "尼罗河", [("river","尼罗河"),("pyramid","金字塔")],
      "学一学：尼罗河是世界上最长的河流", "世界上最长的河流是？",
      [("river","尼罗河"),("wave","太平洋"),("desert","撒哈拉")], 0, "埃及的母亲河"),
     ("geo-42", "第 43 火山", "会喷火的山", "火山", [("volcano","火山喷发"),("flame","岩浆")],
      "学一学：火山喷发时岩浆会流出来", "火山喷出的是？",
      [("volcano","岩浆"),("wave","海水"),("bulb","灯光")], 0, "地下冒出的红岩浆"),
-    ("geo-43", "第 44 珊瑚海", "珊瑚的家", "珊瑚", [("crystal","珊瑚"),("fish","小鱼")],
+    ("geo-43", "第 44 珊瑚海", "珊瑚的家", "珊瑚", [("coral","珊瑚"),("fish","小鱼")],
      "学一学：珊瑚是小小的海洋动物建成的", "珊瑚是——",
      [(None,"小小的海洋动物"),(None,"海底的石头"),(None,"一种海草")], 0, "千万个小生命建成"),
     ("geo-44", "第 45 七大洲四大洋", "地球大家庭", "七大洲四大洋", [("world-map","世界地图"),("earth","地球")],
@@ -3193,11 +3311,11 @@ GEO2 = [
     ("geo-49", "第 50 关 甘肃", "敦煌莫高窟", "甘肃", [("desert","敦煌沙漠"),("flag","丝路")],
      "学一学：敦煌有莫高窟壁画", "莫高窟在哪一省？", [("desert","甘肃"),("wave","浙江"),("palm","海南")], 0, "丝绸之路重镇"),
     ("geo-50", "第 51 关 青海湖", "中国最大湖", "青海湖", [("wave","青海湖"),("sprout","油菜花")],
-     "学一学：青海湖是中国最大的湖", "中国最大的湖是——", [("wave","青海湖"),("river","长江"),("wave","死海")], 0, "高原蓝宝石"),
+     "学一学：青海湖是中国最大的湖", "中国最大的湖是——", [("wave","青海湖"),("river","长江"),("desert","撒哈拉")], 0, "高原蓝宝石"),
     ("geo-51", "第 52 关 西藏", "世界屋脊", "西藏", [("everest","珠穆朗玛峰"),("flag","布达拉宫")],
      "学一学：西藏被称为世界屋脊", "「世界屋脊」是——", [("everest","西藏"),("wave","上海"),("castle","俄罗斯")], 0, "最高的高原"),
-    ("geo-52", "第 53 关 内蒙古", "大草原", "内蒙古", [("sprout","大草原"),("flag","那达慕赛马")],
-     "学一学：内蒙古有一望无际的草原", "内蒙古的代表风景是——", [("sprout","大草原"),("wave","大海"),("desert","沙漠")], 0, "风吹草低见牛羊"),
+    ("geo-52", "第 53 关 内蒙古", "大草原", "内蒙古", [("grassland","大草原"),("flag","那达慕赛马")],
+     "学一学：内蒙古有一望无际的草原", "内蒙古的代表风景是——", [("grassland","大草原"),("wave","大海"),("desert","沙漠")], 0, "风吹草低见牛羊"),
     ("geo-53", "第 54 关 香港", "东方之珠", "香港", [("tower","高楼"),("flag","紫荆花")],
      "学一学：香港被称为东方之珠", "「东方之珠」是——", [("tower","香港"),("palm","海南"),("torii","东京")], 0, "夜景最亮"),
     # 世界国家（14）
@@ -3207,18 +3325,18 @@ GEO2 = [
      "学一学：瑞士的阿尔卑斯雪山很有名", "雪山之国是——", [("everest","瑞士"),("desert","埃及"),("palm","海南")], 0, "滑雪胜地"),
     ("geo-56", "第 57 关 南非", "钻石之国", "南非", [("crystal","钻石"),("elephant","大象")],
      "学一学：南非出产钻石", "钻石之国是——", [("crystal","南非"),("pisa","意大利"),("torii","日本")], 0, "非洲最南端"),
-    ("geo-57", "第 58 关 芬兰", "圣诞老人的家", "芬兰", [("snowflake","冰雪"),("party","圣诞老人村")],
-     "学一学：传说圣诞老人住在芬兰", "圣诞老人村在——", [("party","芬兰"),("palm","海南"),("desert","埃及")], 0, "北欧千湖之国"),
+    ("geo-57", "第 58 关 芬兰", "圣诞老人的家", "芬兰", [("snowflake","冰雪"),("santa","圣诞老人村")],
+     "学一学：传说圣诞老人住在芬兰", "圣诞老人村在——", [("santa","芬兰"),("palm","海南"),("desert","埃及")], 0, "北欧千湖之国"),
     ("geo-58", "第 59 关 丹麦", "童话王国", "丹麦", [("book","安徒生童话"),("castle","美人鱼像")],
      "学一学：童话作家安徒生是丹麦人", "童话王国是——", [("book","丹麦"),("bigben","英国"),("eiffel","法国")], 0, "丑小鸭和小美人鱼"),
     ("geo-59", "第 60 关 印度扩展", "恒河与纱丽", "印度", [("taj","泰姬陵"),("wave","恒河")],
      "学一学：恒河是印度的圣河", "恒河流经——", [("taj","印度"),("bigben","英国"),("castle","俄罗斯")], 0, "南亚文明古国"),
-    ("geo-60", "第 61 关 新西兰", "长白云之乡", "新西兰", [("sprout","绿地"),("wave","海湾")],
-     "学一学：新西兰被称为长白云之乡", "长白云之乡是——", [("sprout","新西兰"),("kangaroo","澳大利亚"),("polarbear","北极")], 0, "大洋洲岛国"),
-    ("geo-61", "第 62 关 挪威", "峡湾之国", "挪威", [("everest","峡湾陡壁"),("snowflake","极夜")],
-     "学一学：挪威有美丽的峡湾", "峡湾之国是——", [("everest","挪威"),("windmill","荷兰"),("taj","印度")], 0, "北欧海盗国度"),
-    ("geo-62", "第 63 关 希腊", "奥运发源地", "希腊", [("flag","奥林匹克"),("castle","神庙")],
-     "学一学：奥林匹克运动会起源于希腊", "奥运会发源于——", [("flag","希腊"),("bigben","英国"),("pisa","意大利")], 0, "雅典卫城"),
+    ("geo-60", "第 61 关 新西兰", "长白云之乡", "新西兰", [("island","绿色海岛"),("wave","海湾")],
+     "学一学：新西兰被称为长白云之乡", "长白云之乡是——", [("island","新西兰"),("kangaroo","澳大利亚"),("polarbear","北极")], 0, "大洋洲岛国"),
+    ("geo-61", "第 62 关 挪威", "峡湾之国", "挪威", [("shanshui","峡湾山水"),("snowflake","极夜")],
+     "学一学：挪威有美丽的峡湾", "峡湾之国是——", [("shanshui","挪威"),("windmill","荷兰"),("taj","印度")], 0, "北欧海盗国度"),
+    ("geo-62", "第 63 关 希腊", "奥运发源地", "希腊", [("medal","奥运奖牌"),("castle","神庙")],
+     "学一学：奥林匹克运动会起源于希腊", "奥运会发源于——", [("medal","希腊"),("bigben","英国"),("pisa","意大利")], 0, "雅典卫城"),
     ("geo-63", "第 64 关 阿根廷", "探戈与足球", "阿根廷", [("ball","足球"),("party","探戈舞")],
      "学一学：阿根廷足球和探戈舞都很有名", "梅西的祖国是——", [("ball","阿根廷"),("torii","日本"),("pisa","意大利")], 0, "南美银之国"),
     ("geo-64", "第 65 关 肯尼亚", "动物大迁徙", "肯尼亚", [("lion","草原狮"),("elephant","象群")],
@@ -3233,9 +3351,9 @@ GEO2 = [
     ("geo-68", "第 69 关 马里亚纳海沟", "最深的海", "马里亚纳海沟", [("wave","深深的海沟"),("fish","深海鱼")],
      "学一学：马里亚纳海沟是海洋最深的地方", "海洋最深处在——", [("wave","马里亚纳海沟"),("river","长江"),("desert","撒哈拉")], 0, "深过最高的山"),
     ("geo-69", "第 70 贝加尔湖", "最深的湖", "贝加尔湖", [("wave","清澈湖水"),("snowflake","蓝冰")],
-     "学一学：贝加尔湖是最深的淡水湖", "最深的淡水湖是——", [("wave","贝加尔湖"),("river","尼罗河"),("wave","青海湖")], 0, "西伯利亚蓝眼睛"),
+     "学一学：贝加尔湖是最深的淡水湖", "最深的淡水湖是——", [("wave","贝加尔湖"),("river","尼罗河"),("desert","撒哈拉")], 0, "西伯利亚蓝眼睛"),
     ("geo-70", "第 71 死海", "最咸的湖", "死海", [("wave","死海漂浮"),("sun","烈日")],
-     "学一学：死海太咸，人能浮在水面", "人能躺在水上看书的湖是——", [("wave","死海"),("river","尼罗河"),("wave","太平洋")], 0, "盐分超级高"),
+     "学一学：死海太咸，人能浮在水面", "人能躺在水上看书的湖是——", [("wave","死海"),("river","尼罗河"),("snowflake","格陵兰")], 0, "盐分超级高"),
     ("geo-71", "第 72 格陵兰岛", "最大的岛", "格陵兰", [("snowflake","冰雪大岛"),("polarbear","北极动物")],
      "学一学：格陵兰是世界最大的岛", "世界最大的岛是——", [("snowflake","格陵兰"),("wave","太平洋"),("tree","海南")], 0, "满岛冰川"),
     ("geo-72", "第 73 夏威夷", "火山群岛", "夏威夷", [("volcano","活火山"),("palm","草裙舞")],
@@ -3252,19 +3370,19 @@ GEO2 = [
      "学一学：哈雷彗星约 76 年回来一次", "哈雷彗星绕谁转？", [(None,"太阳"),(None,"月亮"),(None,"地球")], 0, "拖着尾巴的访客"),
     ("geo-78", "第 79 极昼极夜", "太阳不落山", "极昼极夜", [("polarbear","北极极昼"),("snowflake","极夜")],
      "学一学：极地夏天太阳不落，冬天不见太阳", "极昼是——", [(None,"太阳整日不落"),(None,"整天黑夜"),(None,"下雪")], 0, "南北极才有的奇景"),
-    ("geo-79", "第 80 珊瑚礁", "海底热带雨林", "珊瑚礁", [("crystal","珊瑚"),("fish","鱼群")],
+    ("geo-79", "第 80 珊瑚礁", "海底热带雨林", "珊瑚礁", [("coral","珊瑚"),("fish","鱼群")],
      "学一学：珊瑚礁养着四分之一的海洋生物", "珊瑚礁在——", [(None,"温暖浅海"),(None,"深海底"),(None,"沙漠里")], 0, "海洋生命摇篮"),
     # 节日文化（6）
     ("geo-80", "第 81 春节", "中国新年", "春节", [("party","贴春联放鞭炮"),("flag","红旗灯笼")],
-     "学一学：春节是中国最重要的节日", "中国最重要的传统节日是——", [("party","春节"),("party","圣诞"),("cake","生日")], 0, "全家团圆过年"),
+     "学一学：春节是中国最重要的节日", "中国最重要的传统节日是——", [("party","春节"),("santa","圣诞"),("cake","生日")], 0, "全家团圆过年"),
     ("geo-81", "第 82 中秋节", "月圆人团圆", "中秋节", [("moon","圆月"),("cake","月饼")],
      "学一学：中秋吃月饼、赏明月", "中秋节吃什么？", [("cake","月饼"),("candy","糖"),("bread","面包")], 0, "八月十五月儿圆"),
     ("geo-82", "第 83 端午节", "龙舟粽子", "端午节", [("wave","赛龙舟"),("leaf","粽叶")],
      "学一学：端午赛龙舟、吃粽子", "端午节纪念——", [(None,"屈原"),(None,"牛郎"),(None,"嫦娥")], 0, "五月初五"),
-    ("geo-83", "第 84 圣诞节", "圣诞快乐", "圣诞节", [("snowflake","雪花"),("party","圣诞树")],
+    ("geo-83", "第 84 圣诞节", "圣诞快乐", "圣诞节", [("snowflake","雪花"),("santa","圣诞老人")],
      "学一学：圣诞节是西方重要节日", "圣诞节在哪一天？", [(None,"12 月 25 日"),(None,"1 月 1 日"),(None,"8 月 15 日")], 0, "圣诞老人传说"),
-    ("geo-84", "第 85 万圣节", "南瓜灯", "万圣节", [("party","南瓜灯"),("hat","化装舞会")],
-     "学一学：万圣节孩子会讨糖果", "万圣节的标志是——", [("party","南瓜灯"),("moon","月亮"),("flag","国旗")], 0, "10 月 31 日"),
+    ("geo-84", "第 85 万圣节", "南瓜灯", "万圣节", [("pumpkin","南瓜灯"),("hat","化装舞会")],
+     "学一学：万圣节孩子会讨糖果", "万圣节的标志是——", [("pumpkin","南瓜灯"),("moon","月亮"),("flag","国旗")], 0, "10 月 31 日"),
     ("geo-85", "第 86 感恩节", "火鸡大餐", "感恩节", [("cake","节日大餐"),("party","家人团聚")],
      "学一学：感恩节家人团聚吃火鸡", "感恩节流行于——", [(None,"美国和加拿大"),(None,"中国"),(None,"日本")], 0, "11 月第四个星期四"),
     # 地图技能与常识（10）

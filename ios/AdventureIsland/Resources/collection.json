@@ -999,7 +999,7 @@
         {
           "id": "en-teacher",
           "name": "Teacher 老师",
-          "icon": "girl"
+          "icon": "teacher"
         },
         {
           "id": "en-fox",
@@ -1014,7 +1014,7 @@
         {
           "id": "en-foot",
           "name": "Foot 脚",
-          "icon": "paw"
+          "icon": "foot"
         },
         {
           "id": "en-baby paw",

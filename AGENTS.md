@@ -30,7 +30,7 @@
 python3 ios/tools/gen_content.py      # 重新生成 Resources/*.json
 python3 ios/tools/gen_preview_data.py # 把数据注入 preview/index.html 的 DATA 段
 python3 ios/tools/check_registry.py   # 注册表闸门：题型/动画/图标清单与渲染器是否对得上（<1 秒）
-python3 ios/tools/validate.py         # 结构闸门：应 147 通过 / 1 已知警告 / 0 失败
+python3 ios/tools/validate.py         # 结构闸门：应 148 通过 / 1 已知警告 / 0 失败
 python3 ios/tools/audit_preview.py    # 语义闸门：图文一致/声母一致/题面去重（应 0 项不一致）
 ```
 
@@ -42,20 +42,18 @@ python3 ios/tools/audit_preview.py    # 语义闸门：图文一致/声母一致
 
 ## 3. 收尾口径
 
-- 内容或 `ios/preview/index.html` 有变动 → 重打离线包并核对逐字节一致（**先删旧包**，否则改名/删除的文件会留成残条）：
+- 内容或 `ios/preview/index.html` 有变动 → 重打离线包（**包名带版本号**，脚本会先删同名旧包并自检）：
 
   ```bash
-  rm -f 探险岛-HTML离线包.zip
-  zip -rq 探险岛-HTML离线包.zip design ios/preview/index.html \
-      -x "design/.DS_Store" "ios/preview/.DS_Store" "*/__pycache__/*" "*.pyc"
-  unzip -p 探险岛-HTML离线包.zip ios/preview/index.html | md5   # 应与下一条相同
-  md5 -q ios/preview/index.html
+  python3 ios/tools/pack_release.py 1.0.2     # 产物：探险岛-HTML离线包-v1.0.2.zip
   ```
 
-- **离线包命名与清单是硬规则**（2026-10-28 曾因自行裁剪清单出过一次错包）：
-  - 文件名**固定**为 `探险岛-HTML离线包.zip`，**不带版本号、不带日期**（iPad 使用说明按此名引用）；
-  - 包内清单**固定**为 `design/` 整个目录 + `ios/preview/index.html`（仅上述排除项），**不要自行增删、裁剪或另建精简清单**；
-  - 交付前必须完成上面两条 md5 核对，并在交付说明里贴出核对结果。
+  - 包名与解压目录都带版本号：iPad「文件」解压出来的文件夹就是 `探险岛-HTML离线包-v1.0.2/`，
+    多版本可共存、好区分。**包内不要再套一层版本目录**，否则会「v1.0.2 里面还有 v1.0.2」。
+  - zip 内结构固定为扁平的 `design/` + `ios/preview/index.html`（两者同级；
+    `index.html` 里是 `../../design/...` 的相对引用，层级不能乱；清单以脚本为准，**不要自行增删裁剪**——2026-10-28 曾因裁剪清单出过错包）。
+  - 脚本会自检 zip 内 `index.html` 与本地 md5 一致、design 文件数一致；任一项不过退出码 1。
+  - 旧命名的 `探险岛-HTML离线包.zip` 已被版本化命名取代，发现它还在就删掉，别让两个包混用。
 
 - 改完更新 `ios/docs/工作进展与待办-*.md`，把「已完成」与「仍待办」写清，**不要留下虚假的已完成声明**。
 

@@ -1,8 +1,15 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs><linearGradient id="g-tw" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E86A9A"/><stop offset="1" stop-color="#B04A78"/></linearGradient></defs>
-  <circle cx="32" cy="10" r="5" fill="url(#g-tw)"/>
-  <path d="M28 15 L36 15 L35 24 L29 24 Z" fill="url(#g-tw)"/>
-  <circle cx="32" cy="27" r="6.5" fill="url(#g-tw)"/>
-  <path d="M27 33 L37 33 L36 42 L28 42 Z" fill="url(#g-tw)"/>
-  <circle cx="32" cy="45" r="8" fill="url(#g-tw)"/>
-  <path d="M25 52 L39 52 L37 60 L27 60 Z" fill="url(#g-tw)"/>
-  <rect x="31.2" y="2" width="1.6" height="5" fill="#8A93A8"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs>
+      <linearGradient id="tw-g" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#EC82AE"/><stop offset="100%" stop-color="#B84878"/>
+      </linearGradient>
+    </defs>
+    <rect x="31" y="2" width="2" height="5" fill="#8A93A8"/>
+    <circle cx="32" cy="9" r="4" fill="#EC82AE"/>
+    <path d="M29 12 L35 12 L34 22 L30 22 Z" fill="url(#tw-g)"/>
+    <circle cx="32" cy="27" r="7" fill="url(#tw-g)"/>
+    <circle cx="29" cy="24" r="2" fill="#fff" opacity="0.4"/>
+    <path d="M28 34 L36 34 L35 42 L29 42 Z" fill="url(#tw-g)"/>
+    <circle cx="32" cy="46" r="9" fill="url(#tw-g)"/>
+    <circle cx="28" cy="42" r="2.6" fill="#fff" opacity="0.4"/>
+    <path d="M24 54 L40 54 L38 60 L26 60 Z" fill="#A8406C"/>
+    <rect x="22" y="59" width="20" height="3" rx="1" fill="#8A3058"/></svg>

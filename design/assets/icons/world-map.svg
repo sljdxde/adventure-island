@@ -1,6 +1,27 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs><linearGradient id="g-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#C9ECFB"/><stop offset="1" stop-color="#8ED8F6"/></linearGradient><linearGradient id="g-green" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8CE08A"/><stop offset="1" stop-color="#46B45A"/></linearGradient><linearGradient id="g-gold" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFE58A"/><stop offset="1" stop-color="#F7B32B"/></linearGradient><linearGradient id="g-coral" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFA793"/><stop offset="1" stop-color="#F0705F"/></linearGradient></defs>
-  <rect x="8" y="14" width="48" height="36" rx="8" fill="url(#g-sky)"/>
-  <path d="M14 24 Q20 20 26 24 Q28 30 22 32 Q15 31 14 24 Z" fill="url(#g-green)"/>
-  <path d="M34 22 Q42 18 48 24 Q50 30 44 32 Q36 32 34 26 Z" fill="url(#g-gold)"/>
-  <path d="M30 36 Q36 34 40 40 Q38 46 32 44 Q28 42 30 36 Z" fill="url(#g-coral)"/>
-  <path d="M46 40 Q52 40 52 46 Q48 50 44 46 Z" fill="url(#g-green)"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs>
+      <linearGradient id="wm-ocean" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#5AB0E8"/><stop offset="100%" stop-color="#1E6AB4"/>
+      </linearGradient>
+      <linearGradient id="wm-land" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#7CC468"/><stop offset="100%" stop-color="#4EA844"/>
+      </linearGradient>
+      <clipPath id="wm-clip"><rect x="6" y="12" width="52" height="40" rx="8"/></clipPath>
+    </defs>
+    <rect x="6" y="12" width="52" height="40" rx="8" fill="url(#wm-ocean)"/>
+    <g clip-path="url(#wm-clip)" fill="url(#wm-land)">
+      <!-- 北美 -->
+      <path d="M9 15 Q14 12 22 14 Q25 16 24 20 Q25 23 21 25 L24 27 Q22 29 19 27 L18 25 Q14 24 12 21 Q9 18 9 15 Z"/>
+      <!-- 南美 -->
+      <path d="M20 28 Q25 29 26 33 Q25 40 22 45 Q19 44 19 38 Q18 32 20 28 Z"/>
+      <!-- 欧洲 -->
+      <path d="M30 16 Q35 14 37 17 Q36 20 32 20 Z"/>
+      <!-- 非洲 -->
+      <path d="M29 22 Q37 21 38 27 Q37 35 34 40 Q30 38 29 31 Z"/>
+      <!-- 亚洲 -->
+      <path d="M37 13 Q48 12 51 19 Q50 25 46 27 Q42 28 40 25 Q43 29 42 32 Q39 31 38 27 Q36 22 37 13 Z"/>
+      <!-- 澳洲 -->
+      <path d="M44 39 Q51 38 52 43 Q49 46 45 45 Z"/>
+      <!-- 日本 -->
+      <path d="M50 23 L52 22 L52 27 L50 27 Z"/>
+    </g>
+    <rect x="6" y="12" width="52" height="40" rx="8" fill="none" stroke="#fff" stroke-width="1.6" opacity="0.6"/></svg>

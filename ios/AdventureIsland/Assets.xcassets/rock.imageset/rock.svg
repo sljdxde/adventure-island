@@ -1,4 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs><linearGradient id="g-gray" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#DDE4EA"/><stop offset="1" stop-color="#9AA7B4"/></linearGradient></defs>
-  <polygon points="10,46 6,32 16,16 34,10 50,18 56,34 46,50 24,52" fill="url(#g-gray)"/>
-  <polygon points="16,16 34,10 38,24 22,28" fill="#E2E8EE"/>
-  <polygon points="38,24 50,18 56,34 44,38" fill="#C3CBD4" opacity=".8"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs>
+      <linearGradient id="rk-rock" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#B4B4B0"/><stop offset="100%" stop-color="#6E6E6A"/>
+      </linearGradient>
+    </defs>
+    <path d="M12 50 L16 28 Q24 22 32 26 L48 24 Q57 30 52 42 L50 50 Z" fill="url(#rk-rock)"/>
+    <path d="M16 28 Q24 22 32 26 L32 50 L14 50 Z" fill="#fff" opacity="0.12"/>
+    <path d="M40 32 Q45 34 42 39" fill="none" stroke="#565652" stroke-width="1.6" opacity="0.6"/>
+    <g fill="#565652" opacity="0.5"><circle cx="26" cy="34" r="1.2"/><circle cx="38" cy="42" r="1"/></g>
+    <rect x="8" y="48" width="48" height="10" fill="#5C5A54"/></svg>

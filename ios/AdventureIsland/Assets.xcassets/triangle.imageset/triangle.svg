@@ -1,3 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs><linearGradient id="g-coral" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFA793"/><stop offset="1" stop-color="#F0705F"/></linearGradient></defs>
-  <polygon points="32,14 52,48 12,48" fill="url(#g-coral)"/>
-  <ellipse cx="26" cy="26" rx="5" ry="3" fill="#fff" opacity=".4" transform="rotate(-20 26 26)"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><style>.st{stroke:#5B4636;stroke-width:2.4;stroke-linejoin:round;stroke-linecap:round}.th{stroke:#5B4636;stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round}</style><polygon class="st" points="32,14 52,48 12,48" fill="#F07868"/><ellipse cx="26" cy="26" rx="4.5" ry="3" fill="#fff" opacity="0.5"/></svg>

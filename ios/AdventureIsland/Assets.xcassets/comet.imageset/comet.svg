@@ -1,4 +1,24 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs><linearGradient id="g-comet" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFE58A"/><stop offset="1" stop-color="#F7B32B"/></linearGradient><linearGradient id="g-tail" x1="1" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#7FD4F8" stop-opacity=".95"/><stop offset="1" stop-color="#BFE4F7" stop-opacity="0"/></linearGradient></defs>
-  <path d="M52 56 Q28 46 8 10 Q36 30 56 48 Z" fill="url(#g-tail)"/>
-  <path d="M46 44 L48.2 49.2 L53.5 50 L49.5 53.6 L50.6 59 L46 56.4 L41.4 59 L42.5 53.6 L38.5 50 L43.8 49.2 Z" fill="url(#g-comet)" transform="translate(0 -2) scale(1.06)"/>
-  <circle cx="44.5" cy="47" r="2.2" fill="#fff" opacity=".7"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs>
+      <radialGradient id="comet-halo" cx="50%" cy="50%" r="50%">
+        <stop offset="0" stop-color="#fff" stop-opacity="0.95"/>
+        <stop offset="45%" stop-color="#BFE4FF" stop-opacity="0.6"/>
+        <stop offset="100%" stop-color="#8FC8FF" stop-opacity="0"/>
+      </radialGradient>
+      <linearGradient id="comet-ion" x1="1" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#9FD0FF" stop-opacity="0.85"/>
+        <stop offset="100%" stop-color="#9FD0FF" stop-opacity="0"/>
+      </linearGradient>
+      <linearGradient id="comet-dust" x1="1" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#fff" stop-opacity="0.8"/>
+        <stop offset="100%" stop-color="#fff" stop-opacity="0"/>
+      </linearGradient>
+    </defs>
+    <!-- 离子尾（蓝、直） -->
+    <path d="M36 30 Q22 38 8 50 Q14 38 30 32 Z" fill="url(#comet-ion)"/>
+    <!-- 尘埃尾（白、弯） -->
+    <path d="M38 33 Q26 44 16 56 Q24 44 34 36 Z" fill="url(#comet-dust)"/>
+    <!-- 彗发 -->
+    <circle cx="40" cy="27" r="16" fill="url(#comet-halo)"/>
+    <!-- 彗核 -->
+    <circle cx="40" cy="27" r="5" fill="#F2F6FA"/>
+    <circle cx="38" cy="25" r="2" fill="#fff"/></svg>

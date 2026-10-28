@@ -236,6 +236,14 @@
               ]
             }
           ],
+          "pieces": [
+            "新疆",
+            "内蒙古",
+            "黑龙江",
+            "西藏",
+            "四川",
+            "广东"
+          ],
           "question": "拼一拼：把中国地图的六块拖回雄鸡轮廓",
           "praise": "拼好啦，地图在你手里！"
         }
@@ -279,10 +287,12 @@
               "text": "北京"
             },
             {
-              "icon": "castle"
+              "icon": "tower",
+              "text": "上海"
             },
             {
-              "icon": "school"
+              "icon": "castle",
+              "text": "外国城堡"
             }
           ],
           "answer": 0,
@@ -348,13 +358,16 @@
           "question": "长江和黄河是中国的什么河？",
           "options": [
             {
-              "icon": "river"
+              "icon": "river",
+              "text": "母亲河"
             },
             {
-              "icon": "moon"
+              "icon": "wave",
+              "text": "大海"
             },
             {
-              "icon": "comet"
+              "icon": "ice",
+              "text": "冰川"
             }
           ],
           "answer": 0,
@@ -397,13 +410,16 @@
           "question": "万里长城像一条卧在山上的什么？",
           "options": [
             {
-              "icon": "greatwall"
+              "icon": "greatwall",
+              "text": "万里长城"
             },
             {
-              "icon": "rocket"
+              "icon": "pyramid",
+              "text": "金字塔"
             },
             {
-              "icon": "moon"
+              "icon": "castle",
+              "text": "城堡"
             }
           ],
           "answer": 0,
@@ -481,13 +497,16 @@
           "question": "世界第一高峰是哪座山？",
           "options": [
             {
-              "icon": "everest"
+              "icon": "everest",
+              "text": "珠穆朗玛峰"
             },
             {
-              "icon": "volcano"
+              "icon": "volcano",
+              "text": "火山"
             },
             {
-              "icon": "castle"
+              "icon": "pine",
+              "text": "黄山"
             }
           ],
           "answer": 0,
@@ -563,13 +582,16 @@
           "question": "中国的国宝、爱吃竹子的动物是谁？",
           "options": [
             {
-              "icon": "bear"
+              "icon": "bear",
+              "text": "熊"
             },
             {
-              "icon": "panda"
+              "icon": "panda",
+              "text": "大熊猫"
             },
             {
-              "icon": "rabbit"
+              "icon": "rabbit",
+              "text": "兔子"
             }
           ],
           "answer": 1,
@@ -789,6 +811,15 @@
               ]
             }
           ],
+          "pieces": [
+            "亚洲",
+            "欧洲",
+            "非洲",
+            "北美洲",
+            "南美洲",
+            "大洋洲",
+            "南极洲"
+          ],
           "question": "拼一拼：把七大洲块拖回世界地图轮廓",
           "praise": "拼好啦，地图在你手里！"
         }
@@ -828,13 +859,13 @@
           "question": "我们中国在哪个大洲？",
           "options": [
             {
-              "icon": "earth"
+              "text": "亚洲"
             },
             {
-              "icon": "moon"
+              "text": "非洲"
             },
             {
-              "icon": "comet"
+              "text": "欧洲"
             }
           ],
           "answer": 0,
@@ -877,13 +908,16 @@
           "question": "非洲草原上「万兽之王」是谁？",
           "options": [
             {
-              "icon": "elephant"
+              "icon": "elephant",
+              "text": "大象"
             },
             {
-              "icon": "lion"
+              "icon": "lion",
+              "text": "狮子"
             },
             {
-              "icon": "panda"
+              "icon": "panda",
+              "text": "熊猫"
             }
           ],
           "answer": 1,
@@ -926,13 +960,16 @@
           "question": "欧洲田野上慢慢转动的是什么？",
           "options": [
             {
-              "icon": "windmill"
+              "icon": "windmill",
+              "text": "风车"
             },
             {
-              "icon": "rocket"
+              "icon": "ferris",
+              "text": "摩天轮"
             },
             {
-              "icon": "comet"
+              "icon": "castle",
+              "text": "城堡"
             }
           ],
           "answer": 0,
@@ -987,13 +1024,16 @@
           "question": "举着火炬、站在美国纽约港的是谁？",
           "options": [
             {
-              "icon": "libertystatue"
+              "icon": "libertystatue",
+              "text": "自由女神像"
             },
             {
-              "icon": "panda"
+              "icon": "tower",
+              "text": "高塔"
             },
             {
-              "icon": "moon"
+              "icon": "castle",
+              "text": "城堡"
             }
           ],
           "answer": 0,
@@ -1041,13 +1081,16 @@
           "question": "肚子上有口袋、会跳的动物是谁？",
           "options": [
             {
-              "icon": "rabbit"
+              "icon": "rabbit",
+              "text": "兔子"
             },
             {
-              "icon": "kangaroo"
+              "icon": "kangaroo",
+              "text": "袋鼠"
             },
             {
-              "icon": "bear"
+              "icon": "bear",
+              "text": "熊"
             }
           ],
           "answer": 1,
@@ -1060,13 +1103,16 @@
           "question": "冰天雪地里穿黑燕尾服的小鸟是谁？",
           "options": [
             {
-              "icon": "duck"
+              "icon": "duck",
+              "text": "鸭子"
             },
             {
-              "icon": "penguin"
+              "icon": "penguin",
+              "text": "企鹅"
             },
             {
-              "icon": "cat"
+              "icon": "cat",
+              "text": "小猫"
             }
           ],
           "answer": 1,
@@ -1369,7 +1415,7 @@
           "question": "祖国的宝岛是？",
           "options": [
             {
-              "icon": "tree",
+              "icon": "island",
               "text": "台湾"
             },
             {
@@ -1402,7 +1448,7 @@
           "display": "桂林",
           "examples": [
             {
-              "icon": "sprout",
+              "icon": "shanshui",
               "text": "漓江山水",
               "say": "漓江山水"
             },
@@ -1421,7 +1467,7 @@
           "question": "「桂林山水甲天下」说的是哪里最美？",
           "options": [
             {
-              "icon": "sprout",
+              "icon": "shanshui",
               "text": "桂林山水"
             },
             {
@@ -1454,9 +1500,9 @@
           "display": "黄山",
           "examples": [
             {
-              "icon": "sprout",
-              "text": "黄山松",
-              "say": "黄山松"
+              "icon": "pine",
+              "text": "黄山迎客松",
+              "say": "黄山迎客松"
             },
             {
               "icon": "volcano",
@@ -1473,7 +1519,7 @@
           "question": "黄山最出名的是？",
           "options": [
             {
-              "icon": "sprout",
+              "icon": "pine",
               "text": "迎客松"
             },
             {
@@ -2109,6 +2155,14 @@
               ]
             }
           ],
+          "pieces": [
+            "新疆",
+            "内蒙古",
+            "黑龙江",
+            "西藏",
+            "四川",
+            "广东"
+          ],
           "question": "拼一拼：把中国地图的六块拖回雄鸡轮廓",
           "praise": "拼好啦，地图在你手里！"
         },
@@ -2122,10 +2176,12 @@
               "text": "北京"
             },
             {
-              "icon": "castle"
+              "icon": "tower",
+              "text": "上海"
             },
             {
-              "icon": "school"
+              "icon": "castle",
+              "text": "外国城堡"
             }
           ],
           "answer": 0,
@@ -2138,13 +2194,16 @@
           "question": "长江和黄河是中国的什么河？",
           "options": [
             {
-              "icon": "river"
+              "icon": "river",
+              "text": "母亲河"
             },
             {
-              "icon": "moon"
+              "icon": "wave",
+              "text": "大海"
             },
             {
-              "icon": "comet"
+              "icon": "ice",
+              "text": "冰川"
             }
           ],
           "answer": 0,
@@ -2157,13 +2216,16 @@
           "question": "万里长城像一条卧在山上的什么？",
           "options": [
             {
-              "icon": "greatwall"
+              "icon": "greatwall",
+              "text": "万里长城"
             },
             {
-              "icon": "rocket"
+              "icon": "pyramid",
+              "text": "金字塔"
             },
             {
-              "icon": "moon"
+              "icon": "castle",
+              "text": "城堡"
             }
           ],
           "answer": 0,
@@ -2176,13 +2238,16 @@
           "question": "世界第一高峰是哪座山？",
           "options": [
             {
-              "icon": "everest"
+              "icon": "everest",
+              "text": "珠穆朗玛峰"
             },
             {
-              "icon": "volcano"
+              "icon": "volcano",
+              "text": "火山"
             },
             {
-              "icon": "castle"
+              "icon": "pine",
+              "text": "黄山"
             }
           ],
           "answer": 0,
@@ -2195,13 +2260,16 @@
           "question": "中国的国宝、爱吃竹子的动物是谁？",
           "options": [
             {
-              "icon": "bear"
+              "icon": "bear",
+              "text": "熊"
             },
             {
-              "icon": "panda"
+              "icon": "panda",
+              "text": "大熊猫"
             },
             {
-              "icon": "rabbit"
+              "icon": "rabbit",
+              "text": "兔子"
             }
           ],
           "answer": 1,
@@ -2838,7 +2906,7 @@
           "display": "大堡礁",
           "examples": [
             {
-              "icon": "crystal",
+              "icon": "coral",
               "text": "珊瑚",
               "say": "珊瑚"
             },
@@ -2857,7 +2925,7 @@
           "question": "最大的珊瑚礁群是？",
           "options": [
             {
-              "icon": "crystal",
+              "icon": "coral",
               "text": "大堡礁"
             },
             {
@@ -2994,7 +3062,7 @@
           "display": "珊瑚",
           "examples": [
             {
-              "icon": "crystal",
+              "icon": "coral",
               "text": "珊瑚",
               "say": "珊瑚"
             },
@@ -3379,8 +3447,8 @@
               "text": "长江"
             },
             {
-              "icon": "wave",
-              "text": "死海"
+              "icon": "desert",
+              "text": "撒哈拉"
             }
           ],
           "answer": 0,
@@ -3456,7 +3524,7 @@
           "display": "内蒙古",
           "examples": [
             {
-              "icon": "sprout",
+              "icon": "grassland",
               "text": "大草原",
               "say": "大草原"
             },
@@ -3475,7 +3543,7 @@
           "question": "内蒙古的代表风景是——",
           "options": [
             {
-              "icon": "sprout",
+              "icon": "grassland",
               "text": "大草原"
             },
             {
@@ -3721,7 +3789,7 @@
               "say": "冰雪"
             },
             {
-              "icon": "party",
+              "icon": "santa",
               "text": "圣诞老人村",
               "say": "圣诞老人村"
             }
@@ -3735,7 +3803,7 @@
           "question": "圣诞老人村在——",
           "options": [
             {
-              "icon": "party",
+              "icon": "santa",
               "text": "芬兰"
             },
             {
@@ -3955,6 +4023,14 @@
               ]
             }
           ],
+          "pieces": [
+            "新疆",
+            "内蒙古",
+            "黑龙江",
+            "西藏",
+            "四川",
+            "广东"
+          ],
           "question": "拼一拼：把中国地图的六块拖回雄鸡轮廓",
           "praise": "拼好啦，地图在你手里！"
         },
@@ -3968,10 +4044,12 @@
               "text": "北京"
             },
             {
-              "icon": "castle"
+              "icon": "tower",
+              "text": "上海"
             },
             {
-              "icon": "school"
+              "icon": "castle",
+              "text": "外国城堡"
             }
           ],
           "answer": 0,
@@ -3984,13 +4062,16 @@
           "question": "长江和黄河是中国的什么河？",
           "options": [
             {
-              "icon": "river"
+              "icon": "river",
+              "text": "母亲河"
             },
             {
-              "icon": "moon"
+              "icon": "wave",
+              "text": "大海"
             },
             {
-              "icon": "comet"
+              "icon": "ice",
+              "text": "冰川"
             }
           ],
           "answer": 0,
@@ -4003,13 +4084,16 @@
           "question": "万里长城像一条卧在山上的什么？",
           "options": [
             {
-              "icon": "greatwall"
+              "icon": "greatwall",
+              "text": "万里长城"
             },
             {
-              "icon": "rocket"
+              "icon": "pyramid",
+              "text": "金字塔"
             },
             {
-              "icon": "moon"
+              "icon": "castle",
+              "text": "城堡"
             }
           ],
           "answer": 0,
@@ -4022,13 +4106,16 @@
           "question": "世界第一高峰是哪座山？",
           "options": [
             {
-              "icon": "everest"
+              "icon": "everest",
+              "text": "珠穆朗玛峰"
             },
             {
-              "icon": "volcano"
+              "icon": "volcano",
+              "text": "火山"
             },
             {
-              "icon": "castle"
+              "icon": "pine",
+              "text": "黄山"
             }
           ],
           "answer": 0,
@@ -4041,13 +4128,16 @@
           "question": "中国的国宝、爱吃竹子的动物是谁？",
           "options": [
             {
-              "icon": "bear"
+              "icon": "bear",
+              "text": "熊"
             },
             {
-              "icon": "panda"
+              "icon": "panda",
+              "text": "大熊猫"
             },
             {
-              "icon": "rabbit"
+              "icon": "rabbit",
+              "text": "兔子"
             }
           ],
           "answer": 1,
@@ -4164,9 +4254,9 @@
           "display": "新西兰",
           "examples": [
             {
-              "icon": "sprout",
-              "text": "绿地",
-              "say": "绿地"
+              "icon": "island",
+              "text": "绿色海岛",
+              "say": "绿色海岛"
             },
             {
               "icon": "wave",
@@ -4183,7 +4273,7 @@
           "question": "长白云之乡是——",
           "options": [
             {
-              "icon": "sprout",
+              "icon": "island",
               "text": "新西兰"
             },
             {
@@ -4216,9 +4306,9 @@
           "display": "挪威",
           "examples": [
             {
-              "icon": "everest",
-              "text": "峡湾陡壁",
-              "say": "峡湾陡壁"
+              "icon": "shanshui",
+              "text": "峡湾山水",
+              "say": "峡湾山水"
             },
             {
               "icon": "snowflake",
@@ -4235,7 +4325,7 @@
           "question": "峡湾之国是——",
           "options": [
             {
-              "icon": "everest",
+              "icon": "shanshui",
               "text": "挪威"
             },
             {
@@ -4268,9 +4358,9 @@
           "display": "希腊",
           "examples": [
             {
-              "icon": "flag",
-              "text": "奥林匹克",
-              "say": "奥林匹克"
+              "icon": "medal",
+              "text": "奥运奖牌",
+              "say": "奥运奖牌"
             },
             {
               "icon": "castle",
@@ -4287,7 +4377,7 @@
           "question": "奥运会发源于——",
           "options": [
             {
-              "icon": "flag",
+              "icon": "medal",
               "text": "希腊"
             },
             {
@@ -4659,8 +4749,8 @@
               "text": "尼罗河"
             },
             {
-              "icon": "wave",
-              "text": "青海湖"
+              "icon": "desert",
+              "text": "撒哈拉"
             }
           ],
           "answer": 0,
@@ -4711,8 +4801,8 @@
               "text": "尼罗河"
             },
             {
-              "icon": "wave",
-              "text": "太平洋"
+              "icon": "snowflake",
+              "text": "格陵兰"
             }
           ],
           "answer": 0,
@@ -5134,7 +5224,7 @@
           "display": "珊瑚礁",
           "examples": [
             {
-              "icon": "crystal",
+              "icon": "coral",
               "text": "珊瑚",
               "say": "珊瑚"
             },
@@ -5206,7 +5296,7 @@
               "text": "春节"
             },
             {
-              "icon": "party",
+              "icon": "santa",
               "text": "圣诞"
             },
             {
@@ -5341,9 +5431,9 @@
               "say": "雪花"
             },
             {
-              "icon": "party",
-              "text": "圣诞树",
-              "say": "圣诞树"
+              "icon": "santa",
+              "text": "圣诞老人",
+              "say": "圣诞老人"
             }
           ],
           "question": "学一学：圣诞节是西方重要节日",
@@ -5385,7 +5475,7 @@
           "display": "万圣节",
           "examples": [
             {
-              "icon": "party",
+              "icon": "pumpkin",
               "text": "南瓜灯",
               "say": "南瓜灯"
             },
@@ -5404,7 +5494,7 @@
           "question": "万圣节的标志是——",
           "options": [
             {
-              "icon": "party",
+              "icon": "pumpkin",
               "text": "南瓜灯"
             },
             {
@@ -5768,6 +5858,14 @@
               ]
             }
           ],
+          "pieces": [
+            "新疆",
+            "内蒙古",
+            "黑龙江",
+            "西藏",
+            "四川",
+            "广东"
+          ],
           "question": "拼一拼：把中国地图的六块拖回雄鸡轮廓",
           "praise": "拼好啦，地图在你手里！"
         },
@@ -5781,10 +5879,12 @@
               "text": "北京"
             },
             {
-              "icon": "castle"
+              "icon": "tower",
+              "text": "上海"
             },
             {
-              "icon": "school"
+              "icon": "castle",
+              "text": "外国城堡"
             }
           ],
           "answer": 0,
@@ -5797,13 +5897,16 @@
           "question": "长江和黄河是中国的什么河？",
           "options": [
             {
-              "icon": "river"
+              "icon": "river",
+              "text": "母亲河"
             },
             {
-              "icon": "moon"
+              "icon": "wave",
+              "text": "大海"
             },
             {
-              "icon": "comet"
+              "icon": "ice",
+              "text": "冰川"
             }
           ],
           "answer": 0,
@@ -5816,13 +5919,16 @@
           "question": "万里长城像一条卧在山上的什么？",
           "options": [
             {
-              "icon": "greatwall"
+              "icon": "greatwall",
+              "text": "万里长城"
             },
             {
-              "icon": "rocket"
+              "icon": "pyramid",
+              "text": "金字塔"
             },
             {
-              "icon": "moon"
+              "icon": "castle",
+              "text": "城堡"
             }
           ],
           "answer": 0,
@@ -5835,13 +5941,16 @@
           "question": "世界第一高峰是哪座山？",
           "options": [
             {
-              "icon": "everest"
+              "icon": "everest",
+              "text": "珠穆朗玛峰"
             },
             {
-              "icon": "volcano"
+              "icon": "volcano",
+              "text": "火山"
             },
             {
-              "icon": "castle"
+              "icon": "pine",
+              "text": "黄山"
             }
           ],
           "answer": 0,
@@ -5854,13 +5963,16 @@
           "question": "中国的国宝、爱吃竹子的动物是谁？",
           "options": [
             {
-              "icon": "bear"
+              "icon": "bear",
+              "text": "熊"
             },
             {
-              "icon": "panda"
+              "icon": "panda",
+              "text": "大熊猫"
             },
             {
-              "icon": "rabbit"
+              "icon": "rabbit",
+              "text": "兔子"
             }
           ],
           "answer": 1,
@@ -6403,6 +6515,14 @@
               ]
             }
           ],
+          "pieces": [
+            "新疆",
+            "内蒙古",
+            "黑龙江",
+            "西藏",
+            "四川",
+            "广东"
+          ],
           "question": "拼一拼：把中国地图的六块拖回雄鸡轮廓",
           "praise": "拼好啦，地图在你手里！"
         },
@@ -6416,10 +6536,12 @@
               "text": "北京"
             },
             {
-              "icon": "castle"
+              "icon": "tower",
+              "text": "上海"
             },
             {
-              "icon": "school"
+              "icon": "castle",
+              "text": "外国城堡"
             }
           ],
           "answer": 0,
@@ -6432,13 +6554,16 @@
           "question": "长江和黄河是中国的什么河？",
           "options": [
             {
-              "icon": "river"
+              "icon": "river",
+              "text": "母亲河"
             },
             {
-              "icon": "moon"
+              "icon": "wave",
+              "text": "大海"
             },
             {
-              "icon": "comet"
+              "icon": "ice",
+              "text": "冰川"
             }
           ],
           "answer": 0,
@@ -6451,13 +6576,16 @@
           "question": "万里长城像一条卧在山上的什么？",
           "options": [
             {
-              "icon": "greatwall"
+              "icon": "greatwall",
+              "text": "万里长城"
             },
             {
-              "icon": "rocket"
+              "icon": "pyramid",
+              "text": "金字塔"
             },
             {
-              "icon": "moon"
+              "icon": "castle",
+              "text": "城堡"
             }
           ],
           "answer": 0,
@@ -6470,13 +6598,16 @@
           "question": "世界第一高峰是哪座山？",
           "options": [
             {
-              "icon": "everest"
+              "icon": "everest",
+              "text": "珠穆朗玛峰"
             },
             {
-              "icon": "volcano"
+              "icon": "volcano",
+              "text": "火山"
             },
             {
-              "icon": "castle"
+              "icon": "pine",
+              "text": "黄山"
             }
           ],
           "answer": 0,
@@ -6489,13 +6620,16 @@
           "question": "中国的国宝、爱吃竹子的动物是谁？",
           "options": [
             {
-              "icon": "bear"
+              "icon": "bear",
+              "text": "熊"
             },
             {
-              "icon": "panda"
+              "icon": "panda",
+              "text": "大熊猫"
             },
             {
-              "icon": "rabbit"
+              "icon": "rabbit",
+              "text": "兔子"
             }
           ],
           "answer": 1,
@@ -6685,6 +6819,15 @@
               ]
             }
           ],
+          "pieces": [
+            "亚洲",
+            "欧洲",
+            "非洲",
+            "北美洲",
+            "南美洲",
+            "大洋洲",
+            "南极洲"
+          ],
           "question": "拼一拼：把七大洲块拖回世界地图轮廓",
           "praise": "拼好啦，地图在你手里！"
         },
@@ -6694,13 +6837,13 @@
           "question": "我们中国在哪个大洲？",
           "options": [
             {
-              "icon": "earth"
+              "text": "亚洲"
             },
             {
-              "icon": "moon"
+              "text": "非洲"
             },
             {
-              "icon": "comet"
+              "text": "欧洲"
             }
           ],
           "answer": 0,

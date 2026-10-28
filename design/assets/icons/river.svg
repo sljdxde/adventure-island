@@ -1,5 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs><linearGradient id="g-blue" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7CC4F5"/><stop offset="1" stop-color="#3D8FD1"/></linearGradient></defs>
-  <path d="M16 10 Q24 22 18 32 Q12 42 24 54" stroke="url(#g-blue)" stroke-width="7" fill="none" stroke-linecap="round"/>
-  <path d="M20 14 Q26 24 21 32" stroke="#8ED8F6" stroke-width="3" fill="none" opacity=".7" stroke-linecap="round"/>
-  <circle cx="46" cy="20" r="3" fill="#fff" opacity=".9"/>
-  <circle cx="50" cy="42" r="3" fill="#fff" opacity=".9"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs>
+      <linearGradient id="rv-bank" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#8FC86B"/><stop offset="100%" stop-color="#5C9F46"/>
+      </linearGradient>
+      <linearGradient id="rv-water" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#86CCF0"/><stop offset="100%" stop-color="#2E78B8"/>
+      </linearGradient>
+    </defs>
+    <rect x="2" y="4" width="60" height="58" rx="6" fill="url(#rv-bank)"/>
+    <path d="M29 4 C16 18 39 24 28 36 C19 46 25 53 26 60 L40 60 C41 53 46 45 37 36 C26 24 50 18 37 4 Z" fill="url(#rv-water)"/>
+    <path d="M31 14 C35 20 29 23 33 29 M28 42 C34 45 30 51 34 55" fill="none" stroke="#fff" stroke-width="1.5" opacity="0.7"/>
+    <g fill="#fff" opacity="0.85"><circle cx="33" cy="25" r="1.3"/><circle cx="30" cy="38" r="1.2"/></g>
+    <g fill="#4E8A38"><circle cx="10" cy="14" r="2"/><circle cx="54" cy="22" r="2"/><circle cx="9" cy="44" r="2"/></g></svg>

@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>探险岛 · 三方向风格板（低幼卡通）</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:"YouYuan","幼圆","Yuanti SC","PingFang SC",sans-serif;background:#221C18;color:#fff;padding:28px 20px 60px}
+  h1{text-align:center;font-size:30px;letter-spacing:2px}
+  .sub{text-align:center;color:#C9B8A0;font-size:15px;margin:8px 0 30px}
+  .board{width:1500px;max-width:100%;margin:0 auto 36px;border-radius:26px;overflow:hidden;box-shadow:0 20px 50px rgba(0,0,0,.5)}
+  .board-head{padding:16px 28px;display:flex;align-items:baseline;gap:16px}
+  .tag{font-size:13px;font-weight:700;padding:4px 12px;border-radius:999px}
+  .board-head h2{font-size:24px;letter-spacing:1px}
+  .board-head .slogan{font-size:15px;opacity:.85}
+  .body{display:grid;grid-template-columns:46% 54%;gap:0}
+  .scene{position:relative;height:430px;overflow:hidden}
+  .scene .label{position:absolute;left:14px;top:12px;font-size:13px;font-weight:700;background:rgba(255,255,255,.85);padding:4px 12px;border-radius:999px;z-index:5}
+  .right{padding:20px 24px;display:flex;flex-direction:column;gap:16px}
+  .sec-title{font-size:14px;opacity:.75;letter-spacing:2px;font-weight:700}
+  .icons{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
+  .icon-cell{background:rgba(255,255,255,.12);border-radius:16px;padding:10px 6px;display:flex;flex-direction:column;align-items:center;gap:6px}
+  .icon-cell span{font-size:12px;opacity:.85}
+  .comps{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+  .swatches{display:flex;gap:8px;flex-wrap:wrap}
+  .sw{width:42px;height:42px;border-radius:12px;box-shadow:inset 0 0 0 2px rgba(255,255,255,.25);position:relative}
+  .sw small{position:absolute;bottom:-18px;left:0;right:0;text-align:center;font-size:9px;opacity:.7}
+  .card-demo{border-radius:18px;padding:14px 16px;font-size:14px;line-height:1.5}
+  .note-foot{font-size:12px;opacity:.7;margin-top:2px}
+</style>
+</head>
+<body>
+<h1>探险岛 · 视觉重构三方向</h1>
+<div class="sub">同一套元素（吉祥物 / 图标 / 背景 / 组件）· 三种低幼卡通诠释 · 请选定一个方向，我再批量生成全套</div>
+
+<!-- ============ 方向 A · 粗描边贴纸风 ============ -->
+<div class="board">
+  <div class="board-head" style="background:#FF6B6B">
+    <span class="tag" style="background:#fff;color:#FF6B6B">方向 A</span>
+    <h2>粗描边贴纸风 · 贴纸大冒险</h2>
+    <span class="slogan">灵感：Khan Academy Kids / Toca Boca / 贴纸书 —— 粗黑描边 + 白边，形状清晰、像能撕下来的贴纸</span>
+  </div>
+  <div class="body">
+    <div class="scene" id="sceneA"></div>
+    <div class="right" style="background:#FFF9EE;color:#57433A">
+      <div>
+        <div class="sec-title" style="color:#B08A6A">图标系统（统一 3px 深棕描边 + 贴纸白边）</div>
+        <div class="icons" id="iconsA" style="margin-top:10px"></div>
+      </div>
+      <div>
+        <div class="sec-title" style="color:#B08A6A">组件</div>
+        <div class="comps" style="margin-top:10px">
+          <button class="btnA">开始冒险</button>
+          <div class="card-demo" style="background:#fff;border:3px solid #3A2E2A;box-shadow:0 5px 0 #3A2E2A;color:#57433A">
+            <b>找一找：哪个是太阳？</b><br>答对了得星星，答错不扣分～
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:6px">
+        <div class="sec-title" style="color:#B08A6A">色板</div>
+        <div class="swatches" style="margin-top:10px">
+          <div class="sw" style="background:#FF6B6B"><small>#FF6B6B</small></div>
+          <div class="sw" style="background:#FF9F43"><small>#FF9F43</small></div>
+          <div class="sw" style="background:#FFD93D"><small>#FFD93D</small></div>
+          <div class="sw" style="background:#6BCB77"><small>#6BCB77</small></div>
+          <div class="sw" style="background:#4D96FF"><small>#4D96FF</small></div>
+          <div class="sw" style="background:#9B7BF5"><small>#9B7BF5</small></div>
+          <div class="sw" style="background:#3A2E2A"><small>描边</small></div>
+          <div class="sw" style="background:#FFF9EE"><small>奶油底</small></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ 方向 B · 软糖果冻风 ============ -->
+<div class="board">
+  <div class="board-head" style="background:#6EC8FF">
+    <span class="tag" style="background:#fff;color:#3D9BE0">方向 B</span>
+    <h2>软糖果冻风 · 软糖乐园</h2>
+    <span class="slogan">灵感：糖果果冻 / Blooket / Duolingo —— 无描边，靠渐变 + 高光 + 内阴影营造 Q 弹饱满的软糖质感</span>
+  </div>
+  <div class="body">
+    <div class="scene" id="sceneB"></div>
+    <div class="right" style="background:#F4FAFF;color:#33506B">
+      <div>
+        <div class="sec-title" style="color:#6FA8C9">图标系统（无描边 · 糖果渐变 · 顶部高光）</div>
+        <div class="icons" style="margin-top:10px" id="iconsB"></div>
+      </div>
+      <div>
+        <div class="sec-title" style="color:#6FA8C9">组件</div>
+        <div class="comps" style="margin-top:10px">
+          <button class="btnB">开始冒险</button>
+          <div class="card-demo" style="background:#fff;box-shadow:0 10px 24px rgba(80,150,200,.25),inset 0 2px 0 #fff;color:#33506B">
+            <b>找一找：哪个是太阳？</b><br>答对了得星星，答错不扣分～
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:6px">
+        <div class="sec-title" style="color:#6FA8C9">色板</div>
+        <div class="swatches" style="margin-top:10px">
+          <div class="sw" style="background:#FF8FA3"><small>#FF8FA3</small></div>
+          <div class="sw" style="background:#FFB26B"><small>#FFB26B</small></div>
+          <div class="sw" style="background:#FFE66D"><small>#FFE66D</small></div>
+          <div class="sw" style="background:#7BD88F"><small>#7BD88F</small></div>
+          <div class="sw" style="background:#6EC8FF"><small>#6EC8FF</small></div>
+          <div class="sw" style="background:#B298FF"><small>#B298FF</small></div>
+          <div class="sw" style="background:#F4FAFF"><small>淡蓝底</small></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ 方向 C · 绘本手绘风 ============ -->
+<div class="board">
+  <div class="board-head" style="background:#81B29A">
+    <span class="tag" style="background:#fff;color:#4E7D68">方向 C</span>
+    <h2>绘本手绘风 · 童话绘本</h2>
+    <span class="slogan">灵感：好饿的毛毛虫 / 小猪佩奇 / 洪恩识字 —— 手绘抖动描边 + 水彩蜡笔平涂 + 纸张纹理，温暖有故事感</span>
+  </div>
+  <div class="body">
+    <div class="scene" id="sceneC"></div>
+    <div class="right" style="background:#F7F1E3;color:#5B4636">
+      <div>
+        <div class="sec-title" style="color:#A8916B">图标系统（手绘深棕描边 · 水彩平涂 · 纸张底）</div>
+        <div class="icons" style="margin-top:10px" id="iconsC"></div>
+      </div>
+      <div>
+        <div class="sec-title" style="color:#A8916B">组件</div>
+        <div class="comps" style="margin-top:10px">
+          <button class="btnC">开始冒险</button>
+          <div class="card-demo" style="background:#FFFDF6;box-shadow:3px 4px 0 rgba(91,70,54,.25);color:#5B4636;border:2px solid #5B4636">
+            <b>找一找：哪个是太阳？</b><br>答对了得星星，答错不扣分～
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:6px">
+        <div class="sec-title" style="color:#A8916B">色板</div>
+        <div class="swatches" style="margin-top:10px">
+          <div class="sw" style="background:#E07A5F"><small>#E07A5F</small></div>
+          <div class="sw" style="background:#F2A65A"><small>#F2A65A</small></div>
+          <div class="sw" style="background:#F2CC8F"><small>#F2CC8F</small></div>
+          <div class="sw" style="background:#81B29A"><small>#81B29A</small></div>
+          <div class="sw" style="background:#7D9FC4"><small>#7D9FC4</small></div>
+          <div class="sw" style="background:#9B88B8"><small>#9B88B8</small></div>
+          <div class="sw" style="background:#5B4636"><small>描边</small></div>
+          <div class="sw" style="background:#F7F1E3"><small>纸张底</small></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+/* ===== 方向 A 组件 ===== */
+.btnA{font-family:inherit;font-size:18px;font-weight:900;color:#fff;border:3px solid #3A2E2A;background:#FF6B6B;
+  padding:12px 28px;border-radius:16px;box-shadow:0 5px 0 #3A2E2A;cursor:pointer;transition:transform .12s}
+.btnA:active{transform:translateY(4px);box-shadow:0 1px 0 #3A2E2A}
+/* ===== 方向 B 组件 ===== */
+.btnB{font-family:inherit;font-size:18px;font-weight:900;color:#fff;border:none;
+  background:linear-gradient(180deg,#FFB26B,#FF8A3D);padding:13px 30px;border-radius:999px;
+  box-shadow:0 8px 18px rgba(255,150,70,.45),inset 0 2px 3px rgba(255,255,255,.7),0 3px 0 #E8842E;cursor:pointer;transition:transform .12s}
+.btnB:active{transform:translateY(3px)}
+/* ===== 方向 C 组件 ===== */
+.btnC{font-family:inherit;font-size:18px;font-weight:900;color:#FFFDF6;border:2px solid #5B4636;background:#E07A5F;
+  padding:12px 28px;border-radius:14px;box-shadow:3px 4px 0 #5B4636;cursor:pointer;transition:transform .12s}
+.btnC:active{transform:translate(2px,3px);box-shadow:1px 1px 0 #5B4636}
+</style>
+
+<script>
+/* ============================================================
+   方向 A · 粗描边贴纸风 —— 统一描边 STROKE，白边，平涂
+   ============================================================ */
+const STROKE_A="#3A2E2A", SW_A=3;
+// 贴纸白边：用双层 stroke（外层白色粗，内层深色），paint-order 实现
+function sticker(inner, stroke=STROKE_A, sw=SW_A, fill){
+  return `<g stroke-linecap="round" stroke-linejoin="round">
+    <g fill="${fill||''}" stroke="#fff" stroke-width="${sw+3.2}">${inner}</g>
+    <g fill="${fill||''}" stroke="${stroke}" stroke-width="${sw}">${inner}</g></g>`;
+}
+// 苹果
+const appleA=`<path d="M32 20 C24 14 14 19 14 30 C14 42 22 52 30 52 C31 52 33 52 34 52 C42 52 50 42 50 30 C50 19 40 14 32 20 Z" fill="#FF6B6B"/>
+  <path d="M32 20 C32 16 33 13 36 11" fill="none" stroke="#7A5230" stroke-width="2.6"/>
+  <path d="M36 14 C40 10 45 12 45 15 C42 17 38 16 36 14 Z" fill="#6BCB77"/>
+  <path d="M24 28 C22 30 22 33 24 35" fill="none" stroke="#fff" stroke-width="2" opacity=".8"/>`;
+// 太阳
+const sunA=`<circle cx="32" cy="32" r="13" fill="#FFD93D"/>
+  <g stroke="#FFD93D" stroke-width="4.5"><path d="M32 6v8M32 50v8M6 32h8M50 32h8M13.5 13.5l5.7 5.7M44.8 44.8l5.7 5.7M50.5 13.5l-5.7 5.7M19.2 44.8l-5.7 5.7"/></g>
+  <circle cx="27.5" cy="30" r="1.8" fill="#3A2E2A" stroke="none"/><circle cx="36.5" cy="30" r="1.8" fill="#3A2E2A" stroke="none"/>
+  <path d="M27 36 Q32 40 37 36" fill="none" stroke="#3A2E2A" stroke-width="2"/>
+  <circle cx="23" cy="35" r="2.4" fill="#FF9AA2" stroke="none" opacity=".8"/><circle cx="41" cy="35" r="2.4" fill="#FF9AA2" stroke="none" opacity=".8"/>`;
+// 书本
+const bookA=`<path d="M32 14 C24 10 12 11 11 12 L11 50 C12 49 24 48 32 52 L32 14 Z" fill="#4D96FF"/>
+  <path d="M32 14 C40 10 52 11 53 12 L53 50 C52 49 40 48 32 52 Z" fill="#6FB0FF"/>
+  <path d="M32 15 L32 51" fill="none" stroke="#3A2E2A" stroke-width="2"/>
+  <g stroke="#fff" stroke-width="1.8" opacity=".9"><path d="M16 20 L27 19M16 26 L27 25M37 19 L48 20M37 25 L48 26"/></g>`;
+// 星星
+const starA=`<path d="M32 8 L38 24 L55 25 L42 36 L46 53 L32 44 L18 53 L22 36 L9 25 L26 24 Z" fill="#FFD93D"/>
+  <circle cx="27" cy="30" r="1.7" fill="#3A2E2A" stroke="none"/><circle cx="35" cy="30" r="1.7" fill="#3A2E2A" stroke="none"/>
+  <path d="M27 34 Q31 37 35 34" fill="none" stroke="#3A2E2A" stroke-width="1.8"/>
+  <circle cx="24" cy="33" r="2" fill="#FF9AA2" stroke="none" opacity=".8"/><circle cx="40" cy="33" r="2" fill="#FF9AA2" stroke="none" opacity=".8"/>`;
+// 气球
+const balA=`<ellipse cx="32" cy="26" rx="14" ry="17" fill="#FF6B6B"/>
+  <path d="M24 18 C22 22 23 27 26 29" fill="none" stroke="#fff" stroke-width="2.4" opacity=".8"/>
+  <path d="M30 42 L34 42 L32 46 Z" fill="#E85D4E"/>
+  <path d="M32 46 C30 52 35 55 32 58" fill="none" stroke="#3A2E2A" stroke-width="2"/>`;
+// 小汽车
+const carA=`<path d="M10 38 L14 28 C15 25 18 24 22 24 L40 24 C44 24 47 26 49 29 L53 38 L53 44 C53 46 51 47 49 47 L47 47 C47 43 43 41 40 44 C40 46 40 47 40 47 L24 47 C24 47 24 46 24 44 C21 41 17 43 17 47 L14 47 C11 47 10 46 10 44 Z" fill="#4D96FF"/>
+  <path d="M20 27 L24 27 C25 27 26 28 26 30 L17 30 Z" fill="#DFF0FF" stroke="#3A2E2A" stroke-width="1.5"/>
+  <path d="M38 27 L43 27 C44 27 45 28 45 30 L36 30 C36 28 37 27 38 27 Z" fill="#DFF0FF" stroke="#3A2E2A" stroke-width="1.5"/>
+  <circle cx="20" cy="44" r="4" fill="#3A2E2A"/><circle cx="44" cy="44" r="4" fill="#3A2E2A"/>
+  <circle cx="20" cy="44" r="1.6" fill="#fff" stroke="none"/><circle cx="44" cy="44" r="1.6" fill="#fff" stroke="none"/>`;
+
+const iconsA=[["苹果",appleA],["太阳",sunA],["书本",bookA],["星星",starA],["气球",balA],["汽车",carA]];
+document.getElementById("iconsA").innerHTML=iconsA.map(([n,s])=>
+  `<div class="icon-cell" style="background:#fff;border:2.5px solid #3A2E2A"><svg viewBox="0 0 64 64" width="56" height="56">${s}</svg><span style="color:#8A6A4A">${n}</span></div>`).join("");
+
+// 场景 A
+document.getElementById("sceneA").innerHTML=`
+<div style="position:absolute;inset:0;background:linear-gradient(180deg,#7EC8FF 0%,#B8E4FF 55%,#E8F7FF 100%)"></div>
+<svg style="position:absolute;top:24px;left:40px" width="110" height="50" viewBox="0 0 110 50">
+  ${sticker(`<path d="M25 38 C10 38 8 22 20 20 C22 10 38 8 42 18 C52 12 66 20 60 30 C72 28 78 40 66 42 L24 42 C20 42 20 38 25 38 Z" fill="#fff"`,'#3A2E2A',2.4)}
+</svg>
+<svg style="position:absolute;bottom:0;left:0;right:0" width="100%" height="230" viewBox="0 0 700 230" preserveAspectRatio="none">
+  ${sticker(`<path d="M0 150 Q120 70 240 140 Q360 80 480 140 Q600 75 700 135 L700 230 L0 230 Z" fill="#8FD96B"`,'#3A2E2A',2.6)}
+  ${sticker(`<path d="M0 185 Q150 120 300 180 Q450 125 600 180 Q660 160 700 175 L700 230 L0 230 Z" fill="#6BCB55"`,'#3A2E2A',2.6)}
+</svg>
+<!-- 小花 -->
+<svg style="position:absolute;bottom:46px;left:70px" width="30" height="34" viewBox="0 0 30 34">
+  ${sticker(`<circle cx="15" cy="12" r="5" fill="#FF9EC4"/><g fill="#FFD93D"><circle cx="15" cy="6" r="4.5"/><circle cx="21" cy="12" r="4.5"/><circle cx="15" cy="18" r="4.5"/><circle cx="9" cy="12" r="4.5"/></g><path d="M15 18 L15 32" fill="none" stroke="#3A2E2A" stroke-width="2.4"/>`,'#3A2E2A',2)}
+</svg>
+<svg style="position:absolute;bottom:40px;right:80px" width="30" height="34" viewBox="0 0 30 34">
+  ${sticker(`<circle cx="15" cy="12" r="5" fill="#FFD93D"/><g fill="#fff"><circle cx="15" cy="6" r="4.5"/><circle cx="21" cy="12" r="4.5"/><circle cx="15" cy="18" r="4.5"/><circle cx="9" cy="12" r="4.5"/></g><path d="M15 18 L15 32" fill="none" stroke="#3A2E2A" stroke-width="2.4"/>`,'#3A2E2A',2)}
+</svg>
+<!-- 小熊吉祥物 -->
+<svg style="position:absolute;bottom:30px;left:50%;transform:translateX(-50%)" width="150" height="200" viewBox="0 0 72 96">
+  ${sticker(`
+    <ellipse cx="26" cy="90" rx="9" ry="4.5" fill="#7A5230"/><ellipse cx="46" cy="90" rx="9" ry="4.5" fill="#7A5230"/>
+    <rect x="22" y="66" width="9" height="18" rx="4.5" fill="#C68A52"/><rect x="41" y="66" width="9" height="18" rx="4.5" fill="#C68A52"/>
+    <path d="M22 48 Q22 42 36 42 Q50 42 50 48 L51 70 Q51 74 46 74 L26 74 Q21 74 21 70 Z" fill="#C68A52"/>
+    <ellipse cx="36" cy="62" rx="10" ry="11" fill="#F0D3AC"/>
+    <ellipse cx="15" cy="55" rx="7" ry="6" fill="#C68A52"/><ellipse cx="57" cy="55" rx="7" ry="6" fill="#C68A52"/>
+    <circle cx="18" cy="14" r="7" fill="#C68A52"/><circle cx="18" cy="14" r="3.4" fill="#F0D3AC"/>
+    <circle cx="54" cy="14" r="7" fill="#C68A52"/><circle cx="54" cy="14" r="3.4" fill="#F0D3AC"/>
+    <circle cx="36" cy="30" r="20" fill="#C68A52"/>
+    <ellipse cx="36" cy="37" rx="9" ry="7" fill="#F0D3AC"/>
+    <circle cx="28" cy="28" r="2.6" fill="#3A2E2A" stroke="none"/><circle cx="44" cy="28" r="2.6" fill="#3A2E2A" stroke="none"/>
+    <circle cx="28.8" cy="27" r=".9" fill="#fff" stroke="none"/><circle cx="44.8" cy="27" r=".9" fill="#fff" stroke="none"/>
+    <ellipse cx="36" cy="34.5" rx="3.2" ry="2.6" fill="#3A2E2A" stroke="none"/>
+    <path d="M36 37 L36 39 M36 39 Q33 41 31 39.5 M36 39 Q39 41 41 39.5" fill="none" stroke="#5B3A20" stroke-width="1.5"/>
+    <ellipse cx="20" cy="34" rx="3" ry="2.2" fill="#FF9AA2" stroke="none" opacity=".8"/><ellipse cx="52" cy="34" rx="3" ry="2.2" fill="#FF9AA2" stroke="none" opacity=".8"/>
+  `,'#3A2E2A',2.4)}
+</svg>
+<span class="label" style="color:#3A2E2A">场景预览 · 贴纸大冒险</span>`;
+
+/* ============================================================
+   方向 B · 软糖果冻风 —— 无描边，渐变 + 高光
+   ============================================================ */
+function jelly(grad, body, hl){
+  return `<defs>${grad}</defs>${body}${hl||''}`;
+}
+const appleB=`<defs><radialGradient id="apB" cx="35%" cy="28%" r="80%">
+  <stop offset="0" stop-color="#FFB0BC"/><stop offset="55%" stop-color="#FF8FA3"/><stop offset="100%" stop-color="#F5617A"/></radialGradient></defs>
+  <path d="M32 20 C24 14 14 19 14 30 C14 42 22 52 30 52 C31 52 33 52 34 52 C42 52 50 42 50 30 C50 19 40 14 32 20 Z" fill="url(#apB)"/>
+  <path d="M32 20 C32 16 33 13 36 11" fill="none" stroke="#7A5230" stroke-width="2.6" stroke-linecap="round"/>
+  <path d="M36 14 C40 10 45 12 45 15 C42 17 38 16 36 14 Z" fill="#7BD88F"/>
+  <ellipse cx="24" cy="29" rx="3.4" ry="5" fill="#fff" opacity=".55"/>`;
+const sunB=`<defs><radialGradient id="snB" cx="40%" cy="35%" r="75%">
+  <stop offset="0" stop-color="#FFF3A0"/><stop offset="70%" stop-color="#FFE66D"/><stop offset="100%" stop-color="#FFD43B"/></radialGradient></defs>
+  <g stroke="#FFE66D" stroke-width="5" stroke-linecap="round"><path d="M32 6v8M32 50v8M6 32h8M50 32h8M13.5 13.5l5.7 5.7M44.8 44.8l5.7 5.7M50.5 13.5l-5.7 5.7M19.2 44.8l-5.7 5.7"/></g>
+  <circle cx="32" cy="32" r="13" fill="url(#snB)"/>
+  <ellipse cx="27" cy="27" rx="4" ry="3" fill="#fff" opacity=".5"/>
+  <circle cx="27.5" cy="30" r="1.8" fill="#8A6A2A"/><circle cx="36.5" cy="30" r="1.8" fill="#8A6A2A"/>
+  <path d="M27 36 Q32 40 37 36" fill="none" stroke="#8A6A2A" stroke-width="2" stroke-linecap="round"/>
+  <circle cx="23" cy="35" r="2.4" fill="#FF9AA2" opacity=".7"/><circle cx="41" cy="35" r="2.4" fill="#FF9AA2" opacity=".7"/>`;
+const bookB=`<defs><linearGradient id="bkB" x1="0" y1="0" x2="0" y2="1">
+  <stop offset="0" stop-color="#8FD4FF"/><stop offset="100%" stop-color="#5AA8F0"/></linearGradient></defs>
+  <path d="M32 14 C24 10 12 11 11 12 L11 50 C12 49 24 48 32 52 L32 14 Z" fill="url(#bkB)"/>
+  <path d="M32 14 C40 10 52 11 53 12 L53 50 C52 49 40 48 32 52 Z" fill="#7EC0F8"/>
+  <path d="M32 15 L32 51" stroke="#3D86D0" stroke-width="2" opacity=".6"/>
+  <g stroke="#fff" stroke-width="2" opacity=".85" stroke-linecap="round"><path d="M16 20 L27 19M16 26 L27 25M37 19 L48 20M37 25 L48 26"/></g>
+  <path d="M15 16 L26 14" stroke="#fff" stroke-width="2.5" opacity=".5"/>`;
+const starB=`<defs><radialGradient id="stB" cx="40%" cy="30%" r="80%">
+  <stop offset="0" stop-color="#FFF3A0"/><stop offset="70%" stop-color="#FFE66D"/><stop offset="100%" stop-color="#FFCE3D"/></radialGradient></defs>
+  <path d="M32 8 L38 24 L55 25 L42 36 L46 53 L32 44 L18 53 L22 36 L9 25 L26 24 Z" fill="url(#stB)"/>
+  <ellipse cx="26" cy="24" rx="3" ry="2" fill="#fff" opacity=".5"/>
+  <circle cx="27" cy="30" r="1.7" fill="#8A6A2A"/><circle cx="35" cy="30" r="1.7" fill="#8A6A2A"/>
+  <path d="M27 34 Q31 37 35 34" fill="none" stroke="#8A6A2A" stroke-width="1.8" stroke-linecap="round"/>
+  <circle cx="24" cy="33" r="2" fill="#FF9AA2" opacity=".7"/><circle cx="40" cy="33" r="2" fill="#FF9AA2" opacity=".7"/>`;
+const balB=`<defs><radialGradient id="blB" cx="35%" cy="30%" r="80%">
+  <stop offset="0" stop-color="#FFB0BC"/><stop offset="60%" stop-color="#FF8FA3"/><stop offset="100%" stop-color="#F5617A"/></radialGradient></defs>
+  <ellipse cx="32" cy="26" rx="14" ry="17" fill="url(#blB)"/>
+  <ellipse cx="25" cy="20" rx="3.6" ry="6" fill="#fff" opacity=".6"/>
+  <path d="M30 42 L34 42 L32 46 Z" fill="#F5617A"/>
+  <path d="M32 46 C30 52 35 55 32 58" fill="none" stroke="#B07A5A" stroke-width="2" stroke-linecap="round"/>`;
+const carB=`<defs><linearGradient id="crB" x1="0" y1="0" x2="0" y2="1">
+  <stop offset="0" stop-color="#8FD4FF"/><stop offset="100%" stop-color="#4D9BF0"/></linearGradient></defs>
+  <path d="M10 38 L14 28 C15 25 18 24 22 24 L40 24 C44 24 47 26 49 29 L53 38 L53 44 C53 46 51 47 49 47 L47 47 C47 43 43 41 40 44 C40 46 40 47 40 47 L24 47 C24 47 24 46 24 44 C21 41 17 43 17 47 L14 47 C11 47 10 46 10 44 Z" fill="url(#crB)"/>
+  <path d="M20 27 L24 27 C25 27 26 28 26 30 L17 30 Z" fill="#E8F6FF" opacity=".95"/>
+  <path d="M38 27 L43 27 C44 27 45 28 45 30 L36 30 C36 28 37 27 38 27 Z" fill="#E8F6FF" opacity=".95"/>
+  <circle cx="20" cy="44" r="4" fill="#3A4A5A"/><circle cx="44" cy="44" r="4" fill="#3A4A5A"/>
+  <circle cx="20" cy="44" r="1.6" fill="#BFE4FF"/><circle cx="44" cy="44" r="1.6" fill="#BFE4FF"/>
+  <path d="M14 30 L20 27" stroke="#fff" stroke-width="2" opacity=".5"/>`;
+
+const iconsB=[["苹果",appleB],["太阳",sunB],["书本",bookB],["星星",starB],["气球",balB],["汽车",carB]];
+document.getElementById("iconsB").innerHTML=iconsB.map(([n,s])=>
+  `<div class="icon-cell" style="background:#fff;box-shadow:0 6px 14px rgba(80,150,200,.25)"><svg viewBox="0 0 64 64" width="56" height="56">${s}</svg><span style="color:#5A8AAA">${n}</span></div>`).join("");
+
+// 场景 B
+document.getElementById("sceneB").innerHTML=`
+<div style="position:absolute;inset:0;background:linear-gradient(180deg,#A9DCFF 0%,#D6F0FF 60%,#F0FAFF 100%)"></div>
+<svg style="position:absolute;top:30px;left:50px" width="120" height="60" viewBox="0 0 120 60">
+  <defs><linearGradient id="clB" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="#E4F2FF"/></linearGradient></defs>
+  <path d="M28 46 C12 46 10 26 24 24 C26 12 44 10 48 22 C60 14 76 24 68 36 C82 34 88 48 74 50 L26 50 C20 50 22 46 28 46 Z" fill="url(#clB)"/>
+  <ellipse cx="30" cy="26" rx="6" ry="4" fill="#fff" opacity=".8"/>
+</svg>
+<svg style="position:absolute;bottom:0;left:0;right:0" width="100%" height="230" viewBox="0 0 700 230" preserveAspectRatio="none">
+  <defs><linearGradient id="h1B" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9BE4A8"/><stop offset="1" stop-color="#7BD88F"/></linearGradient>
+  <linearGradient id="h2B" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7BD88F"/><stop offset="1" stop-color="#5BC477"/></linearGradient></defs>
+  <path d="M0 150 Q120 70 240 140 Q360 80 480 140 Q600 75 700 135 L700 230 L0 230 Z" fill="url(#h1B)"/>
+  <path d="M0 185 Q150 120 300 180 Q450 125 600 180 Q660 160 700 175 L700 230 L0 230 Z" fill="url(#h2B)"/>
+</svg>
+<!-- 小恐龙吉祥物（果冻） -->
+<svg style="position:absolute;bottom:28px;left:50%;transform:translateX(-50%)" width="160" height="190" viewBox="0 0 80 96">
+  <defs><radialGradient id="drB" cx="38%" cy="28%" r="85%">
+    <stop offset="0" stop-color="#A8E8B4"/><stop offset="60%" stop-color="#7BD88F"/><stop offset="100%" stop-color="#55C472"/></radialGradient></defs>
+  <ellipse cx="26" cy="92" rx="8" ry="3.5" fill="#3D8A52"/><ellipse cx="50" cy="92" rx="8" ry="3.5" fill="#3D8A52"/>
+  <path d="M26 70 L26 88 L34 88 L34 70 Z" fill="url(#drB)"/><path d="M44 70 L44 88 L52 88 L52 70 Z" fill="url(#drB)"/>
+  <path d="M22 46 Q20 40 28 38 L52 38 Q62 40 60 50 L58 72 Q58 78 50 78 L30 78 Q22 78 22 70 Z" fill="url(#drB)"/>
+  <g fill="#55C472"><path d="M26 40 L24 30 L32 38 Z"/><path d="M36 38 L36 28 L42 38 Z"/><path d="M46 38 L50 28 L54 38 Z"/></g>
+  <ellipse cx="40" cy="58" rx="12" ry="10" fill="#D8F5DE" opacity=".8"/>
+  <path d="M52 36 Q66 34 66 24 Q66 20 62 22 Q56 26 54 34 Z" fill="url(#drB)"/>
+  <circle cx="32" cy="24" r="16" fill="url(#drB)"/>
+  <ellipse cx="26" cy="18" rx="5" ry="4" fill="#fff" opacity=".55"/>
+  <circle cx="27" cy="23" r="2.6" fill="#2A4A30"/><circle cx="39" cy="23" r="2.6" fill="#2A4A30"/>
+  <circle cx="28" cy="22" r=".9" fill="#fff"/><circle cx="40" cy="22" r=".9" fill="#fff"/>
+  <path d="M27 30 Q33 35 39 30" fill="none" stroke="#2A4A30" stroke-width="2" stroke-linecap="round"/>
+  <circle cx="22" cy="29" r="2.6" fill="#FF9AA2" opacity=".7"/><circle cx="44" cy="29" r="2.6" fill="#FF9AA2" opacity=".7"/>
+</svg>
+<span class="label" style="color:#3D86C0">场景预览 · 软糖乐园</span>`;
+
+/* ============================================================
+   方向 C · 绘本手绘风 —— 手绘描边 + 水彩
+   ============================================================ */
+const STROKE_C="#5B4636";
+function hb(inner, sw=2.4){
+  return `<g fill="none" stroke="${STROKE_C}" stroke-width="${sw}" stroke-linecap="round" stroke-linejoin="round">${inner}</g>`;
+}
+const appleC=`<path d="M32 21 C24 15 14 20 14 31 C14 42 22 51 30 51 C31 51 33 51 34 51 C42 51 50 42 50 31 C50 20 40 15 32 21 Z" fill="#E07A5F"/>
+  <path d="M32 21 C32 17 33 14 36 12" fill="none" stroke="#6E5230" stroke-width="2.4" stroke-linecap="round"/>
+  <path d="M36 15 C40 11 45 13 45 16 C42 18 38 17 36 15 Z" fill="#81B29A"/>
+  <path d="M21 28 C20 32 22 36 25 38" fill="none" stroke="#fff" stroke-width="2" opacity=".7" stroke-linecap="round"/>
+  <path d="M23 30 C21 33 22 37 24 39" fill="none" stroke="#B85A45" stroke-width="1.2" opacity=".6"/>`;
+const sunC=`<g stroke="#F2A65A" stroke-width="4" stroke-linecap="round"><path d="M32 7l1 7M31 50l1 7M7 32l7-1M50 33l7-1M14 14l6 5M45 45l5 6M50 14l-5 6M19 45l-6 6"/></g>
+  <circle cx="32" cy="32" r="12.5" fill="#F2CC8F"/>
+  <path d="M22 30 C24 26 28 26 30 29 C26 30 24 32 22 30 Z" fill="#F7E0B0" opacity=".8"/>
+  <circle cx="27.5" cy="30" r="1.7" fill="#5B4636"/><circle cx="36.5" cy="30" r="1.7" fill="#5B4636"/>
+  <path d="M27 36 Q32 40 37 36" fill="none" stroke="#5B4636" stroke-width="1.9" stroke-linecap="round"/>
+  <circle cx="23" cy="35" r="2.3" fill="#E07A5F" opacity=".55"/><circle cx="41" cy="35" r="2.3" fill="#E07A5F" opacity=".55"/>`;
+const bookC=`<path d="M32 15 C24 11 12 12 11 13 L11 49 C12 48 24 47 32 51 L32 15 Z" fill="#7D9FC4"/>
+  <path d="M32 15 C40 11 52 12 53 13 L53 49 C52 48 40 47 32 51 Z" fill="#94B2D0"/>
+  <path d="M32 16 L32 50" fill="none" stroke="#5B4636" stroke-width="1.8"/>
+  <g stroke="#FFFDF6" stroke-width="1.8" opacity=".8" stroke-linecap="round"><path d="M16 21 L27 20M16 27 L27 26M37 20 L48 21M37 26 L48 27"/></g>
+  <path d="M14 16 C20 13 27 13 31 16" fill="none" stroke="#fff" stroke-width="1.4" opacity=".5"/>`;
+const starC=`<path d="M32 9 L37.5 24 L54 25.5 L41.5 36 L45.5 52 L32 44 L18.5 52 L22.5 36 L10 25.5 L26.5 24 Z" fill="#F2CC8F"/>
+  <path d="M26 24 C28 21 32 21 33 24" fill="none" stroke="#fff" stroke-width="1.6" opacity=".6"/>
+  <circle cx="27" cy="30" r="1.6" fill="#5B4636"/><circle cx="35" cy="30" r="1.6" fill="#5B4636"/>
+  <path d="M27 34 Q31 37 35 34" fill="none" stroke="#5B4636" stroke-width="1.7" stroke-linecap="round"/>
+  <circle cx="24" cy="33" r="1.9" fill="#E07A5F" opacity=".6"/><circle cx="40" cy="33" r="1.9" fill="#E07A5F" opacity=".6"/>`;
+const balC=`<ellipse cx="32" cy="26" rx="13.5" ry="16.5" fill="#9B88B8"/>
+  <path d="M24 18 C22 23 24 28 27 30" fill="none" stroke="#fff" stroke-width="2.2" opacity=".7" stroke-linecap="round"/>
+  <path d="M30 42 L34 42 L32 46 Z" fill="#8470A0"/>
+  <path d="M32 46 C30 52 35 55 32 58" fill="none" stroke="#5B4636" stroke-width="2" stroke-linecap="round"/>
+  <path d="M38 22 C40 26 39 30 37 32" fill="none" stroke="#7A66A0" stroke-width="1.2" opacity=".6"/>`;
+const carC=`<path d="M10 38 L14 28 C15 25 18 24 22 24 L40 24 C44 24 47 26 49 29 L53 38 L53 44 C53 46 51 47 49 47 L47 47 C47 43 43 41 40 44 C40 46 40 47 40 47 L24 47 C24 47 24 46 24 44 C21 41 17 43 17 47 L14 47 C11 47 10 46 10 44 Z" fill="#7D9FC4"/>
+  <path d="M20 27 L24 27 C25 27 26 28 26 30 L17 30 Z" fill="#DCE8F2"/>
+  <path d="M38 27 L43 27 C44 27 45 28 45 30 L36 30 C36 28 37 27 38 27 Z" fill="#DCE8F2"/>
+  <circle cx="20" cy="44" r="3.8" fill="#5B4636"/><circle cx="44" cy="44" r="3.8" fill="#5B4636"/>
+  <circle cx="20" cy="44" r="1.4" fill="#94B2D0"/><circle cx="44" cy="44" r="1.4" fill="#94B2D0"/>`;
+
+const iconsC=[["苹果",appleC],["太阳",sunC],["书本",bookC],["星星",starC],["气球",balC],["汽车",carC]];
+document.getElementById("iconsC").innerHTML=iconsC.map(([n,s])=>
+  `<div class="icon-cell" style="background:#FFFDF6;border:2px solid #5B4636;box-shadow:3px 4px 0 rgba(91,70,54,.2)"><svg viewBox="0 0 64 64" width="56" height="56">${s}</svg><span style="color:#A8916B">${n}</span></div>`).join("");
+
+// 场景 C
+document.getElementById("sceneC").innerHTML=`
+<div style="position:absolute;inset:0;background:#F2E8D5"></div>
+<svg style="position:absolute;inset:0" width="100%" height="100%" viewBox="0 0 700 430" preserveAspectRatio="xMidYMid slice">
+  <defs><filter id="paper"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" result="n"/><feColorMatrix in="n" type="matrix" values="0 0 0 0 0.45  0 0 0 0 0.38  0 0 0 0.28 0  0 0 0 0.06 0"/></filter></defs>
+  <rect width="700" height="430" fill="#F2E8D5"/><rect width="700" height="430" filter="url(#paper)" opacity=".5"/>
+  <!-- 手绘太阳 -->
+  <g stroke="#C98A3A" stroke-width="3" stroke-linecap="round" fill="#F2CC8F"><circle cx="600" cy="70" r="34"/>
+  <g stroke="#F2A65A" stroke-width="3.5"><path d="M600 18l-1 12M600 110l1 12M548 70l12 1M640 70l12-1M563 33l9 8M628 99l9 9M637 33l-9 8M572 99l-9 9"/></g></g>
+  <!-- 山丘 -->
+  <path d="M-20 300 Q120 200 260 290 Q400 210 540 290 Q640 230 720 280 L720 430 L-20 430 Z" fill="#94B89A"/>
+  <path d="M-20 340 Q160 270 340 335 Q500 275 660 335 Q700 320 720 330 L720 430 L-20 430 Z" fill="#81B29A"/>
+  <!-- 树 -->
+  <path d="M120 320 L120 270" stroke="#6E5230" stroke-width="7" stroke-linecap="round"/>
+  <path d="M120 250 C95 250 92 220 112 214 C108 188 140 182 146 206 C168 206 172 238 150 242 C152 252 140 256 132 252 Z" fill="#81B29A" stroke="#5B4636" stroke-width="2.4" stroke-linejoin="round"/>
+</svg>
+<!-- 小兔子吉祥物 -->
+<svg style="position:absolute;bottom:24px;left:50%;transform:translateX(-50%)" width="140" height="195" viewBox="0 0 72 96">
+  <ellipse cx="26" cy="91" rx="8" ry="4" fill="#B89A78"/><ellipse cx="46" cy="91" rx="8" ry="4" fill="#B89A78"/>
+  <path d="M24 68 L24 87 L32 87 L32 68 Z" fill="#F2E4D0"/><path d="M40 68 L40 87 L48 87 L48 68 Z" fill="#F2E4D0"/>
+  <path d="M22 48 Q22 42 36 42 Q50 42 50 48 L51 70 Q51 74 46 74 L26 74 Q21 74 21 70 Z" fill="#F2E4D0"/>
+  <ellipse cx="36" cy="62" rx="9" ry="10" fill="#FFF6EC"/>
+  <ellipse cx="15" cy="55" rx="6.5" ry="5.5" fill="#F2E4D0"/><ellipse cx="57" cy="55" rx="6.5" ry="5.5" fill="#F2E4D0"/>
+  <!-- 长耳朵 -->
+  <ellipse cx="24" cy="12" rx="5.5" ry="13" fill="#F2E4D0"/><ellipse cx="24" cy="13" rx="2.6" ry="9" fill="#F2B8B0"/>
+  <ellipse cx="48" cy="12" rx="5.5" ry="13" fill="#F2E4D0"/><ellipse cx="48" cy="13" rx="2.6" ry="9" fill="#F2B8B0"/>
+  <circle cx="36" cy="32" r="18" fill="#F2E4D0"/>
+  <ellipse cx="36" cy="38" rx="8" ry="6" fill="#FFF6EC"/>
+  <circle cx="29" cy="30" r="2.4" fill="#5B4636"/><circle cx="43" cy="30" r="2.4" fill="#5B4636"/>
+  <circle cx="29.8" cy="29" r=".8" fill="#fff"/><circle cx="43.8" cy="29" r=".8" fill="#fff"/>
+  <ellipse cx="36" cy="36" rx="2.8" ry="2.2" fill="#E07A7A"/>
+  <path d="M36 38 L36 40 M36 40 Q34 41.5 32 40.5 M36 40 Q38 41.5 40 40.5" fill="none" stroke="#8A5A4A" stroke-width="1.4" stroke-linecap="round"/>
+  <ellipse cx="21" cy="35" r="2.8" ry="2" fill="#F2A6A0" opacity=".7"/><ellipse cx="51" cy="35" r="2.8" ry="2" fill="#F2A6A0" opacity=".7"/>
+</svg>
+<span class="label" style="color:#5B4636">场景预览 · 童话绘本</span>`;
+</script>
+</body>
+</html>

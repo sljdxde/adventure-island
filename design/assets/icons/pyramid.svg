@@ -1,5 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs><linearGradient id="g-py" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F2C14E"/><stop offset="1" stop-color="#C99A3C"/></linearGradient></defs>
-  <path d="M26 14 L56 52 L26 52 Z" fill="url(#g-py)"/>
-  <path d="M26 14 L26 52 L4 52 Z" fill="#A87F2E"/>
-  <circle cx="52" cy="14" r="6" fill="#FFE58A"/>
-  <path d="M8 56 h48" stroke="#D8B26A" stroke-width="3" stroke-linecap="round"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs>
+      <linearGradient id="py-lit" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0" stop-color="#F2D28A"/><stop offset="100%" stop-color="#E0B460"/>
+      </linearGradient>
+    </defs>
+    <circle cx="50" cy="13" r="9" fill="#FFD96B" opacity="0.28"/>
+    <circle cx="50" cy="13" r="6" fill="#FFD96B"/>
+    <path d="M44 52 L54 36 L64 52 Z" fill="#C9A055" opacity="0.8"/>
+    <path d="M12 54 L34 14 L34 54 Z" fill="#D8A868"/>
+    <path d="M34 14 L56 54 L34 54 Z" fill="url(#py-lit)"/>
+    <path d="M27 36 L43 36 M24 42 L48 42 M21 48 L51 48" stroke="#B88840" stroke-width="0.8" opacity="0.4"/>
+    <rect x="2" y="52" width="60" height="8" fill="#E0BC7A"/></svg>

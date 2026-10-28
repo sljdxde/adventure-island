@@ -45,10 +45,17 @@ enum IconEmoji {
         "kangaroo": "🦘", "polarbear": "🐻‍❄️", "libertystatue": "🗽", "windmill": "🌬️",
         "dog": "🐶", "fish": "🐟", "bread": "🍞", "milk": "🥛", "egg": "🥚",
         "bird": "🐦", "tiger": "🐯", "monkey": "🐵", "car": "🚗", "ball": "⚽",
-        "bed": "🛏️", "shoe": "👟", "hat": "🎩", "cup": "🥤", "cow": "🐮",
+        "bed": "🛏️", "chair": "🪑", "shoe": "👟", "hat": "🎩", "cup": "🥤", "cow": "🐮",
         "pig": "🐷", "frog": "🐸", "bee": "🐝", "bus": "🚌",
         "bg-writer": "✍️", "bg-mul": "✖️", "bg-sudoku": "🔢", "bg-geo": "🧭", "bg-words50": "📚",
-        "hills-back": "⛰", "hills-front": "🏞"
+        "hills-back": "⛰", "hills-front": "🏞",
+        // v1.0.5 新增图标兜底（内容层写实/概念 + 框架层手绘）
+        "airtwinkle": "✨", "storm": "🌀", "bolt": "⚡", "compass": "🧭", "spoon": "🥄",
+        "sleepingbag": "😴", "waterpouch": "💧", "kite": "🪁", "rustsoil": "🟤",
+        "pine": "🌲", "grassland": "🌾", "shanshui": "⛰️", "coral": "🪸",
+        "island": "🏝️", "pumpkin": "🎃", "santa": "🎅", "aurora": "🌌",
+        "sunset": "🌇", "happy": "😀", "excited": "🤩", "sing": "🎵",
+        "teacher": "👩‍🏫", "foot": "👣", "trex": "🦖", "bronto": "🦕", "roar": "🗯️"
     ]
 }
 

@@ -1,4 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs><linearGradient id="g-gold" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFE58A"/><stop offset="1" stop-color="#F7B32B"/></linearGradient></defs>
-  <path d="M32 6 Q34 26 54 32 Q34 38 32 58 Q30 38 10 32 Q30 26 32 6 Z" fill="url(#g-gold)"/>
-  <circle cx="48" cy="14" r="3" fill="url(#g-gold)" opacity=".85"/><circle cx="16" cy="48" r="2.5" fill="url(#g-gold)" opacity=".8"/>
-  <circle cx="32" cy="32" r="3" fill="#fff" opacity=".75"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><style>.st{stroke:#5B4636;stroke-width:2.4;stroke-linejoin:round;stroke-linecap:round}.th{stroke:#5B4636;stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round}</style><path class="st" d="M32 8 Q35 27 54 32 Q35 37 32 56 Q29 37 10 32 Q29 27 32 8 Z" fill="#F5C842"/><circle cx="48" cy="16" r="3" fill="#F5C842" opacity="0.9"/><circle cx="17" cy="47" r="2.5" fill="#F5C842" opacity="0.8"/></svg>

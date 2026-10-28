@@ -1,4 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs><linearGradient id="g-coral" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFA793"/><stop offset="1" stop-color="#F0705F"/></linearGradient></defs>
-  <path d="M18 22 L20 50 Q20 54 24 54 L40 54 Q44 54 44 50 L46 22 Z" fill="url(#g-coral)"/>
-  <path d="M46 26 Q54 28 52 36 Q50 42 44 40" fill="none" stroke="url(#g-coral)" stroke-width="3"/>
-  <path d="M22 34 L42 34" stroke="#fff" stroke-width="2" opacity=".5"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><style>.st{stroke:#5B4636;stroke-width:2.3;stroke-linejoin:round;stroke-linecap:round}.th{stroke:#5B4636;stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round}</style><path class="st" d="M18 22 L20 50 Q20 54 24 54 L40 54 Q44 54 44 50 L46 22 Z" fill="#F2A0B0"/><path d="M46 28 Q54 29 53 37 Q52 44 45 42" fill="none" stroke="#5B4636" stroke-width="3" stroke-linecap="round"/><path d="M26 18 Q24 13 27 9 M33 18 Q31 13 34 9" fill="none" stroke="#C0B8A8" stroke-width="2" stroke-linecap="round"/><ellipse cx="32" cy="24" rx="13" ry="3" fill="#F7D8E0"/></svg>

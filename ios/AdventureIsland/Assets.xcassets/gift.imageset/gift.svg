@@ -1,8 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs><linearGradient id="g-coral" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFA793"/><stop offset="1" stop-color="#F0705F"/></linearGradient><linearGradient id="g-red" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FF8A7A"/><stop offset="1" stop-color="#E8564A"/></linearGradient><linearGradient id="g-gold" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFE58A"/><stop offset="1" stop-color="#F7B32B"/></linearGradient><linearGradient id="g-golddk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F5C243"/><stop offset="1" stop-color="#E5A916"/></linearGradient></defs>
-  <rect x="10" y="26" width="44" height="30" rx="6" fill="url(#g-coral)"/>
-  <rect x="7" y="18" width="50" height="12" rx="5" fill="url(#g-red)"/>
-  <rect x="28" y="18" width="8" height="38" fill="url(#g-gold)"/>
-  <path d="M32 18 Q22 5 15 11 Q11 18 24 18 Z" fill="url(#g-gold)"/>
-  <path d="M32 18 Q42 5 49 11 Q53 18 40 18 Z" fill="url(#g-golddk)"/>
-  <circle cx="32" cy="17" r="4" fill="url(#g-golddk)"/>
-  <rect x="14" y="32" width="6" height="18" rx="3" fill="#fff" opacity=".3"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><style>.st{stroke:#5B4636;stroke-width:2.4;stroke-linejoin:round;stroke-linecap:round}.th{stroke:#5B4636;stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round}</style><rect class="st" x="11" y="28" width="42" height="26" rx="4" fill="#F07868"/><rect class="st" x="8" y="19" width="48" height="11" rx="4" fill="#E8654F"/><rect x="29" y="19" width="6" height="35" fill="#FFD93D"/><path class="st" d="M32 19 Q22 6 15 12 Q11 19 25 19 Z" fill="#FFD93D"/><path class="st" d="M32 19 Q42 6 49 12 Q53 19 39 19 Z" fill="#F5C842"/><circle cx="32" cy="18" r="3.5" fill="#F5C842"/><ellipse cx="17" cy="34" rx="2.5" ry="7" fill="#fff" opacity="0.35"/></svg>
