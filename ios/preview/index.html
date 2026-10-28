@@ -2005,7 +2005,7 @@ function renderLevels(){
     byZone[z].forEach(({lv,i})=>{
       const st=nodeState(sub,i);
       const stars=S.stars[lv.id]||0;
-      const locked=st==="lock";
+      const locked=false;   /* v1.0.7：关卡全部开放，任意选择（星星/进度标记仍保留） */
       /* 图标按关卡内容取，不再一律用学科图标（原来 100 关长得一模一样）：
          优先用学一学卡的天体/图标，其次题目标签，最后才是学科图标 */
       const teach=lv.steps.find(x=>x.kind==="letter")||{};
@@ -5148,6 +5148,7 @@ function coinStats(){
   }).join("");
   return {rows,earned,spent};
 }
+let parentUnlocked=false;   /* 本次启动内验证一次即可；整页重渲染不再弹门（修复点设置跳回验证的 bug） */
 function renderParent(){
   timersClear();
   const cnT=SUBJECTS.cn.total, mT=SUBJECTS.math.total, aT=SUBJECTS.astro.total;
@@ -5217,7 +5218,7 @@ function renderParent(){
     <div class="gate" id="gate"><div class="card" id="gateCard">
       <div style="font-size:52px">🔐</div>
       <div style="font-size:26px;font-weight:900;margin:4px 0">家长中心</div>
-      <div style="font-size:15px;color:var(--ink-soft);font-weight:800;margin-bottom:4px">这里是大人的设置区，请完成验证：<br>（孩子答不出来的小算术 😊）</div>
+      <div style="font-size:15px;color:var(--ink-soft);font-weight:800;margin-bottom:4px">这里是大人的设置区，请完成验证：<br>（乘除法门禁，小朋友算不出来 😊）</div>
       <div class="q" id="gateQ"></div>
       <div style="display:flex;gap:12px;justify-content:center">
         <input id="gateInput" type="number" placeholder="答案" inputmode="numeric">
@@ -5226,7 +5227,8 @@ function renderParent(){
       <div style="margin-top:12px;font-size:12px;color:var(--ink-soft)">提示：答案会随题目刷新</div>
     </div></div>
   </div>`;
-  newGate();
+  if(parentUnlocked){ const g=$("#gate"); if(g) g.style.display="none"; }
+  else newGate();
 }
 function pRow(icon,nm,ratio,val){ return `<div class="subj-row">${ic(icon,19)}<span class="nm">${nm}</span><div class="track"><i style="width:${Math.round(ratio*100)}%"></i></div><span class="val">${val}</span></div>`; }
 /* 分段选择器：行为注册表 + data 属性事件 */
@@ -5270,14 +5272,17 @@ function dailyBump(d){
 }
 function dailyToggle(){ S.settings.daily=(S.settings.daily===0)?15:0; save(); renderParent(); toast("设置已保存",1); }
 function newGate(){
-  const a=6+Math.floor(Math.random()*4), b=6+Math.floor(Math.random()*4);
-  window._gateAns=a+b;
-  const q=$("#gateQ"); if(q) q.textContent=`${a} + ${b} = ?`;
+  /* 乘除法门禁：乘法 3×3~9×9；除法由乘法反推（整除），大人顺手、学龄前孩子够不着 */
+  const a=3+Math.floor(Math.random()*7), b=3+Math.floor(Math.random()*7);
+  const isMul=Math.random()<0.5;
+  const qText=isMul?`${a} × ${b} = ?`:`${a*b} ÷ ${a} = ?`;
+  window._gateAns=isMul?a*b:b;
+  const q=$("#gateQ"); if(q) q.textContent=qText;
   const inp=$("#gateInput"); if(inp){ inp.value=""; inp.onkeydown=e=>{if(e.key==="Enter")checkGate();}; }
 }
 function checkGate(){
   const v=parseInt($("#gateInput").value);
-  if(v===window._gateAns){ $("#gate").style.display="none"; toast("✅ 家长验证通过"); }
+  if(v===window._gateAns){ parentUnlocked=true; $("#gate").style.display="none"; toast("✅ 家长验证通过"); }
   else { const c=$("#gateCard"); c.classList.remove("shakeit"); void c.offsetWidth; c.classList.add("shakeit"); toast("答案不对哦，再试试"); newGate(); }
 }
 function resetAll(){
