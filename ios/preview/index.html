@@ -203,7 +203,9 @@ img.ic{display:inline-block;vertical-align:middle}
 .zl-card.done .zl-meta{color:var(--gold-ddk);letter-spacing:1px}
 .zl-card.cur{border-color:var(--accent);box-shadow:0 0 0 4px rgba(245,159,67,.2),0 3px 0 var(--accent-dk)}
 .zl-card.cur .zl-meta{color:var(--accent-ink)}
-.zl-card.lock{opacity:.55;background:#F6F2EA}
+/* v1.0.9：关卡全开放，未玩关卡=正常白卡（不再半透明幽灵化） */
+.zl-card.lock{opacity:1;background:#fff}
+.zl-card.lock .zl-ic{background:#F3F7F3}
 .zl-redo{position:absolute;right:7px;bottom:7px;border:2px solid #fff;border-radius:999px;cursor:pointer;
   font-family:inherit;font-size:11.5px;font-weight:900;color:#8A5B00;padding:3px 9px;
   background:linear-gradient(180deg,#FFF6DF,#FFE4A8);box-shadow:0 2px 0 #E3C57E}
@@ -1209,6 +1211,50 @@ body{font-family:var(--font-body)}
     scroll-behavior:auto !important;
   }
 }
+
+/* ============ v1.0.9 迪士尼质感层：运动曲线 / 入场编排 / 按压手感 / 光影 ============
+   口径：所有运动走「先快后缓带一点回弹」的弧线；元素入场有编排（逐张弹出）；
+   按压有预备动作（往里按、影子收紧）；卡片有顶部高光与双层柔影。 */
+:root{
+  --ease-spring:cubic-bezier(.34,1.56,.64,1);   /* 回弹 */
+  --ease-out-soft:cubic-bezier(.22,1,.36,1);    /* 柔出 */
+  --dur-fast:.18s; --dur-med:.34s;
+}
+/* —— 整屏入场：每次路由/步骤重渲染自动重放（淡入 + 轻微景深推近） —— */
+.screen{animation:screenIn var(--dur-med) var(--ease-out-soft)}
+@keyframes screenIn{from{opacity:0;transform:scale(.985) translateY(7px)}to{opacity:1;transform:none}}
+/* —— 按压手感：预备动作（往里按 + 阴影收紧） —— */
+.jbtn,.sqbtn,.seg button,.modbtn,.speakopt,.tab{
+  transition:transform var(--dur-fast) var(--ease-out-soft),box-shadow var(--dur-fast) var(--ease-out-soft)}
+.jbtn:active,.sqbtn:active,.seg button:active,.modbtn:active,.speakopt:active{
+  transform:translateY(3px) scale(.96);filter:brightness(.97)}
+.dock-item,.zl-card,.shop-card,.hb-node,.wordchip{
+  transition:transform var(--dur-fast) var(--ease-spring),box-shadow var(--dur-fast) var(--ease-out-soft)}
+.dock-item:active,.zl-card:active,.shop-card:active,.hb-node:active{transform:scale(.93)}
+/* —— 卡片光影：顶部高光（体积感）——与既有投影叠加 —— */
+.sticker,.panel,.zl-card,.shop-card,.hb-node,.lettercard,.fin-card,.modbtn{
+  background-image:linear-gradient(180deg,rgba(255,255,255,.75),rgba(255,255,255,0) 46%)}
+.zl-card:hover,.shop-card:hover{transform:translateY(-4px) scale(1.02);
+  box-shadow:0 12px 24px rgba(84,66,58,.16),0 3px 0 var(--line)}
+/* —— 入场编排：关卡卡逐张弹出（波次延迟，像多米诺） —— */
+.zl-card,.shop-card,.hb-node{animation:cardIn .42s var(--ease-spring) backwards}
+.zl-card:nth-child(6n+2),.shop-card:nth-child(6n+2),.hb-node:nth-child(6n+2){animation-delay:.05s}
+.zl-card:nth-child(6n+3),.shop-card:nth-child(6n+3),.hb-node:nth-child(6n+3){animation-delay:.1s}
+.zl-card:nth-child(6n+4),.shop-card:nth-child(6n+4),.hb-node:nth-child(6n+4){animation-delay:.15s}
+.zl-card:nth-child(6n+5),.shop-card:nth-child(6n+5),.hb-node:nth-child(6n+5){animation-delay:.2s}
+.zl-card:nth-child(6n+6),.shop-card:nth-child(6n+6),.hb-node:nth-child(6n+6){animation-delay:.25s}
+@keyframes cardIn{from{opacity:0;transform:scale(.72) translateY(12px)}}
+/* —— 角色 idle：呼吸式微缩放（squash & stretch 温和版），与既有 .bob 浮动并存 —— */
+.hb-mascot{animation:breathe 2.8s var(--ease-out-soft) infinite}
+@keyframes breathe{0%,100%{transform:translateX(-50%) scale(1,1)}50%{transform:translateX(-50%) scale(1.04,.96)}}
+.mascot-row .m,.cer-badge,.fin-badge{animation:breathe2 3.2s var(--ease-out-soft) infinite}
+@keyframes breathe2{0%,100%{transform:scale(1,1)}50%{transform:scale(1.035,.965)}}
+/* —— 结算卡星星点亮时带挤压回弹（复用已有 fin-star 动画曲线，不重复定义） —— */
+/* —— 无障碍：系统减弱动态时全部动画立即完成 —— */
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-delay:0ms!important;transition-duration:.01ms!important}
+}
+
 </style>
 </head>
 <body>
@@ -2012,7 +2058,7 @@ function renderLevels(){
       html+=`<div class="zl-card ${st}" ${locked?`onclick="toast('先通过前面的关卡才能解锁哦')"`:`onclick="enterLevel('${sub}',${i})"`}>
         <div class="zl-ic">${locked?ic("lock",26):ic(icon,30)}</div>
         <div class="zl-nm">${nm}</div>
-        <div class="zl-meta">${locked?"未解锁":(stars?("★".repeat(stars)+"☆".repeat(3-stars)):(st==="cur"?"进行中":"可重玩"))}</div>
+        <div class="zl-meta">${locked?"未解锁":(stars?("★".repeat(stars)+"☆".repeat(3-stars)):(st==="cur"?"进行中":(st==="lock"?"可玩":"可重玩")))}</div>
         ${locked?"":`<button class="zl-redo" onclick="event.stopPropagation();enterLevel('${sub}',${i});setTimeout(restartLevel,60)" title="从第 1 步重新开始这一关">重玩</button>`}
       </div>`;
     });
