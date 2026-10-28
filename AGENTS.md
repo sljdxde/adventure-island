@@ -58,3 +58,10 @@ python3 ios/tools/audit_preview.py    # 语义闸门：图文一致/声母一致
   - 交付前必须完成上面两条 md5 核对，并在交付说明里贴出核对结果。
 
 - 改完更新 `ios/docs/工作进展与待办-*.md`，把「已完成」与「仍待办」写清，**不要留下虚假的已完成声明**。
+
+## 4. UI 表达纪律
+
+- **Avoid unnecessary secondary labels and descriptions. Let the layout do the explaining.**
+  （避免多余的二级标签和文字说明，让布局本身完成解释——能用位置/分组/视觉层级表达的，就不要再加一行小字标注；每个界面元素的存在都要有信息职责，装饰性重复文案一律删。）
+
+---
