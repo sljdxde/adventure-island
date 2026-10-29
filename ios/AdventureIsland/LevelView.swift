@@ -15,7 +15,14 @@ struct LevelView: View {
     let index: Int
 
     @State private var content: SubjectFile?
-    @State private var flow = LevelFlow()
+    @State private var flow: LevelFlow = {
+        #if DEBUG
+        if let s = DebugLaunch.arg("-AIStepAt"), let n = Int(s) {
+            var f = LevelFlow(); f.jump(to: n); return f
+        }
+        #endif
+        return LevelFlow()
+    }()
 
     private var level: Level? { content?.levels[safe: index] }
     private var step: Step? { level?.steps[safe: flow.stepIndex] }
@@ -76,6 +83,11 @@ struct LevelView: View {
             if content == nil {
                 content = ContentLoader.load(SubjectFile.self, config.file)
             }
+            #if DEBUG
+            if let stepArg = DebugLaunch.arg("-AIStep"), let n = Int(stepArg), n > 0 {
+                for _ in 0..<n { flow.advance(stepCount: level?.steps.count ?? 0) }
+            }
+            #endif
             // 学过的内容进收集册
             if let teach = level?.steps.first(where: { $0.kind == "teach" }), let ch = teach.char {
                 store.learnHanzi(ch)
@@ -95,7 +107,7 @@ struct LevelView: View {
 
     private var header: some View {
         HStack(spacing: 14) {
-            SquareIconButton(icon: "back", size: 56, action: { route = .map })
+            SquareIconButton(icon: "back", size: 56, action: goBack)
             VStack(alignment: .leading, spacing: 1) {
                 Text("\(subjectTitle) · \(level?.title ?? "")")
                     .font(.kidHead(22))
@@ -128,6 +140,21 @@ struct LevelView: View {
             case "neighbor": name = "填一填"
             case "memory": name = "翻翻牌"
             case "dice": name = "掷骰子"
+            case "write": name = "写一写"
+            case "muldiv": name = "乘除法"
+            case "cards": name = "凑十牌"
+            case "sudoku": name = "数独"
+            case "clock": name = "认钟表"
+            case "money": name = "买东西"
+            case "mappuzzle": name = "拼地图"
+            case "balance": name = "秤一秤"
+            case "sort": name = "拖一拖"
+            case "tapall": name = "点点看"
+            case "match": name = "连一连"
+            case "lineup": name = "排排队"
+            case "sequence": name = "点火"
+            case "spotlight": name = "找星星"
+            case "shadow": name = "猜影子"
             default: name = "比一比"
             }
             return StepChipState(title: name, state: i < flow.stepIndex ? .done : (i == flow.stepIndex ? .now : .todo))
@@ -135,6 +162,16 @@ struct LevelView: View {
     }
 
     // MARK: 步骤推进（认一认完成后手动进入下一步）
+
+    /// 返回：星区分章学科回本星区路径页，其余回主页地图
+    private func goBack() {
+        if content?.zones?.isEmpty == false {
+            let zone = level?.zone ?? ((index / 10) + 1)
+            route = .zoneLevels(subject: subject, zone: zone)
+        } else {
+            route = .map
+        }
+    }
 
     private func advanceStep() {
         // 最后一步答完 → advance() 置 finished 进入通关结算（对齐模拟器 nextStep 的 else 分支）
@@ -147,15 +184,15 @@ struct LevelView: View {
     // MARK: 结算
 
     private var finishCard: some View {
-        CeremonyView(subject: subject,
-                     index: index,
-                     levelId: level?.id ?? "\(subject)-\(index)",
-                     totalLevels: content?.levels.count ?? 0,
-                     stars: flow.stars,
-                     wrongCount: flow.wrongCount,
-                     onNext: goNextLevel,
-                     onReplay: { flow = LevelFlow() },
-                     route: $route)
+        LevelSettleCard(subject: subject,
+                        index: index,
+                        levelId: level?.id ?? "\(subject)-\(index)",
+                        totalLevels: content?.levels.count ?? 0,
+                        stars: flow.stars,
+                        wrongCount: flow.wrongCount,
+                        onNext: goNextLevel,
+                        onReplay: { flow = LevelFlow() },
+                        route: $route)
     }
 
     /// 直接进入下一关（通关卡按钮）
@@ -218,7 +255,8 @@ struct TeachStepView: View {
                         )
                         .shadow(color: .brandCoralDdk, radius: 0, x: 0, y: 4)
                     Button {
-                        speech.speak("\(step.pinyin ?? "")。\(step.char ?? "")。\(step.words?.first?.say ?? "")")
+                        // 拼音注音（如 rì）必须先转中文同音字，否则会被 zh-CN 按英文字母名读出
+                        speech.speakPinyin("\(step.pinyin ?? "")。\(step.char ?? "")。\(step.words?.first?.say ?? "")")
                         toast.show("🔊 播放读音")
                     } label: {
                         ZStack {
@@ -309,7 +347,7 @@ struct QuizStepView: View {
                 .shadow(color: Color(hex: 0xF0DCAC), radius: 0, x: 0, y: 4)
 
             HStack(spacing: 26) {
-                ForEach((step.options ?? []).indices, id: \.self) { i in
+                ForEach((step.options?.quizList ?? []).indices, id: \.self) { i in
                     optionCard(i)
                 }
             }
@@ -330,7 +368,7 @@ struct QuizStepView: View {
 
     @ViewBuilder
     private func optionCard(_ i: Int) -> some View {
-        let opt = step.options![i]
+        let opt = step.options!.quizList[i]
         Button {
             guard !solved else { return }
             if i == step.answer {
@@ -378,10 +416,21 @@ struct QuizStepView: View {
             }
             .frame(width: 165, height: 165)
         } else if let text = opt.text {
-            Text(text)
-                .font(.hanzi(86))
-                .foregroundColor(.ink)
-                .frame(width: 165, height: 165)
+            // 单/双字用大字号；更长的词句缩排换行，防止撑出选项卡（与模拟器同规则）
+            if text.count <= 2 {
+                Text(text)
+                    .font(.hanzi(86))
+                    .foregroundColor(.ink)
+                    .frame(width: 165, height: 165)
+            } else {
+                Text(text)
+                    .font(.kidHead(19))
+                    .foregroundColor(.ink)
+                    .multilineTextAlignment(.center)
+                    .lineLimit(4)
+                    .padding(.horizontal, 12)
+                    .frame(width: 165, height: 165)
+            }
         }
     }
 
@@ -700,6 +749,12 @@ struct LetterStepView: View {
     }
     private var guideIcon: String { isEnglish || isAstro ? "robot" : "panda" }
 
+    /// 朗读统一走 SpeechService 学科路由（英语混排分段 / 拼音同音字 / 其余中文）
+    private func sayLetter(_ text: String?) {
+        guard let text else { return }
+        speech.speak(text, subject: subject)
+    }
+
     var body: some View {
         HStack(spacing: 22) {
             VStack(spacing: 14) {
@@ -711,27 +766,44 @@ struct LetterStepView: View {
                     .background(Capsule().fill(LinearGradient(colors: [Color(hex: 0xFFE7A8), .brandYellow], startPoint: .top, endPoint: .bottom)))
                     .shadow(color: .goldDdk.opacity(0.5), radius: 0, x: 0, y: 3)
 
-                // 大字母卡
+                // 大字母卡（天文台配 anim 时播放主题动画，其余学科静态大字卡）
                 ZStack {
                     RoundedRectangle(cornerRadius: 28, style: .continuous)
                         .fill(LinearGradient(colors: [.white, Color(hex: 0xFFF6E0)], startPoint: .top, endPoint: .bottom))
                         .frame(width: 250, height: 250)
                         .overlay(RoundedRectangle(cornerRadius: 28, style: .continuous).stroke(.brandYellow, lineWidth: 5))
                         .shadow(color: .goldDdk.opacity(0.35), radius: 0, x: 0, y: 6)
-                    VStack(spacing: 2) {
-                        let disp = step.display ?? step.letters?.first ?? "?"
-                        Text(disp)
-                            .font(.system(size: disp.count >= 3 ? 62 : (disp.count == 2 ? 88 : 140),
-                                          weight: .heavy,
-                                          design: isEnglish ? .rounded : .default))
-                            .foregroundStyle(
-                                LinearGradient(colors: [accent, accent.opacity(0.75)], startPoint: .top, endPoint: .bottom)
-                            )
-                            .shadow(color: accent.opacity(0.25), radius: 0, y: 3)
-                        if let extra = step.letters, extra.count > 1 {
-                            Text("本关字母：" + extra.joined(separator: " "))
-                                .font(.kidBody(14))
-                                .foregroundColor(.inkSoft)
+                    if isAstro, let anim = step.anim {
+                        AstroAnimView(anim: anim)
+                            .frame(width: 238, height: 238)
+                        VStack {
+                            Spacer()
+                            Text(step.display ?? step.letters?.first ?? "?")
+                                .font(.kidTitle(24))
+                                .foregroundColor(.white)
+                                .shadow(color: .black.opacity(0.55), radius: 2, y: 2)
+                                .padding(.horizontal, 16)
+                                .padding(.vertical, 4)
+                                .background(Capsule().fill(Color.black.opacity(0.32)))
+                                .padding(.bottom, 10)
+                        }
+                        .frame(width: 250, height: 250)
+                    } else {
+                        VStack(spacing: 2) {
+                            let disp = step.display ?? step.letters?.first ?? "?"
+                            Text(disp)
+                                .font(.system(size: disp.count >= 3 ? 62 : (disp.count == 2 ? 88 : 140),
+                                              weight: .heavy,
+                                              design: isEnglish ? .rounded : .default))
+                                .foregroundStyle(
+                                    LinearGradient(colors: [accent, accent.opacity(0.75)], startPoint: .top, endPoint: .bottom)
+                                )
+                                .shadow(color: accent.opacity(0.25), radius: 0, y: 3)
+                            if let extra = step.letters, extra.count > 1 {
+                                Text("本关字母：" + extra.joined(separator: " "))
+                                    .font(.kidBody(14))
+                                    .foregroundColor(.inkSoft)
+                            }
                         }
                     }
                 }
@@ -744,7 +816,7 @@ struct LetterStepView: View {
 
                 HStack(spacing: 12) {
                     Button {
-                        speech.speak(isEnglish ? (step.display ?? "A") : (step.display ?? "a"))
+                        sayLetter(step.display ?? (isEnglish ? "A" : "a"))
                         toast.show("🔊 播放读音")
                     } label: {
                         HStack(spacing: 8) {
@@ -763,7 +835,7 @@ struct LetterStepView: View {
                 HStack(spacing: 10) {
                     ForEach(step.examples ?? [], id: \.text) { ex in
                         Button {
-                            speech.speak(ex.say ?? ex.text)
+                            sayLetter(ex.say ?? ex.text)
                             toast.show("例词：\(ex.text)")
                         } label: {
                             HStack(spacing: 6) {
@@ -813,6 +885,7 @@ struct LetterStepView: View {
 
 struct ListenStepView: View {
     let step: Step
+    let subject: String
     let onWrong: () -> Void
     let onNext: () -> Void
     let onCorrectCelebrate: () -> Void
@@ -821,6 +894,12 @@ struct ListenStepView: View {
     @Environment(\.soundService) private var sound
     @State private var solved = false
     @State private var wrongIndex: Int?
+
+    /// 朗读统一走 SpeechService 学科路由（拼音同音字 / 英语混排分段 / 其余中文）
+    private func say(_ text: String?) {
+        guard let text, !text.isEmpty else { return }
+        speech.speak(text, subject: subject)
+    }
 
     var body: some View {
         VStack(spacing: 18) {
@@ -845,8 +924,8 @@ struct ListenStepView: View {
             }
 
             HStack(spacing: 26) {
-                ForEach((step.options ?? []).indices, id: \.self) { i in
-                    let opt = step.options![i]
+                ForEach((step.options?.quizList ?? []).indices, id: \.self) { i in
+                    let opt = step.options!.quizList[i]
                     Button {
                         guard !solved else { return }
                         if i == step.answer {
@@ -873,9 +952,19 @@ struct ListenStepView: View {
                                     }
                                 }
                             } else if let text = opt.text {
-                                Text(text)
-                                    .font(.hanzi(isEnglishLetter(text) ? 76 : 72))
-                                    .foregroundColor(.ink)
+                                // 单字/字母用大字号；长词句缩排换行，防止撑出选项卡（与 quiz 同规则）
+                                if text.count <= 2 {
+                                    Text(text)
+                                        .font(.hanzi(isEnglishLetter(text) ? 76 : 72))
+                                        .foregroundColor(.ink)
+                                } else {
+                                    Text(text)
+                                        .font(.kidHead(18))
+                                        .foregroundColor(.ink)
+                                        .multilineTextAlignment(.center)
+                                        .lineLimit(4)
+                                        .padding(.horizontal, 10)
+                                }
                             }
                         }
                         .frame(width: 158, height: 158)
@@ -900,8 +989,8 @@ struct ListenStepView: View {
             } else {
                 // 朗读完全可选：想听再点，不做题的必要条件
                 Button {
-                    speech.speak(step.speakText ?? "")
-                    toast.show("🔊 朗读：\(step.speakText ?? "")")
+                    say(step.speakText ?? step.prompt ?? "")
+                    toast.show("🔊 朗读：\(step.speakText ?? step.prompt ?? "")")
                 } label: {
                     HStack(spacing: 8) {
                         IconView(name: "speaker", size: 20)
@@ -964,7 +1053,7 @@ struct BlendStepView: View {
                 ZStack {
                     RoundedRectangle(cornerRadius: 22, style: .continuous)
                         .fill(resultCardFill)
-                    Text(solved ? (step.options?[safe: step.answer ?? 0]?.text ?? "?") : "?")
+                    Text(solved ? (step.options?.quizList[safe: step.answer ?? 0]?.text ?? "?") : "?")
                         .font(.system(size: 64, weight: .heavy))
                         .foregroundColor(solved ? Color(hex: 0x2F6B22) : .inkSoft)
                 }
@@ -974,14 +1063,14 @@ struct BlendStepView: View {
             }
 
             HStack(spacing: 20) {
-                ForEach((step.options ?? []).indices, id: \.self) { i in
-                    let opt = step.options![i]
+                ForEach((step.options?.quizList ?? []).indices, id: \.self) { i in
+                    let opt = step.options!.quizList[i]
                     Button {
                         guard !solved else { return }
                         if i == step.answer {
                             solved = true
                             sound.correct()
-                            if let t = opt.text { speech.speak(step.praise ?? "拼对了！\(t)") }
+                            if let t = opt.text { speech.speakPinyin(step.praise ?? "拼对了！\(t)") }
                             onCorrectCelebrate()
                             DispatchQueue.main.asyncAfter(deadline: .now() + 1.15) { onNext() }
                         } else {
@@ -1061,53 +1150,29 @@ struct ArithStepView: View {
                 .background(Capsule().fill(Color(hex: 0xFFF3D8)))
                 .overlay(Capsule().stroke(Color(hex: 0xF0DCAC), lineWidth: 2))
 
-            // 图示等式
-            HStack(alignment: .center, spacing: 14) {
-                equationGroup
-                Text(isAdd ? "+" : "−")
-                    .font(.kidTitle(44))
-                    .foregroundColor(.brandOrangeDdk)
-                if isAdd {
-                    VStack {
-                        ForEach(0..<right, id: \.self) { _ in
-                            IconView(name: step.leftIcon ?? "duck", size: 44)
-                        }
-                    }
-                } else {
-                    // 减法：右边显示被划掉的
-                    VStack {
-                        ForEach(0..<right, id: \.self) { _ in
-                            IconView(name: step.leftIcon ?? "duck", size: 44)
-                                .overlay(
-                                    Rectangle()
-                                        .fill(Color.clear)
-                                        .overlay(
-                                            GeometryReader { geo in
-                                                Path { p in
-                                                    p.move(to: CGPoint(x: 6, y: geo.size.height / 2))
-                                                    p.addLine(to: CGPoint(x: geo.size.width - 6, y: geo.size.height / 2))
-                                                }
-                                                .stroke(.brandCoralDk, style: StrokeStyle(lineWidth: 5, lineCap: .round))
-                                            }
-                                        )
-                                )
-                                .opacity(0.55)
-                        }
-                    }
+            // 图示等式（100/200 以内大数不逐个画图，用数字卡；小数按每行 5 个的十格阵排布，防止竖排撑出卡片）
+            if usesBigNumberCards {
+                HStack(alignment: .center, spacing: 16) {
+                    numberCard(left)
+                    Text(isAdd ? "+" : "−").font(.kidTitle(44)).foregroundColor(.brandOrangeDdk)
+                    numberCard(right).opacity(isAdd ? 1 : 0.65)
+                    Text("=").font(.kidTitle(44)).foregroundColor(.inkSoft)
+                    resultCard
                 }
-                Text("=").font(.kidTitle(44)).foregroundColor(.inkSoft)
-                ZStack {
-                    RoundedRectangle(cornerRadius: 18, style: .continuous)
-                        .fill(LinearGradient(colors: [Color(hex: 0xFFE58A), Color(hex: 0xF7B32B)], startPoint: .top, endPoint: .bottom))
-                    Text(solved ? "\(correct)" : "?")
-                        .font(.kidTitle(46))
-                        .foregroundColor(Color(hex: 0x8A5B00))
+                .padding(.vertical, 10)
+            } else {
+                HStack(alignment: .center, spacing: 14) {
+                    iconRows(count: left, crossed: false)
+                    Text(isAdd ? "+" : "−")
+                        .font(.kidTitle(44))
+                        .foregroundColor(.brandOrangeDdk)
+                    iconRows(count: right, crossed: !isAdd)
+                        .opacity(isAdd ? 1 : 0.65)
+                    Text("=").font(.kidTitle(44)).foregroundColor(.inkSoft)
+                    resultCard
                 }
-                .frame(width: 92, height: 84)
-                .overlay(RoundedRectangle(cornerRadius: 18, style: .continuous).stroke(Color(hex: 0xB8770A), lineWidth: 3.5))
-                .shadow(color: Color(hex: 0xB8770A).opacity(0.5), radius: 0, x: 0, y: 5)
+                .padding(.vertical, 10)
             }
-            .padding(.vertical, 10)
 
             HStack(spacing: 26) {
                 ForEach(step.arithOptions ?? [], id: \.self) { n in
@@ -1119,13 +1184,61 @@ struct ArithStepView: View {
         .modifier(StickerCardModifier())
     }
 
-    @ViewBuilder
-    private var equationGroup: some View {
-        VStack {
-            ForEach(0..<left, id: \.self) { _ in
-                IconView(name: step.leftIcon ?? "duck", size: 44)
+    private var usesBigNumberCards: Bool { max(left, right) > 12 }
+
+    private var resultCard: some View {
+        ZStack {
+            RoundedRectangle(cornerRadius: 18, style: .continuous)
+                .fill(LinearGradient(colors: [Color(hex: 0xFFE58A), Color(hex: 0xF7B32B)], startPoint: .top, endPoint: .bottom))
+            Text(solved ? "\(correct)" : "?")
+                .font(.kidTitle(46))
+                .foregroundColor(Color(hex: 0x8A5B00))
+        }
+        .frame(width: 92, height: 84)
+        .overlay(RoundedRectangle(cornerRadius: 18, style: .continuous).stroke(Color(hex: 0xB8770A), lineWidth: 3.5))
+        .shadow(color: Color(hex: 0xB8770A).opacity(0.5), radius: 0, x: 0, y: 5)
+    }
+
+    private func numberCard(_ v: Int) -> some View {
+        Text("\(v)")
+            .font(.kidTitle(42))
+            .foregroundColor(.brandOrangeDdk)
+            .frame(minWidth: 96, minHeight: 84)
+            .padding(.horizontal, 12)
+            .background(RoundedRectangle(cornerRadius: 16, style: .continuous).fill(Color(hex: 0xFFF3D8)))
+            .overlay(RoundedRectangle(cornerRadius: 16, style: .continuous).stroke(Color(hex: 0xF0DCAC), lineWidth: 3.5))
+    }
+
+    /// 十格阵：每行 5 个小图标；减法右侧 crossed 画划线
+    private func iconRows(count: Int, crossed: Bool) -> some View {
+        let rowCount = count > 0 ? (count + 4) / 5 : 0
+        return VStack(spacing: 4) {
+            ForEach(0..<rowCount, id: \.self) { row in
+                HStack(spacing: 4) {
+                    let inRow = min(5, count - row * 5)
+                    ForEach(0..<inRow, id: \.self) { _ in
+                        singleIcon(crossed: crossed)
+                    }
+                }
             }
         }
+    }
+
+    private func singleIcon(crossed: Bool) -> some View {
+        let shape = IconView(name: step.leftIcon ?? "duck", size: 40)
+        if !crossed { return AnyView(shape) }
+        return AnyView(shape
+            .overlay(
+                GeometryReader { geo in
+                    Path { p in
+                        p.move(to: CGPoint(x: -2, y: geo.size.height * 0.38))
+                        p.addLine(to: CGPoint(x: geo.size.width + 2, y: geo.size.height * 0.52))
+                    }
+                    .stroke(.brandCoralDk, style: StrokeStyle(lineWidth: 5, lineCap: .round))
+                }
+            )
+            .opacity(0.55)
+        )
     }
 
     private func numberBlock(_ n: Int) -> some View {
@@ -1211,8 +1324,8 @@ struct PatternStepView: View {
             }
 
             HStack(spacing: 26) {
-                ForEach((step.options ?? []).indices, id: \.self) { i in
-                    let opt = step.options![i]
+                ForEach((step.options?.quizList ?? []).indices, id: \.self) { i in
+                    let opt = step.options!.quizList[i]
                     Button {
                         guard !solved else { return }
                         if i == step.answer {
@@ -1665,7 +1778,12 @@ struct MemoryStepView: View {
         .modifier(StickerCardModifier())
         .onAppear {
             if deck.isEmpty {
-                deck = (step.cards ?? []).shuffled()
+                deck = (step.cards?.memoryList ?? []).shuffled()
+                #if DEBUG
+                if ProcessInfo.processInfo.arguments.contains("-AIFlip") {
+                    flipped = Set(0..<6)
+                }
+                #endif
             }
         }
     }
@@ -1711,6 +1829,8 @@ struct MemoryStepView: View {
                 .overlay(alignment: .topLeading) {
                     Text(suits[i % 4]).font(.system(size: 13)).padding(6)
                 }
+                // 牌面反向旋转 180°，抵消外层卡片翻转，避免翻开后内容左右镜像
+                .rotation3DEffect(.degrees(180), axis: (x: 0, y: 1, z: 0))
                 .opacity(isUp ? 1 : 0)
             }
             .frame(width: 150, height: 132)
@@ -1757,6 +1877,7 @@ struct DiceStepView: View {
     let onWrong: () -> Void
     let onNext: () -> Void
     let onCorrectCelebrate: () -> Void
+    @EnvironmentObject var store: ProgressStore
     @EnvironmentObject var toast: ToastCenter
     @Environment(\.soundService) private var sound
     @State private var face = 1
@@ -1780,13 +1901,14 @@ struct DiceStepView: View {
             Button {
                 roll()
             } label: {
-                DieFaceView(face: face, size: 132)
+                DieFaceView(face: face, size: 132,
+                            pip: ShopCatalog.dicePipIcon(for: store.snapshot.activeDice))
                     .rotation3DEffect(.degrees(rolled ? 0 : 12), axis: (x: 1, y: 1, z: 0))
             }
             .buttonStyle(.plain)
             .disabled(rolled)
 
-            Text(rolled ? "数一数红点有几个" : "👆 点骰子，掷一掷！")
+            Text(rolled ? "数一数图案有几个" : "👆 点骰子，掷一掷！")
                 .font(.kidBody(16))
                 .foregroundColor(.inkSoft)
 

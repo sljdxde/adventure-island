@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>写实图标预览</title>
+<style>
+  body{margin:0;font-family:"YouYuan","幼圆",sans-serif}
+  h2{font-weight:400;letter-spacing:2px;text-align:center;padding:22px 0 4px}
+  .dark{background:radial-gradient(circle at 50% 30%,#141B3A,#070A18);color:#fff}
+  .light{background:#F4EDE0;color:#5B4636}
+  .grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px;max-width:1180px;margin:14px auto 0;padding:0 20px 28px}
+  .cell{border-radius:16px;padding:12px 6px;display:flex;flex-direction:column;align-items:center;gap:8px;min-width:0}
+  .dark .cell{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1)}
+  .light .cell{background:#fff;border:1px solid #E8DCC6}
+  .cell img{width:78px;height:78px}
+  .cell b{font-size:13px;letter-spacing:1px}
+</style>
+</head>
+<body>
+<div class="dark">
+  <h2>写实天文（20）</h2>
+  <div class="grid" id="g1"></div>
+</div>
+<div class="light">
+  <h2>写实地理 · 地貌 / 地标 / 地图（32）</h2>
+  <div class="grid" id="g2"></div>
+</div>
+<script>
+const astro=[["sun","太阳"],["mercury","水星"],["venus","金星"],["earth","地球"],["mars","火星"],
+["jupiter","木星"],["saturn","土星"],["uranus","天王星"],["neptune","海王星"],["moon","月球"],
+["blackhole","黑洞"],["comet","彗星"],["meteor","流星"],["milkyway","星系"],["bigdipper","北斗"],
+["astronaut","宇航员"],["rocket","火箭"],["satellite","卫星"],["telescope","望远镜"],["ufo","UFO"]];
+const geo=[["volcano","火山"],["desert","沙漠"],["wave","海浪"],["river","河流"],["everest","雪峰"],
+["fuji","富士山"],["rock","岩石"],["snowflake","雪花"],["ice","冰"],["flame","火焰"],["rainbow","彩虹"],
+["crystal","水晶"],["greatwall","长城"],["pyramid","金字塔"],["eiffel","铁塔"],["bigben","大本钟"],
+["libertystatue","自由女神"],["pisa","比萨斜塔"],["taj","泰姬陵"],["torii","鸟居"],["tiananmen","天安门"],
+["ferris","摩天轮"],["tower","东方明珠"],["world-map","世界地图"],["china-map","中国地图"]];
+const render=(id,arr)=>document.getElementById(id).innerHTML=arr.map(([f,n])=>
+ `<div class="cell"><img src="../design/assets/icons/${f}.svg"><b>${n}</b></div>`).join("");
+render("g1",astro);render("g2",geo);
+</script>
+</body>
+</html>

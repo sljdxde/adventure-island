@@ -279,12 +279,18 @@ final class BoardFlowTests: XCTestCase {
     }
 }
 
-/// 语音配置
+/// 语音分段：中文默认 zh-CN；英语章节拉丁段 en-US、中文段 zh-CN
 final class SpeechConfigTests: XCTestCase {
-    func testBuilderDefaults() {
-        let cfg = SpeechBuilder.utteranceConfig(text: "你好")
-        XCTAssertEqual(cfg.language, "zh-CN")
-        XCTAssertEqual(cfg.rate, 0.45, accuracy: 0.001)
-        XCTAssertEqual(cfg.text, "你好")
+    func testChineseDefaultsToZhCN() {
+        let segs = SpeechService.segments("你好", lang: .chinese)
+        XCTAssertEqual(segs.count, 1)
+        XCTAssertEqual(segs[0].text, "你好")
+        XCTAssertEqual(segs[0].language, "zh-CN")
+    }
+
+    func testEnglishMixedRouting() {
+        let segs = SpeechService.segments("Aa 苹果", lang: .english)
+        XCTAssertEqual(segs.first?.language, "en-US")
+        XCTAssertTrue(segs.contains { $0.language == "zh-CN" && $0.text.contains("苹果") })
     }
 }

@@ -1,10 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs><linearGradient id="g-golddk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F5C243"/><stop offset="1" stop-color="#E5A916"/></linearGradient><linearGradient id="g-yellow" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFDD7A"/><stop offset="1" stop-color="#F5A623"/></linearGradient><linearGradient id="g-orangedk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F5A623"/><stop offset="1" stop-color="#D97706"/></linearGradient></defs>
-  <path d="M10 36 Q4 26 13 23 Q11 30 16 33 Z" fill="url(#g-golddk)"/>
-  <ellipse cx="30" cy="40" rx="20" ry="14" fill="url(#g-yellow)"/>
-  <ellipse cx="26" cy="41" rx="9" ry="6" fill="#EFA22A" opacity=".85" transform="rotate(-12 26 41)"/>
-  <circle cx="44" cy="22" r="12" fill="url(#g-yellow)"/>
-  <path d="M54 20 Q63 23 54 29 Q50 28 50 24 Z" fill="url(#g-orangedk)"/>
-  <circle cx="46" cy="19" r="2.4" fill="#5B4636"/><circle cx="46.8" cy="18.2" r=".8" fill="#fff"/>
-  <circle cx="43" cy="26" r="2.6" fill="#FF9E8E" opacity=".5"/>
-  <ellipse cx="38" cy="14" rx="5" ry="2.6" fill="#fff" opacity=".5" transform="rotate(-20 38 14)"/>
-  <ellipse cx="22" cy="33" rx="7" ry="3.4" fill="#fff" opacity=".4" transform="rotate(-14 22 33)"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 96"><style>.st{stroke:#5B4636;stroke-width:2.3;stroke-linejoin:round;stroke-linecap:round}.th{stroke:#5B4636;stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round}</style><path class="st" d="M21 86 L18 91 L30 91 L28 86 Z" fill="#FFA73D"/><path class="st" d="M40 86 L41 91 L53 91 L49 86 Z" fill="#FFA73D"/><path class="st" d="M42 10 Q56 10 56 24 Q56 33 48 37 Q40 42 42 48 Q52 52 52 62 Q52 80 32 81 Q12 80 12 62 Q12 50 24 46 Q28 38 28 30 Q28 10 42 10 Z" fill="#FFD93D"/><path class="st" d="M22 54 Q15 60 22 72 Q30 64 30 58 Z" fill="#F0B828"/><path class="st" d="M50 58 L59 53 L56 63 Z" fill="#F0B828"/><circle cx="45" cy="22" r="3" fill="#fff"/><circle cx="45.5" cy="22.5" r="1.7" fill="#3A2A20"/><circle cx="46" cy="21.5" r="0.7" fill="#fff"/><path class="st" d="M52 26 L63 28 L63 32 L52 33 Z" fill="#FF8A3D"/><ellipse cx="38" cy="29" rx="2.6" ry="1.8" fill="#FF9B8A" opacity="0.6"/></svg>

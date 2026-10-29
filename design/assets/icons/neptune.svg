@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs><radialGradient id="neptune-lit" cx="34%" cy="30%" r="78%">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.92"/>
+      <stop offset="38%" stop-color="#ffffff" stop-opacity="0.18"/>
+      <stop offset="72%" stop-color="#000000" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0.42"/>
+    </radialGradient>
+    <radialGradient id="neptune-base" cx="38%" cy="34%" r="75%">
+      <stop offset="0" stop-color="#5A86E0"/><stop offset="55%" stop-color="#2F5BC0"/><stop offset="100%" stop-color="#1B3878"/>
+    </radialGradient><radialGradient id="neptune-glow" cx="50%" cy="50%" r="50%">
+          <stop offset="62%" stop-color="#5A86E0" stop-opacity="0"/>
+          <stop offset="78%" stop-color="#5A86E0" stop-opacity="0.55"/>
+          <stop offset="92%" stop-color="#5A86E0" stop-opacity="0.18"/>
+          <stop offset="100%" stop-color="#5A86E0" stop-opacity="0"/>
+        </radialGradient><clipPath id="neptune-clip"><circle cx="32" cy="32" r="21"/></clipPath></defs><circle cx="32" cy="32" r="29" fill="url(#neptune-glow)"/><circle cx="32" cy="32" r="21" fill="url(#neptune-base)"/><g clip-path="url(#neptune-clip)">
+      <g fill="#fff" opacity="0.7">
+        <path d="M14 24 Q24 21 30 24 Q26 27 18 27 Z"/>
+        <path d="M34 30 Q44 28 49 32 Q43 34 35 33 Z"/>
+      </g>
+      <ellipse cx="30" cy="38" rx="5" ry="3" fill="#1B3E86"/>
+      <ellipse cx="42" cy="26" rx="3.4" ry="2" fill="#4A7AD0" opacity="0.8"/></g><circle cx="32" cy="32" r="21" fill="url(#neptune-lit)"/><circle cx="32" cy="32" r="21" fill="none" stroke="#000" stroke-opacity="0.18" stroke-width="1.2"/></svg>

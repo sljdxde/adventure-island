@@ -19,6 +19,12 @@ struct ProgressSnapshot: Codable, Equatable {
     var coinLedger: [CoinEntry] = []             // v0.8 金币账本：每笔来源/数额/时间（决策 12）
     var brickClaims: [String] = []               // 问号砖已领日期："2026-09-30|brick-cn"（决策 13）
     var mushroomBuff: Bool = false               // 幸运蘑菇：持有一次答错豁免（决策 8，工单03）
+    // MARK: v0.9 商店/衣橱 + 地理
+    var ownedChars: [String] = ["mario", "dino"]  // 已购小伙伴
+    var ownedDice: [String] = ["std"]             // 已购骰子皮肤
+    var activeChar: String = "mario"             // 当前激活角色
+    var activeDice: String = "std"               // 当前激活骰子皮肤
+    var learnedGeo: [String] = []                 // 已拼/已学地理地区 id
 
     init() {}
 
@@ -26,6 +32,7 @@ struct ProgressSnapshot: Codable, Equatable {
         case coins, levelStars, testedItems, collectedScience, stickers
         case learnedHanzi, learnedPinyin, learnedEnglish, learnedAstro
         case dailyDone, streak, lastPlayDay, coinLedger, brickClaims, mushroomBuff
+        case ownedChars, ownedDice, activeChar, activeDice, learnedGeo
     }
 
     /// 字段全部 decodeIfPresent + 默认值：旧版本 progress.json（无账本/砖块字段）解码不失败，
@@ -47,6 +54,11 @@ struct ProgressSnapshot: Codable, Equatable {
         coinLedger = try c.decodeIfPresent([CoinEntry].self, forKey: .coinLedger) ?? []
         brickClaims = try c.decodeIfPresent([String].self, forKey: .brickClaims) ?? []
         mushroomBuff = try c.decodeIfPresent(Bool.self, forKey: .mushroomBuff) ?? false
+        ownedChars = try c.decodeIfPresent([String].self, forKey: .ownedChars) ?? ["mario", "dino"]
+        ownedDice = try c.decodeIfPresent([String].self, forKey: .ownedDice) ?? ["std"]
+        activeChar = try c.decodeIfPresent(String.self, forKey: .activeChar) ?? "mario"
+        activeDice = try c.decodeIfPresent(String.self, forKey: .activeDice) ?? "std"
+        learnedGeo = try c.decodeIfPresent([String].self, forKey: .learnedGeo) ?? []
     }
 }
 
@@ -63,6 +75,7 @@ enum CoinSource: String, Codable {
     case labReward = "lab-reward"          // 实验猜对
     case collection = "collection"         // 图鉴收集奖励
     case boss = "boss"                     // 工单06：击败 boss +15
+    case shop = "shop"                     // 金币商店消费（扣款为负）
 }
 
 struct CoinEntry: Codable, Equatable, Identifiable {
@@ -111,6 +124,25 @@ final class ProgressStore: ObservableObject {
     func resetAll() {
         snapshot = ProgressSnapshot()
         save()
+    }
+
+    /// 重置单个学科的关卡星级（孩子「全部通关后从头再玩」）。
+    /// 金币、收集册、学习记录等战利品保留，只把该学科关卡路径恢复成未通关。
+    func resetSubject(_ subject: String) {
+        for id in LevelCatalog.ids(subject) {
+            snapshot.levelStars.removeValue(forKey: id)
+        }
+        save()
+    }
+
+    /// 该学科是否已全部通关：正式关与 boss 关全部有星即算。
+    /// 复习关不做要求（与 nodeState 解锁链同口径，工单06）——
+    /// 否则跳过复习关打通 boss 后，水管不会弹「从头再玩」。
+    func isSubjectComplete(_ subject: String) -> Bool {
+        let info = LevelCatalog.info(subject)
+        let required = zip(info.ids, info.reviews).filter { !$1 }.map(\.0)
+        guard !required.isEmpty else { return false }
+        return required.allSatisfy { stars(for: subject, levelId: $0) > 0 }
     }
 
     // MARK: 金币账本（只经此路变动；余额永不为负）
@@ -336,6 +368,41 @@ final class ProgressStore: ObservableObject {
             snapshot.learnedAstro.append(name)
             save()
         }
+    }
+
+    func learnGeo(_ id: String) {
+        if !snapshot.learnedGeo.contains(id) {
+            snapshot.learnedGeo.append(id)
+            save()
+        }
+    }
+
+    // MARK: 商店/衣橱（工单08/09）：购买扣款经账本，余额不足拒绝、不透支
+
+    /// 购买：kind "chars" | "dice"。余额不足或已拥有返回 false。
+    @discardableResult
+    func buyItem(kind: String, id: String, price: Int) -> Bool {
+        let owned = kind == "chars" ? snapshot.ownedChars : snapshot.ownedDice
+        guard !owned.contains(id) else { return false }
+        guard snapshot.coins >= price else { return false }
+        recordCoin(.shop, amount: -price)
+        if kind == "chars" { snapshot.ownedChars.append(id) } else { snapshot.ownedDice.append(id) }
+        save()
+        return true
+    }
+
+    /// 激活：仅已拥有可激活；角色与骰子各自独立
+    func activate(kind: String, id: String) {
+        if kind == "chars" {
+            guard snapshot.ownedChars.contains(id) else { return }
+            guard snapshot.activeChar != id else { return }
+            snapshot.activeChar = id
+        } else {
+            guard snapshot.ownedDice.contains(id) else { return }
+            guard snapshot.activeDice != id else { return }
+            snapshot.activeDice = id
+        }
+        save()
     }
 }
 

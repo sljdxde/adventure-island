@@ -2,6 +2,68 @@
   "subject": "math",
   "title": "思维镇",
   "guide": "fox",
+  "zones": [
+    {
+      "n": 1,
+      "title": "数与数数",
+      "subtitle": "点数 · 比较 · 序数",
+      "icon": "dice"
+    },
+    {
+      "n": 2,
+      "title": "加减法",
+      "subtitle": "凑十 · 破十 · 笔算",
+      "icon": "equal"
+    },
+    {
+      "n": 3,
+      "title": "乘法口诀",
+      "subtitle": "二二得四…九九八十一",
+      "icon": "train"
+    },
+    {
+      "n": 4,
+      "title": "除法初步",
+      "subtitle": "平均分 · 口诀求商",
+      "icon": "block"
+    },
+    {
+      "n": 5,
+      "title": "长度单位",
+      "subtitle": "厘米和米",
+      "icon": "hanger"
+    },
+    {
+      "n": 6,
+      "title": "角的初步认识",
+      "subtitle": "顶点 · 边 · 直角",
+      "icon": "triangle"
+    },
+    {
+      "n": 7,
+      "title": "克与千克",
+      "subtitle": "克 · 千克 · 比轻重",
+      "icon": "cup"
+    },
+    {
+      "n": 8,
+      "title": "图形与钟表",
+      "subtitle": "数独 · 钟表 · 人民币",
+      "icon": "clock"
+    },
+    {
+      "n": 9,
+      "title": "万以内数",
+      "subtitle": "数位 · 读写 · 比大小",
+      "icon": "chart"
+    },
+    {
+      "n": 10,
+      "title": "思维大挑战",
+      "subtitle": "应用题 · 总复习",
+      "icon": "medal"
+    }
+  ],
   "levels": [
     {
       "id": "math-0",
@@ -11,13 +73,9 @@
         {
           "id": "math-0-c",
           "kind": "count",
-          "question": "池塘里有几只小鸭？点一点",
+          "question": "池塘里有几只小鸭（点一点，数数看）",
           "duckIcon": "duck",
           "count": 3,
-          "countRange": [
-            2,
-            3
-          ],
           "countOptions": [
             2,
             3,
@@ -53,107 +111,23 @@
           "praise": "苹果多，答对啦！"
         },
         {
-          "id": "math-0-c2",
-          "kind": "count",
-          "question": "天上有几个气球？点一点",
-          "duckIcon": "balloon",
-          "count": 3,
-          "countRange": [
-            2,
-            3
-          ],
-          "countOptions": [
-            1,
-            2,
-            3
-          ],
-          "backdrop": "sky",
-          "unit": "个"
-        },
-        {
-          "id": "math-0-cmp2",
-          "kind": "compare",
-          "question": "哪一边更多？",
-          "leftIcon": "banana",
-          "leftCount": 1,
-          "rightIcon": "apple",
-          "rightCount": 3,
-          "compareOptions": [
-            {
-              "key": "left",
-              "label": "香蕉多"
-            },
-            {
-              "key": "right",
-              "label": "苹果多"
-            },
-            {
-              "key": "same",
-              "label": "一样多"
-            }
-          ],
-          "answerKey": "right",
-          "hint": "一个对着一个，比一比",
-          "praise": "苹果多，答对啦！"
-        },
-        {
-          "id": "math-0-f0-pat",
-          "kind": "pattern",
-          "seq": [
-            "star",
-            "moon",
-            "star"
-          ],
-          "question": "找规律：下一个是哪个？",
-          "options": [
-            {
-              "icon": "star"
-            },
-            {
-              "icon": "moon"
-            },
-            {
-              "icon": "candy"
-            }
-          ],
-          "answer": 1,
-          "hint": "先读一读前面几个，找一找谁在轮流出现",
-          "praise": "规律找对啦，小侦探！"
+          "id": "math-x1",
+          "kind": "balance",
+          "question": "天平秤一秤：大象和小鸟，哪边更重？",
+          "left": {
+            "icon": "elephant",
+            "text": "大象"
+          },
+          "right": {
+            "icon": "duck",
+            "text": "小鸟"
+          },
+          "answerKey": "left",
+          "hint": "大象是陆地上最重的动物",
+          "praise": "天平答对啦，小天文学家！"
         }
       ],
-      "board": {
-        "spaces": [
-          {
-            "type": "question",
-            "step": "math-0-c"
-          },
-          {
-            "type": "question",
-            "step": "math-0-cmp"
-          },
-          {
-            "type": "coin"
-          },
-          {
-            "type": "question",
-            "step": "math-0-c2"
-          },
-          {
-            "type": "question",
-            "step": "math-0-cmp2"
-          },
-          {
-            "type": "coin"
-          },
-          {
-            "type": "chest"
-          },
-          {
-            "type": "question",
-            "step": "math-0-f0-pat"
-          }
-        ]
-      }
+      "zone": 1
     },
     {
       "id": "math-1",
@@ -163,13 +137,9 @@
         {
           "id": "math-1-c",
           "kind": "count",
-          "question": "盘子里有几颗糖？点一点",
+          "question": "盘子里有几颗糖（点一点，数数看）",
           "duckIcon": "candy",
           "count": 4,
-          "countRange": [
-            2,
-            4
-          ],
           "countOptions": [
             3,
             4,
@@ -190,96 +160,9 @@
           "question": "从小到大，依次点一点",
           "hint": "从小到大：小的排前面",
           "praise": "排队排好啦！"
-        },
-        {
-          "id": "math-1-c2",
-          "kind": "count",
-          "question": "夜空里有几颗星星？点一点",
-          "duckIcon": "star",
-          "count": 3,
-          "countRange": [
-            2,
-            3
-          ],
-          "countOptions": [
-            1,
-            2,
-            3
-          ],
-          "backdrop": "night",
-          "unit": "颗"
-        },
-        {
-          "id": "math-1-x1-o",
-          "kind": "order",
-          "nums": [
-            4,
-            6,
-            3
-          ],
-          "dir": "down",
-          "question": "从大到小，依次点一点",
-          "hint": "从大到小：大的排前面",
-          "praise": "排队排好啦！"
-        },
-        {
-          "id": "math-1-f0-pat",
-          "kind": "pattern",
-          "seq": [
-            "candy",
-            "apple",
-            "candy"
-          ],
-          "question": "谁在轮流出现？点下一个",
-          "options": [
-            {
-              "icon": "candy"
-            },
-            {
-              "icon": "apple"
-            },
-            {
-              "icon": "star"
-            }
-          ],
-          "answer": 1,
-          "hint": "先读一读前面几个，找一找谁在轮流出现",
-          "praise": "规律找对啦，小侦探！"
         }
       ],
-      "board": {
-        "spaces": [
-          {
-            "type": "question",
-            "step": "math-1-o1"
-          },
-          {
-            "type": "coin"
-          },
-          {
-            "type": "question",
-            "step": "math-1-c2"
-          },
-          {
-            "type": "question",
-            "step": "math-1-x1-o"
-          },
-          {
-            "type": "coin"
-          },
-          {
-            "type": "question",
-            "step": "math-1-f0-pat"
-          },
-          {
-            "type": "question",
-            "step": "math-1-c"
-          },
-          {
-            "type": "mushroom"
-          }
-        ]
-      }
+      "zone": 1
     },
     {
       "id": "math-2",
@@ -289,13 +172,9 @@
         {
           "id": "math-2-c",
           "kind": "count",
-          "question": "果园里摘了几个苹果？点一点",
+          "question": "果园里摘了几个苹果（点一点，数数看）",
           "duckIcon": "apple",
           "count": 5,
-          "countRange": [
-            3,
-            5
-          ],
           "countOptions": [
             4,
             5,
@@ -319,99 +198,9 @@
           ],
           "hint": "一共 5 个，左边有 2 个",
           "praise": "分对啦，5 可以分成 2 和 3！"
-        },
-        {
-          "id": "math-2-c2",
-          "kind": "count",
-          "question": "轨道上有几辆小火车？点一点",
-          "duckIcon": "train",
-          "count": 4,
-          "countRange": [
-            2,
-            4
-          ],
-          "countOptions": [
-            2,
-            3,
-            4
-          ],
-          "backdrop": "grass",
-          "unit": "辆"
-        },
-        {
-          "id": "math-2-x1-s",
-          "kind": "split",
-          "total": 6,
-          "part": 2,
-          "leftIcon": "apple",
-          "unit": "个",
-          "question": "6 个分两堆，左边 2 个，右边几个？",
-          "arithOptions": [
-            3,
-            4,
-            5
-          ],
-          "hint": "一共 6 个，左边有 2 个",
-          "praise": "分对啦，6 可以分成 2 和 4！"
-        },
-        {
-          "id": "math-2-f0-pat",
-          "kind": "pattern",
-          "seq": [
-            "sun",
-            "moon",
-            "sun"
-          ],
-          "question": "读一读前面几个，接下来是谁？",
-          "options": [
-            {
-              "icon": "sun"
-            },
-            {
-              "icon": "moon"
-            },
-            {
-              "icon": "candy"
-            }
-          ],
-          "answer": 1,
-          "hint": "先读一读前面几个，找一找谁在轮流出现",
-          "praise": "规律找对啦，小侦探！"
         }
       ],
-      "board": {
-        "spaces": [
-          {
-            "type": "question",
-            "step": "math-2-c2"
-          },
-          {
-            "type": "question",
-            "step": "math-2-x1-s"
-          },
-          {
-            "type": "question",
-            "step": "math-2-f0-pat"
-          },
-          {
-            "type": "coin"
-          },
-          {
-            "type": "question",
-            "step": "math-2-c"
-          },
-          {
-            "type": "question",
-            "step": "math-2-s1"
-          },
-          {
-            "type": "rest"
-          },
-          {
-            "type": "coin"
-          }
-        ]
-      }
+      "zone": 1
     },
     {
       "id": "math-3",
@@ -452,7 +241,7 @@
             0,
             5
           ],
-          "question": "想一想：藏起来的数字是几？",
+          "question": "想一想：3 和 5 中间藏起来的数字是几？",
           "arithOptions": [
             3,
             4,
@@ -461,103 +250,9 @@
           "answer": 1,
           "hint": "3 的后面是几？5 的前面是几？",
           "praise": "是 4！3 和 5 的中间是 4！"
-        },
-        {
-          "id": "math-3-c2",
-          "kind": "count",
-          "question": "花园里开了几朵花？点一点",
-          "duckIcon": "flower",
-          "count": 3,
-          "countRange": [
-            2,
-            3
-          ],
-          "countOptions": [
-            1,
-            2,
-            3
-          ],
-          "backdrop": "grass",
-          "unit": "朵"
-        },
-        {
-          "id": "math-3-cmp2",
-          "kind": "compare",
-          "question": "哪一边更多？",
-          "leftIcon": "balloon",
-          "leftCount": 5,
-          "rightIcon": "balloon",
-          "rightCount": 4,
-          "compareOptions": [
-            {
-              "key": "left",
-              "label": "左边多"
-            },
-            {
-              "key": "right",
-              "label": "右边多"
-            },
-            {
-              "key": "same",
-              "label": "一样多"
-            }
-          ],
-          "answerKey": "left",
-          "hint": "一个对着一个，比一比",
-          "praise": "左边多，答对啦！"
-        },
-        {
-          "id": "math-3-x2-n",
-          "kind": "neighbor",
-          "nums": [
-            4,
-            0,
-            6
-          ],
-          "question": "两个数中间，躲着谁？",
-          "arithOptions": [
-            4,
-            5,
-            6
-          ],
-          "answer": 1,
-          "hint": "4 的后面是几？6 的前面是几？",
-          "praise": "是 5！4 和 6 的中间是 5！"
         }
       ],
-      "board": {
-        "spaces": [
-          {
-            "type": "question",
-            "step": "math-3-cmp2"
-          },
-          {
-            "type": "coin"
-          },
-          {
-            "type": "question",
-            "step": "math-3-x2-n"
-          },
-          {
-            "type": "question",
-            "step": "math-3-cmp"
-          },
-          {
-            "type": "question",
-            "step": "math-3-n1"
-          },
-          {
-            "type": "chest"
-          },
-          {
-            "type": "mushroom"
-          },
-          {
-            "type": "question",
-            "step": "math-3-c2"
-          }
-        ]
-      }
+      "zone": 1
     },
     {
       "id": "math-4",
@@ -567,13 +262,9 @@
         {
           "id": "math-4-c",
           "kind": "count",
-          "question": "夜空里有几颗星星？点一点",
+          "question": "夜空里有几颗星星（点一点，数数看）",
           "duckIcon": "star",
           "count": 6,
-          "countRange": [
-            4,
-            6
-          ],
           "countOptions": [
             5,
             6,
@@ -607,281 +298,9 @@
           "answerKey": "left",
           "hint": "一个对着一个，比一比",
           "praise": "星星多，答对啦！"
-        },
-        {
-          "id": "math-4-c2",
-          "kind": "count",
-          "question": "礼盒里有几颗爱心糖？点一点",
-          "duckIcon": "heart",
-          "count": 5,
-          "countRange": [
-            3,
-            5
-          ],
-          "countOptions": [
-            3,
-            4,
-            5
-          ],
-          "backdrop": "grass",
-          "unit": "颗"
-        },
-        {
-          "id": "math-4-cmp2",
-          "kind": "compare",
-          "question": "哪一边更多？",
-          "leftIcon": "moon",
-          "leftCount": 4,
-          "rightIcon": "star",
-          "rightCount": 6,
-          "compareOptions": [
-            {
-              "key": "left",
-              "label": "月亮多"
-            },
-            {
-              "key": "right",
-              "label": "星星多"
-            },
-            {
-              "key": "same",
-              "label": "一样多"
-            }
-          ],
-          "answerKey": "right",
-          "hint": "一个对着一个，比一比",
-          "praise": "星星多，答对啦！"
-        },
-        {
-          "id": "math-4-f0-pat",
-          "kind": "pattern",
-          "seq": [
-            "duck",
-            "panda",
-            "duck"
-          ],
-          "question": "找规律：下一个是哪个？",
-          "options": [
-            {
-              "icon": "duck"
-            },
-            {
-              "icon": "panda"
-            },
-            {
-              "icon": "candy"
-            }
-          ],
-          "answer": 1,
-          "hint": "先读一读前面几个，找一找谁在轮流出现",
-          "praise": "规律找对啦，小侦探！"
         }
       ],
-      "board": {
-        "spaces": [
-          {
-            "type": "question",
-            "step": "math-4-f0-pat"
-          },
-          {
-            "type": "question",
-            "step": "math-4-c"
-          },
-          {
-            "type": "coin"
-          },
-          {
-            "type": "question",
-            "step": "math-4-cmp"
-          },
-          {
-            "type": "question",
-            "step": "math-4-c2"
-          },
-          {
-            "type": "question",
-            "step": "math-4-cmp2"
-          },
-          {
-            "type": "rest"
-          },
-          {
-            "type": "mushroom"
-          }
-        ]
-      }
-    },
-    {
-      "id": "math-r0",
-      "title": "复习关 一",
-      "subtitle": "旧题开盲盒 · 混排复习",
-      "steps": [
-        {
-          "id": "math-r0-0",
-          "kind": "count",
-          "question": "池塘里有几只小鸭？点一点",
-          "duckIcon": "duck",
-          "count": 3,
-          "countRange": [
-            2,
-            3
-          ],
-          "countOptions": [
-            2,
-            3,
-            4
-          ],
-          "backdrop": "pond",
-          "unit": "只"
-        },
-        {
-          "id": "math-r0-1",
-          "kind": "count",
-          "question": "盘子里有几颗糖？点一点",
-          "duckIcon": "candy",
-          "count": 4,
-          "countRange": [
-            2,
-            4
-          ],
-          "countOptions": [
-            3,
-            4,
-            5
-          ],
-          "backdrop": "grass",
-          "unit": "颗"
-        },
-        {
-          "id": "math-r0-2",
-          "kind": "count",
-          "question": "果园里摘了几个苹果？点一点",
-          "duckIcon": "apple",
-          "count": 5,
-          "countRange": [
-            3,
-            5
-          ],
-          "countOptions": [
-            4,
-            5,
-            6
-          ],
-          "backdrop": "grass",
-          "unit": "个"
-        },
-        {
-          "id": "math-r0-3",
-          "kind": "compare",
-          "question": "两边气球哪边多？",
-          "leftIcon": "balloon",
-          "leftCount": 4,
-          "rightIcon": "balloon",
-          "rightCount": 4,
-          "compareOptions": [
-            {
-              "key": "left",
-              "label": "左边多"
-            },
-            {
-              "key": "right",
-              "label": "右边多"
-            },
-            {
-              "key": "same",
-              "label": "一样多"
-            }
-          ],
-          "answerKey": "same",
-          "hint": "一个对着一个，比一比",
-          "praise": "火眼金睛！一样多！"
-        },
-        {
-          "id": "math-r0-4",
-          "kind": "count",
-          "question": "夜空里有几颗星星？点一点",
-          "duckIcon": "star",
-          "count": 6,
-          "countRange": [
-            4,
-            6
-          ],
-          "countOptions": [
-            5,
-            6,
-            7
-          ],
-          "backdrop": "night",
-          "unit": "颗"
-        },
-        {
-          "id": "math-r0-5",
-          "kind": "compare",
-          "question": "哪边的水果更多？",
-          "leftIcon": "apple",
-          "leftCount": 3,
-          "rightIcon": "banana",
-          "rightCount": 1,
-          "compareOptions": [
-            {
-              "key": "left",
-              "label": "苹果多"
-            },
-            {
-              "key": "right",
-              "label": "香蕉多"
-            },
-            {
-              "key": "same",
-              "label": "一样多"
-            }
-          ],
-          "answerKey": "left",
-          "hint": "一个对着一个，比一比",
-          "praise": "苹果多，答对啦！"
-        }
-      ],
-      "board": {
-        "spaces": [
-          {
-            "type": "question",
-            "step": "math-r0-0"
-          },
-          {
-            "type": "question",
-            "step": "math-r0-1"
-          },
-          {
-            "type": "coin"
-          },
-          {
-            "type": "question",
-            "step": "math-r0-2"
-          },
-          {
-            "type": "question",
-            "step": "math-r0-3"
-          },
-          {
-            "type": "coin"
-          },
-          {
-            "type": "question",
-            "step": "math-r0-4"
-          },
-          {
-            "type": "question",
-            "step": "math-r0-5"
-          },
-          {
-            "type": "mushroom"
-          },
-          {
-            "type": "chest"
-          }
-        ]
-      },
-      "review": true
+      "zone": 1
     },
     {
       "id": "math-5",
@@ -891,13 +310,9 @@
         {
           "id": "math-5-c",
           "kind": "count",
-          "question": "轨道上有几辆小火车？点一点",
+          "question": "轨道上有几辆小火车（点一点，数数看）",
           "duckIcon": "train",
           "count": 7,
-          "countRange": [
-            5,
-            7
-          ],
           "countOptions": [
             6,
             7,
@@ -933,90 +348,20 @@
           "praise": "对，是 5 点！"
         },
         {
-          "id": "math-5-c2",
-          "kind": "count",
-          "question": "宝箱里有几枚金币？点一点",
-          "duckIcon": "coin",
-          "count": 6,
-          "countRange": [
-            4,
-            6
+          "id": "math-x2",
+          "kind": "sequence",
+          "question": "按 1→2→3→4 顺序点，小火车出发！",
+          "seq": [
+            "1",
+            "2",
+            "3",
+            "4"
           ],
-          "countOptions": [
-            4,
-            5,
-            6
-          ],
-          "backdrop": "night",
-          "unit": "枚"
-        },
-        {
-          "id": "math-5-x1-o",
-          "kind": "order",
-          "nums": [
-            5,
-            8,
-            6
-          ],
-          "dir": "down",
-          "question": "从大到小，依次点一点",
-          "hint": "从大到小：大的排前面",
-          "praise": "排队排好啦！"
-        },
-        {
-          "id": "math-5-x2-d",
-          "kind": "dice",
-          "count": 4,
-          "countOptions": [
-            3,
-            4,
-            5
-          ],
-          "question": "骰子停下来是几点？",
-          "hint": "一个一个数红点点",
-          "praise": "对，是 4 点！"
+          "hint": "按顺序一个一个点",
+          "praise": "呜呜——小火车开动啦！"
         }
       ],
-      "board": {
-        "spaces": [
-          {
-            "type": "question",
-            "step": "math-5-x2-d"
-          },
-          {
-            "type": "coin"
-          },
-          {
-            "type": "question",
-            "step": "math-5-c"
-          },
-          {
-            "type": "coin"
-          },
-          {
-            "type": "question",
-            "step": "math-5-o2"
-          },
-          {
-            "type": "question",
-            "step": "math-5-d1"
-          },
-          {
-            "type": "question",
-            "step": "math-5-c2"
-          },
-          {
-            "type": "chest"
-          },
-          {
-            "type": "rest"
-          },
-          {
-            "type": "question",
-            "step": "math-5-x1-o"
-          }
-        ]
-      }
+      "zone": 1
     },
     {
       "id": "math-6",
@@ -1026,13 +371,9 @@
         {
           "id": "math-6-c",
           "kind": "count",
-          "question": "花园里开了几朵花？点一点",
+          "question": "花园里开了几朵花（点一点，数数看）",
           "duckIcon": "flower",
           "count": 8,
-          "countRange": [
-            6,
-            8
-          ],
           "countOptions": [
             7,
             8,
@@ -1056,99 +397,9 @@
           ],
           "hint": "一共 8 朵，左边有 3 朵",
           "praise": "分对啦，8 可以分成 3 和 5！"
-        },
-        {
-          "id": "math-6-c2",
-          "kind": "count",
-          "question": "池塘里有几只小鸭？点一点",
-          "duckIcon": "duck",
-          "count": 7,
-          "countRange": [
-            5,
-            7
-          ],
-          "countOptions": [
-            5,
-            6,
-            7
-          ],
-          "backdrop": "pond",
-          "unit": "只"
-        },
-        {
-          "id": "math-6-x1-s",
-          "kind": "split",
-          "total": 9,
-          "part": 3,
-          "leftIcon": "flower",
-          "unit": "朵",
-          "question": "9 朵分两堆，左边 3 朵，右边几朵？",
-          "arithOptions": [
-            5,
-            6,
-            7
-          ],
-          "hint": "一共 9 朵，左边有 3 朵",
-          "praise": "分对啦，9 可以分成 3 和 6！"
-        },
-        {
-          "id": "math-6-f0-pat",
-          "kind": "pattern",
-          "seq": [
-            "star",
-            "moon",
-            "star"
-          ],
-          "question": "读一读前面几个，接下来是谁？",
-          "options": [
-            {
-              "icon": "star"
-            },
-            {
-              "icon": "moon"
-            },
-            {
-              "icon": "candy"
-            }
-          ],
-          "answer": 1,
-          "hint": "先读一读前面几个，找一找谁在轮流出现",
-          "praise": "规律找对啦，小侦探！"
         }
       ],
-      "board": {
-        "spaces": [
-          {
-            "type": "question",
-            "step": "math-6-s2"
-          },
-          {
-            "type": "question",
-            "step": "math-6-c2"
-          },
-          {
-            "type": "coin"
-          },
-          {
-            "type": "question",
-            "step": "math-6-x1-s"
-          },
-          {
-            "type": "question",
-            "step": "math-6-f0-pat"
-          },
-          {
-            "type": "coin"
-          },
-          {
-            "type": "chest"
-          },
-          {
-            "type": "question",
-            "step": "math-6-c"
-          }
-        ]
-      }
+      "zone": 1
     },
     {
       "id": "math-7",
@@ -1158,13 +409,9 @@
         {
           "id": "math-7-c",
           "kind": "count",
-          "question": "礼盒里有几颗爱心糖？点一点",
+          "question": "礼盒里有几颗爱心糖（点一点，数数看）",
           "duckIcon": "heart",
           "count": 9,
-          "countRange": [
-            7,
-            9
-          ],
           "countOptions": [
             8,
             9,
@@ -1198,89 +445,9 @@
           "question": "掷骰子：掷出了几点？",
           "hint": "一个一个数红点点",
           "praise": "对，是 6 点！"
-        },
-        {
-          "id": "math-7-c2",
-          "kind": "count",
-          "question": "盘子里有几颗糖？点一点",
-          "duckIcon": "candy",
-          "count": 8,
-          "countRange": [
-            6,
-            8
-          ],
-          "countOptions": [
-            6,
-            7,
-            8
-          ],
-          "backdrop": "grass",
-          "unit": "颗"
-        },
-        {
-          "id": "math-7-x1-o",
-          "kind": "order",
-          "nums": [
-            7,
-            2,
-            5
-          ],
-          "dir": "up",
-          "question": "从小到大，依次点一点",
-          "hint": "从小到大：小的排前面",
-          "praise": "排队排好啦！"
-        },
-        {
-          "id": "math-7-x2-d",
-          "kind": "dice",
-          "count": 5,
-          "countOptions": [
-            4,
-            5,
-            6
-          ],
-          "question": "骰子停下来是几点？",
-          "hint": "一个一个数红点点",
-          "praise": "对，是 5 点！"
         }
       ],
-      "board": {
-        "spaces": [
-          {
-            "type": "question",
-            "step": "math-7-o3"
-          },
-          {
-            "type": "coin"
-          },
-          {
-            "type": "question",
-            "step": "math-7-d2"
-          },
-          {
-            "type": "question",
-            "step": "math-7-c2"
-          },
-          {
-            "type": "coin"
-          },
-          {
-            "type": "question",
-            "step": "math-7-x1-o"
-          },
-          {
-            "type": "question",
-            "step": "math-7-x2-d"
-          },
-          {
-            "type": "mushroom"
-          },
-          {
-            "type": "question",
-            "step": "math-7-c"
-          }
-        ]
-      }
+      "zone": 1
     },
     {
       "id": "math-8",
@@ -1290,13 +457,9 @@
         {
           "id": "math-8-c",
           "kind": "count",
-          "question": "宝箱里有几枚金币？点一点",
+          "question": "宝箱里有几枚金币（点一点，数数看）",
           "duckIcon": "coin",
           "count": 10,
-          "countRange": [
-            8,
-            10
-          ],
           "countOptions": [
             8,
             9,
@@ -1328,99 +491,9 @@
           "answer": 0,
           "hint": "先读一读前面几个，找一找谁在轮流出现",
           "praise": "规律找对啦，小侦探！"
-        },
-        {
-          "id": "math-8-c2",
-          "kind": "count",
-          "question": "果园里摘了几个苹果？点一点",
-          "duckIcon": "apple",
-          "count": 9,
-          "countRange": [
-            7,
-            9
-          ],
-          "countOptions": [
-            7,
-            8,
-            9
-          ],
-          "backdrop": "grass",
-          "unit": "个"
-        },
-        {
-          "id": "math-8-x1-p",
-          "kind": "pattern",
-          "seq": [
-            "star",
-            "moon",
-            "star"
-          ],
-          "question": "谁在轮流出现？点下一个",
-          "options": [
-            {
-              "icon": "star"
-            },
-            {
-              "icon": "moon"
-            },
-            {
-              "icon": "candy"
-            }
-          ],
-          "answer": 1,
-          "hint": "先读一读前面几个，找一找谁在轮流出现",
-          "praise": "规律找对啦，小侦探！"
-        },
-        {
-          "id": "math-8-f0-spl",
-          "kind": "split",
-          "total": 7,
-          "part": 4,
-          "leftIcon": "candy",
-          "unit": "颗",
-          "question": "7 颗糖分两盘，这边 4 颗，那边几颗？",
-          "arithOptions": [
-            2,
-            3,
-            4
-          ],
-          "hint": "一共 7 颗，左边有 4 颗",
-          "praise": "分对啦，7 可以分成 4 和 3！"
         }
       ],
-      "board": {
-        "spaces": [
-          {
-            "type": "question",
-            "step": "math-8-x1-p"
-          },
-          {
-            "type": "question",
-            "step": "math-8-f0-spl"
-          },
-          {
-            "type": "question",
-            "step": "math-8-c"
-          },
-          {
-            "type": "coin"
-          },
-          {
-            "type": "question",
-            "step": "math-8-p1"
-          },
-          {
-            "type": "question",
-            "step": "math-8-c2"
-          },
-          {
-            "type": "rest"
-          },
-          {
-            "type": "coin"
-          }
-        ]
-      }
+      "zone": 1
     },
     {
       "id": "math-9",
@@ -1483,266 +556,9 @@
           "answer": 1,
           "hint": "想一想它们分别是做什么的",
           "praise": "分类小能手！"
-        },
-        {
-          "id": "math-9-x0-q",
-          "kind": "quiz",
-          "question": "这几个数里谁最小？",
-          "options": [
-            {
-              "text": "4"
-            },
-            {
-              "text": "8"
-            },
-            {
-              "text": "1"
-            }
-          ],
-          "answer": 2,
-          "hint": "越早数到的越小哦",
-          "praise": "思维小达人！"
-        },
-        {
-          "id": "math-9-x1-q",
-          "kind": "quiz",
-          "question": "这几个数里谁最大？",
-          "options": [
-            {
-              "text": "6"
-            },
-            {
-              "text": "2"
-            },
-            {
-              "text": "9"
-            }
-          ],
-          "answer": 2,
-          "hint": "从 1 数到 10，谁排在最后？",
-          "praise": "9 最大，答对啦！"
-        },
-        {
-          "id": "math-9-x2-c",
-          "kind": "quiz",
-          "question": "火眼金睛：哪个能吃？",
-          "options": [
-            {
-              "icon": "duck"
-            },
-            {
-              "icon": "cake"
-            },
-            {
-              "icon": "train"
-            }
-          ],
-          "answer": 1,
-          "hint": "想一想它们分别是做什么的",
-          "praise": "分类小能手！"
         }
       ],
-      "board": {
-        "spaces": [
-          {
-            "type": "question",
-            "step": "math-9-x0-q"
-          },
-          {
-            "type": "coin"
-          },
-          {
-            "type": "question",
-            "step": "math-9-x1-q"
-          },
-          {
-            "type": "question",
-            "step": "math-9-x2-c"
-          },
-          {
-            "type": "question",
-            "step": "math-9-q1"
-          },
-          {
-            "type": "chest"
-          },
-          {
-            "type": "question",
-            "step": "math-9-q2"
-          },
-          {
-            "type": "question",
-            "step": "math-9-q3"
-          },
-          {
-            "type": "mushroom"
-          }
-        ]
-      }
-    },
-    {
-      "id": "math-r1",
-      "title": "复习关 二",
-      "subtitle": "旧题开盲盒 · 混排复习",
-      "steps": [
-        {
-          "id": "math-r1-0",
-          "kind": "count",
-          "question": "池塘里有几只小鸭？点一点",
-          "duckIcon": "duck",
-          "count": 3,
-          "countRange": [
-            2,
-            3
-          ],
-          "countOptions": [
-            2,
-            3,
-            4
-          ],
-          "backdrop": "pond",
-          "unit": "只"
-        },
-        {
-          "id": "math-r1-1",
-          "kind": "count",
-          "question": "盘子里有几颗糖？点一点",
-          "duckIcon": "candy",
-          "count": 4,
-          "countRange": [
-            2,
-            4
-          ],
-          "countOptions": [
-            3,
-            4,
-            5
-          ],
-          "backdrop": "grass",
-          "unit": "颗"
-        },
-        {
-          "id": "math-r1-2",
-          "kind": "count",
-          "question": "果园里摘了几个苹果？点一点",
-          "duckIcon": "apple",
-          "count": 5,
-          "countRange": [
-            3,
-            5
-          ],
-          "countOptions": [
-            4,
-            5,
-            6
-          ],
-          "backdrop": "grass",
-          "unit": "个"
-        },
-        {
-          "id": "math-r1-3",
-          "kind": "compare",
-          "question": "两边气球哪边多？",
-          "leftIcon": "balloon",
-          "leftCount": 4,
-          "rightIcon": "balloon",
-          "rightCount": 4,
-          "compareOptions": [
-            {
-              "key": "left",
-              "label": "左边多"
-            },
-            {
-              "key": "right",
-              "label": "右边多"
-            },
-            {
-              "key": "same",
-              "label": "一样多"
-            }
-          ],
-          "answerKey": "same",
-          "hint": "一个对着一个，比一比",
-          "praise": "火眼金睛！一样多！"
-        },
-        {
-          "id": "math-r1-4",
-          "kind": "count",
-          "question": "夜空里有几颗星星？点一点",
-          "duckIcon": "star",
-          "count": 6,
-          "countRange": [
-            4,
-            6
-          ],
-          "countOptions": [
-            5,
-            6,
-            7
-          ],
-          "backdrop": "night",
-          "unit": "颗"
-        },
-        {
-          "id": "math-r1-5",
-          "kind": "count",
-          "question": "轨道上有几辆小火车？点一点",
-          "duckIcon": "train",
-          "count": 7,
-          "countRange": [
-            5,
-            7
-          ],
-          "countOptions": [
-            6,
-            7,
-            8
-          ],
-          "backdrop": "grass",
-          "unit": "辆"
-        }
-      ],
-      "board": {
-        "spaces": [
-          {
-            "type": "question",
-            "step": "math-r1-1"
-          },
-          {
-            "type": "coin"
-          },
-          {
-            "type": "question",
-            "step": "math-r1-2"
-          },
-          {
-            "type": "question",
-            "step": "math-r1-3"
-          },
-          {
-            "type": "coin"
-          },
-          {
-            "type": "question",
-            "step": "math-r1-4"
-          },
-          {
-            "type": "question",
-            "step": "math-r1-5"
-          },
-          {
-            "type": "chest"
-          },
-          {
-            "type": "rest"
-          },
-          {
-            "type": "question",
-            "step": "math-r1-0"
-          }
-        ]
-      },
-      "review": true
+      "zone": 1
     },
     {
       "id": "math-10",
@@ -1782,99 +598,9 @@
           ],
           "hint": "指着图一个一个数",
           "praise": "算对啦，等于 3！"
-        },
-        {
-          "id": "math-10-x0-a",
-          "kind": "arith",
-          "op": "+",
-          "leftIcon": "candy",
-          "leftCount": 2,
-          "rightCount": 1,
-          "unit": "颗",
-          "question": "2 颗再加 1 颗，一共有几颗？",
-          "arithOptions": [
-            2,
-            3,
-            4
-          ],
-          "hint": "指着图一个一个数",
-          "praise": "算对啦，等于 3！"
-        },
-        {
-          "id": "math-10-x1-a",
-          "kind": "arith",
-          "op": "+",
-          "leftIcon": "candy",
-          "leftCount": 3,
-          "rightCount": 1,
-          "unit": "颗",
-          "question": "3 颗再加 1 颗，一共有几颗？",
-          "arithOptions": [
-            3,
-            4,
-            5
-          ],
-          "hint": "指着图一个一个数",
-          "praise": "算对啦，等于 4！"
-        },
-        {
-          "id": "math-10-f0-pat",
-          "kind": "pattern",
-          "seq": [
-            "duck",
-            "panda",
-            "duck"
-          ],
-          "question": "读一读前面几个，接下来是谁？",
-          "options": [
-            {
-              "icon": "duck"
-            },
-            {
-              "icon": "panda"
-            },
-            {
-              "icon": "candy"
-            }
-          ],
-          "answer": 1,
-          "hint": "先读一读前面几个，找一找谁在轮流出现",
-          "praise": "规律找对啦，小侦探！"
         }
       ],
-      "board": {
-        "spaces": [
-          {
-            "type": "question",
-            "step": "math-10-a+11"
-          },
-          {
-            "type": "question",
-            "step": "math-10-a+21"
-          },
-          {
-            "type": "coin"
-          },
-          {
-            "type": "question",
-            "step": "math-10-x0-a"
-          },
-          {
-            "type": "question",
-            "step": "math-10-x1-a"
-          },
-          {
-            "type": "question",
-            "step": "math-10-f0-pat"
-          },
-          {
-            "type": "rest"
-          },
-          {
-            "type": "mushroom"
-          }
-        ]
-      }
+      "zone": 2
     },
     {
       "id": "math-11",
@@ -1913,98 +639,9 @@
           ],
           "hint": "一共 6 个，左边有 2 个",
           "praise": "分对啦，6 可以分成 2 和 4！"
-        },
-        {
-          "id": "math-11-x0-a",
-          "kind": "arith",
-          "op": "+",
-          "leftIcon": "apple",
-          "leftCount": 3,
-          "rightCount": 2,
-          "unit": "个",
-          "question": "3 个再加 2 个，一共有几个？",
-          "arithOptions": [
-            4,
-            5,
-            6
-          ],
-          "hint": "指着图一个一个数",
-          "praise": "算对啦，等于 5！"
-        },
-        {
-          "id": "math-11-x1-s",
-          "kind": "split",
-          "total": 7,
-          "part": 2,
-          "leftIcon": "apple",
-          "unit": "个",
-          "question": "7 个分两堆，左边 2 个，右边几个？",
-          "arithOptions": [
-            4,
-            5,
-            6
-          ],
-          "hint": "一共 7 个，左边有 2 个",
-          "praise": "分对啦，7 可以分成 2 和 5！"
-        },
-        {
-          "id": "math-11-f0-pat",
-          "kind": "pattern",
-          "seq": [
-            "balloon",
-            "gift",
-            "balloon"
-          ],
-          "question": "排列里藏着小秘密，下一个是？",
-          "options": [
-            {
-              "icon": "balloon"
-            },
-            {
-              "icon": "gift"
-            },
-            {
-              "icon": "candy"
-            }
-          ],
-          "answer": 1,
-          "hint": "先读一读前面几个，找一找谁在轮流出现",
-          "praise": "规律找对啦，小侦探！"
         }
       ],
-      "board": {
-        "spaces": [
-          {
-            "type": "question",
-            "step": "math-11-s3"
-          },
-          {
-            "type": "coin"
-          },
-          {
-            "type": "question",
-            "step": "math-11-x0-a"
-          },
-          {
-            "type": "chest"
-          },
-          {
-            "type": "question",
-            "step": "math-11-x1-s"
-          },
-          {
-            "type": "question",
-            "step": "math-11-f0-pat"
-          },
-          {
-            "type": "question",
-            "step": "math-11-a+22"
-          },
-          {
-            "type": "rest"
-          }
-        ]
-      }
+      "zone": 2
     },
     {
       "id": "math-12",
@@ -2044,99 +681,9 @@
           ],
           "hint": "划掉的不算哦",
           "praise": "算对啦，等于 2！"
-        },
-        {
-          "id": "math-12-x0-a",
-          "kind": "arith",
-          "op": "-",
-          "leftIcon": "balloon",
-          "leftCount": 4,
-          "rightCount": 1,
-          "unit": "个",
-          "question": "4 个拿走 1 个，还剩几个？",
-          "arithOptions": [
-            2,
-            3,
-            4
-          ],
-          "hint": "划掉的不算哦",
-          "praise": "算对啦，等于 3！"
-        },
-        {
-          "id": "math-12-x1-a",
-          "kind": "arith",
-          "op": "-",
-          "leftIcon": "balloon",
-          "leftCount": 5,
-          "rightCount": 2,
-          "unit": "个",
-          "question": "5 个拿走 2 个，还剩几个？",
-          "arithOptions": [
-            2,
-            3,
-            4
-          ],
-          "hint": "划掉的不算哦",
-          "praise": "算对啦，等于 3！"
-        },
-        {
-          "id": "math-12-f0-pat",
-          "kind": "pattern",
-          "seq": [
-            "star",
-            "moon",
-            "star"
-          ],
-          "question": "找规律：下一个是哪个？",
-          "options": [
-            {
-              "icon": "star"
-            },
-            {
-              "icon": "moon"
-            },
-            {
-              "icon": "candy"
-            }
-          ],
-          "answer": 1,
-          "hint": "先读一读前面几个，找一找谁在轮流出现",
-          "praise": "规律找对啦，小侦探！"
         }
       ],
-      "board": {
-        "spaces": [
-          {
-            "type": "question",
-            "step": "math-12-x0-a"
-          },
-          {
-            "type": "question",
-            "step": "math-12-x1-a"
-          },
-          {
-            "type": "coin"
-          },
-          {
-            "type": "question",
-            "step": "math-12-f0-pat"
-          },
-          {
-            "type": "question",
-            "step": "math-12-a-31"
-          },
-          {
-            "type": "coin"
-          },
-          {
-            "type": "chest"
-          },
-          {
-            "type": "question",
-            "step": "math-12-a-42"
-          }
-        ]
-      }
+      "zone": 2
     },
     {
       "id": "math-13",
@@ -2168,7 +715,7 @@
             0,
             8
           ],
-          "question": "想一想：藏起来的数字是几？",
+          "question": "想一想：6 和 8 中间藏起来的数字是几？",
           "arithOptions": [
             6,
             7,
@@ -2177,100 +724,9 @@
           "answer": 1,
           "hint": "6 的后面是几？8 的前面是几？",
           "praise": "是 7！6 和 8 的中间是 7！"
-        },
-        {
-          "id": "math-13-x0-a",
-          "kind": "arith",
-          "op": "-",
-          "leftIcon": "star",
-          "leftCount": 6,
-          "rightCount": 2,
-          "unit": "颗",
-          "question": "6 颗拿走 2 颗，还剩几颗？",
-          "arithOptions": [
-            3,
-            4,
-            5
-          ],
-          "hint": "划掉的不算哦",
-          "praise": "算对啦，等于 4！"
-        },
-        {
-          "id": "math-13-x1-n",
-          "kind": "neighbor",
-          "nums": [
-            7,
-            0,
-            9
-          ],
-          "question": "两个数中间，躲着谁？",
-          "arithOptions": [
-            7,
-            8,
-            9
-          ],
-          "answer": 1,
-          "hint": "7 的后面是几？9 的前面是几？",
-          "praise": "是 8！7 和 9 的中间是 8！"
-        },
-        {
-          "id": "math-13-f0-pat",
-          "kind": "pattern",
-          "seq": [
-            "candy",
-            "apple",
-            "candy"
-          ],
-          "question": "谁在轮流出现？点下一个",
-          "options": [
-            {
-              "icon": "candy"
-            },
-            {
-              "icon": "apple"
-            },
-            {
-              "icon": "star"
-            }
-          ],
-          "answer": 1,
-          "hint": "先读一读前面几个，找一找谁在轮流出现",
-          "praise": "规律找对啦，小侦探！"
         }
       ],
-      "board": {
-        "spaces": [
-          {
-            "type": "question",
-            "step": "math-13-x1-n"
-          },
-          {
-            "type": "coin"
-          },
-          {
-            "type": "question",
-            "step": "math-13-f0-pat"
-          },
-          {
-            "type": "question",
-            "step": "math-13-a-52"
-          },
-          {
-            "type": "coin"
-          },
-          {
-            "type": "question",
-            "step": "math-13-n2"
-          },
-          {
-            "type": "question",
-            "step": "math-13-x0-a"
-          },
-          {
-            "type": "mushroom"
-          }
-        ]
-      }
+      "zone": 2
     },
     {
       "id": "math-14",
@@ -2349,33 +805,83 @@
           "answer": 2,
           "hint": "先读一读前面几个，找一找谁在轮流出现",
           "praise": "规律找对啦，小侦探！"
-        },
+        }
+      ],
+      "zone": 2
+    },
+    {
+      "id": "math-15",
+      "title": "第 16 关 凑十法",
+      "subtitle": "20 以内加法",
+      "steps": [
         {
-          "id": "math-14-x0-a",
+          "id": "math-15-a+94",
           "kind": "arith",
           "op": "+",
-          "leftIcon": "star",
-          "leftCount": 5,
+          "leftIcon": "candy",
+          "leftCount": 9,
           "rightCount": 4,
           "unit": "颗",
-          "question": "5 颗再加 4 颗，一共有几颗？",
+          "question": "9 颗糖加 4 颗，凑成十再加，一共几颗？",
           "arithOptions": [
-            8,
-            9,
-            10
+            12,
+            13,
+            14
           ],
           "hint": "指着图一个一个数",
-          "praise": "算对啦，等于 9！"
+          "praise": "算对啦，等于 13！"
         },
         {
-          "id": "math-14-x1-a",
+          "id": "math-15-a+85",
+          "kind": "arith",
+          "op": "+",
+          "leftIcon": "apple",
+          "leftCount": 8,
+          "rightCount": 5,
+          "unit": "个",
+          "question": "8 个苹果加 5 个，凑十法算一算，一共几个？",
+          "arithOptions": [
+            12,
+            13,
+            14
+          ],
+          "hint": "指着图一个一个数",
+          "praise": "算对啦，等于 13！"
+        }
+      ],
+      "zone": 2
+    },
+    {
+      "id": "math-16",
+      "title": "第 17 关 破十法",
+      "subtitle": "20 以内减法",
+      "steps": [
+        {
+          "id": "math-16-a-135",
           "kind": "arith",
           "op": "-",
-          "leftIcon": "duck",
-          "leftCount": 10,
-          "rightCount": 3,
-          "unit": "只",
-          "question": "10 只拿走 3 只，还剩几只？",
+          "leftIcon": "star",
+          "leftCount": 13,
+          "rightCount": 5,
+          "unit": "颗",
+          "question": "13 颗星星去掉 5 颗，破十法算一算，还剩几颗？",
+          "arithOptions": [
+            7,
+            8,
+            9
+          ],
+          "hint": "划掉的不算哦",
+          "praise": "算对啦，等于 8！"
+        },
+        {
+          "id": "math-16-a-158",
+          "kind": "arith",
+          "op": "-",
+          "leftIcon": "balloon",
+          "leftCount": 15,
+          "rightCount": 8,
+          "unit": "个",
+          "question": "15 个气球飞走 8 个，破十法算一算，还剩几个？",
           "arithOptions": [
             6,
             7,
@@ -2383,62 +889,4649 @@
           ],
           "hint": "划掉的不算哦",
           "praise": "算对啦，等于 7！"
+        }
+      ],
+      "zone": 2
+    },
+    {
+      "id": "math-17",
+      "title": "第 18 关 连加连减",
+      "subtitle": "三个数",
+      "steps": [
+        {
+          "id": "math-17-a+75",
+          "kind": "arith",
+          "op": "+",
+          "leftIcon": "duck",
+          "leftCount": 7,
+          "rightCount": 5,
+          "unit": "只",
+          "question": "先来了 7 只鸭，又来了 5 只，一共几只？",
+          "arithOptions": [
+            11,
+            12,
+            13
+          ],
+          "hint": "指着图一个一个数",
+          "praise": "算对啦，等于 12！"
         },
         {
-          "id": "math-14-x2-o",
-          "kind": "order",
-          "nums": [
+          "id": "math-17-a-146",
+          "kind": "arith",
+          "op": "-",
+          "leftIcon": "candy",
+          "leftCount": 14,
+          "rightCount": 6,
+          "unit": "颗",
+          "question": "14 颗糖吃掉 6 颗，还剩几颗？",
+          "arithOptions": [
+            7,
             8,
-            1,
+            9
+          ],
+          "hint": "划掉的不算哦",
+          "praise": "算对啦，等于 8！"
+        },
+        {
+          "id": "math-17-q3",
+          "kind": "quiz",
+          "question": "连加：3 + 4 + 2 = ?",
+          "options": [
+            {
+              "text": "8"
+            },
+            {
+              "text": "9"
+            },
+            {
+              "text": "10"
+            }
+          ],
+          "answer": 1,
+          "hint": "先算 3+4，再加 2",
+          "praise": "连加小能手！"
+        }
+      ],
+      "zone": 2
+    },
+    {
+      "id": "math-18",
+      "title": "第 19 关 五十以内",
+      "subtitle": "两位数加减",
+      "steps": [
+        {
+          "id": "math-18-a+2315",
+          "kind": "arith",
+          "op": "+",
+          "leftIcon": "block",
+          "leftCount": 23,
+          "rightCount": 15,
+          "unit": "块",
+          "question": "两堆积木，23 块和 15 块，一共几块？",
+          "arithOptions": [
+            37,
+            38,
+            39
+          ],
+          "hint": "指着图一个一个数",
+          "praise": "算对啦，等于 38！"
+        },
+        {
+          "id": "math-18-a-4522",
+          "kind": "arith",
+          "op": "-",
+          "leftIcon": "block",
+          "leftCount": 45,
+          "rightCount": 22,
+          "unit": "块",
+          "question": "45 块积木拿走 22 块，还剩几块？",
+          "arithOptions": [
+            22,
+            23,
+            24
+          ],
+          "hint": "划掉的不算哦",
+          "praise": "算对啦，等于 23！"
+        }
+      ],
+      "zone": 2
+    },
+    {
+      "id": "math-19",
+      "title": "第 20 关 百数大挑战",
+      "subtitle": "100/200 以内",
+      "steps": [
+        {
+          "id": "math-19-a+3627",
+          "kind": "arith",
+          "op": "+",
+          "leftIcon": "coin",
+          "leftCount": 36,
+          "rightCount": 27,
+          "unit": "枚",
+          "question": "36 枚金币加 27 枚，一共几枚？",
+          "arithOptions": [
+            62,
+            63,
+            64
+          ],
+          "hint": "指着图一个一个数",
+          "praise": "算对啦，等于 63！"
+        },
+        {
+          "id": "math-19-a-8035",
+          "kind": "arith",
+          "op": "-",
+          "leftIcon": "coin",
+          "leftCount": 80,
+          "rightCount": 35,
+          "unit": "枚",
+          "question": "80 枚金币花掉 35 枚，还剩几枚？",
+          "arithOptions": [
+            44,
+            45,
+            46
+          ],
+          "hint": "划掉的不算哦",
+          "praise": "算对啦，等于 45！"
+        },
+        {
+          "id": "math-19-q3",
+          "kind": "quiz",
+          "question": "挑战：100 - 40 = ?",
+          "options": [
+            {
+              "text": "50"
+            },
+            {
+              "text": "60"
+            },
+            {
+              "text": "70"
+            }
+          ],
+          "answer": 1,
+          "hint": "10 个十去掉 4 个十",
+          "praise": "百数达人！"
+        }
+      ],
+      "zone": 2
+    },
+    {
+      "id": "math-20",
+      "title": "第 21 关 几个几",
+      "subtitle": "乘法启蒙",
+      "steps": [
+        {
+          "id": "math-20-m1",
+          "kind": "muldiv",
+          "op": "×",
+          "mode": "groups",
+          "icon": "train",
+          "unit": "辆",
+          "question": "3 组小车，每组 2 辆，一共几辆？",
+          "hint": "几个几：3 个 2，连加 2+2+2",
+          "praise": "乘法小能手：3×2=6！",
+          "options": [
+            5,
+            6,
+            7
+          ],
+          "answer": 1,
+          "groups": 3,
+          "per": 2
+        },
+        {
+          "id": "math-20-m2",
+          "kind": "muldiv",
+          "op": "×",
+          "mode": "groups",
+          "icon": "apple",
+          "unit": "个",
+          "question": "2 盘苹果，每盘 4 个，一共几个？",
+          "hint": "2 个 4",
+          "praise": "2×4=8，真棒！",
+          "options": [
+            7,
+            8,
+            9
+          ],
+          "answer": 1,
+          "groups": 2,
+          "per": 4
+        }
+      ],
+      "zone": 3
+    },
+    {
+      "id": "math-21",
+      "title": "第 22 关 认识乘号",
+      "subtitle": "×",
+      "steps": [
+        {
+          "id": "math-21-m1",
+          "kind": "muldiv",
+          "op": "×",
+          "mode": "groups",
+          "icon": "flower",
+          "unit": "朵",
+          "question": "4 组花，每组 2 朵，乘法算一算，一共几朵？",
+          "hint": "4 个 2",
+          "praise": "4×2=8！",
+          "options": [
+            7,
+            8,
+            9
+          ],
+          "answer": 1,
+          "groups": 4,
+          "per": 2
+        },
+        {
+          "id": "math-21-m2",
+          "kind": "muldiv",
+          "op": "×",
+          "mode": "groups",
+          "icon": "candy",
+          "unit": "颗",
+          "question": "3 堆糖，每堆 3 颗，乘法算一算，一共几颗？",
+          "hint": "3 个 3",
+          "praise": "3×3=9！",
+          "options": [
+            8,
+            9,
+            10
+          ],
+          "answer": 1,
+          "groups": 3,
+          "per": 3
+        }
+      ],
+      "zone": 3
+    },
+    {
+      "id": "math-22",
+      "title": "第 23 关 乘法口诀",
+      "subtitle": "2~5",
+      "steps": [
+        {
+          "id": "math-22-m1",
+          "kind": "muldiv",
+          "op": "×",
+          "mode": "groups",
+          "icon": "star",
+          "unit": "颗",
+          "question": "5 行星星，每行 2 颗，二五一十，一共几颗？",
+          "hint": "二五一十",
+          "praise": "二五一十，口诀真熟！",
+          "options": [
+            9,
+            10,
+            11
+          ],
+          "answer": 1,
+          "groups": 5,
+          "per": 2
+        },
+        {
+          "id": "math-22-m2",
+          "kind": "muldiv",
+          "op": "×",
+          "mode": "groups",
+          "icon": "duck",
+          "unit": "只",
+          "question": "4 群小鸭，每群 3 只，三四十二，一共几只？",
+          "hint": "三四十二",
+          "praise": "三四十二，乘法小达人！",
+          "options": [
+            11,
+            12,
+            13
+          ],
+          "answer": 1,
+          "groups": 4,
+          "per": 3
+        }
+      ],
+      "zone": 3
+    },
+    {
+      "id": "math-23",
+      "title": "第 24 关 平均分",
+      "subtitle": "除法启蒙",
+      "steps": [
+        {
+          "id": "math-23-d1",
+          "kind": "muldiv",
+          "op": "÷",
+          "mode": "average",
+          "icon": "candy",
+          "unit": "颗",
+          "question": "12 颗糖平均分给 3 个人，每人几颗？",
+          "hint": "一样多分",
+          "praise": "12÷3=4，分公平啦！",
+          "options": [
+            3,
+            4,
             5
           ],
-          "dir": "up",
-          "question": "从小到大，依次点一点",
-          "hint": "从小到大：小的排前面",
-          "praise": "排队排好啦！"
+          "answer": 1,
+          "total": 12,
+          "groups": 3
+        },
+        {
+          "id": "math-23-d2",
+          "kind": "muldiv",
+          "op": "÷",
+          "mode": "average",
+          "icon": "apple",
+          "unit": "个",
+          "question": "10 个苹果平均装 2 盘，每盘几个？",
+          "hint": "一样多分",
+          "praise": "10÷2=5！",
+          "options": [
+            4,
+            5,
+            6
+          ],
+          "answer": 1,
+          "total": 10,
+          "groups": 2
+        }
+      ],
+      "zone": 3
+    },
+    {
+      "id": "math-24",
+      "title": "第 25 关 能分几组",
+      "subtitle": "包含除",
+      "steps": [
+        {
+          "id": "math-24-d1",
+          "kind": "muldiv",
+          "op": "÷",
+          "mode": "contain",
+          "icon": "apple",
+          "unit": "个",
+          "question": "12 个苹果，每盘放 3 个，能放几盘？",
+          "hint": "3 个一圈",
+          "praise": "12÷3=4 盘！",
+          "options": [
+            3,
+            4,
+            5
+          ],
+          "answer": 1,
+          "total": 12,
+          "per": 3
+        },
+        {
+          "id": "math-24-d2",
+          "kind": "muldiv",
+          "op": "÷",
+          "mode": "contain",
+          "icon": "candy",
+          "unit": "颗",
+          "question": "15 颗糖，每人分 5 颗，能分给几个人？",
+          "hint": "5 个一组",
+          "praise": "15÷5=3 人！",
+          "options": [
+            2,
+            3,
+            4
+          ],
+          "answer": 1,
+          "total": 15,
+          "per": 5
+        }
+      ],
+      "zone": 3
+    },
+    {
+      "id": "math-25",
+      "title": "第 26 关 凑十大战",
+      "subtitle": "扑克 make10",
+      "steps": [
+        {
+          "id": "math-25-c1",
+          "kind": "cards",
+          "mode": "make10",
+          "target": 10,
+          "pick": 2,
+          "cards": [
+            3,
+            7,
+            2,
+            8,
+            5,
+            1
+          ],
+          "question": "凑十大战：点 2 张牌，恰好凑成 10",
+          "praise": "凑数成功，算术小赌神！"
+        },
+        {
+          "id": "math-25-c2",
+          "kind": "cards",
+          "mode": "make10",
+          "target": 10,
+          "pick": 2,
+          "cards": [
+            4,
+            6,
+            1,
+            9,
+            5,
+            2
+          ],
+          "question": "再凑十：再点 2 张牌凑成 10",
+          "praise": "凑数成功，算术小赌神！"
+        }
+      ],
+      "zone": 3
+    },
+    {
+      "id": "math-26",
+      "title": "第 27 关 三牌凑目标",
+      "subtitle": "扑克 target",
+      "steps": [
+        {
+          "id": "math-26-c1",
+          "kind": "cards",
+          "mode": "target",
+          "target": 12,
+          "pick": 3,
+          "cards": [
+            3,
+            5,
+            4,
+            1,
+            2,
+            6
+          ],
+          "question": "点 3 张牌，用加减凑出 12",
+          "praise": "凑数成功，算术小赌神！"
+        },
+        {
+          "id": "math-26-c2",
+          "kind": "cards",
+          "mode": "target",
+          "target": 15,
+          "pick": 3,
+          "cards": [
+            7,
+            2,
+            6,
+            3,
+            4,
+            1
+          ],
+          "question": "点 3 张牌，用加减凑出 15",
+          "praise": "凑数成功，算术小赌神！"
+        }
+      ],
+      "zone": 3
+    },
+    {
+      "id": "math-27",
+      "title": "第 28 关 图案数独",
+      "subtitle": "4×4 入门",
+      "steps": [
+        {
+          "id": "math-27-s1",
+          "kind": "sudoku",
+          "size": 4,
+          "symbols": [
+            "duck",
+            "apple",
+            "star",
+            "moon"
+          ],
+          "givens": [
+            {
+              "r": 0,
+              "c": 0,
+              "v": 0
+            },
+            {
+              "r": 0,
+              "c": 2,
+              "v": 2
+            },
+            {
+              "r": 1,
+              "c": 1,
+              "v": 3
+            },
+            {
+              "r": 1,
+              "c": 3,
+              "v": 1
+            },
+            {
+              "r": 2,
+              "c": 0,
+              "v": 1
+            },
+            {
+              "r": 2,
+              "c": 2,
+              "v": 3
+            },
+            {
+              "r": 3,
+              "c": 1,
+              "v": 0
+            },
+            {
+              "r": 3,
+              "c": 3,
+              "v": 2
+            }
+          ],
+          "solution": [
+            [
+              0,
+              1,
+              2,
+              3
+            ],
+            [
+              2,
+              3,
+              0,
+              1
+            ],
+            [
+              1,
+              2,
+              3,
+              0
+            ],
+            [
+              3,
+              0,
+              1,
+              2
+            ]
+          ],
+          "question": "图案数独：每行、每列、每个 2×2 宫图标不重复",
+          "praise": "数独侦探，推理成功！"
+        }
+      ],
+      "zone": 3
+    },
+    {
+      "id": "math-28",
+      "title": "第 29 关 数独侦探",
+      "subtitle": "4×4 进阶",
+      "steps": [
+        {
+          "id": "math-28-s1",
+          "kind": "sudoku",
+          "size": 4,
+          "symbols": [
+            "duck",
+            "apple",
+            "star",
+            "moon"
+          ],
+          "givens": [
+            {
+              "r": 0,
+              "c": 1,
+              "v": 0
+            },
+            {
+              "r": 1,
+              "c": 0,
+              "v": 3
+            },
+            {
+              "r": 2,
+              "c": 2,
+              "v": 2
+            },
+            {
+              "r": 3,
+              "c": 0,
+              "v": 2
+            },
+            {
+              "r": 3,
+              "c": 3,
+              "v": 0
+            }
+          ],
+          "solution": [
+            [
+              1,
+              0,
+              3,
+              2
+            ],
+            [
+              3,
+              2,
+              0,
+              1
+            ],
+            [
+              0,
+              1,
+              2,
+              3
+            ],
+            [
+              2,
+              3,
+              1,
+              0
+            ]
+          ],
+          "question": "再来一盘：给定更少，推理填完整个数独",
+          "praise": "数独侦探，推理成功！"
+        }
+      ],
+      "zone": 3
+    },
+    {
+      "id": "math-r0",
+      "title": "复习关 一",
+      "subtitle": "旧题开盲盒 · 混排复习",
+      "steps": [
+        {
+          "id": "math-r0-0",
+          "kind": "count",
+          "question": "池塘里有几只小鸭（点一点，数数看）",
+          "duckIcon": "duck",
+          "count": 3,
+          "countOptions": [
+            2,
+            3,
+            4
+          ],
+          "backdrop": "pond",
+          "unit": "只"
+        },
+        {
+          "id": "math-r0-1",
+          "kind": "count",
+          "question": "盘子里有几颗糖（点一点，数数看）",
+          "duckIcon": "candy",
+          "count": 4,
+          "countOptions": [
+            3,
+            4,
+            5
+          ],
+          "backdrop": "grass",
+          "unit": "颗"
+        },
+        {
+          "id": "math-r0-2",
+          "kind": "count",
+          "question": "果园里摘了几个苹果（点一点，数数看）",
+          "duckIcon": "apple",
+          "count": 5,
+          "countOptions": [
+            4,
+            5,
+            6
+          ],
+          "backdrop": "grass",
+          "unit": "个"
+        },
+        {
+          "id": "math-r0-3",
+          "kind": "compare",
+          "question": "两边气球哪边多？",
+          "leftIcon": "balloon",
+          "leftCount": 4,
+          "rightIcon": "balloon",
+          "rightCount": 4,
+          "compareOptions": [
+            {
+              "key": "left",
+              "label": "左边多"
+            },
+            {
+              "key": "right",
+              "label": "右边多"
+            },
+            {
+              "key": "same",
+              "label": "一样多"
+            }
+          ],
+          "answerKey": "same",
+          "hint": "一个对着一个，比一比",
+          "praise": "火眼金睛！一样多！"
+        },
+        {
+          "id": "math-r0-4",
+          "kind": "count",
+          "question": "夜空里有几颗星星（点一点，数数看）",
+          "duckIcon": "star",
+          "count": 6,
+          "countOptions": [
+            5,
+            6,
+            7
+          ],
+          "backdrop": "night",
+          "unit": "颗"
+        },
+        {
+          "id": "math-r0-5",
+          "kind": "count",
+          "question": "轨道上有几辆小火车（点一点，数数看）",
+          "duckIcon": "train",
+          "count": 7,
+          "countOptions": [
+            6,
+            7,
+            8
+          ],
+          "backdrop": "grass",
+          "unit": "辆"
         }
       ],
       "board": {
         "spaces": [
           {
             "type": "question",
-            "step": "math-14-a+44"
+            "step": "math-r0-0"
           },
           {
             "type": "question",
-            "step": "math-14-a-93"
-          },
-          {
-            "type": "question",
-            "step": "math-14-o4"
+            "step": "math-r0-1"
           },
           {
             "type": "coin"
           },
           {
             "type": "question",
-            "step": "math-14-p2"
+            "step": "math-r0-2"
           },
           {
             "type": "question",
-            "step": "math-14-x0-a"
+            "step": "math-r0-3"
           },
           {
             "type": "coin"
           },
           {
             "type": "question",
-            "step": "math-14-x1-a"
+            "step": "math-r0-4"
+          },
+          {
+            "type": "chest"
           },
           {
             "type": "question",
-            "step": "math-14-x2-o"
+            "step": "math-r0-5"
+          },
+          {
+            "type": "mushroom"
+          }
+        ]
+      },
+      "review": true,
+      "zone": 3
+    },
+    {
+      "id": "math-29",
+      "title": "第 30 关 认识钟表",
+      "subtitle": "整点",
+      "steps": [
+        {
+          "id": "math-29-cl1",
+          "kind": "clock",
+          "mode": "read",
+          "hour": 3,
+          "minute": 0,
+          "question": "看钟面：现在是几点？",
+          "praise": "认时小达人！",
+          "options": [
+            "3:00",
+            "4:00",
+            "2:00"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "math-29-cl2",
+          "kind": "clock",
+          "mode": "read",
+          "hour": 8,
+          "minute": 0,
+          "question": "再看一个钟面，是几点？",
+          "praise": "认时小达人！",
+          "options": [
+            "8:00",
+            "7:00",
+            "9:00"
+          ],
+          "answer": 0
+        }
+      ],
+      "zone": 4
+    },
+    {
+      "id": "math-30",
+      "title": "第 31 关 半点和拨针",
+      "subtitle": "半点",
+      "steps": [
+        {
+          "id": "math-30-cl1",
+          "kind": "clock",
+          "mode": "read",
+          "hour": 7,
+          "minute": 30,
+          "question": "分针指 6，是半点，几点半？",
+          "praise": "认时小达人！",
+          "options": [
+            "7:30",
+            "6:30",
+            "8:30"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "math-30-cl2",
+          "kind": "clock",
+          "mode": "set",
+          "hour": 9,
+          "minute": 30,
+          "question": "拨一拨：把时针分针拨到 9 点半",
+          "praise": "认时小达人！"
+        }
+      ],
+      "zone": 4
+    },
+    {
+      "id": "math-31",
+      "title": "第 32 关 小小商店",
+      "subtitle": "人民币",
+      "steps": [
+        {
+          "id": "math-31-m1",
+          "kind": "money",
+          "price": 60,
+          "denominations": [
+            {
+              "value": 1,
+              "label": "1角",
+              "icon": "m-jiao1"
+            },
+            {
+              "value": 5,
+              "label": "5角",
+              "icon": "m-jiao5"
+            },
+            {
+              "value": 10,
+              "label": "1元",
+              "icon": "m-yuan1"
+            },
+            {
+              "value": 50,
+              "label": "5元",
+              "icon": "m-yuan5"
+            },
+            {
+              "value": 100,
+              "label": "10元",
+              "icon": "m-yuan10"
+            }
+          ],
+          "question": "买东西：点钱币，恰好付清 6 元",
+          "praise": "付钱小能手，正好付清！"
+        },
+        {
+          "id": "math-31-m2",
+          "kind": "money",
+          "price": 35,
+          "denominations": [
+            {
+              "value": 1,
+              "label": "1角",
+              "icon": "m-jiao1"
+            },
+            {
+              "value": 5,
+              "label": "5角",
+              "icon": "m-jiao5"
+            },
+            {
+              "value": 10,
+              "label": "1元",
+              "icon": "m-yuan1"
+            },
+            {
+              "value": 50,
+              "label": "5元",
+              "icon": "m-yuan5"
+            },
+            {
+              "value": 100,
+              "label": "10元",
+              "icon": "m-yuan10"
+            }
+          ],
+          "question": "再买一件：点钱币，恰好付清 3 元 5 角",
+          "praise": "付钱小能手，正好付清！"
+        }
+      ],
+      "zone": 4
+    },
+    {
+      "id": "math-32",
+      "title": "第 33 关 单数和双数",
+      "subtitle": "奇偶",
+      "steps": [
+        {
+          "id": "math-32-q1",
+          "kind": "quiz",
+          "question": "哪个是单数？",
+          "options": [
+            {
+              "text": "4"
+            },
+            {
+              "text": "7"
+            },
+            {
+              "text": "8"
+            }
+          ],
+          "answer": 1,
+          "hint": "两两成对分完、多一个的是单数",
+          "praise": "7 是单数！"
+        },
+        {
+          "id": "math-32-q2",
+          "kind": "quiz",
+          "question": "哪个是双数？",
+          "options": [
+            {
+              "text": "3"
+            },
+            {
+              "text": "6"
+            },
+            {
+              "text": "9"
+            }
+          ],
+          "answer": 1,
+          "hint": "两两正好分完的是双数",
+          "praise": "6 是双数！"
+        },
+        {
+          "id": "math-32-q3",
+          "kind": "quiz",
+          "question": "8 个苹果两两分，有没有剩余？",
+          "options": [
+            {
+              "text": "没有剩余"
+            },
+            {
+              "text": "剩1个"
+            },
+            {
+              "text": "剩2个"
+            }
+          ],
+          "answer": 0,
+          "hint": "8 是双数",
+          "praise": "双数分完没剩余！"
+        },
+        {
+          "id": "math-x3",
+          "kind": "tapall",
+          "question": "点点看：把双数都点亮",
+          "options": [
+            {
+              "icon": null,
+              "text": "2",
+              "correct": true
+            },
+            {
+              "icon": null,
+              "text": "4",
+              "correct": true
+            },
+            {
+              "icon": null,
+              "text": "6",
+              "correct": true
+            },
+            {
+              "icon": null,
+              "text": "1",
+              "correct": false
+            },
+            {
+              "icon": null,
+              "text": "3",
+              "correct": false
+            },
+            {
+              "icon": null,
+              "text": "5",
+              "correct": false
+            }
+          ],
+          "hint": "能两个两个分完的是双数",
+          "praise": "全点对啦，小天文学家！"
+        }
+      ],
+      "zone": 4
+    },
+    {
+      "id": "math-33",
+      "title": "第 34 关 图形拼拼乐",
+      "subtitle": "平面图形",
+      "steps": [
+        {
+          "id": "math-33-q1",
+          "kind": "quiz",
+          "question": "哪个物品是圆圆的？",
+          "options": [
+            {
+              "icon": "balloon"
+            },
+            {
+              "icon": "tree"
+            },
+            {
+              "icon": "book"
+            }
+          ],
+          "answer": 0,
+          "hint": "圆圆的会滚",
+          "praise": "圆形滚得远！"
+        },
+        {
+          "id": "math-33-q2",
+          "kind": "quiz",
+          "question": "车轮为什么是圆的？",
+          "options": [
+            {
+              "text": "滚起来平稳"
+            },
+            {
+              "text": "会卡住"
+            },
+            {
+              "text": "容易碎"
+            }
+          ],
+          "answer": 0,
+          "hint": "圆圆的滚起来不颠",
+          "praise": "圆的最平稳！"
+        },
+        {
+          "id": "math-33-p1",
+          "kind": "pattern",
+          "seq": [
+            "sun",
+            "moon",
+            "sun"
+          ],
+          "question": "图形规律：下一个是谁？",
+          "options": [
+            {
+              "icon": "moon"
+            },
+            {
+              "icon": "sun"
+            },
+            {
+              "icon": "star"
+            }
+          ],
+          "answer": 0,
+          "hint": "先读一读前面几个，找一找谁在轮流出现",
+          "praise": "规律找对啦，小侦探！"
+        },
+        {
+          "id": "math-x4",
+          "kind": "match",
+          "question": "连一连：形状和它的特点",
+          "pairs": [
+            {
+              "left": {
+                "icon": "circle",
+                "text": "圆形"
+              },
+              "right": {
+                "text": "没有角，滚滚圆"
+              }
+            },
+            {
+              "left": {
+                "icon": "triangle",
+                "text": "三角形"
+              },
+              "right": {
+                "text": "有三条边"
+              }
+            },
+            {
+              "left": {
+                "icon": "square",
+                "text": "正方形"
+              },
+              "right": {
+                "text": "四条边一样长"
+              }
+            }
+          ],
+          "praise": "全部连对，真棒！"
+        }
+      ],
+      "zone": 4
+    },
+    {
+      "id": "math-34",
+      "title": "第 35 关 认识图形",
+      "subtitle": "平面图形",
+      "steps": [
+        {
+          "id": "math-34-q1",
+          "kind": "quiz",
+          "question": "哪个是圆形？",
+          "options": [
+            {
+              "icon": "circle"
+            },
+            {
+              "icon": "triangle"
+            },
+            {
+              "icon": "square"
+            }
+          ],
+          "answer": 0,
+          "hint": "圆圆的，没有角",
+          "praise": "对，圆形没有角！"
+        },
+        {
+          "id": "math-34-q2",
+          "kind": "quiz",
+          "question": "三角形有几条边？",
+          "options": [
+            {
+              "text": "3 条"
+            },
+            {
+              "text": "4 条"
+            },
+            {
+              "text": "5 条"
+            }
+          ],
+          "answer": 0,
+          "hint": "三条边围起来",
+          "praise": "对，3 条边！"
+        },
+        {
+          "id": "math-34-p",
+          "kind": "pattern",
+          "seq": [
+            "circle",
+            "square",
+            "circle"
+          ],
+          "question": "找规律：下一个是哪个？",
+          "options": [
+            {
+              "icon": "square"
+            },
+            {
+              "icon": "triangle"
+            },
+            {
+              "icon": "ball"
+            }
+          ],
+          "answer": 0,
+          "hint": "先读一读前面几个，找一找谁在轮流出现",
+          "praise": "规律找对啦，小侦探！"
+        }
+      ],
+      "zone": 4
+    },
+    {
+      "id": "math-35",
+      "title": "第 36 关 立体图形",
+      "subtitle": "球和方块",
+      "steps": [
+        {
+          "id": "math-35-q1",
+          "kind": "quiz",
+          "question": "哪个能咕噜噜滚动，像球？",
+          "options": [
+            {
+              "icon": "ball"
+            },
+            {
+              "icon": "block"
+            },
+            {
+              "icon": "dice"
+            }
+          ],
+          "answer": 0,
+          "hint": "球滚滚圆，到处滚",
+          "praise": "对，球会滚！"
+        },
+        {
+          "id": "math-35-q2",
+          "kind": "quiz",
+          "question": "骰子是什么形状？",
+          "options": [
+            {
+              "text": "方方的正方体"
+            },
+            {
+              "text": "球"
+            },
+            {
+              "text": "圆柱"
+            }
+          ],
+          "answer": 0,
+          "hint": "六个面都一样",
+          "praise": "答对啦，正方体！"
+        }
+      ],
+      "zone": 4
+    },
+    {
+      "id": "math-36",
+      "title": "第 37 关 比一比",
+      "subtitle": "长短高矮",
+      "steps": [
+        {
+          "id": "math-36-q1",
+          "kind": "quiz",
+          "question": "大象和小鸟，谁长得高？",
+          "options": [
+            {
+              "icon": "elephant",
+              "text": "大象"
+            },
+            {
+              "icon": "duck",
+              "text": "小鸟"
+            },
+            {
+              "icon": "cake",
+              "text": "蛋糕"
+            }
+          ],
+          "answer": 0,
+          "hint": "大象个子最高",
+          "praise": "对，大象高！"
+        },
+        {
+          "id": "math-36-q2",
+          "kind": "quiz",
+          "question": "比长短：火车和小汽车，哪个长？",
+          "options": [
+            {
+              "text": "火车长"
+            },
+            {
+              "text": "汽车长"
+            },
+            {
+              "text": "一样长"
+            }
+          ],
+          "answer": 0,
+          "hint": "火车一节连一节",
+          "praise": "对，火车长！"
+        }
+      ],
+      "zone": 4
+    },
+    {
+      "id": "math-37",
+      "title": "第 38 分分类",
+      "subtitle": "分类整理",
+      "steps": [
+        {
+          "id": "math-37-t1",
+          "kind": "tapall",
+          "question": "点点看：把交通工具都点亮",
+          "options": [
+            {
+              "icon": "car",
+              "correct": true
+            },
+            {
+              "icon": "bus",
+              "correct": true
+            },
+            {
+              "icon": "train",
+              "correct": true
+            },
+            {
+              "icon": "apple",
+              "correct": false
+            },
+            {
+              "icon": "duck",
+              "correct": false
+            }
+          ],
+          "hint": "汽车、公交车、火车都能载人载货",
+          "praise": "全点对啦，小天文学家！"
+        },
+        {
+          "id": "math-37-q1",
+          "kind": "quiz",
+          "question": "把杯子、盘子放一起，是在做什么？",
+          "options": [
+            {
+              "text": "分类整理"
+            },
+            {
+              "text": "捉迷藏"
+            },
+            {
+              "text": "画画"
+            }
+          ],
+          "answer": 0,
+          "hint": "同一类的东西放一起",
+          "praise": "对，这叫分类！"
+        }
+      ],
+      "zone": 4
+    },
+    {
+      "id": "math-38",
+      "title": "第 39 位置·上下",
+      "subtitle": "上和下",
+      "steps": [
+        {
+          "id": "math-38-q1",
+          "kind": "quiz",
+          "question": "小鸟飞在天上，还是树下？",
+          "options": [
+            {
+              "icon": "moon",
+              "text": "天上"
+            },
+            {
+              "icon": "tree",
+              "text": "树下"
+            },
+            {
+              "icon": "cake",
+              "text": "锅里"
+            }
+          ],
+          "answer": 0,
+          "hint": "抬头看，小鸟在天上",
+          "praise": "对，小鸟在天上！"
+        },
+        {
+          "id": "math-38-q2",
+          "kind": "quiz",
+          "question": "书放在桌子的上面，桌子在书的——",
+          "options": [
+            {
+              "text": "下面"
+            },
+            {
+              "text": "上面"
+            },
+            {
+              "text": "旁边没有"
+            }
+          ],
+          "answer": 0,
+          "hint": "上和下是一对好朋友",
+          "praise": "答对啦，桌子在下面！"
+        }
+      ],
+      "zone": 4
+    },
+    {
+      "id": "math-39",
+      "title": "第 40 位置·前后",
+      "subtitle": "前和后",
+      "steps": [
+        {
+          "id": "math-39-q1",
+          "kind": "quiz",
+          "question": "排队啦：火箭跑在最前面，谁在它后面？",
+          "options": [
+            {
+              "icon": "rocket",
+              "text": "火箭"
+            },
+            {
+              "icon": "car",
+              "text": "汽车"
+            },
+            {
+              "icon": "train",
+              "text": "火车"
+            }
+          ],
+          "answer": 1,
+          "hint": "火箭是第一名，紧跟在它后面的就是",
+          "praise": "答对啦，汽车在火箭后面！"
+        }
+      ],
+      "zone": 5
+    },
+    {
+      "id": "math-40",
+      "title": "第 41 第几",
+      "subtitle": "序数",
+      "steps": [
+        {
+          "id": "math-40-q1",
+          "kind": "quiz",
+          "question": "5 只小鸭排队，从前往后数，第 3 只是——",
+          "options": [
+            {
+              "text": "第 3 只"
+            },
+            {
+              "text": "第 5 只"
+            },
+            {
+              "text": "第 1 只"
+            }
+          ],
+          "answer": 0,
+          "hint": "1、2、3，数到 3 就是第 3",
+          "praise": "对，第 3 只！"
+        },
+        {
+          "id": "math-40-q2",
+          "kind": "quiz",
+          "question": "赛跑得了第 1 名，就是——",
+          "options": [
+            {
+              "text": "跑在最前面"
+            },
+            {
+              "text": "跑在最后"
+            },
+            {
+              "text": "没参加"
+            }
+          ],
+          "answer": 0,
+          "hint": "第 1 名最厉害",
+          "praise": "答对啦！"
+        }
+      ],
+      "zone": 5
+    },
+    {
+      "id": "math-41",
+      "title": "第 42 找规律",
+      "subtitle": "变化规律",
+      "steps": [
+        {
+          "id": "math-41-p1",
+          "kind": "pattern",
+          "seq": [
+            "star",
+            "moon",
+            "star",
+            "moon",
+            "star"
+          ],
+          "question": "找规律：下一个是谁？",
+          "options": [
+            {
+              "icon": "moon"
+            },
+            {
+              "icon": "sun"
+            },
+            {
+              "icon": "comet"
+            }
+          ],
+          "answer": 0,
+          "hint": "先读一读前面几个，找一找谁在轮流出现",
+          "praise": "规律找对啦，小侦探！"
+        },
+        {
+          "id": "math-41-p2",
+          "kind": "pattern",
+          "seq": [
+            "apple",
+            "apple",
+            "banana",
+            "apple",
+            "apple"
+          ],
+          "question": "再找一次规律：下一个是谁？",
+          "options": [
+            {
+              "icon": "banana"
+            },
+            {
+              "icon": "apple"
+            },
+            {
+              "icon": "cake"
+            }
+          ],
+          "answer": 0,
+          "hint": "先读一读前面几个，找一找谁在轮流出现",
+          "praise": "规律找对啦，小侦探！"
+        }
+      ],
+      "zone": 5
+    },
+    {
+      "id": "math-42",
+      "title": "第 43 相邻数",
+      "subtitle": "数的邻居",
+      "steps": [
+        {
+          "id": "math-42-n1",
+          "kind": "neighbor",
+          "nums": [
+            6,
+            0,
+            8
+          ],
+          "question": "想一想：6 和 8 中间藏起来的数字是几？",
+          "arithOptions": [
+            6,
+            7,
+            8
+          ],
+          "answer": 1,
+          "hint": "6 的后面是几？8 的前面是几？",
+          "praise": "是 7！6 和 8 的中间是 7！"
+        },
+        {
+          "id": "math-42-n2",
+          "kind": "neighbor",
+          "nums": [
+            3,
+            0,
+            5
+          ],
+          "question": "想一想：3 和 5 中间藏起来的数字是几？",
+          "arithOptions": [
+            3,
+            4,
+            5
+          ],
+          "answer": 1,
+          "hint": "3 的后面是几？5 的前面是几？",
+          "praise": "是 4！3 和 5 的中间是 4！"
+        }
+      ],
+      "zone": 5
+    },
+    {
+      "id": "math-43",
+      "title": "第 44 看图列式",
+      "subtitle": "加法应用",
+      "steps": [
+        {
+          "id": "math-4301-a+32",
+          "kind": "arith",
+          "op": "+",
+          "leftIcon": "apple",
+          "leftCount": 3,
+          "rightCount": 2,
+          "unit": "个",
+          "question": "3 个苹果加 2 个苹果，一共几个？",
+          "arithOptions": [
+            4,
+            5,
+            6
+          ],
+          "hint": "指着图一个一个数",
+          "praise": "算对啦，等于 5！"
+        },
+        {
+          "id": "math-4302-a+41",
+          "kind": "arith",
+          "op": "+",
+          "leftIcon": "star",
+          "leftCount": 4,
+          "rightCount": 1,
+          "unit": "颗",
+          "question": "4 颗星加 1 颗星，一共几颗？",
+          "arithOptions": [
+            4,
+            5,
+            6
+          ],
+          "hint": "指着图一个一个数",
+          "praise": "算对啦，等于 5！"
+        }
+      ],
+      "zone": 5
+    },
+    {
+      "id": "math-44",
+      "title": "第 45 认识人民币",
+      "subtitle": "元角分",
+      "steps": [
+        {
+          "id": "math-44-q1",
+          "kind": "quiz",
+          "question": "买铅笔要 1 元，哪个钱币正好？",
+          "options": [
+            {
+              "icon": "m-yuan1",
+              "text": "1 元"
+            },
+            {
+              "icon": "m-jiao1",
+              "text": "1 角"
+            },
+            {
+              "icon": "m-yuan10",
+              "text": "10 元"
+            }
+          ],
+          "answer": 0,
+          "hint": "1 元 = 10 角",
+          "praise": "对，1 元正好！"
+        },
+        {
+          "id": "math-44-m",
+          "kind": "money",
+          "price": 8,
+          "denominations": [
+            {
+              "value": 1,
+              "label": "1角",
+              "icon": "m-jiao1"
+            },
+            {
+              "value": 5,
+              "label": "5角",
+              "icon": "m-jiao5"
+            },
+            {
+              "value": 10,
+              "label": "1元",
+              "icon": "m-yuan1"
+            },
+            {
+              "value": 50,
+              "label": "5元",
+              "icon": "m-yuan5"
+            },
+            {
+              "value": 100,
+              "label": "10元",
+              "icon": "m-yuan10"
+            }
+          ],
+          "question": "买 8 角的橡皮，刚好付清",
+          "praise": "付钱小能手，正好付清！"
+        }
+      ],
+      "zone": 5
+    },
+    {
+      "id": "math-45",
+      "title": "第 46 整点复习",
+      "subtitle": "钟表",
+      "steps": [
+        {
+          "id": "math-44-c1",
+          "kind": "clock",
+          "mode": "read",
+          "hour": 8,
+          "minute": 0,
+          "question": "看钟面：时针指 8、分针指 12，是几点？",
+          "praise": "认时小达人！",
+          "options": [
+            "3:00",
+            "8:00",
+            "5:30"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "math-45-c2",
+          "kind": "clock",
+          "mode": "read",
+          "hour": 3,
+          "minute": 30,
+          "question": "再看：分针指 6，是几点半？",
+          "praise": "认时小达人！",
+          "options": [
+            "3:00",
+            "3:30",
+            "6:00"
+          ],
+          "answer": 1
+        }
+      ],
+      "zone": 5
+    },
+    {
+      "id": "math-46",
+      "title": "第 47 关 乘法口诀·2",
+      "subtitle": "二二得四起步",
+      "steps": [
+        {
+          "id": "math-46-t",
+          "kind": "letter",
+          "letters": [
+            "2 的乘法口诀"
+          ],
+          "display": "2 的口诀",
+          "examples": [
+            {
+              "text": "2×1=2"
+            },
+            {
+              "text": "2×2=4"
+            }
+          ],
+          "question": "背一背：2 的乘法口诀",
+          "anim": "groups"
+        },
+        {
+          "id": "math-46-q0",
+          "kind": "quiz",
+          "question": "2 × 1 = ?（想口诀）",
+          "options": [
+            {
+              "text": "-1"
+            },
+            {
+              "text": "1"
+            },
+            {
+              "text": "2"
+            }
+          ],
+          "answer": 2,
+          "hint": "21 的口诀",
+          "praise": "对，2！"
+        },
+        {
+          "id": "math-46-q1",
+          "kind": "quiz",
+          "question": "2 × 2 = ?（想口诀）",
+          "options": [
+            {
+              "text": "1"
+            },
+            {
+              "text": "3"
+            },
+            {
+              "text": "4"
+            }
+          ],
+          "answer": 2,
+          "hint": "22 的口诀",
+          "praise": "对，4！"
+        },
+        {
+          "id": "math-46-q2",
+          "kind": "quiz",
+          "question": "2 × 3 = ?（想口诀）",
+          "options": [
+            {
+              "text": "3"
+            },
+            {
+              "text": "5"
+            },
+            {
+              "text": "6"
+            }
+          ],
+          "answer": 2,
+          "hint": "23 的口诀",
+          "praise": "对，6！"
+        }
+      ],
+      "zone": 5
+    },
+    {
+      "id": "math-47",
+      "title": "第 48 关 乘法口诀·3",
+      "subtitle": "三七二十一",
+      "steps": [
+        {
+          "id": "math-47-t",
+          "kind": "letter",
+          "letters": [
+            "3 的乘法口诀"
+          ],
+          "display": "3 的口诀",
+          "examples": [
+            {
+              "text": "3×1=3"
+            },
+            {
+              "text": "3×3=9"
+            }
+          ],
+          "question": "背一背：3 的乘法口诀",
+          "anim": "groups"
+        },
+        {
+          "id": "math-47-q0",
+          "kind": "quiz",
+          "question": "3 × 1 = ?（想口诀）",
+          "options": [
+            {
+              "text": "3"
+            },
+            {
+              "text": "4"
+            },
+            {
+              "text": "6"
+            }
+          ],
+          "answer": 0,
+          "hint": "31 的口诀",
+          "praise": "对，3！"
+        },
+        {
+          "id": "math-47-q1",
+          "kind": "quiz",
+          "question": "3 × 3 = ?（想口诀）",
+          "options": [
+            {
+              "text": "9"
+            },
+            {
+              "text": "10"
+            },
+            {
+              "text": "12"
+            }
+          ],
+          "answer": 0,
+          "hint": "33 的口诀",
+          "praise": "对，9！"
+        },
+        {
+          "id": "math-47-q2",
+          "kind": "quiz",
+          "question": "3 × 5 = ?（想口诀）",
+          "options": [
+            {
+              "text": "15"
+            },
+            {
+              "text": "16"
+            },
+            {
+              "text": "18"
+            }
+          ],
+          "answer": 0,
+          "hint": "35 的口诀",
+          "praise": "对，15！"
+        }
+      ],
+      "zone": 5
+    },
+    {
+      "id": "math-48",
+      "title": "第 49 关 乘法口诀·4",
+      "subtitle": "四四十六",
+      "steps": [
+        {
+          "id": "math-48-t",
+          "kind": "letter",
+          "letters": [
+            "4 的乘法口诀"
+          ],
+          "display": "4 的口诀",
+          "examples": [
+            {
+              "text": "4×2=8"
+            },
+            {
+              "text": "4×4=16"
+            }
+          ],
+          "question": "背一背：4 的乘法口诀",
+          "anim": "groups"
+        },
+        {
+          "id": "math-48-q0",
+          "kind": "quiz",
+          "question": "4 × 2 = ?（想口诀）",
+          "options": [
+            {
+              "text": "5"
+            },
+            {
+              "text": "7"
+            },
+            {
+              "text": "8"
+            }
+          ],
+          "answer": 2,
+          "hint": "42 的口诀",
+          "praise": "对，8！"
+        },
+        {
+          "id": "math-48-q1",
+          "kind": "quiz",
+          "question": "4 × 4 = ?（想口诀）",
+          "options": [
+            {
+              "text": "13"
+            },
+            {
+              "text": "15"
+            },
+            {
+              "text": "16"
+            }
+          ],
+          "answer": 2,
+          "hint": "44 的口诀",
+          "praise": "对，16！"
+        },
+        {
+          "id": "math-48-q2",
+          "kind": "quiz",
+          "question": "4 × 6 = ?（想口诀）",
+          "options": [
+            {
+              "text": "21"
+            },
+            {
+              "text": "23"
+            },
+            {
+              "text": "24"
+            }
+          ],
+          "answer": 2,
+          "hint": "46 的口诀",
+          "praise": "对，24！"
+        }
+      ],
+      "zone": 5
+    },
+    {
+      "id": "math-49",
+      "title": "第 50 关 乘法口诀·5",
+      "subtitle": "三五十五",
+      "steps": [
+        {
+          "id": "math-49-t",
+          "kind": "letter",
+          "letters": [
+            "5 的乘法口诀"
+          ],
+          "display": "5 的口诀",
+          "examples": [
+            {
+              "text": "5×1=5"
+            },
+            {
+              "text": "5×3=15"
+            }
+          ],
+          "question": "背一背：5 的乘法口诀",
+          "anim": "groups"
+        },
+        {
+          "id": "math-49-q0",
+          "kind": "quiz",
+          "question": "5 × 1 = ?（想口诀）",
+          "options": [
+            {
+              "text": "5"
+            },
+            {
+              "text": "6"
+            },
+            {
+              "text": "8"
+            }
+          ],
+          "answer": 0,
+          "hint": "51 的口诀",
+          "praise": "对，5！"
+        },
+        {
+          "id": "math-49-q1",
+          "kind": "quiz",
+          "question": "5 × 3 = ?（想口诀）",
+          "options": [
+            {
+              "text": "15"
+            },
+            {
+              "text": "16"
+            },
+            {
+              "text": "18"
+            }
+          ],
+          "answer": 0,
+          "hint": "53 的口诀",
+          "praise": "对，15！"
+        },
+        {
+          "id": "math-49-q2",
+          "kind": "quiz",
+          "question": "5 × 5 = ?（想口诀）",
+          "options": [
+            {
+              "text": "25"
+            },
+            {
+              "text": "26"
+            },
+            {
+              "text": "28"
+            }
+          ],
+          "answer": 0,
+          "hint": "55 的口诀",
+          "praise": "对，25！"
+        }
+      ],
+      "zone": 6
+    },
+    {
+      "id": "math-50",
+      "title": "第 51 关 乘法口诀·6",
+      "subtitle": "六六三十六",
+      "steps": [
+        {
+          "id": "math-50-t",
+          "kind": "letter",
+          "letters": [
+            "6 的乘法口诀"
+          ],
+          "display": "6 的口诀",
+          "examples": [
+            {
+              "text": "6×2=12"
+            },
+            {
+              "text": "6×4=24"
+            }
+          ],
+          "question": "背一背：6 的乘法口诀",
+          "anim": "groups"
+        },
+        {
+          "id": "math-50-q0",
+          "kind": "quiz",
+          "question": "6 × 2 = ?（想口诀）",
+          "options": [
+            {
+              "text": "9"
+            },
+            {
+              "text": "11"
+            },
+            {
+              "text": "12"
+            }
+          ],
+          "answer": 2,
+          "hint": "62 的口诀",
+          "praise": "对，12！"
+        },
+        {
+          "id": "math-50-q1",
+          "kind": "quiz",
+          "question": "6 × 4 = ?（想口诀）",
+          "options": [
+            {
+              "text": "21"
+            },
+            {
+              "text": "23"
+            },
+            {
+              "text": "24"
+            }
+          ],
+          "answer": 2,
+          "hint": "64 的口诀",
+          "praise": "对，24！"
+        },
+        {
+          "id": "math-50-q2",
+          "kind": "quiz",
+          "question": "6 × 6 = ?（想口诀）",
+          "options": [
+            {
+              "text": "33"
+            },
+            {
+              "text": "35"
+            },
+            {
+              "text": "36"
+            }
+          ],
+          "answer": 2,
+          "hint": "66 的口诀",
+          "praise": "对，36！"
+        }
+      ],
+      "zone": 6
+    },
+    {
+      "id": "math-51",
+      "title": "第 52 关 乘法口诀·7",
+      "subtitle": "七七四十九",
+      "steps": [
+        {
+          "id": "math-51-t",
+          "kind": "letter",
+          "letters": [
+            "7 的乘法口诀"
+          ],
+          "display": "7 的口诀",
+          "examples": [
+            {
+              "text": "7×3=21"
+            },
+            {
+              "text": "7×5=35"
+            }
+          ],
+          "question": "背一背：7 的乘法口诀",
+          "anim": "groups"
+        },
+        {
+          "id": "math-51-q0",
+          "kind": "quiz",
+          "question": "7 × 3 = ?（想口诀）",
+          "options": [
+            {
+              "text": "21"
+            },
+            {
+              "text": "22"
+            },
+            {
+              "text": "24"
+            }
+          ],
+          "answer": 0,
+          "hint": "73 的口诀",
+          "praise": "对，21！"
+        },
+        {
+          "id": "math-51-q1",
+          "kind": "quiz",
+          "question": "7 × 5 = ?（想口诀）",
+          "options": [
+            {
+              "text": "35"
+            },
+            {
+              "text": "36"
+            },
+            {
+              "text": "38"
+            }
+          ],
+          "answer": 0,
+          "hint": "75 的口诀",
+          "praise": "对，35！"
+        },
+        {
+          "id": "math-51-q2",
+          "kind": "quiz",
+          "question": "7 × 7 = ?（想口诀）",
+          "options": [
+            {
+              "text": "49"
+            },
+            {
+              "text": "50"
+            },
+            {
+              "text": "52"
+            }
+          ],
+          "answer": 0,
+          "hint": "77 的口诀",
+          "praise": "对，49！"
+        }
+      ],
+      "zone": 6
+    },
+    {
+      "id": "math-52",
+      "title": "第 53 关 乘法口诀·8",
+      "subtitle": "八八六十四",
+      "steps": [
+        {
+          "id": "math-52-t",
+          "kind": "letter",
+          "letters": [
+            "8 的乘法口诀"
+          ],
+          "display": "8 的口诀",
+          "examples": [
+            {
+              "text": "8×2=16"
+            },
+            {
+              "text": "8×4=32"
+            }
+          ],
+          "question": "背一背：8 的乘法口诀",
+          "anim": "groups"
+        },
+        {
+          "id": "math-52-q0",
+          "kind": "quiz",
+          "question": "8 × 2 = ?（想口诀）",
+          "options": [
+            {
+              "text": "13"
+            },
+            {
+              "text": "15"
+            },
+            {
+              "text": "16"
+            }
+          ],
+          "answer": 2,
+          "hint": "82 的口诀",
+          "praise": "对，16！"
+        },
+        {
+          "id": "math-52-q1",
+          "kind": "quiz",
+          "question": "8 × 4 = ?（想口诀）",
+          "options": [
+            {
+              "text": "29"
+            },
+            {
+              "text": "31"
+            },
+            {
+              "text": "32"
+            }
+          ],
+          "answer": 2,
+          "hint": "84 的口诀",
+          "praise": "对，32！"
+        },
+        {
+          "id": "math-52-q2",
+          "kind": "quiz",
+          "question": "8 × 8 = ?（想口诀）",
+          "options": [
+            {
+              "text": "61"
+            },
+            {
+              "text": "63"
+            },
+            {
+              "text": "64"
+            }
+          ],
+          "answer": 2,
+          "hint": "88 的口诀",
+          "praise": "对，64！"
+        }
+      ],
+      "zone": 6
+    },
+    {
+      "id": "math-53",
+      "title": "第 54 关 乘法口诀·9",
+      "subtitle": "九九八十一",
+      "steps": [
+        {
+          "id": "math-53-t",
+          "kind": "letter",
+          "letters": [
+            "9 的乘法口诀"
+          ],
+          "display": "9 的口诀",
+          "examples": [
+            {
+              "text": "9×3=27"
+            },
+            {
+              "text": "9×6=54"
+            }
+          ],
+          "question": "背一背：9 的乘法口诀",
+          "anim": "groups"
+        },
+        {
+          "id": "math-53-q0",
+          "kind": "quiz",
+          "question": "9 × 3 = ?（想口诀）",
+          "options": [
+            {
+              "text": "27"
+            },
+            {
+              "text": "28"
+            },
+            {
+              "text": "30"
+            }
+          ],
+          "answer": 0,
+          "hint": "93 的口诀",
+          "praise": "对，27！"
+        },
+        {
+          "id": "math-53-q1",
+          "kind": "quiz",
+          "question": "9 × 6 = ?（想口诀）",
+          "options": [
+            {
+              "text": "51"
+            },
+            {
+              "text": "53"
+            },
+            {
+              "text": "54"
+            }
+          ],
+          "answer": 2,
+          "hint": "96 的口诀",
+          "praise": "对，54！"
+        },
+        {
+          "id": "math-53-q2",
+          "kind": "quiz",
+          "question": "9 × 9 = ?（想口诀）",
+          "options": [
+            {
+              "text": "81"
+            },
+            {
+              "text": "82"
+            },
+            {
+              "text": "84"
+            }
+          ],
+          "answer": 0,
+          "hint": "99 的口诀",
+          "praise": "对，81！"
+        }
+      ],
+      "zone": 6
+    },
+    {
+      "id": "math-54",
+      "title": "第 55 关 认识除法·平均分",
+      "subtitle": "平均分 · 口诀求商",
+      "steps": [
+        {
+          "id": "math-54-t",
+          "kind": "letter",
+          "letters": [
+            "除法"
+          ],
+          "display": "除法",
+          "examples": [
+            {
+              "icon": "apple",
+              "text": "12 个苹果"
+            }
+          ],
+          "question": "学一学：把 12 平均分成 4 份",
+          "anim": "share"
+        },
+        {
+          "id": "math-54-d1",
+          "kind": "muldiv",
+          "op": "÷",
+          "mode": "average",
+          "total": 12,
+          "groups": 4,
+          "icon": "apple",
+          "question": "12 个apple平均分成 4 组，每组几个？",
+          "options": [
+            2,
+            3,
+            4
+          ],
+          "answer": 1,
+          "hint": "平均分，每份一样多",
+          "praise": "对，每组 3 个！"
+        },
+        {
+          "id": "math-54-d2",
+          "kind": "muldiv",
+          "op": "÷",
+          "mode": "average",
+          "total": 12,
+          "groups": 4,
+          "icon": "apple",
+          "question": "每 4 个一份，12 个能分成几份？",
+          "options": [
+            2,
+            3,
+            4
+          ],
+          "answer": 1,
+          "hint": "几个一份几个一份地数：4、8…",
+          "praise": "对，每组 3 个！"
+        }
+      ],
+      "zone": 6
+    },
+    {
+      "id": "math-55",
+      "title": "第 56 关 除法·分一分",
+      "subtitle": "平均分 · 口诀求商",
+      "steps": [
+        {
+          "id": "math-55-t",
+          "kind": "letter",
+          "letters": [
+            "除法"
+          ],
+          "display": "除法",
+          "examples": [
+            {
+              "icon": "star",
+              "text": "15 颗星"
+            }
+          ],
+          "question": "学一学：把 15 平均分成 3 份",
+          "anim": "share"
+        },
+        {
+          "id": "math-55-d1",
+          "kind": "muldiv",
+          "op": "÷",
+          "mode": "average",
+          "total": 15,
+          "groups": 3,
+          "icon": "star",
+          "question": "15 个star平均分成 3 组，每组几个？",
+          "options": [
+            4,
+            5,
+            6
+          ],
+          "answer": 1,
+          "hint": "平均分，每份一样多",
+          "praise": "对，每组 5 个！"
+        },
+        {
+          "id": "math-55-d2",
+          "kind": "muldiv",
+          "op": "÷",
+          "mode": "average",
+          "total": 12,
+          "groups": 3,
+          "icon": "star",
+          "question": "每 3 个一份，12 个能分成几份？",
+          "options": [
+            3,
+            4,
+            5
+          ],
+          "answer": 1,
+          "hint": "几个一份几个一份地数：3、6…",
+          "praise": "对，每组 4 个！"
+        }
+      ],
+      "zone": 6
+    },
+    {
+      "id": "math-56",
+      "title": "第 57 关 除法·分组",
+      "subtitle": "平均分 · 口诀求商",
+      "steps": [
+        {
+          "id": "math-56-t",
+          "kind": "letter",
+          "letters": [
+            "除法"
+          ],
+          "display": "除法",
+          "examples": [
+            {
+              "icon": "duck",
+              "text": "10 只鸭"
+            }
+          ],
+          "question": "学一学：把 10 平均分成 5 份",
+          "anim": "share"
+        },
+        {
+          "id": "math-56-d1",
+          "kind": "muldiv",
+          "op": "÷",
+          "mode": "average",
+          "total": 10,
+          "groups": 5,
+          "icon": "duck",
+          "question": "10 个duck平均分成 5 组，每组几个？",
+          "options": [
+            1,
+            2,
+            3
+          ],
+          "answer": 1,
+          "hint": "平均分，每份一样多",
+          "praise": "对，每组 2 个！"
+        },
+        {
+          "id": "math-56-d2",
+          "kind": "muldiv",
+          "op": "÷",
+          "mode": "average",
+          "total": 10,
+          "groups": 5,
+          "icon": "duck",
+          "question": "每 5 个一份，10 个能分成几份？",
+          "options": [
+            1,
+            2,
+            3
+          ],
+          "answer": 1,
+          "hint": "几个一份几个一份地数：5、10…",
+          "praise": "对，每组 2 个！"
+        }
+      ],
+      "zone": 6
+    },
+    {
+      "id": "math-57",
+      "title": "第 58 关 口诀求商",
+      "subtitle": "平均分 · 口诀求商",
+      "steps": [
+        {
+          "id": "math-57-t",
+          "kind": "letter",
+          "letters": [
+            "除法"
+          ],
+          "display": "除法",
+          "examples": [
+            {
+              "icon": "ball",
+              "text": "12 个球"
+            }
+          ],
+          "question": "学一学：把 12 平均分成 6 份",
+          "anim": "groups"
+        },
+        {
+          "id": "math-57-d1",
+          "kind": "muldiv",
+          "op": "÷",
+          "mode": "average",
+          "total": 12,
+          "groups": 6,
+          "icon": "ball",
+          "question": "12 个ball平均分成 6 组，每组几个？",
+          "options": [
+            1,
+            2,
+            3
+          ],
+          "answer": 1,
+          "hint": "平均分，每份一样多",
+          "praise": "对，每组 2 个！"
+        },
+        {
+          "id": "math-57-d2",
+          "kind": "muldiv",
+          "op": "÷",
+          "mode": "average",
+          "total": 12,
+          "groups": 6,
+          "icon": "ball",
+          "question": "每 6 个一份，12 个能分成几份？",
+          "options": [
+            1,
+            2,
+            3
+          ],
+          "answer": 1,
+          "hint": "几个一份几个一份地数：6、12…",
+          "praise": "对，每组 2 个！"
+        }
+      ],
+      "zone": 6
+    },
+    {
+      "id": "math-58",
+      "title": "第 59 关 除法·装袋",
+      "subtitle": "平均分 · 口诀求商",
+      "steps": [
+        {
+          "id": "math-58-t",
+          "kind": "letter",
+          "letters": [
+            "除法"
+          ],
+          "display": "除法",
+          "examples": [
+            {
+              "icon": "candy",
+              "text": "16 颗糖"
+            }
+          ],
+          "question": "学一学：把 16 平均分成 4 份",
+          "anim": "share"
+        },
+        {
+          "id": "math-58-d1",
+          "kind": "muldiv",
+          "op": "÷",
+          "mode": "average",
+          "total": 16,
+          "groups": 4,
+          "icon": "candy",
+          "question": "16 个candy平均分成 4 组，每组几个？",
+          "options": [
+            3,
+            4,
+            5
+          ],
+          "answer": 1,
+          "hint": "平均分，每份一样多",
+          "praise": "对，每组 4 个！"
+        },
+        {
+          "id": "math-58-d2",
+          "kind": "muldiv",
+          "op": "÷",
+          "mode": "average",
+          "total": 12,
+          "groups": 4,
+          "icon": "candy",
+          "question": "每 4 个一份，12 个能分成几份？",
+          "options": [
+            2,
+            3,
+            4
+          ],
+          "answer": 1,
+          "hint": "几个一份几个一份地数：4、8…",
+          "praise": "对，每组 3 个！"
+        }
+      ],
+      "zone": 6
+    },
+    {
+      "id": "math-r1",
+      "title": "复习关 二",
+      "subtitle": "旧题开盲盒 · 混排复习",
+      "steps": [
+        {
+          "id": "math-r1-0",
+          "kind": "count",
+          "question": "池塘里有几只小鸭（点一点，数数看）",
+          "duckIcon": "duck",
+          "count": 3,
+          "countOptions": [
+            2,
+            3,
+            4
+          ],
+          "backdrop": "pond",
+          "unit": "只"
+        },
+        {
+          "id": "math-r1-1",
+          "kind": "count",
+          "question": "盘子里有几颗糖（点一点，数数看）",
+          "duckIcon": "candy",
+          "count": 4,
+          "countOptions": [
+            3,
+            4,
+            5
+          ],
+          "backdrop": "grass",
+          "unit": "颗"
+        },
+        {
+          "id": "math-r1-2",
+          "kind": "count",
+          "question": "果园里摘了几个苹果（点一点，数数看）",
+          "duckIcon": "apple",
+          "count": 5,
+          "countOptions": [
+            4,
+            5,
+            6
+          ],
+          "backdrop": "grass",
+          "unit": "个"
+        },
+        {
+          "id": "math-r1-3",
+          "kind": "compare",
+          "question": "两边气球哪边多？",
+          "leftIcon": "balloon",
+          "leftCount": 4,
+          "rightIcon": "balloon",
+          "rightCount": 4,
+          "compareOptions": [
+            {
+              "key": "left",
+              "label": "左边多"
+            },
+            {
+              "key": "right",
+              "label": "右边多"
+            },
+            {
+              "key": "same",
+              "label": "一样多"
+            }
+          ],
+          "answerKey": "same",
+          "hint": "一个对着一个，比一比",
+          "praise": "火眼金睛！一样多！"
+        },
+        {
+          "id": "math-r1-4",
+          "kind": "count",
+          "question": "夜空里有几颗星星（点一点，数数看）",
+          "duckIcon": "star",
+          "count": 6,
+          "countOptions": [
+            5,
+            6,
+            7
+          ],
+          "backdrop": "night",
+          "unit": "颗"
+        },
+        {
+          "id": "math-r1-5",
+          "kind": "count",
+          "question": "轨道上有几辆小火车（点一点，数数看）",
+          "duckIcon": "train",
+          "count": 7,
+          "countOptions": [
+            6,
+            7,
+            8
+          ],
+          "backdrop": "grass",
+          "unit": "辆"
+        }
+      ],
+      "board": {
+        "spaces": [
+          {
+            "type": "question",
+            "step": "math-r1-1"
+          },
+          {
+            "type": "question",
+            "step": "math-r1-2"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "math-r1-3"
+          },
+          {
+            "type": "question",
+            "step": "math-r1-4"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "math-r1-5"
+          },
+          {
+            "type": "chest"
+          },
+          {
+            "type": "question",
+            "step": "math-r1-0"
           },
           {
             "type": "rest"
           }
         ]
-      }
+      },
+      "review": true,
+      "zone": 7
+    },
+    {
+      "id": "math-59",
+      "title": "第 60 关 认识厘米",
+      "subtitle": "厘米 cm",
+      "steps": [
+        {
+          "id": "math-59-t",
+          "kind": "letter",
+          "letters": [
+            "长度"
+          ],
+          "display": "认识厘米",
+          "examples": [
+            {
+              "icon": "book",
+              "text": "铅笔和课本"
+            }
+          ],
+          "question": "学一学：量短东西用厘米",
+          "anim": "ruler"
+        },
+        {
+          "id": "math-59-q1",
+          "kind": "quiz",
+          "question": "量铅笔长度用——",
+          "options": [
+            {
+              "text": "厘米"
+            },
+            {
+              "text": "米"
+            },
+            {
+              "text": "千克"
+            }
+          ],
+          "answer": 0,
+          "hint": "厘米 cm",
+          "praise": "量一量小能手！"
+        }
+      ],
+      "zone": 7
+    },
+    {
+      "id": "math-60",
+      "title": "第 61 关 认识米",
+      "subtitle": "米 m",
+      "steps": [
+        {
+          "id": "math-60-t",
+          "kind": "letter",
+          "letters": [
+            "长度"
+          ],
+          "display": "认识米",
+          "examples": [
+            {
+              "icon": "home",
+              "text": "教室门高约 2 米"
+            }
+          ],
+          "question": "学一学：量长东西/身高用米",
+          "anim": "ruler"
+        },
+        {
+          "id": "math-60-q1",
+          "kind": "quiz",
+          "question": "教室的门高约 2——",
+          "options": [
+            {
+              "text": "米"
+            },
+            {
+              "text": "厘米"
+            },
+            {
+              "text": "克"
+            }
+          ],
+          "answer": 0,
+          "hint": "米 m",
+          "praise": "量一量小能手！"
+        }
+      ],
+      "zone": 7
+    },
+    {
+      "id": "math-61",
+      "title": "第 62 关 厘米和米",
+      "subtitle": "1 米 = 100 厘米",
+      "steps": [
+        {
+          "id": "math-61-t",
+          "kind": "letter",
+          "letters": [
+            "长度"
+          ],
+          "display": "厘米和米",
+          "examples": [
+            {
+              "icon": "train",
+              "text": "操场跑道"
+            }
+          ],
+          "question": "学一学：1 米 = 100 厘米",
+          "anim": "ruler"
+        },
+        {
+          "id": "math-61-q1",
+          "kind": "quiz",
+          "question": "1 米 = ? 厘米",
+          "options": [
+            {
+              "text": "100"
+            },
+            {
+              "text": "10"
+            },
+            {
+              "text": "1000"
+            }
+          ],
+          "answer": 0,
+          "hint": "1 米 = 100 厘米",
+          "praise": "量一量小能手！"
+        }
+      ],
+      "zone": 7
+    },
+    {
+      "id": "math-62",
+      "title": "第 63 关 选单位",
+      "subtitle": "填 cm 还是 m",
+      "steps": [
+        {
+          "id": "math-62-t",
+          "kind": "letter",
+          "letters": [
+            "长度"
+          ],
+          "display": "选单位",
+          "examples": [
+            {
+              "icon": "girl",
+              "text": "小明身高 128 厘米"
+            }
+          ],
+          "question": "学一学：结合生活选单位",
+          "anim": "ruler"
+        },
+        {
+          "id": "math-62-q1",
+          "kind": "quiz",
+          "question": "小猫尾巴长约 30——",
+          "options": [
+            {
+              "text": "厘米"
+            },
+            {
+              "text": "米"
+            },
+            {
+              "text": "克"
+            }
+          ],
+          "answer": 0,
+          "hint": "填 cm 还是 m",
+          "praise": "量一量小能手！"
+        }
+      ],
+      "zone": 7
+    },
+    {
+      "id": "math-63",
+      "title": "第 64 关 估一估",
+      "subtitle": "先估再量",
+      "steps": [
+        {
+          "id": "math-63-t",
+          "kind": "letter",
+          "letters": [
+            "长度"
+          ],
+          "display": "估一估",
+          "examples": [
+            {
+              "icon": "book",
+              "text": "课本长约 26 厘米"
+            }
+          ],
+          "question": "学一学：估一估课本文长度",
+          "anim": "ruler"
+        },
+        {
+          "id": "math-63-q1",
+          "kind": "quiz",
+          "question": "课本长约——",
+          "options": [
+            {
+              "text": "26 厘米"
+            },
+            {
+              "text": "26 米"
+            },
+            {
+              "text": "26 克"
+            }
+          ],
+          "answer": 0,
+          "hint": "先估再量",
+          "praise": "量一量小能手！"
+        }
+      ],
+      "zone": 7
+    },
+    {
+      "id": "math-64",
+      "title": "第 65 关 比长短",
+      "subtitle": "拉直再比",
+      "steps": [
+        {
+          "id": "math-64-t",
+          "kind": "letter",
+          "letters": [
+            "长度"
+          ],
+          "display": "比长短",
+          "examples": [
+            {
+              "icon": "hanger",
+              "text": "衣架拉直比"
+            }
+          ],
+          "question": "学一学：比长短要拉直、一端对齐",
+          "anim": "ruler"
+        },
+        {
+          "id": "math-64-q1",
+          "kind": "quiz",
+          "question": "比两条绳子长短，要先——",
+          "options": [
+            {
+              "text": "拉直对齐"
+            },
+            {
+              "text": "随便放"
+            },
+            {
+              "text": "数颜色"
+            }
+          ],
+          "answer": 0,
+          "hint": "拉直再比",
+          "praise": "量一量小能手！"
+        }
+      ],
+      "zone": 7
+    },
+    {
+      "id": "math-65",
+      "title": "第 66 关 认识角",
+      "subtitle": "一个顶点两条边",
+      "steps": [
+        {
+          "id": "math-65-t",
+          "kind": "letter",
+          "letters": [
+            "角"
+          ],
+          "display": "认识角",
+          "examples": [
+            {
+              "icon": "triangle",
+              "text": "三角有角"
+            },
+            {
+              "icon": "square",
+              "text": "方角"
+            }
+          ],
+          "question": "学一学：角有一个顶点和两条直边",
+          "anim": "angle"
+        },
+        {
+          "id": "math-65-q1",
+          "kind": "quiz",
+          "question": "角有——",
+          "options": [
+            {
+              "text": "一个顶点两条边"
+            },
+            {
+              "text": "两条弯边"
+            },
+            {
+              "text": "没有顶点"
+            }
+          ],
+          "answer": 0,
+          "hint": "一个顶点两条边",
+          "praise": "火眼金睛找到角！"
+        }
+      ],
+      "zone": 7
+    },
+    {
+      "id": "math-66",
+      "title": "第 67 关 直角",
+      "subtitle": "方方正正直角",
+      "steps": [
+        {
+          "id": "math-66-t",
+          "kind": "letter",
+          "letters": [
+            "角"
+          ],
+          "display": "直角",
+          "examples": [
+            {
+              "icon": "square",
+              "text": "正方形四个直角"
+            },
+            {
+              "icon": "clock",
+              "text": "钟面直角"
+            }
+          ],
+          "question": "学一学：正方形的四个角都是直角",
+          "anim": "angle"
+        },
+        {
+          "id": "math-66-q1",
+          "kind": "quiz",
+          "question": "哪个图形有直角？",
+          "options": [
+            {
+              "icon": "square",
+              "text": "正方形"
+            },
+            {
+              "icon": "circle",
+              "text": "圆"
+            },
+            {
+              "icon": "ball",
+              "text": "球"
+            }
+          ],
+          "answer": 0,
+          "hint": "方方正正直角",
+          "praise": "火眼金睛找到角！"
+        }
+      ],
+      "zone": 7
+    },
+    {
+      "id": "math-67",
+      "title": "第 68 关 找角",
+      "subtitle": "生活里的角",
+      "steps": [
+        {
+          "id": "math-67-t",
+          "kind": "letter",
+          "letters": [
+            "角"
+          ],
+          "display": "找角",
+          "examples": [
+            {
+              "icon": "book",
+              "text": "书角"
+            },
+            {
+              "icon": "home",
+              "text": "门角"
+            }
+          ],
+          "question": "学一学：书本、门框都有角",
+          "anim": "angle"
+        },
+        {
+          "id": "math-67-q1",
+          "kind": "quiz",
+          "question": "下面哪里有角？",
+          "options": [
+            {
+              "text": "书的角上"
+            },
+            {
+              "text": "圆球上"
+            },
+            {
+              "text": "月亮上"
+            }
+          ],
+          "answer": 0,
+          "hint": "生活里的角",
+          "praise": "火眼金睛找到角！"
+        }
+      ],
+      "zone": 7
+    },
+    {
+      "id": "math-68",
+      "title": "第 69 关 认识克",
+      "subtitle": "克 g",
+      "steps": [
+        {
+          "id": "math-68-t",
+          "kind": "letter",
+          "letters": [
+            "克 千克"
+          ],
+          "display": "认识克",
+          "examples": [
+            {
+              "icon": "coin",
+              "text": "一枚硬币约 3 克"
+            }
+          ],
+          "question": "学一学：很轻的东西用克",
+          "anim": "scale"
+        },
+        {
+          "id": "math-68-b1",
+          "kind": "balance",
+          "question": "天平秤一秤：西瓜和苹果，哪边更重？",
+          "left": {
+            "icon": "ball",
+            "text": "大西瓜"
+          },
+          "right": {
+            "icon": "apple",
+            "text": "苹果"
+          },
+          "answerKey": "left",
+          "hint": "大的瓜比苹果重好几倍",
+          "praise": "天平答对啦，小天文学家！"
+        },
+        {
+          "id": "math-68-q1",
+          "kind": "quiz",
+          "question": "一枚硬币约重 3——",
+          "options": [
+            {
+              "text": "克"
+            },
+            {
+              "text": "千克"
+            },
+            {
+              "text": "米"
+            }
+          ],
+          "answer": 0,
+          "hint": "克 g",
+          "praise": "重量小达人！"
+        }
+      ],
+      "zone": 8
+    },
+    {
+      "id": "math-69",
+      "title": "第 70 关 认识千克",
+      "subtitle": "千克 kg",
+      "steps": [
+        {
+          "id": "math-69-t",
+          "kind": "letter",
+          "letters": [
+            "克 千克"
+          ],
+          "display": "认识千克",
+          "examples": [
+            {
+              "icon": "cup",
+              "text": "两杯水约 1 千克"
+            }
+          ],
+          "question": "学一学：较重的用千克",
+          "anim": "scale"
+        },
+        {
+          "id": "math-69-b1",
+          "kind": "balance",
+          "question": "天平秤一秤：西瓜和苹果，哪边更重？",
+          "left": {
+            "icon": "ball",
+            "text": "大西瓜"
+          },
+          "right": {
+            "icon": "apple",
+            "text": "苹果"
+          },
+          "answerKey": "left",
+          "hint": "大的瓜比苹果重好几倍",
+          "praise": "天平答对啦，小天文学家！"
+        },
+        {
+          "id": "math-69-q1",
+          "kind": "quiz",
+          "question": "1 千克 = ? 克",
+          "options": [
+            {
+              "text": "1000"
+            },
+            {
+              "text": "100"
+            },
+            {
+              "text": "10"
+            }
+          ],
+          "answer": 0,
+          "hint": "千克 kg",
+          "praise": "重量小达人！"
+        }
+      ],
+      "zone": 8
+    },
+    {
+      "id": "math-70",
+      "title": "第 71 关 选重量单位",
+      "subtitle": "克还是千克",
+      "steps": [
+        {
+          "id": "math-70-t",
+          "kind": "letter",
+          "letters": [
+            "克 千克"
+          ],
+          "display": "选重量单位",
+          "examples": [
+            {
+              "icon": "elephant",
+              "text": "大象约 4 吨"
+            },
+            {
+              "icon": "apple",
+              "text": "苹果约 200 克"
+            }
+          ],
+          "question": "学一学：大象用吨，苹果用克",
+          "anim": "scale"
+        },
+        {
+          "id": "math-70-b1",
+          "kind": "balance",
+          "question": "天平秤一秤：西瓜和苹果，哪边更重？",
+          "left": {
+            "icon": "ball",
+            "text": "大西瓜"
+          },
+          "right": {
+            "icon": "apple",
+            "text": "苹果"
+          },
+          "answerKey": "left",
+          "hint": "大的瓜比苹果重好几倍",
+          "praise": "天平答对啦，小天文学家！"
+        },
+        {
+          "id": "math-70-q1",
+          "kind": "quiz",
+          "question": "一个苹果约重——",
+          "options": [
+            {
+              "text": "200 克"
+            },
+            {
+              "text": "200 千克"
+            },
+            {
+              "text": "2 克"
+            }
+          ],
+          "answer": 0,
+          "hint": "克还是千克",
+          "praise": "重量小达人！"
+        }
+      ],
+      "zone": 8
+    },
+    {
+      "id": "math-71",
+      "title": "第 72 关 笔算加法",
+      "subtitle": "100 以内",
+      "steps": [
+        {
+          "id": "math-71-t",
+          "kind": "letter",
+          "letters": [
+            "竖式"
+          ],
+          "display": "笔算加法",
+          "examples": [
+            {
+              "text": "35 + 24 = 59"
+            }
+          ],
+          "question": "学一学：相同数位对齐",
+          "anim": "column"
+        },
+        {
+          "id": "math-7100-a+3524",
+          "kind": "arith",
+          "op": "+",
+          "leftIcon": "star",
+          "leftCount": 35,
+          "rightCount": 24,
+          "unit": "颗",
+          "question": "35 + 24 = ?",
+          "arithOptions": [
+            57,
+            58,
+            59
+          ],
+          "hint": "指着图一个一个数",
+          "praise": "算对啦，等于 59！"
+        }
+      ],
+      "zone": 8
+    },
+    {
+      "id": "math-72",
+      "title": "第 73 关 笔算加法·进位",
+      "subtitle": "100 以内",
+      "steps": [
+        {
+          "id": "math-72-t",
+          "kind": "letter",
+          "letters": [
+            "竖式"
+          ],
+          "display": "笔算加法·进位",
+          "examples": [
+            {
+              "text": "47 + 28 = 75"
+            }
+          ],
+          "question": "学一学：满十进一",
+          "anim": "column"
+        },
+        {
+          "id": "math-7101-a+4728",
+          "kind": "arith",
+          "op": "+",
+          "leftIcon": "star",
+          "leftCount": 47,
+          "rightCount": 28,
+          "unit": "颗",
+          "question": "47 + 28 = ?",
+          "arithOptions": [
+            73,
+            74,
+            75
+          ],
+          "hint": "指着图一个一个数",
+          "praise": "算对啦，等于 75！"
+        }
+      ],
+      "zone": 8
+    },
+    {
+      "id": "math-73",
+      "title": "第 74 关 笔算减法",
+      "subtitle": "100 以内",
+      "steps": [
+        {
+          "id": "math-73-t",
+          "kind": "letter",
+          "letters": [
+            "竖式"
+          ],
+          "display": "笔算减法",
+          "examples": [
+            {
+              "text": "68 - 25 = 43"
+            }
+          ],
+          "question": "学一学：相同数位对齐",
+          "anim": "column"
+        },
+        {
+          "id": "math-7102-a-6825",
+          "kind": "arith",
+          "op": "-",
+          "leftIcon": "star",
+          "leftCount": 68,
+          "rightCount": 25,
+          "unit": "颗",
+          "question": "68 - 25 = ?",
+          "arithOptions": [
+            41,
+            42,
+            43
+          ],
+          "hint": "划掉的不算哦",
+          "praise": "算对啦，等于 43！"
+        }
+      ],
+      "zone": 8
+    },
+    {
+      "id": "math-74",
+      "title": "第 75 关 笔算减法·退位",
+      "subtitle": "100 以内",
+      "steps": [
+        {
+          "id": "math-74-t",
+          "kind": "letter",
+          "letters": [
+            "竖式"
+          ],
+          "display": "笔算减法·退位",
+          "examples": [
+            {
+              "text": "82 - 47 = 35"
+            }
+          ],
+          "question": "学一学：退一当十",
+          "anim": "column"
+        },
+        {
+          "id": "math-7103-a-8247",
+          "kind": "arith",
+          "op": "-",
+          "leftIcon": "star",
+          "leftCount": 82,
+          "rightCount": 47,
+          "unit": "颗",
+          "question": "82 - 47 = ?",
+          "arithOptions": [
+            33,
+            34,
+            35
+          ],
+          "hint": "划掉的不算哦",
+          "praise": "算对啦，等于 35！"
+        }
+      ],
+      "zone": 8
+    },
+    {
+      "id": "math-75",
+      "title": "第 76 关 连加连减",
+      "subtitle": "100 以内",
+      "steps": [
+        {
+          "id": "math-75-t",
+          "kind": "letter",
+          "letters": [
+            "竖式"
+          ],
+          "display": "连加连减",
+          "examples": [
+            {
+              "text": "30 + 18 = 48"
+            }
+          ],
+          "question": "学一学：从左往右算",
+          "anim": "column"
+        },
+        {
+          "id": "math-7104-a+3018",
+          "kind": "arith",
+          "op": "+",
+          "leftIcon": "star",
+          "leftCount": 30,
+          "rightCount": 18,
+          "unit": "颗",
+          "question": "30 + 18 = ?",
+          "arithOptions": [
+            46,
+            47,
+            48
+          ],
+          "hint": "指着图一个一个数",
+          "praise": "算对啦，等于 48！"
+        }
+      ],
+      "zone": 8
+    },
+    {
+      "id": "math-76",
+      "title": "第 77 关 万以内数·数位",
+      "subtitle": "个十百千万",
+      "steps": [
+        {
+          "id": "math-76-t",
+          "kind": "letter",
+          "letters": [
+            "万以内"
+          ],
+          "display": "万以内数·数位",
+          "examples": [
+            {
+              "icon": "dice",
+              "text": "数位表"
+            }
+          ],
+          "question": "学一学：从右往左：个十百千万",
+          "anim": "column"
+        },
+        {
+          "id": "math-76-q1",
+          "kind": "quiz",
+          "question": "「3」在 3456 的哪一位？",
+          "options": [
+            {
+              "text": "千位"
+            },
+            {
+              "text": "十位"
+            },
+            {
+              "text": "个位"
+            }
+          ],
+          "answer": 0,
+          "hint": "个十百千万",
+          "praise": "数的嗅灵敏！"
+        }
+      ],
+      "zone": 8
+    },
+    {
+      "id": "math-77",
+      "title": "第 78 关 万以内数·读写",
+      "subtitle": "读数从高位起",
+      "steps": [
+        {
+          "id": "math-77-t",
+          "kind": "letter",
+          "letters": [
+            "万以内"
+          ],
+          "display": "万以内数·读写",
+          "examples": [
+            {
+              "icon": "chart",
+              "text": "3020 读作"
+            }
+          ],
+          "question": "学一学：中间有 0 要读零",
+          "anim": "column"
+        },
+        {
+          "id": "math-77-q1",
+          "kind": "quiz",
+          "question": "3020 读作——",
+          "options": [
+            {
+              "text": "三千零二十"
+            },
+            {
+              "text": "三千二十"
+            },
+            {
+              "text": "三十二十"
+            }
+          ],
+          "answer": 0,
+          "hint": "读数从高位起",
+          "praise": "数的嗅灵敏！"
+        }
+      ],
+      "zone": 8
+    },
+    {
+      "id": "math-78",
+      "title": "第 79 关 比大小",
+      "subtitle": "先比数位",
+      "steps": [
+        {
+          "id": "math-78-t",
+          "kind": "letter",
+          "letters": [
+            "万以内"
+          ],
+          "display": "比大小",
+          "examples": [
+            {
+              "icon": "equal",
+              "text": "1000 和 999"
+            }
+          ],
+          "question": "学一学：位数多的大",
+          "anim": "column"
+        },
+        {
+          "id": "math-78-q1",
+          "kind": "quiz",
+          "question": "1000 和 999 谁大？",
+          "options": [
+            {
+              "text": "1000"
+            },
+            {
+              "text": "999"
+            },
+            {
+              "text": "一样大"
+            }
+          ],
+          "answer": 0,
+          "hint": "先比数位",
+          "praise": "数的嗅灵敏！"
+        }
+      ],
+      "zone": 9
+    },
+    {
+      "id": "math-79",
+      "title": "第 80 关 近似数",
+      "subtitle": "接近的整数",
+      "steps": [
+        {
+          "id": "math-79-t",
+          "kind": "letter",
+          "letters": [
+            "万以内"
+          ],
+          "display": "近似数",
+          "examples": [
+            {
+              "icon": "school",
+              "text": "全校约 2000 人"
+            }
+          ],
+          "question": "学一学：接近整千的数",
+          "anim": "column"
+        },
+        {
+          "id": "math-79-q1",
+          "kind": "quiz",
+          "question": "1987 接近——",
+          "options": [
+            {
+              "text": "2000"
+            },
+            {
+              "text": "1000"
+            },
+            {
+              "text": "3000"
+            }
+          ],
+          "answer": 0,
+          "hint": "接近的整数",
+          "praise": "数的嗅灵敏！"
+        }
+      ],
+      "zone": 9
+    },
+    {
+      "id": "math-80",
+      "title": "第 82 关 应用·乘车",
+      "subtitle": "够不够坐",
+      "steps": [
+        {
+          "id": "math-80-t",
+          "kind": "letter",
+          "letters": [
+            "应用题"
+          ],
+          "display": "应用·乘车",
+          "examples": [
+            {
+              "icon": "bus",
+              "text": "45 座大巴"
+            }
+          ],
+          "question": "学一学：二(1)班 38 人坐 45 座车",
+          "anim": "story"
+        },
+        {
+          "id": "math-80-q1",
+          "kind": "quiz",
+          "question": "45 座车坐 38 人，座位——",
+          "options": [
+            {
+              "text": "够，还剩 7 个"
+            },
+            {
+              "text": "不够"
+            },
+            {
+              "text": "正好"
+            }
+          ],
+          "answer": 0,
+          "hint": "够不够坐",
+          "praise": "应用题小能手！"
+        }
+      ],
+      "zone": 9
+    },
+    {
+      "id": "math-81",
+      "title": "第 83 关 应用·买文具",
+      "subtitle": "付钱算找零",
+      "steps": [
+        {
+          "id": "math-81-t",
+          "kind": "letter",
+          "letters": [
+            "应用题"
+          ],
+          "display": "应用·买文具",
+          "examples": [
+            {
+              "icon": "m-yuan10",
+              "text": "付 10 元"
+            }
+          ],
+          "question": "学一学：10 - 6 = 4",
+          "anim": "story"
+        },
+        {
+          "id": "math-81-q1",
+          "kind": "quiz",
+          "question": "10 元买 6 元的笔，找——",
+          "options": [
+            {
+              "text": "4 元"
+            },
+            {
+              "text": "5 元"
+            },
+            {
+              "text": "6 元"
+            }
+          ],
+          "answer": 0,
+          "hint": "付钱算找零",
+          "praise": "应用题小能手！"
+        }
+      ],
+      "zone": 9
+    },
+    {
+      "id": "math-82",
+      "title": "第 84 关 应用·分苹果",
+      "subtitle": "每人几个",
+      "steps": [
+        {
+          "id": "math-82-t",
+          "kind": "letter",
+          "letters": [
+            "应用题"
+          ],
+          "display": "应用·分苹果",
+          "examples": [
+            {
+              "icon": "apple",
+              "text": "12 个苹果分给 4 人"
+            }
+          ],
+          "question": "学一学：12 ÷ 4 = 3",
+          "anim": "story"
+        },
+        {
+          "id": "math-82-q1",
+          "kind": "quiz",
+          "question": "12 个苹果平均分给 4 人，每人——",
+          "options": [
+            {
+              "text": "3 个"
+            },
+            {
+              "text": "4 个"
+            },
+            {
+              "text": "2 个"
+            }
+          ],
+          "answer": 0,
+          "hint": "每人几个",
+          "praise": "应用题小能手！"
+        }
+      ],
+      "zone": 9
+    },
+    {
+      "id": "math-83",
+      "title": "第 85 关 应用·排队伍",
+      "subtitle": "前后位置",
+      "steps": [
+        {
+          "id": "math-83-t",
+          "kind": "letter",
+          "letters": [
+            "应用题"
+          ],
+          "display": "应用·排队伍",
+          "examples": [
+            {
+              "icon": "train",
+              "text": "15 人排队"
+            }
+          ],
+          "question": "学一学：小猴前面 5 人后面 9 人",
+          "anim": "viewcube"
+        },
+        {
+          "id": "math-83-q1",
+          "kind": "quiz",
+          "question": "队伍一共几人？",
+          "options": [
+            {
+              "text": "15 人"
+            },
+            {
+              "text": "14 人"
+            },
+            {
+              "text": "16 人"
+            }
+          ],
+          "answer": 0,
+          "hint": "前后位置",
+          "praise": "应用题小能手！"
+        }
+      ],
+      "zone": 9
+    },
+    {
+      "id": "math-84",
+      "title": "第 86 关 应用·量身高",
+      "subtitle": "厘米记录",
+      "steps": [
+        {
+          "id": "math-84-t",
+          "kind": "letter",
+          "letters": [
+            "应用题"
+          ],
+          "display": "应用·量身高",
+          "examples": [
+            {
+              "icon": "girl",
+              "text": "身高 132 厘米"
+            }
+          ],
+          "question": "学一学：去年 125，今年 132",
+          "anim": "ruler"
+        },
+        {
+          "id": "math-84-q1",
+          "kind": "quiz",
+          "question": "长高了——",
+          "options": [
+            {
+              "text": "7 厘米"
+            },
+            {
+              "text": "17 厘米"
+            },
+            {
+              "text": "70 厘米"
+            }
+          ],
+          "answer": 0,
+          "hint": "厘米记录",
+          "praise": "应用题小能手！"
+        }
+      ],
+      "zone": 9
+    },
+    {
+      "id": "math-85",
+      "title": "第 86 关 观察物体·前面",
+      "subtitle": "二年级数学",
+      "steps": [
+        {
+          "id": "math-85-t",
+          "kind": "letter",
+          "letters": [
+            "数学"
+          ],
+          "display": "观察物体·前面",
+          "examples": [
+            {
+              "icon": "robot",
+              "text": "小机器人的前面"
+            }
+          ],
+          "question": "学一学：从前看机器人，看到的是正脸",
+          "anim": "viewcube"
+        },
+        {
+          "id": "math-85-q1",
+          "kind": "quiz",
+          "question": "从前面看，看到——",
+          "options": [
+            {
+              "text": "正脸"
+            },
+            {
+              "text": "后脑勺"
+            },
+            {
+              "text": "侧面"
+            }
+          ],
+          "answer": 0,
+          "hint": "从前看机器人，看到的是正脸",
+          "praise": "数学小达人！"
+        }
+      ],
+      "zone": 9
+    },
+    {
+      "id": "math-86",
+      "title": "第 87 关 观察物体·后面",
+      "subtitle": "二年级数学",
+      "steps": [
+        {
+          "id": "math-86-t",
+          "kind": "letter",
+          "letters": [
+            "数学"
+          ],
+          "display": "观察物体·后面",
+          "examples": [
+            {
+              "icon": "robot",
+              "text": "机器人的后面"
+            }
+          ],
+          "question": "学一学：从后面看，看到的是后脑勺",
+          "anim": "viewcube"
+        },
+        {
+          "id": "math-86-q1",
+          "kind": "quiz",
+          "question": "从后面看，看到——",
+          "options": [
+            {
+              "text": "后脑勺"
+            },
+            {
+              "text": "正脸"
+            },
+            {
+              "text": "脚底"
+            }
+          ],
+          "answer": 0,
+          "hint": "从后面看，看到的是后脑勺",
+          "praise": "数学小达人！"
+        }
+      ],
+      "zone": 9
+    },
+    {
+      "id": "math-87",
+      "title": "第 88 关 观察物体·侧面",
+      "subtitle": "二年级数学",
+      "steps": [
+        {
+          "id": "math-87-t",
+          "kind": "letter",
+          "letters": [
+            "数学"
+          ],
+          "display": "观察物体·侧面",
+          "examples": [
+            {
+              "icon": "dino",
+              "text": "小恐龙的侧面"
+            }
+          ],
+          "question": "学一学：从侧面看，只看到半边",
+          "anim": "viewcube"
+        },
+        {
+          "id": "math-87-q1",
+          "kind": "quiz",
+          "question": "从侧面看，看到——",
+          "options": [
+            {
+              "text": "半边身体"
+            },
+            {
+              "text": "正脸"
+            },
+            {
+              "text": "全身两面"
+            }
+          ],
+          "answer": 0,
+          "hint": "从侧面看，只看到半边",
+          "praise": "数学小达人！"
+        }
+      ],
+      "zone": 9
+    },
+    {
+      "id": "math-88",
+      "title": "第 89 关 口诀巩固·连线",
+      "subtitle": "二年级数学",
+      "steps": [
+        {
+          "id": "math-88-t",
+          "kind": "letter",
+          "letters": [
+            "数学"
+          ],
+          "display": "口诀巩固·连线",
+          "examples": [
+            {
+              "icon": "train",
+              "text": "3×4=?"
+            }
+          ],
+          "question": "学一学：三七二十一",
+          "anim": "groups"
+        },
+        {
+          "id": "math-88-q1",
+          "kind": "quiz",
+          "question": "3×4=——",
+          "options": [
+            {
+              "text": "12"
+            },
+            {
+              "text": "7"
+            },
+            {
+              "text": "14"
+            }
+          ],
+          "answer": 0,
+          "hint": "三七二十一",
+          "praise": "数学小达人！"
+        }
+      ],
+      "zone": 10
+    },
+    {
+      "id": "math-r2",
+      "title": "复习关 三",
+      "subtitle": "旧题开盲盒 · 混排复习",
+      "steps": [
+        {
+          "id": "math-r2-0",
+          "kind": "count",
+          "question": "池塘里有几只小鸭（点一点，数数看）",
+          "duckIcon": "duck",
+          "count": 3,
+          "countOptions": [
+            2,
+            3,
+            4
+          ],
+          "backdrop": "pond",
+          "unit": "只"
+        },
+        {
+          "id": "math-r2-1",
+          "kind": "count",
+          "question": "盘子里有几颗糖（点一点，数数看）",
+          "duckIcon": "candy",
+          "count": 4,
+          "countOptions": [
+            3,
+            4,
+            5
+          ],
+          "backdrop": "grass",
+          "unit": "颗"
+        },
+        {
+          "id": "math-r2-2",
+          "kind": "count",
+          "question": "果园里摘了几个苹果（点一点，数数看）",
+          "duckIcon": "apple",
+          "count": 5,
+          "countOptions": [
+            4,
+            5,
+            6
+          ],
+          "backdrop": "grass",
+          "unit": "个"
+        },
+        {
+          "id": "math-r2-3",
+          "kind": "compare",
+          "question": "两边气球哪边多？",
+          "leftIcon": "balloon",
+          "leftCount": 4,
+          "rightIcon": "balloon",
+          "rightCount": 4,
+          "compareOptions": [
+            {
+              "key": "left",
+              "label": "左边多"
+            },
+            {
+              "key": "right",
+              "label": "右边多"
+            },
+            {
+              "key": "same",
+              "label": "一样多"
+            }
+          ],
+          "answerKey": "same",
+          "hint": "一个对着一个，比一比",
+          "praise": "火眼金睛！一样多！"
+        },
+        {
+          "id": "math-r2-4",
+          "kind": "count",
+          "question": "夜空里有几颗星星（点一点，数数看）",
+          "duckIcon": "star",
+          "count": 6,
+          "countOptions": [
+            5,
+            6,
+            7
+          ],
+          "backdrop": "night",
+          "unit": "颗"
+        },
+        {
+          "id": "math-r2-5",
+          "kind": "count",
+          "question": "轨道上有几辆小火车（点一点，数数看）",
+          "duckIcon": "train",
+          "count": 7,
+          "countOptions": [
+            6,
+            7,
+            8
+          ],
+          "backdrop": "grass",
+          "unit": "辆"
+        }
+      ],
+      "board": {
+        "spaces": [
+          {
+            "type": "question",
+            "step": "math-r2-2"
+          },
+          {
+            "type": "question",
+            "step": "math-r2-3"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "math-r2-4"
+          },
+          {
+            "type": "question",
+            "step": "math-r2-5"
+          },
+          {
+            "type": "coin"
+          },
+          {
+            "type": "question",
+            "step": "math-r2-0"
+          },
+          {
+            "type": "chest"
+          },
+          {
+            "type": "question",
+            "step": "math-r2-1"
+          },
+          {
+            "type": "mushroom"
+          }
+        ]
+      },
+      "review": true,
+      "zone": 10
+    },
+    {
+      "id": "math-89",
+      "title": "第 90 关 口诀巩固·五五",
+      "subtitle": "二年级数学",
+      "steps": [
+        {
+          "id": "math-89-t",
+          "kind": "letter",
+          "letters": [
+            "数学"
+          ],
+          "display": "口诀巩固·五五",
+          "examples": [
+            {
+              "icon": "starface",
+              "text": "五五二十五"
+            }
+          ],
+          "question": "学一学：五五二十五",
+          "anim": "groups"
+        },
+        {
+          "id": "math-89-q1",
+          "kind": "quiz",
+          "question": "5×5=——",
+          "options": [
+            {
+              "text": "25"
+            },
+            {
+              "text": "10"
+            },
+            {
+              "text": "55"
+            }
+          ],
+          "answer": 0,
+          "hint": "五五二十五",
+          "praise": "数学小达人！"
+        }
+      ],
+      "zone": 10
+    },
+    {
+      "id": "math-90",
+      "title": "第 91 关 除法应用·装盒",
+      "subtitle": "二年级数学",
+      "steps": [
+        {
+          "id": "math-90-t",
+          "kind": "letter",
+          "letters": [
+            "数学"
+          ],
+          "display": "除法应用·装盒",
+          "examples": [
+            {
+              "icon": "egg",
+              "text": "18 个鸡蛋"
+            }
+          ],
+          "question": "学一学：18 个鸡蛋每盒装 6 个",
+          "anim": "share"
+        },
+        {
+          "id": "math-90-q1",
+          "kind": "quiz",
+          "question": "需要几个盒子？",
+          "options": [
+            {
+              "text": "3 个"
+            },
+            {
+              "text": "6 个"
+            },
+            {
+              "text": "2 个"
+            }
+          ],
+          "answer": 0,
+          "hint": "18 个鸡蛋每盒装 6 个",
+          "praise": "数学小达人！"
+        }
+      ],
+      "zone": 10
+    },
+    {
+      "id": "math-91",
+      "title": "第 92 关 除法应用·分书",
+      "subtitle": "二年级数学",
+      "steps": [
+        {
+          "id": "math-91-t",
+          "kind": "letter",
+          "letters": [
+            "数学"
+          ],
+          "display": "除法应用·分书",
+          "examples": [
+            {
+              "icon": "book",
+              "text": "24 本书"
+            }
+          ],
+          "question": "学一学：24 本书分给 6 个小组",
+          "anim": "share"
+        },
+        {
+          "id": "math-91-q1",
+          "kind": "quiz",
+          "question": "每组几本？",
+          "options": [
+            {
+              "text": "4 本"
+            },
+            {
+              "text": "6 本"
+            },
+            {
+              "text": "3 本"
+            }
+          ],
+          "answer": 0,
+          "hint": "24 本书分给 6 个小组",
+          "praise": "数学小达人！"
+        }
+      ],
+      "zone": 10
+    },
+    {
+      "id": "math-92",
+      "title": "第 93 关 米尺应用·跳远",
+      "subtitle": "二年级数学",
+      "steps": [
+        {
+          "id": "math-92-t",
+          "kind": "letter",
+          "letters": [
+            "数学"
+          ],
+          "display": "米尺应用·跳远",
+          "examples": [
+            {
+              "icon": "frog",
+              "text": "小青蛙跳远"
+            }
+          ],
+          "question": "学一学：小青蛙跳了 95 厘米",
+          "anim": "ruler"
+        },
+        {
+          "id": "math-92-q1",
+          "kind": "quiz",
+          "question": "95 厘米 接近——",
+          "options": [
+            {
+              "text": "1 米"
+            },
+            {
+              "text": "1 厘米"
+            },
+            {
+              "text": "10 米"
+            }
+          ],
+          "answer": 0,
+          "hint": "小青蛙跳了 95 厘米",
+          "praise": "数学小达人！"
+        }
+      ],
+      "zone": 10
+    },
+    {
+      "id": "math-93",
+      "title": "第 94 关 米尺应用·身高",
+      "subtitle": "二年级数学",
+      "steps": [
+        {
+          "id": "math-93-t",
+          "kind": "letter",
+          "letters": [
+            "数学"
+          ],
+          "display": "米尺应用·身高",
+          "examples": [
+            {
+              "icon": "girl",
+              "text": "兄妹比身高"
+            }
+          ],
+          "question": "学一学：哥哥 130 厘米，妹妹 120 厘米",
+          "anim": "ruler"
+        },
+        {
+          "id": "math-93-q1",
+          "kind": "quiz",
+          "question": "哥哥比妹妹高——",
+          "options": [
+            {
+              "text": "10 厘米"
+            },
+            {
+              "text": "100 厘米"
+            },
+            {
+              "text": "1 厘米"
+            }
+          ],
+          "answer": 0,
+          "hint": "哥哥 130 厘米，妹妹 120 厘米",
+          "praise": "数学小达人！"
+        }
+      ],
+      "zone": 10
+    },
+    {
+      "id": "math-94",
+      "title": "第 95 关 角练习·数角",
+      "subtitle": "二年级数学",
+      "steps": [
+        {
+          "id": "math-94-t",
+          "kind": "letter",
+          "letters": [
+            "数学"
+          ],
+          "display": "角练习·数角",
+          "examples": [
+            {
+              "icon": "triangle",
+              "text": "三角形"
+            },
+            {
+              "icon": "square",
+              "text": "正方形"
+            }
+          ],
+          "question": "学一学：三角形 3 个角，正方形 4 个角",
+          "anim": "angle"
+        },
+        {
+          "id": "math-94-q1",
+          "kind": "quiz",
+          "question": "正方形有几个角？",
+          "options": [
+            {
+              "text": "4 个"
+            },
+            {
+              "text": "3 个"
+            },
+            {
+              "text": "5 个"
+            }
+          ],
+          "answer": 0,
+          "hint": "三角形 3 个角，正方形 4 个角",
+          "praise": "数学小达人！"
+        }
+      ],
+      "zone": 10
+    },
+    {
+      "id": "math-95",
+      "title": "第 96 关 克千克·比轻重",
+      "subtitle": "二年级数学",
+      "steps": [
+        {
+          "id": "math-95-t",
+          "kind": "letter",
+          "letters": [
+            "数学"
+          ],
+          "display": "克千克·比轻重",
+          "examples": [
+            {
+              "icon": "cup",
+              "text": "1 千克水"
+            },
+            {
+              "icon": "coin",
+              "text": "3 克硬币"
+            }
+          ],
+          "question": "学一学：1 千克 = 1000 克",
+          "anim": "scale"
+        },
+        {
+          "id": "math-95-q1",
+          "kind": "quiz",
+          "question": "1 千克和 3 克谁重？",
+          "options": [
+            {
+              "text": "1 千克"
+            },
+            {
+              "text": "3 克"
+            },
+            {
+              "text": "一样重"
+            }
+          ],
+          "answer": 0,
+          "hint": "1 千克 = 1000 克",
+          "praise": "数学小达人！"
+        }
+      ],
+      "zone": 10
     },
     {
       "id": "math-boss",
@@ -2448,13 +5541,9 @@
         {
           "id": "math-boss-0",
           "kind": "count",
-          "question": "池塘里有几只小鸭？点一点",
+          "question": "池塘里有几只小鸭（点一点，数数看）",
           "duckIcon": "duck",
           "count": 3,
-          "countRange": [
-            2,
-            3
-          ],
           "countOptions": [
             2,
             3,
@@ -2466,13 +5555,9 @@
         {
           "id": "math-boss-1",
           "kind": "count",
-          "question": "盘子里有几颗糖？点一点",
+          "question": "盘子里有几颗糖（点一点，数数看）",
           "duckIcon": "candy",
           "count": 4,
-          "countRange": [
-            2,
-            4
-          ],
           "countOptions": [
             3,
             4,
@@ -2484,13 +5569,9 @@
         {
           "id": "math-boss-2",
           "kind": "count",
-          "question": "果园里摘了几个苹果？点一点",
+          "question": "果园里摘了几个苹果（点一点，数数看）",
           "duckIcon": "apple",
           "count": 5,
-          "countRange": [
-            3,
-            5
-          ],
           "countOptions": [
             4,
             5,
@@ -2528,13 +5609,9 @@
         {
           "id": "math-boss-4",
           "kind": "count",
-          "question": "夜空里有几颗星星？点一点",
+          "question": "夜空里有几颗星星（点一点，数数看）",
           "duckIcon": "star",
           "count": 6,
-          "countRange": [
-            4,
-            6
-          ],
           "countOptions": [
             5,
             6,
@@ -2545,40 +5622,10 @@
         },
         {
           "id": "math-boss-5",
-          "kind": "compare",
-          "question": "哪边的水果更多？",
-          "leftIcon": "apple",
-          "leftCount": 3,
-          "rightIcon": "banana",
-          "rightCount": 1,
-          "compareOptions": [
-            {
-              "key": "left",
-              "label": "苹果多"
-            },
-            {
-              "key": "right",
-              "label": "香蕉多"
-            },
-            {
-              "key": "same",
-              "label": "一样多"
-            }
-          ],
-          "answerKey": "left",
-          "hint": "一个对着一个，比一比",
-          "praise": "苹果多，答对啦！"
-        },
-        {
-          "id": "math-boss-6",
           "kind": "count",
-          "question": "轨道上有几辆小火车？点一点",
+          "question": "轨道上有几辆小火车（点一点，数数看）",
           "duckIcon": "train",
           "count": 7,
-          "countRange": [
-            5,
-            7
-          ],
           "countOptions": [
             6,
             7,
@@ -2588,15 +5635,11 @@
           "unit": "辆"
         },
         {
-          "id": "math-boss-7",
+          "id": "math-boss-6",
           "kind": "count",
-          "question": "花园里开了几朵花？点一点",
+          "question": "花园里开了几朵花（点一点，数数看）",
           "duckIcon": "flower",
           "count": 8,
-          "countRange": [
-            6,
-            8
-          ],
           "countOptions": [
             7,
             8,
@@ -2604,6 +5647,20 @@
           ],
           "backdrop": "grass",
           "unit": "朵"
+        },
+        {
+          "id": "math-boss-7",
+          "kind": "count",
+          "question": "礼盒里有几颗爱心糖（点一点，数数看）",
+          "duckIcon": "heart",
+          "count": 9,
+          "countOptions": [
+            8,
+            9,
+            10
+          ],
+          "backdrop": "grass",
+          "unit": "颗"
         }
       ],
       "board": {
@@ -2642,7 +5699,8 @@
           }
         ]
       },
-      "boss": true
+      "boss": true,
+      "zone": 10
     }
   ]
 }

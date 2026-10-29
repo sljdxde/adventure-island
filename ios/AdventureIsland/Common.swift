@@ -22,6 +22,7 @@ enum IconEmoji {
         "coin": "🪙", "dice": "🎲", "pipe-red": "🟥", "pipe-blue": "🟦",
         "pipe-purple": "🟪", "flag": "🏁", "starface": "🌟", "brick": "🧱",
         "pipe-orange": "🟧", "pipe-green": "🟩", "pipe-indigo": "🔷",
+        "pipe-brown": "🟫",
         "candy": "🍬", "flame": "🔥", "jar": "🫙", "salt": "🧂", "sand": "🏖️",
         "sugar": "🍚", "train": "🚂", "tree": "🌳",
         "earth": "🌍", "planet": "🪐", "comet": "☄️",
@@ -29,7 +30,32 @@ enum IconEmoji {
         "boss": "🐢",
         "cat": "🐱", "rabbit": "🐰", "bear": "🐻", "penguin": "🐧",
         "paw": "🐾", "shop": "🏪", "hanger": "🪝",
-        "hills-back": "⛰", "hills-front": "🏞"
+        "mercury": "☿️", "venus": "♀️", "mars": "♂️", "jupiter": "🟠",
+        "saturn": "🪐", "uranus": "🔵", "neptune": "🌊",
+        "newmoon": "🌑", "waxing": "🌒", "fullmoon": "🌕", "waning": "🌘",
+        "milkyway": "🌌", "astronaut": "🧑‍🚀", "station": "🛰️",
+        "blackhole": "🕳️", "meteor": "☄️",
+        "telescope": "🔭", "satellite": "🛰️", "ufo": "🛸", "bigdipper": "🥄", "meteorite": "☄️",
+        "torii": "⛩️", "fuji": "🗻", "pyramid": "🔺", "eiffel": "🗼", "bigben": "🕰️", "tower": "🗼", "desert": "🏜️", "snowflake": "❄️", "palm": "🌴",
+        "maple": "🍁", "taj": "🕌", "pisa": "🗼",
+        "m-jiao1": "🪙", "m-jiao5": "🪙", "m-yuan1": "💵", "m-yuan5": "💴", "m-yuan10": "💶",
+        "triangle": "🔺", "square": "🟦", "pentagon": "🔷", "circle": "🟢",
+        "china-map": "🇨🇳", "world-map": "🌍", "greatwall": "🏯", "tiananmen": "🏛️",
+        "everest": "🏔️", "river": "🏞️", "lion": "🦁", "elephant": "🐘",
+        "kangaroo": "🦘", "polarbear": "🐻‍❄️", "libertystatue": "🗽", "windmill": "🌬️",
+        "dog": "🐶", "fish": "🐟", "bread": "🍞", "milk": "🥛", "egg": "🥚",
+        "bird": "🐦", "tiger": "🐯", "monkey": "🐵", "car": "🚗", "ball": "⚽",
+        "bed": "🛏️", "chair": "🪑", "shoe": "👟", "hat": "🎩", "cup": "🥤", "cow": "🐮",
+        "pig": "🐷", "frog": "🐸", "bee": "🐝", "bus": "🚌",
+        "bg-writer": "✍️", "bg-mul": "✖️", "bg-sudoku": "🔢", "bg-geo": "🧭", "bg-words50": "📚",
+        "hills-back": "⛰", "hills-front": "🏞",
+        // v1.0.5 新增图标兜底（内容层写实/概念 + 框架层手绘）
+        "airtwinkle": "✨", "storm": "🌀", "bolt": "⚡", "compass": "🧭", "spoon": "🥄",
+        "sleepingbag": "😴", "waterpouch": "💧", "kite": "🪁", "rustsoil": "🟤",
+        "pine": "🌲", "grassland": "🌾", "shanshui": "⛰️", "coral": "🪸",
+        "island": "🏝️", "pumpkin": "🎃", "santa": "🎅", "aurora": "🌌",
+        "sunset": "🌇", "happy": "😀", "excited": "🤩", "sing": "🎵",
+        "teacher": "👩‍🏫", "foot": "👣", "trex": "🦖", "bronto": "🦕", "roar": "🗯️"
     ]
 }
 
@@ -332,7 +358,9 @@ struct SceneBackground: View {
                                startPoint: .top, endPoint: .bottom)
                 UndergroundBricks()
             } else {
-                LinearGradient(colors: theme.sky, startPoint: .top, endPoint: .bottom)
+                // 星夜变体（variant 2）：非天文主题也统一使用夜空渐变，避免"蓝天+星星+月亮"的混搭
+                LinearGradient(colors: isNight ? AppTheme.astro.sky : theme.sky,
+                               startPoint: .top, endPoint: .bottom)
                 if isNight { StarField() }
                 if isDusk {
                     LinearGradient(colors: [Color(hex: 0xFF9E5E).opacity(0.38), Color(hex: 0xFFB56B).opacity(0.16), .clear],
@@ -349,28 +377,34 @@ struct SceneBackground: View {
     @ViewBuilder
     private var glow: some View {
         if isNight {
-            // 月亮 + 月晕
-            ZStack {
-                Circle()
-                    .fill(RadialGradient(colors: [Color(hex: 0xFFF6C9).opacity(0.5), .clear],
-                                         center: .center, startRadius: 0, endRadius: 150))
-                    .frame(width: 300, height: 300)
-                Circle()
-                    .fill(LinearGradient(colors: [Color(hex: 0xFFF9E2), Color(hex: 0xFFE9A8)],
-                                         startPoint: .topLeading, endPoint: .bottomTrailing))
-                    .frame(width: 96, height: 96)
-                    .shadow(color: Color(hex: 0xFFF3C4).opacity(0.9), radius: 22)
-                Circle()
-                    .fill(Color(hex: 0xF3D98A).opacity(0.5))
-                    .frame(width: 22, height: 22)
-                    .offset(x: 26, y: -18)
-                Circle()
-                    .fill(Color(hex: 0xF3D98A).opacity(0.4))
-                    .frame(width: 14, height: 14)
-                    .offset(x: 12, y: 22)
+            // 月亮 + 月晕：关卡白卡几乎占满屏幕，只在顶部留一条天空带，
+            // 故用 GeometryReader 把月亮固定在顶部天空带偏右位置（避开左侧标题与右侧金币栏）
+            GeometryReader { geo in
+                ZStack {
+                    Circle()
+                        .fill(RadialGradient(colors: [Color(hex: 0xFFF6C9).opacity(0.5), .clear],
+                                             center: .center, startRadius: 0, endRadius: 150))
+                        .frame(width: 300, height: 300)
+                    Circle()
+                        .fill(LinearGradient(colors: [Color(hex: 0xFFF9E2), Color(hex: 0xFFE9A8)],
+                                             startPoint: .topLeading, endPoint: .bottomTrailing))
+                        .frame(width: 96, height: 96)
+                        .shadow(color: Color(hex: 0xFFF3C4).opacity(0.9), radius: 22)
+                    Circle()
+                        .fill(Color(hex: 0xF3D98A).opacity(0.5))
+                        .frame(width: 22, height: 22)
+                        .offset(x: 26, y: -18)
+                    Circle()
+                        .fill(Color(hex: 0xF3D98A).opacity(0.4))
+                        .frame(width: 14, height: 14)
+                        .offset(x: 12, y: 22)
+                }
+                .frame(width: 320, height: 320)
+                // 顶部天空带只有约 85pt 高，缩小月亮让整轮月亮完整露出（似月亮爬上屋檐）
+                .scaleEffect(0.62)
+                .position(x: geo.size.width / 2 + 130, y: 40)
             }
-            .frame(width: 320, height: 320)
-            .offset(x: 250, y: -190)
+            .allowsHitTesting(false)
         } else {
             Circle()
                 .fill(
@@ -410,14 +444,18 @@ struct SceneBackground: View {
 
     private var hills: some View {
         ZStack {
-            HillLayer(asset: "hills-back", tint: isNight ? Color(hex: 0x5E6BC0) : (isDusk ? Color(hex: 0xB9E88C) : Color(hex: 0xB9E88C)),
-                      fallback: isNight ? Color(hex: 0x5E6BC0) : .brandGreen.opacity(0.45))
+            // 夜间 SVG 原色青山无法被 tint 改色，强制使用夜蓝剪影，避免星空下出现亮绿山丘
+            HillLayer(asset: "hills-back",
+                      tint: isNight ? Color(hex: 0x5E6BC0) : Color(hex: 0xB9E88C),
+                      fallback: isNight ? Color(hex: 0x5E6BC0) : .brandGreen.opacity(0.45),
+                      forceSilhouette: isNight)
                 .frame(height: 300)
                 .frame(maxHeight: .infinity, alignment: .bottom)
                 .opacity(theme.hillOpacity * (isDusk ? 0.85 : 1))
             HillLayer(asset: "hills-front",
                       tint: isNight ? Color(hex: 0x4A57A8) : .brandGreen,
-                      fallback: isNight ? Color(hex: 0x4A57A8) : .brandGreen)
+                      fallback: isNight ? Color(hex: 0x4A57A8) : .brandGreen,
+                      forceSilhouette: isNight)
                 .frame(height: 250)
                 .frame(maxHeight: .infinity, alignment: .bottom)
                 .opacity(theme.hillOpacity * (isDusk ? 0.85 : 1))
@@ -494,10 +532,11 @@ struct HillLayer: View {
     let asset: String
     let tint: Color
     let fallback: Color
+    var forceSilhouette: Bool = false
 
     var body: some View {
         GeometryReader { geo in
-            if UIImage(named: asset) != nil {
+            if !forceSilhouette, UIImage(named: asset) != nil {
                 Image(uiImage: UIImage(named: asset)!)
                     .resizable()
                     .scaledToFit()

@@ -1,4 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs><linearGradient id="g-white" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#E9EDF2"/></linearGradient></defs>
-  <rect x="12" y="8" width="40" height="48" rx="8" fill="url(#g-white)"/>
-  <rect x="18" y="14" width="28" height="36" rx="3" fill="none" stroke="#F0A898" stroke-width="2" opacity=".7"/>
-  <text x="32" y="42" text-anchor="middle" font-size="26" font-weight="700" fill="#E2582A" font-family="Kaiti SC, KaiTi, STKaiti, serif">字</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><style>.st{stroke:#5B4636;stroke-width:2.4;stroke-linejoin:round;stroke-linecap:round}.th{stroke:#5B4636;stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round}</style><rect class="st" x="11" y="8" width="42" height="48" rx="8" fill="#FFFFFF"/><rect x="17" y="14" width="30" height="36" rx="3" fill="none" stroke="#FF9B8A" stroke-width="1.8" opacity="0.7"/><text x="32" y="43" text-anchor="middle" font-size="27" font-weight="700" fill="#E8654F" font-family="Kaiti SC, KaiTi, STKaiti, serif">字</text></svg>

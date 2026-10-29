@@ -1,5 +1,40 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs><linearGradient id="g-earth" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7FD4F8"/><stop offset="1" stop-color="#2F86C9"/></linearGradient><linearGradient id="g-land" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#A8E57C"/><stop offset="1" stop-color="#58C96B"/></linearGradient></defs>
-  <circle cx="32" cy="32" r="26" fill="url(#g-earth)"/>
-  <path d="M17 24 q5-8 15-6 q7 1.5 5 8 q-2 6-10 6 q-9 0-10-8z" fill="url(#g-land)"/>
-  <path d="M34 38 q8-4 13 1 q4 5-2 9 q-8 4-13-1 q-4-5 2-9z" fill="url(#g-land)"/>
-  <ellipse cx="23" cy="19" rx="8" ry="4.5" fill="#fff" opacity=".4" transform="rotate(-22 23 19)"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs><radialGradient id="earth-lit" cx="34%" cy="30%" r="78%">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.92"/>
+      <stop offset="38%" stop-color="#ffffff" stop-opacity="0.18"/>
+      <stop offset="72%" stop-color="#000000" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0.42"/>
+    </radialGradient>
+    <radialGradient id="earth-base" cx="38%" cy="34%" r="75%">
+      <stop offset="0" stop-color="#3FA6E0"/><stop offset="45%" stop-color="#1E74C4"/><stop offset="100%" stop-color="#0E4C8A"/>
+    </radialGradient><radialGradient id="earth-glow" cx="50%" cy="50%" r="50%">
+          <stop offset="62%" stop-color="#7FC8FF" stop-opacity="0"/>
+          <stop offset="78%" stop-color="#7FC8FF" stop-opacity="0.55"/>
+          <stop offset="92%" stop-color="#7FC8FF" stop-opacity="0.18"/>
+          <stop offset="100%" stop-color="#7FC8FF" stop-opacity="0"/>
+        </radialGradient><clipPath id="earth-clip"><circle cx="32" cy="32" r="25"/></clipPath></defs><circle cx="32" cy="32" r="32" fill="url(#earth-glow)"/><circle cx="32" cy="32" r="25" fill="url(#earth-base)"/><g clip-path="url(#earth-clip)">
+      <!-- 大陆（受光面偏亮绿，背光面偏褐） -->
+      <g>
+        <!-- 欧洲 -->
+        <path d="M27 17 Q31 14 34 17 Q33 22 29 22 Q26 20 27 17 Z" fill="#7BB863"/>
+        <!-- 非洲 -->
+        <path d="M26 23 Q32 20 37 24 Q39 30 36 37 Q33 44 30 43 Q26 36 25 30 Q24 26 26 23 Z" fill="#6FB457"/>
+        <!-- 撒哈拉（北非偏黄） -->
+        <path d="M27 23 Q33 21 36 24 Q33 27 28 26 Z" fill="#C9B463"/>
+        <!-- 阿拉伯半岛 -->
+        <path d="M38 25 Q42 25 43 29 Q40 31 38 29 Z" fill="#B8A85A"/>
+        <!-- 亚洲 -->
+        <path d="M40 17 Q48 16 50 23 Q47 27 42 25 Q39 21 40 17 Z" fill="#74B05C"/>
+        <!-- 东南亚群岛 -->
+        <path d="M42 31 Q47 31 48 34 Q45 36 42 34 Z" fill="#69AC54"/>
+        <!-- 左侧美洲一角 -->
+        <path d="M12 26 Q16 24 19 27 Q17 33 14 34 Q11 30 12 26 Z" fill="#74B05C"/>
+        <!-- 南极一点 -->
+        <path d="M26 49 Q32 48 38 50 L38 54 L26 54 Z" fill="#E8F0E8"/>
+      </g>
+      <!-- 云层 -->
+      <g fill="#fff" opacity="0.78">
+        <path d="M18 20 Q24 17 29 20 Q27 23 21 23 Z"/>
+        <path d="M34 14 Q41 13 45 17 Q40 19 35 17 Z"/>
+        <path d="M38 33 Q45 32 48 36 Q43 38 38 36 Z"/>
+        <path d="M15 38 Q20 37 23 40 Q18 42 15 41 Z"/>
+      </g></g><circle cx="32" cy="32" r="25" fill="url(#earth-lit)"/><circle cx="32" cy="32" r="25" fill="none" stroke="#000" stroke-opacity="0.18" stroke-width="1.2"/></svg>

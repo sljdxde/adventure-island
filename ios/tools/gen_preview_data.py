@@ -15,7 +15,7 @@ PREVIEW = os.path.join(ROOT, "ios", "preview", "index.html")
 
 docs = {}
 KEYMAP = {"cn_levels": "cn", "math_levels": "math", "pinyin_levels": "pinyin",
-          "english_levels": "english", "astro_levels": "astro",
+          "english_levels": "english", "astro_levels": "astro", "geo_levels": "geo",
           "collection": "collection", "experiments": "experiments", "shop": "shop"}
 for name, key in KEYMAP.items():
     with open(os.path.join(RES, name + ".json"), encoding="utf-8") as f:
@@ -29,5 +29,9 @@ new, n = re.subn(r"/\* === DATA-BEGIN === \*/.*?/\* === DATA-END === \*/",
                  html, flags=re.S)
 if n != 1:
     raise SystemExit(f"DATA 段标记异常：匹配到 {n} 处（应为 1）")
+# 地图轮廓（CHINA_MAP / WORLD_MAP）住在独立的 MAPS 段，不受本脚本影响。
+# v0.11 曾把两者写进 DATA 段，被本脚本整段替换掉，拼图题一进就 ReferenceError。
+if "const CHINA_MAP=" not in new or "const WORLD_MAP=" not in new:
+    raise SystemExit("MAPS 段缺失：CHINA_MAP / WORLD_MAP 未找到（拼图题会崩，请从 git 历史恢复）")
 open(PREVIEW, "w", encoding="utf-8").write(new)
 print(f"preview index.html 数据注入完成：{sum(len(v.get('levels', v.get('groups', v.get('experiments', [])))) for v in docs.values())} 个条目")

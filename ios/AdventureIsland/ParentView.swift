@@ -244,12 +244,15 @@ struct ParentView: View {
     private var progressPanel: some View {
         panel("chart", "学习进度") {
             ForEach([("book", "识字村", "cn"), ("equal", "思维镇", "math"), ("speaker", "拼音谷", "pinyin"),
-                     ("castle", "英语王国", "english"), ("moon", "天文台", "astro")], id: \.1) { icon, name, sub in
+                     ("castle", "英语王国", "english"), ("moon", "天文台", "astro"), ("earth", "环球号", "geo")], id: \.1) { icon, name, sub in
                 let ids = LevelCatalog.ids(sub)
                 let done = store.doneCount(subject: sub, ids: ids)
                 progressRow(icon: icon, name: name,
                             ratio: Double(done) / Double(max(ids.count, 1)),
-                            val: "\(done)/\(ids.count) 关")
+                            val: "\(done)/\(ids.count) 关") {
+                    store.resetSubject(sub)
+                    toast.show("「\(name)」已重置，孩子从第 1 关重新开始")
+                }
             }
             progressRow(icon: "flask", name: "科学岛", ratio: Double(store.snapshot.collectedScience.count) / 6, val: "实验 \(store.snapshot.testedItems.count) 项")
             HStack(spacing: 8) {
@@ -261,16 +264,28 @@ struct ParentView: View {
                 statChip("拼音 \(store.snapshot.learnedPinyin.count) 个")
                 statChip("单词 \(store.snapshot.learnedEnglish.count) 词")
                 statChip("星空 \(store.snapshot.learnedAstro.count) 个")
+                statChip("地理 \(store.snapshot.learnedGeo.count) 块")
             }
         }
     }
 
-    private func progressRow(icon: String, name: String, ratio: Double, val: String) -> some View {
+    private func progressRow(icon: String, name: String, ratio: Double, val: String, onReset: (() -> Void)? = nil) -> some View {
         HStack(spacing: 10) {
             IconView(name: icon, size: 20)
             Text(name).font(.kidBody(15)).foregroundColor(.ink).frame(width: 66, alignment: .leading)
             GoldTrack(ratio: ratio, height: 12)
             Text(val).font(.kidBody(13)).foregroundColor(.inkSoft).frame(width: 74, alignment: .trailing)
+            if let onReset {
+                Button(action: onReset) {
+                    Text("↺ 重置")
+                        .font(.system(size: 12.5, weight: .heavy))
+                        .foregroundColor(Color(hex: 0xC0392B))
+                        .padding(.horizontal, 12).padding(.vertical, 7)
+                        .background(Capsule().fill(Color(hex: 0xFFE3E0)))
+                        .overlay(Capsule().stroke(Color(hex: 0xE8B7B0), lineWidth: 1.5))
+                }
+                .buttonStyle(.plain)
+            }
         }
     }
 

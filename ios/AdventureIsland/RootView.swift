@@ -14,6 +14,11 @@ struct AdventureIslandApp: App {
     init() {
         let s = SettingsStore()
         let p = ProgressStore()
+        #if DEBUG
+        DebugLaunch.seedIfNeeded(store: p)
+        // 与地图「全部通关」弹窗的「从头再玩一次」按钮走同一闭包（resetSubject + 第 0 关）
+        if let s = DebugLaunch.arg("-AIReset") { p.resetSubject(s) }
+        #endif
         _settings = StateObject(wrappedValue: s)
         _store = StateObject(wrappedValue: p)
         _timeManager = StateObject(wrappedValue: TimeManager(settings: s, store: p))
@@ -52,9 +57,29 @@ extension EnvironmentValues {
 enum Route: Equatable {
     case map
     case level(subject: String, index: Int)
+    case zones(subject: String)                    // v0.10 星区图（保卫萝卜式分章选关）
+    case zoneLevels(subject: String, zone: Int)    // v0.10 单星区关卡路径
     case lab
     case collection
+    case shop
     case parent
+    #if DEBUG
+    case debugCeremony(subject: String, index: Int, total: Int)
+    #endif
+}
+
+/// 是否处于关卡内（棋盘/Boss/线性关）：用于护眼休息延迟到结算后
+func isLevelRoute(_ r: Route) -> Bool {
+    if case .level = r { return true }
+    return false
+}
+
+/// v0.10：返回路由——星区分章学科回本星区路径页，其余回主页地图
+func backRoute(subject: String, index: Int, zone: Int? = nil) -> Route {
+    if LevelCatalog.hasZones(subject) {
+        return .zoneLevels(subject: subject, zone: zone ?? (index / 10) + 1)
+    }
+    return .map
 }
 
 struct RootView: View {
@@ -63,9 +88,17 @@ struct RootView: View {
     @EnvironmentObject var timeManager: TimeManager
     @EnvironmentObject var speech: SpeechService
     @EnvironmentObject var toast: ToastCenter
-    @State private var route: Route = .map
+    @State private var route: Route
     @State private var confettiTrigger = 0
     @State private var showResetConfirm = false
+
+    init() {
+        #if DEBUG
+        _route = State(initialValue: DebugLaunch.initialRoute())
+        #else
+        _route = State(initialValue: .map)
+        #endif
+    }
 
     private let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
 
@@ -76,12 +109,28 @@ struct RootView: View {
                 MapView(route: $route, confetti: $confettiTrigger)
             case .level(let subject, let index):
                 LevelView(route: $route, confetti: $confettiTrigger, subject: subject, index: index)
+            case .zones(let subject):
+                ZoneGalaxyView(subject: subject, route: $route)
+            case .zoneLevels(let subject, let zone):
+                ZoneLevelsView(subject: subject, zone: zone, route: $route)
             case .lab:
                 LabView(route: $route, confetti: $confettiTrigger)
             case .collection:
                 CollectionView(route: $route)
+            case .shop:
+                ShopView(route: $route)
             case .parent:
                 ParentView(route: $route)
+            #if DEBUG
+            case .debugCeremony(let subject, let index, let total):
+                ZStack {
+                    SceneBackground(theme: (SubjectConfig.map[subject] ?? SubjectConfig.map["cn"]!).theme)
+                    LevelSettleCard(subject: subject, index: index,
+                                    levelId: LevelCatalog.ids(subject)[safe: index] ?? "",
+                                    totalLevels: total, stars: 3, wrongCount: 0,
+                                    onNext: {}, onReplay: {}, route: $route)
+                }
+            #endif
             }
 
             ToastOverlay()
@@ -91,6 +140,13 @@ struct RootView: View {
         .onReceive(timer) { _ in
             timeManager.tick()
             if case .resting = timeManager.phase { speech.stop() }
+        }
+        .onChange(of: route) { r in
+            // 关卡进行中推迟休息到结算后；每日总量 dayOver 仍由 TimeManager 立即收束
+            timeManager.setInLevel(isLevelRoute(r))
+        }
+        .onAppear {
+            timeManager.setInLevel(isLevelRoute(route))
         }
         .animation(.easeInOut(duration: 0.25), value: route)
     }

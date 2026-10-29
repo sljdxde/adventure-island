@@ -560,6 +560,7 @@ struct LabView: View {
             toast.show("这个实验已经收进图鉴啦")
         }
         store.collectScience(id: "sci-apple")
+        store.bumpDaily(subject: "lab")
         collectedCount = store.snapshot.testedItems.count
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.4) {
             route = .collection

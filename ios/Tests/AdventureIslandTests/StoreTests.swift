@@ -36,6 +36,43 @@ final class ProgressStoreTests: XCTestCase {
         XCTAssertEqual(store.nodeState(subject: "cn", index: 2, ids: ids), .locked)
     }
 
+    /// 学科通关口径与 nodeState 解锁链对齐：复习关不做要求（工单06），
+    /// 否则跳过复习关打通 boss 后，地图水管不弹「从头再玩」
+    func testSubjectCompleteIgnoresReviewLevels() throws {
+        let (store, _) = makeStore(day: "2026-09-29")
+        let info = LevelCatalog.info("astro")
+        XCTAssertTrue(info.reviews.contains(true), "夹具前提：astro 应含复习关")
+        let boss = try XCTUnwrap(info.ids.indices.first { info.bosses[$0] }, "夹具前提：astro 应含 boss 关")
+        let regulars = info.ids.indices.filter { !info.reviews[$0] && !info.bosses[$0] }
+
+        // 打通全部正式关但没打 boss → 未通关
+        for i in regulars { store.completeLevel(subject: "astro", levelId: info.ids[i], stars: 3) }
+        XCTAssertFalse(store.isSubjectComplete("astro"))
+
+        // 跳过全部复习关、打通 boss → 算通关
+        store.completeLevel(subject: "astro", levelId: info.ids[boss], stars: 3)
+        XCTAssertTrue(store.isSubjectComplete("astro"), "复习关不做要求，跳过复习关也应视为全通关")
+    }
+
+    /// v0.10 天文台扩到 100 关后 id 重排，家长中心「↺ 重置」是给出的迁移路径：
+    /// 重置须清空该学科全部关卡星（含新 id），不动其他学科与金币
+    func testResetSubjectClearsAstroAndKeepsOthers() {
+        let (store, _) = makeStore(day: "2026-10-13")
+        let astroIds = LevelCatalog.ids("astro")
+        XCTAssertEqual(astroIds.count, 100, "夹具前提：天文台应 100 关")
+        for id in astroIds { store.completeLevel(subject: "astro", levelId: id, stars: 3) }
+        store.completeLevel(subject: "cn", levelId: "cn-0", stars: 2)
+        let coinsBefore = store.snapshot.coins
+
+        store.resetSubject("astro")
+
+        XCTAssertTrue(astroIds.allSatisfy { store.stars(for: "astro", levelId: $0) == 0 },
+                      "重置后天文台 100 关星级应全部清空")
+        XCTAssertEqual(store.stars(for: "cn", levelId: "cn-0"), 2, "其他学科进度不受影响")
+        XCTAssertEqual(store.snapshot.coins, coinsBefore, "重置不扣金币")
+        XCTAssertFalse(store.isSubjectComplete("astro"))
+    }
+
     func testDailyTasksPerDay() {
         let (store, _) = makeStore(day: "2026-09-29")
         store.bumpDaily(subject: "cn")
@@ -290,10 +327,10 @@ final class ReviewMigrationTests: XCTestCase {
         XCTAssertEqual(store.stars(for: "cn", levelId: "cn-4"), 3)
         XCTAssertEqual(store.stars(for: "cn", levelId: "cn-5"), 2)
         XCTAssertEqual(store.stars(for: "cn", levelId: "cn-r0"), 0, "新复习关无旧星")
-        // 复习关（位置 5）已解锁；正式关 cn-5（位置 6）不被复习关挡住
+        // 复习关（位置 5）已解锁；cn-5（位置 6）旧快照里已有 2 星 → done；下一关 cn-6（位置 7）解锁
         XCTAssertEqual(store.nodeState(subject: "cn", index: 5, ids: cnIds, reviews: cnReviews), .current)
-        XCTAssertEqual(store.nodeState(subject: "cn", index: 6, ids: cnIds, reviews: cnReviews), .current)
-        XCTAssertEqual(store.nodeState(subject: "cn", index: 7, ids: cnIds, reviews: cnReviews), .locked)
+        XCTAssertEqual(store.nodeState(subject: "cn", index: 6, ids: cnIds, reviews: cnReviews), .done)
+        XCTAssertEqual(store.nodeState(subject: "cn", index: 7, ids: cnIds, reviews: cnReviews), .current)
         // 后段复习关（位置 11）：前一个正式关 cn-9 未通关 → 锁定，cn-10 同样不解锁
         XCTAssertEqual(store.nodeState(subject: "cn", index: 11, ids: cnIds, reviews: cnReviews), .locked)
         XCTAssertEqual(store.nodeState(subject: "cn", index: 12, ids: cnIds, reviews: cnReviews), .locked)

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs>
+      <linearGradient id="tl-tube" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#7FA8D8"/><stop offset="100%" stop-color="#3A5A96"/>
+      </linearGradient>
+    </defs>
+    <!-- 镜筒（倾斜） -->
+    <g transform="rotate(-32 32 32)">
+      <rect x="22" y="14" width="16" height="30" rx="6" fill="url(#tl-tube)"/>
+      <rect x="20" y="12" width="20" height="8" rx="4" fill="#2E4878"/>
+      <rect x="24" y="16" width="12" height="4" rx="2" fill="#8FB8E8" opacity="0.7"/>
+    </g>
+    <!-- 支架 -->
+    <path d="M32 40 L22 56 M32 40 L42 56 M32 40 L32 54" stroke="#6A5A48" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="32" cy="40" r="3" fill="#8A7A68"/></svg>

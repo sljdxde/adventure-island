@@ -32,6 +32,8 @@ struct BossLevelView: View {
     private var theme: AppTheme { config.theme }
     private var questionCount: Int { steps.count }
     private var currentStep: Step? { steps[safe: flow.questionIndex] }
+    /// 是否为该学科最后一关（通关后提供「从头再玩一次」）
+    private var isFinalLevel: Bool { index + 1 >= totalLevels }
 
     var body: some View {
         ZStack {
@@ -50,6 +52,13 @@ struct BossLevelView: View {
         }
         .onAppear {
             if !started { started = true }
+            #if DEBUG
+            if ProcessInfo.processInfo.arguments.contains("-AIBossWin") {
+                flow.answerCorrect(questionCount: 1)
+                flow.answerCorrect(questionCount: 1)
+                flow.answerCorrect(questionCount: 1)
+            }
+            #endif
         }
     }
 
@@ -57,7 +66,7 @@ struct BossLevelView: View {
 
     private var header: some View {
         HStack(spacing: 14) {
-            SquareIconButton(icon: "back", size: 56, action: { route = .map })
+            SquareIconButton(icon: "back", size: 56, action: { route = backRoute(subject: subject, index: index) })
             VStack(alignment: .leading, spacing: 1) {
                 Text("\(config.title) · \(title)")
                     .font(.kidHead(22))
@@ -182,8 +191,9 @@ struct BossLevelView: View {
                         .opacity(0.85)
                     IconView(name: "party", size: 56)
                 }
-                Text("打败大壳壳兽啦！")
-                    .font(.kidTitle(30))
+                Text(isFinalLevel ? "🎉 全部通关啦！大壳壳兽被打败了！" : "打败大壳壳兽啦！")
+                    .font(.kidTitle(isFinalLevel ? 27 : 30))
+                    .multilineTextAlignment(.center)
                     .foregroundColor(.ink)
                 HStack(spacing: 10) {
                     ForEach(0..<3, id: \.self) { i in
@@ -193,20 +203,39 @@ struct BossLevelView: View {
                     }
                 }
                 GoldChip(icon: "coin", text: "Boss 奖励 +15 金币！")
-                Text("星星和金币都收好啦，你是学科小勇士～")
+                Text(isFinalLevel ? "整个\(config.title)都闯完啦，可以从头再玩一遍～" : "星星和金币都收好啦，你是学科小勇士～")
                     .font(.kidBody(15))
                     .foregroundColor(.inkSoft)
                 HStack(spacing: 16) {
-                    Button {
-                        route = .map
-                    } label: {
-                        Label("返回地图", systemImage: "map").font(.kidHead(19))
+                    if isFinalLevel {
+                        Button {
+                            store.resetSubject(subject)
+                            route = .level(subject: subject, index: 0)
+                        } label: {
+                            Label("从头再玩一次", systemImage: "arrow.counterclockwise").font(.kidHead(19))
+                        }
+                        .buttonStyle(.jellyGreen)
+                    } else {
+                        Button {
+                            route = backRoute(subject: subject, index: index)
+                        } label: {
+                            Label(LevelCatalog.hasZones(subject) ? "返回星区" : "返回地图", systemImage: "map").font(.kidHead(19))
+                        }
+                        .buttonStyle(.jellyGreen)
                     }
-                    .buttonStyle(.jellyGreen)
                     Button(action: replay) {
-                        Label("再玩一次", systemImage: "arrow.counterclockwise").font(.kidHead(19))
+                        Label("再玩本关", systemImage: "arrow.clockwise").font(.kidHead(19))
                     }
                     .buttonStyle(.jellyCream)
+                    // 非最终关已有绿色「返回地图」，橙色返回入口仅最终关与「从头再玩」并列显示
+                    if isFinalLevel {
+                        Button {
+                            route = backRoute(subject: subject, index: index)
+                        } label: {
+                            Label(LevelCatalog.hasZones(subject) ? "返回星区" : "返回地图", systemImage: "map").font(.kidHead(19))
+                        }
+                        .buttonStyle(.jellyOrange)
+                    }
                 }
             }
             .padding(40)
@@ -251,9 +280,9 @@ struct BossLevelView: View {
                     }
                     .buttonStyle(.jellyGreen)
                     Button {
-                        route = .map
+                        route = backRoute(subject: subject, index: index)
                     } label: {
-                        Label("返回地图", systemImage: "map").font(.kidHead(19))
+                        Label(LevelCatalog.hasZones(subject) ? "返回星区" : "返回地图", systemImage: "map").font(.kidHead(19))
                     }
                     .buttonStyle(.jellyOrange)
                 }

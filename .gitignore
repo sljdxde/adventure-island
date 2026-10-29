@@ -21,3 +21,15 @@ build/
 .zcode/
 .zcodeignore
 .video_agent/
+.workbuddy/
+
+# ===== 本地验证截图（体积大，不入库） =====
+.scratch/shots/
+
+# 交互冒烟测试的临时探针页（smoke_interactive.py 运行中写入，跑完自删；中断会残留）
+ios/preview/__smoke_*.html
+ios/preview/__sweep_probe_*.html
+
+# ===== 设计探索过程产物（huashu 迭代截图/临时预览不入库；gate 与风格板保留） =====
+design-demos/*.png
+design-demos/tmp-*.html

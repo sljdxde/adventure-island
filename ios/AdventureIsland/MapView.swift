@@ -13,14 +13,17 @@ struct MapView: View {
 
     @State private var cnContent: SubjectFile?
     @State private var mathContent: SubjectFile?
+    /// 已全部通关、点击水管后弹出「从头再玩 / 再战 Boss」选择的学科
+    @State private var finishedSubject: String?
 
     private let zones: [(icon: String, label: String, meta: String, pipe: String, subject: String, unit: String, total: Int)] = [
-        ("panda", "识字村", "象形字 · 认读", "pipe-red", "cn", "关", 17),
-        ("fox", "思维镇", "数感 · 加减法", "pipe-blue", "math", "关", 17),
-        ("robot", "科学岛", "动手做实验", "pipe-purple", "lab", "项已点亮", 12),
-        ("panda", "拼音谷", "声母 · 韵母 · 拼读", "pipe-orange", "pinyin", "关", 14),
-        ("robot", "英语王国", "ABC · 单词", "pipe-green", "english", "关", 14),
-        ("robot", "天文台", "太阳 · 月亮 · 星星", "pipe-indigo", "astro", "关", 12)
+        ("panda", "识字村", "部编识字 · 写字", "pipe-red", "cn", "关", 100),
+        ("fox", "思维镇", "数感 · 加减法", "pipe-blue", "math", "关", 100),
+        // 科学实验台（lab）v0.10.1 起隐藏入口（实验内容保留，家长可经深链进入）
+        ("panda", "拼音谷", "声母 · 韵母 · 拼读", "pipe-orange", "pinyin", "关", 100),
+        ("robot", "英语王国", "ABC · 单词", "pipe-green", "english", "关", 100),
+        ("robot", "天文台", "星空大探索", "pipe-indigo", "astro", "关", 100),
+        ("panda", "环球号", "中国 · 世界", "pipe-brown", "geo", "关", 100)
     ]
 
     var body: some View {
@@ -36,7 +39,7 @@ struct MapView: View {
                     .padding(.top, 2)
 
                 pipesRow
-                    .padding(.top, 6)
+                    .padding(.top, 38)
 
                 Spacer(minLength: 4)
 
@@ -75,6 +78,34 @@ struct MapView: View {
             .padding(.bottom, 130)
             .allowsHitTesting(false)
             .zIndex(11)
+
+            // 顶部气球屋商店（对齐 HTML 气球屋 shop）：点气球进商店
+            VStack {
+                HStack {
+                    Spacer()
+                    Button {
+                        sound.systemTap()
+                        route = .shop
+                    } label: {
+                        VStack(spacing: 0) {
+                            ZStack {
+                                Circle()
+                                    .fill(LinearGradient(colors: [Color(hex: 0xFF8FA8), Color(hex: 0xF0567E)], startPoint: .top, endPoint: .bottom))
+                                    .frame(width: 46, height: 56)
+                                IconView(name: "shop", size: 24)
+                            }
+                            Rectangle()
+                                .fill(Color.ink.opacity(0.4))
+                                .frame(width: 1.5, height: 16)
+                        }
+                        .shadow(color: .ink.opacity(0.18), radius: 6, y: 4)
+                    }
+                    .buttonStyle(.plain)
+                    .offset(x: -14, y: 6)
+                }
+                Spacer()
+            }
+            .padding(.top, 150)
         }
         .onAppear {
             if cnContent == nil { cnContent = ContentLoader.load(SubjectFile.self, "cn_levels") }
@@ -107,6 +138,7 @@ struct MapView: View {
             Spacer()
 
             GoldChip(icon: "coin", text: "\(store.snapshot.coins)")
+            SquareIconButton(icon: "shop", action: { route = .shop })
             SquareIconButton(icon: "medal", action: { route = .collection })
             SquareIconButton(icon: "lock", action: { route = .parent })
         }
@@ -155,14 +187,17 @@ struct MapView: View {
 
     // MARK: 三个水管入口
 
+    private func doneCount(_ subject: String) -> Int {
+        subject == "lab" ? store.snapshot.collectedScience.count
+                         : store.doneCount(subject: subject, ids: LevelCatalog.ids(subject))
+    }
+
     private var pipesRow: some View {
         HStack(alignment: .bottom, spacing: 2) {
-            zonePipe(zones[0], done: store.doneCount(subject: "cn", ids: LevelCatalog.ids("cn")), total: zones[0].total, isNew: false)
-            zonePipe(zones[1], done: store.doneCount(subject: "math", ids: LevelCatalog.ids("math")), total: zones[1].total, isNew: false)
-            zonePipe(zones[2], done: store.snapshot.collectedScience.count, total: zones[2].total, isNew: false)
-            zonePipe(zones[3], done: store.doneCount(subject: "pinyin", ids: LevelCatalog.ids("pinyin")), total: zones[3].total, isNew: false)
-            zonePipe(zones[4], done: store.doneCount(subject: "english", ids: LevelCatalog.ids("english")), total: zones[4].total, isNew: false)
-            zonePipe(zones[5], done: store.doneCount(subject: "astro", ids: LevelCatalog.ids("astro")), total: zones[5].total, isNew: true)
+            ForEach(zones.indices, id: \.self) { i in
+                let z = zones[i]
+                zonePipe(z, done: doneCount(z.subject), total: z.total, isNew: (i == zones.count - 1))
+            }
         }
     }
 
@@ -170,7 +205,7 @@ struct MapView: View {
                           done: Int, total: Int, isNew: Bool) -> some View {
         VStack(spacing: 0) {
                 ZStack {
-                    IconView(name: zone.pipe, size: 84)
+                    IconView(name: zone.pipe, size: 72)
                     VStack {
                         Text("") // 占位
                     }
@@ -184,12 +219,12 @@ struct MapView: View {
                                 toast.show("今天的金币领过啦，明天再来～", seconds: 1.6)
                             }
                         })
-                            .offset(y: -42)
+                            .offset(y: -50)
                     }
-                    IconView(name: zone.icon, size: 30)
-                        .offset(x: 36, y: 24)
+                    IconView(name: zone.icon, size: 26)
+                        .offset(x: 30, y: 20)
                 }
-                .frame(height: 116)
+                .frame(height: 100)
                 .overlay(alignment: .topTrailing) {
                     if isNew {
                         Text("NEW ✦")
@@ -223,7 +258,7 @@ struct MapView: View {
                     .minimumScaleFactor(0.8)
 
                 GoldTrack(ratio: total == 0 ? 0 : Double(done) / Double(total), height: 9)
-                    .frame(width: 138)
+                    .frame(maxWidth: .infinity)
                     .padding(.top, 4)
             }
             .contentShape(Rectangle())
@@ -231,10 +266,20 @@ struct MapView: View {
                 sound.systemTap()
                 if zone.subject == "lab" {
                     route = .lab
+                } else if LevelCatalog.hasZones(zone.subject) {
+                    // v0.10 星区分章：进星区图（保卫萝卜式，一次只展示一个星区 10 关）
+                    route = .zones(subject: zone.subject)
+                } else if store.isSubjectComplete(zone.subject) {
+                    // 全部通关：让孩子选择从头再玩，还是再战最后一关（Boss）
+                    finishedSubject = zone.subject
                 } else {
                     // 进入该学科当前关卡（复习关不挡正式关：沿 done 前进的落点必为已解锁节点）
-                    var index = 0
                     let ids = LevelCatalog.ids(zone.subject)
+                    guard !ids.isEmpty else {
+                        toast.show("「\(zone.label)」内容马上开放，敬请期待～", seconds: 1.8)
+                        return
+                    }
+                    var index = 0
                     while index < ids.count,
                           store.nodeState(subject: zone.subject, index: index, ids: ids,
                                           reviews: LevelCatalog.reviews(zone.subject),
@@ -245,6 +290,28 @@ struct MapView: View {
                 }
             }
             .frame(maxWidth: .infinity)
+            .confirmationDialog("全部通关啦！接下来想怎么玩？",
+                                isPresented: Binding(get: { finishedSubject != nil },
+                                                    set: { if !$0 { finishedSubject = nil } }),
+                                titleVisibility: .visible) {
+                if let s = finishedSubject {
+                    Button("🔄 从头再玩一次") {
+                        store.resetSubject(s)
+                        route = .level(subject: s, index: 0)
+                        finishedSubject = nil
+                    }
+                    Button("👾 再战最后一关（Boss）") {
+                        let ids = LevelCatalog.ids(s)
+                        route = .level(subject: s, index: max(0, ids.count - 1))
+                        finishedSubject = nil
+                    }
+                    Button("取消", role: .cancel) { finishedSubject = nil }
+                }
+            } message: {
+                if let s = finishedSubject, let title = SubjectConfig.map[s]?.title {
+                    Text("「\(title)」的 \(LevelCatalog.ids(s).count) 关已经全部通关。从头再玩会清空本学科的关卡星星（金币和收集册保留）。")
+                }
+            }
     }
 
     // MARK: 关卡路径（圆点 + 关卡节点 + 终点旗）
@@ -364,7 +431,7 @@ struct MapView: View {
     // MARK: 行为
 
     private func dailyTotal() -> Int {
-        ["cn", "math", "lab", "pinyin", "english", "astro"].reduce(0) { $0 + (store.dailyDone(subject: $1) > 0 ? 1 : 0) }
+        ["cn", "math", "lab", "pinyin", "english", "astro", "geo"].reduce(0) { $0 + (store.dailyDone(subject: $1) > 0 ? 1 : 0) }
     }
 
     private func rollDice() {
@@ -487,7 +554,7 @@ enum LevelCatalog {
 
     static func info(_ subject: String) -> (ids: [String], reviews: [Bool], bosses: [Bool]) {
         if let cached = cache[subject] { return cached }
-        let file = SubjectConfig.map[subject].map { ContentLoader.load(SubjectFile.self, $0.file) }
+        let file = SubjectConfig.map[subject].flatMap { ContentLoader.loadOptional(SubjectFile.self, $0.file) }
         let levels = file?.levels ?? []
         let info = (ids: levels.map(\.id),
                     reviews: levels.map { $0.review ?? false },
@@ -500,6 +567,12 @@ enum LevelCatalog {
     static func reviews(_ subject: String) -> [Bool] { info(subject).reviews }
     static func bosses(_ subject: String) -> [Bool] { info(subject).bosses }
     static func total(_ subject: String) -> Int { info(subject).ids.count }
+
+    /// v0.10 星区分章（保卫萝卜式选关）：学科 JSON 带 zones 才走星区图
+    static func hasZones(_ subject: String) -> Bool {
+        guard let cfg = SubjectConfig.map[subject] else { return false }
+        return ContentLoader.loadOptional(SubjectFile.self, cfg.file)?.zones?.isEmpty == false
+    }
 }
 
 // 问号方块（水管顶，可顶出金币）

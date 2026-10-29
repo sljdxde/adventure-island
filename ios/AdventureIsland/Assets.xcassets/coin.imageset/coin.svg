@@ -1,5 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs><linearGradient id="g-gold" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFE58A"/><stop offset="1" stop-color="#F7B32B"/></linearGradient></defs>
-  <ellipse cx="32" cy="32" rx="20" ry="26" fill="url(#g-gold)"/>
-  <ellipse cx="32" cy="32" rx="20" ry="26" fill="none" stroke="#B8770A" stroke-width="3.5"/>
-  <ellipse cx="32" cy="32" rx="11" ry="17" fill="none" stroke="#D98A0F" stroke-width="3.5"/>
-  <path d="M24 14 Q20 20 20 28" stroke="#fff" stroke-width="4" fill="none" opacity=".7" stroke-linecap="round"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><style>.st{stroke:#5B4636;stroke-width:2.4;stroke-linejoin:round;stroke-linecap:round}.th{stroke:#5B4636;stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round}</style><circle class="st" cx="32" cy="32" r="21" fill="#F5C842"/><circle cx="32" cy="32" r="15" fill="none" stroke="#FFD93D" stroke-width="3"/><path d="M32 25 L33.9 29.4 L38.7 29.8 L35.0 33.0 L36.1 37.7 L32 35.2 L27.9 37.7 L29.0 33.0 L25.3 29.8 L30.1 29.4 Z" fill="#D99A2B"/><ellipse cx="24" cy="22" rx="4" ry="7" fill="#fff" opacity="0.55"/></svg>

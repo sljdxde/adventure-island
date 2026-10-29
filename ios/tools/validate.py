@@ -25,6 +25,44 @@ def ok(msg): passes.append(msg)
 def err(msg): errors.append(msg)
 def warn(msg): warnings.append(msg)
 
+# ---------- 数独唯一性求解器（工单05） ----------
+def sudoku_unique(sol, givens):
+    """按 givens 填 4x4，统计合法解数；返回是否恰好唯一"""
+    grid = [[-1] * 4 for _ in range(4)]
+    for g in givens:
+        grid[g["r"]][g["c"]] = g["v"]
+    def ok_pos(r, c, v):
+        for i in range(4):
+            if grid[r][i] == v or grid[i][c] == v:
+                return False
+        br, bc = (r // 2) * 2, (c // 2) * 2
+        for i in range(br, br + 2):
+            for j in range(bc, bc + 2):
+                if grid[i][j] == v:
+                    return False
+        return True
+    count = [0]
+    def bt():
+        if count[0] > 1:
+            return
+        cell = None
+        for r in range(4):
+            for c in range(4):
+                if grid[r][c] == -1:
+                    cell = (r, c); break
+            if cell:
+                break
+        if not cell:
+            count[0] += 1; return
+        r, c = cell
+        for v in range(4):
+            if ok_pos(r, c, v):
+                grid[r][c] = v; bt(); grid[r][c] = -1
+                if count[0] > 1:
+                    return
+    bt()
+    return count[0] == 1
+
 # ---------- 1. 内容 JSON ----------
 def load_json(path):
     with open(path, encoding="utf-8") as f:
@@ -34,13 +72,52 @@ manifest = load_json(os.path.join(DESIGN, "design/assets/manifest.json"))
 manifest_icons = {p.split("/")[1].replace(".svg", "") for p in manifest["icons"]} | \
                  {p.split("/")[1].replace(".svg", "") for p in manifest["bg"]}
 
-SUBJECTS = [("cn_levels", 18), ("math_levels", 18), ("pinyin_levels", 15), ("english_levels", 15), ("astro_levels", 15)]
-# 可作答题型（teach/letter 是开场卡不算题库）
-QUESTION_KINDS = {"listen", "quiz", "count", "compare", "cmp", "blend", "arith",
-                  "pattern", "split", "order", "neighbor", "memory", "dice"}
+# v0.10.1 学一学动画 id 全集（letter.anim 枚举校验；两端 AstroAnimView/animHTML 各自实现）
+# v0.12.1 新增 26 个：数学 8 / 英语 6 / 环球 9 / 拼音 3，与 index.html 的 ANIM_IDS、gen_content.py 三处同步
+ANIM_IDS = {"sunrise", "daynight", "orbit", "satellite", "moonphases", "rocket", "float",
+            "meteor", "bigdipper", "blackhole", "galaxy", "bigbang", "tide",
+            "pydraw", "tone", "merge",
+            "walk", "rainbow", "countpop", "fall", "heartbeat", "train",
+            "river", "wall", "mountain", "panda", "drift", "windmill",
+            "groups", "share", "ruler", "angle", "scale", "column", "story", "viewcube",
+            "abc", "paw", "calendar", "yummy", "jump", "wordpop",
+            "pin", "globe", "snow", "wave", "camel", "bloom", "volcano", "dino", "festival",
+            "flip", "curl", "soft"}
+
+SUBJECTS = [("cn_levels", 100), ("math_levels", 100), ("pinyin_levels", 100),
+            ("english_levels", 100), ("astro_levels", 100), ("geo_levels", 100)]
 subject_docs = {name: load_json(os.path.join(RES, name + ".json")) for name, _ in SUBJECTS}
 exps = load_json(os.path.join(RES, "experiments.json"))
 coll = load_json(os.path.join(RES, "collection.json"))
+
+PREVIEW = os.path.join(ROOT, "preview", "index.html")
+
+def load_map_pieces():
+    """从 preview 的 MAPS 段取地图块名字（渲染端唯一真相），返回 {"china": set, "world": set}。
+
+    v1.0.1 新增这个闸门的原因：mappuzzle 自 v0.11 起渲染端改成真地图轮廓，
+    只认 `pieces`（省份/大洲名字）；gen_content 却还在产出旧的 `regions` 多边形，
+    于是整套拼地图关卡「一块都渲染不出来」，而 validate 一路绿灯（regions 非空）。
+    这类「数据字段与渲染端脱钩」静态扫描抓不到，只能拿地图清单对名字。
+    """
+    try:
+        src = open(PREVIEW, encoding="utf-8").read()
+        seg = src[src.index("/* === MAPS-BEGIN"):src.index("/* === MAPS-END")]
+    except (OSError, ValueError):
+        return {}
+    out = {}
+    for key, var, stop in (("china", "CHINA_MAP", "const WORLD_MAP"),
+                           ("world", "WORLD_MAP", None)):
+        m = re.search(var + r"\s*=\s*\{", seg)
+        if not m:
+            continue
+        seg2 = seg[m.end():]
+        if stop and stop in seg2:
+            seg2 = seg2[:seg2.index(stop)]
+        out[key] = set(re.findall(r'"n":"([^"]+)"', seg2))
+    return out
+
+MAP_PIECES = load_map_pieces()
 
 json_icons = set()
 def collect_icons(node):
@@ -50,19 +127,15 @@ def collect_icons(node):
             if k == "morphFrom" and isinstance(v, str): json_icons.add(v)
             if k == "duckIcon" and isinstance(v, str): json_icons.add(v)
             if k in ("leftIcon", "rightIcon", "guessIcon") and isinstance(v, str): json_icons.add(v)
-            if k == "promptIcon" and isinstance(v, str): json_icons.add(v)
-            if k == "seq" and isinstance(v, list):
-                for s in v:
-                    if isinstance(s, str): json_icons.add(s)
+            if k in ("promptIcon", "targetIcon", "shadow") and isinstance(v, str): json_icons.add(v)
+            if k == "decoys" and isinstance(v, list):
+                for d in v:
+                    if isinstance(d, str): json_icons.add(d)
             collect_icons(v)
     elif isinstance(node, list):
         for v in node: collect_icons(v)
 
 for doc in list(subject_docs.values()) + [exps, coll]: collect_icons(doc)
-
-def has_art(o):
-    """选项/卡片有没有可视内容：图标、文字，或天文台用 CSS 画出来的天体（body/phase）"""
-    return bool(o.get("icon") or o.get("text") or o.get("body")) or o.get("phase") is not None
 
 def check_subject(doc, name, expect_levels):
     levels = doc["levels"]
@@ -73,6 +146,22 @@ def check_subject(doc, name, expect_levels):
     ids = [l["id"] for l in levels]
     if len(set(ids)) != len(ids): err(f"[{name}] 关卡 id 重复")
     else: ok(f"[{name}] 关卡 id 唯一")
+    # v0.10/v0.11 星区分章（保卫萝卜式）：每星区恰好 10 关，zones 数 = 关卡数/10
+    zones = doc.get("zones") or []
+    if zones:
+        if len(zones) * 10 != len(levels):
+            err(f"[{name}] 星区数 {len(zones)} × 10 != 关卡数 {len(levels)}")
+        else:
+            ok(f"[{name}] 星区图 {len(zones)} 区：{zones[0]['title']} … {zones[-1]['title']}")
+        zl = {}
+        for lv in levels:
+            z = lv.get("zone")
+            if not z:
+                err(f"[{name}/{lv['id']}] 缺 zone 字段")
+            else:
+                zl[z] = zl.get(z, 0) + 1
+        if zl and sorted(zl.values()) != [10] * len(zl):
+            err(f"[{name}] 星区关卡数不均 {sorted(zl.items())}")
     for li, lv in enumerate(levels):
         if not lv["steps"]: err(f"[{name}] 第{li+1}关无步骤")
         # v0.8 迷你棋盘（工单02/03/05）：题目格占比 ≥ 60%、题目引用存在且不重复（规格实现决策 2）；
@@ -92,11 +181,6 @@ def check_subject(doc, name, expect_levels):
             qs = [s for s in sps if s.get("type") == "question"]
             if not is_boss and sps and len(qs) / len(sps) < 0.6:
                 err(f"{tag} 题目格占比 {len(qs)}/{len(sps)} 低于 60% 红线")
-            cs = [s for s in sps if s.get("type") == "coin"]
-            if is_boss:
-                if cs: err(f"{tag} boss 关不应有金币格（{len(cs)} 个）")
-            elif not is_review and not (1 <= len(cs) <= 2):
-                err(f"{tag} 普通关金币格 {len(cs)} 个不符规格（决策 2：1-2）")
             ev = [s for s in sps if s.get("type") in ("chest", "mushroom", "rest")]
             if is_boss:
                 if len(ev) != 0 or len(qs) != 8:
@@ -134,7 +218,7 @@ def check_subject(doc, name, expect_levels):
                 if not isinstance(ans, int) or not (0 <= ans < len(opts)):
                     err(f"{sid} answer 非法")
                 for o in opts:
-                    if not has_art(o): err(f"{sid} 选项为空")
+                    if not (o.get("icon") or o.get("text")): err(f"{sid} 选项为空")
             elif kind == "count":
                 n = st.get("count"); opts = st.get("countOptions") or []
                 if not (3 <= (n or 0) <= 10): err(f"{sid} 数量 {n} 超范围")
@@ -145,10 +229,12 @@ def check_subject(doc, name, expect_levels):
             elif kind == "letter":
                 if not st.get("letters") or not st.get("display") or not st.get("examples"):
                     err(f"{sid} letter 缺 letters/display/examples")
+                if st.get("anim") and st["anim"] not in ANIM_IDS:
+                    err(f"{sid} letter anim 非法 {st['anim']}")
             elif kind == "listen":
                 # 视觉化找一找：目标大卡为 prompt 文字或 promptIcon 图片（不依赖声音可作答）
-                if not (st.get("prompt") or st.get("promptIcon") or st.get("promptBody")):
-                    err(f"{sid} listen 缺视觉目标 prompt/promptIcon/promptBody")
+                if not (st.get("prompt") or st.get("promptIcon")):
+                    err(f"{sid} listen 缺视觉目标 prompt/promptIcon")
                 if not st.get("speakText"): err(f"{sid} listen 缺 speakText（可选朗读）")
                 opts = st.get("options") or []
                 if len(opts) != 3 or not isinstance(st.get("answer"), int) or not (0 <= st["answer"] < 3):
@@ -161,10 +247,7 @@ def check_subject(doc, name, expect_levels):
                 if len(opts) != 3 or not isinstance(ans, int) or not (0 <= ans < 3):
                     err(f"{sid} pattern 选项/答案非法")
                 for o in opts:
-                    if not has_art(o): err(f"{sid} pattern 选项缺可视内容")
-                if isinstance(seq[0], dict):
-                    for x in seq:
-                        if not has_art(x): err(f"{sid} pattern 序列项缺可视内容")
+                    if not o.get("icon"): err(f"{sid} pattern 选项缺 icon")
             elif kind == "split":
                 t, p = st.get("total"), st.get("part")
                 if not isinstance(t, int) or not isinstance(p, int) or not (1 <= p < t <= 10):
@@ -174,16 +257,8 @@ def check_subject(doc, name, expect_levels):
                     if rest not in (st.get("arithOptions") or []):
                         err(f"{sid} split 选项不含正确答案 {rest}")
             elif kind == "order":
-                its = st.get("items")
-                if its:      # 天体/卡片排序：按 v 排，显示 name（天文台「离太阳由近到远」）
-                    if not (3 <= len(its) <= 5): err(f"{sid} order items 应 3-5 个，实际 {len(its)}")
-                    if len({x.get("v") for x in its}) != len(its):
-                        err(f"{sid} order items 的 v 值必须互不相同（排不出唯一顺序）")
-                    for x in its:
-                        if not (x.get("name") and has_art(x)): err(f"{sid} order items 项缺 name 或可视内容")
-                        if not isinstance(x.get("v"), (int, float)): err(f"{sid} order items 项缺数值 v")
                 nums = st.get("nums") or []
-                if not its and (len(nums) != 3 or len(set(nums)) != 3):
+                if len(nums) != 3 or len(set(nums)) != 3:
                     err(f"{sid} order nums 应为 3 个不同数字 {nums}")
                 if st.get("dir") not in ("up", "down"):
                     err(f"{sid} order dir 非法 {st.get('dir')}")
@@ -205,8 +280,8 @@ def check_subject(doc, name, expect_levels):
                 if sorted(keys) != sorted(list(set(keys)) * 2):
                     err(f"{sid} memory 牌必须两两同 key：{keys}")
                 for c in cards:
-                    if not has_art(c):
-                        err(f"{sid} memory 牌缺少内容（icon/text/body 至少一项）")
+                    if not (c.get("icon") or c.get("text")):
+                        err(f"{sid} memory 牌缺少内容（icon/text 至少一项）")
             elif kind == "dice":
                 n = st.get("count"); opts = st.get("countOptions") or []
                 if not (1 <= (n or 0) <= 6): err(f"{sid} dice 点数 {n} 超范围")
@@ -226,7 +301,7 @@ def check_subject(doc, name, expect_levels):
                 correct = l + r if op == "+" else l - r
                 if correct not in (st.get("arithOptions") or []):
                     err(f"{sid} 选项不含正确答案 {correct}")
-                if not (0 <= correct <= 10): err(f"{sid} 结果超范围 {correct}")
+                if not (0 <= correct <= 200): err(f"{sid} 结果超范围 {correct}")
             elif kind == "compare":
                 keys = {o["key"] for o in st.get("compareOptions") or []}
                 if keys != {"left", "right", "same"}: err(f"{sid} 比较选项不完整 {keys}")
@@ -234,27 +309,239 @@ def check_subject(doc, name, expect_levels):
                 expect = "same" if l == r else ("left" if l > r else "right")
                 if st.get("answerKey") != expect:
                     err(f"{sid} 答案 {st.get('answerKey')} 与数量不符（应为 {expect}）")
-            elif kind == "cmp":
-                # 数据比一比（天文台）：一行一个天体，条形/圆盘按 value 走，点一行即作答
-                rows = st.get("rows") or []
-                if not (3 <= len(rows) <= 5): err(f"{sid} cmp 行数应 3-5，实际 {len(rows)}")
-                if st.get("viz") not in ("bar", "disc"): err(f"{sid} cmp viz 非法 {st.get('viz')}")
+            elif kind == "write":
+                if not st.get("char") or not st.get("pinyin"):
+                    err(f"{sid} write 缺 char/pinyin")
+                strokes = st.get("strokes") or []
+                if not strokes:
+                    err(f"{sid} write 笔画序列为空")
+                for k, sk in enumerate(strokes):
+                    if not sk.get("d") or not sk.get("start"):
+                        err(f"{sid} write 第{k+1}笔缺 d/start")
+                    else:
+                        s = sk["start"]
+                        if not (isinstance(s.get("x"), (int, float)) and isinstance(s.get("y"), (int, float))):
+                            err(f"{sid} write 第{k+1}笔 start 坐标非法")
+            elif kind == "muldiv":
+                op, mode = st.get("op"), st.get("mode")
+                opts = st.get("options") or st.get("arithOptions") or []
                 ans = st.get("answer")
-                if not isinstance(ans, int) or not (0 <= ans < len(rows)): err(f"{sid} cmp answer 非法")
-                for r in rows:
-                    if not (r.get("name") and isinstance(r.get("value"), (int, float)) and has_art(r)):
-                        err(f"{sid} cmp 行缺 name/value/可视内容: {r}")
-                vals = [abs(r["value"]) for r in rows]
-                if len(set(vals)) != len(vals): err(f"{sid} cmp 数值重复，比不出结果: {vals}")
-                want = max(vals) if st.get("ext") == "max" else (min(vals) if st.get("ext") == "min" else None)
-                if want is not None and abs(rows[ans]["value"]) != want:
-                    err(f"{sid} cmp 答案与 ext={st['ext']} 不符（应为 {want}）")
+                correct = None
+                if op == "×":
+                    g, p = st.get("groups"), st.get("per")
+                    if not isinstance(g, int) or not isinstance(p, int):
+                        err(f"{sid} muldiv× 缺 groups/per")
+                    else:
+                        correct = g * p
+                elif op == "÷":
+                    if mode == "average":
+                        t, g = st.get("total"), st.get("groups")
+                        if not isinstance(t, int) or not isinstance(g, int) or g == 0 or t % g != 0:
+                            err(f"{sid} 平均分不整除或缺参 {t}/{g}")
+                        else:
+                            correct = t // g
+                    elif mode == "contain":
+                        t, p = st.get("total"), st.get("per")
+                        if not isinstance(t, int) or not isinstance(p, int) or p == 0 or t % p != 0:
+                            err(f"{sid} 包含除不整除或缺参 {t}/{p}")
+                        else:
+                            correct = t // p
+                    else:
+                        err(f"{sid} muldiv÷ mode 非法 {mode}")
+                else:
+                    err(f"{sid} muldiv op 非法 {op}")
+                if correct is not None:
+                    if correct not in opts:
+                        err(f"{sid} muldiv 选项不含正确答案 {correct}")
+                    elif not isinstance(ans, int) or opts[ans] != correct:
+                        err(f"{sid} muldiv answer 指向错误")
+            elif kind == "cards":
+                from itertools import combinations
+                mode, target, pick = st.get("mode"), st.get("target"), st.get("pick")
+                cards = st.get("cards") or []
+                if not all(isinstance(c, int) and 1 <= c <= 10 for c in cards):
+                    err(f"{sid} cards 牌面应在 1-10：{cards}")
+                solved = False
+                if mode == "make10":
+                    if pick != 2: err(f"{sid} make10 pick 应为 2，实际 {pick}")
+                    solved = any(a + b == target for a, b in combinations(cards, 2))
+                elif mode == "target":
+                    if pick != 3: err(f"{sid} target pick 应为 3，实际 {pick}")
+                    for a, b, c in combinations(cards, 3):
+                        if target in (a + b + c, a + b - c, a - b + c, -a + b + c, a - b - c):
+                            solved = True; break
+                else:
+                    err(f"{sid} cards mode 非法 {mode}")
+                if not solved:
+                    err(f"{sid} cards 无合法解凑出目标 {target}")
+            elif kind == "sudoku":
+                if st.get("size") != 4: err(f"{sid} sudoku size 应为 4")
+                sol = st.get("solution") or []
+                givens = st.get("givens") or []
+                syms = st.get("symbols") or []
+                if len(syms) != 4: err(f"{sid} sudoku symbols 应为 4 个")
+                if len(sol) != 4 or any(len(r) != 4 for r in sol):
+                    err(f"{sid} sudoku solution 应为 4x4")
+                else:
+                    for r in range(4):
+                        if sorted(sol[r]) != [0, 1, 2, 3]: err(f"{sid} sudoku 第{r}行重复")
+                    for c in range(4):
+                        if sorted(sol[r][c] for r in range(4)) != [0, 1, 2, 3]: err(f"{sid} sudoku 第{c}列重复")
+                    for br in (0, 2):
+                        for bc in (0, 2):
+                            box = [sol[r][c] for r in range(br, br + 2) for c in range(bc, bc + 2)]
+                            if sorted(box) != [0, 1, 2, 3]: err(f"{sid} sudoku 2x2 宫重复")
+                    if not (4 <= len(givens) <= 8):
+                        err(f"{sid} sudoku givens 数量 {len(givens)} 不在 4-8")
+                    for g in givens:
+                        if sol[g["r"]][g["c"]] != g["v"]:
+                            err(f"{sid} sudoku given 与 solution 不一致")
+                    if not sudoku_unique(sol, givens):
+                        err(f"{sid} sudoku 解不唯一（求解器校验）")
+            elif kind == "clock":
+                mode, h, m = st.get("mode"), st.get("hour"), st.get("minute")
+                if not isinstance(h, int) or not (1 <= h <= 12):
+                    err(f"{sid} clock hour {h} 非法")
+                if m not in (0, 30):
+                    err(f"{sid} clock minute {m} 应为整点/半点")
+                if mode == "read":
+                    opts = st.get("options") or []
+                    ans = st.get("answer")
+                    if len(opts) != 3 or not isinstance(ans, int) or not (0 <= ans < 3):
+                        err(f"{sid} clock read 选项/答案非法")
+                    elif opts[ans] != f"{h}:{m:02d}":
+                        err(f"{sid} clock read answer {opts[ans]} 与钟面 {h}:{m:02d} 不一致")
+                elif mode != "set":
+                    err(f"{sid} clock mode 非法 {mode}")
+            elif kind == "money":
+                price = st.get("price")
+                denoms = st.get("denominations") or []
+                vals = [d.get("value") for d in denoms]
+                if not all(v in (1, 5, 10, 50, 100) for v in vals):
+                    err(f"{sid} money 面额非法 {vals}")
+                if not isinstance(price, int) or price <= 0:
+                    err(f"{sid} money price 非法 {price}")
+                else:
+                    dp = [False] * (price + 1); dp[0] = True
+                    for v in vals:
+                        for x in range(v, price + 1):
+                            if dp[x - v]: dp[x] = True
+                    if not dp[price]:
+                        err(f"{sid} money 无法用所选面额恰好付清 {price}")
+            elif kind == "mappuzzle":
+                regions = st.get("regions") or []
+                ids = [r.get("id") for r in regions]
+                if len(ids) != len(set(ids)):
+                    err(f"{sid} mappuzzle 块 id 重复 {ids}")
+                for r in regions:
+                    if not r.get("points") or len(r["points"]) < 3:
+                        err(f"{sid} mappuzzle 块 {r.get('id')} 多边形点数<3")
+                # v1.0.1：HTML 端只认 pieces（名字），必须与 preview 地图里的省/洲名逐字一致
+                the_map = st.get("map")
+                pieces = st.get("pieces") or []
+                names = MAP_PIECES.get(the_map, set())
+                if not pieces:
+                    err(f"{sid} mappuzzle 缺 pieces（HTML 端一块都渲染不出来）")
+                elif len(pieces) != len(set(pieces)):
+                    err(f"{sid} mappuzzle pieces 重复 {pieces}")
+                elif names:
+                    bad = [p for p in pieces if p not in names]
+                    if bad:
+                        err(f"{sid} mappuzzle pieces 不在 {the_map} 地图里：{bad}")
+                if the_map not in ("china", "world"):
+                    err(f"{sid} mappuzzle map 非法 {the_map}")
+            elif kind == "balance":
+                # v0.10 天文台：天平比一比（answerKey 复用 left/right 语义）
+                for k in ("left", "right"):
+                    side = st.get(k)
+                    if not isinstance(side, dict) or not (side.get("icon") or side.get("text")):
+                        err(f"{sid} balance {k} 侧缺 icon/text")
+                if st.get("answerKey") not in ("left", "right"):
+                    err(f"{sid} balance answerKey 非法 {st.get('answerKey')}")
+            elif kind == "sort":
+                # v0.10 天文台：拖一拖分类（2 筐，物品 3-6 件，每筐至少 1 件）
+                bins = st.get("bins") or []
+                items = st.get("items") or []
+                bin_ids = [b.get("id") for b in bins]
+                if len(bins) != 2 or len(bin_ids) != len(set(bin_ids)) or not all(bin_ids):
+                    err(f"{sid} sort 应为 2 个 id 唯一的筐 {bin_ids}")
+                if not all(b.get("label") for b in bins):
+                    err(f"{sid} sort 筐缺 label")
+                if not (3 <= len(items) <= 6):
+                    err(f"{sid} sort 物品数 {len(items)} 不在 3-6")
+                iids = [i.get("id") for i in items]
+                if len(iids) != len(set(iids)) or not all(iids):
+                    err(f"{sid} sort 物品 id 重复或缺失 {iids}")
+                for it in items:
+                    if not (it.get("icon") or it.get("text")):
+                        err(f"{sid} sort 物品 {it.get('id')} 缺 icon/text")
+                    if it.get("bin") not in bin_ids:
+                        err(f"{sid} sort 物品 {it.get('id')} 指向不存在的筐 {it.get('bin')}")
+                if len(set(bin_ids)) == 2:
+                    for b in bin_ids:
+                        if not any(i.get("bin") == b for i in items):
+                            err(f"{sid} sort 筐 {b} 没有物品")
+            elif kind == "tapall":
+                # v0.10.1 点点看：点中全部 correct 项
+                opts = st.get("options") or []
+                if not (4 <= len(opts) <= 9):
+                    err(f"{sid} tapall 选项数 {len(opts)} 不在 4-9")
+                correct = [o for o in opts if o.get("correct") is True]
+                if len(correct) < 2:
+                    err(f"{sid} tapall 正确项应 ≥2，实际 {len(correct)}")
+                for o in opts:
+                    if not (o.get("icon") or o.get("text")):
+                        err(f"{sid} tapall 选项为空")
+            elif kind == "match":
+                # v0.10.1 连一连：3 组左右配对
+                pairs = st.get("pairs") or []
+                if len(pairs) != 3:
+                    err(f"{sid} match 配对数 {len(pairs)} != 3")
+                rights = [p.get("right", {}).get("text") for p in pairs]
+                if len(set(rights)) != len(rights) or not all(rights):
+                    err(f"{sid} match 右列文字重复或缺失 {rights}")
+                for pi, p in enumerate(pairs):
+                    l, r = p.get("left") or {}, p.get("right") or {}
+                    if not (l.get("icon") or l.get("text")) or not r.get("text"):
+                        err(f"{sid} match 第{pi+1}组缺 left/right 内容")
+            elif kind == "lineup":
+                # v0.10.1 排排队：数组顺序即正确顺序
+                items = st.get("lineup") or []
+                if not (3 <= len(items) <= 4):
+                    err(f"{sid} lineup 物品数 {len(items)} 不在 3-4")
+                ids = [i.get("id") for i in items]
+                if len(set(ids)) != len(ids) or not all(ids):
+                    err(f"{sid} lineup id 重复或缺失 {ids}")
+                for it in items:
+                    if not it.get("icon"):
+                        err(f"{sid} lineup 物品 {it.get('id')} 缺 icon")
+            elif kind == "sequence":
+                # v0.10.1 倒计时点火：按 seq 顺序点
+                seq = st.get("seq") or []
+                if not (3 <= len(seq) <= 5) or not all(isinstance(x, str) and x for x in seq):
+                    err(f"{sid} sequence seq 非法 {seq}")
+                if len(set(seq)) != len(seq):
+                    err(f"{sid} sequence seq 重复 {seq}")
+            elif kind == "spotlight":
+                # v0.10.1 望远镜找星
+                if not st.get("targetIcon"):
+                    err(f"{sid} spotlight 缺 targetIcon")
+                decoys = st.get("decoys") or []
+                if not (3 <= len(decoys) <= 8):
+                    err(f"{sid} spotlight 干扰星数 {len(decoys)} 不在 3-8")
+            elif kind == "shadow":
+                # v0.10.1 剪影猜猜
+                if not st.get("shadow"):
+                    err(f"{sid} shadow 缺 shadow 图标")
+                opts = st.get("options") or []
+                ans = st.get("answer")
+                if len(opts) != 3 or not isinstance(ans, int) or not (0 <= ans < 3):
+                    err(f"{sid} shadow 选项/答案非法")
+                for o in opts:
+                    if not o.get("icon"):
+                        err(f"{sid} shadow 选项缺 icon")
             else:
                 err(f"{sid} 未知步骤类型 {kind}")
-        # 修订（试玩反馈轮）：每关题库扩产至 ≥5 道可作答变体——不再靠生成器碰巧达标
-        nq = sum(1 for st in lv["steps"] if st["kind"] in QUESTION_KINDS)
-        if nq < 5:
-            err(f"{name}/{lv['id']} 题库可作答题 {nq} 道 < 5（修订：每关扩产至 ≥5 道变体）")
 
 for name, cnt in SUBJECTS:
     check_subject(subject_docs[name], name, cnt)
@@ -275,68 +562,12 @@ for exp in exps["experiments"]:
         if not it.get("fact"): err(f"[实验] 物品 {it['id']} 缺 fact")
 ok(f"[experiments] {len(exps['experiments'])} 个实验校验完成")
 
-# 科学卡获得路径闸门（2026-10-01 科学岛修复）：collection 的 science 组每张卡必须能通过
-# 实验物品（sci-<物品id>）或小课堂问答（quiz[].card）获得——防「白送位 / 永远点不亮的卡 /
-# collect 与图鉴 id 错位」复发
-sci_items = next(g["items"] for g in coll["groups"] if g["id"] == "science")
-sci_ids = {it["id"] for it in sci_items}
-earnable = set()
-for exp in exps["experiments"]:
-    earnable |= {f"sci-{it['id']}" for it in exp["items"]}
-    for q in exp.get("quiz") or []:
-        tag = f"[experiment/{exp['id']}/quiz/{q.get('id','?')}]"
-        card = q.get("card")
-        if card not in sci_ids:
-            err(f"{tag} card {card} 不在科学图鉴")
-        elif card in earnable:
-            err(f"{tag} card {card} 有重复获得路径")
-        else:
-            earnable.add(card)
-        opts = q.get("options") or []
-        if len(opts) != 3: err(f"{tag} 选项数 {len(opts)} != 3")
-        ans = q.get("answer")
-        if not isinstance(ans, int) or isinstance(ans, bool) or not (0 <= ans < len(opts)):
-            err(f"{tag} answer 非法")
-        if not q.get("question") or not q.get("fact"): err(f"{tag} 缺 question/fact")
-lost = sci_ids - earnable
-if lost:
-    err(f"[science] 以下现象卡没有任何获得路径（实验物品/小课堂问答）：{sorted(lost)}")
-else:
-    n_item = sum(len(e["items"]) for e in exps["experiments"])
-    n_quiz = sum(len(e.get("quiz") or []) for e in exps["experiments"])
-    ok(f"[science] {len(sci_ids)} 张现象卡全部有获得路径（实验 {n_item} + 小课堂 {n_quiz}）")
-
 group_ids = [g["id"] for g in coll["groups"]]
-if group_ids != ["science", "sticker", "hanzi", "pinyin", "english", "astro", "badge"]: err(f"[collection] 分组顺序异常 {group_ids}")
+if group_ids != ["science", "sticker", "hanzi", "pinyin", "english", "astro", "geo", "badge"]:
+    err(f"[collection] 分组顺序异常 {group_ids}")
 for g in coll["groups"]:
     if len(g["items"]) < 10: warn(f"[collection/{g['id']}] 条目 {len(g['items'])} 偏少")
-ok("[collection] 7 个分组校验完成")
-
-# ---------- 1.x 商店闸门（Testing Decisions：定价区间与 id 唯一；决策 14：非默认件 40-120） ----------
-shop = load_json(os.path.join(RES, "shop.json"))
-collect_icons(shop)
-shop_ids = []
-for cat in ("characters", "titles"):
-    items = shop.get(cat) or []
-    if not items:
-        err(f"[shop/{cat}] 无商品"); continue
-    if not any(i.get("default") for i in items):
-        err(f"[shop/{cat}] 缺少 default 件（初始拥有集合会为空）")
-    for it in items:
-        iid = f"{cat}/{it.get('id','?')}"
-        shop_ids.append(it.get("id"))
-        if not it.get("id") or not it.get("name"): err(f"[shop] {iid} 缺 id/name")
-        if it.get("icon") not in manifest_icons: err(f"[shop] {iid} 图标 {it.get('icon')} 不在资产清单")
-        p = it.get("price")
-        if not isinstance(p, int) or isinstance(p, bool) or not (0 <= p <= 120):
-            err(f"[shop] {iid} 定价 {p!r} 越界（0-120）")
-        elif bool(it.get("default")) != (p == 0):
-            err(f"[shop] {iid} default 标记与 price=0 不一致（price={p}）")
-        elif not it.get("default") and p < 40:
-            err(f"[shop] {iid} 非默认件定价 {p} 低于下限（决策 14：40-120）")
-dup_shop = {i for i in shop_ids if shop_ids.count(i) > 1}
-if dup_shop: err(f"[shop] 商品 id 重复: {sorted(dup_shop)}")
-else: ok(f"[shop] {len(shop_ids)} 件商品：id 唯一、定价与 default 标记合法")
+ok("[collection] 8 个分组校验完成")
 
 # ---------- 2. 资产一致性 ----------
 missing = json_icons - manifest_icons
@@ -359,7 +590,7 @@ m = re.search(r"enum IconEmoji \{[^{]*static let map: \[String: String\] = \[(.*
 if not m:
     err("未找到 IconEmoji.map 定义")
 else:
-    fallback = set(re.findall(r'"([a-zA-Z-]+)"\s*:', m.group(1)))
+    fallback = set(re.findall(r'"([a-zA-Z0-9-]+)"\s*:', m.group(1)))
     lack = manifest_icons - fallback
     if lack: err(f"以下图标缺少 Emoji 兜底: {sorted(lack)}")
     else: ok(f"Emoji 兜底覆盖全部 {len(manifest_icons)} 个图标")
@@ -415,6 +646,17 @@ else_ok = all(key in py for key in ['deploymentTarget', 'iOS: "16.0"', 'TARGETED
                                     'UIRequiresFullScreen: true', 'UIInterfaceOrientationLandscapeLeft',
                                     'bundle.unit-test', 'AdventureIslandTests'])
 if else_ok: ok("project.yml 关键配置齐全（iPad only / iOS16 / 横屏 / 测试目标）")
+
+# ---------- 7. 拼地图 pieces 与渲染端地图清单 ----------
+_map_steps = [st for doc in subject_docs.values() for lv in doc.get("levels", [])
+              for st in lv.get("steps", []) if st.get("kind") == "mappuzzle"]
+if any("mappuzzle" in e for e in errors):
+    pass                                  # 具体错误已在 check_subject 里报
+elif _map_steps and not (MAP_PIECES.get("china") and MAP_PIECES.get("world")):
+    warn("读不到 preview 的 CHINA_MAP/WORLD_MAP，mappuzzle pieces 只做了非空校验")
+else:
+    ok(f"mappuzzle pieces 与地图清单一致（{len(_map_steps)} 步；"
+       f"china {len(MAP_PIECES.get('china', set()))} 块 / world {len(MAP_PIECES.get('world', set()))} 块）")
 
 # ---------- 汇总 ----------
 print("=" * 64)

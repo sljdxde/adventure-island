@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs>
+      <linearGradient id="gw-wall" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#D2C2A2"/><stop offset="100%" stop-color="#9A8868"/>
+      </linearGradient>
+      <linearGradient id="gw-hill" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#8FA878"/><stop offset="100%" stop-color="#5E7C4E"/>
+      </linearGradient>
+    </defs>
+    <path d="M2 54 Q20 36 40 44 Q54 50 62 42 L62 60 L2 60 Z" fill="url(#gw-hill)"/>
+    <path d="M6 46 Q22 38 36 44 Q48 48 58 40 L58 47 Q48 53 36 49 Q22 43 6 51 Z" fill="url(#gw-wall)"/>
+    <g fill="#E0D2B2">
+      <rect x="10" y="39" width="3" height="3"/><rect x="16" y="37" width="3" height="3"/>
+      <rect x="22" y="36" width="3" height="3"/><rect x="34" y="42" width="3" height="3"/>
+      <rect x="40" y="43" width="3" height="3"/><rect x="46" y="42" width="3" height="3"/>
+    </g>
+    <rect x="29" y="29" width="13" height="17" fill="#C9B89A"/>
+    <rect x="27" y="26" width="17" height="4" rx="1" fill="#B8A682"/>
+    <path d="M29 36 h13 M29 41 h13" stroke="#8A7858" stroke-width="0.8" opacity="0.5"/>
+    <rect x="31" y="32" width="9" height="2.6" fill="#8A7858"/></svg>

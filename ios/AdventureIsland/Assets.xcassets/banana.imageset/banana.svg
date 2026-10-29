@@ -1,4 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs><linearGradient id="g-yellow" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFDD7A"/><stop offset="1" stop-color="#F5A623"/></linearGradient></defs>
-  <path d="M12 20 Q10 44 34 50 Q50 54 56 42 Q58 37 53 38 Q40 44 28 36 Q18 30 18 20 Q18 13 12 20 Z" fill="url(#g-yellow)"/>
-  <circle cx="13" cy="18" r="2.6" fill="#8A5A3B"/><circle cx="55" cy="40" r="2.4" fill="#8A5A3B"/>
-  <path d="M16 24 Q19 35 30 41" stroke="#fff" stroke-width="3" fill="none" opacity=".5" stroke-linecap="round"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><style>.st{stroke:#5B4636;stroke-width:2.3;stroke-linejoin:round;stroke-linecap:round}.th{stroke:#5B4636;stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round}</style><path class="st" d="M15 17 Q10 38 30 50 Q46 55 53 47 Q47 46 44 48 Q30 50 22 40 Q18 30 21 19 Q18 15 15 17 Z" fill="#F5C842"/><path d="M15 17 Q18 14 21 19 Q18 18 15 17 Z" fill="#8A5A32"/><path d="M44 48 Q49 46 53 47 Q49 50 44 48 Z" fill="#8A5A32"/><path d="M20 24 Q22 38 36 45" fill="none" stroke="#E0A828" stroke-width="2" stroke-linecap="round"/></svg>

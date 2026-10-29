@@ -15,6 +15,10 @@ final class TimeManager: ObservableObject {
     @Published private(set) var phase: Phase = .playing
     @Published private(set) var todaySeconds: Int = 0
     @Published private(set) var segmentSeconds: Int = 0   // 距上次休息的使用秒数
+    /// 单次/间隔休息被推迟到本关结算（对齐 HTML restPending / checkRestAfterSettle）
+    @Published private(set) var restPending = false
+    /// 是否处于棋盘/Boss/线性关进行中（由 RootView 按 route 设置）
+    var inLevel = false
 
     private(set) var dayKey: String = ""
     var now: () -> Date
@@ -76,12 +80,33 @@ final class TimeManager: ObservableObject {
             segmentSeconds += seconds
             saveUsage()
             if todaySeconds >= dailyLimitSeconds {
+                // 每日总量：立即收束，不推迟
                 phase = .dayOver
             } else if restIntervalSeconds > 0, segmentSeconds >= restIntervalSeconds {
-                phase = .resting(secondsLeft: Self.restDurationSeconds)
+                queueRestIfInLevel()
             } else if segmentSeconds >= sessionLimitSeconds {
-                phase = .resting(secondsLeft: Self.restDurationSeconds)
+                queueRestIfInLevel()
             }
+        }
+    }
+
+    /// 单次/间隔时限到：若正在闯关，先挂起 restPending，不立即打断；离开关卡（结算后）再进休息
+    private func queueRestIfInLevel() {
+        if inLevel {
+            restPending = true
+            segmentSeconds = 0          // 清空累计，休息完成后重新计时
+            saveUsage()
+        } else {
+            phase = .resting(secondsLeft: Self.restDurationSeconds)
+        }
+    }
+
+    /// RootView 按 route 设置是否在关卡内；离开关卡时若有挂起休息，立即进休息
+    func setInLevel(_ v: Bool) {
+        inLevel = v
+        if !v, restPending, phase == .playing {
+            restPending = false
+            phase = .resting(secondsLeft: Self.restDurationSeconds)
         }
     }
 
@@ -119,20 +144,11 @@ final class TimeManager: ObservableObject {
     }
 }
 
-// MARK: - 语音朗读（系统 TTS，zh-CN 慢速）
+// MARK: - 语音朗读（系统 TTS；中文慢速、英语 en-US、拼音转中文同音字）
 
-struct SpeechConfig: Equatable {
-    var text: String
-    var language: String = "zh-CN"
-    var rate: Float = 0.45
-    var pitch: Float = 1.15
-    var volume: Float = 1.0
-}
-
-enum SpeechBuilder {
-    static func utteranceConfig(text: String) -> SpeechConfig {
-        SpeechConfig(text: text)
-    }
+enum SpeechLang {
+    case chinese   // 中文（拉丁字母也按中文语音读）
+    case english   // 英语（中英混排时自动按文字切换语音）
 }
 
 final class SpeechService: NSObject, ObservableObject, AVSpeechSynthesizerDelegate {
@@ -144,17 +160,75 @@ final class SpeechService: NSObject, ObservableObject, AVSpeechSynthesizerDelega
         synth.delegate = self
     }
 
+    /// 中文朗读（识字/数学/科学/天文等章节）
     func speak(_ text: String) {
+        speak(text, lang: .chinese)
+    }
+
+    /// 英语章节朗读：拉丁片段用 en-US，混入的中文用 zh-CN
+    func speakEnglish(_ text: String) {
+        speak(text, lang: .english)
+    }
+
+    /// 拼音章节朗读：先把拼音字母/音节转成中文同音字，再用中文语音朗读
+    /// （否则 zh-CN 语音会把 b 读成英文字母名 "bee"）
+    func speakPinyin(_ text: String) {
+        speak(PinyinSpeech.convert(text), lang: .chinese)
+    }
+
+    /// 学科→语音路由唯一入口：英语按中英混排分段，拼音转中文同音字，
+    /// 其余学科（识字/数学/思维/天文/科学等）中文朗读。新增学科默认中文，无需改调用点。
+    func speak(_ text: String, subject: String) {
+        switch subject {
+        case "english": speakEnglish(text)
+        case "pinyin": speakPinyin(text)
+        default: speak(text)
+        }
+    }
+
+    func speak(_ text: String, lang: SpeechLang) {
         guard !text.isEmpty else { return }
-        let cfg = SpeechBuilder.utteranceConfig(text: text)
-        let u = AVSpeechUtterance(string: cfg.text)
-        u.voice = AVSpeechSynthesisVoice(language: cfg.language)
-        u.rate = cfg.rate
-        u.pitchMultiplier = cfg.pitch
-        u.volume = cfg.volume
-        u.postUtteranceDelay = 0.05
         stop()
-        synth.speak(u)
+        // 按文字脚本分段：英语章节里中英混排（如 "Apple 苹果"）时各段用各自母语语音
+        for segment in Self.segments(text, lang: lang) {
+            let u = AVSpeechUtterance(string: segment.text)
+            u.voice = AVSpeechSynthesisVoice(language: segment.language)
+            u.rate = 0.45
+            u.pitchMultiplier = 1.15
+            u.volume = 1.0
+            u.postUtteranceDelay = 0.05
+            synth.speak(u)
+        }
+    }
+
+    /// 把字符串切成 (文本, 语音语言) 段：连续拉丁字母一段，其余（中文/标点/空格）一段
+    static func segments(_ text: String, lang: SpeechLang) -> [(text: String, language: String)] {
+        var result: [(String, String)] = []
+        var latin = ""
+        var other = ""
+
+        func flushOther() {
+            if !other.isEmpty { result.append((other, "zh-CN")); other = "" }
+        }
+        func flushLatin() {
+            if !latin.isEmpty {
+                result.append((latin, lang == .english ? "en-US" : "zh-CN"))
+                latin = ""
+            }
+        }
+
+        for ch in text {
+            if let v = ch.asciiValue, (0x41...0x5A).contains(v) || (0x61...0x7A).contains(v) {
+                flushOther()
+                latin.append(ch)
+            } else {
+                flushLatin()
+                other.append(ch)
+            }
+        }
+        flushLatin()
+        flushOther()
+        return result
     }
 
     func stop() {
@@ -163,11 +237,15 @@ final class SpeechService: NSObject, ObservableObject, AVSpeechSynthesizerDelega
     }
 
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
-        isSpeaking = false
+        if !synth.isSpeaking { isSpeaking = false }
     }
 
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didStart utterance: AVSpeechUtterance) {
         isSpeaking = true
+    }
+
+    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didCancel utterance: AVSpeechUtterance) {
+        isSpeaking = false
     }
 }
 
@@ -197,21 +275,30 @@ final class SoundService {
                 eng.attach(ply)
                 ply.volume = 0.16
                 eng.connect(ply, to: eng.mainMixerNode, format: nil)
-                try eng.start()
             }
+            // 音频路由变化（插拔耳机等）后引擎可能已停止，尝试重启
+            if !eng.isRunning { try eng.start() }
             guard eng.isRunning else { return }
-            let format = AVAudioFormat(standardFormatWithSampleRate: 44100, channels: 1)!
+            // 缓冲格式必须与播放节点输出一致（connect 传 nil 时跟随硬件，通常为立体声/48k），
+            // 否则 scheduleBuffer 会抛 channelCount 不匹配异常导致崩溃。
+            let hw = eng.mainMixerNode.outputFormat(forBus: 0)
+            let sampleRate = hw.sampleRate > 0 ? hw.sampleRate : 44100
+            let channelCount = AVAudioChannelCount(max(1, Int(hw.channelCount)))
+            guard let format = AVAudioFormat(standardFormatWithSampleRate: sampleRate, channels: channelCount) else { return }
 
             for t in tones {
-                let frames = AVAudioFrameCount(44100 * t.dur)
+                let frames = AVAudioFrameCount(sampleRate * t.dur)
                 guard let buffer = AVAudioPCMBuffer(pcmFormat: format, frameCapacity: frames) else { continue }
                 buffer.frameLength = frames
-                let data = buffer.floatChannelData![0]
-                for i in 0..<Int(frames) {
-                    let sec = Double(i) / 44100
-                    // 淡入淡出防爆音
-                    let env = min(1, sec / 0.01) * min(1, (t.dur - sec) / 0.03)
-                    data[i] = Float(sin(2 * .pi * t.freq * sec) * env)
+                // 逐声道填充（单声道数据原样复制到每个声道）
+                for ch in 0..<Int(channelCount) {
+                    let data = buffer.floatChannelData![ch]
+                    for i in 0..<Int(frames) {
+                        let sec = Double(i) / sampleRate
+                        // 淡入淡出防爆音
+                        let env = min(1, sec / 0.01) * min(1, (t.dur - sec) / 0.03)
+                        data[i] = Float(sin(2 * .pi * t.freq * sec) * env)
+                    }
                 }
                 // 绝对主机时间 = 现在 + 偏移
                 let when = AVAudioTime(hostTime: mach_absolute_time() + AVAudioTime.hostTime(forSeconds: t.at))

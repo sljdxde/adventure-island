@@ -33,6 +33,9 @@ struct CollectionView: View {
         }
         .onAppear {
             if file == nil { file = ContentLoader.load(CollectionFile.self, "collection") }
+            #if DEBUG
+            if let tab = DebugLaunch.arg("-AITab") { activeTab = tab }
+            #endif
         }
     }
 
@@ -164,6 +167,9 @@ struct CollectionView: View {
         case "astro":
             let got = group.items.filter { store.snapshot.learnedAstro.contains($0.name.components(separatedBy: " ").first ?? "") }.count
             return "已认识 \(got) / \(group.items.count) 个星空朋友"
+        case "geo":
+            let got = group.items.filter { store.snapshot.learnedGeo.contains($0.id) }.count
+            return "已走遍 \(got) / \(group.items.count) 个地方"
         default:
             return "每一枚徽章都是了不起的坚持"
         }
@@ -182,6 +188,7 @@ struct CollectionView: View {
         }.count
         case "english": got = group.items.filter { store.snapshot.learnedEnglish.contains($0.name) }.count
         case "astro": got = group.items.filter { store.snapshot.learnedAstro.contains($0.name.components(separatedBy: " ").first ?? "") }.count
+        case "geo": got = group.items.filter { store.snapshot.learnedGeo.contains($0.id) }.count
         default: got = 0
         }
         return Double(got) / Double(total)
@@ -205,6 +212,8 @@ struct CollectionView: View {
             return store.snapshot.learnedEnglish.contains(item.name)
         case "astro":
             return store.snapshot.learnedAstro.contains(item.name.components(separatedBy: " ").first ?? "")
+        case "geo":
+            return store.snapshot.learnedGeo.contains(item.id)
         default:
             return true
         }
@@ -216,17 +225,17 @@ struct CollectionView: View {
         Button {
             guard collected else { return }
             if let fact = item.fact {
-                speech.speak(fact)
+                speech.speak(fact, subject: group.id)
                 toast.show(fact, seconds: 3.2)
             } else if group.id == "english" {
-                speech.speak(item.name)
+                speech.speakEnglish(item.name)
                 toast.show(item.name)
             } else if group.id == "astro" {
                 let parts = item.name.components(separatedBy: " ")
-                speech.speak(parts.joined(separator: "，"))
+                speech.speakEnglish(parts.joined(separator: "，"))
                 toast.show(item.name)
             } else if let text = item.text, let pinyin = item.pinyin {
-                speech.speak("\(text)，\(pinyin)")
+                speech.speakPinyin("\(text)，\(pinyin)")
                 toast.show("\(text) · \(pinyin)")
             } else if let text = item.text {
                 speech.speak(text)
@@ -300,7 +309,10 @@ struct CollectionView: View {
         case "science": hint = "💡 去科学岛做实验，就能点亮更多现象图鉴"
         case "sticker": hint = "💡 完成每日任务、闯关成功都能掉落贴纸"
         case "hanzi": hint = "💡 在识字村闯关，就能点亮更多汉字卡"
+        case "pinyin": hint = "💡 在拼音谷闯关，就能点亮更多拼音卡"
+        case "english": hint = "💡 在英语王国闯关，学会更多单词"
         case "astro": hint = "💡 去天文台闯关，认识更多星空朋友"
+        case "geo": hint = "💡 去环球号拼地图，走遍更多地方"
         default: hint = "💡 徽章记录每一次了不起的坚持"
         }
         return Text(hint)
