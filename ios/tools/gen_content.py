@@ -3600,6 +3600,25 @@ shop = {
         shop_item("paw", "脚印骰", "paw", 90),
         shop_item("heart", "爱心骰", "heart", 100),
     ],
+    # v1.1.1 商店扩充：主题天空（主页棋盘外观，拥有+换上）
+    "skins": [
+        {**shop_item("sky-blue", "晴空蓝", "circle", 0, True), "desc": "主页棋盘的默认天空"},
+        {**shop_item("sky-sakura", "樱花粉", "heart", 80), "desc": "主页棋盘换上粉色春天"},
+        {**shop_item("sky-mint", "薄荷汽水", "leaf", 100), "desc": "主页棋盘换上清凉薄荷"},
+        {**shop_item("sky-sunset", "落日橘子", "sunset", 120), "desc": "主页棋盘换上黄昏暖阳"},
+        {**shop_item("sky-ocean", "海洋泡泡", "wave", 140), "desc": "主页棋盘换上海边清风"},
+        {**shop_item("sky-galaxy", "梦幻星夜", "starface", 180), "desc": "主页棋盘换上星空深夜"},
+    ],
+    # v1.1.1 商店扩充：贴纸礼包（一次性，买了立刻随机点亮未收集贴纸）
+    "packs": [
+        {**shop_item("pack-rainbow", "彩虹贴纸包", "gift", 50), "desc": "拆开随机点亮 3 张未收集的贴纸"},
+        {**shop_item("pack-gold", "黄金贴纸包", "medal", 120), "desc": "拆开随机点亮 8 张未收集的贴纸"},
+    ],
+    # v1.1.1 商店扩充：惊喜盲盒（一次性，开出金币或贴纸；期望值低于价格，不能刷币）
+    "boxes": [
+        {**shop_item("box-mini", "神秘小盲盒", "ball", 30), "desc": "开出 10~30 金币，或 1 张随机贴纸"},
+        {**shop_item("box-mega", "黄金大盲盒", "party", 80), "desc": "开出 40~120 金币，或 3 张随机贴纸"},
+    ],
     "items": [
         {**shop_item("mushroom", "幸运蘑菇", "mushroom", 30), "desc": "持有期间答错挡一次，不掉星不扣心"},
         {**shop_item("coinboost", "双倍金币卡", "coin", 40), "desc": "下一关通关金币翻倍，用完为止"},

@@ -159,6 +159,83 @@
       "price": 100
     }
   ],
+  "skins": [
+    {
+      "id": "sky-blue",
+      "name": "晴空蓝",
+      "icon": "circle",
+      "price": 0,
+      "default": true,
+      "desc": "主页棋盘的默认天空"
+    },
+    {
+      "id": "sky-sakura",
+      "name": "樱花粉",
+      "icon": "heart",
+      "price": 80,
+      "desc": "主页棋盘换上粉色春天"
+    },
+    {
+      "id": "sky-mint",
+      "name": "薄荷汽水",
+      "icon": "leaf",
+      "price": 100,
+      "desc": "主页棋盘换上清凉薄荷"
+    },
+    {
+      "id": "sky-sunset",
+      "name": "落日橘子",
+      "icon": "sunset",
+      "price": 120,
+      "desc": "主页棋盘换上黄昏暖阳"
+    },
+    {
+      "id": "sky-ocean",
+      "name": "海洋泡泡",
+      "icon": "wave",
+      "price": 140,
+      "desc": "主页棋盘换上海边清风"
+    },
+    {
+      "id": "sky-galaxy",
+      "name": "梦幻星夜",
+      "icon": "starface",
+      "price": 180,
+      "desc": "主页棋盘换上星空深夜"
+    }
+  ],
+  "packs": [
+    {
+      "id": "pack-rainbow",
+      "name": "彩虹贴纸包",
+      "icon": "gift",
+      "price": 50,
+      "desc": "拆开随机点亮 3 张未收集的贴纸"
+    },
+    {
+      "id": "pack-gold",
+      "name": "黄金贴纸包",
+      "icon": "medal",
+      "price": 120,
+      "desc": "拆开随机点亮 8 张未收集的贴纸"
+    }
+  ],
+  "boxes": [
+    {
+      "id": "box-mini",
+      "name": "神秘小盲盒",
+      "icon": "ball",
+      "price": 30,
+      "desc": "开出 10~30 金币，或 1 张随机贴纸"
+    },
+    {
+      "id": "box-mega",
+      "name": "黄金大盲盒",
+      "icon": "party",
+      "price": 80,
+      "desc": "开出 40~120 金币，或 3 张随机贴纸"
+    }
+  ],
   "items": [
     {
       "id": "mushroom",
