@@ -114,16 +114,16 @@
           "question": "Which picture starts with Aa?",
           "options": [
             {
-              "icon": "duck"
+              "icon": "apple"
             },
             {
-              "icon": "apple"
+              "icon": "duck"
             },
             {
               "icon": "sun"
             }
           ],
-          "answer": 1,
+          "answer": 0,
           "hint": "Apple 苹果",
           "praise": "Great job!"
         },
@@ -191,16 +191,16 @@
           "question": "Find: which one is Bb ?",
           "options": [
             {
-              "text": "Cc"
+              "text": "Bb"
             },
             {
               "text": "Dd"
             },
             {
-              "text": "Bb"
+              "text": "Cc"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "B for Bb",
           "praise": "Yes! Bb!"
         }
@@ -240,13 +240,13 @@
               "text": "Dd"
             },
             {
-              "text": "Ss"
+              "text": "Cc"
             },
             {
-              "text": "Cc"
+              "text": "Ss"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "C for Cc",
           "praise": "Yes! Cc!"
         },
@@ -261,16 +261,16 @@
           "question": "Pattern: 下一个是谁？",
           "options": [
             {
-              "icon": "flower"
+              "icon": "moon"
             },
             {
               "icon": "cake"
             },
             {
-              "icon": "moon"
+              "icon": "flower"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "Who comes next?",
           "praise": "Pattern star!"
         }
@@ -308,13 +308,13 @@
               "icon": "flower"
             },
             {
-              "icon": "duck"
+              "icon": "leaf"
             },
             {
-              "icon": "leaf"
+              "icon": "duck"
             }
           ],
-          "answer": 1,
+          "answer": 2,
           "hint": "Duck 小鸭",
           "praise": "Great job!"
         },
@@ -327,13 +327,13 @@
               "text": "L"
             },
             {
-              "text": "D"
+              "text": "K"
             },
             {
-              "text": "K"
+              "text": "D"
             }
           ],
-          "answer": 1,
+          "answer": 2,
           "hint": "Dd = Dd",
           "praise": "Dd 配对成功！"
         }
@@ -392,13 +392,13 @@
               "icon": "leaf"
             },
             {
-              "icon": "sun"
+              "icon": "key"
             },
             {
-              "icon": "key"
+              "icon": "sun"
             }
           ],
-          "answer": 1,
+          "answer": 2,
           "hint": "Sun 太阳",
           "praise": "Great job!"
         }
@@ -433,16 +433,16 @@
           "question": "小写 m 对应哪个大写字母？",
           "options": [
             {
-              "text": "M"
+              "text": "G"
             },
             {
-              "text": "G"
+              "text": "M"
             },
             {
               "text": "E"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "Mm = Mm",
           "praise": "Mm 配对成功！"
         },
@@ -454,16 +454,16 @@
           "question": "Find: which one is Mm ?",
           "options": [
             {
-              "text": "Bb"
+              "text": "Mm"
             },
             {
               "text": "Cc"
             },
             {
-              "text": "Mm"
+              "text": "Bb"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "M for Mm",
           "praise": "Yes! Mm!"
         }
@@ -500,16 +500,16 @@
           "question": "Find: which one is Ff ?",
           "options": [
             {
-              "text": "Cc"
+              "text": "Ff"
             },
             {
               "text": "Dd"
             },
             {
-              "text": "Ff"
+              "text": "Cc"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "F for Ff",
           "praise": "Yes! Ff!"
         },
@@ -524,16 +524,16 @@
           "question": "Pattern: 下一个是谁？",
           "options": [
             {
-              "icon": "train"
+              "icon": "flower"
             },
             {
               "icon": "panda"
             },
             {
-              "icon": "flower"
+              "icon": "train"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "Who comes next?",
           "praise": "Pattern star!"
         }
@@ -571,13 +571,13 @@
               "icon": "banana"
             },
             {
-              "icon": "leaf"
+              "icon": "cake"
             },
             {
-              "icon": "cake"
+              "icon": "leaf"
             }
           ],
-          "answer": 1,
+          "answer": 2,
           "hint": "Leaf 叶子",
           "praise": "Great job!"
         },
@@ -631,16 +631,16 @@
           "question": "小写 r 对应哪个大写字母？",
           "options": [
             {
-              "text": "R"
+              "text": "N"
             },
             {
-              "text": "N"
+              "text": "R"
             },
             {
               "text": "Q"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "Rr = Rr",
           "praise": "Rr 配对成功！"
         },
@@ -650,16 +650,16 @@
           "question": "Which picture starts with Rr?",
           "options": [
             {
-              "icon": "cake"
+              "icon": "rainbow"
             },
             {
-              "icon": "rainbow"
+              "icon": "cake"
             },
             {
               "icon": "duck"
             }
           ],
-          "answer": 1,
+          "answer": 0,
           "hint": "Rainbow 彩虹",
           "praise": "Great job!"
         }
@@ -697,13 +697,13 @@
               "text": "W"
             },
             {
-              "text": "G"
+              "text": "J"
             },
             {
-              "text": "J"
+              "text": "G"
             }
           ],
-          "answer": 1,
+          "answer": 2,
           "hint": "Gg = Gg",
           "praise": "Gg 配对成功！"
         },
@@ -713,16 +713,16 @@
           "question": "Which picture starts with Gg?",
           "options": [
             {
-              "icon": "duck"
+              "icon": "gift"
             },
             {
-              "icon": "gift"
+              "icon": "duck"
             },
             {
               "icon": "sun"
             }
           ],
-          "answer": 1,
+          "answer": 0,
           "hint": "Gift 礼物",
           "praise": "Great job!"
         }
@@ -760,13 +760,13 @@
               "text": "K"
             },
             {
-              "text": "E"
+              "text": "H"
             },
             {
-              "text": "H"
+              "text": "E"
             }
           ],
-          "answer": 1,
+          "answer": 2,
           "hint": "Ee = Ee",
           "praise": "Ee 配对成功！"
         },
@@ -776,16 +776,16 @@
           "question": "Which picture starts with Ee?",
           "options": [
             {
-              "icon": "cake"
+              "icon": "egg"
             },
             {
-              "icon": "egg"
+              "icon": "cake"
             },
             {
               "icon": "duck"
             }
           ],
-          "answer": 1,
+          "answer": 0,
           "hint": "Egg 蛋",
           "praise": "Great job!"
         }
@@ -823,13 +823,13 @@
               "text": "R"
             },
             {
-              "text": "G"
+              "text": "T"
             },
             {
-              "text": "T"
+              "text": "G"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "Tt = Tt",
           "praise": "Tt 配对成功！"
         },
@@ -839,16 +839,16 @@
           "question": "Which picture starts with Tt?",
           "options": [
             {
-              "icon": "duck"
+              "icon": "train"
             },
             {
-              "icon": "train"
+              "icon": "duck"
             },
             {
               "icon": "sun"
             }
           ],
-          "answer": 1,
+          "answer": 0,
           "hint": "Train 火车",
           "praise": "Great job!"
         }
@@ -883,16 +883,16 @@
           "question": "小写 p 对应哪个大写字母？",
           "options": [
             {
-              "text": "P"
+              "text": "T"
             },
             {
               "text": "E"
             },
             {
-              "text": "T"
+              "text": "P"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "Pp = Pp",
           "praise": "Pp 配对成功！"
         },
@@ -905,13 +905,13 @@
               "icon": "sun"
             },
             {
-              "icon": "panda"
+              "icon": "moon"
             },
             {
-              "icon": "moon"
+              "icon": "panda"
             }
           ],
-          "answer": 1,
+          "answer": 2,
           "hint": "Panda 熊猫",
           "praise": "Great job!"
         }
@@ -949,13 +949,13 @@
               "text": "P"
             },
             {
-              "text": "I"
+              "text": "O"
             },
             {
-              "text": "O"
+              "text": "I"
             }
           ],
-          "answer": 1,
+          "answer": 2,
           "hint": "Ii = Ii",
           "praise": "Ii 配对成功！"
         },
@@ -1031,13 +1031,13 @@
               "icon": "flower"
             },
             {
-              "icon": "circle"
+              "icon": "leaf"
             },
             {
-              "icon": "leaf"
+              "icon": "circle"
             }
           ],
-          "answer": 1,
+          "answer": 2,
           "hint": "O 圆圈",
           "praise": "Great job!"
         }
@@ -1072,16 +1072,16 @@
           "question": "小写 n 对应哪个大写字母？",
           "options": [
             {
-              "text": "N"
+              "text": "J"
             },
             {
               "text": "W"
             },
             {
-              "text": "J"
+              "text": "N"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "Nn = Nn",
           "praise": "Nn 配对成功！"
         },
@@ -1138,13 +1138,13 @@
               "text": "A"
             },
             {
-              "text": "Q"
+              "text": "B"
             },
             {
-              "text": "B"
+              "text": "Q"
             }
           ],
-          "answer": 1,
+          "answer": 2,
           "hint": "Qq = Qq",
           "praise": "Qq 配对成功！"
         },
@@ -1201,13 +1201,13 @@
               "text": "C"
             },
             {
-              "text": "D"
+              "text": "W"
             },
             {
-              "text": "W"
+              "text": "D"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "Ww = Ww",
           "praise": "Ww 配对成功！"
         },
@@ -1307,19 +1307,19 @@
           "question": "Which one is the sun? 太阳是哪一个？",
           "options": [
             {
-              "icon": "sun",
-              "text": "sun"
-            },
-            {
               "icon": "moon",
               "text": "moon"
+            },
+            {
+              "icon": "sun",
+              "text": "sun"
             },
             {
               "icon": "star",
               "text": "starface"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "Sun 太阳",
           "praise": "Great! It's the sun!"
         },
@@ -1351,19 +1351,19 @@
           "question": "Which one is the apple? 苹果是哪一个？",
           "options": [
             {
-              "icon": "banana",
-              "text": "banana"
+              "icon": "apple",
+              "text": "apple"
             },
             {
               "icon": "cake",
               "text": "cake"
             },
             {
-              "icon": "apple",
-              "text": "apple"
+              "icon": "banana",
+              "text": "banana"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "Apple 苹果",
           "praise": "Yes! Apple!"
         }
@@ -1434,19 +1434,19 @@
           "question": "Which one is the flower? 花是哪一个？",
           "options": [
             {
-              "icon": "leaf",
-              "text": "leaf"
-            },
-            {
               "icon": "flower",
               "text": "flower"
+            },
+            {
+              "icon": "leaf",
+              "text": "leaf"
             },
             {
               "icon": "tree",
               "text": "tree"
             }
           ],
-          "answer": 1,
+          "answer": 0,
           "hint": "Flower 花",
           "praise": "Yes! Flower!"
         },
@@ -1456,19 +1456,19 @@
           "question": "Which one is the cake? 蛋糕是哪一个？",
           "options": [
             {
-              "icon": "gift",
-              "text": "gift"
+              "icon": "cake",
+              "text": "cake"
             },
             {
               "icon": "key",
               "text": "key"
             },
             {
-              "icon": "cake",
-              "text": "cake"
+              "icon": "gift",
+              "text": "gift"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "Cake 蛋糕",
           "praise": "Super star! 全部通关!"
         }
@@ -1518,19 +1518,19 @@
           "question": "Which one is Cat? 猫 是哪一个？",
           "options": [
             {
-              "icon": "cat",
-              "text": "Cat"
+              "icon": "rabbit",
+              "text": "Rabbit"
             },
             {
               "icon": "duck",
               "text": "Duck"
             },
             {
-              "icon": "rabbit",
-              "text": "Rabbit"
+              "icon": "cat",
+              "text": "Cat"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "Cat",
           "praise": "Yes! It's Cat!"
         },
@@ -1732,13 +1732,13 @@
               "text": "Two"
             },
             {
-              "text": "Three"
+              "text": "One"
             },
             {
-              "text": "One"
+              "text": "Three"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "One",
           "praise": "Yes! It's One!"
         },
@@ -1873,19 +1873,19 @@
           "shadow": "apple",
           "options": [
             {
-              "icon": "apple",
-              "text": "Apple"
+              "icon": "book",
+              "text": "Book"
             },
             {
               "icon": "ball",
               "text": "Ball"
             },
             {
-              "icon": "book",
-              "text": "Book"
+              "icon": "apple",
+              "text": "Apple"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "圆圆的水果，A 开头",
           "praise": "猜对啦！"
         }
@@ -1939,15 +1939,15 @@
               "text": "Teacher"
             },
             {
-              "icon": "girl",
-              "text": "Me"
-            },
-            {
               "icon": "fox",
               "text": "Fox"
+            },
+            {
+              "icon": "girl",
+              "text": "Me"
             }
           ],
-          "answer": 1,
+          "answer": 2,
           "hint": "Me",
           "praise": "Yes! It's Me!"
         },
@@ -2028,19 +2028,19 @@
           "question": "Which one is Foot? 脚 是哪一个？",
           "options": [
             {
-              "icon": "paw",
-              "text": "Baby Paw"
+              "icon": "foot",
+              "text": "Foot"
             },
             {
               "icon": "speaker",
               "text": "Mouth"
             },
             {
-              "icon": "foot",
-              "text": "Foot"
+              "icon": "paw",
+              "text": "Baby Paw"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "Foot",
           "praise": "Yes! It's Foot!"
         },
@@ -2218,15 +2218,15 @@
               "text": "Candy"
             },
             {
-              "icon": "cake",
-              "text": "Cake"
-            },
-            {
               "icon": "bread",
               "text": "Bread"
+            },
+            {
+              "icon": "cake",
+              "text": "Cake"
             }
           ],
-          "answer": 1,
+          "answer": 2,
           "hint": "Cake",
           "praise": "Yes! It's Cake!"
         },
@@ -2315,13 +2315,13 @@
               "text": "Bb"
             },
             {
-              "text": "Cc"
+              "text": "Aa"
             },
             {
-              "text": "Aa"
+              "text": "Cc"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "A for Aa",
           "praise": "Yes! Aa!"
         },
@@ -2355,13 +2355,13 @@
               "text": "Dd"
             },
             {
-              "text": "Ss"
+              "text": "Cc"
             },
             {
-              "text": "Cc"
+              "text": "Ss"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "C for Cc",
           "praise": "Yes! Cc!"
         },
@@ -2374,13 +2374,13 @@
               "icon": "flower"
             },
             {
-              "icon": "duck"
+              "icon": "leaf"
             },
             {
-              "icon": "leaf"
+              "icon": "duck"
             }
           ],
-          "answer": 1,
+          "answer": 2,
           "hint": "Duck 小鸭",
           "praise": "Great job!"
         },
@@ -2395,13 +2395,13 @@
               "text": "Aa"
             },
             {
-              "text": "Bb"
+              "text": "Ss"
             },
             {
-              "text": "Ss"
+              "text": "Bb"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "S for Ss",
           "praise": "Yes! Ss!"
         },
@@ -2511,19 +2511,19 @@
           "question": "Which one is Shoe? 鞋 是哪一个？",
           "options": [
             {
-              "icon": "hat",
-              "text": "Hat"
+              "icon": "shoe",
+              "text": "Shoe"
             },
             {
               "icon": "hanger",
               "text": "Hanger"
             },
             {
-              "icon": "shoe",
-              "text": "Shoe"
+              "icon": "hat",
+              "text": "Hat"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "Shoe",
           "praise": "Yes! It's Shoe!"
         },
@@ -2883,19 +2883,19 @@
           "question": "Which one is Home? 家 是哪一个？",
           "options": [
             {
-              "icon": "bed",
-              "text": "Bed"
-            },
-            {
               "icon": "home",
               "text": "Home"
+            },
+            {
+              "icon": "bed",
+              "text": "Bed"
             },
             {
               "icon": "cup",
               "text": "Cup"
             }
           ],
-          "answer": 1,
+          "answer": 0,
           "hint": "Home",
           "praise": "Yes! It's Home!"
         },
@@ -2976,19 +2976,19 @@
           "question": "Which one is Sun? 太阳 是哪一个？",
           "options": [
             {
-              "icon": "moon",
-              "text": "Moon"
+              "icon": "sun",
+              "text": "Sun"
             },
             {
               "icon": "rainbow",
               "text": "Rainbow"
             },
             {
-              "icon": "sun",
-              "text": "Sun"
+              "icon": "moon",
+              "text": "Moon"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "Sun",
           "praise": "Yes! It's Sun!"
         },
@@ -3074,19 +3074,19 @@
           "question": "Which one is Car? 汽车 是哪一个？",
           "options": [
             {
-              "icon": "car",
-              "text": "Car"
-            },
-            {
               "icon": "bus",
               "text": "Bus"
+            },
+            {
+              "icon": "car",
+              "text": "Car"
             },
             {
               "icon": "school",
               "text": "School"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "Car",
           "praise": "Yes! It's Car!"
         },
@@ -3264,15 +3264,15 @@
               "text": "Tiger"
             },
             {
-              "icon": "monkey",
-              "text": "Monkey"
-            },
-            {
               "icon": "lion",
               "text": "Lion"
+            },
+            {
+              "icon": "monkey",
+              "text": "Monkey"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "Lion",
           "praise": "Yes! It's Lion!"
         },
@@ -3353,19 +3353,19 @@
           "question": "Which one is Fish? 鱼 是哪一个？",
           "options": [
             {
-              "icon": "fish",
-              "text": "Fish"
-            },
-            {
               "icon": "wave",
               "text": "Wave"
+            },
+            {
+              "icon": "fish",
+              "text": "Fish"
             },
             {
               "icon": "penguin",
               "text": "Penguin"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "Fish",
           "praise": "Yes! It's Fish!"
         },
@@ -3450,15 +3450,15 @@
               "text": "Gift"
             },
             {
-              "icon": "party",
-              "text": "Party"
-            },
-            {
               "icon": "cake",
               "text": "Cake"
+            },
+            {
+              "icon": "party",
+              "text": "Party"
             }
           ],
-          "answer": 1,
+          "answer": 2,
           "hint": "Party",
           "praise": "Yes! It's Party!"
         },
@@ -3543,15 +3543,15 @@
               "text": "Magnet"
             },
             {
-              "icon": "crystal",
-              "text": "Crystal"
-            },
-            {
               "icon": "bulb",
               "text": "Bulb"
+            },
+            {
+              "icon": "crystal",
+              "text": "Crystal"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "Bulb",
           "praise": "Yes! It's Bulb!"
         },
@@ -3632,19 +3632,19 @@
           "question": "Which one is Key? 钥匙 是哪一个？",
           "options": [
             {
-              "icon": "key",
-              "text": "Key"
-            },
-            {
               "icon": "magnet",
               "text": "Magnet"
+            },
+            {
+              "icon": "key",
+              "text": "Key"
             },
             {
               "icon": "slider",
               "text": "Slider"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "Key",
           "praise": "Yes! It's Key!"
         },
@@ -3822,15 +3822,15 @@
               "text": "Ice"
             },
             {
-              "icon": "polarbear",
-              "text": "Polar Bear"
-            },
-            {
               "icon": "snowflake",
               "text": "Snowflake"
+            },
+            {
+              "icon": "polarbear",
+              "text": "Polar Bear"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "Snowflake",
           "praise": "Yes! It's Snowflake!"
         },
@@ -4029,15 +4029,15 @@
               "text": "Rocket"
             },
             {
-              "icon": "wave",
-              "text": "Boat"
-            },
-            {
               "icon": "train",
               "text": "Train"
+            },
+            {
+              "icon": "wave",
+              "text": "Boat"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "Train 火车",
           "praise": "Yes! Train!"
         }
@@ -4098,16 +4098,16 @@
           "question": "Which one is 「星期二」?",
           "options": [
             {
-              "text": "Monday"
+              "text": "Tuesday"
             },
             {
               "text": "Wednesday"
             },
             {
-              "text": "Tuesday"
+              "text": "Monday"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "Tuesday",
           "praise": "Yes! Tuesday!"
         },
@@ -4168,16 +4168,16 @@
           "question": "Which one is 「星期四」?",
           "options": [
             {
-              "text": "Friday"
+              "text": "Thursday"
             },
             {
               "text": "Monday"
             },
             {
-              "text": "Thursday"
+              "text": "Friday"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "Thursday",
           "praise": "Yes! Thursday!"
         },
@@ -4209,13 +4209,13 @@
               "text": "Thursday"
             },
             {
-              "text": "Friday"
+              "text": "Monday"
             },
             {
-              "text": "Monday"
+              "text": "Friday"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "Monday",
           "praise": "Yes! Monday!"
         }
@@ -4257,16 +4257,16 @@
           "question": "Which one is 「星期六」?",
           "options": [
             {
-              "text": "Sunday"
+              "text": "Saturday"
             },
             {
               "text": "Monday"
             },
             {
-              "text": "Saturday"
+              "text": "Sunday"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "Saturday",
           "praise": "Yes! Saturday!"
         },
@@ -4298,13 +4298,13 @@
               "text": "Saturday"
             },
             {
-              "text": "Sunday"
+              "text": "Monday"
             },
             {
-              "text": "Monday"
+              "text": "Sunday"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "Monday",
           "praise": "Yes! Monday!"
         }
@@ -4368,13 +4368,13 @@
               "text": "March"
             },
             {
-              "text": "May"
+              "text": "April"
             },
             {
-              "text": "April"
+              "text": "May"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "April",
           "praise": "Yes! April!"
         },
@@ -4454,16 +4454,16 @@
           "question": "Which one is 「七月」?",
           "options": [
             {
-              "text": "June"
+              "text": "July"
             },
             {
               "text": "September"
             },
             {
-              "text": "July"
+              "text": "June"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "July",
           "praise": "Yes! July!"
         },
@@ -4546,13 +4546,13 @@
               "text": "October"
             },
             {
-              "text": "December"
+              "text": "November"
             },
             {
-              "text": "November"
+              "text": "December"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "November",
           "praise": "Yes! November!"
         },
@@ -4625,15 +4625,15 @@
               "text": "Summer"
             },
             {
-              "icon": "maple",
-              "text": "Autumn"
-            },
-            {
               "icon": "flower",
               "text": "Spring"
+            },
+            {
+              "icon": "maple",
+              "text": "Autumn"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "Spring",
           "praise": "Yes! Spring!"
         },
@@ -4643,19 +4643,19 @@
           "question": "Which one is 「夏天」?",
           "options": [
             {
-              "icon": "flower",
-              "text": "Spring"
+              "icon": "sun",
+              "text": "Summer"
             },
             {
               "icon": "maple",
               "text": "Autumn"
             },
             {
-              "icon": "sun",
-              "text": "Summer"
+              "icon": "flower",
+              "text": "Spring"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "Summer",
           "praise": "Yes! Summer!"
         },
@@ -4665,19 +4665,19 @@
           "question": "Which one is 「秋天」?",
           "options": [
             {
-              "icon": "flower",
-              "text": "Spring"
+              "icon": "maple",
+              "text": "Autumn"
             },
             {
               "icon": "sun",
               "text": "Summer"
             },
             {
-              "icon": "maple",
-              "text": "Autumn"
+              "icon": "flower",
+              "text": "Spring"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "Autumn",
           "praise": "Yes! Autumn!"
         }
@@ -4722,19 +4722,19 @@
           "question": "Which one is 「吃」?",
           "options": [
             {
-              "icon": "girl",
-              "text": "Run"
+              "icon": "apple",
+              "text": "Eat"
             },
             {
               "icon": "bed",
               "text": "Sleep"
             },
             {
-              "icon": "apple",
-              "text": "Eat"
+              "icon": "girl",
+              "text": "Run"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "Eat",
           "praise": "Yes! Eat!"
         },
@@ -4744,19 +4744,19 @@
           "question": "Which one is 「跑」?",
           "options": [
             {
-              "icon": "apple",
-              "text": "Eat"
+              "icon": "girl",
+              "text": "Run"
             },
             {
               "icon": "bed",
               "text": "Sleep"
             },
             {
-              "icon": "girl",
-              "text": "Run"
+              "icon": "apple",
+              "text": "Eat"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "Run",
           "praise": "Yes! Run!"
         },
@@ -4766,19 +4766,19 @@
           "question": "Which one is 「睡觉」?",
           "options": [
             {
-              "icon": "apple",
-              "text": "Eat"
+              "icon": "bed",
+              "text": "Sleep"
             },
             {
               "icon": "girl",
               "text": "Run"
             },
             {
-              "icon": "bed",
-              "text": "Sleep"
+              "icon": "apple",
+              "text": "Eat"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "Sleep",
           "praise": "Yes! Sleep!"
         }
@@ -4827,15 +4827,15 @@
               "text": "Draw"
             },
             {
-              "icon": "speaker",
-              "text": "Sing"
-            },
-            {
               "icon": "book",
               "text": "Read"
+            },
+            {
+              "icon": "speaker",
+              "text": "Sing"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "Read",
           "praise": "Yes! Read!"
         },
@@ -4849,15 +4849,15 @@
               "text": "Read"
             },
             {
-              "icon": "speaker",
-              "text": "Sing"
-            },
-            {
               "icon": "chart",
               "text": "Draw"
+            },
+            {
+              "icon": "speaker",
+              "text": "Sing"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "Draw",
           "praise": "Yes! Draw!"
         },
@@ -4871,15 +4871,15 @@
               "text": "Read"
             },
             {
-              "icon": "chart",
-              "text": "Draw"
-            },
-            {
               "icon": "speaker",
               "text": "Sing"
+            },
+            {
+              "icon": "chart",
+              "text": "Draw"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "Sing",
           "praise": "Yes! Sing!"
         }
@@ -4946,19 +4946,19 @@
           "question": "Which one is 「老师」?",
           "options": [
             {
-              "icon": "robot",
-              "text": "Robot Maker"
+              "icon": "teacher",
+              "text": "Teacher"
             },
             {
               "icon": "flask",
               "text": "Scientist"
             },
             {
-              "icon": "teacher",
-              "text": "Teacher"
+              "icon": "robot",
+              "text": "Robot Maker"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "Teacher",
           "praise": "Yes! Teacher!"
         },
@@ -4972,15 +4972,15 @@
               "text": "Robot Maker"
             },
             {
-              "icon": "teacher",
-              "text": "Teacher"
-            },
-            {
               "icon": "flask",
               "text": "Scientist"
+            },
+            {
+              "icon": "teacher",
+              "text": "Teacher"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "Scientist",
           "praise": "Yes! Scientist!"
         }
@@ -5047,19 +5047,19 @@
           "question": "Which one is 「爱」?",
           "options": [
             {
-              "icon": "happy",
-              "text": "Happy"
+              "icon": "heart",
+              "text": "Love"
             },
             {
               "icon": "excited",
               "text": "Excited"
             },
             {
-              "icon": "heart",
-              "text": "Love"
+              "icon": "happy",
+              "text": "Happy"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "Love",
           "praise": "Yes! Love!"
         },
@@ -5069,19 +5069,19 @@
           "question": "Which one is 「兴奋」?",
           "options": [
             {
-              "icon": "happy",
-              "text": "Happy"
+              "icon": "excited",
+              "text": "Excited"
             },
             {
               "icon": "heart",
               "text": "Love"
             },
             {
-              "icon": "excited",
-              "text": "Excited"
+              "icon": "happy",
+              "text": "Happy"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "Excited",
           "praise": "Yes! Excited!"
         }
@@ -5170,19 +5170,19 @@
           "question": "Which one is 「城堡」?",
           "options": [
             {
-              "icon": "school",
-              "text": "School"
+              "icon": "castle",
+              "text": "Castle"
             },
             {
               "icon": "shop",
               "text": "Shop"
             },
             {
-              "icon": "castle",
-              "text": "Castle"
+              "icon": "school",
+              "text": "School"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "Castle",
           "praise": "Yes! Castle!"
         }
@@ -5253,15 +5253,15 @@
               "text": "Big"
             },
             {
-              "icon": "bear",
-              "text": "Bear"
-            },
-            {
               "icon": "duck",
               "text": "Small"
+            },
+            {
+              "icon": "bear",
+              "text": "Bear"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "Small",
           "praise": "Yes! Small!"
         },
@@ -5275,15 +5275,15 @@
               "text": "Big"
             },
             {
-              "icon": "duck",
-              "text": "Small"
-            },
-            {
               "icon": "bear",
               "text": "Bear"
+            },
+            {
+              "icon": "duck",
+              "text": "Small"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "Bear",
           "praise": "Yes! Bear!"
         }
@@ -5303,16 +5303,16 @@
           "question": "Find: which one is Aa ?",
           "options": [
             {
-              "text": "Bb"
+              "text": "Aa"
             },
             {
               "text": "Cc"
             },
             {
-              "text": "Aa"
+              "text": "Bb"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "A for Aa",
           "praise": "Yes! Aa!"
         },
@@ -5322,16 +5322,16 @@
           "question": "小写 b 对应哪个大写字母？",
           "options": [
             {
-              "text": "D"
+              "text": "B"
             },
             {
               "text": "S"
             },
             {
-              "text": "B"
+              "text": "D"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "Bb = Bb",
           "praise": "Bb 配对成功！"
         },
@@ -5362,16 +5362,16 @@
           "question": "Which picture starts with Dd?",
           "options": [
             {
-              "icon": "flower"
+              "icon": "duck"
             },
             {
-              "icon": "duck"
+              "icon": "flower"
             },
             {
               "icon": "leaf"
             }
           ],
-          "answer": 1,
+          "answer": 0,
           "hint": "Duck 小鸭",
           "praise": "Great job!"
         },
@@ -5386,13 +5386,13 @@
               "text": "Aa"
             },
             {
-              "text": "Bb"
+              "text": "Ss"
             },
             {
-              "text": "Ss"
+              "text": "Bb"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "S for Ss",
           "praise": "Yes! Ss!"
         },
@@ -5501,15 +5501,15 @@
               "text": "Train"
             },
             {
-              "icon": "comet",
-              "text": "Comet"
-            },
-            {
               "icon": "rocket",
               "text": "Fast"
+            },
+            {
+              "icon": "comet",
+              "text": "Comet"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "Fast",
           "praise": "Yes! Fast!"
         },
@@ -5523,15 +5523,15 @@
               "text": "Fast"
             },
             {
-              "icon": "comet",
-              "text": "Comet"
-            },
-            {
               "icon": "train",
               "text": "Train"
+            },
+            {
+              "icon": "comet",
+              "text": "Comet"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "Train",
           "praise": "Yes! Train!"
         },
@@ -5541,19 +5541,19 @@
           "question": "Which one is 「彗星」?",
           "options": [
             {
-              "icon": "rocket",
-              "text": "Fast"
+              "icon": "comet",
+              "text": "Comet"
             },
             {
               "icon": "train",
               "text": "Train"
             },
             {
-              "icon": "comet",
-              "text": "Comet"
+              "icon": "rocket",
+              "text": "Fast"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "Comet",
           "praise": "Yes! Comet!"
         }
@@ -5598,19 +5598,19 @@
           "question": "Which one is 「面包」?",
           "options": [
             {
-              "icon": "milk",
-              "text": "Milk"
+              "icon": "bread",
+              "text": "Bread"
             },
             {
               "icon": "egg",
               "text": "Egg"
             },
             {
-              "icon": "bread",
-              "text": "Bread"
+              "icon": "milk",
+              "text": "Milk"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "Bread",
           "praise": "Yes! Bread!"
         },
@@ -5646,15 +5646,15 @@
               "text": "Bread"
             },
             {
-              "icon": "milk",
-              "text": "Milk"
-            },
-            {
               "icon": "egg",
               "text": "Egg"
+            },
+            {
+              "icon": "milk",
+              "text": "Milk"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "Egg",
           "praise": "Yes! Egg!"
         }
@@ -5725,15 +5725,15 @@
               "text": "Apple"
             },
             {
-              "icon": "candy",
-              "text": "Sweet"
-            },
-            {
               "icon": "banana",
               "text": "Banana"
+            },
+            {
+              "icon": "candy",
+              "text": "Sweet"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "Banana",
           "praise": "Yes! Banana!"
         },
@@ -5747,15 +5747,15 @@
               "text": "Apple"
             },
             {
-              "icon": "banana",
-              "text": "Banana"
-            },
-            {
               "icon": "candy",
               "text": "Sweet"
+            },
+            {
+              "icon": "banana",
+              "text": "Banana"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "Sweet",
           "praise": "Yes! Sweet!"
         }
@@ -5804,15 +5804,15 @@
               "text": "Pig"
             },
             {
-              "icon": "duck",
-              "text": "Duck"
-            },
-            {
               "icon": "cow",
               "text": "Cow"
+            },
+            {
+              "icon": "duck",
+              "text": "Duck"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "Cow",
           "praise": "Yes! Cow!"
         },
@@ -5826,15 +5826,15 @@
               "text": "Cow"
             },
             {
-              "icon": "duck",
-              "text": "Duck"
-            },
-            {
               "icon": "pig",
               "text": "Pig"
+            },
+            {
+              "icon": "duck",
+              "text": "Duck"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "Pig",
           "praise": "Yes! Pig!"
         },
@@ -5901,19 +5901,19 @@
           "question": "Which one is 「猫」?",
           "options": [
             {
-              "icon": "dog",
-              "text": "Dog"
+              "icon": "cat",
+              "text": "Cat"
             },
             {
               "icon": "rabbit",
               "text": "Rabbit"
             },
             {
-              "icon": "cat",
-              "text": "Cat"
+              "icon": "dog",
+              "text": "Dog"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "Cat",
           "praise": "Yes! Cat!"
         },
@@ -5945,19 +5945,19 @@
           "question": "Which one is 「兔子」?",
           "options": [
             {
-              "icon": "cat",
-              "text": "Cat"
+              "icon": "rabbit",
+              "text": "Rabbit"
             },
             {
               "icon": "dog",
               "text": "Dog"
             },
             {
-              "icon": "rabbit",
-              "text": "Rabbit"
+              "icon": "cat",
+              "text": "Cat"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "Rabbit",
           "praise": "Yes! Rabbit!"
         }
@@ -6002,19 +6002,19 @@
           "question": "Which one is 「狮子」?",
           "options": [
             {
-              "icon": "fox",
-              "text": "Fox"
+              "icon": "lion",
+              "text": "Lion"
             },
             {
               "icon": "polarbear",
               "text": "Polar Bear"
             },
             {
-              "icon": "lion",
-              "text": "Lion"
+              "icon": "fox",
+              "text": "Fox"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "Lion",
           "praise": "Yes! Lion!"
         },
@@ -6129,15 +6129,15 @@
               "text": "Fish"
             },
             {
-              "icon": "wave",
-              "text": "Wave"
-            },
-            {
               "icon": "penguin",
               "text": "Penguin"
+            },
+            {
+              "icon": "wave",
+              "text": "Wave"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "Penguin",
           "praise": "Yes! Penguin!"
         },
@@ -6226,19 +6226,19 @@
           "question": "Which one is 「月亮」?",
           "options": [
             {
-              "icon": "star",
-              "text": "Star"
+              "icon": "moon",
+              "text": "Moon"
             },
             {
               "icon": "sunface",
               "text": "Sun"
             },
             {
-              "icon": "moon",
-              "text": "Moon"
+              "icon": "star",
+              "text": "Star"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "Moon",
           "praise": "Yes! Moon!"
         },
@@ -6248,19 +6248,19 @@
           "question": "Which one is 「太阳」?",
           "options": [
             {
-              "icon": "star",
-              "text": "Star"
+              "icon": "sunface",
+              "text": "Sun"
             },
             {
               "icon": "moon",
               "text": "Moon"
             },
             {
-              "icon": "sunface",
-              "text": "Sun"
+              "icon": "star",
+              "text": "Star"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "Sun",
           "praise": "Yes! Sun!"
         }
@@ -6406,19 +6406,19 @@
           "question": "Which one is 「骰子」?",
           "options": [
             {
-              "icon": "block",
-              "text": "Block"
+              "icon": "dice",
+              "text": "Dice"
             },
             {
               "icon": "ball",
               "text": "Ball"
             },
             {
-              "icon": "dice",
-              "text": "Dice"
+              "icon": "block",
+              "text": "Block"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "Dice",
           "praise": "Yes! Dice!"
         },
@@ -6432,15 +6432,15 @@
               "text": "Dice"
             },
             {
-              "icon": "ball",
-              "text": "Ball"
-            },
-            {
               "icon": "block",
               "text": "Block"
+            },
+            {
+              "icon": "ball",
+              "text": "Ball"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "Block",
           "praise": "Yes! Block!"
         },
@@ -6454,15 +6454,15 @@
               "text": "Dice"
             },
             {
-              "icon": "block",
-              "text": "Block"
-            },
-            {
               "icon": "ball",
               "text": "Ball"
+            },
+            {
+              "icon": "block",
+              "text": "Block"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "Ball",
           "praise": "Yes! Ball!"
         }
@@ -6511,15 +6511,15 @@
               "text": "Baby Paw"
             },
             {
-              "icon": "girl",
-              "text": "Me"
-            },
-            {
               "icon": "foot",
               "text": "Foot"
+            },
+            {
+              "icon": "girl",
+              "text": "Me"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "Foot",
           "praise": "Yes! Foot!"
         },
@@ -6529,19 +6529,19 @@
           "question": "Which one is 「小脚丫」?",
           "options": [
             {
-              "icon": "foot",
-              "text": "Foot"
+              "icon": "paw",
+              "text": "Baby Paw"
             },
             {
               "icon": "girl",
               "text": "Me"
             },
             {
-              "icon": "paw",
-              "text": "Baby Paw"
+              "icon": "foot",
+              "text": "Foot"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "Baby Paw",
           "praise": "Yes! Baby Paw!"
         },
@@ -6551,19 +6551,19 @@
           "question": "Which one is 「我」?",
           "options": [
             {
-              "icon": "foot",
-              "text": "Foot"
+              "icon": "girl",
+              "text": "Me"
             },
             {
               "icon": "paw",
               "text": "Baby Paw"
             },
             {
-              "icon": "girl",
-              "text": "Me"
+              "icon": "foot",
+              "text": "Foot"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "Me",
           "praise": "Yes! Me!"
         }
@@ -6608,19 +6608,19 @@
           "question": "Which one is 「彩虹」?",
           "options": [
             {
-              "icon": "apple",
-              "text": "Red"
+              "icon": "rainbow",
+              "text": "Rainbow"
             },
             {
               "icon": "leaf",
               "text": "Green"
             },
             {
-              "icon": "rainbow",
-              "text": "Rainbow"
+              "icon": "apple",
+              "text": "Red"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "Rainbow",
           "praise": "Yes! Rainbow!"
         },
@@ -6634,15 +6634,15 @@
               "text": "Rainbow"
             },
             {
-              "icon": "leaf",
-              "text": "Green"
-            },
-            {
               "icon": "apple",
               "text": "Red"
+            },
+            {
+              "icon": "leaf",
+              "text": "Green"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "Red",
           "praise": "Yes! Red!"
         },
@@ -6713,13 +6713,13 @@
               "text": "Six"
             },
             {
-              "text": "Seven"
+              "text": "Five"
             },
             {
-              "text": "Five"
+              "text": "Seven"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "Five",
           "praise": "Yes! Five!"
         },
@@ -6732,13 +6732,13 @@
               "text": "Five"
             },
             {
-              "text": "Seven"
+              "text": "Six"
             },
             {
-              "text": "Six"
+              "text": "Seven"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "Six",
           "praise": "Yes! Six!"
         },
@@ -6806,15 +6806,15 @@
               "text": "Bye"
             },
             {
-              "icon": "heart",
-              "text": "Thank you"
-            },
-            {
               "icon": "girl",
               "text": "Hello"
+            },
+            {
+              "icon": "heart",
+              "text": "Thank you"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "Hello",
           "praise": "Yes! Hello!"
         },
@@ -6828,15 +6828,15 @@
               "text": "Hello"
             },
             {
-              "icon": "heart",
-              "text": "Thank you"
-            },
-            {
               "icon": "party",
               "text": "Bye"
+            },
+            {
+              "icon": "heart",
+              "text": "Thank you"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "Bye",
           "praise": "Yes! Bye!"
         },
@@ -6903,19 +6903,19 @@
           "question": "Which one is 「杯子」?",
           "options": [
             {
-              "icon": "book",
-              "text": "Book"
+              "icon": "cup",
+              "text": "Cup"
             },
             {
               "icon": "jar",
               "text": "Jar"
             },
             {
-              "icon": "cup",
-              "text": "Cup"
+              "icon": "book",
+              "text": "Book"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "Cup",
           "praise": "Yes! Cup!"
         },
@@ -6925,19 +6925,19 @@
           "question": "Which one is 「书」?",
           "options": [
             {
-              "icon": "cup",
-              "text": "Cup"
+              "icon": "book",
+              "text": "Book"
             },
             {
               "icon": "jar",
               "text": "Jar"
             },
             {
-              "icon": "book",
-              "text": "Book"
+              "icon": "cup",
+              "text": "Cup"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "Book",
           "praise": "Yes! Book!"
         },
@@ -6947,19 +6947,19 @@
           "question": "Which one is 「罐」?",
           "options": [
             {
-              "icon": "cup",
-              "text": "Cup"
+              "icon": "jar",
+              "text": "Jar"
             },
             {
               "icon": "book",
               "text": "Book"
             },
             {
-              "icon": "jar",
-              "text": "Jar"
+              "icon": "cup",
+              "text": "Cup"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "Jar",
           "praise": "Yes! Jar!"
         }
@@ -6995,16 +6995,16 @@
           "question": "The first day of school is——",
           "options": [
             {
-              "text": "Monday"
+              "text": "Sunday"
             },
             {
               "text": "Saturday"
             },
             {
-              "text": "Sunday"
+              "text": "Monday"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "上学第一天",
           "praise": "Yes! Monday!"
         },
@@ -7083,19 +7083,19 @@
           "question": "Flowers bloom in——",
           "options": [
             {
-              "icon": "flower",
-              "text": "Spring"
-            },
-            {
               "icon": "snowflake",
               "text": "Winter"
+            },
+            {
+              "icon": "flower",
+              "text": "Spring"
             },
             {
               "icon": "maple",
               "text": "Autumn"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "春天开花",
           "praise": "Yes! Spring!"
         }
@@ -7133,16 +7133,16 @@
           "question": "「我会游泳」是——",
           "options": [
             {
-              "text": "I can swim"
+              "text": "I can sing"
             },
             {
               "text": "I can run"
             },
             {
-              "text": "I can sing"
+              "text": "I can swim"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "swim 游泳",
           "praise": "Yes! I can swim!"
         },
@@ -7152,16 +7152,16 @@
           "question": "「我会读书」是——",
           "options": [
             {
-              "text": "I can read"
+              "text": "I can fly"
             },
             {
               "text": "I can jump"
             },
             {
-              "text": "I can fly"
+              "text": "I can read"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "read 读书",
           "praise": "Yes! I can read!"
         }
@@ -7199,16 +7199,16 @@
           "question": "「我喜欢小猫」是——",
           "options": [
             {
-              "text": "I like cats"
+              "text": "I like cake"
             },
             {
               "text": "I like dogs"
             },
             {
-              "text": "I like cake"
+              "text": "I like cats"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "cats 小猫复数",
           "praise": "Yes! I like cats!"
         }
@@ -7306,15 +7306,15 @@
               "text": "Book"
             },
             {
-              "icon": "chart",
-              "text": "Chart"
-            },
-            {
               "icon": "clip",
               "text": "Clip"
+            },
+            {
+              "icon": "chart",
+              "text": "Chart"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "Clip",
           "praise": "Yes! Clip!"
         }
@@ -7390,15 +7390,15 @@
               "text": "Tree"
             },
             {
-              "icon": "bush",
-              "text": "Bush"
-            },
-            {
               "icon": "flower",
               "text": "Flower"
+            },
+            {
+              "icon": "bush",
+              "text": "Bush"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "Flower",
           "praise": "Yes! Flower!"
         },
@@ -7408,19 +7408,19 @@
           "question": "Which one is 「灌木」?",
           "options": [
             {
-              "icon": "tree",
-              "text": "Tree"
+              "icon": "bush",
+              "text": "Bush"
             },
             {
               "icon": "flower",
               "text": "Flower"
             },
             {
-              "icon": "bush",
-              "text": "Bush"
+              "icon": "tree",
+              "text": "Tree"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "Bush",
           "praise": "Yes! Bush!"
         }
@@ -7474,15 +7474,15 @@
               "text": "Palm"
             },
             {
-              "icon": "desert",
-              "text": "Sand"
-            },
-            {
               "icon": "wave",
               "text": "Wave"
+            },
+            {
+              "icon": "desert",
+              "text": "Sand"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "Wave",
           "praise": "Yes! Wave!"
         },
@@ -7571,19 +7571,19 @@
           "question": "Which one is 「喇叭」?",
           "options": [
             {
-              "icon": "sing",
-              "text": "Sing"
+              "icon": "speaker",
+              "text": "Speaker"
             },
             {
               "icon": "party",
               "text": "Party"
             },
             {
-              "icon": "speaker",
-              "text": "Speaker"
+              "icon": "sing",
+              "text": "Sing"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "Speaker",
           "praise": "Yes! Speaker!"
         },
@@ -7593,19 +7593,19 @@
           "question": "Which one is 「唱歌」?",
           "options": [
             {
-              "icon": "speaker",
-              "text": "Speaker"
+              "icon": "sing",
+              "text": "Sing"
             },
             {
               "icon": "party",
               "text": "Party"
             },
             {
-              "icon": "sing",
-              "text": "Sing"
+              "icon": "speaker",
+              "text": "Speaker"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "Sing",
           "praise": "Yes! Sing!"
         },
@@ -7615,19 +7615,19 @@
           "question": "Which one is 「派对」?",
           "options": [
             {
-              "icon": "speaker",
-              "text": "Speaker"
+              "icon": "party",
+              "text": "Party"
             },
             {
               "icon": "sing",
               "text": "Sing"
             },
             {
-              "icon": "party",
-              "text": "Party"
+              "icon": "speaker",
+              "text": "Speaker"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "Party",
           "praise": "Yes! Party!"
         }
@@ -7676,15 +7676,15 @@
               "text": "Shoe"
             },
             {
-              "icon": "hat",
-              "text": "Hat"
-            },
-            {
               "icon": "hanger",
               "text": "Hanger"
+            },
+            {
+              "icon": "hat",
+              "text": "Hat"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "Hanger",
           "praise": "Yes! Hanger!"
         },
@@ -7698,15 +7698,15 @@
               "text": "Hanger"
             },
             {
-              "icon": "hat",
-              "text": "Hat"
-            },
-            {
               "icon": "shoe",
               "text": "Shoe"
+            },
+            {
+              "icon": "hat",
+              "text": "Hat"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "Shoe",
           "praise": "Yes! Shoe!"
         },
@@ -7716,19 +7716,19 @@
           "question": "Which one is 「帽子」?",
           "options": [
             {
-              "icon": "hanger",
-              "text": "Hanger"
+              "icon": "hat",
+              "text": "Hat"
             },
             {
               "icon": "shoe",
               "text": "Shoe"
             },
             {
-              "icon": "hat",
-              "text": "Hat"
+              "icon": "hanger",
+              "text": "Hanger"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "Hat",
           "praise": "Yes! Hat!"
         }
@@ -7777,15 +7777,15 @@
               "text": "Bus"
             },
             {
-              "icon": "rocket",
-              "text": "Rocket"
-            },
-            {
               "icon": "car",
               "text": "Car"
+            },
+            {
+              "icon": "rocket",
+              "text": "Rocket"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "Car",
           "praise": "Yes! Car!"
         },
@@ -7795,19 +7795,19 @@
           "question": "Which one is 「公交」?",
           "options": [
             {
-              "icon": "car",
-              "text": "Car"
+              "icon": "bus",
+              "text": "Bus"
             },
             {
               "icon": "rocket",
               "text": "Rocket"
             },
             {
-              "icon": "bus",
-              "text": "Bus"
+              "icon": "car",
+              "text": "Car"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "Bus",
           "praise": "Yes! Bus!"
         },
@@ -7979,15 +7979,15 @@
               "text": "Shield"
             },
             {
-              "icon": "gift",
-              "text": "Gift"
-            },
-            {
               "icon": "balloon",
               "text": "Balloon"
+            },
+            {
+              "icon": "gift",
+              "text": "Gift"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "Balloon",
           "praise": "Yes! Balloon!"
         },
@@ -7997,19 +7997,19 @@
           "question": "Which one is 「盾牌」?",
           "options": [
             {
-              "icon": "balloon",
-              "text": "Balloon"
+              "icon": "shield",
+              "text": "Shield"
             },
             {
               "icon": "gift",
               "text": "Gift"
             },
             {
-              "icon": "shield",
-              "text": "Shield"
+              "icon": "balloon",
+              "text": "Balloon"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "Shield",
           "praise": "Yes! Shield!"
         },
@@ -8019,19 +8019,19 @@
           "question": "Which one is 「礼物」?",
           "options": [
             {
-              "icon": "balloon",
-              "text": "Balloon"
+              "icon": "gift",
+              "text": "Gift"
             },
             {
               "icon": "shield",
               "text": "Shield"
             },
             {
-              "icon": "gift",
-              "text": "Gift"
+              "icon": "balloon",
+              "text": "Balloon"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "Gift",
           "praise": "Yes! Gift!"
         }
@@ -8080,15 +8080,15 @@
               "text": "Rainbow"
             },
             {
-              "icon": "blackhole",
-              "text": "Black Hole"
-            },
-            {
               "icon": "comet",
               "text": "Comet"
+            },
+            {
+              "icon": "blackhole",
+              "text": "Black Hole"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "Comet",
           "praise": "Yes! Comet!"
         },
@@ -8102,15 +8102,15 @@
               "text": "Comet"
             },
             {
-              "icon": "blackhole",
-              "text": "Black Hole"
-            },
-            {
               "icon": "rainbow",
               "text": "Rainbow"
+            },
+            {
+              "icon": "blackhole",
+              "text": "Black Hole"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "Rainbow",
           "praise": "Yes! Rainbow!"
         },
@@ -8177,19 +8177,19 @@
           "question": "Which one is 「霸王龙」?",
           "options": [
             {
-              "icon": "roar",
-              "text": "Roar"
+              "icon": "trex",
+              "text": "T-Rex"
             },
             {
               "icon": "bronto",
               "text": "Long Neck"
             },
             {
-              "icon": "trex",
-              "text": "T-Rex"
+              "icon": "roar",
+              "text": "Roar"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "T-Rex",
           "praise": "Yes! T-Rex!"
         },
@@ -8203,15 +8203,15 @@
               "text": "T-Rex"
             },
             {
-              "icon": "bronto",
-              "text": "Long Neck"
-            },
-            {
               "icon": "roar",
               "text": "Roar"
+            },
+            {
+              "icon": "bronto",
+              "text": "Long Neck"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "Roar",
           "praise": "Yes! Roar!"
         },
@@ -8221,19 +8221,19 @@
           "question": "Which one is 「长脖子」?",
           "options": [
             {
-              "icon": "trex",
-              "text": "T-Rex"
+              "icon": "bronto",
+              "text": "Long Neck"
             },
             {
               "icon": "roar",
               "text": "Roar"
             },
             {
-              "icon": "bronto",
-              "text": "Long Neck"
+              "icon": "trex",
+              "text": "T-Rex"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "Long Neck",
           "praise": "Yes! Long Neck!"
         }
@@ -8282,15 +8282,15 @@
               "text": "Eats Leaves"
             },
             {
-              "icon": "trex",
-              "text": "T-Rex"
-            },
-            {
               "icon": "bronto",
               "text": "Long Neck"
+            },
+            {
+              "icon": "trex",
+              "text": "T-Rex"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "Long Neck",
           "praise": "Yes! Long Neck!"
         },
@@ -8300,19 +8300,19 @@
           "question": "Which one is 「吃叶子」?",
           "options": [
             {
-              "icon": "bronto",
-              "text": "Long Neck"
+              "icon": "leaf",
+              "text": "Eats Leaves"
             },
             {
               "icon": "trex",
               "text": "T-Rex"
             },
             {
-              "icon": "leaf",
-              "text": "Eats Leaves"
+              "icon": "bronto",
+              "text": "Long Neck"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "Eats Leaves",
           "praise": "Yes! Eats Leaves!"
         },
@@ -8326,15 +8326,15 @@
               "text": "Long Neck"
             },
             {
-              "icon": "leaf",
-              "text": "Eats Leaves"
-            },
-            {
               "icon": "trex",
               "text": "T-Rex"
+            },
+            {
+              "icon": "leaf",
+              "text": "Eats Leaves"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "T-Rex",
           "praise": "Yes! T-Rex!"
         }
@@ -8354,16 +8354,16 @@
           "question": "Find: which one is Aa ?",
           "options": [
             {
-              "text": "Bb"
+              "text": "Aa"
             },
             {
               "text": "Cc"
             },
             {
-              "text": "Aa"
+              "text": "Bb"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "A for Aa",
           "praise": "Yes! Aa!"
         },
@@ -8373,16 +8373,16 @@
           "question": "小写 b 对应哪个大写字母？",
           "options": [
             {
-              "text": "D"
+              "text": "B"
             },
             {
               "text": "S"
             },
             {
-              "text": "B"
+              "text": "D"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "Bb = Bb",
           "praise": "Bb 配对成功！"
         },
@@ -8413,16 +8413,16 @@
           "question": "Which picture starts with Dd?",
           "options": [
             {
-              "icon": "flower"
+              "icon": "duck"
             },
             {
-              "icon": "duck"
+              "icon": "flower"
             },
             {
               "icon": "leaf"
             }
           ],
-          "answer": 1,
+          "answer": 0,
           "hint": "Duck 小鸭",
           "praise": "Great job!"
         },
@@ -8434,16 +8434,16 @@
           "question": "Find: which one is Ss ?",
           "options": [
             {
-              "text": "Aa"
+              "text": "Ss"
             },
             {
               "text": "Bb"
             },
             {
-              "text": "Ss"
+              "text": "Aa"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "S for Ss",
           "praise": "Yes! Ss!"
         },
@@ -8453,16 +8453,16 @@
           "question": "小写 m 对应哪个大写字母？",
           "options": [
             {
-              "text": "M"
+              "text": "G"
             },
             {
-              "text": "G"
+              "text": "M"
             },
             {
               "text": "E"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "Mm = Mm",
           "praise": "Mm 配对成功！"
         }
@@ -8653,15 +8653,15 @@
               "text": "Cup"
             },
             {
-              "icon": "jar",
-              "text": "Jar"
-            },
-            {
               "icon": "milk",
               "text": "Milk"
+            },
+            {
+              "icon": "jar",
+              "text": "Jar"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "Milk",
           "praise": "Yes! Milk!"
         },
@@ -8671,19 +8671,19 @@
           "question": "Which one is 「杯子」?",
           "options": [
             {
-              "icon": "milk",
-              "text": "Milk"
+              "icon": "cup",
+              "text": "Cup"
             },
             {
               "icon": "jar",
               "text": "Jar"
             },
             {
-              "icon": "cup",
-              "text": "Cup"
+              "icon": "milk",
+              "text": "Milk"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "Cup",
           "praise": "Yes! Cup!"
         },
@@ -8697,15 +8697,15 @@
               "text": "Milk"
             },
             {
-              "icon": "cup",
-              "text": "Cup"
-            },
-            {
               "icon": "jar",
               "text": "Jar"
+            },
+            {
+              "icon": "cup",
+              "text": "Cup"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "Jar",
           "praise": "Yes! Jar!"
         }
@@ -8750,19 +8750,19 @@
           "question": "Which one is 「小脚丫」?",
           "options": [
             {
-              "icon": "duck",
-              "text": "Duckling"
+              "icon": "paw",
+              "text": "Baby Paw"
             },
             {
               "icon": "bear",
               "text": "Cub"
             },
             {
-              "icon": "paw",
-              "text": "Baby Paw"
+              "icon": "duck",
+              "text": "Duckling"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "Baby Paw",
           "praise": "Yes! Baby Paw!"
         },
@@ -8772,19 +8772,19 @@
           "question": "Which one is 「小鸭」?",
           "options": [
             {
-              "icon": "paw",
-              "text": "Baby Paw"
+              "icon": "duck",
+              "text": "Duckling"
             },
             {
               "icon": "bear",
               "text": "Cub"
             },
             {
-              "icon": "duck",
-              "text": "Duckling"
+              "icon": "paw",
+              "text": "Baby Paw"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "Duckling",
           "praise": "Yes! Duckling!"
         },
@@ -8794,19 +8794,19 @@
           "question": "Which one is 「小熊」?",
           "options": [
             {
-              "icon": "paw",
-              "text": "Baby Paw"
+              "icon": "bear",
+              "text": "Cub"
             },
             {
               "icon": "duck",
               "text": "Duckling"
             },
             {
-              "icon": "bear",
-              "text": "Cub"
+              "icon": "paw",
+              "text": "Baby Paw"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "Cub",
           "praise": "Yes! Cub!"
         }
@@ -8851,19 +8851,19 @@
           "question": "Which one is 「热」?",
           "options": [
             {
-              "icon": "snowflake",
-              "text": "Cold"
+              "icon": "sun",
+              "text": "Hot"
             },
             {
               "icon": "ice",
               "text": "Ice"
             },
             {
-              "icon": "sun",
-              "text": "Hot"
+              "icon": "snowflake",
+              "text": "Cold"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "Hot",
           "praise": "Yes! Hot!"
         },
@@ -8877,15 +8877,15 @@
               "text": "Hot"
             },
             {
-              "icon": "ice",
-              "text": "Ice"
-            },
-            {
               "icon": "snowflake",
               "text": "Cold"
+            },
+            {
+              "icon": "ice",
+              "text": "Ice"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "Cold",
           "praise": "Yes! Cold!"
         },
@@ -8978,15 +8978,15 @@
               "text": "Robot"
             },
             {
-              "icon": "magnet",
-              "text": "Magnet"
-            },
-            {
               "icon": "flask",
               "text": "Science"
+            },
+            {
+              "icon": "magnet",
+              "text": "Magnet"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "Science",
           "praise": "Yes! Science!"
         },
@@ -8996,19 +8996,19 @@
           "question": "Which one is 「磁铁」?",
           "options": [
             {
-              "icon": "robot",
-              "text": "Robot"
+              "icon": "magnet",
+              "text": "Magnet"
             },
             {
               "icon": "flask",
               "text": "Science"
             },
             {
-              "icon": "magnet",
-              "text": "Magnet"
+              "icon": "robot",
+              "text": "Robot"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "Magnet",
           "praise": "Yes! Magnet!"
         }
@@ -9075,19 +9075,19 @@
           "question": "Which one is 「游戏」?",
           "options": [
             {
-              "icon": "party",
-              "text": "Fun"
+              "icon": "dice",
+              "text": "Game"
             },
             {
               "icon": "balloon",
               "text": "Balloon"
             },
             {
-              "icon": "dice",
-              "text": "Game"
+              "icon": "party",
+              "text": "Fun"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "Game",
           "praise": "Yes! Game!"
         },
@@ -9101,15 +9101,15 @@
               "text": "Fun"
             },
             {
-              "icon": "dice",
-              "text": "Game"
-            },
-            {
               "icon": "balloon",
               "text": "Balloon"
+            },
+            {
+              "icon": "dice",
+              "text": "Game"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "Balloon",
           "praise": "Yes! Balloon!"
         }
@@ -9158,15 +9158,15 @@
               "text": "Candy"
             },
             {
-              "icon": "cake",
-              "text": "Cake"
-            },
-            {
               "icon": "bread",
               "text": "Bread"
+            },
+            {
+              "icon": "cake",
+              "text": "Cake"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "Bread",
           "praise": "Yes! Bread!"
         },
@@ -9176,19 +9176,19 @@
           "question": "Which one is 「糖果」?",
           "options": [
             {
-              "icon": "bread",
-              "text": "Bread"
+              "icon": "candy",
+              "text": "Candy"
             },
             {
               "icon": "cake",
               "text": "Cake"
             },
             {
-              "icon": "candy",
-              "text": "Candy"
+              "icon": "bread",
+              "text": "Bread"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "Candy",
           "praise": "Yes! Candy!"
         },
@@ -9233,13 +9233,13 @@
               "text": "Bb"
             },
             {
-              "text": "Cc"
+              "text": "Aa"
             },
             {
-              "text": "Aa"
+              "text": "Cc"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "A for Aa",
           "praise": "Yes! Aa!"
         },
@@ -9249,16 +9249,16 @@
           "question": "小写 b 对应哪个大写字母？",
           "options": [
             {
-              "text": "D"
+              "text": "B"
             },
             {
               "text": "S"
             },
             {
-              "text": "B"
+              "text": "D"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "Bb = Bb",
           "praise": "Bb 配对成功！"
         },
@@ -9292,13 +9292,13 @@
               "icon": "flower"
             },
             {
-              "icon": "duck"
+              "icon": "leaf"
             },
             {
-              "icon": "leaf"
+              "icon": "duck"
             }
           ],
-          "answer": 1,
+          "answer": 2,
           "hint": "Duck 小鸭",
           "praise": "Great job!"
         },
@@ -9313,13 +9313,13 @@
               "text": "Aa"
             },
             {
-              "text": "Bb"
+              "text": "Ss"
             },
             {
-              "text": "Ss"
+              "text": "Bb"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "S for Ss",
           "praise": "Yes! Ss!"
         },
@@ -9329,16 +9329,16 @@
           "question": "小写 m 对应哪个大写字母？",
           "options": [
             {
-              "text": "M"
+              "text": "G"
             },
             {
-              "text": "G"
+              "text": "M"
             },
             {
               "text": "E"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "Mm = Mm",
           "praise": "Mm 配对成功！"
         },
@@ -9353,13 +9353,13 @@
               "text": "Cc"
             },
             {
-              "text": "Dd"
+              "text": "Ff"
             },
             {
-              "text": "Ff"
+              "text": "Dd"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "F for Ff",
           "praise": "Yes! Ff!"
         },

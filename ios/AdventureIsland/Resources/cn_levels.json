@@ -102,16 +102,16 @@
           "question": "找一找：哪张图片是「日」？",
           "options": [
             {
-              "icon": "sunrise"
+              "icon": "cake"
             },
             {
               "icon": "moon"
             },
             {
-              "icon": "cake"
+              "icon": "sunrise"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "想想刚才的图片：「日」",
           "praise": "眼睛真亮！日 找对啦！"
         },
@@ -123,16 +123,16 @@
           "question": "看一看：这张图变成的字是哪个？",
           "options": [
             {
-              "text": "日"
+              "text": "月"
             },
             {
-              "text": "月"
+              "text": "日"
             },
             {
               "text": "水"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "想一想它像什么字",
           "praise": "对！这张图就是「日」"
         },
@@ -142,16 +142,16 @@
           "question": "「日」可以组成哪个词？",
           "options": [
             {
-              "text": "月亮"
+              "text": "日出"
             },
             {
-              "text": "日出"
+              "text": "月亮"
             },
             {
               "text": "月牙"
             }
           ],
-          "answer": 1,
+          "answer": 0,
           "hint": "找一找有「日」的词",
           "praise": "组词成功：日出！"
         },
@@ -161,16 +161,16 @@
           "question": "练一练：哪个字是「日」？",
           "options": [
             {
-              "text": "日"
+              "text": "木"
             },
             {
-              "text": "木"
+              "text": "日"
             },
             {
               "text": "口"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "想一想刚才的字",
           "praise": "记住啦！"
         },
@@ -182,16 +182,16 @@
           "question": "再找一找：哪张图片是「日」？",
           "options": [
             {
-              "icon": "moon"
+              "icon": "sunrise"
             },
             {
-              "icon": "sunrise"
+              "icon": "moon"
             },
             {
               "icon": "cake"
             }
           ],
-          "answer": 1,
+          "answer": 0,
           "hint": "「日」长什么样",
           "praise": "又找对啦！日！"
         },
@@ -405,16 +405,16 @@
           "question": "练一练：哪个字是「月」？",
           "options": [
             {
-              "text": "木"
+              "text": "月"
             },
             {
-              "text": "月"
+              "text": "木"
             },
             {
               "text": "口"
             }
           ],
-          "answer": 1,
+          "answer": 0,
           "hint": "想一想刚才的字",
           "praise": "记住啦！"
         },
@@ -426,16 +426,16 @@
           "question": "再找一找：哪张图片是「月」？",
           "options": [
             {
-              "icon": "moon"
+              "icon": "sun"
             },
             {
-              "icon": "sun"
+              "icon": "moon"
             },
             {
               "icon": "star"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "「月」长什么样",
           "praise": "又找对啦！月！"
         },
@@ -551,16 +551,16 @@
           "question": "找一找：哪张图片是「水」？",
           "options": [
             {
-              "icon": "wave"
+              "icon": "sun"
             },
             {
-              "icon": "sun"
+              "icon": "wave"
             },
             {
               "icon": "crystal"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "想想刚才的图片：「水」",
           "praise": "眼睛真亮！水 找对啦！"
         },
@@ -575,13 +575,13 @@
               "text": "人"
             },
             {
-              "text": "口"
+              "text": "水"
             },
             {
-              "text": "水"
+              "text": "口"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "想一想它像什么字",
           "praise": "对！这张图就是「水」"
         },
@@ -591,16 +591,16 @@
           "question": "「水」可以组成哪个词？",
           "options": [
             {
-              "text": "海水"
+              "text": "上山"
             },
             {
-              "text": "上山"
+              "text": "海水"
             },
             {
               "text": "山林"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "找一找有「水」的词",
           "praise": "组词成功：海水！"
         },
@@ -613,13 +613,13 @@
               "text": "木"
             },
             {
-              "text": "口"
+              "text": "水"
             },
             {
-              "text": "水"
+              "text": "口"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "想一想刚才的字",
           "praise": "记住啦！"
         },
@@ -757,13 +757,13 @@
               "icon": "rocket"
             },
             {
-              "icon": "volcano"
+              "icon": "home"
             },
             {
-              "icon": "home"
+              "icon": "volcano"
             }
           ],
-          "answer": 1,
+          "answer": 2,
           "hint": "想想刚才的图片：「山」",
           "praise": "眼睛真亮！山 找对啦！"
         },
@@ -775,16 +775,16 @@
           "question": "看一看：这张图变成的字是哪个？",
           "options": [
             {
-              "text": "山"
+              "text": "田"
             },
             {
               "text": "天"
             },
             {
-              "text": "田"
+              "text": "山"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "想一想它像什么字",
           "praise": "对！这张图就是「山」"
         },
@@ -813,16 +813,16 @@
           "question": "练一练：哪个字是「山」？",
           "options": [
             {
-              "text": "山"
+              "text": "口"
             },
             {
               "text": "木"
             },
             {
-              "text": "口"
+              "text": "山"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "想一想刚才的字",
           "praise": "记住啦！"
         },
@@ -834,16 +834,16 @@
           "question": "再找一找：哪张图片是「山」？",
           "options": [
             {
-              "icon": "rocket"
+              "icon": "volcano"
             },
             {
               "icon": "home"
             },
             {
-              "icon": "volcano"
+              "icon": "rocket"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "「山」长什么样",
           "praise": "又找对啦！山！"
         },
@@ -950,16 +950,16 @@
           "question": "找一找：哪张图片是「木」？",
           "options": [
             {
-              "icon": "sprout"
+              "icon": "flower"
             },
             {
-              "icon": "flower"
+              "icon": "sprout"
             },
             {
               "icon": "rock"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "想想刚才的图片：「木」",
           "praise": "眼睛真亮！木 找对啦！"
         },
@@ -974,13 +974,13 @@
               "text": "石"
             },
             {
-              "text": "木"
+              "text": "火"
             },
             {
-              "text": "火"
+              "text": "木"
             }
           ],
-          "answer": 1,
+          "answer": 2,
           "hint": "想一想它像什么字",
           "praise": "对！这张图就是「木」"
         },
@@ -990,16 +990,16 @@
           "question": "「木」可以组成哪个词？",
           "options": [
             {
-              "text": "人们"
+              "text": "树木"
             },
             {
               "text": "开口"
             },
             {
-              "text": "树木"
+              "text": "人们"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "找一找有「木」的词",
           "praise": "组词成功：树木！"
         },
@@ -1012,13 +1012,13 @@
               "text": "水"
             },
             {
-              "text": "木"
+              "text": "口"
             },
             {
-              "text": "口"
+              "text": "木"
             }
           ],
-          "answer": 1,
+          "answer": 2,
           "hint": "想一想刚才的字",
           "praise": "记住啦！"
         },
@@ -1030,16 +1030,16 @@
           "question": "再找一找：哪张图片是「木」？",
           "options": [
             {
-              "icon": "flower"
+              "icon": "sprout"
             },
             {
-              "icon": "sprout"
+              "icon": "flower"
             },
             {
               "icon": "rock"
             }
           ],
-          "answer": 1,
+          "answer": 0,
           "hint": "「木」长什么样",
           "praise": "又找对啦！木！"
         },
@@ -1159,13 +1159,13 @@
               "icon": "sun"
             },
             {
-              "icon": "duck"
+              "icon": "girl"
             },
             {
-              "icon": "girl"
+              "icon": "duck"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "想想刚才的图片：「人」",
           "praise": "眼睛真亮！人 找对啦！"
         },
@@ -1177,16 +1177,16 @@
           "question": "看一看：这张图变成的字是哪个？",
           "options": [
             {
-              "text": "花"
+              "text": "人"
             },
             {
               "text": "草"
             },
             {
-              "text": "人"
+              "text": "花"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "想一想它像什么字",
           "praise": "对！这张图就是「人」"
         },
@@ -1196,16 +1196,16 @@
           "question": "「人」可以组成哪个词？",
           "options": [
             {
-              "text": "大人"
+              "text": "天空"
             },
             {
-              "text": "天空"
+              "text": "大人"
             },
             {
               "text": "今天"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "找一找有「人」的词",
           "praise": "组词成功：大人！"
         },
@@ -1218,13 +1218,13 @@
               "text": "木"
             },
             {
-              "text": "口"
+              "text": "人"
             },
             {
-              "text": "人"
+              "text": "口"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "想一想刚才的字",
           "praise": "记住啦！"
         },
@@ -1236,16 +1236,16 @@
           "question": "再找一找：哪张图片是「人」？",
           "options": [
             {
-              "icon": "girl"
+              "icon": "sun"
             },
             {
               "icon": "duck"
             },
             {
-              "icon": "sun"
+              "icon": "girl"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "「人」长什么样",
           "praise": "又找对啦！人！"
         },
@@ -1345,16 +1345,16 @@
           "question": "找一找：哪张图片是「口」？",
           "options": [
             {
-              "icon": "speaker"
+              "icon": "clock"
             },
             {
-              "icon": "clock"
+              "icon": "speaker"
             },
             {
               "icon": "moon"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "想想刚才的图片：「口」",
           "praise": "眼睛真亮！口 找对啦！"
         },
@@ -1366,16 +1366,16 @@
           "question": "看一看：这张图变成的字是哪个？",
           "options": [
             {
-              "text": "口"
+              "text": "一"
             },
             {
               "text": "鸟"
             },
             {
-              "text": "一"
+              "text": "口"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "想一想它像什么字",
           "praise": "对！这张图就是「口」"
         },
@@ -1385,16 +1385,16 @@
           "question": "「口」可以组成哪个词？",
           "options": [
             {
-              "text": "水田"
+              "text": "开口"
             },
             {
-              "text": "开口"
+              "text": "水田"
             },
             {
               "text": "石头"
             }
           ],
-          "answer": 1,
+          "answer": 0,
           "hint": "找一找有「口」的词",
           "praise": "组词成功：开口！"
         },
@@ -1404,16 +1404,16 @@
           "question": "练一练：哪个字是「口」？",
           "options": [
             {
-              "text": "口"
+              "text": "木"
             },
             {
-              "text": "木"
+              "text": "口"
             },
             {
               "text": "日"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "想一想刚才的字",
           "praise": "记住啦！"
         },
@@ -1425,16 +1425,16 @@
           "question": "再找一找：哪张图片是「口」？",
           "options": [
             {
-              "icon": "clock"
+              "icon": "speaker"
             },
             {
-              "icon": "speaker"
+              "icon": "clock"
             },
             {
               "icon": "moon"
             }
           ],
-          "answer": 1,
+          "answer": 0,
           "hint": "「口」长什么样",
           "praise": "又找对啦！口！"
         },
@@ -1541,16 +1541,16 @@
           "question": "找一找：哪张图片是「天」？",
           "options": [
             {
-              "icon": "banana"
+              "icon": "sun"
             },
             {
-              "icon": "sun"
+              "icon": "banana"
             },
             {
               "icon": "rocket"
             }
           ],
-          "answer": 1,
+          "answer": 0,
           "hint": "想想刚才的图片：「天」",
           "praise": "眼睛真亮！天 找对啦！"
         },
@@ -1562,16 +1562,16 @@
           "question": "看一看：这张图变成的字是哪个？",
           "options": [
             {
-              "text": "二"
+              "text": "天"
             },
             {
-              "text": "天"
+              "text": "二"
             },
             {
               "text": "三"
             }
           ],
-          "answer": 1,
+          "answer": 0,
           "hint": "想一想它像什么字",
           "praise": "对！这张图就是「天」"
         },
@@ -1581,16 +1581,16 @@
           "question": "「天」可以组成哪个词？",
           "options": [
             {
-              "text": "火焰"
+              "text": "天空"
             },
             {
               "text": "火山"
             },
             {
-              "text": "天空"
+              "text": "火焰"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "找一找有「天」的词",
           "praise": "组词成功：天空！"
         },
@@ -1600,16 +1600,16 @@
           "question": "练一练：哪个字是「天」？",
           "options": [
             {
-              "text": "木"
+              "text": "天"
             },
             {
-              "text": "天"
+              "text": "木"
             },
             {
               "text": "口"
             }
           ],
-          "answer": 1,
+          "answer": 0,
           "hint": "想一想刚才的字",
           "praise": "记住啦！"
         },
@@ -1624,13 +1624,13 @@
               "icon": "banana"
             },
             {
-              "icon": "rocket"
+              "icon": "sun"
             },
             {
-              "icon": "sun"
+              "icon": "rocket"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "「天」长什么样",
           "praise": "又找对啦！天！"
         },
@@ -1803,13 +1803,13 @@
               "text": "木"
             },
             {
-              "text": "口"
+              "text": "田"
             },
             {
-              "text": "田"
+              "text": "口"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "想一想刚才的字",
           "praise": "记住啦！"
         },
@@ -1821,16 +1821,16 @@
           "question": "再找一找：哪张图片是「田」？",
           "options": [
             {
-              "icon": "calendar"
+              "icon": "gift"
             },
             {
-              "icon": "gift"
+              "icon": "calendar"
             },
             {
               "icon": "star"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "「田」长什么样",
           "praise": "又找对啦！田！"
         },
@@ -1951,16 +1951,16 @@
           "question": "找一找：哪张图片是「石」？",
           "options": [
             {
-              "icon": "rock"
+              "icon": "leaf"
             },
             {
               "icon": "balloon"
             },
             {
-              "icon": "leaf"
+              "icon": "rock"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "想想刚才的图片：「石」",
           "praise": "眼睛真亮！石 找对啦！"
         },
@@ -1994,13 +1994,13 @@
               "text": "小草"
             },
             {
-              "text": "石头"
+              "text": "草地"
             },
             {
-              "text": "草地"
+              "text": "石头"
             }
           ],
-          "answer": 1,
+          "answer": 2,
           "hint": "找一找有「石」的词",
           "praise": "组词成功：石头！"
         },
@@ -2010,16 +2010,16 @@
           "question": "练一练：哪个字是「石」？",
           "options": [
             {
-              "text": "石"
+              "text": "口"
             },
             {
               "text": "木"
             },
             {
-              "text": "口"
+              "text": "石"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "想一想刚才的字",
           "praise": "记住啦！"
         },
@@ -2031,16 +2031,16 @@
           "question": "再找一找：哪张图片是「石」？",
           "options": [
             {
-              "icon": "balloon"
+              "icon": "rock"
             },
             {
-              "icon": "rock"
+              "icon": "balloon"
             },
             {
               "icon": "leaf"
             }
           ],
-          "answer": 1,
+          "answer": 0,
           "hint": "「石」长什么样",
           "praise": "又找对啦！石！"
         },
@@ -2166,16 +2166,16 @@
           "question": "找一找：哪张图片是「火」？",
           "options": [
             {
-              "icon": "flame"
+              "icon": "key"
             },
             {
               "icon": "crystal"
             },
             {
-              "icon": "key"
+              "icon": "flame"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "想想刚才的图片：「火」",
           "praise": "眼睛真亮！火 找对啦！"
         },
@@ -2206,16 +2206,16 @@
           "question": "「火」可以组成哪个词？",
           "options": [
             {
-              "text": "一个"
+              "text": "火焰"
             },
             {
               "text": "一天"
             },
             {
-              "text": "火焰"
+              "text": "一个"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "找一找有「火」的词",
           "praise": "组词成功：火焰！"
         },
@@ -2225,16 +2225,16 @@
           "question": "练一练：哪个字是「火」？",
           "options": [
             {
-              "text": "木"
+              "text": "火"
             },
             {
-              "text": "火"
+              "text": "木"
             },
             {
               "text": "口"
             }
           ],
-          "answer": 1,
+          "answer": 0,
           "hint": "想一想刚才的字",
           "praise": "记住啦！"
         },
@@ -2304,19 +2304,19 @@
           "shadow": "flame",
           "options": [
             {
-              "icon": "flame",
-              "text": "火"
+              "icon": "crystal",
+              "text": "冰晶"
             },
             {
               "icon": "volcano",
               "text": "山"
             },
             {
-              "icon": "crystal",
-              "text": "冰晶"
+              "icon": "flame",
+              "text": "火"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "火苗向上跳的样子",
           "praise": "猜对啦！"
         }
@@ -2404,13 +2404,13 @@
               "icon": "star"
             },
             {
-              "icon": "flower"
+              "icon": "train"
             },
             {
-              "icon": "train"
+              "icon": "flower"
             }
           ],
-          "answer": 1,
+          "answer": 2,
           "hint": "想想刚才的图片：「花」",
           "praise": "眼睛真亮！花 找对啦！"
         },
@@ -2422,16 +2422,16 @@
           "question": "看一看：这张图变成的字是哪个？",
           "options": [
             {
-              "text": "十"
+              "text": "花"
             },
             {
               "text": "大"
             },
             {
-              "text": "花"
+              "text": "十"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "想一想它像什么字",
           "praise": "对！这张图就是「花」"
         },
@@ -2441,16 +2441,16 @@
           "question": "「花」可以组成哪个词？",
           "options": [
             {
-              "text": "花朵"
+              "text": "三个"
             },
             {
               "text": "第二"
             },
             {
-              "text": "三个"
+              "text": "花朵"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "找一找有「花」的词",
           "praise": "组词成功：花朵！"
         },
@@ -2611,16 +2611,16 @@
           "question": "找一找：哪张图片是「草」？",
           "options": [
             {
-              "icon": "cake"
+              "icon": "leaf"
             },
             {
-              "icon": "leaf"
+              "icon": "cake"
             },
             {
               "icon": "duck"
             }
           ],
-          "answer": 1,
+          "answer": 0,
           "hint": "想想刚才的图片：「草」",
           "praise": "眼睛真亮！草 找对啦！"
         },
@@ -2651,16 +2651,16 @@
           "question": "「草」可以组成哪个词？",
           "options": [
             {
-              "text": "三角"
+              "text": "小草"
             },
             {
-              "text": "小草"
+              "text": "三角"
             },
             {
               "text": "四季"
             }
           ],
-          "answer": 1,
+          "answer": 0,
           "hint": "找一找有「草」的词",
           "praise": "组词成功：小草！"
         },
@@ -2828,16 +2828,16 @@
           "question": "找一找：哪张图片是「鸟」？",
           "options": [
             {
-              "icon": "duck"
+              "icon": "rocket"
             },
             {
               "icon": "apple"
             },
             {
-              "icon": "rocket"
+              "icon": "duck"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "想想刚才的图片：「鸟」",
           "praise": "眼睛真亮！鸟 找对啦！"
         },
@@ -2890,13 +2890,13 @@
               "text": "木"
             },
             {
-              "text": "鸟"
+              "text": "口"
             },
             {
-              "text": "口"
+              "text": "鸟"
             }
           ],
-          "answer": 1,
+          "answer": 2,
           "hint": "想一想刚才的字",
           "praise": "记住啦！"
         },
@@ -2911,13 +2911,13 @@
               "icon": "apple"
             },
             {
-              "icon": "duck"
+              "icon": "rocket"
             },
             {
-              "icon": "rocket"
+              "icon": "duck"
             }
           ],
-          "answer": 1,
+          "answer": 2,
           "hint": "「鸟」长什么样",
           "praise": "又找对啦！鸟！"
         },
@@ -3093,13 +3093,13 @@
               "text": "手"
             },
             {
-              "text": "目"
+              "text": "一"
             },
             {
-              "text": "一"
+              "text": "目"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "想一想它像什么字",
           "praise": "对！这张图就是「一」"
         },
@@ -3109,16 +3109,16 @@
           "question": "「一」可以组成哪个词？",
           "options": [
             {
-              "text": "一个"
+              "text": "七天"
             },
             {
               "text": "六一小礼物"
             },
             {
-              "text": "七天"
+              "text": "一个"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "找一找有「一」的词",
           "praise": "组词成功：一个！"
         },
@@ -3128,16 +3128,16 @@
           "question": "练一练：哪个字是「一」？",
           "options": [
             {
-              "text": "木"
+              "text": "一"
             },
             {
               "text": "口"
             },
             {
-              "text": "一"
+              "text": "木"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "想一想刚才的字",
           "praise": "记住啦！"
         },
@@ -3285,16 +3285,16 @@
           "question": "看一看：这张图变成的字是哪个？",
           "options": [
             {
-              "text": "二"
+              "text": "耳"
             },
             {
-              "text": "耳"
+              "text": "二"
             },
             {
               "text": "足"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "想一想它像什么字",
           "praise": "对！这张图就是「二」"
         },
@@ -3323,16 +3323,16 @@
           "question": "练一练：哪个字是「二」？",
           "options": [
             {
-              "text": "二"
+              "text": "口"
             },
             {
               "text": "木"
             },
             {
-              "text": "口"
+              "text": "二"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "想一想刚才的字",
           "praise": "记住啦！"
         },
@@ -3344,16 +3344,16 @@
           "question": "再找一找：哪张图片是「二」？",
           "options": [
             {
-              "icon": "star"
+              "icon": "equal"
             },
             {
               "icon": "sun"
             },
             {
-              "icon": "equal"
+              "icon": "star"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "「二」长什么样",
           "praise": "又找对啦！二！"
         },
@@ -3456,13 +3456,13 @@
               "icon": "flower"
             },
             {
-              "icon": "moon"
+              "icon": "equal"
             },
             {
-              "icon": "equal"
+              "icon": "moon"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "想想刚才的图片：「三」",
           "praise": "眼睛真亮！三 找对啦！"
         },
@@ -3512,16 +3512,16 @@
           "question": "练一练：哪个字是「三」？",
           "options": [
             {
-              "text": "木"
+              "text": "三"
             },
             {
-              "text": "三"
+              "text": "木"
             },
             {
               "text": "口"
             }
           ],
-          "answer": 1,
+          "answer": 0,
           "hint": "想一想刚才的字",
           "praise": "记住啦！"
         },
@@ -3533,16 +3533,16 @@
           "question": "再找一找：哪张图片是「三」？",
           "options": [
             {
-              "icon": "equal"
+              "icon": "flower"
             },
             {
               "icon": "moon"
             },
             {
-              "icon": "flower"
+              "icon": "equal"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "「三」长什么样",
           "praise": "又找对啦！三！"
         },
@@ -3673,16 +3673,16 @@
           "question": "看一看：这张图变成的字是哪个？",
           "options": [
             {
-              "text": "风"
+              "text": "四"
             },
             {
               "text": "禾"
             },
             {
-              "text": "四"
+              "text": "风"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "想一想它像什么字",
           "praise": "对！这张图就是「四」"
         },
@@ -3692,16 +3692,16 @@
           "question": "「四」可以组成哪个词？",
           "options": [
             {
-              "text": "四季"
+              "text": "大人"
             },
             {
-              "text": "大人"
+              "text": "四季"
             },
             {
               "text": "大象"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "找一找有「四」的词",
           "praise": "组词成功：四季！"
         },
@@ -3714,13 +3714,13 @@
               "text": "木"
             },
             {
-              "text": "口"
+              "text": "四"
             },
             {
-              "text": "四"
+              "text": "口"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "想一想刚才的字",
           "praise": "记住啦！"
         },
@@ -3855,16 +3855,16 @@
           "question": "找一找：哪张图片是「五」？",
           "options": [
             {
-              "icon": "equal"
+              "icon": "star"
             },
             {
-              "icon": "star"
+              "icon": "equal"
             },
             {
               "icon": "moon"
             }
           ],
-          "answer": 1,
+          "answer": 0,
           "hint": "想想刚才的图片：「五」",
           "praise": "眼睛真亮！五 找对啦！"
         },
@@ -3876,16 +3876,16 @@
           "question": "看一看：这张图变成的字是哪个？",
           "options": [
             {
-              "text": "五"
+              "text": "虫"
             },
             {
-              "text": "虫"
+              "text": "五"
             },
             {
               "text": "贝"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "想一想它像什么字",
           "praise": "对！这张图就是「五」"
         },
@@ -3895,16 +3895,16 @@
           "question": "「五」可以组成哪个词？",
           "options": [
             {
-              "text": "小兔子"
+              "text": "五个"
             },
             {
-              "text": "五个"
+              "text": "小兔子"
             },
             {
               "text": "上学"
             }
           ],
-          "answer": 1,
+          "answer": 0,
           "hint": "找一找有「五」的词",
           "praise": "组词成功：五个！"
         },
@@ -3914,16 +3914,16 @@
           "question": "练一练：哪个字是「五」？",
           "options": [
             {
-              "text": "五"
+              "text": "口"
             },
             {
               "text": "木"
             },
             {
-              "text": "口"
+              "text": "五"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "想一想刚才的字",
           "praise": "记住啦！"
         },
@@ -3938,13 +3938,13 @@
               "icon": "equal"
             },
             {
-              "icon": "moon"
+              "icon": "star"
             },
             {
-              "icon": "star"
+              "icon": "moon"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "「五」长什么样",
           "praise": "又找对啦！五！"
         },
@@ -4082,13 +4082,13 @@
               "text": "见"
             },
             {
-              "text": "六"
+              "text": "白"
             },
             {
-              "text": "白"
+              "text": "六"
             }
           ],
-          "answer": 1,
+          "answer": 2,
           "hint": "想一想它像什么字",
           "praise": "对！这张图就是「六」"
         },
@@ -4101,13 +4101,13 @@
               "text": "下雨"
             },
             {
-              "text": "下面"
+              "text": "六个"
             },
             {
-              "text": "六个"
+              "text": "下面"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "找一找有「六」的词",
           "praise": "组词成功：六个！"
         },
@@ -4138,16 +4138,16 @@
           "question": "再找一找：哪张图片是「六」？",
           "options": [
             {
-              "icon": "sparkle"
+              "icon": "equal"
             },
             {
               "icon": "star"
             },
             {
-              "icon": "equal"
+              "icon": "sparkle"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "「六」长什么样",
           "praise": "又找对啦！六！"
         },
@@ -4251,16 +4251,16 @@
           "question": "找一找：哪张图片是「七」？",
           "options": [
             {
-              "icon": "dice"
+              "icon": "balloon"
             },
             {
               "icon": "star"
             },
             {
-              "icon": "balloon"
+              "icon": "dice"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "想想刚才的图片：「七」",
           "praise": "眼睛真亮！七 找对啦！"
         },
@@ -4272,16 +4272,16 @@
           "question": "看一看：这张图变成的字是哪个？",
           "options": [
             {
-              "text": "牛"
+              "text": "七"
             },
             {
               "text": "羊"
             },
             {
-              "text": "七"
+              "text": "牛"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "想一想它像什么字",
           "praise": "对！这张图就是「七」"
         },
@@ -4291,16 +4291,16 @@
           "question": "「七」可以组成哪个词？",
           "options": [
             {
-              "text": "七天"
+              "text": "星空"
             },
             {
-              "text": "星空"
+              "text": "七天"
             },
             {
               "text": "小手"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "找一找有「七」的词",
           "praise": "组词成功：七天！"
         },
@@ -4310,16 +4310,16 @@
           "question": "练一练：哪个字是「七」？",
           "options": [
             {
-              "text": "木"
+              "text": "七"
             },
             {
               "text": "口"
             },
             {
-              "text": "七"
+              "text": "木"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "想一想刚才的字",
           "praise": "记住啦！"
         },
@@ -4331,16 +4331,16 @@
           "question": "再找一找：哪张图片是「七」？",
           "options": [
             {
-              "icon": "star"
+              "icon": "dice"
             },
             {
-              "icon": "dice"
+              "icon": "star"
             },
             {
               "icon": "balloon"
             }
           ],
-          "answer": 1,
+          "answer": 0,
           "hint": "「七」长什么样",
           "praise": "又找对啦！七！"
         },
@@ -4443,13 +4443,13 @@
               "icon": "balloon"
             },
             {
-              "icon": "candy"
+              "icon": "star"
             },
             {
-              "icon": "star"
+              "icon": "candy"
             }
           ],
-          "answer": 1,
+          "answer": 2,
           "hint": "想想刚才的图片：「八」",
           "praise": "眼睛真亮！八 找对啦！"
         },
@@ -4499,16 +4499,16 @@
           "question": "练一练：哪个字是「八」？",
           "options": [
             {
-              "text": "八"
+              "text": "口"
             },
             {
               "text": "木"
             },
             {
-              "text": "口"
+              "text": "八"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "想一想刚才的字",
           "praise": "记住啦！"
         },
@@ -4520,16 +4520,16 @@
           "question": "再找一找：哪张图片是「八」？",
           "options": [
             {
-              "icon": "balloon"
+              "icon": "candy"
             },
             {
               "icon": "star"
             },
             {
-              "icon": "candy"
+              "icon": "balloon"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "「八」长什么样",
           "praise": "又找对啦！八！"
         },
@@ -4632,13 +4632,13 @@
               "icon": "moon"
             },
             {
-              "icon": "candy"
+              "icon": "balloon"
             },
             {
-              "icon": "balloon"
+              "icon": "candy"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "想想刚才的图片：「九」",
           "praise": "眼睛真亮！九 找对啦！"
         },
@@ -4650,16 +4650,16 @@
           "question": "看一看：这张图变成的字是哪个？",
           "options": [
             {
-              "text": "糖"
+              "text": "九"
             },
             {
-              "text": "九"
+              "text": "糖"
             },
             {
               "text": "塘"
             }
           ],
-          "answer": 1,
+          "answer": 0,
           "hint": "想一想它像什么字",
           "praise": "对！这张图就是「九」"
         },
@@ -4672,13 +4672,13 @@
               "text": "耳朵"
             },
             {
-              "text": "足球"
+              "text": "九月"
             },
             {
-              "text": "九月"
+              "text": "足球"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "找一找有「九」的词",
           "praise": "组词成功：九月！"
         },
@@ -4688,16 +4688,16 @@
           "question": "练一练：哪个字是「九」？",
           "options": [
             {
-              "text": "木"
+              "text": "九"
             },
             {
-              "text": "九"
+              "text": "木"
             },
             {
               "text": "口"
             }
           ],
-          "answer": 1,
+          "answer": 0,
           "hint": "想一想刚才的字",
           "praise": "记住啦！"
         },
@@ -4709,16 +4709,16 @@
           "question": "再找一找：哪张图片是「九」？",
           "options": [
             {
-              "icon": "balloon"
+              "icon": "candy"
             },
             {
-              "icon": "candy"
+              "icon": "balloon"
             },
             {
               "icon": "moon"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "「九」长什么样",
           "praise": "又找对啦！九！"
         },
@@ -4821,16 +4821,16 @@
           "question": "找一找：哪张图片是「十」？",
           "options": [
             {
-              "icon": "star"
+              "icon": "equal"
             },
             {
-              "icon": "equal"
+              "icon": "star"
             },
             {
               "icon": "gift"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "想想刚才的图片：「十」",
           "praise": "眼睛真亮！十 找对啦！"
         },
@@ -4845,13 +4845,13 @@
               "text": "迎"
             },
             {
-              "text": "姨"
+              "text": "十"
             },
             {
-              "text": "十"
+              "text": "姨"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "想一想它像什么字",
           "praise": "对！这张图就是「十」"
         },
@@ -4904,13 +4904,13 @@
               "icon": "equal"
             },
             {
-              "icon": "star"
+              "icon": "gift"
             },
             {
-              "icon": "gift"
+              "icon": "star"
             }
           ],
-          "answer": 1,
+          "answer": 2,
           "hint": "「十」长什么样",
           "praise": "又找对啦！十！"
         },
@@ -5010,16 +5010,16 @@
           "question": "找一找：哪张图片是「大」？",
           "options": [
             {
-              "icon": "bear"
+              "icon": "girl"
             },
             {
-              "icon": "girl"
+              "icon": "bear"
             },
             {
               "icon": "paw"
             }
           ],
-          "answer": 1,
+          "answer": 0,
           "hint": "想想刚才的图片：「大」",
           "praise": "眼睛真亮！大 找对啦！"
         },
@@ -5031,16 +5031,16 @@
           "question": "看一看：这张图变成的字是哪个？",
           "options": [
             {
-              "text": "大"
+              "text": "变"
             },
             {
-              "text": "变"
+              "text": "大"
             },
             {
               "text": "极"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "想一想它像什么字",
           "praise": "对！这张图就是「大」"
         },
@@ -5053,13 +5053,13 @@
               "text": "雨水"
             },
             {
-              "text": "大人"
+              "text": "风车"
             },
             {
-              "text": "风车"
+              "text": "大人"
             }
           ],
-          "answer": 1,
+          "answer": 2,
           "hint": "找一找有「大」的词",
           "praise": "组词成功：大人！"
         },
@@ -5069,16 +5069,16 @@
           "question": "练一练：哪个字是「大」？",
           "options": [
             {
-              "text": "大"
+              "text": "口"
             },
             {
               "text": "木"
             },
             {
-              "text": "口"
+              "text": "大"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "想一想刚才的字",
           "praise": "记住啦！"
         },
@@ -5206,16 +5206,16 @@
           "question": "找一找：哪张图片是「小」？",
           "options": [
             {
-              "icon": "girl"
+              "icon": "paw"
             },
             {
               "icon": "bear"
             },
             {
-              "icon": "paw"
+              "icon": "girl"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "想想刚才的图片：「小」",
           "praise": "眼睛真亮！小 找对啦！"
         },
@@ -5230,13 +5230,13 @@
               "text": "傍"
             },
             {
-              "text": "小"
+              "text": "海"
             },
             {
-              "text": "海"
+              "text": "小"
             }
           ],
-          "answer": 1,
+          "answer": 2,
           "hint": "想一想它像什么字",
           "praise": "对！这张图就是「小」"
         },
@@ -5265,16 +5265,16 @@
           "question": "练一练：哪个字是「小」？",
           "options": [
             {
-              "text": "木"
+              "text": "小"
             },
             {
-              "text": "小"
+              "text": "木"
             },
             {
               "text": "口"
             }
           ],
-          "answer": 1,
+          "answer": 0,
           "hint": "想一想刚才的字",
           "praise": "记住啦！"
         },
@@ -5286,16 +5286,16 @@
           "question": "再找一找：哪张图片是「小」？",
           "options": [
             {
-              "icon": "paw"
+              "icon": "bear"
             },
             {
-              "icon": "bear"
+              "icon": "paw"
             },
             {
               "icon": "girl"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "「小」长什么样",
           "praise": "又找对啦！小！"
         },
@@ -5399,16 +5399,16 @@
           "question": "找一找：哪张图片是「上」？",
           "options": [
             {
-              "icon": "sunrise"
+              "icon": "rocket"
             },
             {
               "icon": "wave"
             },
             {
-              "icon": "rocket"
+              "icon": "sunrise"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "想想刚才的图片：「上」",
           "praise": "眼睛真亮！上 找对啦！"
         },
@@ -5439,16 +5439,16 @@
           "question": "「上」可以组成哪个词？",
           "options": [
             {
-              "text": "上学"
+              "text": "虫虫"
             },
             {
-              "text": "虫虫"
+              "text": "上学"
             },
             {
               "text": "宝贝"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "找一找有「上」的词",
           "praise": "组词成功：上学！"
         },
@@ -5461,13 +5461,13 @@
               "text": "木"
             },
             {
-              "text": "口"
+              "text": "上"
             },
             {
-              "text": "上"
+              "text": "口"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "想一想刚才的字",
           "praise": "记住啦！"
         },
@@ -5595,16 +5595,16 @@
           "question": "找一找：哪张图片是「下」？",
           "options": [
             {
-              "icon": "sunrise"
+              "icon": "wave"
             },
             {
-              "icon": "wave"
+              "icon": "sunrise"
             },
             {
               "icon": "moon"
             }
           ],
-          "answer": 1,
+          "answer": 0,
           "hint": "想想刚才的图片：「下」",
           "praise": "眼睛真亮！下 找对啦！"
         },
@@ -5635,16 +5635,16 @@
           "question": "「下」可以组成哪个词？",
           "options": [
             {
-              "text": "看见"
+              "text": "下雨"
             },
             {
-              "text": "下雨"
+              "text": "看见"
             },
             {
               "text": "再见"
             }
           ],
-          "answer": 1,
+          "answer": 0,
           "hint": "找一找有「下」的词",
           "praise": "组词成功：下雨！"
         },
@@ -5654,16 +5654,16 @@
           "question": "练一练：哪个字是「下」？",
           "options": [
             {
-              "text": "下"
+              "text": "木"
             },
             {
-              "text": "木"
+              "text": "下"
             },
             {
               "text": "口"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "想一想刚才的字",
           "praise": "记住啦！"
         },
@@ -5675,16 +5675,16 @@
           "question": "再找一找：哪张图片是「下」？",
           "options": [
             {
-              "icon": "sunrise"
+              "icon": "wave"
             },
             {
               "icon": "moon"
             },
             {
-              "icon": "wave"
+              "icon": "sunrise"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "「下」长什么样",
           "praise": "又找对啦！下！"
         },
@@ -5791,16 +5791,16 @@
           "question": "找一找：哪张图片是「星」？",
           "options": [
             {
-              "icon": "comet"
+              "icon": "starface"
             },
             {
               "icon": "moon"
             },
             {
-              "icon": "starface"
+              "icon": "comet"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "想想刚才的图片：「星」",
           "praise": "眼睛真亮！星 找对啦！"
         },
@@ -5831,16 +5831,16 @@
           "question": "「星」可以组成哪个词？",
           "options": [
             {
-              "text": "白牛奶"
+              "text": "星星"
             },
             {
               "text": "小牛"
             },
             {
-              "text": "星星"
+              "text": "白牛奶"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "找一找有「星」的词",
           "praise": "组词成功：星星！"
         },
@@ -5871,16 +5871,16 @@
           "question": "再找一找：哪张图片是「星」？",
           "options": [
             {
-              "icon": "starface"
+              "icon": "moon"
             },
             {
-              "icon": "moon"
+              "icon": "starface"
             },
             {
               "icon": "comet"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "「星」长什么样",
           "praise": "又找对啦！星！"
         },
@@ -5999,16 +5999,16 @@
           "question": "找一找：哪张图片是「日」？",
           "options": [
             {
-              "icon": "sunrise"
+              "icon": "cake"
             },
             {
               "icon": "moon"
             },
             {
-              "icon": "cake"
+              "icon": "sunrise"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "想想刚才的图片：「日」",
           "praise": "眼睛真亮！日 找对啦！"
         },
@@ -6023,13 +6023,13 @@
               "icon": "star"
             },
             {
-              "icon": "sun"
+              "icon": "moon"
             },
             {
-              "icon": "moon"
+              "icon": "sun"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "想想刚才的图片：「月」",
           "praise": "眼睛真亮！月 找对啦！"
         },
@@ -6041,16 +6041,16 @@
           "question": "找一找：哪张图片是「水」？",
           "options": [
             {
-              "icon": "wave"
+              "icon": "crystal"
             },
             {
               "icon": "sun"
             },
             {
-              "icon": "crystal"
+              "icon": "wave"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "想想刚才的图片：「水」",
           "praise": "眼睛真亮！水 找对啦！"
         },
@@ -6065,13 +6065,13 @@
               "icon": "rocket"
             },
             {
-              "icon": "volcano"
+              "icon": "home"
             },
             {
-              "icon": "home"
+              "icon": "volcano"
             }
           ],
-          "answer": 1,
+          "answer": 2,
           "hint": "想想刚才的图片：「山」",
           "praise": "眼睛真亮！山 找对啦！"
         },
@@ -6083,16 +6083,16 @@
           "question": "找一找：哪张图片是「木」？",
           "options": [
             {
-              "icon": "sprout"
+              "icon": "flower"
             },
             {
-              "icon": "flower"
+              "icon": "sprout"
             },
             {
               "icon": "rock"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "想想刚才的图片：「木」",
           "praise": "眼睛真亮！木 找对啦！"
         },
@@ -6107,13 +6107,13 @@
               "icon": "sun"
             },
             {
-              "icon": "duck"
+              "icon": "girl"
             },
             {
-              "icon": "girl"
+              "icon": "duck"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "想想刚才的图片：「人」",
           "praise": "眼睛真亮！人 找对啦！"
         }
@@ -6193,16 +6193,16 @@
           "question": "找一找：哪张图片是「手」？",
           "options": [
             {
-              "icon": "paw"
+              "icon": "wave"
             },
             {
               "icon": "girl"
             },
             {
-              "icon": "wave"
+              "icon": "paw"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "想想刚才的图片：「手」",
           "praise": "眼睛真亮！手 找对啦！"
         },
@@ -6217,13 +6217,13 @@
               "text": "旗"
             },
             {
-              "text": "号"
+              "text": "手"
             },
             {
-              "text": "手"
+              "text": "号"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "想一想它像什么字",
           "praise": "对！这张图就是「手」"
         },
@@ -6252,16 +6252,16 @@
           "question": "练一练：哪个字是「手」？",
           "options": [
             {
-              "text": "木"
+              "text": "手"
             },
             {
               "text": "口"
             },
             {
-              "text": "手"
+              "text": "木"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "想一想刚才的字",
           "praise": "记住啦！"
         },
@@ -6417,16 +6417,16 @@
           "question": "看一看：这张图变成的字是哪个？",
           "options": [
             {
-              "text": "目"
+              "text": "桐"
             },
             {
               "text": "杨"
             },
             {
-              "text": "桐"
+              "text": "目"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "想一想它像什么字",
           "praise": "对！这张图就是「目」"
         },
@@ -6436,16 +6436,16 @@
           "question": "「目」可以组成哪个词？",
           "options": [
             {
-              "text": "果树"
+              "text": "目光"
             },
             {
-              "text": "目光"
+              "text": "果树"
             },
             {
               "text": "汽车"
             }
           ],
-          "answer": 1,
+          "answer": 0,
           "hint": "找一找有「目」的词",
           "praise": "组词成功：目光！"
         },
@@ -6455,16 +6455,16 @@
           "question": "练一练：哪个字是「目」？",
           "options": [
             {
-              "text": "目"
+              "text": "木"
             },
             {
-              "text": "木"
+              "text": "目"
             },
             {
               "text": "口"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "想一想刚才的字",
           "praise": "记住啦！"
         },
@@ -6476,16 +6476,16 @@
           "question": "再找一找：哪张图片是「目」？",
           "options": [
             {
-              "icon": "duck"
+              "icon": "girl"
             },
             {
-              "icon": "girl"
+              "icon": "duck"
             },
             {
               "icon": "calendar"
             }
           ],
-          "answer": 1,
+          "answer": 0,
           "hint": "「目」长什么样",
           "praise": "又找对啦！目！"
         },
@@ -6649,13 +6649,13 @@
               "text": "糖果"
             },
             {
-              "text": "糖水"
+              "text": "耳机"
             },
             {
-              "text": "耳机"
+              "text": "糖水"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "找一找有「耳」的词",
           "praise": "组词成功：耳机！"
         },
@@ -6665,16 +6665,16 @@
           "question": "练一练：哪个字是「耳」？",
           "options": [
             {
-              "text": "木"
+              "text": "耳"
             },
             {
-              "text": "耳"
+              "text": "木"
             },
             {
               "text": "口"
             }
           ],
-          "answer": 1,
+          "answer": 0,
           "hint": "想一想刚才的字",
           "praise": "记住啦！"
         },
@@ -6686,16 +6686,16 @@
           "question": "再找一找：哪张图片是「耳」？",
           "options": [
             {
-              "icon": "calendar"
+              "icon": "speaker"
             },
             {
-              "icon": "speaker"
+              "icon": "calendar"
             },
             {
               "icon": "star"
             }
           ],
-          "answer": 1,
+          "answer": 0,
           "hint": "「耳」长什么样",
           "praise": "又找对啦！耳！"
         },
@@ -6816,13 +6816,13 @@
               "icon": "paw"
             },
             {
-              "icon": "ball"
+              "icon": "train"
             },
             {
-              "icon": "train"
+              "icon": "ball"
             }
           ],
-          "answer": 1,
+          "answer": 2,
           "hint": "想想刚才的图片：「足」",
           "praise": "眼睛真亮！足 找对啦！"
         },
@@ -6853,16 +6853,16 @@
           "question": "「足」可以组成哪个词？",
           "options": [
             {
-              "text": "足球"
+              "text": "欢迎"
             },
             {
               "text": "水塘"
             },
             {
-              "text": "欢迎"
+              "text": "足球"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "找一找有「足」的词",
           "praise": "组词成功：足球！"
         },
@@ -6875,13 +6875,13 @@
               "text": "木"
             },
             {
-              "text": "口"
+              "text": "足"
             },
             {
-              "text": "足"
+              "text": "口"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "想一想刚才的字",
           "praise": "记住啦！"
         },
@@ -7059,13 +7059,13 @@
               "text": "阿姨"
             },
             {
-              "text": "白云"
+              "text": "姨妈"
             },
             {
-              "text": "姨妈"
+              "text": "白云"
             }
           ],
-          "answer": 1,
+          "answer": 2,
           "hint": "找一找有「云」的词",
           "praise": "组词成功：白云！"
         },
@@ -7075,16 +7075,16 @@
           "question": "练一练：哪个字是「云」？",
           "options": [
             {
-              "text": "云"
+              "text": "木"
             },
             {
-              "text": "木"
+              "text": "云"
             },
             {
               "text": "口"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "想一想刚才的字",
           "praise": "记住啦！"
         },
@@ -7096,16 +7096,16 @@
           "question": "再找一找：哪张图片是「云」？",
           "options": [
             {
-              "icon": "milk"
+              "icon": "sun"
             },
             {
-              "icon": "sun"
+              "icon": "milk"
             },
             {
               "icon": "moon"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "「云」长什么样",
           "praise": "又找对啦！云！"
         },
@@ -7240,16 +7240,16 @@
           "question": "看一看：这张图变成的字是哪个？",
           "options": [
             {
-              "text": "季"
+              "text": "雨"
             },
             {
-              "text": "雨"
+              "text": "季"
             },
             {
               "text": "农"
             }
           ],
-          "answer": 1,
+          "answer": 0,
           "hint": "想一想它像什么字",
           "praise": "对！这张图就是「雨」"
         },
@@ -7278,16 +7278,16 @@
           "question": "练一练：哪个字是「雨」？",
           "options": [
             {
-              "text": "木"
+              "text": "雨"
             },
             {
-              "text": "雨"
+              "text": "木"
             },
             {
               "text": "口"
             }
           ],
-          "answer": 1,
+          "answer": 0,
           "hint": "想一想刚才的字",
           "praise": "记住啦！"
         },
@@ -7299,16 +7299,16 @@
           "question": "再找一找：哪张图片是「雨」？",
           "options": [
             {
-              "icon": "milk"
+              "icon": "wave"
             },
             {
-              "icon": "wave"
+              "icon": "milk"
             },
             {
               "icon": "crystal"
             }
           ],
-          "answer": 1,
+          "answer": 0,
           "hint": "「雨」长什么样",
           "praise": "又找对啦！雨！"
         },
@@ -7526,16 +7526,16 @@
           "question": "再找一找：哪张图片是「风」？",
           "options": [
             {
-              "icon": "leaf"
+              "icon": "windmill"
             },
             {
               "icon": "flag"
             },
             {
-              "icon": "windmill"
+              "icon": "leaf"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "「风」长什么样",
           "praise": "又找对啦！风！"
         },
@@ -7649,16 +7649,16 @@
           "question": "找一找：哪张图片是「禾」？",
           "options": [
             {
-              "icon": "sprout"
+              "icon": "flower"
             },
             {
-              "icon": "flower"
+              "icon": "sprout"
             },
             {
               "icon": "leaf"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "想想刚才的图片：「禾」",
           "praise": "眼睛真亮！禾 找对啦！"
         },
@@ -7670,16 +7670,16 @@
           "question": "看一看：这张图变成的字是哪个？",
           "options": [
             {
-              "text": "禾"
+              "text": "闻"
             },
             {
               "text": "楼"
             },
             {
-              "text": "闻"
+              "text": "禾"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "想一想它像什么字",
           "praise": "对！这张图就是「禾」"
         },
@@ -7692,13 +7692,13 @@
               "text": "海边"
             },
             {
-              "text": "禾苗"
+              "text": "海洋"
             },
             {
-              "text": "海洋"
+              "text": "禾苗"
             }
           ],
-          "answer": 1,
+          "answer": 2,
           "hint": "找一找有「禾」的词",
           "praise": "组词成功：禾苗！"
         },
@@ -7708,16 +7708,16 @@
           "question": "练一练：哪个字是「禾」？",
           "options": [
             {
-              "text": "禾"
+              "text": "木"
             },
             {
-              "text": "木"
+              "text": "禾"
             },
             {
               "text": "口"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "想一想刚才的字",
           "praise": "记住啦！"
         },
@@ -7732,13 +7732,13 @@
               "icon": "flower"
             },
             {
-              "icon": "sprout"
+              "icon": "leaf"
             },
             {
-              "icon": "leaf"
+              "icon": "sprout"
             }
           ],
-          "answer": 1,
+          "answer": 2,
           "hint": "「禾」长什么样",
           "praise": "又找对啦！禾！"
         },
@@ -7859,16 +7859,16 @@
           "question": "找一找：哪张图片是「虫」？",
           "options": [
             {
-              "icon": "fish"
+              "icon": "bee"
             },
             {
               "icon": "duck"
             },
             {
-              "icon": "bee"
+              "icon": "fish"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "想想刚才的图片：「虫」",
           "praise": "眼睛真亮！虫 找对啦！"
         },
@@ -7902,13 +7902,13 @@
               "text": "植物"
             },
             {
-              "text": "种植"
+              "text": "虫子"
             },
             {
-              "text": "虫子"
+              "text": "种植"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "找一找有「虫」的词",
           "praise": "组词成功：虫子！"
         },
@@ -7918,16 +7918,16 @@
           "question": "练一练：哪个字是「虫」？",
           "options": [
             {
-              "text": "木"
+              "text": "虫"
             },
             {
-              "text": "虫"
+              "text": "木"
             },
             {
               "text": "口"
             }
           ],
-          "answer": 1,
+          "answer": 0,
           "hint": "想一想刚才的字",
           "praise": "记住啦！"
         },
@@ -7939,16 +7939,16 @@
           "question": "再找一找：哪张图片是「虫」？",
           "options": [
             {
-              "icon": "bee"
+              "icon": "fish"
             },
             {
               "icon": "duck"
             },
             {
-              "icon": "fish"
+              "icon": "bee"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "「虫」长什么样",
           "praise": "又找对啦！虫！"
         },
@@ -8066,16 +8066,16 @@
           "question": "找一找：哪张图片是「贝」？",
           "options": [
             {
-              "icon": "coin"
+              "icon": "rock"
             },
             {
-              "icon": "rock"
+              "icon": "coin"
             },
             {
               "icon": "gift"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "想想刚才的图片：「贝」",
           "praise": "眼睛真亮！贝 找对啦！"
         },
@@ -8087,16 +8087,16 @@
           "question": "看一看：这张图变成的字是哪个？",
           "options": [
             {
-              "text": "城"
+              "text": "贝"
             },
             {
               "text": "市"
             },
             {
-              "text": "贝"
+              "text": "城"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "想一想它像什么字",
           "praise": "对！这张图就是「贝」"
         },
@@ -8106,16 +8106,16 @@
           "question": "「贝」可以组成哪个词？",
           "options": [
             {
-              "text": "宝贝"
+              "text": "认识"
             },
             {
               "text": "旅途"
             },
             {
-              "text": "认识"
+              "text": "宝贝"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "找一找有「贝」的词",
           "praise": "组词成功：宝贝！"
         },
@@ -8125,16 +8125,16 @@
           "question": "练一练：哪个字是「贝」？",
           "options": [
             {
-              "text": "木"
+              "text": "贝"
             },
             {
               "text": "口"
             },
             {
-              "text": "贝"
+              "text": "木"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "想一想刚才的字",
           "praise": "记住啦！"
         },
@@ -8146,16 +8146,16 @@
           "question": "再找一找：哪张图片是「贝」？",
           "options": [
             {
-              "icon": "rock"
+              "icon": "coin"
             },
             {
-              "icon": "coin"
+              "icon": "rock"
             },
             {
               "icon": "gift"
             }
           ],
-          "answer": 1,
+          "answer": 0,
           "hint": "「贝」长什么样",
           "praise": "又找对啦！贝！"
         },
@@ -8269,16 +8269,16 @@
           "question": "找一找：哪张图片是「见」？",
           "options": [
             {
-              "icon": "book"
+              "icon": "girl"
             },
             {
-              "icon": "girl"
+              "icon": "book"
             },
             {
               "icon": "star"
             }
           ],
-          "answer": 1,
+          "answer": 0,
           "hint": "想想刚才的图片：「见」",
           "praise": "眼睛真亮！见 找对啦！"
         },
@@ -8328,16 +8328,16 @@
           "question": "练一练：哪个字是「见」？",
           "options": [
             {
-              "text": "见"
+              "text": "木"
             },
             {
-              "text": "木"
+              "text": "见"
             },
             {
               "text": "口"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "想一想刚才的字",
           "praise": "记住啦！"
         },
@@ -8349,16 +8349,16 @@
           "question": "再找一找：哪张图片是「见」？",
           "options": [
             {
-              "icon": "book"
+              "icon": "girl"
             },
             {
               "icon": "star"
             },
             {
-              "icon": "girl"
+              "icon": "book"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "「见」长什么样",
           "praise": "又找对啦！见！"
         },
@@ -8472,16 +8472,16 @@
           "question": "找一找：哪张图片是「白」？",
           "options": [
             {
-              "icon": "star"
+              "icon": "egg"
             },
             {
               "icon": "milk"
             },
             {
-              "icon": "egg"
+              "icon": "star"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "想想刚才的图片：「白」",
           "praise": "眼睛真亮！白 找对啦！"
         },
@@ -8493,16 +8493,16 @@
           "question": "看一看：这张图变成的字是哪个？",
           "options": [
             {
-              "text": "喝"
+              "text": "白"
             },
             {
-              "text": "白"
+              "text": "喝"
             },
             {
               "text": "灯"
             }
           ],
-          "answer": 1,
+          "answer": 0,
           "hint": "想一想它像什么字",
           "praise": "对！这张图就是「白」"
         },
@@ -8534,13 +8534,13 @@
               "text": "木"
             },
             {
-              "text": "白"
+              "text": "口"
             },
             {
-              "text": "口"
+              "text": "白"
             }
           ],
-          "answer": 1,
+          "answer": 2,
           "hint": "想一想刚才的字",
           "praise": "记住啦！"
         },
@@ -8685,16 +8685,16 @@
           "question": "找一找：哪张图片是「牛」？",
           "options": [
             {
-              "icon": "milk"
+              "icon": "cow"
             },
             {
-              "icon": "cow"
+              "icon": "milk"
             },
             {
               "icon": "bear"
             }
           ],
-          "answer": 1,
+          "answer": 0,
           "hint": "想想刚才的图片：「牛」",
           "praise": "眼睛真亮！牛 找对啦！"
         },
@@ -8706,16 +8706,16 @@
           "question": "看一看：这张图变成的字是哪个？",
           "options": [
             {
-              "text": "娃"
+              "text": "牛"
             },
             {
               "text": "蛙"
             },
             {
-              "text": "牛"
+              "text": "娃"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "想一想它像什么字",
           "praise": "对！这张图就是「牛」"
         },
@@ -8747,13 +8747,13 @@
               "text": "木"
             },
             {
-              "text": "口"
+              "text": "牛"
             },
             {
-              "text": "牛"
+              "text": "口"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "想一想刚才的字",
           "praise": "记住啦！"
         },
@@ -8768,13 +8768,13 @@
               "icon": "milk"
             },
             {
-              "icon": "bear"
+              "icon": "cow"
             },
             {
-              "icon": "cow"
+              "icon": "bear"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "「牛」长什么样",
           "praise": "又找对啦！牛！"
         },
@@ -8909,16 +8909,16 @@
           "question": "看一看：这张图变成的字是哪个？",
           "options": [
             {
-              "text": "羊"
+              "text": "狗"
             },
             {
               "text": "猫"
             },
             {
-              "text": "狗"
+              "text": "羊"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "想一想它像什么字",
           "praise": "对！这张图就是「羊」"
         },
@@ -8931,13 +8931,13 @@
               "text": "白杨"
             },
             {
-              "text": "小羊"
+              "text": "梧桐"
             },
             {
-              "text": "梧桐"
+              "text": "小羊"
             }
           ],
-          "answer": 1,
+          "answer": 2,
           "hint": "找一找有「羊」的词",
           "praise": "组词成功：小羊！"
         },
@@ -8947,16 +8947,16 @@
           "question": "练一练：哪个字是「羊」？",
           "options": [
             {
-              "text": "羊"
+              "text": "木"
             },
             {
-              "text": "木"
+              "text": "羊"
             },
             {
               "text": "口"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "想一想刚才的字",
           "praise": "记住啦！"
         },
@@ -8968,16 +8968,16 @@
           "question": "再找一找：哪张图片是「羊」？",
           "options": [
             {
-              "icon": "polarbear"
+              "icon": "duck"
             },
             {
               "icon": "milk"
             },
             {
-              "icon": "duck"
+              "icon": "polarbear"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "「羊」长什么样",
           "praise": "又找对啦！羊！"
         },
@@ -9122,13 +9122,13 @@
               "text": "猪"
             },
             {
-              "text": "果"
+              "text": "鸡"
             },
             {
-              "text": "鸡"
+              "text": "果"
             }
           ],
-          "answer": 1,
+          "answer": 2,
           "hint": "想一想它像什么字",
           "praise": "对！这张图就是「果」"
         },
@@ -9141,13 +9141,13 @@
               "text": "枫叶"
             },
             {
-              "text": "枫树"
+              "text": "果子"
             },
             {
-              "text": "果子"
+              "text": "枫树"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "找一找有「果」的词",
           "praise": "组词成功：果子！"
         },
@@ -9178,16 +9178,16 @@
           "question": "再找一找：哪张图片是「果」？",
           "options": [
             {
-              "icon": "banana"
+              "icon": "apple"
             },
             {
-              "icon": "apple"
+              "icon": "banana"
             },
             {
               "icon": "leaf"
             }
           ],
-          "answer": 1,
+          "answer": 0,
           "hint": "「果」长什么样",
           "praise": "又找对啦！果！"
         },
@@ -9326,16 +9326,16 @@
           "question": "看一看：这张图变成的字是哪个？",
           "options": [
             {
-              "text": "熊"
+              "text": "车"
             },
             {
               "text": "狮"
             },
             {
-              "text": "车"
+              "text": "熊"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "想一想它像什么字",
           "praise": "对！这张图就是「车」"
         },
@@ -9345,16 +9345,16 @@
           "question": "「车」可以组成哪个词？",
           "options": [
             {
-              "text": "汽车"
+              "text": "柏树"
             },
             {
               "text": "松果"
             },
             {
-              "text": "柏树"
+              "text": "汽车"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "找一找有「车」的词",
           "praise": "组词成功：汽车！"
         },
@@ -9364,16 +9364,16 @@
           "question": "练一练：哪个字是「车」？",
           "options": [
             {
-              "text": "木"
+              "text": "车"
             },
             {
               "text": "口"
             },
             {
-              "text": "车"
+              "text": "木"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "想一想刚才的字",
           "praise": "记住啦！"
         },
@@ -9385,16 +9385,16 @@
           "question": "再找一找：哪张图片是「车」？",
           "options": [
             {
-              "icon": "train"
+              "icon": "car"
             },
             {
               "icon": "bus"
             },
             {
-              "icon": "car"
+              "icon": "train"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "「车」长什么样",
           "praise": "又找对啦！车！"
         },
@@ -9515,16 +9515,16 @@
           "question": "找一找：哪张图片是「糖」？",
           "options": [
             {
-              "icon": "gift"
+              "icon": "candy"
             },
             {
               "icon": "cake"
             },
             {
-              "icon": "candy"
+              "icon": "gift"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "想想刚才的图片：「糖」",
           "praise": "眼睛真亮！糖 找对啦！"
         },
@@ -9536,16 +9536,16 @@
           "question": "看一看：这张图变成的字是哪个？",
           "options": [
             {
-              "text": "糖"
+              "text": "晴"
             },
             {
               "text": "猴"
             },
             {
-              "text": "晴"
+              "text": "糖"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "想一想它像什么字",
           "praise": "对！这张图就是「糖」"
         },
@@ -9555,16 +9555,16 @@
           "question": "「糖」可以组成哪个词？",
           "options": [
             {
-              "text": "桂花"
+              "text": "糖果"
             },
             {
-              "text": "糖果"
+              "text": "桂花"
             },
             {
               "text": "桂树"
             }
           ],
-          "answer": 1,
+          "answer": 0,
           "hint": "找一找有「糖」的词",
           "praise": "组词成功：糖果！"
         },
@@ -9574,16 +9574,16 @@
           "question": "练一练：哪个字是「糖」？",
           "options": [
             {
-              "text": "糖"
+              "text": "木"
             },
             {
-              "text": "木"
+              "text": "糖"
             },
             {
               "text": "口"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "想一想刚才的字",
           "praise": "记住啦！"
         },
@@ -9595,16 +9595,16 @@
           "question": "再找一找：哪张图片是「糖」？",
           "options": [
             {
-              "icon": "candy"
+              "icon": "gift"
             },
             {
               "icon": "cake"
             },
             {
-              "icon": "gift"
+              "icon": "candy"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "「糖」长什么样",
           "praise": "又找对啦！糖！"
         },
@@ -9732,16 +9732,16 @@
           "question": "找一找：哪张图片是「塘」？",
           "options": [
             {
-              "icon": "wave"
+              "icon": "sprout"
             },
             {
               "icon": "milk"
             },
             {
-              "icon": "sprout"
+              "icon": "wave"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "想想刚才的图片：「塘」",
           "praise": "眼睛真亮！塘 找对啦！"
         },
@@ -9756,13 +9756,13 @@
               "text": "晚"
             },
             {
-              "text": "塘"
+              "text": "雪"
             },
             {
-              "text": "雪"
+              "text": "塘"
             }
           ],
-          "answer": 1,
+          "answer": 2,
           "hint": "想一想它像什么字",
           "praise": "对！这张图就是「塘」"
         },
@@ -9772,16 +9772,16 @@
           "question": "「塘」可以组成哪个词？",
           "options": [
             {
-              "text": "孔雀"
+              "text": "池塘"
             },
             {
               "text": "老鹰"
             },
             {
-              "text": "池塘"
+              "text": "孔雀"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "找一找有「塘」的词",
           "praise": "组词成功：池塘！"
         },
@@ -9794,13 +9794,13 @@
               "text": "木"
             },
             {
-              "text": "塘"
+              "text": "口"
             },
             {
-              "text": "口"
+              "text": "塘"
             }
           ],
-          "answer": 1,
+          "answer": 2,
           "hint": "想一想刚才的字",
           "praise": "记住啦！"
         },
@@ -9815,13 +9815,13 @@
               "icon": "milk"
             },
             {
-              "icon": "wave"
+              "icon": "sprout"
             },
             {
-              "icon": "sprout"
+              "icon": "wave"
             }
           ],
-          "answer": 1,
+          "answer": 2,
           "hint": "「塘」长什么样",
           "praise": "又找对啦！塘！"
         },
@@ -9976,13 +9976,13 @@
               "text": "冰"
             },
             {
-              "text": "日"
+              "text": "迎"
             },
             {
-              "text": "迎"
+              "text": "日"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "想一想它像什么字",
           "praise": "对！这张图就是「迎」"
         },
@@ -9992,16 +9992,16 @@
           "question": "「迎」可以组成哪个词？",
           "options": [
             {
-              "text": "欢迎"
+              "text": "季节"
             },
             {
               "text": "四季"
             },
             {
-              "text": "季节"
+              "text": "欢迎"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "找一找有「迎」的词",
           "praise": "组词成功：欢迎！"
         },
@@ -10011,16 +10011,16 @@
           "question": "练一练：哪个字是「迎」？",
           "options": [
             {
-              "text": "木"
+              "text": "迎"
             },
             {
               "text": "口"
             },
             {
-              "text": "迎"
+              "text": "木"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "想一想刚才的字",
           "praise": "记住啦！"
         },
@@ -10205,13 +10205,13 @@
               "text": "农田"
             },
             {
-              "text": "阿姨"
+              "text": "麦苗"
             },
             {
-              "text": "麦苗"
+              "text": "阿姨"
             }
           ],
-          "answer": 1,
+          "answer": 2,
           "hint": "找一找有「姨」的词",
           "praise": "组词成功：阿姨！"
         },
@@ -10221,16 +10221,16 @@
           "question": "练一练：哪个字是「姨」？",
           "options": [
             {
-              "text": "姨"
+              "text": "口"
             },
             {
               "text": "木"
             },
             {
-              "text": "口"
+              "text": "姨"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "想一想刚才的字",
           "praise": "记住啦！"
         },
@@ -10242,16 +10242,16 @@
           "question": "再找一找：哪张图片是「姨」？",
           "options": [
             {
-              "icon": "home"
+              "icon": "girl"
             },
             {
-              "icon": "girl"
+              "icon": "home"
             },
             {
               "icon": "party"
             }
           ],
-          "answer": 1,
+          "answer": 0,
           "hint": "「姨」长什么样",
           "praise": "又找对啦！姨！"
         },
@@ -10389,13 +10389,13 @@
               "icon": "milk"
             },
             {
-              "icon": "egg"
+              "icon": "sparkle"
             },
             {
-              "icon": "sparkle"
+              "icon": "egg"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "想想刚才的图片：「变」",
           "praise": "眼睛真亮！变 找对啦！"
         },
@@ -10407,16 +10407,16 @@
           "question": "看一看：这张图变成的字是哪个？",
           "options": [
             {
-              "text": "山"
+              "text": "变"
             },
             {
-              "text": "变"
+              "text": "山"
             },
             {
               "text": "木"
             }
           ],
-          "answer": 1,
+          "answer": 0,
           "hint": "想一想它像什么字",
           "praise": "对！这张图就是「变」"
         },
@@ -10429,13 +10429,13 @@
               "text": "大象"
             },
             {
-              "text": "印象"
+              "text": "变化"
             },
             {
-              "text": "变化"
+              "text": "印象"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "找一找有「变」的词",
           "praise": "组词成功：变化！"
         },
@@ -10466,16 +10466,16 @@
           "question": "再找一找：哪张图片是「变」？",
           "options": [
             {
-              "icon": "sparkle"
+              "icon": "milk"
             },
             {
               "icon": "egg"
             },
             {
-              "icon": "milk"
+              "icon": "sparkle"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "「变」长什么样",
           "praise": "又找对啦！变！"
         },
@@ -10593,16 +10593,16 @@
           "question": "找一找：哪张图片是「极」？",
           "options": [
             {
-              "icon": "star"
+              "icon": "polarbear"
             },
             {
-              "icon": "polarbear"
+              "icon": "star"
             },
             {
               "icon": "magnet"
             }
           ],
-          "answer": 1,
+          "answer": 0,
           "hint": "想想刚才的图片：「极」",
           "praise": "眼睛真亮！极 找对啦！"
         },
@@ -10614,16 +10614,16 @@
           "question": "看一看：这张图变成的字是哪个？",
           "options": [
             {
-              "text": "人"
+              "text": "极"
             },
             {
               "text": "口"
             },
             {
-              "text": "极"
+              "text": "人"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "想一想它像什么字",
           "praise": "对！这张图就是「极」"
         },
@@ -10633,16 +10633,16 @@
           "question": "「极」可以组成哪个词？",
           "options": [
             {
-              "text": "北极"
+              "text": "楼房"
             },
             {
-              "text": "楼房"
+              "text": "北极"
             },
             {
               "text": "新闻"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "找一找有「极」的词",
           "praise": "组词成功：北极！"
         },
@@ -10652,16 +10652,16 @@
           "question": "练一练：哪个字是「极」？",
           "options": [
             {
-              "text": "木"
+              "text": "极"
             },
             {
               "text": "口"
             },
             {
-              "text": "极"
+              "text": "木"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "想一想刚才的字",
           "praise": "记住啦！"
         },
@@ -10673,16 +10673,16 @@
           "question": "再找一找：哪张图片是「极」？",
           "options": [
             {
-              "icon": "star"
+              "icon": "polarbear"
             },
             {
               "icon": "magnet"
             },
             {
-              "icon": "polarbear"
+              "icon": "star"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "「极」长什么样",
           "praise": "又找对啦！极！"
         },
@@ -10806,13 +10806,13 @@
               "icon": "moon"
             },
             {
-              "icon": "sunrise"
+              "icon": "star"
             },
             {
-              "icon": "star"
+              "icon": "sunrise"
             }
           ],
-          "answer": 1,
+          "answer": 2,
           "hint": "想想刚才的图片：「傍」",
           "praise": "眼睛真亮！傍 找对啦！"
         },
@@ -10824,16 +10824,16 @@
           "question": "看一看：这张图变成的字是哪个？",
           "options": [
             {
-              "text": "傍"
+              "text": "天"
             },
             {
-              "text": "天"
+              "text": "傍"
             },
             {
               "text": "田"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "想一想它像什么字",
           "praise": "对！这张图就是「傍」"
         },
@@ -10843,16 +10843,16 @@
           "question": "「傍」可以组成哪个词？",
           "options": [
             {
-              "text": "山峰"
+              "text": "傍晚"
             },
             {
-              "text": "傍晚"
+              "text": "山峰"
             },
             {
               "text": "高峰"
             }
           ],
-          "answer": 1,
+          "answer": 0,
           "hint": "找一找有「傍」的词",
           "praise": "组词成功：傍晚！"
         },
@@ -10886,13 +10886,13 @@
               "icon": "moon"
             },
             {
-              "icon": "star"
+              "icon": "sunrise"
             },
             {
-              "icon": "sunrise"
+              "icon": "star"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "「傍」长什么样",
           "praise": "又找对啦！傍！"
         },
@@ -11023,13 +11023,13 @@
               "icon": "milk"
             },
             {
-              "icon": "fish"
+              "icon": "wave"
             },
             {
-              "icon": "wave"
+              "icon": "fish"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "想想刚才的图片：「海」",
           "praise": "眼睛真亮！海 找对啦！"
         },
@@ -11044,13 +11044,13 @@
               "text": "石"
             },
             {
-              "text": "海"
+              "text": "火"
             },
             {
-              "text": "火"
+              "text": "海"
             }
           ],
-          "answer": 1,
+          "answer": 2,
           "hint": "想一想它像什么字",
           "praise": "对！这张图就是「海」"
         },
@@ -11060,16 +11060,16 @@
           "question": "「海」可以组成哪个词？",
           "options": [
             {
-              "text": "水潭"
+              "text": "大海"
             },
             {
               "text": "城市"
             },
             {
-              "text": "大海"
+              "text": "水潭"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "找一找有「海」的词",
           "praise": "组词成功：大海！"
         },
@@ -11079,16 +11079,16 @@
           "question": "练一练：哪个字是「海」？",
           "options": [
             {
-              "text": "木"
+              "text": "海"
             },
             {
-              "text": "海"
+              "text": "木"
             },
             {
               "text": "口"
             }
           ],
-          "answer": 1,
+          "answer": 0,
           "hint": "想一想刚才的字",
           "praise": "记住啦！"
         },
@@ -11100,16 +11100,16 @@
           "question": "再找一找：哪张图片是「海」？",
           "options": [
             {
-              "icon": "wave"
+              "icon": "milk"
             },
             {
               "icon": "fish"
             },
             {
-              "icon": "milk"
+              "icon": "wave"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "「海」长什么样",
           "praise": "又找对啦！海！"
         },
@@ -11254,16 +11254,16 @@
           "question": "看一看：这张图变成的字是哪个？",
           "options": [
             {
-              "text": "花"
+              "text": "洋"
             },
             {
               "text": "草"
             },
             {
-              "text": "洋"
+              "text": "花"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "想一想它像什么字",
           "praise": "对！这张图就是「洋」"
         },
@@ -11457,16 +11457,16 @@
           "question": "找一找：哪张图片是「植」？",
           "options": [
             {
-              "icon": "flower"
+              "icon": "sprout"
             },
             {
-              "icon": "sprout"
+              "icon": "flower"
             },
             {
               "icon": "leaf"
             }
           ],
-          "answer": 1,
+          "answer": 0,
           "hint": "想想刚才的图片：「植」",
           "praise": "眼睛真亮！植 找对啦！"
         },
@@ -11537,16 +11537,16 @@
           "question": "再找一找：哪张图片是「植」？",
           "options": [
             {
-              "icon": "flower"
+              "icon": "sprout"
             },
             {
               "icon": "leaf"
             },
             {
-              "icon": "sprout"
+              "icon": "flower"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "「植」长什么样",
           "praise": "又找对啦！植！"
         },
@@ -11740,16 +11740,16 @@
           "question": "练一练：哪个字是「旅」？",
           "options": [
             {
-              "text": "木"
+              "text": "旅"
             },
             {
-              "text": "旅"
+              "text": "木"
             },
             {
               "text": "口"
             }
           ],
-          "answer": 1,
+          "answer": 0,
           "hint": "想一想刚才的字",
           "praise": "记住啦！"
         },
@@ -11761,16 +11761,16 @@
           "question": "再找一找：哪张图片是「旅」？",
           "options": [
             {
-              "icon": "rocket"
+              "icon": "train"
             },
             {
-              "icon": "train"
+              "icon": "rocket"
             },
             {
               "icon": "bus"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "「旅」长什么样",
           "praise": "又找对啦！旅！"
         },
@@ -11942,16 +11942,16 @@
           "question": "「识」可以组成哪个词？",
           "options": [
             {
-              "text": "认识"
+              "text": "红灯"
             },
             {
-              "text": "红灯"
+              "text": "认识"
             },
             {
               "text": "娃娃"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "找一找有「识」的词",
           "praise": "组词成功：认识！"
         },
@@ -11982,16 +11982,16 @@
           "question": "再找一找：哪张图片是「识」？",
           "options": [
             {
-              "icon": "girl"
+              "icon": "book"
             },
             {
-              "icon": "book"
+              "icon": "girl"
             },
             {
               "icon": "star"
             }
           ],
-          "answer": 1,
+          "answer": 0,
           "hint": "「识」长什么样",
           "praise": "又找对啦！识！"
         },
@@ -12147,16 +12147,16 @@
           "question": "看一看：这张图变成的字是哪个？",
           "options": [
             {
-              "text": "园"
+              "text": "六"
             },
             {
-              "text": "六"
+              "text": "园"
             },
             {
               "text": "七"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "想一想它像什么字",
           "praise": "对！这张图就是「园」"
         },
@@ -12185,16 +12185,16 @@
           "question": "练一练：哪个字是「园」？",
           "options": [
             {
-              "text": "园"
+              "text": "木"
             },
             {
-              "text": "木"
+              "text": "园"
             },
             {
               "text": "口"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "想一想刚才的字",
           "praise": "记住啦！"
         },
@@ -12206,16 +12206,16 @@
           "question": "再找一找：哪张图片是「园」？",
           "options": [
             {
-              "icon": "sprout"
+              "icon": "flower"
             },
             {
               "icon": "home"
             },
             {
-              "icon": "flower"
+              "icon": "sprout"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "「园」长什么样",
           "praise": "又找对啦！园！"
         },
@@ -12357,16 +12357,16 @@
           "question": "找一找：哪张图片是「队」？",
           "options": [
             {
-              "icon": "party"
+              "icon": "train"
             },
             {
               "icon": "flag"
             },
             {
-              "icon": "train"
+              "icon": "party"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "想想刚才的图片：「队」",
           "praise": "眼睛真亮！队 找对啦！"
         },
@@ -12378,16 +12378,16 @@
           "question": "看一看：这张图变成的字是哪个？",
           "options": [
             {
-              "text": "八"
+              "text": "队"
             },
             {
-              "text": "队"
+              "text": "八"
             },
             {
               "text": "九"
             }
           ],
-          "answer": 1,
+          "answer": 0,
           "hint": "想一想它像什么字",
           "praise": "对！这张图就是「队」"
         },
@@ -12397,16 +12397,16 @@
           "question": "「队」可以组成哪个词？",
           "options": [
             {
-              "text": "熊猫"
+              "text": "排队"
             },
             {
               "text": "小狗"
             },
             {
-              "text": "排队"
+              "text": "熊猫"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "找一找有「队」的词",
           "praise": "组词成功：排队！"
         },
@@ -12419,13 +12419,13 @@
               "text": "木"
             },
             {
-              "text": "队"
+              "text": "口"
             },
             {
-              "text": "口"
+              "text": "队"
             }
           ],
-          "answer": 1,
+          "answer": 2,
           "hint": "想一想刚才的字",
           "praise": "记住啦！"
         },
@@ -12437,16 +12437,16 @@
           "question": "再找一找：哪张图片是「队」？",
           "options": [
             {
-              "icon": "flag"
+              "icon": "party"
             },
             {
-              "icon": "party"
+              "icon": "flag"
             },
             {
               "icon": "train"
             }
           ],
-          "answer": 1,
+          "answer": 0,
           "hint": "「队」长什么样",
           "praise": "又找对啦！队！"
         },
@@ -12544,16 +12544,16 @@
           "question": "找一找：哪张图片是「日」？",
           "options": [
             {
-              "icon": "sunrise"
+              "icon": "moon"
             },
             {
-              "icon": "moon"
+              "icon": "sunrise"
             },
             {
               "icon": "cake"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "想想刚才的图片：「日」",
           "praise": "眼睛真亮！日 找对啦！"
         },
@@ -12565,16 +12565,16 @@
           "question": "找一找：哪张图片是「月」？",
           "options": [
             {
-              "icon": "star"
+              "icon": "moon"
             },
             {
               "icon": "sun"
             },
             {
-              "icon": "moon"
+              "icon": "star"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "想想刚才的图片：「月」",
           "praise": "眼睛真亮！月 找对啦！"
         },
@@ -12586,16 +12586,16 @@
           "question": "找一找：哪张图片是「水」？",
           "options": [
             {
-              "icon": "wave"
+              "icon": "crystal"
             },
             {
               "icon": "sun"
             },
             {
-              "icon": "crystal"
+              "icon": "wave"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "想想刚才的图片：「水」",
           "praise": "眼睛真亮！水 找对啦！"
         },
@@ -12610,13 +12610,13 @@
               "icon": "rocket"
             },
             {
-              "icon": "volcano"
+              "icon": "home"
             },
             {
-              "icon": "home"
+              "icon": "volcano"
             }
           ],
-          "answer": 1,
+          "answer": 2,
           "hint": "想想刚才的图片：「山」",
           "praise": "眼睛真亮！山 找对啦！"
         },
@@ -12628,16 +12628,16 @@
           "question": "找一找：哪张图片是「木」？",
           "options": [
             {
-              "icon": "sprout"
+              "icon": "flower"
             },
             {
-              "icon": "flower"
+              "icon": "sprout"
             },
             {
               "icon": "rock"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "想想刚才的图片：「木」",
           "praise": "眼睛真亮！木 找对啦！"
         },
@@ -12741,13 +12741,13 @@
               "icon": "party"
             },
             {
-              "icon": "flag"
+              "icon": "book"
             },
             {
-              "icon": "book"
+              "icon": "flag"
             }
           ],
-          "answer": 1,
+          "answer": 2,
           "hint": "想想刚才的图片：「旗」",
           "praise": "眼睛真亮！旗 找对啦！"
         },
@@ -12762,13 +12762,13 @@
               "text": "十"
             },
             {
-              "text": "大"
+              "text": "旗"
             },
             {
-              "text": "旗"
+              "text": "大"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "想一想它像什么字",
           "praise": "对！这张图就是「旗」"
         },
@@ -12778,16 +12778,16 @@
           "question": "「旗」可以组成哪个词？",
           "options": [
             {
-              "text": "红旗"
+              "text": "小猪"
             },
             {
-              "text": "小猪"
+              "text": "红旗"
             },
             {
               "text": "肥猪"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "找一找有「旗」的词",
           "praise": "组词成功：红旗！"
         },
@@ -12797,16 +12797,16 @@
           "question": "练一练：哪个字是「旗」？",
           "options": [
             {
-              "text": "木"
+              "text": "旗"
             },
             {
               "text": "口"
             },
             {
-              "text": "旗"
+              "text": "木"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "想一想刚才的字",
           "praise": "记住啦！"
         },
@@ -12818,16 +12818,16 @@
           "question": "再找一找：哪张图片是「旗」？",
           "options": [
             {
-              "icon": "party"
+              "icon": "flag"
             },
             {
               "icon": "book"
             },
             {
-              "icon": "flag"
+              "icon": "party"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "「旗」长什么样",
           "praise": "又找对啦！旗！"
         },
@@ -12976,16 +12976,16 @@
           "question": "看一看：这张图变成的字是哪个？",
           "options": [
             {
-              "text": "号"
+              "text": "小"
             },
             {
-              "text": "小"
+              "text": "号"
             },
             {
               "text": "上"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "想一想它像什么字",
           "praise": "对！这张图就是「号」"
         },
@@ -13014,16 +13014,16 @@
           "question": "练一练：哪个字是「号」？",
           "options": [
             {
-              "text": "号"
+              "text": "木"
             },
             {
-              "text": "木"
+              "text": "号"
             },
             {
               "text": "口"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "想一想刚才的字",
           "praise": "记住啦！"
         },
@@ -13158,16 +13158,16 @@
           "question": "找一找：哪张图片是「杨」？",
           "options": [
             {
-              "icon": "tree"
+              "icon": "maple"
             },
             {
-              "icon": "maple"
+              "icon": "tree"
             },
             {
               "icon": "leaf"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "想想刚才的图片：「杨」",
           "praise": "眼睛真亮！杨 找对啦！"
         },
@@ -13182,13 +13182,13 @@
               "text": "下"
             },
             {
-              "text": "杨"
+              "text": "星"
             },
             {
-              "text": "星"
+              "text": "杨"
             }
           ],
-          "answer": 1,
+          "answer": 2,
           "hint": "想一想它像什么字",
           "praise": "对！这张图就是「杨」"
         },
@@ -13220,13 +13220,13 @@
               "text": "木"
             },
             {
-              "text": "杨"
+              "text": "口"
             },
             {
-              "text": "口"
+              "text": "杨"
             }
           ],
-          "answer": 1,
+          "answer": 2,
           "hint": "想一想刚才的字",
           "praise": "记住啦！"
         },
@@ -13241,13 +13241,13 @@
               "icon": "maple"
             },
             {
-              "icon": "tree"
+              "icon": "leaf"
             },
             {
-              "icon": "leaf"
+              "icon": "tree"
             }
           ],
-          "answer": 1,
+          "answer": 2,
           "hint": "「杨」长什么样",
           "praise": "又找对啦！杨！"
         },
@@ -13382,13 +13382,13 @@
               "icon": "leaf"
             },
             {
-              "icon": "tree"
+              "icon": "maple"
             },
             {
-              "icon": "maple"
+              "icon": "tree"
             }
           ],
-          "answer": 1,
+          "answer": 2,
           "hint": "想想刚才的图片：「桐」",
           "praise": "眼睛真亮！桐 找对啦！"
         },
@@ -13403,13 +13403,13 @@
               "text": "手"
             },
             {
-              "text": "目"
+              "text": "桐"
             },
             {
-              "text": "桐"
+              "text": "目"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "想一想它像什么字",
           "praise": "对！这张图就是「桐」"
         },
@@ -13624,16 +13624,16 @@
           "question": "看一看：这张图变成的字是哪个？",
           "options": [
             {
-              "text": "枫"
+              "text": "足"
             },
             {
               "text": "耳"
             },
             {
-              "text": "足"
+              "text": "枫"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "想一想它像什么字",
           "praise": "对！这张图就是「枫」"
         },
@@ -13643,16 +13643,16 @@
           "question": "「枫」可以组成哪个词？",
           "options": [
             {
-              "text": "晚上"
+              "text": "枫叶"
             },
             {
-              "text": "枫叶"
+              "text": "晚上"
             },
             {
               "text": "晚霞"
             }
           ],
-          "answer": 1,
+          "answer": 0,
           "hint": "找一找有「枫」的词",
           "praise": "组词成功：枫叶！"
         },
@@ -13662,16 +13662,16 @@
           "question": "练一练：哪个字是「枫」？",
           "options": [
             {
-              "text": "枫"
+              "text": "口"
             },
             {
               "text": "木"
             },
             {
-              "text": "口"
+              "text": "枫"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "想一想刚才的字",
           "praise": "记住啦！"
         },
@@ -13683,16 +13683,16 @@
           "question": "再找一找：哪张图片是「枫」？",
           "options": [
             {
-              "icon": "maple"
+              "icon": "tree"
             },
             {
-              "icon": "tree"
+              "icon": "maple"
             },
             {
               "icon": "flower"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "「枫」长什么样",
           "praise": "又找对啦！枫！"
         },
@@ -13827,16 +13827,16 @@
           "question": "找一找：哪张图片是「松」？",
           "options": [
             {
-              "icon": "tree"
+              "icon": "sprout"
             },
             {
-              "icon": "sprout"
+              "icon": "tree"
             },
             {
               "icon": "maple"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "想想刚才的图片：「松」",
           "praise": "眼睛真亮！松 找对啦！"
         },
@@ -13870,13 +13870,13 @@
               "text": "雪人"
             },
             {
-              "text": "结冰"
+              "text": "松树"
             },
             {
-              "text": "松树"
+              "text": "结冰"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "找一找有「松」的词",
           "praise": "组词成功：松树！"
         },
@@ -13889,13 +13889,13 @@
               "text": "木"
             },
             {
-              "text": "松"
+              "text": "口"
             },
             {
-              "text": "口"
+              "text": "松"
             }
           ],
-          "answer": 1,
+          "answer": 2,
           "hint": "想一想刚才的字",
           "praise": "记住啦！"
         },
@@ -13910,13 +13910,13 @@
               "icon": "sprout"
             },
             {
-              "icon": "tree"
+              "icon": "maple"
             },
             {
-              "icon": "maple"
+              "icon": "tree"
             }
           ],
-          "answer": 1,
+          "answer": 2,
           "hint": "「松」长什么样",
           "praise": "又找对啦！松！"
         },
@@ -14057,13 +14057,13 @@
               "icon": "maple"
             },
             {
-              "icon": "tree"
+              "icon": "leaf"
             },
             {
-              "icon": "leaf"
+              "icon": "tree"
             }
           ],
-          "answer": 1,
+          "answer": 2,
           "hint": "想想刚才的图片：「柏」",
           "praise": "眼睛真亮！柏 找对啦！"
         },
@@ -14075,16 +14075,16 @@
           "question": "看一看：这张图变成的字是哪个？",
           "options": [
             {
-              "text": "风"
+              "text": "柏"
             },
             {
               "text": "禾"
             },
             {
-              "text": "柏"
+              "text": "风"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "想一想它像什么字",
           "praise": "对！这张图就是「柏」"
         },
@@ -14094,16 +14094,16 @@
           "question": "「柏」可以组成哪个词？",
           "options": [
             {
-              "text": "柏树"
+              "text": "生日"
             },
             {
               "text": "日出"
             },
             {
-              "text": "生日"
+              "text": "柏树"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "找一找有「柏」的词",
           "praise": "组词成功：柏树！"
         },
@@ -14137,13 +14137,13 @@
               "icon": "maple"
             },
             {
-              "icon": "leaf"
+              "icon": "tree"
             },
             {
-              "icon": "tree"
+              "icon": "leaf"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "「柏」长什么样",
           "praise": "又找对啦！柏！"
         },
@@ -14281,13 +14281,13 @@
               "icon": "sparkle"
             },
             {
-              "icon": "tree"
+              "icon": "flower"
             },
             {
-              "icon": "flower"
+              "icon": "tree"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "想想刚才的图片：「桂」",
           "praise": "眼睛真亮！桂 找对啦！"
         },
@@ -14299,16 +14299,16 @@
           "question": "看一看：这张图变成的字是哪个？",
           "options": [
             {
-              "text": "桂"
+              "text": "贝"
             },
             {
               "text": "虫"
             },
             {
-              "text": "贝"
+              "text": "桂"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "想一想它像什么字",
           "praise": "对！这张图就是「桂」"
         },
@@ -14321,13 +14321,13 @@
               "text": "月亮"
             },
             {
-              "text": "桂花"
+              "text": "月牙"
             },
             {
-              "text": "月牙"
+              "text": "桂花"
             }
           ],
-          "answer": 1,
+          "answer": 2,
           "hint": "找一找有「桂」的词",
           "praise": "组词成功：桂花！"
         },
@@ -14337,16 +14337,16 @@
           "question": "练一练：哪个字是「桂」？",
           "options": [
             {
-              "text": "桂"
+              "text": "木"
             },
             {
-              "text": "木"
+              "text": "桂"
             },
             {
               "text": "口"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "想一想刚才的字",
           "praise": "记住啦！"
         },
@@ -14358,16 +14358,16 @@
           "question": "再找一找：哪张图片是「桂」？",
           "options": [
             {
-              "icon": "flower"
+              "icon": "sparkle"
             },
             {
               "icon": "tree"
             },
             {
-              "icon": "sparkle"
+              "icon": "flower"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "「桂」长什么样",
           "praise": "又找对啦！桂！"
         },
@@ -14540,13 +14540,13 @@
               "text": "见"
             },
             {
-              "text": "雀"
+              "text": "白"
             },
             {
-              "text": "白"
+              "text": "雀"
             }
           ],
-          "answer": 1,
+          "answer": 2,
           "hint": "想一想它像什么字",
           "praise": "对！这张图就是「雀」"
         },
@@ -14559,13 +14559,13 @@
               "text": "海水"
             },
             {
-              "text": "泉水"
+              "text": "麻雀"
             },
             {
-              "text": "麻雀"
+              "text": "泉水"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "找一找有「雀」的词",
           "praise": "组词成功：麻雀！"
         },
@@ -14575,16 +14575,16 @@
           "question": "练一练：哪个字是「雀」？",
           "options": [
             {
-              "text": "木"
+              "text": "雀"
             },
             {
-              "text": "雀"
+              "text": "木"
             },
             {
               "text": "口"
             }
           ],
-          "answer": 1,
+          "answer": 0,
           "hint": "想一想刚才的字",
           "praise": "记住啦！"
         },
@@ -14599,13 +14599,13 @@
               "icon": "duck"
             },
             {
-              "icon": "bird"
+              "icon": "bee"
             },
             {
-              "icon": "bee"
+              "icon": "bird"
             }
           ],
-          "answer": 1,
+          "answer": 2,
           "hint": "「雀」长什么样",
           "praise": "又找对啦！雀！"
         },
@@ -14740,13 +14740,13 @@
               "icon": "star"
             },
             {
-              "icon": "bird"
+              "icon": "flag"
             },
             {
-              "icon": "flag"
+              "icon": "bird"
             }
           ],
-          "answer": 1,
+          "answer": 2,
           "hint": "想想刚才的图片：「鹰」",
           "praise": "眼睛真亮！鹰 找对啦！"
         },
@@ -14777,16 +14777,16 @@
           "question": "「鹰」可以组成哪个词？",
           "options": [
             {
-              "text": "老鹰"
+              "text": "山林"
             },
             {
               "text": "上山"
             },
             {
-              "text": "山林"
+              "text": "老鹰"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "找一找有「鹰」的词",
           "praise": "组词成功：老鹰！"
         },
@@ -14796,16 +14796,16 @@
           "question": "练一练：哪个字是「鹰」？",
           "options": [
             {
-              "text": "木"
+              "text": "鹰"
             },
             {
               "text": "口"
             },
             {
-              "text": "鹰"
+              "text": "木"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "想一想刚才的字",
           "praise": "记住啦！"
         },
@@ -14817,16 +14817,16 @@
           "question": "再找一找：哪张图片是「鹰」？",
           "options": [
             {
-              "icon": "star"
+              "icon": "bird"
             },
             {
               "icon": "flag"
             },
             {
-              "icon": "bird"
+              "icon": "star"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "「鹰」长什么样",
           "praise": "又找对啦！鹰！"
         },
@@ -14971,13 +14971,13 @@
               "icon": "sun"
             },
             {
-              "icon": "flower"
+              "icon": "calendar"
             },
             {
-              "icon": "calendar"
+              "icon": "flower"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "想想刚才的图片：「季」",
           "praise": "眼睛真亮！季 找对啦！"
         },
@@ -14989,16 +14989,16 @@
           "question": "看一看：这张图变成的字是哪个？",
           "options": [
             {
-              "text": "季"
+              "text": "车"
             },
             {
               "text": "果"
             },
             {
-              "text": "车"
+              "text": "季"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "想一想它像什么字",
           "praise": "对！这张图就是「季」"
         },
@@ -15008,16 +15008,16 @@
           "question": "「季」可以组成哪个词？",
           "options": [
             {
-              "text": "花木"
+              "text": "四季"
             },
             {
-              "text": "四季"
+              "text": "花木"
             },
             {
               "text": "大人"
             }
           ],
-          "answer": 1,
+          "answer": 0,
           "hint": "找一找有「季」的词",
           "praise": "组词成功：四季！"
         },
@@ -15048,16 +15048,16 @@
           "question": "再找一找：哪张图片是「季」？",
           "options": [
             {
-              "icon": "calendar"
+              "icon": "sun"
             },
             {
               "icon": "flower"
             },
             {
-              "icon": "sun"
+              "icon": "calendar"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "「季」长什么样",
           "praise": "又找对啦！季！"
         },
@@ -15235,13 +15235,13 @@
               "text": "开口"
             },
             {
-              "text": "口水"
+              "text": "农民"
             },
             {
-              "text": "农民"
+              "text": "口水"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "找一找有「农」的词",
           "praise": "组词成功：农民！"
         },
@@ -15254,13 +15254,13 @@
               "text": "木"
             },
             {
-              "text": "农"
+              "text": "口"
             },
             {
-              "text": "口"
+              "text": "农"
             }
           ],
-          "answer": 1,
+          "answer": 2,
           "hint": "想一想刚才的字",
           "praise": "记住啦！"
         },
@@ -15275,13 +15275,13 @@
               "icon": "apple"
             },
             {
-              "icon": "sprout"
+              "icon": "home"
             },
             {
-              "icon": "home"
+              "icon": "sprout"
             }
           ],
-          "answer": 1,
+          "answer": 2,
           "hint": "「农」长什么样",
           "praise": "又找对啦！农！"
         },
@@ -15419,16 +15419,16 @@
           "question": "找一找：哪张图片是「麦」？",
           "options": [
             {
-              "icon": "bread"
+              "icon": "sprout"
             },
             {
-              "icon": "sprout"
+              "icon": "bread"
             },
             {
               "icon": "leaf"
             }
           ],
-          "answer": 1,
+          "answer": 0,
           "hint": "想想刚才的图片：「麦」",
           "praise": "眼睛真亮！麦 找对啦！"
         },
@@ -15443,13 +15443,13 @@
               "text": "迎"
             },
             {
-              "text": "姨"
+              "text": "麦"
             },
             {
-              "text": "麦"
+              "text": "姨"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "想一想它像什么字",
           "praise": "对！这张图就是「麦」"
         },
@@ -15499,16 +15499,16 @@
           "question": "再找一找：哪张图片是「麦」？",
           "options": [
             {
-              "icon": "bread"
+              "icon": "sprout"
             },
             {
               "icon": "leaf"
             },
             {
-              "icon": "sprout"
+              "icon": "bread"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "「麦」长什么样",
           "praise": "又找对啦！麦！"
         },
@@ -15639,13 +15639,13 @@
               "icon": "duck"
             },
             {
-              "icon": "bear"
+              "icon": "elephant"
             },
             {
-              "icon": "elephant"
+              "icon": "bear"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "想想刚才的图片：「象」",
           "praise": "眼睛真亮！象 找对啦！"
         },
@@ -15679,13 +15679,13 @@
               "text": "石头"
             },
             {
-              "text": "大象"
+              "text": "石桥"
             },
             {
-              "text": "石桥"
+              "text": "大象"
             }
           ],
-          "answer": 1,
+          "answer": 2,
           "hint": "找一找有「象」的词",
           "praise": "组词成功：大象！"
         },
@@ -15716,16 +15716,16 @@
           "question": "再找一找：哪张图片是「象」？",
           "options": [
             {
-              "icon": "elephant"
+              "icon": "duck"
             },
             {
               "icon": "bear"
             },
             {
-              "icon": "duck"
+              "icon": "elephant"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "「象」长什么样",
           "praise": "又找对啦！象！"
         },
@@ -15860,16 +15860,16 @@
           "question": "找一找：哪张图片是「楼」？",
           "options": [
             {
-              "icon": "castle"
+              "icon": "shop"
             },
             {
               "icon": "home"
             },
             {
-              "icon": "shop"
+              "icon": "castle"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "想想刚才的图片：「楼」",
           "praise": "眼睛真亮！楼 找对啦！"
         },
@@ -15900,16 +15900,16 @@
           "question": "「楼」可以组成哪个词？",
           "options": [
             {
-              "text": "火山"
+              "text": "高楼"
             },
             {
               "text": "火花"
             },
             {
-              "text": "高楼"
+              "text": "火山"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "找一找有「楼」的词",
           "praise": "组词成功：高楼！"
         },
@@ -16112,13 +16112,13 @@
               "text": "洋"
             },
             {
-              "text": "植"
+              "text": "闻"
             },
             {
-              "text": "闻"
+              "text": "植"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "想一想它像什么字",
           "praise": "对！这张图就是「闻」"
         },
@@ -16147,16 +16147,16 @@
           "question": "练一练：哪个字是「闻」？",
           "options": [
             {
-              "text": "木"
+              "text": "闻"
             },
             {
               "text": "口"
             },
             {
-              "text": "闻"
+              "text": "木"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "想一想刚才的字",
           "praise": "记住啦！"
         },
@@ -16168,16 +16168,16 @@
           "question": "再找一找：哪张图片是「闻」？",
           "options": [
             {
-              "icon": "book"
+              "icon": "speaker"
             },
             {
               "icon": "star"
             },
             {
-              "icon": "speaker"
+              "icon": "book"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "「闻」长什么样",
           "praise": "又找对啦！闻！"
         },
@@ -16312,16 +16312,16 @@
           "question": "找一找：哪张图片是「峰」？",
           "options": [
             {
-              "icon": "sun"
+              "icon": "everest"
             },
             {
               "icon": "tree"
             },
             {
-              "icon": "everest"
+              "icon": "sun"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "想想刚才的图片：「峰」",
           "praise": "眼睛真亮！峰 找对啦！"
         },
@@ -16352,16 +16352,16 @@
           "question": "「峰」可以组成哪个词？",
           "options": [
             {
-              "text": "草地"
+              "text": "山峰"
             },
             {
-              "text": "山峰"
+              "text": "草地"
             },
             {
               "text": "小鸟"
             }
           ],
-          "answer": 1,
+          "answer": 0,
           "hint": "找一找有「峰」的词",
           "praise": "组词成功：山峰！"
         },
@@ -16371,16 +16371,16 @@
           "question": "练一练：哪个字是「峰」？",
           "options": [
             {
-              "text": "峰"
+              "text": "木"
             },
             {
-              "text": "木"
+              "text": "峰"
             },
             {
               "text": "口"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "想一想刚才的字",
           "praise": "记住啦！"
         },
@@ -16392,16 +16392,16 @@
           "question": "再找一找：哪张图片是「峰」？",
           "options": [
             {
-              "icon": "everest"
+              "icon": "sun"
             },
             {
               "icon": "tree"
             },
             {
-              "icon": "sun"
+              "icon": "everest"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "「峰」长什么样",
           "praise": "又找对啦！峰！"
         },
@@ -16536,16 +16536,16 @@
           "question": "找一找：哪张图片是「潭」？",
           "options": [
             {
-              "icon": "wave"
+              "icon": "fish"
             },
             {
               "icon": "moon"
             },
             {
-              "icon": "fish"
+              "icon": "wave"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "想想刚才的图片：「潭」",
           "praise": "眼睛真亮！潭 找对啦！"
         },
@@ -16579,13 +16579,13 @@
               "text": "一个"
             },
             {
-              "text": "一天"
+              "text": "日月潭"
             },
             {
-              "text": "日月潭"
+              "text": "一天"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "找一找有「潭」的词",
           "praise": "组词成功：日月潭！"
         },
@@ -16595,16 +16595,16 @@
           "question": "练一练：哪个字是「潭」？",
           "options": [
             {
-              "text": "木"
+              "text": "潭"
             },
             {
-              "text": "潭"
+              "text": "木"
             },
             {
               "text": "口"
             }
           ],
-          "answer": 1,
+          "answer": 0,
           "hint": "想一想刚才的字",
           "praise": "记住啦！"
         },
@@ -16825,13 +16825,13 @@
               "text": "木"
             },
             {
-              "text": "口"
+              "text": "城"
             },
             {
-              "text": "城"
+              "text": "口"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "想一想刚才的字",
           "praise": "记住啦！"
         },
@@ -16843,16 +16843,16 @@
           "question": "再找一找：哪张图片是「城」？",
           "options": [
             {
-              "icon": "greatwall"
+              "icon": "castle"
             },
             {
               "icon": "shop"
             },
             {
-              "icon": "castle"
+              "icon": "greatwall"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "「城」长什么样",
           "praise": "又找对啦！城！"
         },
@@ -16987,16 +16987,16 @@
           "question": "找一找：哪张图片是「市」？",
           "options": [
             {
-              "icon": "school"
+              "icon": "shop"
             },
             {
               "icon": "home"
             },
             {
-              "icon": "shop"
+              "icon": "school"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "想想刚才的图片：「市」",
           "praise": "眼睛真亮！市 找对啦！"
         },
@@ -17008,16 +17008,16 @@
           "question": "看一看：这张图变成的字是哪个？",
           "options": [
             {
-              "text": "市"
+              "text": "杨"
             },
             {
-              "text": "杨"
+              "text": "市"
             },
             {
               "text": "桐"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "想一想它像什么字",
           "praise": "对！这张图就是「市」"
         },
@@ -17030,13 +17030,13 @@
               "text": "四季"
             },
             {
-              "text": "市场"
+              "text": "四方"
             },
             {
-              "text": "四方"
+              "text": "市场"
             }
           ],
-          "answer": 1,
+          "answer": 2,
           "hint": "找一找有「市」的词",
           "praise": "组词成功：市场！"
         },
@@ -17046,16 +17046,16 @@
           "question": "练一练：哪个字是「市」？",
           "options": [
             {
-              "text": "市"
+              "text": "口"
             },
             {
               "text": "木"
             },
             {
-              "text": "口"
+              "text": "市"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "想一想刚才的字",
           "praise": "记住啦！"
         },
@@ -17067,16 +17067,16 @@
           "question": "再找一找：哪张图片是「市」？",
           "options": [
             {
-              "icon": "shop"
+              "icon": "school"
             },
             {
               "icon": "home"
             },
             {
-              "icon": "school"
+              "icon": "shop"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "「市」长什么样",
           "praise": "又找对啦！市！"
         },
@@ -17228,13 +17228,13 @@
               "text": "枫"
             },
             {
-              "text": "井"
+              "text": "松"
             },
             {
-              "text": "松"
+              "text": "井"
             }
           ],
-          "answer": 1,
+          "answer": 2,
           "hint": "想一想它像什么字",
           "praise": "对！这张图就是「井」"
         },
@@ -17247,13 +17247,13 @@
               "text": "五官"
             },
             {
-              "text": "六个"
+              "text": "水井"
             },
             {
-              "text": "水井"
+              "text": "六个"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "找一找有「井」的词",
           "praise": "组词成功：水井！"
         },
@@ -17425,16 +17425,16 @@
           "question": "看一看：这张图变成的字是哪个？",
           "options": [
             {
-              "text": "柏"
+              "text": "观"
             },
             {
               "text": "桂"
             },
             {
-              "text": "观"
+              "text": "柏"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "想一想它像什么字",
           "praise": "对！这张图就是「观」"
         },
@@ -17444,16 +17444,16 @@
           "question": "「观」可以组成哪个词？",
           "options": [
             {
-              "text": "观星"
+              "text": "七天"
             },
             {
-              "text": "七天"
+              "text": "观星"
             },
             {
               "text": "七彩色"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "找一找有「观」的词",
           "praise": "组词成功：观星！"
         },
@@ -17463,16 +17463,16 @@
           "question": "练一练：哪个字是「观」？",
           "options": [
             {
-              "text": "木"
+              "text": "观"
             },
             {
               "text": "口"
             },
             {
-              "text": "观"
+              "text": "木"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "想一想刚才的字",
           "praise": "记住啦！"
         },
@@ -17484,16 +17484,16 @@
           "question": "再找一找：哪张图片是「观」？",
           "options": [
             {
-              "icon": "star"
+              "icon": "telescope"
             },
             {
               "icon": "book"
             },
             {
-              "icon": "telescope"
+              "icon": "star"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "「观」长什么样",
           "praise": "又找对啦！观！"
         },
@@ -17638,13 +17638,13 @@
               "icon": "jar"
             },
             {
-              "icon": "milk"
+              "icon": "cup"
             },
             {
-              "icon": "cup"
+              "icon": "milk"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "想想刚才的图片：「喝」",
           "praise": "眼睛真亮！喝 找对啦！"
         },
@@ -17694,16 +17694,16 @@
           "question": "练一练：哪个字是「喝」？",
           "options": [
             {
-              "text": "喝"
+              "text": "木"
             },
             {
-              "text": "木"
+              "text": "喝"
             },
             {
               "text": "口"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "想一想刚才的字",
           "praise": "记住啦！"
         },
@@ -17866,16 +17866,16 @@
           "question": "找一找：哪张图片是「灯」？",
           "options": [
             {
-              "icon": "bulb"
+              "icon": "moon"
             },
             {
               "icon": "star"
             },
             {
-              "icon": "moon"
+              "icon": "bulb"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "想想刚才的图片：「灯」",
           "praise": "眼睛真亮！灯 找对啦！"
         },
@@ -17890,13 +17890,13 @@
               "text": "季"
             },
             {
-              "text": "灯"
+              "text": "农"
             },
             {
-              "text": "农"
+              "text": "灯"
             }
           ],
-          "answer": 1,
+          "answer": 2,
           "hint": "想一想它像什么字",
           "praise": "对！这张图就是「灯」"
         },
@@ -17906,16 +17906,16 @@
           "question": "「灯」可以组成哪个词？",
           "options": [
             {
-              "text": "十个"
+              "text": "电灯"
             },
             {
               "text": "十分好"
             },
             {
-              "text": "电灯"
+              "text": "十个"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "找一找有「灯」的词",
           "praise": "组词成功：电灯！"
         },
@@ -17928,13 +17928,13 @@
               "text": "木"
             },
             {
-              "text": "灯"
+              "text": "口"
             },
             {
-              "text": "口"
+              "text": "灯"
             }
           ],
-          "answer": 1,
+          "answer": 2,
           "hint": "想一想刚才的字",
           "praise": "记住啦！"
         },
@@ -17949,13 +17949,13 @@
               "icon": "star"
             },
             {
-              "icon": "bulb"
+              "icon": "moon"
             },
             {
-              "icon": "moon"
+              "icon": "bulb"
             }
           ],
-          "answer": 1,
+          "answer": 2,
           "hint": "「灯」长什么样",
           "praise": "又找对啦！灯！"
         },
@@ -18082,13 +18082,13 @@
               "icon": "frog"
             },
             {
-              "icon": "girl"
+              "icon": "party"
             },
             {
-              "icon": "party"
+              "icon": "girl"
             }
           ],
-          "answer": 1,
+          "answer": 2,
           "hint": "想想刚才的图片：「娃」",
           "praise": "眼睛真亮！娃 找对啦！"
         },
@@ -18138,16 +18138,16 @@
           "question": "练一练：哪个字是「娃」？",
           "options": [
             {
-              "text": "木"
+              "text": "娃"
             },
             {
               "text": "口"
             },
             {
-              "text": "娃"
+              "text": "木"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "想一想刚才的字",
           "praise": "记住啦！"
         },
@@ -18162,13 +18162,13 @@
               "icon": "frog"
             },
             {
-              "icon": "party"
+              "icon": "girl"
             },
             {
-              "icon": "girl"
+              "icon": "party"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "「娃」长什么样",
           "praise": "又找对啦！娃！"
         },
@@ -18306,13 +18306,13 @@
               "icon": "bee"
             },
             {
-              "icon": "duck"
+              "icon": "frog"
             },
             {
-              "icon": "frog"
+              "icon": "duck"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "想想刚才的图片：「蛙」",
           "praise": "眼睛真亮！蛙 找对啦！"
         },
@@ -18362,16 +18362,16 @@
           "question": "练一练：哪个字是「蛙」？",
           "options": [
             {
-              "text": "蛙"
+              "text": "口"
             },
             {
               "text": "木"
             },
             {
-              "text": "口"
+              "text": "蛙"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "想一想刚才的字",
           "praise": "记住啦！"
         },
@@ -18534,16 +18534,16 @@
           "question": "找一找：哪张图片是「猫」？",
           "options": [
             {
-              "icon": "cat"
+              "icon": "dog"
             },
             {
-              "icon": "dog"
+              "icon": "cat"
             },
             {
               "icon": "duck"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "想想刚才的图片：「猫」",
           "praise": "眼睛真亮！猫 找对啦！"
         },
@@ -18558,13 +18558,13 @@
               "text": "峰"
             },
             {
-              "text": "猫"
+              "text": "潭"
             },
             {
-              "text": "潭"
+              "text": "猫"
             }
           ],
-          "answer": 1,
+          "answer": 2,
           "hint": "想一想它像什么字",
           "praise": "对！这张图就是「猫」"
         },
@@ -18596,13 +18596,13 @@
               "text": "木"
             },
             {
-              "text": "猫"
+              "text": "口"
             },
             {
-              "text": "口"
+              "text": "猫"
             }
           ],
-          "answer": 1,
+          "answer": 2,
           "hint": "想一想刚才的字",
           "praise": "记住啦！"
         },
@@ -18790,16 +18790,16 @@
           "question": "看一看：这张图变成的字是哪个？",
           "options": [
             {
-              "text": "城"
+              "text": "狗"
             },
             {
               "text": "市"
             },
             {
-              "text": "狗"
+              "text": "城"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "想一想它像什么字",
           "praise": "对！这张图就是「狗」"
         },
@@ -18828,16 +18828,16 @@
           "question": "练一练：哪个字是「狗」？",
           "options": [
             {
-              "text": "木"
+              "text": "狗"
             },
             {
               "text": "口"
             },
             {
-              "text": "狗"
+              "text": "木"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "想一想刚才的字",
           "praise": "记住啦！"
         },
@@ -18852,13 +18852,13 @@
               "icon": "cat"
             },
             {
-              "icon": "bear"
+              "icon": "dog"
             },
             {
-              "icon": "dog"
+              "icon": "bear"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "「狗」长什么样",
           "praise": "又找对啦！狗！"
         },
@@ -19014,16 +19014,16 @@
           "question": "看一看：这张图变成的字是哪个？",
           "options": [
             {
-              "text": "猪"
+              "text": "井"
             },
             {
-              "text": "井"
+              "text": "猪"
             },
             {
               "text": "观"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "想一想它像什么字",
           "praise": "对！这张图就是「猪」"
         },
@@ -19033,16 +19033,16 @@
           "question": "「猪」可以组成哪个词？",
           "options": [
             {
-              "text": "目录"
+              "text": "小猪"
             },
             {
-              "text": "小猪"
+              "text": "目录"
             },
             {
               "text": "耳机"
             }
           ],
-          "answer": 1,
+          "answer": 0,
           "hint": "找一找有「猪」的词",
           "praise": "组词成功：小猪！"
         },
@@ -19052,16 +19052,16 @@
           "question": "练一练：哪个字是「猪」？",
           "options": [
             {
-              "text": "猪"
+              "text": "木"
             },
             {
-              "text": "木"
+              "text": "猪"
             },
             {
               "text": "口"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "想一想刚才的字",
           "praise": "记住啦！"
         },
@@ -19073,16 +19073,16 @@
           "question": "再找一找：哪张图片是「猪」？",
           "options": [
             {
-              "icon": "pig"
+              "icon": "duck"
             },
             {
               "icon": "cow"
             },
             {
-              "icon": "duck"
+              "icon": "pig"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "「猪」长什么样",
           "praise": "又找对啦！猪！"
         },
@@ -19224,16 +19224,16 @@
           "question": "找一找：哪张图片是「鸡」？",
           "options": [
             {
-              "icon": "bird"
+              "icon": "cat"
             },
             {
               "icon": "duck"
             },
             {
-              "icon": "cat"
+              "icon": "bird"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "想想刚才的图片：「鸡」",
           "praise": "眼睛真亮！鸡 找对啦！"
         },
@@ -19245,16 +19245,16 @@
           "question": "看一看：这张图变成的字是哪个？",
           "options": [
             {
-              "text": "喝"
+              "text": "鸡"
             },
             {
-              "text": "鸡"
+              "text": "喝"
             },
             {
               "text": "灯"
             }
           ],
-          "answer": 1,
+          "answer": 0,
           "hint": "想一想它像什么字",
           "praise": "对！这张图就是「鸡」"
         },
@@ -19286,13 +19286,13 @@
               "text": "木"
             },
             {
-              "text": "鸡"
+              "text": "口"
             },
             {
-              "text": "口"
+              "text": "鸡"
             }
           ],
-          "answer": 1,
+          "answer": 2,
           "hint": "想一想刚才的字",
           "praise": "记住啦！"
         },
@@ -19304,16 +19304,16 @@
           "question": "再找一找：哪张图片是「鸡」？",
           "options": [
             {
-              "icon": "duck"
+              "icon": "bird"
             },
             {
-              "icon": "bird"
+              "icon": "duck"
             },
             {
               "icon": "cat"
             }
           ],
-          "answer": 1,
+          "answer": 0,
           "hint": "「鸡」长什么样",
           "praise": "又找对啦！鸡！"
         },
@@ -19432,16 +19432,16 @@
           "question": "找一找：哪张图片是「日」？",
           "options": [
             {
-              "icon": "sunrise"
+              "icon": "cake"
             },
             {
               "icon": "moon"
             },
             {
-              "icon": "cake"
+              "icon": "sunrise"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "想想刚才的图片：「日」",
           "praise": "眼睛真亮！日 找对啦！"
         },
@@ -19474,16 +19474,16 @@
           "question": "找一找：哪张图片是「水」？",
           "options": [
             {
-              "icon": "wave"
+              "icon": "crystal"
             },
             {
               "icon": "sun"
             },
             {
-              "icon": "crystal"
+              "icon": "wave"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "想想刚才的图片：「水」",
           "praise": "眼睛真亮！水 找对啦！"
         },
@@ -19516,16 +19516,16 @@
           "question": "找一找：哪张图片是「木」？",
           "options": [
             {
-              "icon": "sprout"
+              "icon": "flower"
             },
             {
-              "icon": "flower"
+              "icon": "sprout"
             },
             {
               "icon": "rock"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "想想刚才的图片：「木」",
           "praise": "眼睛真亮！木 找对啦！"
         },
@@ -19537,16 +19537,16 @@
           "question": "找一找：哪张图片是「人」？",
           "options": [
             {
-              "icon": "sun"
+              "icon": "girl"
             },
             {
               "icon": "duck"
             },
             {
-              "icon": "girl"
+              "icon": "sun"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "想想刚才的图片：「人」",
           "praise": "眼睛真亮！人 找对啦！"
         }
@@ -19626,16 +19626,16 @@
           "question": "找一找：哪张图片是「熊」？",
           "options": [
             {
-              "icon": "polarbear"
+              "icon": "bear"
             },
             {
-              "icon": "bear"
+              "icon": "polarbear"
             },
             {
               "icon": "cat"
             }
           ],
-          "answer": 1,
+          "answer": 0,
           "hint": "想想刚才的图片：「熊」",
           "praise": "眼睛真亮！熊 找对啦！"
         },
@@ -19647,16 +19647,16 @@
           "question": "看一看：这张图变成的字是哪个？",
           "options": [
             {
-              "text": "娃"
+              "text": "熊"
             },
             {
               "text": "蛙"
             },
             {
-              "text": "熊"
+              "text": "娃"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "想一想它像什么字",
           "praise": "对！这张图就是「熊」"
         },
@@ -19666,16 +19666,16 @@
           "question": "「熊」可以组成哪个词？",
           "options": [
             {
-              "text": "小狗熊"
+              "text": "下雨"
             },
             {
               "text": "彩云"
             },
             {
-              "text": "下雨"
+              "text": "小狗熊"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "找一找有「熊」的词",
           "praise": "组词成功：小狗熊！"
         },
@@ -19685,16 +19685,16 @@
           "question": "练一练：哪个字是「熊」？",
           "options": [
             {
-              "text": "木"
+              "text": "熊"
             },
             {
               "text": "口"
             },
             {
-              "text": "熊"
+              "text": "木"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "想一想刚才的字",
           "praise": "记住啦！"
         },
@@ -19706,16 +19706,16 @@
           "question": "再找一找：哪张图片是「熊」？",
           "options": [
             {
-              "icon": "polarbear"
+              "icon": "bear"
             },
             {
               "icon": "cat"
             },
             {
-              "icon": "bear"
+              "icon": "polarbear"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "「熊」长什么样",
           "praise": "又找对啦！熊！"
         },
@@ -19857,16 +19857,16 @@
           "question": "找一找：哪张图片是「狮」？",
           "options": [
             {
-              "icon": "bear"
+              "icon": "lion"
             },
             {
               "icon": "tiger"
             },
             {
-              "icon": "lion"
+              "icon": "bear"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "想想刚才的图片：「狮」",
           "praise": "眼睛真亮！狮 找对啦！"
         },
@@ -19878,16 +19878,16 @@
           "question": "看一看：这张图变成的字是哪个？",
           "options": [
             {
-              "text": "狮"
+              "text": "猫"
             },
             {
-              "text": "猫"
+              "text": "狮"
             },
             {
               "text": "狗"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "想一想它像什么字",
           "praise": "对！这张图就是「狮」"
         },
@@ -19900,13 +19900,13 @@
               "text": "风车"
             },
             {
-              "text": "狮子"
+              "text": "风车转"
             },
             {
-              "text": "风车转"
+              "text": "狮子"
             }
           ],
-          "answer": 1,
+          "answer": 2,
           "hint": "找一找有「狮」的词",
           "praise": "组词成功：狮子！"
         },
@@ -19937,16 +19937,16 @@
           "question": "再找一找：哪张图片是「狮」？",
           "options": [
             {
-              "icon": "lion"
+              "icon": "tiger"
             },
             {
-              "icon": "tiger"
+              "icon": "lion"
             },
             {
               "icon": "bear"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "「狮」长什么样",
           "praise": "又找对啦！狮！"
         },
@@ -20095,16 +20095,16 @@
           "question": "找一找：哪张图片是「猴」？",
           "options": [
             {
-              "icon": "monkey"
+              "icon": "dog"
             },
             {
               "icon": "bear"
             },
             {
-              "icon": "dog"
+              "icon": "monkey"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "想想刚才的图片：「猴」",
           "praise": "眼睛真亮！猴 找对啦！"
         },
@@ -20119,13 +20119,13 @@
               "text": "猪"
             },
             {
-              "text": "猴"
+              "text": "鸡"
             },
             {
-              "text": "鸡"
+              "text": "猴"
             }
           ],
-          "answer": 1,
+          "answer": 2,
           "hint": "想一想它像什么字",
           "praise": "对！这张图就是「猴」"
         },
@@ -20347,13 +20347,13 @@
               "text": "熊"
             },
             {
-              "text": "狮"
+              "text": "晴"
             },
             {
-              "text": "晴"
+              "text": "狮"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "想一想它像什么字",
           "praise": "对！这张图就是「晴」"
         },
@@ -20363,16 +20363,16 @@
           "question": "「晴」可以组成哪个词？",
           "options": [
             {
-              "text": "晴天"
+              "text": "宝贝"
             },
             {
-              "text": "宝贝"
+              "text": "晴天"
             },
             {
               "text": "宝贝蛋"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "找一找有「晴」的词",
           "praise": "组词成功：晴天！"
         },
@@ -20385,13 +20385,13 @@
               "text": "木"
             },
             {
-              "text": "口"
+              "text": "晴"
             },
             {
-              "text": "晴"
+              "text": "口"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "想一想刚才的字",
           "praise": "记住啦！"
         },
@@ -20406,13 +20406,13 @@
               "icon": "moon"
             },
             {
-              "icon": "star"
+              "icon": "sun"
             },
             {
-              "icon": "sun"
+              "icon": "star"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "「晴」长什么样",
           "praise": "又找对啦！晴！"
         },
@@ -20568,16 +20568,16 @@
           "question": "看一看：这张图变成的字是哪个？",
           "options": [
             {
-              "text": "晚"
+              "text": "猴"
             },
             {
-              "text": "猴"
+              "text": "晚"
             },
             {
               "text": "晴"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "想一想它像什么字",
           "praise": "对！这张图就是「晚」"
         },
@@ -20606,16 +20606,16 @@
           "question": "练一练：哪个字是「晚」？",
           "options": [
             {
-              "text": "晚"
+              "text": "口"
             },
             {
               "text": "木"
             },
             {
-              "text": "口"
+              "text": "晚"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "想一想刚才的字",
           "praise": "记住啦！"
         },
@@ -20627,16 +20627,16 @@
           "question": "再找一找：哪张图片是「晚」？",
           "options": [
             {
-              "icon": "moon"
+              "icon": "sun"
             },
             {
-              "icon": "sun"
+              "icon": "moon"
             },
             {
               "icon": "star"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "「晚」长什么样",
           "praise": "又找对啦！晚！"
         },
@@ -20771,16 +20771,16 @@
           "question": "找一找：哪张图片是「雪」？",
           "options": [
             {
-              "icon": "snowflake"
+              "icon": "milk"
             },
             {
               "icon": "ice"
             },
             {
-              "icon": "milk"
+              "icon": "snowflake"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "想想刚才的图片：「雪」",
           "praise": "眼睛真亮！雪 找对啦！"
         },
@@ -20811,16 +20811,16 @@
           "question": "「雪」可以组成哪个词？",
           "options": [
             {
-              "text": "小牛"
+              "text": "下雪"
             },
             {
               "text": "牛奶"
             },
             {
-              "text": "下雪"
+              "text": "小牛"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "找一找有「雪」的词",
           "praise": "组词成功：下雪！"
         },
@@ -21015,13 +21015,13 @@
               "icon": "snowflake"
             },
             {
-              "icon": "ice"
+              "icon": "crystal"
             },
             {
-              "icon": "crystal"
+              "icon": "ice"
             }
           ],
-          "answer": 1,
+          "answer": 2,
           "hint": "想想刚才的图片：「冰」",
           "praise": "眼睛真亮！冰 找对啦！"
         },
@@ -21036,13 +21036,13 @@
               "text": "日"
             },
             {
-              "text": "月"
+              "text": "冰"
             },
             {
-              "text": "冰"
+              "text": "月"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "想一想它像什么字",
           "praise": "对！这张图就是「冰」"
         },
@@ -21052,16 +21052,16 @@
           "question": "「冰」可以组成哪个词？",
           "options": [
             {
-              "text": "结冰"
+              "text": "果子"
             },
             {
               "text": "羊毛"
             },
             {
-              "text": "果子"
+              "text": "结冰"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "找一找有「冰」的词",
           "praise": "组词成功：结冰！"
         },
@@ -21203,16 +21203,16 @@
           "question": "找一找：哪张图片是「日」？",
           "options": [
             {
-              "icon": "sunrise"
+              "icon": "moon"
             },
             {
-              "icon": "moon"
+              "icon": "sunrise"
             },
             {
               "icon": "cake"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "想想刚才的图片：「日」",
           "praise": "眼睛真亮！日 找对啦！"
         },
@@ -21224,16 +21224,16 @@
           "question": "找一找：哪张图片是「月」？",
           "options": [
             {
-              "icon": "star"
+              "icon": "moon"
             },
             {
               "icon": "sun"
             },
             {
-              "icon": "moon"
+              "icon": "star"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "想想刚才的图片：「月」",
           "praise": "眼睛真亮！月 找对啦！"
         },
@@ -21245,16 +21245,16 @@
           "question": "找一找：哪张图片是「水」？",
           "options": [
             {
-              "icon": "wave"
+              "icon": "crystal"
             },
             {
               "icon": "sun"
             },
             {
-              "icon": "crystal"
+              "icon": "wave"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "想想刚才的图片：「水」",
           "praise": "眼睛真亮！水 找对啦！"
         },
@@ -21287,16 +21287,16 @@
           "question": "找一找：哪张图片是「木」？",
           "options": [
             {
-              "icon": "sprout"
+              "icon": "flower"
             },
             {
-              "icon": "flower"
+              "icon": "sprout"
             },
             {
               "icon": "rock"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "想想刚才的图片：「木」",
           "praise": "眼睛真亮！木 找对啦！"
         },
@@ -21311,13 +21311,13 @@
               "icon": "sun"
             },
             {
-              "icon": "duck"
+              "icon": "girl"
             },
             {
-              "icon": "girl"
+              "icon": "duck"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "想想刚才的图片：「人」",
           "praise": "眼睛真亮！人 找对啦！"
         },
@@ -21329,16 +21329,16 @@
           "question": "找一找：哪张图片是「口」？",
           "options": [
             {
-              "icon": "speaker"
+              "icon": "moon"
             },
             {
               "icon": "clock"
             },
             {
-              "icon": "moon"
+              "icon": "speaker"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "想想刚才的图片：「口」",
           "praise": "眼睛真亮！口 找对啦！"
         },
@@ -21350,16 +21350,16 @@
           "question": "找一找：哪张图片是「天」？",
           "options": [
             {
-              "icon": "banana"
+              "icon": "sun"
             },
             {
-              "icon": "sun"
+              "icon": "banana"
             },
             {
               "icon": "rocket"
             }
           ],
-          "answer": 1,
+          "answer": 0,
           "hint": "想想刚才的图片：「天」",
           "praise": "眼睛真亮！天 找对啦！"
         }

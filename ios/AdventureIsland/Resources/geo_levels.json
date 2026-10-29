@@ -283,19 +283,19 @@
           "question": "中国的首都是哪座城市？",
           "options": [
             {
-              "icon": "tiananmen",
-              "text": "北京"
-            },
-            {
               "icon": "tower",
               "text": "上海"
+            },
+            {
+              "icon": "tiananmen",
+              "text": "北京"
             },
             {
               "icon": "castle",
               "text": "外国城堡"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "天安门在北京",
           "praise": "北京是首都！"
         },
@@ -306,19 +306,19 @@
           "shadow": "tiananmen",
           "options": [
             {
-              "icon": "tiananmen",
-              "text": "天安门"
-            },
-            {
               "icon": "castle",
               "text": "城堡"
+            },
+            {
+              "icon": "tiananmen",
+              "text": "天安门"
             },
             {
               "icon": "school",
               "text": "学校"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "北京是中国的首都，它就在天安门",
           "praise": "猜对啦！"
         }
@@ -358,19 +358,19 @@
           "question": "长江和黄河是中国的什么河？",
           "options": [
             {
-              "icon": "river",
-              "text": "母亲河"
+              "icon": "ice",
+              "text": "冰川"
             },
             {
               "icon": "wave",
               "text": "大海"
             },
             {
-              "icon": "ice",
-              "text": "冰川"
+              "icon": "river",
+              "text": "母亲河"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "母亲河",
           "praise": "母亲河记住啦！"
         }
@@ -497,19 +497,19 @@
           "question": "世界第一高峰是哪座山？",
           "options": [
             {
-              "icon": "everest",
-              "text": "珠穆朗玛峰"
-            },
-            {
               "icon": "volcano",
               "text": "火山"
+            },
+            {
+              "icon": "everest",
+              "text": "珠穆朗玛峰"
             },
             {
               "icon": "pine",
               "text": "黄山"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "最高最高",
           "praise": "珠峰真高！"
         },
@@ -582,19 +582,19 @@
           "question": "中国的国宝、爱吃竹子的动物是谁？",
           "options": [
             {
-              "icon": "bear",
-              "text": "熊"
-            },
-            {
               "icon": "panda",
               "text": "大熊猫"
+            },
+            {
+              "icon": "bear",
+              "text": "熊"
             },
             {
               "icon": "rabbit",
               "text": "兔子"
             }
           ],
-          "answer": 1,
+          "answer": 0,
           "hint": "黑白毛、圆滚滚",
           "praise": "大熊猫真可爱！"
         }
@@ -859,16 +859,16 @@
           "question": "我们中国在哪个大洲？",
           "options": [
             {
-              "text": "亚洲"
+              "text": "非洲"
             },
             {
-              "text": "非洲"
+              "text": "亚洲"
             },
             {
               "text": "欧洲"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "最大的大洲",
           "praise": "亚洲是我们的家！"
         }
@@ -960,19 +960,19 @@
           "question": "欧洲田野上慢慢转动的是什么？",
           "options": [
             {
-              "icon": "windmill",
-              "text": "风车"
-            },
-            {
               "icon": "ferris",
               "text": "摩天轮"
+            },
+            {
+              "icon": "windmill",
+              "text": "风车"
             },
             {
               "icon": "castle",
               "text": "城堡"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "转呀转",
           "praise": "风车转起来啦！"
         },
@@ -1024,19 +1024,19 @@
           "question": "举着火炬、站在美国纽约港的是谁？",
           "options": [
             {
-              "icon": "libertystatue",
-              "text": "自由女神像"
-            },
-            {
               "icon": "tower",
               "text": "高塔"
+            },
+            {
+              "icon": "libertystatue",
+              "text": "自由女神像"
             },
             {
               "icon": "castle",
               "text": "城堡"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "火炬女神",
           "praise": "自由女神记住啦！"
         }
@@ -1085,15 +1085,15 @@
               "text": "兔子"
             },
             {
-              "icon": "kangaroo",
-              "text": "袋鼠"
-            },
-            {
               "icon": "bear",
               "text": "熊"
+            },
+            {
+              "icon": "kangaroo",
+              "text": "袋鼠"
             }
           ],
-          "answer": 1,
+          "answer": 2,
           "hint": "大口袋",
           "praise": "袋鼠跳得高！"
         },
@@ -1207,19 +1207,19 @@
           "question": "冰雕最美的城市是？",
           "options": [
             {
-              "icon": "snowflake",
-              "text": "哈尔滨"
+              "icon": "desert",
+              "text": "新疆"
             },
             {
               "icon": "palm",
               "text": "海南"
             },
             {
-              "icon": "desert",
-              "text": "新疆"
+              "icon": "snowflake",
+              "text": "哈尔滨"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "东北的冰城",
           "praise": "哈尔滨答对啦！"
         }
@@ -1259,19 +1259,19 @@
           "question": "椰子树最多的省份是？",
           "options": [
             {
-              "icon": "palm",
-              "text": "海南"
-            },
-            {
               "icon": "snowflake",
               "text": "哈尔滨"
+            },
+            {
+              "icon": "palm",
+              "text": "海南"
             },
             {
               "icon": "everest",
               "text": "珠峰"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "最南面的宝岛",
           "praise": "海南答对啦！"
         }
@@ -1311,19 +1311,19 @@
           "question": "中国面积最大的省区是？",
           "options": [
             {
-              "icon": "desert",
-              "text": "新疆"
-            },
-            {
               "icon": "china-map",
               "text": "北京"
+            },
+            {
+              "icon": "desert",
+              "text": "新疆"
             },
             {
               "icon": "wave",
               "text": "上海"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "西北好大好大",
           "praise": "新疆答对啦！"
         }
@@ -1415,19 +1415,19 @@
           "question": "祖国的宝岛是？",
           "options": [
             {
-              "icon": "island",
-              "text": "台湾"
-            },
-            {
               "icon": "kangaroo",
               "text": "澳大利亚"
+            },
+            {
+              "icon": "island",
+              "text": "台湾"
             },
             {
               "icon": "penguin",
               "text": "南极"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "海峡对面",
           "praise": "台湾答对啦！"
         }
@@ -1467,19 +1467,19 @@
           "question": "「桂林山水甲天下」说的是哪里最美？",
           "options": [
             {
-              "icon": "shanshui",
-              "text": "桂林山水"
+              "icon": "castle",
+              "text": "城堡"
             },
             {
               "icon": "desert",
               "text": "沙漠"
             },
             {
-              "icon": "castle",
-              "text": "城堡"
+              "icon": "shanshui",
+              "text": "桂林山水"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "山清水秀",
           "praise": "桂林山水答对啦！"
         }
@@ -1519,19 +1519,19 @@
           "question": "黄山最出名的是？",
           "options": [
             {
-              "icon": "pine",
-              "text": "迎客松"
+              "icon": "bigben",
+              "text": "大本钟"
             },
             {
               "icon": "penguin",
               "text": "企鹅"
             },
             {
-              "icon": "bigben",
-              "text": "大本钟"
+              "icon": "pine",
+              "text": "迎客松"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "迎客松有名",
           "praise": "迎客松答对啦！"
         }
@@ -1571,19 +1571,19 @@
           "question": "富士山在哪国？",
           "options": [
             {
-              "icon": "torii",
-              "text": "日本"
+              "icon": "libertystatue",
+              "text": "美国"
             },
             {
               "icon": "greatwall",
               "text": "中国"
             },
             {
-              "icon": "libertystatue",
-              "text": "美国"
+              "icon": "torii",
+              "text": "日本"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "樱花之国",
           "praise": "日本答对啦！"
         }
@@ -1675,19 +1675,19 @@
           "question": "金字塔在哪国？",
           "options": [
             {
-              "icon": "pyramid",
-              "text": "埃及"
-            },
-            {
               "icon": "bigben",
               "text": "英国"
+            },
+            {
+              "icon": "pyramid",
+              "text": "埃及"
             },
             {
               "icon": "eiffel",
               "text": "法国"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "尼罗河边的沙漠国",
           "praise": "埃及答对啦！"
         }
@@ -1727,19 +1727,19 @@
           "question": "埃菲尔铁塔在哪国？",
           "options": [
             {
-              "icon": "eiffel",
-              "text": "法国"
-            },
-            {
               "icon": "pyramid",
               "text": "埃及"
+            },
+            {
+              "icon": "eiffel",
+              "text": "法国"
             },
             {
               "icon": "torii",
               "text": "日本"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "浪漫之都巴黎",
           "praise": "法国答对啦！"
         }
@@ -1779,19 +1779,19 @@
           "question": "大本钟在哪国？",
           "options": [
             {
-              "icon": "bigben",
-              "text": "英国"
+              "icon": "pyramid",
+              "text": "埃及"
             },
             {
               "icon": "eiffel",
               "text": "法国"
             },
             {
-              "icon": "pyramid",
-              "text": "埃及"
+              "icon": "bigben",
+              "text": "英国"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "伦敦的钟楼",
           "praise": "英国答对啦！"
         }
@@ -2172,19 +2172,19 @@
           "question": "中国的首都是哪座城市？",
           "options": [
             {
-              "icon": "tiananmen",
-              "text": "北京"
+              "icon": "castle",
+              "text": "外国城堡"
             },
             {
               "icon": "tower",
               "text": "上海"
             },
             {
-              "icon": "castle",
-              "text": "外国城堡"
+              "icon": "tiananmen",
+              "text": "北京"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "天安门在北京",
           "praise": "北京是首都！"
         },
@@ -2194,19 +2194,19 @@
           "question": "长江和黄河是中国的什么河？",
           "options": [
             {
-              "icon": "river",
-              "text": "母亲河"
+              "icon": "ice",
+              "text": "冰川"
             },
             {
               "icon": "wave",
               "text": "大海"
             },
             {
-              "icon": "ice",
-              "text": "冰川"
+              "icon": "river",
+              "text": "母亲河"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "母亲河",
           "praise": "母亲河记住啦！"
         },
@@ -2238,19 +2238,19 @@
           "question": "世界第一高峰是哪座山？",
           "options": [
             {
-              "icon": "everest",
-              "text": "珠穆朗玛峰"
+              "icon": "pine",
+              "text": "黄山"
             },
             {
               "icon": "volcano",
               "text": "火山"
             },
             {
-              "icon": "pine",
-              "text": "黄山"
+              "icon": "everest",
+              "text": "珠穆朗玛峰"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "最高最高",
           "praise": "珠峰真高！"
         },
@@ -2405,19 +2405,19 @@
           "question": "日本的首都是？",
           "options": [
             {
-              "icon": "torii",
-              "text": "东京"
-            },
-            {
               "icon": "tiananmen",
               "text": "北京"
+            },
+            {
+              "icon": "torii",
+              "text": "东京"
             },
             {
               "icon": "eiffel",
               "text": "巴黎"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "樱花下的都市",
           "praise": "东京答对啦！"
         }
@@ -2457,19 +2457,19 @@
           "question": "埃及的首都是？",
           "options": [
             {
-              "icon": "pyramid",
-              "text": "开罗"
+              "icon": "eiffel",
+              "text": "巴黎"
             },
             {
               "icon": "bigben",
               "text": "伦敦"
             },
             {
-              "icon": "eiffel",
-              "text": "巴黎"
+              "icon": "pyramid",
+              "text": "开罗"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "金字塔下的城",
           "praise": "开罗答对啦！"
         }
@@ -2509,19 +2509,19 @@
           "question": "法国的首都是？",
           "options": [
             {
-              "icon": "eiffel",
-              "text": "巴黎"
+              "icon": "torii",
+              "text": "东京"
             },
             {
               "icon": "bigben",
               "text": "伦敦"
             },
             {
-              "icon": "torii",
-              "text": "东京"
+              "icon": "eiffel",
+              "text": "巴黎"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "塞纳河畔",
           "praise": "巴黎答对啦！"
         }
@@ -2561,19 +2561,19 @@
           "question": "英国的首都是？",
           "options": [
             {
-              "icon": "bigben",
-              "text": "伦敦"
+              "icon": "eiffel",
+              "text": "巴黎"
             },
             {
               "icon": "pyramid",
               "text": "开罗"
             },
             {
-              "icon": "eiffel",
-              "text": "巴黎"
+              "icon": "bigben",
+              "text": "伦敦"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "泰晤士河边",
           "praise": "伦敦答对啦！"
         }
@@ -2717,19 +2717,19 @@
           "question": "世界上最大的海洋是？",
           "options": [
             {
-              "icon": "wave",
-              "text": "太平洋"
-            },
-            {
               "icon": "river",
               "text": "长江"
+            },
+            {
+              "icon": "wave",
+              "text": "太平洋"
             },
             {
               "icon": "desert",
               "text": "撒哈拉"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "四大洋的老大",
           "praise": "太平洋答对啦！"
         }
@@ -2873,19 +2873,19 @@
           "question": "「地球之肺」指的是？",
           "options": [
             {
-              "icon": "tree",
-              "text": "亚马孙雨林"
+              "icon": "wave",
+              "text": "大海"
             },
             {
               "icon": "desert",
               "text": "撒哈拉"
             },
             {
-              "icon": "wave",
-              "text": "大海"
+              "icon": "tree",
+              "text": "亚马孙雨林"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "制造氧气的大森林",
           "praise": "亚马孙雨林答对啦！"
         }
@@ -2977,19 +2977,19 @@
           "question": "世界上最长的河流是？",
           "options": [
             {
-              "icon": "river",
-              "text": "尼罗河"
+              "icon": "desert",
+              "text": "撒哈拉"
             },
             {
               "icon": "wave",
               "text": "太平洋"
             },
             {
-              "icon": "desert",
-              "text": "撒哈拉"
+              "icon": "river",
+              "text": "尼罗河"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "埃及的母亲河",
           "praise": "尼罗河答对啦！"
         }
@@ -3029,19 +3029,19 @@
           "question": "火山喷出的是？",
           "options": [
             {
-              "icon": "volcano",
-              "text": "岩浆"
-            },
-            {
               "icon": "wave",
               "text": "海水"
+            },
+            {
+              "icon": "volcano",
+              "text": "岩浆"
             },
             {
               "icon": "bulb",
               "text": "灯光"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "地下冒出的红岩浆",
           "praise": "岩浆答对啦！"
         }
@@ -3130,16 +3130,16 @@
           "question": "地球上有几大洲几大洋？",
           "options": [
             {
-              "text": "七大洲四大洋"
+              "text": "一大洲一大洋"
             },
             {
-              "text": "一大洲一大洋"
+              "text": "七大洲四大洋"
             },
             {
               "text": "五大洲三大洋"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "世界地图看一看",
           "praise": "七大洲四大洋答对啦！"
         }
@@ -3179,19 +3179,19 @@
           "question": "企鹅住在哪一端？",
           "options": [
             {
-              "icon": "penguin",
-              "text": "南极"
+              "icon": "desert",
+              "text": "撒哈拉"
             },
             {
               "icon": "polarbear",
               "text": "北极"
             },
             {
-              "icon": "desert",
-              "text": "撒哈拉"
+              "icon": "penguin",
+              "text": "南极"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "企鹅在南极，北极熊在北极",
           "praise": "南极答对啦！"
         }
@@ -3231,19 +3231,19 @@
           "question": "「千年商都」是——",
           "options": [
             {
-              "icon": "shop",
-              "text": "广州"
-            },
-            {
               "icon": "castle",
               "text": "莫斯科"
+            },
+            {
+              "icon": "shop",
+              "text": "广州"
             },
             {
               "icon": "torii",
               "text": "东京"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "南方大港口",
           "praise": "广州答对啦！"
         }
@@ -3283,19 +3283,19 @@
           "question": "西湖在哪座城市？",
           "options": [
             {
-              "icon": "wave",
-              "text": "杭州"
-            },
-            {
               "icon": "palm",
               "text": "海南"
+            },
+            {
+              "icon": "wave",
+              "text": "杭州"
             },
             {
               "icon": "everest",
               "text": "西藏"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "上有天堂下有苏杭",
           "praise": "杭州答对啦！"
         }
@@ -3335,19 +3335,19 @@
           "question": "大熊猫基地在——",
           "options": [
             {
-              "icon": "panda",
-              "text": "成都"
+              "icon": "lion",
+              "text": "非洲"
             },
             {
               "icon": "kangaroo",
               "text": "澳大利亚"
             },
             {
-              "icon": "lion",
-              "text": "非洲"
+              "icon": "panda",
+              "text": "成都"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "四川成都",
           "praise": "成都答对啦！"
         }
@@ -3387,19 +3387,19 @@
           "question": "莫高窟在哪一省？",
           "options": [
             {
-              "icon": "desert",
-              "text": "甘肃"
-            },
-            {
               "icon": "wave",
               "text": "浙江"
+            },
+            {
+              "icon": "desert",
+              "text": "甘肃"
             },
             {
               "icon": "palm",
               "text": "海南"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "丝绸之路重镇",
           "praise": "甘肃答对啦！"
         }
@@ -3439,19 +3439,19 @@
           "question": "中国最大的湖是——",
           "options": [
             {
-              "icon": "wave",
-              "text": "青海湖"
+              "icon": "desert",
+              "text": "撒哈拉"
             },
             {
               "icon": "river",
               "text": "长江"
             },
             {
-              "icon": "desert",
-              "text": "撒哈拉"
+              "icon": "wave",
+              "text": "青海湖"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "高原蓝宝石",
           "praise": "青海湖答对啦！"
         }
@@ -3491,19 +3491,19 @@
           "question": "「世界屋脊」是——",
           "options": [
             {
-              "icon": "everest",
-              "text": "西藏"
-            },
-            {
               "icon": "wave",
               "text": "上海"
+            },
+            {
+              "icon": "everest",
+              "text": "西藏"
             },
             {
               "icon": "castle",
               "text": "俄罗斯"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "最高的高原",
           "praise": "西藏答对啦！"
         }
@@ -3543,19 +3543,19 @@
           "question": "内蒙古的代表风景是——",
           "options": [
             {
-              "icon": "grassland",
-              "text": "大草原"
+              "icon": "desert",
+              "text": "沙漠"
             },
             {
               "icon": "wave",
               "text": "大海"
             },
             {
-              "icon": "desert",
-              "text": "沙漠"
+              "icon": "grassland",
+              "text": "大草原"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "风吹草低见牛羊",
           "praise": "大草原答对啦！"
         }
@@ -3595,19 +3595,19 @@
           "question": "「东方之珠」是——",
           "options": [
             {
-              "icon": "tower",
-              "text": "香港"
+              "icon": "torii",
+              "text": "东京"
             },
             {
               "icon": "palm",
               "text": "海南"
             },
             {
-              "icon": "torii",
-              "text": "东京"
+              "icon": "tower",
+              "text": "香港"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "夜景最亮",
           "praise": "香港答对啦！"
         }
@@ -3647,19 +3647,19 @@
           "question": "风车王国是——",
           "options": [
             {
-              "icon": "windmill",
-              "text": "荷兰"
-            },
-            {
               "icon": "maple",
               "text": "加拿大"
+            },
+            {
+              "icon": "windmill",
+              "text": "荷兰"
             },
             {
               "icon": "torii",
               "text": "日本"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "低地之国",
           "praise": "荷兰答对啦！"
         }
@@ -3699,19 +3699,19 @@
           "question": "雪山之国是——",
           "options": [
             {
-              "icon": "everest",
-              "text": "瑞士"
+              "icon": "palm",
+              "text": "海南"
             },
             {
               "icon": "desert",
               "text": "埃及"
             },
             {
-              "icon": "palm",
-              "text": "海南"
+              "icon": "everest",
+              "text": "瑞士"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "滑雪胜地",
           "praise": "瑞士答对啦！"
         }
@@ -3751,19 +3751,19 @@
           "question": "钻石之国是——",
           "options": [
             {
-              "icon": "crystal",
-              "text": "南非"
-            },
-            {
               "icon": "pisa",
               "text": "意大利"
+            },
+            {
+              "icon": "crystal",
+              "text": "南非"
             },
             {
               "icon": "torii",
               "text": "日本"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "非洲最南端",
           "praise": "南非答对啦！"
         }
@@ -3855,19 +3855,19 @@
           "question": "童话王国是——",
           "options": [
             {
-              "icon": "book",
-              "text": "丹麦"
-            },
-            {
               "icon": "bigben",
               "text": "英国"
+            },
+            {
+              "icon": "book",
+              "text": "丹麦"
             },
             {
               "icon": "eiffel",
               "text": "法国"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "丑小鸭和小美人鱼",
           "praise": "丹麦答对啦！"
         }
@@ -4040,19 +4040,19 @@
           "question": "中国的首都是哪座城市？",
           "options": [
             {
-              "icon": "tiananmen",
-              "text": "北京"
+              "icon": "castle",
+              "text": "外国城堡"
             },
             {
               "icon": "tower",
               "text": "上海"
             },
             {
-              "icon": "castle",
-              "text": "外国城堡"
+              "icon": "tiananmen",
+              "text": "北京"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "天安门在北京",
           "praise": "北京是首都！"
         },
@@ -4062,19 +4062,19 @@
           "question": "长江和黄河是中国的什么河？",
           "options": [
             {
-              "icon": "river",
-              "text": "母亲河"
+              "icon": "ice",
+              "text": "冰川"
             },
             {
               "icon": "wave",
               "text": "大海"
             },
             {
-              "icon": "ice",
-              "text": "冰川"
+              "icon": "river",
+              "text": "母亲河"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "母亲河",
           "praise": "母亲河记住啦！"
         },
@@ -4132,15 +4132,15 @@
               "text": "熊"
             },
             {
-              "icon": "panda",
-              "text": "大熊猫"
-            },
-            {
               "icon": "rabbit",
               "text": "兔子"
+            },
+            {
+              "icon": "panda",
+              "text": "大熊猫"
             }
           ],
-          "answer": 1,
+          "answer": 2,
           "hint": "黑白毛、圆滚滚",
           "praise": "大熊猫真可爱！"
         }
@@ -4221,19 +4221,19 @@
           "question": "恒河流经——",
           "options": [
             {
-              "icon": "taj",
-              "text": "印度"
-            },
-            {
               "icon": "bigben",
               "text": "英国"
+            },
+            {
+              "icon": "taj",
+              "text": "印度"
             },
             {
               "icon": "castle",
               "text": "俄罗斯"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "南亚文明古国",
           "praise": "印度答对啦！"
         }
@@ -4325,19 +4325,19 @@
           "question": "峡湾之国是——",
           "options": [
             {
-              "icon": "shanshui",
-              "text": "挪威"
+              "icon": "taj",
+              "text": "印度"
             },
             {
               "icon": "windmill",
               "text": "荷兰"
             },
             {
-              "icon": "taj",
-              "text": "印度"
+              "icon": "shanshui",
+              "text": "挪威"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "北欧海盗国度",
           "praise": "挪威答对啦！"
         }
@@ -4429,19 +4429,19 @@
           "question": "梅西的祖国是——",
           "options": [
             {
-              "icon": "ball",
-              "text": "阿根廷"
-            },
-            {
               "icon": "torii",
               "text": "日本"
+            },
+            {
+              "icon": "ball",
+              "text": "阿根廷"
             },
             {
               "icon": "pisa",
               "text": "意大利"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "南美银之国",
           "praise": "阿根廷答对啦！"
         }
@@ -4481,19 +4481,19 @@
           "question": "动物大迁徙在——",
           "options": [
             {
-              "icon": "lion",
-              "text": "肯尼亚"
-            },
-            {
               "icon": "penguin",
               "text": "南极"
+            },
+            {
+              "icon": "lion",
+              "text": "肯尼亚"
             },
             {
               "icon": "kangaroo",
               "text": "澳大利亚"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "非洲草原壮景",
           "praise": "肯尼亚答对啦！"
         }
@@ -4689,19 +4689,19 @@
           "question": "海洋最深处在——",
           "options": [
             {
-              "icon": "wave",
-              "text": "马里亚纳海沟"
+              "icon": "desert",
+              "text": "撒哈拉"
             },
             {
               "icon": "river",
               "text": "长江"
             },
             {
-              "icon": "desert",
-              "text": "撒哈拉"
+              "icon": "wave",
+              "text": "马里亚纳海沟"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "深过最高的山",
           "praise": "马里亚纳海沟答对啦！"
         }
@@ -4741,19 +4741,19 @@
           "question": "最深的淡水湖是——",
           "options": [
             {
-              "icon": "wave",
-              "text": "贝加尔湖"
+              "icon": "desert",
+              "text": "撒哈拉"
             },
             {
               "icon": "river",
               "text": "尼罗河"
             },
             {
-              "icon": "desert",
-              "text": "撒哈拉"
+              "icon": "wave",
+              "text": "贝加尔湖"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "西伯利亚蓝眼睛",
           "praise": "贝加尔湖答对啦！"
         }
@@ -4793,19 +4793,19 @@
           "question": "人能躺在水上看书的湖是——",
           "options": [
             {
-              "icon": "wave",
-              "text": "死海"
-            },
-            {
               "icon": "river",
               "text": "尼罗河"
+            },
+            {
+              "icon": "wave",
+              "text": "死海"
             },
             {
               "icon": "snowflake",
               "text": "格陵兰"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "盐分超级高",
           "praise": "死海答对啦！"
         }
@@ -4897,16 +4897,16 @@
           "question": "夏威夷群岛由什么组成？",
           "options": [
             {
-              "text": "火山岛"
+              "text": "冰川岛"
             },
             {
-              "text": "冰川岛"
+              "text": "火山岛"
             },
             {
               "text": "珊瑚岛"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "基拉韦厄活火山",
           "praise": "火山岛答对啦！"
         }
@@ -4946,16 +4946,16 @@
           "question": "恐龙生活在——",
           "options": [
             {
-              "text": "几千万年前"
+              "text": "明天"
             },
             {
               "text": "去年"
             },
             {
-              "text": "明天"
+              "text": "几千万年前"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "史前巨兽",
           "praise": "几千万年前答对啦！"
         }
@@ -4995,16 +4995,16 @@
           "question": "恐龙为什么灭绝？",
           "options": [
             {
-              "text": "可能因陨石撞击"
+              "text": "去旅游了"
             },
             {
               "text": "被人类吃光"
             },
             {
-              "text": "去旅游了"
+              "text": "可能因陨石撞击"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "科学家仍在研究",
           "praise": "可能因陨石撞击答对啦！"
         }
@@ -5044,19 +5044,19 @@
           "question": "化石藏在哪里？",
           "options": [
             {
-              "icon": "rock",
-              "text": "岩石里"
-            },
-            {
               "icon": "wave",
               "text": "海水里"
+            },
+            {
+              "icon": "rock",
+              "text": "岩石里"
             },
             {
               "icon": "cake",
               "text": "蛋糕里"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "地球的历史书",
           "praise": "岩石里答对啦！"
         }
@@ -5096,16 +5096,16 @@
           "question": "陨石来自——",
           "options": [
             {
-              "text": "太空"
+              "text": "地底"
             },
             {
-              "text": "地底"
+              "text": "太空"
             },
             {
               "text": "大海"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "太空访客",
           "praise": "太空答对啦！"
         }
@@ -5145,16 +5145,16 @@
           "question": "哈雷彗星绕谁转？",
           "options": [
             {
-              "text": "太阳"
+              "text": "地球"
             },
             {
               "text": "月亮"
             },
             {
-              "text": "地球"
+              "text": "太阳"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "拖着尾巴的访客",
           "praise": "太阳答对啦！"
         }
@@ -5194,16 +5194,16 @@
           "question": "极昼是——",
           "options": [
             {
-              "text": "太阳整日不落"
+              "text": "整天黑夜"
             },
             {
-              "text": "整天黑夜"
+              "text": "太阳整日不落"
             },
             {
               "text": "下雪"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "南北极才有的奇景",
           "praise": "太阳整日不落答对啦！"
         }
@@ -5243,16 +5243,16 @@
           "question": "珊瑚礁在——",
           "options": [
             {
-              "text": "温暖浅海"
+              "text": "深海底"
             },
             {
-              "text": "深海底"
+              "text": "温暖浅海"
             },
             {
               "text": "沙漠里"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "海洋生命摇篮",
           "praise": "温暖浅海答对啦！"
         }
@@ -5344,19 +5344,19 @@
           "question": "中秋节吃什么？",
           "options": [
             {
-              "icon": "cake",
-              "text": "月饼"
+              "icon": "bread",
+              "text": "面包"
             },
             {
               "icon": "candy",
               "text": "糖"
             },
             {
-              "icon": "bread",
-              "text": "面包"
+              "icon": "cake",
+              "text": "月饼"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "八月十五月儿圆",
           "praise": "月饼答对啦！"
         }
@@ -5546,16 +5546,16 @@
           "question": "感恩节流行于——",
           "options": [
             {
-              "text": "美国和加拿大"
+              "text": "日本"
             },
             {
               "text": "中国"
             },
             {
-              "text": "日本"
+              "text": "美国和加拿大"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "11 月第四个星期四",
           "praise": "美国和加拿大答对啦！"
         }
@@ -5595,16 +5595,16 @@
           "question": "太阳升起的方向是——",
           "options": [
             {
-              "text": "东方"
+              "text": "西方"
             },
             {
-              "text": "西方"
+              "text": "东方"
             },
             {
               "text": "北方"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "面对太阳前东后西",
           "praise": "东方答对啦！"
         }
@@ -5644,16 +5644,16 @@
           "question": "指南针的指针指向——",
           "options": [
             {
-              "text": "南北"
+              "text": "上下"
             },
             {
               "text": "东西"
             },
             {
-              "text": "上下"
+              "text": "南北"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "四大发明还有造纸印刷火药",
           "praise": "南北答对啦！"
         }
@@ -5875,19 +5875,19 @@
           "question": "中国的首都是哪座城市？",
           "options": [
             {
-              "icon": "tiananmen",
-              "text": "北京"
+              "icon": "castle",
+              "text": "外国城堡"
             },
             {
               "icon": "tower",
               "text": "上海"
             },
             {
-              "icon": "castle",
-              "text": "外国城堡"
+              "icon": "tiananmen",
+              "text": "北京"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "天安门在北京",
           "praise": "北京是首都！"
         },
@@ -5919,19 +5919,19 @@
           "question": "万里长城像一条卧在山上的什么？",
           "options": [
             {
-              "icon": "greatwall",
-              "text": "万里长城"
-            },
-            {
               "icon": "pyramid",
               "text": "金字塔"
+            },
+            {
+              "icon": "greatwall",
+              "text": "万里长城"
             },
             {
               "icon": "castle",
               "text": "城堡"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "长龙",
           "praise": "长城真雄伟！"
         },
@@ -5941,19 +5941,19 @@
           "question": "世界第一高峰是哪座山？",
           "options": [
             {
-              "icon": "everest",
-              "text": "珠穆朗玛峰"
+              "icon": "pine",
+              "text": "黄山"
             },
             {
               "icon": "volcano",
               "text": "火山"
             },
             {
-              "icon": "pine",
-              "text": "黄山"
+              "icon": "everest",
+              "text": "珠穆朗玛峰"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "最高最高",
           "praise": "珠峰真高！"
         },
@@ -5963,19 +5963,19 @@
           "question": "中国的国宝、爱吃竹子的动物是谁？",
           "options": [
             {
-              "icon": "bear",
-              "text": "熊"
-            },
-            {
               "icon": "panda",
               "text": "大熊猫"
+            },
+            {
+              "icon": "bear",
+              "text": "熊"
             },
             {
               "icon": "rabbit",
               "text": "兔子"
             }
           ],
-          "answer": 1,
+          "answer": 0,
           "hint": "黑白毛、圆滚滚",
           "praise": "大熊猫真可爱！"
         }
@@ -6105,16 +6105,16 @@
           "question": "地球仪上蓝色代表——",
           "options": [
             {
-              "text": "海洋"
+              "text": "云朵"
             },
             {
               "text": "陆地"
             },
             {
-              "text": "云朵"
+              "text": "海洋"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "地球大部分是海",
           "praise": "海洋答对啦！"
         }
@@ -6154,16 +6154,16 @@
           "question": "中国的国旗是——",
           "options": [
             {
-              "text": "五星红旗"
+              "text": "米字旗"
             },
             {
               "text": "枫叶旗"
             },
             {
-              "text": "米字旗"
+              "text": "五星红旗"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "升国旗要敬礼",
           "praise": "五星红旗答对啦！"
         }
@@ -6252,16 +6252,16 @@
           "question": "保护地球可以——",
           "options": [
             {
-              "text": "垃圾分类、节约用水"
+              "text": "浪费水"
             },
             {
               "text": "多扔垃圾"
             },
             {
-              "text": "浪费水"
+              "text": "垃圾分类、节约用水"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "地球是我们共同的家",
           "praise": "垃圾分类、节约用水答对啦！"
         }
@@ -6301,16 +6301,16 @@
           "question": "去陌生地方旅行要带上——",
           "options": [
             {
-              "text": "地图"
+              "text": "玩具"
             },
             {
-              "text": "玩具"
+              "text": "地图"
             },
             {
               "text": "零食"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "小小环球旅行家",
           "praise": "地图答对啦！"
         }
@@ -6532,19 +6532,19 @@
           "question": "中国的首都是哪座城市？",
           "options": [
             {
-              "icon": "tiananmen",
-              "text": "北京"
-            },
-            {
               "icon": "tower",
               "text": "上海"
+            },
+            {
+              "icon": "tiananmen",
+              "text": "北京"
             },
             {
               "icon": "castle",
               "text": "外国城堡"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "天安门在北京",
           "praise": "北京是首都！"
         },
@@ -6624,15 +6624,15 @@
               "text": "熊"
             },
             {
-              "icon": "panda",
-              "text": "大熊猫"
-            },
-            {
               "icon": "rabbit",
               "text": "兔子"
+            },
+            {
+              "icon": "panda",
+              "text": "大熊猫"
             }
           ],
-          "answer": 1,
+          "answer": 2,
           "hint": "黑白毛、圆滚滚",
           "praise": "大熊猫真可爱！"
         },
@@ -6837,16 +6837,16 @@
           "question": "我们中国在哪个大洲？",
           "options": [
             {
-              "text": "亚洲"
+              "text": "非洲"
             },
             {
-              "text": "非洲"
+              "text": "亚洲"
             },
             {
               "text": "欧洲"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "最大的大洲",
           "praise": "亚洲是我们的家！"
         }

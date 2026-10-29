@@ -21,7 +21,9 @@ v0.10 天文馆大扩充（知识点取材天文童书，不凭空编）：
     去掉 astro 的 memory 翻牌配对；保留 quiz/pattern/count/listen/letter，题型共 7 种
   · 图鉴星空卡 16→25 张（补齐行星卡与 display 的解锁对应）
 """
-import json, os
+import copy, json, os
+
+from choice_balance import balance_answer_positions
 
 RES = os.path.join(os.path.dirname(__file__), "..", "AdventureIsland", "Resources")
 os.makedirs(RES, exist_ok=True)
@@ -438,7 +440,9 @@ def sample_questions(level_steps, count, tag):
         for li, sts in enumerate(level_steps):
             qs = [s for s in sts if s["kind"] not in ("teach", "letter")]
             if take[li] < len(qs) and len(pool) < count:
-                st = dict(qs[take[li]])
+                # 复习/Boss 必须深拷贝：答案位置均衡会分别改写选项顺序，
+                # 浅拷贝会让多道题共享同一个 options 列表，答案索引彼此打架。
+                st = copy.deepcopy(qs[take[li]])
                 st["id"] = f"{tag}-{len(pool)}"
                 take[li] += 1
                 pool.append(st)
@@ -623,6 +627,7 @@ append_extras(cn_levels, [
                           "小鸟、熊猫、兔子、小熊是动物朋友")),
     ("cn-14", sequence_step("cn-x4", "按顺序点：一 → 二 → 三", ["一","二","三"], praise="汉字火车开动啦！")),
 ])
+balance_answer_positions(cn_levels)
 W("cn_levels.json", {"subject": "cn", "title": "识字村", "guide": "panda",
                     "zones": zones_meta(["自然万象", "动物朋友", "数字启蒙", "身体与动作", "生活器物",
                                           "植物园地", "家庭称谓", "山川湖海", "城市建筑", "汉字大挑战"],
@@ -1176,6 +1181,7 @@ append_extras(math_levels, [
 ])
 finish_levels(math_levels, "math", 100)
 assign_letter_anims(math_levels, "math", "story")
+balance_answer_positions(math_levels)
 W("math_levels.json", {"subject": "math", "title": "思维镇", "guide": "fox",
                       "zones": zones_meta(["数与数数", "加减法", "乘法口诀", "除法初步", "长度单位",
                                            "角的初步认识", "克与千克", "图形与钟表", "万以内数", "思维大挑战"],
@@ -1639,6 +1645,7 @@ append_extras(pinyin_levels, [
                          "b p m 是声母，a o e 是韵母")),
     ("py-10", sequence_step("py-x3", "按顺序点：a → o → e", ["a","o","e"], praise="单韵母排好队！")),
 ])
+balance_answer_positions(pinyin_levels)
 W("pinyin_levels.json", {"subject": "pinyin", "title": "拼音谷", "guide": "panda",
                          "zones": zones_meta(["字母启蒙", "声母闯关", "韵母家族", "整体认读", "音序查字",
                                               "多音字", "轻声与儿化", "变调妙用", "平翘与前后鼻", "拼读大挑战"],
@@ -1954,6 +1961,7 @@ append_extras(english_levels, [
     ("en-19", match_step("en-x4", "Match: 单词和意思",
                          [("apple","Apple","苹果"),("banana","Banana","香蕉"),("cake","Cake","蛋糕")])),
 ])
+balance_answer_positions(english_levels)
 W("english_levels.json", {"subject": "english", "title": "英语王国", "guide": "robot",
                          "zones": zones_meta(["字母启蒙", "动物与食物", "生活词汇", "星期月份", "多彩世界",
                                               "动作与职业", "主题词场", "四季与自然", "恐龙与朋友", "词汇大挑战"],
@@ -3045,6 +3053,7 @@ for i, lv in enumerate(astro_levels):
     lv["zone"] = i // 10 + 1
 assert [len([l for l in astro_levels if l["zone"] == z]) for z in range(1, 11)] == [10] * 10
 
+balance_answer_positions(astro_levels)
 W("astro_levels.json", {"subject": "astro", "title": "天文台", "guide": "robot",
                         "zones": [{"n": z + 1, "title": t, "subtitle": s}
                                   for z, (t, s) in enumerate(ASTRO_ZONES)],
@@ -3434,6 +3443,7 @@ append_extras(geo_levels, [
     ("geo-9", spotlight_step("geo-x4", "望远镜找一找：欧洲的风车在哪里？",
                              "windmill", ["lion","elephant","penguin"])),
 ])
+balance_answer_positions(geo_levels)
 W("geo_levels.json", {"subject": "geo", "title": "环球号", "guide": "panda",
                      "zones": zones_meta(["中国风貌", "中国各地", "世界国家", "首都名城", "自然纪录",
                                           "恐龙与化石", "节日文化", "地图技能", "世界常识", "环球大挑战"],

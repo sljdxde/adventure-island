@@ -11,7 +11,10 @@
   6. project.yml 关键配置检查
 用法：python validate.py   （在 ios/ 目录下）
 """
+import collections
 import json, os, re, sys
+
+from choice_balance import correct_choice, iter_steps_in_play_order
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))   # ios/
 DESIGN = os.path.dirname(ROOT)                                        # 项目根
@@ -568,6 +571,48 @@ if group_ids != ["science", "sticker", "hanzi", "pinyin", "english", "astro", "g
 for g in coll["groups"]:
     if len(g["items"]) < 10: warn(f"[collection/{g['id']}] 条目 {len(g['items'])} 偏少")
 ok("[collection] 8 个分组校验完成")
+
+# ---------- 正确项位置分布 ----------
+# 题目内容全对，不代表选项位置没泄漏规律：天文/地理曾出现 95% 以上正确答案都在第 1 项。
+for subject, _ in SUBJECTS:
+    by_count = collections.defaultdict(collections.Counter)
+    first_by_count = collections.defaultdict(collections.Counter)
+    for level in subject_docs[subject].get("levels", []):
+        for step in level.get("steps", []):
+            info = correct_choice(step)
+            if info:
+                _, options, index, _ = info
+                if len(options) >= 3:
+                    by_count[len(options)][index] += 1
+        for step in iter_steps_in_play_order([level]):
+            info = correct_choice(step)
+            if info:
+                _, options, index, _ = info
+                if len(options) >= 3:
+                    first_by_count[len(options)][index] += 1
+                break
+    bad = []
+    for choice_count, counts in sorted(by_count.items()):
+        total = sum(counts.values())
+        position_counts = [counts.get(i, 0) for i in range(choice_count)]
+        if total >= 12 and max(position_counts) - min(position_counts) > 1:
+            bad.append(f"{choice_count} 选 1: {dict(sorted(counts.items()))}")
+    for choice_count, counts in sorted(first_by_count.items()):
+        total = sum(counts.values())
+        if total >= 12 and max(counts.values()) / total > 0.45:
+            bad.append(f"{choice_count} 选首题偏斜: {dict(sorted(counts.items()))}")
+    if bad:
+        err(f"[{subject}] 正确项位置过于集中：" + "；".join(bad))
+    else:
+        summary = "，".join(
+            f"{choice_count} 选 1: {dict(sorted(counts.items()))}"
+            for choice_count, counts in sorted(by_count.items())
+        )
+        first_summary = "，".join(
+            f"{choice_count} 选首题: {dict(sorted(counts.items()))}"
+            for choice_count, counts in sorted(first_by_count.items())
+        )
+        ok(f"[{subject}] 正确项位置均衡（{summary}；{first_summary}）")
 
 # ---------- 2. 资产一致性 ----------
 missing = json_icons - manifest_icons

@@ -100,16 +100,16 @@
           "question": "找一找：哪个是「b」？",
           "options": [
             {
-              "text": "d"
+              "text": "b"
             },
             {
               "text": "p"
             },
             {
-              "text": "b"
+              "text": "d"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "想一想它的样子",
           "praise": "「b」找对啦！"
         },
@@ -123,16 +123,16 @@
           "question": "拼一拼：b — a = ?",
           "options": [
             {
-              "text": "ba"
+              "text": "bo"
             },
             {
-              "text": "bo"
+              "text": "ba"
             },
             {
               "text": "bu"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "b 碰上 a",
           "praise": "拼对了，ba！"
         }
@@ -177,13 +177,13 @@
               "text": "f"
             },
             {
-              "text": "p"
+              "text": "t"
             },
             {
-              "text": "t"
+              "text": "p"
             }
           ],
-          "answer": 1,
+          "answer": 2,
           "hint": "山坡 的第一个音",
           "praise": "对！山坡 开头是 p"
         },
@@ -197,16 +197,16 @@
           "question": "拼一拼：p — o = ?",
           "options": [
             {
-              "text": "po"
+              "text": "pa"
             },
             {
-              "text": "pa"
+              "text": "po"
             },
             {
               "text": "pi"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "p 碰上 o",
           "praise": "拼对了，po！"
         },
@@ -281,16 +281,16 @@
           "question": "拼一拼 m — a：哪张图是「妈妈」？",
           "options": [
             {
-              "icon": "girl"
+              "icon": "candy"
             },
             {
-              "icon": "candy"
+              "icon": "girl"
             },
             {
               "icon": "heart"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "m 碰 a",
           "praise": "拼读小能手：妈妈！"
         },
@@ -464,16 +464,16 @@
           "question": "找一找：哪个是「d」？",
           "options": [
             {
-              "text": "p"
+              "text": "d"
             },
             {
               "text": "m"
             },
             {
-              "text": "d"
+              "text": "p"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "想一想它的样子",
           "praise": "「d」找对啦！"
         },
@@ -487,16 +487,16 @@
           "question": "拼一拼：d — e = ?",
           "options": [
             {
-              "text": "de"
+              "text": "du"
             },
             {
               "text": "da"
             },
             {
-              "text": "du"
+              "text": "de"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "d 碰上 e",
           "praise": "拼对了，de！"
         }
@@ -541,13 +541,13 @@
               "text": "p"
             },
             {
-              "text": "m"
+              "text": "t"
             },
             {
-              "text": "t"
+              "text": "m"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "太阳 的第一个音",
           "praise": "对！太阳 开头是 t"
         },
@@ -561,16 +561,16 @@
           "question": "拼一拼：t — a = ?",
           "options": [
             {
-              "text": "ta"
+              "text": "tu"
             },
             {
               "text": "te"
             },
             {
-              "text": "tu"
+              "text": "ta"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "t 碰上 a",
           "praise": "拼对了，ta！"
         }
@@ -631,16 +631,16 @@
           "question": "找一找：哪个是「n」？",
           "options": [
             {
-              "text": "d"
+              "text": "n"
             },
             {
               "text": "p"
             },
             {
-              "text": "n"
+              "text": "d"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "想一想它的样子",
           "praise": "「n」找对啦！"
         }
@@ -703,16 +703,16 @@
           "question": "拼一拼 l — a：哪张图是「拉手」？",
           "options": [
             {
-              "icon": "sun"
+              "icon": "leaf"
             },
             {
               "icon": "cake"
             },
             {
-              "icon": "leaf"
+              "icon": "sun"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "l 碰 a",
           "praise": "拼读小能手：拉手！"
         }
@@ -754,16 +754,16 @@
           "question": "找一找：哪个是「g」？",
           "options": [
             {
-              "text": "d"
+              "text": "g"
             },
             {
               "text": "p"
             },
             {
-              "text": "g"
+              "text": "d"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "想一想它的样子",
           "praise": "「g」找对啦！"
         },
@@ -777,16 +777,16 @@
           "question": "拼一拼：g — e = ?",
           "options": [
             {
-              "text": "ge"
+              "text": "ga"
             },
             {
-              "text": "ga"
+              "text": "ge"
             },
             {
               "text": "gu"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "g 碰上 e",
           "praise": "拼对了，ge！"
         }
@@ -828,16 +828,16 @@
           "question": "看一看：「开心」的开头是哪个声母？",
           "options": [
             {
-              "text": "k"
+              "text": "d"
             },
             {
-              "text": "d"
+              "text": "k"
             },
             {
               "text": "p"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "开心 的第一个音",
           "praise": "对！开心 开头是 k"
         },
@@ -851,16 +851,16 @@
           "question": "拼一拼：k — e = ?",
           "options": [
             {
-              "text": "ke"
+              "text": "ka"
             },
             {
-              "text": "ka"
+              "text": "ke"
             },
             {
               "text": "ku"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "k 碰上 e",
           "praise": "拼对了，ke！"
         }
@@ -982,13 +982,13 @@
               "text": "chi"
             },
             {
-              "text": "zhi"
+              "text": "zi"
             },
             {
-              "text": "zi"
+              "text": "zhi"
             }
           ],
-          "answer": 1,
+          "answer": 2,
           "hint": "蜘蛛 zhī zhī 叫",
           "praise": "整体认读 zhi！"
         },
@@ -1021,16 +1021,16 @@
           "question": "拼一拼 m — a：哪张图是「妈妈」？",
           "options": [
             {
-              "icon": "girl"
+              "icon": "train"
             },
             {
               "icon": "moon"
             },
             {
-              "icon": "train"
+              "icon": "girl"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "m 碰 a",
           "praise": "拼读小达人！"
         }
@@ -1095,16 +1095,16 @@
           "question": "拼一拼：h — e = ?",
           "options": [
             {
-              "text": "he"
+              "text": "hu"
             },
             {
               "text": "ha"
             },
             {
-              "text": "hu"
+              "text": "he"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "h 碰上 e",
           "praise": "拼对了，he！"
         }
@@ -1218,16 +1218,16 @@
           "question": "拼一拼：q — i = ?",
           "options": [
             {
-              "text": "qi"
+              "text": "qa"
             },
             {
               "text": "qu"
             },
             {
-              "text": "qa"
+              "text": "qi"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "q 碰上 i",
           "praise": "拼对了，qi！"
         },
@@ -1290,16 +1290,16 @@
           "question": "找一找：哪个是「x」？",
           "options": [
             {
-              "text": "d"
+              "text": "x"
             },
             {
               "text": "p"
             },
             {
-              "text": "x"
+              "text": "d"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "想一想它的样子",
           "praise": "「x」找对啦！"
         },
@@ -1313,16 +1313,16 @@
           "question": "拼一拼：x — i = ?",
           "options": [
             {
-              "text": "xi"
+              "text": "xu"
             },
             {
-              "text": "xu"
+              "text": "xi"
             },
             {
               "text": "xa"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "x 碰上 i",
           "praise": "拼对了，xi！"
         }
@@ -1383,16 +1383,16 @@
           "question": "拼一拼 zh — i：哪张图是「小猪」？",
           "options": [
             {
-              "icon": "pig"
+              "icon": "moon"
             },
             {
               "icon": "duck"
             },
             {
-              "icon": "moon"
+              "icon": "pig"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "zh 碰 i",
           "praise": "拼读小能手：小猪！"
         }
@@ -1457,16 +1457,16 @@
           "question": "找一找：哪个是「ch」？",
           "options": [
             {
-              "text": "d"
+              "text": "ch"
             },
             {
               "text": "p"
             },
             {
-              "text": "ch"
+              "text": "d"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "想一想它的样子",
           "praise": "「ch」找对啦！"
         }
@@ -1511,13 +1511,13 @@
               "text": "d"
             },
             {
-              "text": "p"
+              "text": "sh"
             },
             {
-              "text": "sh"
+              "text": "p"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "想一想它的样子",
           "praise": "「sh」找对啦！"
         },
@@ -1585,13 +1585,13 @@
               "text": "l"
             },
             {
-              "text": "g"
+              "text": "r"
             },
             {
-              "text": "r"
+              "text": "g"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "日出 的第一个音",
           "praise": "对！日出 开头是 r"
         },
@@ -1601,16 +1601,16 @@
           "question": "拼一拼 r — i：哪张图是「日出」？",
           "options": [
             {
-              "icon": "sun"
+              "icon": "apple"
             },
             {
-              "icon": "apple"
+              "icon": "sun"
             },
             {
               "icon": "clock"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "r 碰 i",
           "praise": "拼读小能手：日出！"
         }
@@ -1654,16 +1654,16 @@
           "question": "拼一拼：z — i = ?",
           "options": [
             {
-              "text": "zi"
+              "text": "zu"
             },
             {
-              "text": "zu"
+              "text": "zi"
             },
             {
               "text": "za"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "z 碰上 i",
           "praise": "拼对了，zi！"
         },
@@ -1726,16 +1726,16 @@
           "question": "找一找：哪个是「c」？",
           "options": [
             {
-              "text": "d"
+              "text": "c"
             },
             {
               "text": "p"
             },
             {
-              "text": "c"
+              "text": "d"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "想一想它的样子",
           "praise": "「c」找对啦！"
         },
@@ -1749,16 +1749,16 @@
           "question": "拼一拼：c — i = ?",
           "options": [
             {
-              "text": "ci"
+              "text": "ca"
             },
             {
               "text": "cu"
             },
             {
-              "text": "ca"
+              "text": "ci"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "c 碰上 i",
           "praise": "拼对了，ci！"
         }
@@ -1800,16 +1800,16 @@
           "question": "看一看：「三十」的开头是哪个声母？",
           "options": [
             {
-              "text": "m"
+              "text": "s"
             },
             {
               "text": "f"
             },
             {
-              "text": "s"
+              "text": "m"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "三十 的第一个音",
           "praise": "对！三十 开头是 s"
         },
@@ -1872,16 +1872,16 @@
           "question": "拼一拼：y — i = ?",
           "options": [
             {
-              "text": "yi"
+              "text": "yu"
             },
             {
-              "text": "yu"
+              "text": "yi"
             },
             {
               "text": "ya"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "y 碰上 i",
           "praise": "拼对了，yi！"
         },
@@ -1947,13 +1947,13 @@
               "text": "d"
             },
             {
-              "text": "p"
+              "text": "w"
             },
             {
-              "text": "w"
+              "text": "p"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "想一想它的样子",
           "praise": "「w」找对啦！"
         },
@@ -1967,16 +1967,16 @@
           "question": "拼一拼：w — u = ?",
           "options": [
             {
-              "text": "wu"
+              "text": "wo"
             },
             {
               "text": "wa"
             },
             {
-              "text": "wo"
+              "text": "wu"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "w 碰上 u",
           "praise": "拼对了，wu！"
         }
@@ -2015,16 +2015,16 @@
           "question": "找一找：哪个是韵母「o」？",
           "options": [
             {
-              "text": "e"
+              "text": "o"
             },
             {
-              "text": "o"
+              "text": "e"
             },
             {
               "text": "a"
             }
           ],
-          "answer": 1,
+          "answer": 0,
           "hint": "嘴巴圆圆 ó",
           "praise": "韵母 o 找对啦！"
         },
@@ -2034,16 +2034,16 @@
           "question": "大公鸡怎么叫？",
           "options": [
             {
-              "text": "ō ō ō"
+              "text": "ū ū ū"
             },
             {
               "text": "ā ā ā"
             },
             {
-              "text": "ū ū ū"
+              "text": "ō ō ō"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "喔喔啼",
           "praise": "对，公鸡 ō ō 啼！"
         }
@@ -2088,16 +2088,16 @@
           "question": "拼一拼：d — i = ?",
           "options": [
             {
-              "text": "di"
+              "text": "da"
             },
             {
               "text": "du"
             },
             {
-              "text": "da"
+              "text": "di"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "弟弟 dìdì",
           "praise": "拼对了，dì！"
         },
@@ -2111,16 +2111,16 @@
           "question": "拼一拼：w — u = ?",
           "options": [
             {
-              "text": "wu"
+              "text": "wa"
             },
             {
-              "text": "wa"
+              "text": "wu"
             },
             {
               "text": "wo"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "屋子 wū",
           "praise": "拼对了，wū！"
         }
@@ -2155,16 +2155,16 @@
           "question": "小 ü 见到 j q x，帽子要——",
           "options": [
             {
-              "text": "摘掉再握手"
+              "text": "反过来戴"
             },
             {
               "text": "一直戴着"
             },
             {
-              "text": "反过来戴"
+              "text": "摘掉再握手"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "j q x 从不跟 ü 戴帽相拼",
           "praise": "答对啦，小 ü 有礼貌！"
         },
@@ -2176,16 +2176,16 @@
           "question": "找一找：哪个是韵母「ü」？",
           "options": [
             {
-              "text": "u"
+              "text": "ü"
             },
             {
-              "text": "ü"
+              "text": "u"
             },
             {
               "text": "i"
             }
           ],
-          "answer": 1,
+          "answer": 0,
           "hint": "小鱼吐泡泡 ǖ ǘ ǚ ǜ",
           "praise": "韵母 ü 找对啦！"
         }
@@ -2236,16 +2236,16 @@
           "question": "拼一拼：l — ai = ?",
           "options": [
             {
-              "text": "lai"
+              "text": "li"
             },
             {
               "text": "lai?"
             },
             {
-              "text": "li"
+              "text": "lai"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "来 lái",
           "praise": "拼对了，lái！"
         },
@@ -2255,16 +2255,16 @@
           "question": "「ui」是哪两个字母手拉手？",
           "options": [
             {
-              "text": "u + i"
+              "text": "e + i"
             },
             {
               "text": "a + i"
             },
             {
-              "text": "e + i"
+              "text": "u + i"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "u 和 i 挨在一起",
           "praise": "答对啦，u+i！"
         }
@@ -2287,13 +2287,13 @@
               "text": "d"
             },
             {
-              "text": "p"
+              "text": "b"
             },
             {
-              "text": "b"
+              "text": "p"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "想一想它的样子",
           "praise": "「b」找对啦！"
         },
@@ -2305,16 +2305,16 @@
           "question": "看一看：「山坡」的开头是哪个声母？",
           "options": [
             {
-              "text": "f"
+              "text": "p"
             },
             {
-              "text": "p"
+              "text": "f"
             },
             {
               "text": "t"
             }
           ],
-          "answer": 1,
+          "answer": 0,
           "hint": "山坡 的第一个音",
           "praise": "对！山坡 开头是 p"
         },
@@ -2324,16 +2324,16 @@
           "question": "拼一拼 m — a：哪张图是「妈妈」？",
           "options": [
             {
-              "icon": "girl"
+              "icon": "candy"
             },
             {
-              "icon": "candy"
+              "icon": "girl"
             },
             {
               "icon": "heart"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "m 碰 a",
           "praise": "拼读小能手：妈妈！"
         },
@@ -2347,16 +2347,16 @@
           "question": "拼一拼：f — a = ?",
           "options": [
             {
-              "text": "fa"
+              "text": "fo"
             },
             {
-              "text": "fo"
+              "text": "fa"
             },
             {
               "text": "fu"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "f 碰上 a",
           "praise": "拼对了，fa！"
         },
@@ -2485,16 +2485,16 @@
           "question": "拼一拼：h — ao = ?",
           "options": [
             {
-              "text": "hao"
+              "text": "hao?"
             },
             {
               "text": "hou"
             },
             {
-              "text": "hao?"
+              "text": "hao"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "好 hǎo",
           "praise": "拼对了，hǎo！"
         },
@@ -2504,16 +2504,16 @@
           "question": "小猫喵喵叫，韵母是——",
           "options": [
             {
-              "text": "ao"
+              "text": "iu"
             },
             {
               "text": "ou"
             },
             {
-              "text": "iu"
+              "text": "ao"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "喵 miāo 里有 ao",
           "praise": "对，是 ao！"
         }
@@ -2555,16 +2555,16 @@
           "question": "「er」单独做韵母时，写成——",
           "options": [
             {
-              "text": "儿 er（耳朵 er）"
+              "text": "e"
             },
             {
-              "text": "e"
+              "text": "儿 er（耳朵 er）"
             },
             {
               "text": "r"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "er 是特殊韵母，自己当韵母",
           "praise": "答对啦，儿化音的 er！"
         }
@@ -2610,16 +2610,16 @@
           "question": "拼一拼：g — an = ?",
           "options": [
             {
-              "text": "gan"
+              "text": "gan?"
             },
             {
-              "text": "gan?"
+              "text": "gan"
             },
             {
               "text": "gen"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "干净 gānjìng",
           "praise": "拼对了，gān！"
         },
@@ -2629,16 +2629,16 @@
           "question": "前鼻韵母的尾巴是——",
           "options": [
             {
-              "text": "n"
+              "text": "g"
             },
             {
               "text": "ng"
             },
             {
-              "text": "g"
+              "text": "n"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "舌尖顶住前上牙：-n",
           "praise": "对，前鼻音收尾 n！"
         }
@@ -2758,16 +2758,16 @@
           "question": "拼一拼：g — ong = ?",
           "options": [
             {
-              "text": "gong"
+              "text": "gan"
             },
             {
-              "text": "gan"
+              "text": "gong"
             },
             {
               "text": "geng"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "公鸡 gōngjī",
           "praise": "拼对了，gōng！"
         }
@@ -2813,16 +2813,16 @@
           "question": "整体认读音节要——",
           "options": [
             {
-              "text": "整个记住，不拆开拼"
+              "text": "倒着读"
             },
             {
               "text": "拆成声母和韵母"
             },
             {
-              "text": "倒着读"
+              "text": "整个记住，不拆开拼"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "一口读出，不能拼",
           "praise": "对，整体认读！"
         }
@@ -2869,16 +2869,16 @@
           "question": "「yī」是几个音节？",
           "options": [
             {
-              "text": "1 个，整体认读"
+              "text": "2 个"
             },
             {
-              "text": "2 个"
+              "text": "1 个，整体认读"
             },
             {
               "text": "3 个"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "yi 是大 y 带小 i 组成",
           "praise": "答对啦，1 个整体！"
         }
@@ -2972,16 +2972,16 @@
           "question": "标调口诀：a 母出现不放过——",
           "options": [
             {
-              "text": "有 a 给 a 戴"
+              "text": "随便戴"
             },
             {
-              "text": "随便戴"
+              "text": "有 a 给 a 戴"
             },
             {
               "text": "都戴"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "没 a 找 o e，i u 并排标在后",
           "praise": "答对啦！"
         },
@@ -2991,16 +2991,16 @@
           "question": "hǎo（好）的声调戴在——",
           "options": [
             {
-              "text": "a 上"
+              "text": "o 上"
             },
             {
-              "text": "o 上"
+              "text": "a 上"
             },
             {
               "text": "h 上"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "有 a 给 a 戴",
           "praise": "对，戴在 a 上！"
         }
@@ -3095,16 +3095,16 @@
           "question": "拼一拼：f — ei = ?",
           "options": [
             {
-              "text": "fei"
+              "text": "fa"
             },
             {
-              "text": "fa"
+              "text": "fei"
             },
             {
               "text": "fi"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "飞机 fēijī",
           "praise": "拼对了，fēi！"
         },
@@ -3173,16 +3173,16 @@
           "question": "拼一拼：sh — an = ?",
           "options": [
             {
-              "text": "shan"
+              "text": "sheng"
             },
             {
               "text": "sha"
             },
             {
-              "text": "sheng"
+              "text": "shan"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "闪 shǎn 一闪一闪",
           "praise": "拼对了，shǎn！"
         }
@@ -3220,16 +3220,16 @@
           "question": "汉语拼音一共有几个单韵母？",
           "options": [
             {
-              "text": "6 个：a o e i u ü"
+              "text": "23 个"
             },
             {
               "text": "3 个"
             },
             {
-              "text": "23 个"
+              "text": "6 个：a o e i u ü"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "六个兄弟排队站",
           "praise": "对，6 个单韵母！"
         },
@@ -3239,16 +3239,16 @@
           "question": "声母一共有几个？",
           "options": [
             {
-              "text": "23 个"
+              "text": "6 个"
             },
             {
-              "text": "6 个"
+              "text": "23 个"
             },
             {
               "text": "16 个"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "b p m f … y w",
           "praise": "答对啦，23 个声母！"
         }
@@ -3293,16 +3293,16 @@
           "question": "找一找：哪个是第二声「á」？",
           "options": [
             {
-              "text": "ā"
+              "text": "á"
             },
             {
-              "text": "á"
+              "text": "ā"
             },
             {
               "text": "à"
             }
           ],
-          "answer": 1,
+          "answer": 0,
           "hint": "二声往上扬",
           "praise": "第二声找对啦！"
         },
@@ -3367,16 +3367,16 @@
           "question": "拼一拼：a — i = ?",
           "options": [
             {
-              "text": "ai"
+              "text": "an"
             },
             {
-              "text": "an"
+              "text": "ai"
             },
             {
               "text": "ao"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "a 碰上 i",
           "praise": "拼对了，ai！"
         },
@@ -3388,16 +3388,16 @@
           "question": "找一找：哪个是复韵母「ai」？",
           "options": [
             {
-              "text": "ai"
+              "text": "an"
             },
             {
               "text": "ao"
             },
             {
-              "text": "an"
+              "text": "ai"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "a 和 i 拉手",
           "praise": "复韵母 ai 找对啦！"
         }
@@ -3443,16 +3443,16 @@
           "question": "拼一拼：e — n = ?",
           "options": [
             {
-              "text": "en"
+              "text": "eng"
             },
             {
-              "text": "eng"
+              "text": "en"
             },
             {
               "text": "er"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "e 碰上 n",
           "praise": "拼对了，en！"
         },
@@ -3464,16 +3464,16 @@
           "question": "找一找：哪个是前鼻韵母「in」？",
           "options": [
             {
-              "text": "in"
+              "text": "ing"
             },
             {
-              "text": "ing"
+              "text": "in"
             },
             {
               "text": "iu"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "舌尖抵上牙床",
           "praise": "前鼻韵母 in 找对啦！"
         }
@@ -3629,16 +3629,16 @@
           "question": "「A」的小写是哪个？",
           "options": [
             {
-              "text": "a"
+              "text": "A"
             },
             {
-              "text": "A"
+              "text": "a"
             },
             {
               "text": "b"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "大写小写长得像",
           "praise": "答对啦！"
         },
@@ -3648,16 +3648,16 @@
           "question": "字母表里谁排在最前面？",
           "options": [
             {
-              "text": "A"
+              "text": "C"
             },
             {
               "text": "B"
             },
             {
-              "text": "C"
+              "text": "A"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "按 A B C D 顺序",
           "praise": "对，排在最前！"
         }
@@ -3710,16 +3710,16 @@
           "question": "「E」的小写是哪个？",
           "options": [
             {
-              "text": "e"
+              "text": "E"
             },
             {
-              "text": "E"
+              "text": "e"
             },
             {
               "text": "f"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "大写小写长得像",
           "praise": "答对啦！"
         },
@@ -3729,16 +3729,16 @@
           "question": "字母表里谁排在最前面？",
           "options": [
             {
-              "text": "E"
+              "text": "F"
             },
             {
-              "text": "F"
+              "text": "E"
             },
             {
               "text": "G"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "按 A B C D 顺序",
           "praise": "对，排在最前！"
         }
@@ -3872,16 +3872,16 @@
           "question": "「M」的小写是哪个？",
           "options": [
             {
-              "text": "m"
+              "text": "M"
             },
             {
-              "text": "M"
+              "text": "m"
             },
             {
               "text": "n"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "大写小写长得像",
           "praise": "答对啦！"
         },
@@ -3891,16 +3891,16 @@
           "question": "字母表里谁排在最前面？",
           "options": [
             {
-              "text": "M"
+              "text": "O"
             },
             {
               "text": "N"
             },
             {
-              "text": "O"
+              "text": "M"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "按 A B C D 顺序",
           "praise": "对，排在最前！"
         }
@@ -3953,16 +3953,16 @@
           "question": "「Q」的小写是哪个？",
           "options": [
             {
-              "text": "q"
+              "text": "Q"
             },
             {
-              "text": "Q"
+              "text": "q"
             },
             {
               "text": "r"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "大写小写长得像",
           "praise": "答对啦！"
         },
@@ -3972,16 +3972,16 @@
           "question": "字母表里谁排在最前面？",
           "options": [
             {
-              "text": "Q"
+              "text": "R"
             },
             {
-              "text": "R"
+              "text": "Q"
             },
             {
               "text": "S"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "按 A B C D 顺序",
           "praise": "对，排在最前！"
         }
@@ -4103,16 +4103,16 @@
           "question": "「X」的小写是哪个？",
           "options": [
             {
-              "text": "x"
+              "text": "X"
             },
             {
-              "text": "X"
+              "text": "x"
             },
             {
               "text": "y"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "大写小写长得像",
           "praise": "答对啦！"
         },
@@ -4122,16 +4122,16 @@
           "question": "字母表里谁排在最前面？",
           "options": [
             {
-              "text": "X"
+              "text": "Z"
             },
             {
               "text": "Y"
             },
             {
-              "text": "Z"
+              "text": "X"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "按 A B C D 顺序",
           "praise": "对，排在最前！"
         }
@@ -4178,16 +4178,16 @@
           "question": "「A a」的小写是哪个？",
           "options": [
             {
-              "text": "a a"
+              "text": "b b"
             },
             {
               "text": "A A"
             },
             {
-              "text": "b b"
+              "text": "a a"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "大写小写长得像",
           "praise": "答对啦！"
         },
@@ -4197,16 +4197,16 @@
           "question": "字母表里谁排在最前面？",
           "options": [
             {
-              "text": "A a"
+              "text": "B b"
             },
             {
-              "text": "B b"
+              "text": "A a"
             },
             {
               "text": "C c"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "按 A B C D 顺序",
           "praise": "对，排在最前！"
         }
@@ -4224,19 +4224,19 @@
           "question": "用音序查字法查「花」，先查大写字母——",
           "options": [
             {
-              "icon": "flower",
-              "text": "H"
+              "icon": "moon",
+              "text": "M"
             },
             {
               "icon": "sun",
               "text": "S"
             },
             {
-              "icon": "moon",
-              "text": "M"
+              "icon": "flower",
+              "text": "H"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "花 huā，音序 H",
           "praise": "音序查字小能手！"
         }
@@ -4363,16 +4363,16 @@
           "question": "「长城」的长读——",
           "options": [
             {
-              "text": "cháng"
+              "text": "zhǎng"
             },
             {
-              "text": "zhǎng"
+              "text": "cháng"
             },
             {
               "text": "cáng"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "长城很长 cháng",
           "praise": "答对啦，cháng / zhǎng！"
         },
@@ -4414,13 +4414,13 @@
               "text": "d"
             },
             {
-              "text": "p"
+              "text": "b"
             },
             {
-              "text": "b"
+              "text": "p"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "想一想它的样子",
           "praise": "「b」找对啦！"
         },
@@ -4435,13 +4435,13 @@
               "text": "f"
             },
             {
-              "text": "p"
+              "text": "t"
             },
             {
-              "text": "t"
+              "text": "p"
             }
           ],
-          "answer": 1,
+          "answer": 2,
           "hint": "山坡 的第一个音",
           "praise": "对！山坡 开头是 p"
         },
@@ -4451,16 +4451,16 @@
           "question": "拼一拼 m — a：哪张图是「妈妈」？",
           "options": [
             {
-              "icon": "girl"
+              "icon": "candy"
             },
             {
-              "icon": "candy"
+              "icon": "girl"
             },
             {
               "icon": "heart"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "m 碰 a",
           "praise": "拼读小能手：妈妈！"
         },
@@ -4516,16 +4516,16 @@
           "question": "看一看：「太阳」的开头是哪个声母？",
           "options": [
             {
-              "text": "p"
+              "text": "t"
             },
             {
               "text": "m"
             },
             {
-              "text": "t"
+              "text": "p"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "太阳 的第一个音",
           "praise": "对！太阳 开头是 t"
         }
@@ -4674,16 +4674,16 @@
           "question": "「银行」的行读——",
           "options": [
             {
-              "text": "háng"
+              "text": "hàng"
             },
             {
               "text": "xíng"
             },
             {
-              "text": "hàng"
+              "text": "háng"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "银行 háng",
           "praise": "答对啦，xíng / háng！"
         },
@@ -4740,16 +4740,16 @@
           "question": "「一只鸟」的只读——",
           "options": [
             {
-              "text": "zhī"
+              "text": "zhǐ"
             },
             {
-              "text": "zhǐ"
+              "text": "zhī"
             },
             {
               "text": "zī"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "一只 zhī",
           "praise": "答对啦，zhī / zhǐ！"
         },
@@ -4759,16 +4759,16 @@
           "question": "「只」的两个读音你都记住了吗？",
           "options": [
             {
-              "text": "zhī"
+              "text": "zhīzhǐ"
             },
             {
               "text": "zhǐ"
             },
             {
-              "text": "zhīzhǐ"
+              "text": "zhī"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "一字两读，意思不同",
           "praise": "都记住啦！"
         }
@@ -4825,16 +4825,16 @@
           "question": "「好」的两个读音你都记住了吗？",
           "options": [
             {
-              "text": "hǎo"
+              "text": "hào"
             },
             {
-              "text": "hào"
+              "text": "hǎo"
             },
             {
               "text": "hǎohào"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "一字两读，意思不同",
           "praise": "都记住啦！"
         }
@@ -4874,16 +4874,16 @@
           "question": "「首都」的都读——",
           "options": [
             {
-              "text": "dū"
+              "text": "dōu"
             },
             {
-              "text": "dōu"
+              "text": "dū"
             },
             {
               "text": "dú"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "首都 dū",
           "praise": "答对啦，dōu / dū！"
         },
@@ -4893,16 +4893,16 @@
           "question": "「都」的两个读音你都记住了吗？",
           "options": [
             {
-              "text": "dōu"
+              "text": "dōudū"
             },
             {
               "text": "dū"
             },
             {
-              "text": "dōudū"
+              "text": "dōu"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "一字两读，意思不同",
           "praise": "都记住啦！"
         }
@@ -5010,16 +5010,16 @@
           "question": "「教室」的教读——",
           "options": [
             {
-              "text": "jiào"
+              "text": "jiāo"
             },
             {
-              "text": "jiāo"
+              "text": "jiào"
             },
             {
               "text": "jiē"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "教室 jiàoshì",
           "praise": "答对啦，jiāo / jiào！"
         },
@@ -5029,16 +5029,16 @@
           "question": "「教」的两个读音你都记住了吗？",
           "options": [
             {
-              "text": "jiāo"
+              "text": "jiào"
             },
             {
-              "text": "jiào"
+              "text": "jiāo"
             },
             {
               "text": "jiāojiào"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "一字两读，意思不同",
           "praise": "都记住啦！"
         }
@@ -5071,16 +5071,16 @@
           "question": "「画儿」读——",
           "options": [
             {
-              "text": "huàr 连读"
+              "text": "huà"
             },
             {
               "text": "huà ér"
             },
             {
-              "text": "huà"
+              "text": "huàr 连读"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "画儿 也带小 r",
           "praise": "拼音小达人！"
         }
@@ -5113,16 +5113,16 @@
           "question": "「慢慢地」的地读——",
           "options": [
             {
-              "text": "de 轻声"
+              "text": "dí"
             },
             {
               "text": "dì"
             },
             {
-              "text": "dí"
+              "text": "de 轻声"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "词尾的「地」读轻声 de",
           "praise": "拼音小达人！"
         }
@@ -5200,13 +5200,13 @@
               "text": "fāng"
             },
             {
-              "text": "fang 轻声"
+              "text": "fáng"
             },
             {
-              "text": "fáng"
+              "text": "fang 轻声"
             }
           ],
-          "answer": 1,
+          "answer": 2,
           "hint": "词尾的字常读轻声",
           "praise": "拼音小达人！"
         }
@@ -5284,13 +5284,13 @@
               "text": "huā ér 分开"
             },
             {
-              "text": "huār 连读"
+              "text": "huǒ"
             },
             {
-              "text": "huǒ"
+              "text": "huār 连读"
             }
           ],
-          "answer": 1,
+          "answer": 2,
           "hint": "花儿连读，r 别分开",
           "praise": "拼音小达人！"
         }
@@ -5323,16 +5323,16 @@
           "question": "「鸟儿」读——",
           "options": [
             {
-              "text": "niǎo èr"
+              "text": "niǎor 连读"
             },
             {
-              "text": "niǎor 连读"
+              "text": "niǎo èr"
             },
             {
               "text": "niǎo"
             }
           ],
-          "answer": 1,
+          "answer": 0,
           "hint": "鸟儿 r 轻轻带上",
           "praise": "拼音小达人！"
         }
@@ -5449,16 +5449,16 @@
           "question": "「一天」读——",
           "options": [
             {
-              "text": "yì tiān"
+              "text": "yí tiān"
             },
             {
               "text": "yī tiān"
             },
             {
-              "text": "yí tiān"
+              "text": "yì tiān"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "一 在一声前读 yì",
           "praise": "拼音小达人！"
         }
@@ -5491,16 +5491,16 @@
           "question": "「不是」读——",
           "options": [
             {
-              "text": "bú shì"
+              "text": "bù shì"
             },
             {
-              "text": "bù shì"
+              "text": "bú shì"
             },
             {
               "text": "bū shì"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "不 在四声前读 bú",
           "praise": "拼音小达人！"
         }
@@ -5575,16 +5575,16 @@
           "question": "「四」的声母是——",
           "options": [
             {
-              "text": "s 平舌"
+              "text": "c"
             },
             {
               "text": "sh 翘舌"
             },
             {
-              "text": "c"
+              "text": "s 平舌"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "舌尖放平：z c s",
           "praise": "拼音小达人！"
         }
@@ -5659,16 +5659,16 @@
           "question": "「早」的声母是——",
           "options": [
             {
-              "text": "z"
+              "text": "c"
             },
             {
               "text": "zh"
             },
             {
-              "text": "c"
+              "text": "z"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "平翘不同，意思不同",
           "praise": "拼音小达人！"
         }
@@ -5701,16 +5701,16 @@
           "question": "「日」的声母是——",
           "options": [
             {
-              "text": "r"
+              "text": "y"
             },
             {
               "text": "l"
             },
             {
-              "text": "y"
+              "text": "r"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "r 也是翘舌",
           "praise": "拼音小达人！"
         }
@@ -5785,16 +5785,16 @@
           "question": "「灯」的韵母是——",
           "options": [
             {
-              "text": "eng 后鼻"
+              "text": "ei"
             },
             {
               "text": "en 前鼻"
             },
             {
-              "text": "ei"
+              "text": "eng 后鼻"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "后鼻收尾 ng，声音响",
           "praise": "拼音小达人！"
         }
@@ -5869,16 +5869,16 @@
           "question": "下面哪个是整体认读？",
           "options": [
             {
-              "text": "shi"
+              "text": "sha"
             },
             {
               "text": "sh"
             },
             {
-              "text": "sha"
+              "text": "shi"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "一口读出不拆开",
           "praise": "拼音小达人！"
         }
@@ -5911,16 +5911,16 @@
           "question": "下面哪个是整体认读？",
           "options": [
             {
-              "text": "yu"
+              "text": "y+u 拼读"
             },
             {
-              "text": "y+u 拼读"
+              "text": "yu"
             },
             {
               "text": "iu"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "y 和 w 开头也整体读",
           "praise": "拼音小达人！"
         }
@@ -5995,16 +5995,16 @@
           "question": "「十」读——",
           "options": [
             {
-              "text": "shí 翘舌"
+              "text": "sí 平舌"
             },
             {
-              "text": "sí 平舌"
+              "text": "shí 翘舌"
             },
             {
               "text": "sì"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "sì shí 分清平翘舌",
           "praise": "拼音小达人！"
         }
@@ -6087,16 +6087,16 @@
           "question": "拼一拼：f — a = ?",
           "options": [
             {
-              "text": "fa"
+              "text": "fu"
             },
             {
               "text": "fo"
             },
             {
-              "text": "fu"
+              "text": "fa"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "f 碰上 a",
           "praise": "拼对了，fa！"
         },
@@ -6129,16 +6129,16 @@
           "question": "看一看：「太阳」的开头是哪个声母？",
           "options": [
             {
-              "text": "p"
+              "text": "t"
             },
             {
               "text": "m"
             },
             {
-              "text": "t"
+              "text": "p"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "太阳 的第一个音",
           "praise": "对！太阳 开头是 t"
         }
@@ -6254,16 +6254,16 @@
           "question": "「熊 xióng」是——",
           "options": [
             {
-              "text": "两拼 xi-ong"
+              "text": "三拼 x-i-ong"
             },
             {
-              "text": "三拼 x-i-ong"
+              "text": "两拼 xi-ong"
             },
             {
               "text": "整体认读"
             }
           ],
-          "answer": 1,
+          "answer": 0,
           "hint": "熊 xióng 是三拼音节? i ong",
           "praise": "拼音小达人！"
         }
@@ -6338,16 +6338,16 @@
           "question": "「书 shū」的声母是——",
           "options": [
             {
-              "text": "sh"
+              "text": "s"
             },
             {
-              "text": "s"
+              "text": "sh"
             },
             {
               "text": "x"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "书 shū 包 bāo",
           "praise": "拼音小达人！"
         }
@@ -6380,16 +6380,16 @@
           "question": "「驴 lǘ」遇到 j q x 会——",
           "options": [
             {
-              "text": "去点变 ju"
+              "text": "保留两点"
             },
             {
-              "text": "保留两点"
+              "text": "去点变 ju"
             },
             {
               "text": "变 u"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "驴 lǘ 帽点 ü",
           "praise": "拼音小达人！"
         }
@@ -6422,16 +6422,16 @@
           "question": "声调标在哪里？",
           "options": [
             {
-              "text": "韵母上"
+              "text": "声母上"
             },
             {
-              "text": "声母上"
+              "text": "韵母上"
             },
             {
               "text": "随便"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "声调标在韵母头上",
           "praise": "拼音小达人！"
         }
@@ -6464,16 +6464,16 @@
           "question": "拼音帮我们——",
           "options": [
             {
-              "text": "识字和查字典"
+              "text": "画画"
             },
             {
               "text": "只做游戏"
             },
             {
-              "text": "画画"
+              "text": "识字和查字典"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "音序查字典也要用拼音",
           "praise": "拼音小达人！"
         }
@@ -6517,13 +6517,13 @@
               "text": "f"
             },
             {
-              "text": "p"
+              "text": "t"
             },
             {
-              "text": "t"
+              "text": "p"
             }
           ],
-          "answer": 1,
+          "answer": 2,
           "hint": "山坡 的第一个音",
           "praise": "对！山坡 开头是 p"
         },
@@ -6556,16 +6556,16 @@
           "question": "拼一拼：f — a = ?",
           "options": [
             {
-              "text": "fa"
+              "text": "fo"
             },
             {
-              "text": "fo"
+              "text": "fa"
             },
             {
               "text": "fu"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "f 碰上 a",
           "praise": "拼对了，fa！"
         },
@@ -6580,13 +6580,13 @@
               "text": "p"
             },
             {
-              "text": "m"
+              "text": "d"
             },
             {
-              "text": "d"
+              "text": "m"
             }
           ],
-          "answer": 2,
+          "answer": 1,
           "hint": "想一想它的样子",
           "praise": "「d」找对啦！"
         },
@@ -6598,16 +6598,16 @@
           "question": "看一看：「太阳」的开头是哪个声母？",
           "options": [
             {
-              "text": "p"
+              "text": "t"
             },
             {
               "text": "m"
             },
             {
-              "text": "t"
+              "text": "p"
             }
           ],
-          "answer": 2,
+          "answer": 0,
           "hint": "太阳 的第一个音",
           "praise": "对！太阳 开头是 t"
         },
@@ -6620,13 +6620,13 @@
               "icon": "heart"
             },
             {
-              "icon": "girl"
+              "icon": "duck"
             },
             {
-              "icon": "duck"
+              "icon": "girl"
             }
           ],
-          "answer": 1,
+          "answer": 2,
           "hint": "n 碰 i",
           "praise": "拼读小能手：拿苹果！"
         },

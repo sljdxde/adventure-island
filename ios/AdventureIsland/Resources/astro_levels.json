@@ -88,19 +88,19 @@
           "question": "白天挂在天上、发光发热的是谁？",
           "options": [
             {
-              "icon": "sun",
-              "text": "太阳"
-            },
-            {
               "icon": "moon",
               "text": "月亮"
+            },
+            {
+              "icon": "sun",
+              "text": "太阳"
             },
             {
               "icon": "star",
               "text": "星星"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "太阳是大火球，白天照亮大地",
           "praise": "对，太阳发光发热！"
         },
@@ -164,19 +164,19 @@
           "question": "夜晚有时圆圆、有时弯弯的是谁？",
           "options": [
             {
-              "icon": "star",
-              "text": "星星"
-            },
-            {
               "icon": "moon",
               "text": "月亮"
+            },
+            {
+              "icon": "star",
+              "text": "星星"
             },
             {
               "icon": "sun",
               "text": "太阳"
             }
           ],
-          "answer": 1,
+          "answer": 0,
           "hint": "月亮晚上挂夜空",
           "praise": "对，是月亮！"
         },
@@ -186,19 +186,19 @@
           "question": "月亮自己会发光吗？",
           "options": [
             {
-              "icon": "starface",
-              "text": "不会，反光"
+              "icon": "fire",
+              "text": "会，在燃烧"
             },
             {
               "icon": "bulb",
               "text": "会，是灯泡"
             },
             {
-              "icon": "fire",
-              "text": "会，在燃烧"
+              "icon": "starface",
+              "text": "不会，反光"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "月亮像一面小镜子",
           "praise": "对，月亮反射太阳光！"
         },
@@ -273,19 +273,19 @@
           "question": "夜空里一闪一闪的是谁？",
           "options": [
             {
-              "icon": "balloon",
-              "text": "气球"
-            },
-            {
               "icon": "star",
               "text": "星星"
+            },
+            {
+              "icon": "balloon",
+              "text": "气球"
             },
             {
               "icon": "sun",
               "text": "太阳"
             }
           ],
-          "answer": 1,
+          "answer": 0,
           "hint": "星星在夜空里眨眼睛",
           "praise": "对，是星星！"
         },
@@ -295,19 +295,19 @@
           "question": "星星为什么像在眨眼睛？",
           "options": [
             {
-              "icon": "airtwinkle",
-              "text": "空气流动，星光闪烁"
+              "icon": "bulb",
+              "text": "星星没电了"
             },
             {
               "icon": "starface",
               "text": "星星自己在眨眼"
             },
             {
-              "icon": "bulb",
-              "text": "星星没电了"
+              "icon": "airtwinkle",
+              "text": "空气流动，星光闪烁"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "是空气在动哦",
           "praise": "答对啦，是空气让星光闪烁！"
         }
@@ -347,19 +347,19 @@
           "question": "白天和黑夜轮流出现，是因为？",
           "options": [
             {
-              "text": "地球转圈",
-              "body": "earth"
+              "icon": "rainbow",
+              "text": "云太厚"
             },
             {
               "icon": "moon",
               "text": "月亮挡住"
             },
             {
-              "icon": "rainbow",
-              "text": "云太厚"
+              "text": "地球转圈",
+              "body": "earth"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "地球转到面向太阳是白天",
           "praise": "对，地球转一圈就是一天！"
         },
@@ -477,19 +477,19 @@
           "question": "傍晚太阳落山之后，天空会？",
           "options": [
             {
-              "icon": "moon",
-              "text": "夜晚"
+              "icon": "sun",
+              "text": "白天"
             },
             {
               "icon": "sunface",
               "text": "天亮"
             },
             {
-              "icon": "sun",
-              "text": "白天"
+              "icon": "moon",
+              "text": "夜晚"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "天黑了星星就出来",
           "praise": "对，夜晚来啦！"
         }
@@ -543,19 +543,19 @@
           "question": "为什么白天看不到星星？",
           "options": [
             {
-              "icon": "sunrays",
-              "text": "太阳光太亮，盖住了星光"
-            },
-            {
               "icon": "starface",
               "text": "星星白天睡觉去了"
+            },
+            {
+              "icon": "sunrays",
+              "text": "太阳光太亮，盖住了星光"
             },
             {
               "icon": "moon",
               "text": "月亮把星星带走了"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "学一学卡上说：星星白天也在，只是看不见",
           "praise": "对，被太阳光盖住了！"
         }
@@ -609,19 +609,19 @@
           "question": "太阳升起后，天空会怎样？",
           "options": [
             {
-              "icon": "sparkle",
-              "text": "越来越亮"
-            },
-            {
               "icon": "moon",
               "text": "黑夜到月亮"
+            },
+            {
+              "icon": "sparkle",
+              "text": "越来越亮"
             },
             {
               "icon": "snowflake",
               "text": "下起雪来"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "学一学卡：太阳升起来，天空越来越亮",
           "praise": "对，越升越高越亮！"
         }
@@ -655,19 +655,19 @@
           "question": "弯弯的月亮像什么？",
           "options": [
             {
-              "text": "像小船",
-              "phase": 0.12
+              "icon": "hat",
+              "text": "尖帽子"
             },
             {
               "icon": "square",
               "text": "像方块"
             },
             {
-              "icon": "hat",
-              "text": "尖帽子"
+              "text": "像小船",
+              "phase": 0.12
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "弯弯月儿像小船",
           "praise": "对，像小船！"
         }
@@ -707,19 +707,19 @@
           "question": "影子是怎么来的？",
           "options": [
             {
-              "icon": "sunrays",
-              "text": "太阳光"
-            },
-            {
               "icon": "sprout",
               "text": "地里长出"
+            },
+            {
+              "icon": "sunrays",
+              "text": "太阳光"
             },
             {
               "icon": "chart",
               "text": "画上去的"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "挡住光的地方就是影子",
           "praise": "答对啦！"
         },
@@ -729,19 +729,19 @@
           "question": "什么时候影子最长？",
           "options": [
             {
-              "icon": "sunrise",
-              "text": "早晚太阳斜"
+              "icon": "moon",
+              "text": "半夜"
             },
             {
               "icon": "sun",
               "text": "白天"
             },
             {
-              "icon": "moon",
-              "text": "半夜"
+              "icon": "sunrise",
+              "text": "早晚太阳斜"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "太阳斜射影子长",
           "praise": "对，早晚影子最长！"
         }
@@ -810,19 +810,19 @@
           "question": "谁白天黑夜都在天上，晚上才看得清？",
           "options": [
             {
-              "icon": "star",
-              "text": "星星"
+              "icon": "cake",
+              "text": "蛋糕"
             },
             {
               "icon": "car",
               "text": "汽车"
             },
             {
-              "icon": "cake",
-              "text": "蛋糕"
+              "icon": "star",
+              "text": "星星"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "星星一直在天上",
           "praise": "对，抬头就能找！"
         }
@@ -884,19 +884,19 @@
           "question": "从太空看地球，主要是什么颜色？",
           "options": [
             {
-              "text": "地球蓝色",
-              "body": "earth"
+              "icon": "tree",
+              "text": "绿色树木"
             },
             {
               "text": "火星火红",
               "body": "mars"
             },
             {
-              "icon": "tree",
-              "text": "绿色树木"
+              "text": "地球蓝色",
+              "body": "earth"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "海洋比陆地多得多",
           "praise": "对，地球是蓝色星球！"
         }
@@ -990,16 +990,16 @@
           "question": "地球和月亮：地球、月亮、地球，下一个是谁？",
           "options": [
             {
-              "icon": "moon"
+              "icon": "sun"
             },
             {
               "icon": "star"
             },
             {
-              "icon": "sun"
+              "icon": "moon"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "先读一读前面几个，找一找谁在轮流出现",
           "praise": "规律找对啦，小侦探！"
         }
@@ -1091,16 +1091,16 @@
           "question": "月亮上有没有空气？",
           "options": [
             {
-              "text": "没有空气"
+              "text": "全是水汽"
             },
             {
               "text": "和地球一样多"
             },
             {
-              "text": "全是水汽"
+              "text": "没有空气"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "月亮上没有空气",
           "praise": "答对啦，所以要带氧气！"
         },
@@ -1110,19 +1110,19 @@
           "question": "为什么宇航服鼓鼓的、包得严严实实？",
           "options": [
             {
-              "icon": "astronaut",
-              "text": "宇航服氧气"
-            },
-            {
               "icon": "flower",
               "text": "花"
+            },
+            {
+              "icon": "astronaut",
+              "text": "宇航服氧气"
             },
             {
               "icon": "snowflake",
               "text": "冬天冷"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "宇航服是小小飞船",
           "praise": "对，它保护宇航员！"
         }
@@ -1156,19 +1156,19 @@
           "question": "谁晚上陪在地球身边转圈圈？",
           "options": [
             {
-              "icon": "moon",
-              "text": "月球"
-            },
-            {
               "icon": "comet",
               "text": "彗星"
+            },
+            {
+              "icon": "moon",
+              "text": "月球"
             },
             {
               "icon": "rocket",
               "text": "火箭"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "月球是地球的卫星",
           "praise": "对，是月球！"
         }
@@ -1186,19 +1186,19 @@
           "question": "白天能看到月亮吗？",
           "options": [
             {
-              "icon": "sunrise",
-              "text": "白天能看到"
-            },
-            {
               "icon": "lock",
               "text": "锁起来看不到"
+            },
+            {
+              "icon": "sunrise",
+              "text": "白天能看到"
             },
             {
               "icon": "sunface",
               "text": "月亮怕晒"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "《DK儿童太空百科》：月亮白天也常在天上",
           "praise": "答对啦，白天也能找月亮！"
         },
@@ -1238,19 +1238,19 @@
           "question": "地球上大部分地方是什么？",
           "options": [
             {
-              "icon": "wave",
-              "text": "海洋"
+              "icon": "ice",
+              "text": "冰川"
             },
             {
               "icon": "desert",
               "text": "沙漠"
             },
             {
-              "icon": "ice",
-              "text": "冰川"
+              "icon": "wave",
+              "text": "海洋"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "七分海洋三分陆地",
           "praise": "对，大部分是海洋！"
         },
@@ -1263,16 +1263,16 @@
           "question": "找一找：哪张图片是「地球」？",
           "options": [
             {
-              "icon": "earth"
+              "icon": "moon"
             },
             {
               "icon": "mars"
             },
             {
-              "icon": "moon"
+              "icon": "earth"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "想一想刚才学过的「地球」",
           "praise": "眼睛真亮，地球找对啦！"
         }
@@ -1387,19 +1387,19 @@
           "question": "从太空看地球是什么颜色？",
           "options": [
             {
-              "icon": "earth",
-              "text": "蓝色"
-            },
-            {
               "icon": "mars",
               "text": "红色"
+            },
+            {
+              "icon": "earth",
+              "text": "蓝色"
             },
             {
               "icon": "sun",
               "text": "金色"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "大海是蓝色的",
           "praise": "对，蓝色星球！"
         },
@@ -1409,19 +1409,19 @@
           "question": "把我们拉在地面上不飞走的是？",
           "options": [
             {
-              "text": "地球引力",
-              "body": "earth"
+              "icon": "jar",
+              "text": "胶水"
             },
             {
               "icon": "magnet",
               "text": "磁铁"
             },
             {
-              "icon": "jar",
-              "text": "胶水"
+              "text": "地球引力",
+              "body": "earth"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "地球的引力",
           "praise": "答对啦，引力无处不在！"
         }
@@ -1461,19 +1461,19 @@
           "question": "谁能把宇航员送上太空？",
           "options": [
             {
-              "icon": "rocket",
-              "text": "火箭"
-            },
-            {
               "icon": "train",
               "text": "火车"
+            },
+            {
+              "icon": "rocket",
+              "text": "火箭"
             },
             {
               "icon": "car",
               "text": "汽车"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "火箭轰隆一声冲上天",
           "praise": "对，是火箭！"
         },
@@ -1483,19 +1483,19 @@
           "question": "火箭点火时，尾巴喷出什么？",
           "options": [
             {
-              "icon": "flame",
-              "text": "火焰气流"
-            },
-            {
               "icon": "rainbow",
               "text": "彩色泡泡"
+            },
+            {
+              "icon": "flame",
+              "text": "火焰气流"
             },
             {
               "icon": "flower",
               "text": "花瓣"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "喷着火冲上天",
           "praise": "答对啦！"
         },
@@ -1547,19 +1547,19 @@
           "question": "开飞船上太空工作的人叫什么？",
           "options": [
             {
-              "icon": "astronaut",
-              "text": "宇航员"
+              "icon": "hat",
+              "text": "帽子"
             },
             {
               "icon": "car",
               "text": "汽车"
             },
             {
-              "icon": "hat",
-              "text": "帽子"
+              "icon": "astronaut",
+              "text": "宇航员"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "他们乘火箭上太空",
           "praise": "对，宇航员！"
         },
@@ -1621,19 +1621,19 @@
           "question": "太空里没有空气，宇航员靠什么呼吸？",
           "options": [
             {
-              "icon": "astronaut",
-              "text": "宇航服氧气"
-            },
-            {
               "icon": "girl",
               "text": "人"
+            },
+            {
+              "icon": "astronaut",
+              "text": "宇航服氧气"
             },
             {
               "icon": "blackhole",
               "text": "黑洞"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "氧气装在宇航服里",
           "praise": "对，靠氧气！"
         },
@@ -1643,19 +1643,19 @@
           "question": "宇航服还能帮宇航员挡住什么？",
           "options": [
             {
-              "icon": "shield",
-              "text": "盾"
+              "icon": "book",
+              "text": "书"
             },
             {
               "icon": "starface",
               "text": "别人目光"
             },
             {
-              "icon": "book",
-              "text": "书"
+              "icon": "shield",
+              "text": "盾"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "太空温差特别大",
           "praise": "答对啦，宇航服很能干！"
         }
@@ -1673,19 +1673,19 @@
           "question": "空间站里宇航员怎么睡觉？",
           "options": [
             {
-              "icon": "sleepingbag",
-              "text": "睡袋挂墙上"
-            },
-            {
               "icon": "bed",
               "text": "普通的床上"
+            },
+            {
+              "icon": "sleepingbag",
+              "text": "睡袋挂墙上"
             },
             {
               "icon": "chair",
               "text": "椅子上"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "失重时躺着会飘走",
           "praise": "对，睡袋挂墙上！"
         },
@@ -1695,19 +1695,19 @@
           "question": "在空间站里笔掉了，它会？",
           "options": [
             {
-              "icon": "balloon",
-              "text": "气球飘起来"
+              "icon": "everest",
+              "text": "飞走藏起来"
             },
             {
               "icon": "home",
               "text": "掉回家"
             },
             {
-              "icon": "everest",
-              "text": "飞走藏起来"
+              "icon": "balloon",
+              "text": "气球飘起来"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "失重了，东西会飘",
           "praise": "对，飘在空中！"
         }
@@ -1747,19 +1747,19 @@
           "question": "宇航员在太空住的大房子叫什么？",
           "options": [
             {
-              "icon": "station",
-              "text": "空间站"
-            },
-            {
               "icon": "castle",
               "text": "城堡"
+            },
+            {
+              "icon": "station",
+              "text": "空间站"
             },
             {
               "icon": "shop",
               "text": "商店"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "太空之家",
           "praise": "对，空间站！"
         },
@@ -1866,19 +1866,19 @@
           "shadow": "satellite",
           "options": [
             {
-              "icon": "satellite",
-              "text": "人造卫星"
+              "icon": "rocket",
+              "text": "火箭"
             },
             {
               "icon": "moon",
               "text": "月亮"
             },
             {
-              "icon": "rocket",
-              "text": "火箭"
+              "icon": "satellite",
+              "text": "人造卫星"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "它张着两片太阳翼，绕着地球转",
           "praise": "猜对啦！"
         }
@@ -1952,19 +1952,19 @@
           "question": "宇航员上天之前要穿好什么？",
           "options": [
             {
-              "icon": "astronaut",
-              "text": "宇航服"
-            },
-            {
               "icon": "goggles",
               "text": "泳镜"
+            },
+            {
+              "icon": "astronaut",
+              "text": "宇航服"
             },
             {
               "icon": "hat",
               "text": "帽子"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "宇航服是保命的小飞船",
           "praise": "对，穿好宇航服！"
         }
@@ -2014,19 +2014,19 @@
           "question": "空间站里的宇航员主要在做什么？",
           "options": [
             {
-              "icon": "flask",
-              "text": "做科学实验"
+              "icon": "ball",
+              "text": "踢足球"
             },
             {
               "icon": "bear",
               "text": "睡大觉"
             },
             {
-              "icon": "ball",
-              "text": "踢足球"
+              "icon": "flask",
+              "text": "做科学实验"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "学一学卡：空间站就是太空实验室",
           "praise": "对，做实验！"
         }
@@ -2106,19 +2106,19 @@
           "question": "我们住在哪颗星球上？",
           "options": [
             {
-              "icon": "earth",
-              "text": "地球"
-            },
-            {
               "icon": "sun",
               "text": "太阳"
+            },
+            {
+              "icon": "earth",
+              "text": "地球"
             },
             {
               "icon": "moon",
               "text": "月亮"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "蓝蓝的圆圆的是我们的家",
           "praise": "对，地球是我们的家！"
         },
@@ -2169,19 +2169,19 @@
           "question": "跳起来之后会怎么样？",
           "options": [
             {
-              "icon": "home",
-              "text": "落回地面"
-            },
-            {
               "icon": "balloon",
               "text": "气球"
+            },
+            {
+              "icon": "home",
+              "text": "落回地面"
             },
             {
               "text": "飞到月球",
               "body": "moon"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "引力把我们拉回来",
           "praise": "对，落回地面！"
         },
@@ -2191,16 +2191,16 @@
           "question": "月亮上有没有空气？",
           "options": [
             {
-              "text": "没有空气"
+              "text": "全是水汽"
             },
             {
               "text": "和地球一样多"
             },
             {
-              "text": "全是水汽"
+              "text": "没有空气"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "月亮上没有空气",
           "praise": "答对啦，所以要带氧气！"
         },
@@ -2297,16 +2297,16 @@
           "question": "太阳系里有几大行星？",
           "options": [
             {
-              "text": "八颗行星"
+              "text": "一百颗"
             },
             {
               "text": "三颗"
             },
             {
-              "text": "一百颗"
+              "text": "八颗行星"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "水金地火+木土天海",
           "praise": "对，八大行星！"
         },
@@ -2316,19 +2316,19 @@
           "question": "行星们都绕着谁转？",
           "options": [
             {
-              "icon": "sun",
-              "text": "太阳"
+              "icon": "moon",
+              "text": "月亮"
             },
             {
               "icon": "earth",
               "text": "地球"
             },
             {
-              "icon": "moon",
-              "text": "月亮"
+              "icon": "sun",
+              "text": "太阳"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "太阳是太阳系的老大",
           "praise": "对，绕太阳转！"
         },
@@ -2512,19 +2512,19 @@
           "question": "清晨东方最亮的那颗星叫？",
           "options": [
             {
-              "icon": "venus",
-              "text": "金星"
-            },
-            {
               "icon": "mars",
               "text": "火星"
+            },
+            {
+              "icon": "venus",
+              "text": "金星"
             },
             {
               "icon": "moon",
               "text": "月亮"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "金星也叫启明星",
           "praise": "对，金星最亮！"
         },
@@ -2586,19 +2586,19 @@
           "question": "哪颗行星红红的？",
           "options": [
             {
-              "icon": "mars",
-              "text": "火星"
-            },
-            {
               "icon": "venus",
               "text": "金星"
+            },
+            {
+              "icon": "mars",
+              "text": "火星"
             },
             {
               "icon": "earth",
               "text": "地球"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "火星像生了锈",
           "praise": "对，红红的火星！"
         },
@@ -2608,19 +2608,19 @@
           "question": "火星为什么是红色的？",
           "options": [
             {
-              "icon": "rustsoil",
-              "text": "铁锈色土壤"
+              "icon": "apple",
+              "text": "红苹果"
             },
             {
               "icon": "fire",
               "text": "被火烤过"
             },
             {
-              "icon": "apple",
-              "text": "红苹果"
+              "icon": "rustsoil",
+              "text": "铁锈色土壤"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "像铁锈一样的土壤",
           "praise": "对，是铁锈色！"
         }
@@ -2660,19 +2660,19 @@
           "question": "我们住的地球是岩质行星吗？",
           "options": [
             {
-              "icon": "rock",
-              "text": "是，岩石星球"
+              "icon": "wave",
+              "text": "是水做的星球"
             },
             {
               "icon": "balloon",
               "text": "是气体星球"
             },
             {
-              "icon": "wave",
-              "text": "是水做的星球"
+              "icon": "rock",
+              "text": "是，岩石星球"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "脚踩大地，当然是",
           "praise": "答对啦！"
         },
@@ -2723,19 +2723,19 @@
           "question": "火星和木星之间有一条什么地带？",
           "options": [
             {
-              "icon": "planet",
-              "text": "小行星带"
-            },
-            {
               "icon": "river",
               "text": "一条大河"
+            },
+            {
+              "icon": "planet",
+              "text": "小行星带"
             },
             {
               "icon": "greatwall",
               "text": "长城"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "《神奇校车》就从这里穿过！",
           "praise": "对，小行星带！"
         },
@@ -2745,19 +2745,19 @@
           "question": "小行星是什么？",
           "options": [
             {
-              "icon": "rock",
-              "text": "石头"
-            },
-            {
               "icon": "starface",
               "text": "星星宝宝"
+            },
+            {
+              "icon": "rock",
+              "text": "石头"
             },
             {
               "icon": "car",
               "text": "会飞汽车"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "大的像山，小的像石头",
           "praise": "对，是太空小石块！"
         },
@@ -2864,19 +2864,19 @@
           "question": "八大行星里个头最小的是？",
           "options": [
             {
-              "icon": "mercury",
-              "text": "水星"
+              "icon": "earth",
+              "text": "地球"
             },
             {
               "icon": "jupiter",
               "text": "木星"
             },
             {
-              "icon": "earth",
-              "text": "地球"
+              "icon": "mercury",
+              "text": "水星"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "水星小小的跑得快",
           "praise": "对，水星最小！"
         }
@@ -2910,19 +2910,19 @@
           "question": "离太阳由近到远排，第三颗是谁？",
           "options": [
             {
-              "text": "地球第三颗",
-              "body": "earth"
-            },
-            {
               "text": "水星",
               "body": "mercury"
+            },
+            {
+              "text": "地球第三颗",
+              "body": "earth"
             },
             {
               "text": "木星",
               "body": "jupiter"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "水金地…第三颗是我们",
           "praise": "对，地球排第三！"
         }
@@ -2940,19 +2940,19 @@
           "question": "八大行星排队，谁排第一（离太阳最近）？",
           "options": [
             {
-              "icon": "mercury",
-              "text": "水星"
+              "icon": "saturn",
+              "text": "土星"
             },
             {
               "icon": "earth",
               "text": "地球"
             },
             {
-              "icon": "saturn",
-              "text": "土星"
+              "icon": "mercury",
+              "text": "水星"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "水星离太阳最近",
           "praise": "对，水星第一！"
         },
@@ -2962,16 +2962,16 @@
           "question": "行星排队的顺序是按什么排的？",
           "options": [
             {
-              "text": "离太阳由近到远"
+              "text": "谁跑得慢"
             },
             {
-              "text": "谁跑得慢"
+              "text": "离太阳由近到远"
             },
             {
               "text": "谁的颜色好看"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "按离太阳远近排",
           "praise": "答对啦！"
         },
@@ -3073,19 +3073,19 @@
           "question": "红色行星是哪颗？",
           "options": [
             {
-              "icon": "mars",
-              "text": "火星"
+              "icon": "neptune",
+              "text": "海王星"
             },
             {
               "icon": "venus",
               "text": "金星"
             },
             {
-              "icon": "neptune",
-              "text": "海王星"
+              "icon": "mars",
+              "text": "火星"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "铁锈色的火星",
           "praise": "对，火星！"
         },
@@ -3095,19 +3095,19 @@
           "question": "小行星带夹在哪两颗行星中间？",
           "options": [
             {
-              "text": "火星木星间",
-              "body": "mars"
+              "text": "水星金星",
+              "body": "mercury"
             },
             {
               "icon": "moon",
               "text": "地球月亮"
             },
             {
-              "text": "水星金星",
-              "body": "mercury"
+              "text": "火星木星间",
+              "body": "mars"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "岩质行星和巨行星的分界线",
           "praise": "对，火星和木星之间！"
         }
@@ -3169,19 +3169,19 @@
           "question": "木星上的大红斑是什么？",
           "options": [
             {
-              "icon": "storm",
-              "text": "刮了几百年的大风暴"
-            },
-            {
               "icon": "apple",
               "text": "红色圆斑"
+            },
+            {
+              "icon": "storm",
+              "text": "刮了几百年的大风暴"
             },
             {
               "icon": "meteorite",
               "text": "陨石坑"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "比地球还大的风暴",
           "praise": "答对啦，大红斑是大风暴！"
         },
@@ -3244,19 +3244,19 @@
           "question": "谁戴着像草帽一样的光环？",
           "options": [
             {
-              "icon": "saturn",
-              "text": "土星"
-            },
-            {
               "icon": "mars",
               "text": "火星"
+            },
+            {
+              "icon": "saturn",
+              "text": "土星"
             },
             {
               "icon": "venus",
               "text": "金星"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "土星的光环最美",
           "praise": "对，土星戴草帽！"
         },
@@ -3266,19 +3266,19 @@
           "question": "土星的光环是什么做的？",
           "options": [
             {
-              "icon": "crystal",
-              "text": "冰块石头"
-            },
-            {
               "icon": "candy",
               "text": "彩虹糖"
+            },
+            {
+              "icon": "crystal",
+              "text": "冰块石头"
             },
             {
               "icon": "milk",
               "text": "云朵"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "光环是冰块石头组成的",
           "praise": "答对啦！"
         }
@@ -3340,19 +3340,19 @@
           "question": "天王星是什么颜色？",
           "options": [
             {
-              "text": "天王星蓝绿",
-              "body": "uranus"
+              "icon": "rock",
+              "text": "石头"
             },
             {
               "text": "火星火红",
               "body": "mars"
             },
             {
-              "icon": "rock",
-              "text": "石头"
+              "text": "天王星蓝绿",
+              "body": "uranus"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "冰冰的蓝绿色",
           "praise": "答对啦，蓝绿色！"
         }
@@ -3392,19 +3392,19 @@
           "question": "离太阳最远的行星是？",
           "options": [
             {
-              "icon": "neptune",
-              "text": "海王星"
-            },
-            {
               "icon": "mercury",
               "text": "水星"
+            },
+            {
+              "icon": "neptune",
+              "text": "海王星"
             },
             {
               "icon": "earth",
               "text": "地球"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "海王星在队伍最后",
           "praise": "对，海王星最远！"
         },
@@ -3414,19 +3414,19 @@
           "question": "海王星是什么颜色？",
           "options": [
             {
-              "text": "海王星深蓝",
-              "body": "neptune"
+              "icon": "rainbow",
+              "text": "彩色"
             },
             {
               "icon": "leaf",
               "text": "树叶"
             },
             {
-              "icon": "rainbow",
-              "text": "彩色"
+              "text": "海王星深蓝",
+              "body": "neptune"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "深蓝的海王星",
           "praise": "对，深蓝色！"
         }
@@ -3460,19 +3460,19 @@
           "question": "土星很轻很轻，如果有个足够大的水池，它会？",
           "options": [
             {
-              "text": "土星浮起",
-              "body": "saturn"
+              "icon": "magnet",
+              "text": "把水吸干"
             },
             {
               "icon": "rock",
               "text": "石头"
             },
             {
-              "icon": "magnet",
-              "text": "把水吸干"
+              "text": "土星浮起",
+              "body": "saturn"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "土星密度比水还小",
           "praise": "对，土星能浮起来！"
         }
@@ -3490,19 +3490,19 @@
           "question": "巨行星（木土天海）和岩质行星最大的不同是？",
           "options": [
             {
-              "text": "木星气体",
-              "body": "jupiter"
+              "icon": "equal",
+              "text": "等"
             },
             {
               "icon": "candy",
               "text": "糖"
             },
             {
-              "icon": "equal",
-              "text": "等"
+              "text": "木星气体",
+              "body": "jupiter"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "没有落脚的硬地面",
           "praise": "对，巨行星是气体星球！"
         },
@@ -3512,19 +3512,19 @@
           "question": "谁自转最快、一天不到10小时？",
           "options": [
             {
-              "icon": "jupiter",
-              "text": "木星"
+              "icon": "moon",
+              "text": "月亮"
             },
             {
               "icon": "earth",
               "text": "地球"
             },
             {
-              "icon": "moon",
-              "text": "月亮"
+              "icon": "jupiter",
+              "text": "木星"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "木星个头大转得快",
           "praise": "答对啦，是木星！"
         }
@@ -3578,19 +3578,19 @@
           "question": "木星身边已经发现了多少颗卫星？",
           "options": [
             {
-              "icon": "satellite",
-              "text": "95 颗以上卫星"
+              "icon": "star",
+              "text": "一颗星星都没有"
             },
             {
               "icon": "moon",
               "text": "只有一颗月亮"
             },
             {
-              "icon": "star",
-              "text": "一颗星星都没有"
+              "icon": "satellite",
+              "text": "95 颗以上卫星"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "回去看学一学卡上的数字：95+",
           "praise": "对，95 颗以上！"
         },
@@ -3723,19 +3723,19 @@
           "question": "泰坦表面的湖泊里装的是什么？",
           "options": [
             {
-              "icon": "wave",
-              "text": "液态甲烷，不是水"
+              "icon": "crystal",
+              "text": "全是水晶"
             },
             {
               "icon": "fire",
               "text": "一直在着火"
             },
             {
-              "icon": "crystal",
-              "text": "全是水晶"
+              "icon": "wave",
+              "text": "液态甲烷，不是水"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "泰坦很冷，甲烷在那儿变成了液体",
           "praise": "对，是液态甲烷！"
         },
@@ -3745,19 +3745,19 @@
           "question": "为什么有些卫星被叫作「冰卫星」？",
           "options": [
             {
-              "icon": "ice",
-              "text": "表面裹着一层厚厚的冰壳"
+              "icon": "crystal",
+              "text": "全是水晶"
             },
             {
               "icon": "snowflake",
               "text": "雪花一直飘"
             },
             {
-              "icon": "crystal",
-              "text": "全是水晶"
+              "icon": "ice",
+              "text": "表面裹着一层厚厚的冰壳"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "冰块在太空里也是硬邦邦的石头",
           "praise": "对，它们裹着冰壳！"
         }
@@ -3776,8 +3776,8 @@
           "duckIcon": "planet",
           "count": 8,
           "countOptions": [
-            7,
             8,
+            7,
             9
           ],
           "backdrop": "night",
@@ -3863,19 +3863,19 @@
           "question": "哪颗行星戴着光环？",
           "options": [
             {
-              "icon": "saturn",
-              "text": "土星"
-            },
-            {
               "icon": "mars",
               "text": "火星"
+            },
+            {
+              "icon": "saturn",
+              "text": "土星"
             },
             {
               "icon": "mercury",
               "text": "水星"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "土星草帽光环",
           "praise": "对，土星！"
         },
@@ -3885,16 +3885,16 @@
           "question": "地球绕太阳转一圈是多久？",
           "options": [
             {
-              "text": "一年"
+              "text": "一天"
             },
             {
-              "text": "一天"
+              "text": "一年"
             },
             {
               "text": "一小时"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "绕一圈就是一年",
           "praise": "答对啦，一年！"
         }
@@ -3912,16 +3912,16 @@
           "question": "太阳其实是一颗什么？",
           "options": [
             {
-              "text": "恒星"
+              "text": "卫星"
             },
             {
               "text": "行星"
             },
             {
-              "text": "卫星"
+              "text": "恒星"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "太阳是离我们最近的恒星",
           "praise": "对，太阳是恒星！"
         },
@@ -3931,19 +3931,19 @@
           "question": "夜晚的星星和太阳是一家人吗？",
           "options": [
             {
-              "icon": "starface",
-              "text": "都是恒星"
-            },
-            {
               "icon": "bulb",
               "text": "星星是灯"
+            },
+            {
+              "icon": "starface",
+              "text": "都是恒星"
             },
             {
               "icon": "moon",
               "text": "星星是月亮变的"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "每颗星星都是个太阳",
           "praise": "答对啦！"
         },
@@ -3994,16 +3994,16 @@
           "question": "太阳的肚子里大约能装下多少个地球？",
           "options": [
             {
-              "text": "约 130 万个"
+              "text": "约 100 个"
             },
             {
-              "text": "约 100 个"
+              "text": "约 130 万个"
             },
             {
               "text": "约 10 个"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "太阳是个超级大胖子",
           "praise": "对，100多万个地球！"
         },
@@ -4013,19 +4013,19 @@
           "question": "太阳和地球谁大？",
           "options": [
             {
-              "icon": "sun",
-              "text": "太阳大得多"
-            },
-            {
               "icon": "earth",
               "text": "地球大"
+            },
+            {
+              "icon": "sun",
+              "text": "太阳大得多"
             },
             {
               "icon": "equal",
               "text": "一样大"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "地球在太阳面前像小豆子",
           "praise": "答对啦！"
         }
@@ -4059,19 +4059,19 @@
           "question": "地球绕着太阳转，还是太阳绕着地球转？",
           "options": [
             {
-              "icon": "sun",
-              "text": "地球绕太阳转"
-            },
-            {
               "icon": "earth",
               "text": "太阳绕地球转"
+            },
+            {
+              "icon": "sun",
+              "text": "地球绕太阳转"
             },
             {
               "icon": "party",
               "text": "它们开派对"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "地球是太阳的行星",
           "praise": "对，地球绕太阳！"
         }
@@ -4089,16 +4089,16 @@
           "question": "太阳光跑到地球要多久？",
           "options": [
             {
-              "text": "约 8 分钟"
+              "text": "约一个月"
             },
             {
-              "text": "约一个月"
+              "text": "约 8 分钟"
             },
             {
               "text": "约一整天"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "光速飞快也要跑一会儿",
           "praise": "对，大约8分钟！"
         },
@@ -4108,19 +4108,19 @@
           "question": "我们晒到的阳光是什么时候出发的？",
           "options": [
             {
-              "icon": "sunrise",
-              "text": "太阳8分钟前出发"
-            },
-            {
               "icon": "rocket",
               "text": "刚刚出发"
+            },
+            {
+              "icon": "sunrise",
+              "text": "太阳8分钟前出发"
             },
             {
               "icon": "calendar",
               "text": "昨天出发"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "阳光是位小邮差",
           "praise": "答对啦！"
         }
@@ -4160,19 +4160,19 @@
           "question": "太阳还能帮我们做什么？",
           "options": [
             {
-              "icon": "hanger",
-              "text": "晒干衣服"
+              "icon": "speaker",
+              "text": "唱歌"
             },
             {
               "icon": "chart",
               "text": "煮动画片"
             },
             {
-              "icon": "speaker",
-              "text": "唱歌"
+              "icon": "hanger",
+              "text": "晒干衣服"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "太阳能是大本领",
           "praise": "答对啦！"
         }
@@ -4285,19 +4285,19 @@
           "question": "想看日食要请谁帮忙？",
           "options": [
             {
-              "icon": "telescope",
-              "text": "望远镜"
+              "icon": "girl",
+              "text": "闭上眼睛"
             },
             {
               "icon": "goggles",
               "text": "眼镜"
             },
             {
-              "icon": "girl",
-              "text": "闭上眼睛"
+              "icon": "telescope",
+              "text": "望远镜"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "护眼第一",
           "praise": "答对啦，护眼小卫士！"
         }
@@ -4317,8 +4317,8 @@
           "count": 7,
           "countOptions": [
             6,
-            7,
-            8
+            8,
+            7
           ],
           "backdrop": "night",
           "unit": "颗"
@@ -4362,16 +4362,16 @@
           "question": "找一找：哪张图片是「太阳」？",
           "options": [
             {
-              "icon": "sun"
+              "icon": "star"
             },
             {
               "icon": "moon"
             },
             {
-              "icon": "star"
+              "icon": "sun"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "想一想刚才学过的「太阳」",
           "praise": "眼睛真亮，太阳找对啦！"
         },
@@ -4381,19 +4381,19 @@
           "question": "谁是太阳系的光和热之源？",
           "options": [
             {
-              "icon": "sun",
-              "text": "太阳"
-            },
-            {
               "icon": "comet",
               "text": "彗星"
+            },
+            {
+              "icon": "sun",
+              "text": "太阳"
             },
             {
               "icon": "satellite",
               "text": "卫星"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "万物生长靠太阳",
           "praise": "对，是太阳！"
         }
@@ -4446,19 +4446,19 @@
           "question": "谁能把宇航员送上太空？",
           "options": [
             {
-              "icon": "rocket",
-              "text": "火箭"
-            },
-            {
               "icon": "train",
               "text": "火车"
+            },
+            {
+              "icon": "rocket",
+              "text": "火箭"
             },
             {
               "icon": "car",
               "text": "汽车"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "火箭轰隆一声冲上天",
           "praise": "对，是火箭！"
         },
@@ -4534,19 +4534,19 @@
           "question": "宇航员在太空住的大房子叫什么？",
           "options": [
             {
-              "icon": "station",
-              "text": "空间站"
-            },
-            {
               "icon": "castle",
               "text": "城堡"
+            },
+            {
+              "icon": "station",
+              "text": "空间站"
             },
             {
               "icon": "shop",
               "text": "商店"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "太空之家",
           "praise": "对，空间站！"
         }
@@ -4637,19 +4637,19 @@
           "question": "月亮为什么有时圆、有时弯？",
           "options": [
             {
-              "icon": "sun",
-              "text": "太阳照亮的部分在慢慢变"
+              "icon": "rock",
+              "text": "被太空石头咬掉了"
             },
             {
               "icon": "moon",
               "text": "月亮真的变大变小"
             },
             {
-              "icon": "rock",
-              "text": "被太空石头咬掉了"
+              "icon": "sun",
+              "text": "太阳照亮的部分在慢慢变"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "月亮本身不发光",
           "praise": "答对啦，月相在循环！"
         },
@@ -4689,19 +4689,19 @@
           "question": "细细的月牙慢慢变圆，中间会先变成半圆的月亮，它叫什么？",
           "options": [
             {
-              "icon": "waxing",
-              "text": "上弦月，半圆的时候"
-            },
-            {
               "icon": "square",
               "text": "方方块"
+            },
+            {
+              "icon": "waxing",
+              "text": "上弦月，半圆的时候"
             },
             {
               "icon": "triangle",
               "text": "三角形"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "月牙→上弦月→满月",
           "praise": "对，先变成上弦月！"
         },
@@ -4716,16 +4716,16 @@
           "question": "月相规律：下一个是谁？",
           "options": [
             {
-              "icon": "waning"
+              "icon": "newmoon"
             },
             {
-              "icon": "newmoon"
+              "icon": "waning"
             },
             {
               "icon": "comet"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "先读一读前面几个，找一找谁在轮流出现",
           "praise": "规律找对啦，小侦探！"
         },
@@ -4787,19 +4787,19 @@
           "question": "月亮上圆圆的大坑是怎么来的？",
           "options": [
             {
-              "icon": "rock",
-              "text": "太空石头"
-            },
-            {
               "icon": "girl",
               "text": "小朋友挖"
+            },
+            {
+              "icon": "rock",
+              "text": "太空石头"
             },
             {
               "icon": "rainbow",
               "text": "雨点打出"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "撞击坑也叫环形山",
           "praise": "对，撞出来的坑！"
         },
@@ -4913,19 +4913,19 @@
           "question": "海水每天涨了又退，是谁在牵着？",
           "options": [
             {
-              "icon": "moon",
-              "text": "月亮引力"
+              "icon": "wave",
+              "text": "大海"
             },
             {
               "icon": "fish",
               "text": "大鱼游泳"
             },
             {
-              "icon": "wave",
-              "text": "大海"
+              "icon": "moon",
+              "text": "月亮引力"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "月亮牵海水，一起做运动",
           "praise": "对，是月亮的引力！"
         },
@@ -4935,16 +4935,16 @@
           "question": "潮涨潮落一天有几次？",
           "options": [
             {
-              "text": "两次涨退"
+              "text": "一次都没有"
             },
             {
-              "text": "一次都没有"
+              "text": "两次涨退"
             },
             {
               "text": "每小时一百次"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "海水有自己的节拍",
           "praise": "答对啦！"
         }
@@ -4962,19 +4962,19 @@
           "question": "月亮挡住太阳，白天一下子变暗，这叫？",
           "options": [
             {
-              "icon": "sun",
-              "text": "日食"
-            },
-            {
               "icon": "moon",
               "text": "月食"
+            },
+            {
+              "icon": "sun",
+              "text": "日食"
             },
             {
               "icon": "bulb",
               "text": "停电了"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "《DK神秘宇宙》里的天文奇观",
           "praise": "对，是日食！"
         },
@@ -4984,19 +4984,19 @@
           "question": "看日食的时候可以怎么做？",
           "options": [
             {
-              "icon": "goggles",
-              "text": "护目镜滤镜再看"
-            },
-            {
               "icon": "starface",
               "text": "瞪大眼睛直接看"
+            },
+            {
+              "icon": "goggles",
+              "text": "护目镜滤镜再看"
             },
             {
               "icon": "sun",
               "text": "太阳下戴墨镜看"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "护眼小卫士提醒你，不能直接看",
           "praise": "答对啦，护眼第一！"
         }
@@ -5036,19 +5036,19 @@
           "question": "人类的脚印第一次踩在月亮上，是哪国宇航员？",
           "options": [
             {
-              "icon": "libertystatue",
-              "text": "美国"
+              "icon": "eiffel",
+              "text": "法国"
             },
             {
               "icon": "china-map",
               "text": "中国"
             },
             {
-              "icon": "eiffel",
-              "text": "法国"
+              "icon": "libertystatue",
+              "text": "美国"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "1969年，全人类的一小步",
           "praise": "对，美国宇航员先登月！"
         },
@@ -5058,19 +5058,19 @@
           "question": "中国的探月车叫什么名字？",
           "options": [
             {
-              "icon": "rabbit",
-              "text": "玉兔号"
+              "icon": "panda",
+              "text": "熊猫号"
             },
             {
               "icon": "bear",
               "text": "大白号"
             },
             {
-              "icon": "panda",
-              "text": "熊猫号"
+              "icon": "rabbit",
+              "text": "玉兔号"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "玉兔住在月亮上，名字正合适",
           "praise": "答对啦，玉兔号！"
         },
@@ -5218,19 +5218,19 @@
           "question": "月亮绕地球转一圈大约要多久？",
           "options": [
             {
-              "icon": "moon",
-              "text": "一个月"
-            },
-            {
               "icon": "sunrise",
               "text": "一天"
+            },
+            {
+              "icon": "moon",
+              "text": "一个月"
             },
             {
               "icon": "clock",
               "text": "一小时"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "这就是「月」的由来哦",
           "praise": "答对啦，一个月！"
         }
@@ -5248,19 +5248,19 @@
           "question": "今晚是弯弯的月牙，过几天它会？",
           "options": [
             {
-              "icon": "sparkle",
-              "text": "慢慢变圆"
+              "icon": "star",
+              "text": "变成星星"
             },
             {
               "icon": "square",
               "text": "慢慢变方"
             },
             {
-              "icon": "star",
-              "text": "变成星星"
+              "icon": "sparkle",
+              "text": "慢慢变圆"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "月相在慢慢变化",
           "praise": "对，会越来越圆！"
         },
@@ -5293,19 +5293,19 @@
           "question": "月亮自己会发光吗？",
           "options": [
             {
-              "icon": "starface",
-              "text": "不会，反光"
+              "icon": "fire",
+              "text": "会，在燃烧"
             },
             {
               "icon": "bulb",
               "text": "会，是灯泡"
             },
             {
-              "icon": "fire",
-              "text": "会，在燃烧"
+              "icon": "starface",
+              "text": "不会，反光"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "月亮是面小镜子",
           "praise": "答对啦！"
         }
@@ -5407,19 +5407,19 @@
           "question": "夜里迷路了，找哪颗星帮忙指路？",
           "options": [
             {
-              "icon": "starface",
-              "text": "北极星"
-            },
-            {
               "icon": "meteor",
               "text": "流星"
+            },
+            {
+              "icon": "starface",
+              "text": "北极星"
             },
             {
               "icon": "sun",
               "text": "太阳"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "北极星永远在北方",
           "praise": "对，找北极星！"
         },
@@ -5543,19 +5543,19 @@
           "question": "「唰」地划过夜空的流星是什么？",
           "options": [
             {
-              "icon": "rock",
-              "text": "石头"
-            },
-            {
               "icon": "star",
               "text": "星星掉下"
+            },
+            {
+              "icon": "rock",
+              "text": "石头"
             },
             {
               "icon": "balloon",
               "text": "飞机开灯"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "划亮夜空的小访客",
           "praise": "对，是石块在发光！"
         },
@@ -5565,19 +5565,19 @@
           "question": "看到流星，大家可以？",
           "options": [
             {
-              "icon": "heart",
-              "text": "爱心"
+              "icon": "bulb",
+              "text": "关灯睡觉"
             },
             {
               "icon": "home",
               "text": "抓回家"
             },
             {
-              "icon": "bulb",
-              "text": "关灯睡觉"
+              "icon": "heart",
+              "text": "爱心"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "流星很快，愿望要快",
           "praise": "答对啦，许个愿吧！"
         }
@@ -5595,19 +5595,19 @@
           "question": "谁拖着长长的大尾巴扫过夜空？",
           "options": [
             {
-              "icon": "comet",
-              "text": "彗星"
+              "icon": "earth",
+              "text": "地球"
             },
             {
               "icon": "moon",
               "text": "月亮"
             },
             {
-              "icon": "earth",
-              "text": "地球"
+              "icon": "comet",
+              "text": "彗星"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "像一把大扫帚",
           "praise": "对，是彗星！"
         },
@@ -5617,16 +5617,16 @@
           "question": "著名的哈雷彗星绕太阳转一圈要多久？",
           "options": [
             {
-              "text": "约 76 年"
+              "text": "一小时"
             },
             {
               "text": "一天"
             },
             {
-              "text": "一小时"
+              "text": "约 76 年"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "人的一生大约能见到它一次",
           "praise": "答对啦，约76年！"
         }
@@ -5666,19 +5666,19 @@
           "question": "掉到地面上的太空石头叫什么？",
           "options": [
             {
-              "icon": "meteorite",
-              "text": "陨石"
+              "icon": "satellite",
+              "text": "卫星"
             },
             {
               "icon": "comet",
               "text": "彗星"
             },
             {
-              "icon": "satellite",
-              "text": "卫星"
+              "icon": "meteorite",
+              "text": "陨石"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "天上来的石头客人",
           "praise": "对，是陨石！"
         },
@@ -5901,19 +5901,19 @@
           "question": "星星白天还在天上吗？",
           "options": [
             {
-              "icon": "sunrays",
-              "text": "阳光太亮"
+              "icon": "sunface",
+              "text": "被太阳吃"
             },
             {
               "icon": "home",
               "text": "不在，下班"
             },
             {
-              "icon": "sunface",
-              "text": "被太阳吃"
+              "icon": "sunrays",
+              "text": "阳光太亮"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "白天黑夜都在",
           "praise": "对，一直都在！"
         },
@@ -5936,19 +5936,19 @@
           "question": "北斗七星像什么？",
           "options": [
             {
-              "icon": "spoon",
-              "text": "勺子"
+              "icon": "hat",
+              "text": "尖帽子"
             },
             {
               "icon": "car",
               "text": "一辆汽车"
             },
             {
-              "icon": "hat",
-              "text": "尖帽子"
+              "icon": "spoon",
+              "text": "勺子"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "勺子口对着北极星",
           "praise": "答对啦，大勺子！"
         }
@@ -5966,19 +5966,19 @@
           "question": "八大行星里最大的是谁？",
           "options": [
             {
-              "icon": "jupiter",
-              "text": "木星"
-            },
-            {
               "icon": "earth",
               "text": "地球"
+            },
+            {
+              "icon": "jupiter",
+              "text": "木星"
             },
             {
               "icon": "mars",
               "text": "火星"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "木星是行星大老大",
           "praise": "对，木星最大！"
         },
@@ -5988,19 +5988,19 @@
           "question": "谁戴着像草帽一样的光环？",
           "options": [
             {
-              "icon": "saturn",
-              "text": "土星"
+              "icon": "venus",
+              "text": "金星"
             },
             {
               "icon": "mars",
               "text": "火星"
             },
             {
-              "icon": "venus",
-              "text": "金星"
+              "icon": "saturn",
+              "text": "土星"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "土星的光环最美",
           "praise": "对，土星戴草帽！"
         },
@@ -6070,19 +6070,19 @@
           "question": "巨行星（木土天海）和岩质行星最大的不同是？",
           "options": [
             {
-              "text": "木星气体",
-              "body": "jupiter"
+              "icon": "equal",
+              "text": "等"
             },
             {
               "icon": "candy",
               "text": "糖"
             },
             {
-              "icon": "equal",
-              "text": "等"
+              "text": "木星气体",
+              "body": "jupiter"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "没有落脚的硬地面",
           "praise": "对，巨行星是气体星球！"
         }
@@ -6163,19 +6163,19 @@
           "question": "我们的太阳住在哪个星系？",
           "options": [
             {
-              "icon": "milkyway",
-              "text": "银河系"
-            },
-            {
               "icon": "comet",
               "text": "彗星"
+            },
+            {
+              "icon": "milkyway",
+              "text": "银河系"
             },
             {
               "icon": "rocket",
               "text": "火箭"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "千千万万颗星星的大城市",
           "praise": "对，银河系！"
         },
@@ -6185,19 +6185,19 @@
           "question": "夏天夜空里那条淡淡的星星带是？",
           "options": [
             {
-              "icon": "milkyway",
-              "text": "银河"
-            },
-            {
               "icon": "milk",
               "text": "云彩"
+            },
+            {
+              "icon": "milkyway",
+              "text": "银河"
             },
             {
               "icon": "rainbow",
               "text": "彩虹"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "从地球看银河系的样子",
           "praise": "答对啦，是银河！"
         }
@@ -6215,16 +6215,16 @@
           "question": "银河系里的星星有多少？",
           "options": [
             {
-              "text": "上千亿颗"
+              "text": "几十颗"
             },
             {
-              "text": "几十颗"
+              "text": "上千亿颗"
             },
             {
               "text": "100 颗"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "太阳只是普通的一员",
           "praise": "对，多得数不清！"
         },
@@ -6234,16 +6234,16 @@
           "question": "太阳在银河系里是？",
           "options": [
             {
-              "text": "普通的一颗星"
+              "text": "唯一的星"
             },
             {
               "text": "最大的星"
             },
             {
-              "text": "唯一的星"
+              "text": "普通的一颗星"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "银河系里像太阳的星很多",
           "praise": "答对啦！"
         }
@@ -6332,19 +6332,19 @@
           "question": "新的星星从哪里诞生？",
           "options": [
             {
-              "icon": "milkyway",
-              "text": "银河"
+              "icon": "volcano",
+              "text": "火山喷出"
             },
             {
               "icon": "wave",
               "text": "大海里捞"
             },
             {
-              "icon": "volcano",
-              "text": "火山喷出"
+              "icon": "milkyway",
+              "text": "银河"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "像一朵彩色的大雾",
           "praise": "对，从星云诞生！"
         },
@@ -6354,19 +6354,19 @@
           "question": "星云看上去像什么？",
           "options": [
             {
-              "icon": "rainbow",
-              "text": "彩色大雾"
-            },
-            {
               "icon": "rock",
               "text": "石头"
+            },
+            {
+              "icon": "rainbow",
+              "text": "彩色大雾"
             },
             {
               "icon": "equal",
               "text": "一块黑板"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "里面正在孕育新星星",
           "praise": "答对啦！"
         }
@@ -6406,19 +6406,19 @@
           "question": "连光都逃不出来的洞是？",
           "options": [
             {
-              "icon": "blackhole",
-              "text": "黑洞"
-            },
-            {
               "icon": "volcano",
               "text": "火山口"
+            },
+            {
+              "icon": "blackhole",
+              "text": "黑洞"
             },
             {
               "icon": "rock",
               "text": "山洞"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "引力大得把光都拉住",
           "praise": "对，是黑洞！"
         },
@@ -6451,19 +6451,19 @@
           "shadow": "blackhole",
           "options": [
             {
-              "icon": "blackhole",
-              "text": "黑洞"
-            },
-            {
               "icon": "volcano",
               "text": "火山口"
+            },
+            {
+              "icon": "blackhole",
+              "text": "黑洞"
             },
             {
               "icon": "comet",
               "text": "彗星"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "超级重，连光都逃不出来",
           "praise": "猜对啦！"
         }
@@ -6481,16 +6481,16 @@
           "question": "宇宙是怎么开始的？",
           "options": [
             {
-              "text": "一个小点爆炸开"
+              "text": "一块大石头"
             },
             {
-              "text": "一块大石头"
+              "text": "一个小点爆炸开"
             },
             {
               "text": "本来就有的"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "《给孩子讲宇宙》的第一课",
           "praise": "对，宇宙大爆炸！"
         },
@@ -6500,19 +6500,19 @@
           "question": "大爆炸之后，宇宙在？",
           "options": [
             {
-              "icon": "balloon",
-              "text": "气球越来越大"
+              "icon": "bird",
+              "text": "越来越小"
             },
             {
               "icon": "school",
               "text": "马上停住"
             },
             {
-              "icon": "bird",
-              "text": "越来越小"
+              "icon": "balloon",
+              "text": "气球越来越大"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "到今天还在长大",
           "praise": "答对啦，宇宙一直在膨胀！"
         }
@@ -6552,19 +6552,19 @@
           "question": "宇宙是什么？",
           "options": [
             {
-              "icon": "sparkle",
-              "text": "闪光的一切"
-            },
-            {
               "icon": "milkyway",
               "text": "只有银河系"
+            },
+            {
+              "icon": "sparkle",
+              "text": "闪光的一切"
             },
             {
               "text": "只有地球",
               "body": "earth"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "万物的家都叫宇宙",
           "praise": "对，宇宙是一切！"
         },
@@ -6574,19 +6574,19 @@
           "question": "银河系是宇宙里唯一的星系吗？",
           "options": [
             {
-              "icon": "milkyway",
-              "text": "银河数不清，不是"
-            },
-            {
               "icon": "equal",
               "text": "是，就一个"
+            },
+            {
+              "icon": "milkyway",
+              "text": "银河数不清，不是"
             },
             {
               "icon": "planet",
               "text": "只有地球一个星球"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "星系有很多很多，数也数不完",
           "praise": "答对啦，星系多得数不清！"
         }
@@ -6771,19 +6771,19 @@
           "question": "光年量的是什么？",
           "options": [
             {
-              "icon": "sunrays",
-              "text": "阳光跑的距离"
-            },
-            {
               "icon": "clock",
               "text": "时间"
+            },
+            {
+              "icon": "sunrays",
+              "text": "阳光跑的距离"
             },
             {
               "icon": "rocket",
               "text": "火箭的速度"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "光跑一年的路程",
           "praise": "对，光年量的是距离！"
         },
@@ -6793,19 +6793,19 @@
           "question": "连光都逃不出来的是？",
           "options": [
             {
-              "icon": "blackhole",
-              "text": "黑洞"
+              "icon": "moon",
+              "text": "月亮"
             },
             {
               "icon": "comet",
               "text": "彗星"
             },
             {
-              "icon": "moon",
-              "text": "月亮"
+              "icon": "blackhole",
+              "text": "黑洞"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "宇宙最神秘的大胃王",
           "praise": "答对啦，黑洞！"
         }
@@ -6844,19 +6844,19 @@
           "question": "想看清远处的星星，用什么帮忙？",
           "options": [
             {
-              "icon": "telescope",
-              "text": "望远镜"
+              "icon": "shoe",
+              "text": "鞋子"
             },
             {
               "icon": "cup",
               "text": "杯子"
             },
             {
-              "icon": "shoe",
-              "text": "鞋子"
+              "icon": "telescope",
+              "text": "望远镜"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "望远镜把远处的光收拢",
           "praise": "对，用望远镜！"
         },
@@ -6866,16 +6866,16 @@
           "question": "谁第一次用望远镜看到了月亮上的环形山？",
           "options": [
             {
-              "text": "伽利略"
+              "text": "小明"
             },
             {
               "text": "邮递员"
             },
             {
-              "text": "小明"
+              "text": "伽利略"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "四百多年前的第一次",
           "praise": "答对啦，是伽利略！"
         }
@@ -6893,19 +6893,19 @@
           "question": "天文台是做什么的地方？",
           "options": [
             {
-              "icon": "telescope",
-              "text": "看星星的"
+              "icon": "ferris",
+              "text": "游乐场"
             },
             {
               "icon": "shop",
               "text": "卖望远镜"
             },
             {
-              "icon": "ferris",
-              "text": "游乐场"
+              "icon": "telescope",
+              "text": "看星星的"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "圆顶房子里藏着大宝贝",
           "praise": "对，看星星的地方！"
         },
@@ -6915,19 +6915,19 @@
           "question": "天文台的圆顶里通常藏着什么？",
           "options": [
             {
-              "icon": "telescope",
-              "text": "大望远镜"
-            },
-            {
               "icon": "bear",
               "text": "大滑梯"
+            },
+            {
+              "icon": "telescope",
+              "text": "大望远镜"
             },
             {
               "icon": "wave",
               "text": "游泳池"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "圆顶会打开看星星",
           "praise": "答对啦，大望远镜！"
         },
@@ -6958,19 +6958,19 @@
           "question": "替人类飞去遥远行星拍照的机器叫？",
           "options": [
             {
-              "icon": "rocket",
-              "text": "太空探测器"
+              "icon": "girl",
+              "text": "无人机"
             },
             {
               "icon": "car",
               "text": "遥控汽车"
             },
             {
-              "icon": "girl",
-              "text": "无人机"
+              "icon": "rocket",
+              "text": "太空探测器"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "人类的太空眼睛",
           "praise": "对，探测器！"
         },
@@ -6980,19 +6980,19 @@
           "question": "旅行者号探测器带着一张地球的唱片，是为什么？",
           "options": [
             {
-              "text": "介绍地球",
-              "body": "earth"
-            },
-            {
               "icon": "speaker",
               "text": "声音"
+            },
+            {
+              "text": "介绍地球",
+              "body": "earth"
             },
             {
               "icon": "ufo",
               "text": "给外星人"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "《乔治的宇宙》也讲过它",
           "praise": "答对啦，地球的名片！"
         },
@@ -7043,19 +7043,19 @@
           "question": "火星车在火星上做什么？",
           "options": [
             {
-              "icon": "flask",
-              "text": "做实验探索火星"
+              "icon": "shop",
+              "text": "送外卖"
             },
             {
               "icon": "fish",
               "text": "种菜钓鱼"
             },
             {
-              "icon": "shop",
-              "text": "送外卖"
+              "icon": "flask",
+              "text": "做实验探索火星"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "火星上的科学小侦探",
           "praise": "对，火星车在探索火星！"
         },
@@ -7065,19 +7065,19 @@
           "question": "火星车是谁送上火星的？",
           "options": [
             {
-              "icon": "rocket",
-              "text": "大火箭"
-            },
-            {
               "icon": "school",
               "text": "学校"
+            },
+            {
+              "icon": "rocket",
+              "text": "大火箭"
             },
             {
               "icon": "balloon",
               "text": "热气球"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "火箭再立新功",
           "praise": "答对啦，火箭送上去！"
         },
@@ -7088,19 +7088,19 @@
           "shadow": "robot",
           "options": [
             {
-              "icon": "robot",
-              "text": "火星车"
-            },
-            {
               "icon": "astronaut",
               "text": "宇航员"
+            },
+            {
+              "icon": "robot",
+              "text": "火星车"
             },
             {
               "icon": "bear",
               "text": "棕小熊"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "它有轮子，在火星上慢慢开",
           "praise": "猜对啦！"
         }
@@ -7241,19 +7241,19 @@
           "question": "未来人类最想去哪颗行星安家？",
           "options": [
             {
-              "text": "火星",
-              "body": "mars"
-            },
-            {
               "text": "水星",
               "body": "mercury"
+            },
+            {
+              "text": "火星",
+              "body": "mars"
             },
             {
               "icon": "moon",
               "text": "月亮"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "火星是最像地球的行星",
           "praise": "对，目标是火星！"
         },
@@ -7305,19 +7305,19 @@
           "question": "想当宇航员，现在应该？",
           "options": [
             {
-              "icon": "school",
-              "text": "认真学习"
+              "icon": "moon",
+              "text": "熬夜不睡"
             },
             {
               "icon": "dice",
               "text": "天天打游戏"
             },
             {
-              "icon": "moon",
-              "text": "熬夜不睡"
+              "icon": "school",
+              "text": "认真学习"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "身体和知识都要满分",
           "praise": "对，从小练本领！"
         },
@@ -7327,16 +7327,16 @@
           "question": "宇航员训练时要练习什么？",
           "options": [
             {
-              "text": "转椅和科学实验"
+              "text": "只练画画"
             },
             {
               "text": "只练跑步"
             },
             {
-              "text": "只练画画"
+              "text": "转椅和科学实验"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "太空生活需要很多本领",
           "praise": "答对啦！"
         }
@@ -7354,19 +7354,19 @@
           "question": "今晚就能做的观星活动是？",
           "options": [
             {
-              "icon": "bigdipper",
-              "text": "北斗七星"
+              "icon": "bulb",
+              "text": "看路灯"
             },
             {
               "icon": "balloon",
               "text": "数飞机"
             },
             {
-              "icon": "bulb",
-              "text": "看路灯"
+              "icon": "bigdipper",
+              "text": "北斗七星"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "观星从家门口开始",
           "praise": "对，抬头看星空！"
         },
@@ -7376,19 +7376,19 @@
           "question": "记录看到的星星可以用？",
           "options": [
             {
-              "icon": "chart",
-              "text": "画下来"
-            },
-            {
               "icon": "apple",
               "text": "苹果"
+            },
+            {
+              "icon": "chart",
+              "text": "画下来"
             },
             {
               "icon": "gift",
               "text": "礼物"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "好记性不如烂笔头",
           "praise": "答对啦，画下来！"
         },
@@ -7425,16 +7425,16 @@
           "question": "太阳系里有几大行星？",
           "options": [
             {
-              "text": "八颗行星"
+              "text": "一百颗"
             },
             {
               "text": "三颗"
             },
             {
-              "text": "一百颗"
+              "text": "八颗行星"
             }
           ],
-          "answer": 0,
+          "answer": 2,
           "hint": "水金地火+木土天海",
           "praise": "对，八大行星！"
         },
@@ -7466,19 +7466,19 @@
           "question": "清晨东方最亮的那颗星叫？",
           "options": [
             {
-              "icon": "venus",
-              "text": "金星"
-            },
-            {
               "icon": "mars",
               "text": "火星"
+            },
+            {
+              "icon": "venus",
+              "text": "金星"
             },
             {
               "icon": "moon",
               "text": "月亮"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "金星也叫启明星",
           "praise": "对，金星最亮！"
         },
@@ -7488,19 +7488,19 @@
           "question": "哪颗行星红红的？",
           "options": [
             {
-              "icon": "mars",
-              "text": "火星"
-            },
-            {
               "icon": "venus",
               "text": "金星"
+            },
+            {
+              "icon": "mars",
+              "text": "火星"
             },
             {
               "icon": "earth",
               "text": "地球"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "火星像生了锈",
           "praise": "对，红红的火星！"
         },
@@ -7510,19 +7510,19 @@
           "question": "哪些行星是硬硬的岩石星球（岩质行星）？",
           "options": [
             {
-              "text": "水星打头",
-              "body": "mercury"
-            },
-            {
               "text": "木星土星",
               "body": "jupiter"
+            },
+            {
+              "text": "水星打头",
+              "body": "mercury"
             },
             {
               "icon": "moon",
               "text": "月亮太阳"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "离太阳近的四颗是岩质行星",
           "praise": "对，水金地火！"
         },
@@ -7532,19 +7532,19 @@
           "question": "火星和木星之间有一条什么地带？",
           "options": [
             {
-              "icon": "planet",
-              "text": "小行星带"
-            },
-            {
               "icon": "river",
               "text": "一条大河"
+            },
+            {
+              "icon": "planet",
+              "text": "小行星带"
             },
             {
               "icon": "greatwall",
               "text": "长城"
             }
           ],
-          "answer": 0,
+          "answer": 1,
           "hint": "《神奇校车》就从这里穿过！",
           "praise": "对，小行星带！"
         },
